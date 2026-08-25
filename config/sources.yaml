@@ -1,0 +1,124 @@
+# Authoritative data sources for the COTA transit optimization project.
+# status: AVAILABLE | BLOCKED_EGRESS (verified URL, sandbox cannot fetch; user-mediated
+#         retrieval) | UNKNOWN (not yet located) | NOT_RETRIEVED
+sources:
+  cota_gtfs_static:
+    name: COTA GTFS static feed
+    publisher: Central Ohio Transit Authority
+    url: https://www.cota.com/data/cota.gtfs.zip
+    retrieval_date: null  # set by registry at ingest
+    data_type: GTFS static (zip of CSV)
+    coverage: COTA fixed-route network, current signup
+    license: >-
+      COTA data terms (cota.com/data): non-exclusive, limited, revocable right to
+      use/reproduce/redistribute; as-is, no warranty; no COTA trademark use.
+    download_method: HTTP GET (user-mediated in this environment)
+    status: BLOCKED_EGRESS
+    notes: URL confirmed on cota.com/data 2026-08-25.
+  cota_gtfs_rt_alerts:
+    name: COTA GTFS-Realtime service alerts
+    publisher: COTA / Vontas
+    url: https://gtfs-rt.cota.vontascloud.com/TMGTFSRealTimeWebService/Alert/Alerts.pb
+    data_type: GTFS-RT protobuf
+    coverage: live alerts
+    license: same COTA data terms
+    download_method: HTTP GET
+    status: BLOCKED_EGRESS
+    notes: Confirmed on cota.com/data 2026-08-25.
+  cota_gtfs_rt_trip_updates:
+    name: COTA GTFS-Realtime trip updates
+    publisher: COTA via Swiftly
+    url: https://api.goswift.ly/real-time/cota/gtfs-rt-trip-updates
+    data_type: GTFS-RT protobuf
+    coverage: live trip updates
+    download_method: HTTP GET with public apiKey query param published on cota.com/data
+    status: BLOCKED_EGRESS
+    notes: Public key published by COTA on its data page; not stored here.
+  cota_gtfs_rt_vehicle_positions:
+    name: COTA GTFS-Realtime vehicle positions
+    publisher: COTA via Swiftly
+    url: https://api.goswift.ly/real-time/cota/gtfs-rt-vehicle-positions
+    data_type: GTFS-RT protobuf
+    coverage: live vehicle positions
+    download_method: HTTP GET with public apiKey query param published on cota.com/data
+    status: BLOCKED_EGRESS
+  cota_gis_open_data:
+    name: COTA open GIS data portal
+    publisher: COTA
+    url: http://cota1974.maps.arcgis.com/home/index.html
+    data_type: ArcGIS Online items (shapefile/GeoJSON services)
+    coverage: routes, stops, park & ride
+    status: BLOCKED_EGRESS
+    notes: Linked from cota.com/data.
+  ntd_cota:
+    name: National Transit Database agency profile — COTA (NTD ID 50066)
+    publisher: Federal Transit Administration
+    url: https://www.transit.dot.gov/ntd/transit-agency-profiles/central-ohio-transit-authority
+    data_type: annual agency statistics (VRM, VRH, fleet, ridership, opex)
+    coverage: COTA, annual
+    status: UNKNOWN
+    notes: >-
+      Not yet retrieved in-session (egress blocked; profile page not fetched).
+      Needed to reconcile scheduled vehicle-hours vs reported actuals.
+  lodes_od_oh:
+    name: LEHD LODES8 Ohio OD (JT00, main)
+    publisher: US Census Bureau LEHD
+    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/od/oh_od_main_JT00_2022.csv.gz
+    data_type: block-to-block home→work job flows
+    coverage: Ohio, 2022
+    status: BLOCKED_EGRESS
+    notes: Large; WAC/RAC used first for stop-catchment weights.
+  lodes_wac_oh:
+    name: LEHD LODES8 Ohio WAC (S000 JT00 2022)
+    publisher: US Census Bureau LEHD
+    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/wac/oh_wac_S000_JT00_2022.csv.gz
+    data_type: jobs by workplace census block
+    coverage: Ohio, 2022
+    status: BLOCKED_EGRESS
+  lodes_rac_oh:
+    name: LEHD LODES8 Ohio RAC (S000 JT00 2022)
+    publisher: US Census Bureau LEHD
+    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/rac/oh_rac_S000_JT00_2022.csv.gz
+    data_type: workers by residence census block
+    coverage: Ohio, 2022
+    status: BLOCKED_EGRESS
+  cenpop_bg_oh:
+    name: 2020 Census block-group population centroids, Ohio
+    publisher: US Census Bureau
+    url: https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG39.txt
+    data_type: CSV (GEOID, population, mean center lat/lon)
+    coverage: Ohio block groups
+    status: BLOCKED_EGRESS
+  acs_5yr:
+    name: ACS 5-year estimates via Census API
+    publisher: US Census Bureau
+    url: https://api.census.gov/data/2023/acs/acs5
+    data_type: demographic/commuting tables
+    coverage: Franklin County + neighbors, tract/BG
+    status: BLOCKED_EGRESS
+    notes: >-
+      Relevant variables — B01003_001E population; B08301 means of transportation
+      to work (B08301_010E transit); B08201/B25044 vehicles available
+      (zero-car households); B19013_001E median household income; B23025 employment
+      status; S1810/B18101 disability. Recorded for future retrieval; no normative
+      demographic weights are embedded in optimization.
+  morpc_traffic_counts:
+    name: MORPC regional traffic count database
+    publisher: Mid-Ohio Regional Planning Commission
+    url: UNKNOWN
+    data_type: traffic counts
+    status: UNKNOWN
+    notes: Not yet located from within sandbox; MORPC hosts counts via its GIS portal.
+  odot_traffic:
+    name: ODOT Traffic Count/TDMS data
+    publisher: Ohio DOT
+    url: UNKNOWN
+    data_type: statewide traffic monitoring
+    status: UNKNOWN
+  cota_planning_docs:
+    name: COTA planning documents (LinkUS, System Redesign, APC/ridership reports)
+    publisher: COTA
+    url: UNKNOWN
+    data_type: PDF reports
+    status: UNKNOWN
+    notes: Stop-level APC data likely requires a public records request.

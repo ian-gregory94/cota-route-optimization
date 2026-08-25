@@ -1,0 +1,14 @@
+# Service constraints for frequency optimization.
+resource:
+  # Budgets are set to "baseline" — computed from the current GTFS — unless
+  # overridden with explicit numbers here.
+  weekday_revenue_vehicle_hours: baseline
+  peak_fleet_by_period: baseline
+  budget_tolerance: 0.005   # solutions may not exceed baseline budget by more than 0.5%
+
+service:
+  policy_max_headway_min: 60      # no route-period may exceed this if it had service
+  policy_min_headway_min: 5       # floor; below this bunching dominates
+  headway_ladder_min: [5, 6, 7.5, 10, 12, 15, 20, 24, 30, 40, 45, 60]
+  preserve_span: true             # a route-period with baseline service keeps service
+  allow_new_service_in_empty_periods: false

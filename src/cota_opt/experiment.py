@@ -1,0 +1,89 @@
+"""Experiment framework: reproducible, provenance-stamped runs.
+
+Every experiment persists experiment_id, timestamp, git commit, input dataset
+checksums, a config snapshot, the random seed, algorithm name, metrics and
+output paths. Reruns with identical inputs and seed are deterministic.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import subprocess
+from dataclasses import dataclass, field, asdict
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+from .paths import config_dir, outputs_dir
+from .registry import Registry
+
+log = logging.getLogger(__name__)
+
+
+def git_commit(repo: Path | None = None) -> str:
+    try:
+        out = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo or Path.cwd(),
+                             capture_output=True, text=True, timeout=10)
+        if out.returncode == 0:
+            return out.stdout.strip()
+    except Exception:  # pragma: no cover - environment dependent
+        pass
+    return "UNKNOWN"
+
+
+@dataclass
+class ExperimentRecord:
+    experiment_id: str
+    name: str
+    timestamp: str
+    git_commit: str
+    seed: int
+    algorithm: str
+    input_checksums: dict[str, str] = field(default_factory=dict)
+    config_snapshot: dict[str, Any] = field(default_factory=dict)
+    metrics: dict[str, Any] = field(default_factory=dict)
+    output_paths: list[str] = field(default_factory=list)
+    notes: str = ""
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+class Experiment:
+    """Context for one experiment run."""
+
+    def __init__(self, name: str, seed: int, algorithm: str,
+                 config_files: list[str] | None = None,
+                 registry: Registry | None = None,
+                 root: Path | None = None) -> None:
+        ts = datetime.now(timezone.utc)
+        self.experiment_id = f"{name}_{ts.strftime('%Y%m%dT%H%M%SZ')}"
+        self.dir = (root or outputs_dir()) / "experiments" / self.experiment_id
+        self.dir.mkdir(parents=True, exist_ok=True)
+        reg = registry or Registry()
+        checksums = {k: v.sha256 for k, v in reg.all_records().items()}
+        snapshot: dict[str, Any] = {}
+        for cf in (config_files or []):
+            p = config_dir() / cf
+            if p.exists():
+                snapshot[cf] = p.read_text()
+        self.record = ExperimentRecord(
+            experiment_id=self.experiment_id, name=name,
+            timestamp=ts.isoformat(), git_commit=git_commit(),
+            seed=seed, algorithm=algorithm,
+            input_checksums=checksums, config_snapshot=snapshot)
+
+    def artifact_path(self, filename: str) -> Path:
+        p = self.dir / filename
+        p.parent.mkdir(parents=True, exist_ok=True)
+        self.record.output_paths.append(str(p))
+        return p
+
+    def log_metrics(self, **metrics: Any) -> None:
+        self.record.metrics.update(metrics)
+
+    def save(self) -> Path:
+        p = self.dir / "experiment.json"
+        p.write_text(json.dumps(self.record.to_dict(), indent=2, default=str))
+        log.info("experiment saved: %s", p)
+        return p

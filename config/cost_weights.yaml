@@ -1,0 +1,12 @@
+# Generalized passenger cost weights, in equivalent in-vehicle minutes.
+# Values follow common transit planning practice (e.g., TCRP 165 ranges);
+# they are assumptions, not COTA-calibrated.
+weights:
+  walking: 2.0            # per walk minute
+  waiting: 2.0            # per expected wait minute
+  in_vehicle: 1.0         # per in-vehicle minute
+  transfer_wait: 2.0      # per transfer wait minute
+  transfer_penalty: 10.0  # fixed minutes-equivalent per transfer
+  crowding: 1.0           # extra multiplier applied via crowding model
+  reliability: 0.0        # placeholder until empirical RT data exists
+  unserved: 60.0          # minutes-equivalent penalty per unserved trip

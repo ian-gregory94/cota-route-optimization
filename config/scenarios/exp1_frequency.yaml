@@ -1,0 +1,14 @@
+# Experiment 1 — Pareto-optimal weekday frequency redistribution,
+# route geometry and stop patterns held fixed, resources held at baseline.
+experiment:
+  name: exp1_frequency_redistribution
+  algorithm: greedy_marginal_allocation + weighted epsilon sweep
+  seed: 20260825
+  service_day: busiest_weekday
+  objectives:
+    - total_generalized_cost   # passenger-weighted, proxy demand
+    - unserved_demand          # trips/day losing service access
+  pareto:
+    # sweep of unserved-demand penalty multipliers used to trace the frontier
+    unserved_weight_multipliers: [0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0]
+  local_search_iterations: 4000
