@@ -1,0 +1,150 @@
+2026-08-26 17:04:13,038 experiment exp2_geometry_screen_20260826T170413Z
+2026-08-26 17:04:13,333 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.3s)
+2026-08-26 17:04:13,371 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 17:04:13,372 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 17:04:13,373 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 17:04:13,383 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 17:04:13,860 cache hit  pathsets-34fdd0c13686407e (76.8 MB, 0.5s)
+2026-08-26 17:04:13,992 running-time model: 3209 observed links, MAE median 17.2s, MAPE(>=30s) median 26.6%
+2026-08-26 17:04:13,992 excluding 14 peak-express routes from geometry edits
+2026-08-26 17:05:21,242 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-26 17:05:21,251 budget 2517.2 revenue veh-hours; screening on 400 origin zones, periods ('am_peak', 'midday')
+2026-08-26 17:05:21,542 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:05:21,551 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:05:21,660 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:05:40,589 screen baseline                     gc=1.380393e+06 unserved=900 served=13329 (h x1.0000)
+2026-08-26 17:05:40,831 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:05:40,840 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:05:40,946 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:05:59,895 [ 1/60] truncate    035                        gc  -0.123% unserved  +0.000%  (19s)
+2026-08-26 17:06:00,135 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:06:00,143 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:06:00,251 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:06:18,773 [ 2/60] truncate    102                        gc  +0.506% unserved  +0.000%  (19s)
+2026-08-26 17:06:19,043 footpaths: 15523 links (9 from transfers.txt)
+2026-08-26 17:06:19,052 raptor network: 2945 stops, 111 patterns, 15523 footpaths
+2026-08-26 17:06:19,165 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-26 17:06:37,927 [ 3/60] truncate    031                        gc  +0.069% unserved  +0.000%  (19s)
+2026-08-26 17:06:38,182 footpaths: 15534 links (9 from transfers.txt)
+2026-08-26 17:06:38,191 raptor network: 2944 stops, 111 patterns, 15534 footpaths
+2026-08-26 17:06:38,297 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:06:57,193 [ 4/60] truncate    101                        gc  +0.002% unserved  +0.000%  (19s)
+2026-08-26 17:06:57,430 footpaths: 15537 links (9 from transfers.txt)
+2026-08-26 17:06:57,438 raptor network: 2944 stops, 111 patterns, 15537 footpaths
+2026-08-26 17:06:57,548 zones: 1397 (636 with transit access within 600 m), 3933 access links
+2026-08-26 17:07:16,299 [ 5/60] truncate    033                        gc  +0.008% unserved  +6.041%  (19s)
+2026-08-26 17:07:16,545 footpaths: 15517 links (9 from transfers.txt)
+2026-08-26 17:07:16,554 raptor network: 2935 stops, 111 patterns, 15517 footpaths
+2026-08-26 17:07:16,670 zones: 1397 (637 with transit access within 600 m), 3925 access links
+2026-08-26 17:07:35,525 [ 6/60] truncate    025                        gc  -0.153% unserved  +0.229%  (19s)
+2026-08-26 17:07:35,791 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:07:35,799 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:07:35,911 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:07:54,900 [ 7/60] truncate    007                        gc  -0.148% unserved  +0.000%  (19s)
+2026-08-26 17:07:55,164 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:07:55,172 raptor network: 2947 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:07:55,281 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:08:14,364 [ 8/60] truncate    007                        gc  -0.134% unserved  +0.000%  (19s)
+2026-08-26 17:08:14,628 footpaths: 15549 links (9 from transfers.txt)
+2026-08-26 17:08:14,636 raptor network: 2946 stops, 111 patterns, 15549 footpaths
+2026-08-26 17:08:14,750 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:08:34,391 [ 9/60] truncate    009                        gc  +0.056% unserved  +0.000%  (20s)
+2026-08-26 17:08:34,652 footpaths: 15553 links (9 from transfers.txt)
+2026-08-26 17:08:34,660 raptor network: 2948 stops, 111 patterns, 15553 footpaths
+2026-08-26 17:08:34,772 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:08:53,382 [10/60] truncate    023                        gc  -0.072% unserved  +0.000%  (19s)
+2026-08-26 17:08:53,674 footpaths: 15545 links (9 from transfers.txt)
+2026-08-26 17:08:53,682 raptor network: 2946 stops, 111 patterns, 15545 footpaths
+2026-08-26 17:08:53,789 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:09:12,387 [11/60] truncate    012                        gc  -0.038% unserved  +0.000%  (19s)
+2026-08-26 17:09:12,631 footpaths: 15553 links (9 from transfers.txt)
+2026-08-26 17:09:12,639 raptor network: 2948 stops, 111 patterns, 15553 footpaths
+2026-08-26 17:09:12,745 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:09:31,289 [12/60] truncate    032                        gc  -0.011% unserved  +0.017%  (19s)
+2026-08-26 17:09:31,527 footpaths: 15537 links (9 from transfers.txt)
+2026-08-26 17:09:31,535 raptor network: 2944 stops, 111 patterns, 15537 footpaths
+2026-08-26 17:09:31,648 zones: 1397 (636 with transit access within 600 m), 3933 access links
+2026-08-26 17:09:50,217 [13/60] straighten  033                        gc  -0.394% unserved  +5.869%  (19s)
+2026-08-26 17:09:50,467 footpaths: 15509 links (9 from transfers.txt)
+2026-08-26 17:09:50,476 raptor network: 2942 stops, 111 patterns, 15509 footpaths
+2026-08-26 17:09:50,589 zones: 1397 (637 with transit access within 600 m), 3934 access links
+2026-08-26 17:10:09,737 [14/60] straighten  007                        gc  -0.096% unserved  +0.000%  (20s)
+2026-08-26 17:10:09,985 footpaths: 15565 links (9 from transfers.txt)
+2026-08-26 17:10:09,994 raptor network: 2944 stops, 111 patterns, 15565 footpaths
+2026-08-26 17:10:10,105 zones: 1397 (636 with transit access within 600 m), 3931 access links
+2026-08-26 17:10:28,748 [15/60] straighten  025                        gc  -0.542% unserved  +4.586%  (19s)
+2026-08-26 17:10:29,045 footpaths: 15533 links (9 from transfers.txt)
+2026-08-26 17:10:29,053 raptor network: 2946 stops, 111 patterns, 15533 footpaths
+2026-08-26 17:10:29,162 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:10:48,088 [16/60] straighten  034                        gc  +0.007% unserved  +0.000%  (19s)
+2026-08-26 17:10:48,328 footpaths: 15533 links (9 from transfers.txt)
+2026-08-26 17:10:48,337 raptor network: 2944 stops, 111 patterns, 15533 footpaths
+2026-08-26 17:10:48,451 zones: 1397 (637 with transit access within 600 m), 3935 access links
+2026-08-26 17:11:07,427 [17/60] straighten  004                        gc  -0.026% unserved  +0.000%  (19s)
+2026-08-26 17:11:07,665 footpaths: 15565 links (9 from transfers.txt)
+2026-08-26 17:11:07,673 raptor network: 2948 stops, 111 patterns, 15565 footpaths
+2026-08-26 17:11:07,791 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:11:26,677 [18/60] straighten  001                        gc  -0.003% unserved  +0.000%  (19s)
+2026-08-26 17:11:26,923 footpaths: 15543 links (9 from transfers.txt)
+2026-08-26 17:11:26,931 raptor network: 2947 stops, 111 patterns, 15543 footpaths
+2026-08-26 17:11:27,043 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:11:45,705 [19/60] straighten  011                        gc  -0.055% unserved  +0.000%  (19s)
+2026-08-26 17:11:45,944 footpaths: 15507 links (9 from transfers.txt)
+2026-08-26 17:11:45,952 raptor network: 2943 stops, 111 patterns, 15507 footpaths
+2026-08-26 17:11:46,059 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:12:04,554 [20/60] straighten  031                        gc  -0.047% unserved  +0.000%  (19s)
+2026-08-26 17:12:04,805 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:12:04,813 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:12:04,929 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:12:23,875 [21/60] straighten  024                        gc  -0.096% unserved  +0.000%  (19s)
+2026-08-26 17:12:24,127 footpaths: 15553 links (9 from transfers.txt)
+2026-08-26 17:12:24,136 raptor network: 2944 stops, 111 patterns, 15553 footpaths
+2026-08-26 17:12:24,246 zones: 1397 (636 with transit access within 600 m), 3936 access links
+2026-08-26 17:12:42,967 [22/60] straighten  002                        gc  -0.279% unserved  +3.163%  (19s)
+2026-08-26 17:12:43,202 footpaths: 15549 links (9 from transfers.txt)
+2026-08-26 17:12:43,211 raptor network: 2946 stops, 111 patterns, 15549 footpaths
+2026-08-26 17:12:43,317 zones: 1397 (637 with transit access within 600 m), 3935 access links
+2026-08-26 17:13:01,698 [23/60] straighten  021                        gc  +0.040% unserved  +0.000%  (19s)
+2026-08-26 17:13:01,945 footpaths: 15553 links (9 from transfers.txt)
+2026-08-26 17:13:01,954 raptor network: 2946 stops, 111 patterns, 15553 footpaths
+2026-08-26 17:13:02,062 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-26 17:13:21,074 [24/60] straighten  102                        gc  -0.101% unserved  +0.000%  (19s)
+2026-08-26 17:13:21,344 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:13:21,353 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:13:21,464 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:13:40,501 [25/60] extend      009                        gc  +0.053% unserved  +0.000%  (19s)
+2026-08-26 17:13:40,738 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:13:40,746 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:13:40,861 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:13:59,885 [26/60] extend      023                        gc  +0.130% unserved  +0.000%  (19s)
+2026-08-26 17:14:00,180 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:14:00,188 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:14:00,293 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:14:19,075 [27/60] extend      024                        gc  +0.052% unserved  +0.000%  (19s)
+2026-08-26 17:14:19,329 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:14:19,337 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:14:19,447 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:14:38,615 [28/60] extend      025                        gc  -0.055% unserved  +0.000%  (20s)
+2026-08-26 17:14:38,873 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:14:38,881 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:14:38,993 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:14:58,128 [29/60] extend      031                        gc  +0.105% unserved  +0.000%  (20s)
+2026-08-26 17:14:58,378 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:14:58,387 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:14:58,499 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:15:17,521 [30/60] extend      004                        gc  -0.063% unserved  +0.000%  (19s)
+2026-08-26 17:15:17,774 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:15:17,782 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:15:17,897 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:15:36,791 [31/60] extend      006                        gc  -0.301% unserved  -0.034%  (19s)
+2026-08-26 17:15:37,097 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:15:37,105 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:15:37,215 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:15:56,019 [32/60] extend      007                        gc  +0.878% unserved  -3.541%  (19s)
+2026-08-26 17:15:56,266 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:15:56,275 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:15:56,382 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:16:15,125 [33/60] extend      101                        gc  +0.956% unserved  -3.541%  (19s)
+2026-08-26 17:16:15,368 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:16:15,377 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:16:15,481 zones: 1397 (637 with transit access within 600 m), 3938 access links

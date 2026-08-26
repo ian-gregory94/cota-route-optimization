@@ -48,3 +48,5 @@
 2026-08-26 16:46:55,197 iteration 0: 203161 candidate paths, baseline gc=1.787982e+06 (enum 0s)
 2026-08-26 16:56:03,102 solve lambda=0.5: obj=2.05471e+06 vh=2507.2/2517.2 exchanges=42
 2026-08-26 16:56:03,103   lambda=0.5   548s gc   -6.01% unserved  +14.60%
+2026-08-26 17:14:21,566 solve lambda=1.0: obj=2.39627e+06 vh=2509.8/2517.2 exchanges=85
+2026-08-26 17:14:21,567   lambda=1.0  1098s gc   -2.12% unserved   -1.08%
