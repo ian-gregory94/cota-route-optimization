@@ -1,0 +1,42 @@
+2026-08-26 23:13:46,408 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-26 23:13:46,450 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 23:13:46,451 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 23:13:46,452 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 23:13:46,464 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 23:13:46,574 cache hit  pathsets-b56fc18e2263c07f (76.8 MB, 0.1s)
+2026-08-26 23:13:46,663 period early   : 31858 paths, 20000 OD pairs
+2026-08-26 23:13:46,671 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-26 23:13:46,678 period midday  : 32893 paths, 20000 OD pairs
+2026-08-26 23:13:46,686 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-26 23:13:46,692 period evening : 30786 paths, 20000 OD pairs
+2026-08-26 23:13:46,698 period owl     : 31693 paths, 20000 OD pairs
+2026-08-26 23:13:46,723 load profile: 23 route-periods, peak-load factor median 0.34, p90 0.48
+2026-08-26 23:13:46,749 load profile: 35 route-periods, peak-load factor median 0.37, p90 1.00
+2026-08-26 23:13:46,772 load profile: 25 route-periods, peak-load factor median 0.33, p90 0.48
+2026-08-26 23:13:46,798 load profile: 33 route-periods, peak-load factor median 0.38, p90 0.94
+2026-08-26 23:13:46,819 load profile: 24 route-periods, peak-load factor median 0.31, p90 0.45
+2026-08-26 23:13:46,841 load profile: 22 route-periods, peak-load factor median 0.37, p90 0.48
+2026-08-26 23:13:46,842 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 23:13:46,897 plain candidate set: 203161 paths
+2026-08-26 23:13:47,076 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-26 23:13:47,106 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 23:13:47,107 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 23:13:47,108 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 23:13:47,117 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 23:13:47,920 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.8s)
+2026-08-26 23:13:47,980 period early   : 33571 paths, 20000 OD pairs
+2026-08-26 23:13:47,986 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-26 23:13:47,993 period midday  : 34003 paths, 20000 OD pairs
+2026-08-26 23:13:48,001 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-26 23:13:48,008 period evening : 34989 paths, 20000 OD pairs
+2026-08-26 23:13:48,014 period owl     : 34494 paths, 20000 OD pairs
+2026-08-26 23:13:48,039 load profile: 23 route-periods, peak-load factor median 0.32, p90 0.48
+2026-08-26 23:13:48,065 load profile: 35 route-periods, peak-load factor median 0.40, p90 1.00
+2026-08-26 23:13:48,088 load profile: 25 route-periods, peak-load factor median 0.35, p90 0.48
+2026-08-26 23:13:48,114 load profile: 32 route-periods, peak-load factor median 0.38, p90 0.99
+2026-08-26 23:13:48,137 load profile: 24 route-periods, peak-load factor median 0.33, p90 0.45
+2026-08-26 23:13:48,160 load profile: 22 route-periods, peak-load factor median 0.36, p90 0.51
+2026-08-26 23:13:48,160 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 23:13:48,216 wide candidate set: 217338 paths
+2026-08-26 23:25:18,868 solve lambda=1.0: obj=2.35817e+06 vh=2516.0/2517.2 exchanges=57
+2026-08-26 23:25:18,868   lambda=1.0  plain solved in 691s

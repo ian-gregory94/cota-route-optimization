@@ -25,3 +25,40 @@
 2026-08-26 23:02:50,318 cache store pathset-6324ea5887e4324d (15.3 MB, built in 167s)
 2026-08-26 23:02:50,318 period pm_peak : 40231 paths, 20000 OD pairs
 2026-08-26 23:02:50,334 path enumeration: 20000 OD pairs, 636 origin zones, 7 scenarios, cap 7 paths/OD
+2026-08-26 23:05:38,114 rejected 185 malformed candidate paths that failed the re-pricing check
+2026-08-26 23:05:38,273 path set: 34989 paths over 17434/20000 OD pairs (86.9% of flow served), 177584 legs
+2026-08-26 23:05:38,429 cache store pathset-b6293917ad8f0b5e (13.1 MB, built in 168s)
+2026-08-26 23:05:38,429 period evening : 34989 paths, 20000 OD pairs
+2026-08-26 23:05:38,445 path enumeration: 20000 OD pairs, 636 origin zones, 7 scenarios, cap 7 paths/OD
+2026-08-26 23:08:04,172 rejected 200 malformed candidate paths that failed the re-pricing check
+2026-08-26 23:08:04,321 path set: 34494 paths over 17044/20000 OD pairs (85.3% of flow served), 177604 legs
+2026-08-26 23:08:04,479 cache store pathset-71f30081df122ff2 (13.1 MB, built in 146s)
+2026-08-26 23:08:04,479 period owl     : 34494 paths, 20000 OD pairs
+2026-08-26 23:08:05,292 cache store pathsets-c5f7d2bb11d2932d (81.9 MB, built in 958s)
+2026-08-26 23:08:05,355 period early   : 33571 paths, 20000 OD pairs
+2026-08-26 23:08:05,360 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-26 23:08:05,366 period midday  : 34003 paths, 20000 OD pairs
+2026-08-26 23:08:05,372 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-26 23:08:05,378 period evening : 34989 paths, 20000 OD pairs
+2026-08-26 23:08:05,383 period owl     : 34494 paths, 20000 OD pairs
+2026-08-26 23:08:05,383 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 23:08:05,414 waiting model = same_route; focus routes = ['001', '002', '005', '007', '008', '010', '033', '102']
+2026-08-26 23:08:26,703 am_peak  tested  4000 OD pairs (2767 trips) in   21s: 0 with a cheaper Model B path outside the set
+2026-08-26 23:08:45,808 midday   tested  4000 OD pairs (3990 trips) in   19s: 0 with a cheaper Model B path outside the set
+2026-08-26 23:08:45,809 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp7_discovery_adequacy_modelB_20260826T225205Z/experiment.json
+
+================================================================================================
+GATE 11 — MODEL B DISCOVERY ADEQUACY  (waiting model: same_route)
+================================================================================================
+  n_omitted                          0
+  flow_share                         0.0000
+  gc_share                           0.0000
+  tested_flow                        6,757.6648
+  tested_generalized_cost            649,015.3805
+
+  flow share affected   0.000%   (negligible < 1.0%, material >= 3.0%)
+  cost share affected   0.000%   (negligible < 0.25%, material >= 1.0%)
+
+  CASE A: no tested OD-period has a Model B path cheaper than the candidate set; per-pattern enumeration is adequate for the corrected model
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp7_discovery_adequacy_modelB_20260826T225205Z

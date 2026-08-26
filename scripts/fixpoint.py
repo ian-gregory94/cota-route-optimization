@@ -19,6 +19,8 @@ partial results are readable while it is still going.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import logging
 import sys
 import time
@@ -58,6 +60,29 @@ def key_str(k: tuple[str, str]) -> str:
 def key_tuple(s: str) -> tuple[str, str]:
     a, b = s.split(SEP, 1)
     return (a, b)
+
+
+def scenario_tag(extra: list[tuple[str, dict]]) -> str:
+    """Content hash of the scenario list, not of its names.
+
+    ``pathsets_with`` treats the tag as the cache key and says so: two
+    different scenario lists sharing a tag silently return each other's path
+    sets. Names like ``opt_it0_lam2.0`` are stable across runs while the plans
+    they carry are not, so joining the names was exactly the collision that
+    contract warns about -- and it fired. After the search RNG changed,
+    iteration 1 loaded path sets that had been enumerated from the *previous*
+    run's iteration-0 plans, from a cache hit that looked entirely healthy.
+
+    Hashing the plans themselves makes the key mean what the docstring says.
+    The cost is that a probe plan changing by one ladder step re-enumerates,
+    which is correct: that is a different candidate set.
+    """
+    if not extra:
+        return "base"
+    payload = [[n, sorted((key_str(k), round(float(v), 6))
+                          for k, v in plan.items())] for n, plan in extra]
+    h = hashlib.sha256(json.dumps(payload, sort_keys=True).encode())
+    return "sc-" + h.hexdigest()[:16]
 
 
 def solve(setup, mult, iters, restarts, width, seed, store=None, cell=None):
@@ -154,7 +179,10 @@ def main() -> int:
     prev_share = None
 
     for it in range(args.max_iterations):
-        tag = "base" if not extra else "|".join(n for n, _ in extra)
+        tag = scenario_tag(extra)
+        if extra:
+            log.info("enumeration scenarios %s -> %s",
+                     ", ".join(n for n, _ in extra), tag)
         log.info("=" * 70)
         log.info("ITERATION %d, %d extra enumeration scenarios", it, len(extra))
 

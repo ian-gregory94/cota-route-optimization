@@ -265,3 +265,19 @@
 2026-08-26 22:35:42,682   lambda=1.0   921s gc   -2.45% unserved   -0.38%
 2026-08-26 22:55:52,321 solve lambda=2.0: obj=3.01725e+06 vh=2511.7/2517.2 exchanges=62
 2026-08-26 22:55:52,321   lambda=2.0  1210s gc   +0.46% unserved   -6.53%
+2026-08-26 23:14:17,034 solve lambda=8.0: obj=6.66027e+06 vh=2513.6/2517.2 exchanges=44
+2026-08-26 23:14:17,035   lambda=8.0  1105s gc   +1.04% unserved   -7.11%
+2026-08-26 23:16:11,054   adequacy lambda=0.5  improvable flow 9.44%, overstatement 1.044%
+2026-08-26 23:18:05,341   adequacy lambda=1.0  improvable flow 5.74%, overstatement 0.504%
+2026-08-26 23:20:04,574   adequacy lambda=2.0  improvable flow 4.80%, overstatement 0.308%
+2026-08-26 23:22:04,385   adequacy lambda=8.0  improvable flow 4.86%, overstatement 0.289%
+2026-08-26 23:22:04,388 iteration 0: worst improvable flow share 9.443% (203161 paths)
+2026-08-26 23:22:04,388 ======================================================================
+2026-08-26 23:22:04,388 ITERATION 1, 4 extra enumeration scenarios
+2026-08-26 23:22:04,471 cache hit  pathset-88cdd61636fd6617 (13.6 MB, 0.0s)
+2026-08-26 23:22:04,471 period early   : 35619 paths, 20000 OD pairs
+2026-08-26 23:22:04,491 cache hit  pathset-ee8bda916e9edf0f (16.2 MB, 0.0s)
+2026-08-26 23:22:04,491 period am_peak : 42774 paths, 20000 OD pairs
+2026-08-26 23:22:04,511 cache hit  pathset-8112c7b008ffa051 (13.4 MB, 0.0s)
+2026-08-26 23:22:04,511 period midday  : 35287 paths, 20000 OD pairs
+2026-08-26 23:22:04,530 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
