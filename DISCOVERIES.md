@@ -261,6 +261,57 @@ thing to run, and it is gated behind the Model A fixpoint finishing.
 
 ---
 
+### D11 — Correcting valuation raises a discovery question the fixpoint cannot see
+
+**The problem.** Model B changes how a ride leg is *priced*. It does not change
+how paths are *found*: RAPTOR still searches with per-pattern headways, which is
+Model A's valuation. So a route sequence can be genuinely cheap under Model B
+while the search that built the candidate set never had reason to explore it,
+and the corrected model would be missing a path it would itself want to use.
+
+This is a **different failure** from the one the fixpoint addresses. The
+fixpoint asks whether the candidate set contains the paths that new *headway
+scenarios* make attractive. This asks whether it contains the paths the
+corrected *valuation* makes attractive. A candidate set can pass one and fail
+the other, and the existing adequacy check cannot detect it — that check
+compares the cached set against fresh RAPTOR, and fresh RAPTOR is priced the
+same wrong way.
+
+**How it is tested, exactly rather than heuristically.** Re-run RAPTOR with
+*route-level* headways: every pattern at its route's whole frequency, as if all
+of it served every movement. Because a Model B multiplier is
+`1 / Σ_q(n_trips(q)/n_dir_trips(q))` over a qualifying set that is a subset of
+the direction, the multiplier is at least 1 and route-level pricing is a strict
+**lower bound** on any Model B path cost. Where that bound does not beat the
+candidate set's best Model B cost, no omission is possible and the OD pair is
+cleared outright, no reconstruction needed. Where it does, reconstruct the
+bound-optimal journey and price it exactly under Model B — turning "might be
+omitted" into "is omitted, by this much, on this route sequence".
+
+The bound is loose by construction, so it over-selects suspects and never
+misses one. The confirmation step is what produces the number.
+
+**Confidence.** The method is sound by construction and unit-tested on a
+synthetic network built so the failure actually occurs — a trunk with two
+half-frequency patterns that only wins once they combine. The *result* on COTA
+is not in yet.
+
+**Decision rule.** Committed to `ACCEPTANCE.md` as gate 11 before the
+diagnostic was written: materially better means beating the set by ≥1.0
+generalized minute **and** ≥1%; negligible is <1.0% of tested flow and <0.25%
+of tested generalized cost; material is ≥3.0% of flow **or** ≥1.0% of cost.
+Either bound alone triggers the worse case. If material, the response is
+targeted candidate-generation augmentation around the affected corridors — not
+replacing RAPTOR, and not compensating elsewhere in the model.
+
+**Interpretation, whichever way it lands.** A clean result says per-pattern
+discovery was tested specifically against the possibility the correction
+created and found no material flow-weighted omission. A dirty one says the
+correction exposed a discovery mismatch that targeted augmentation closed.
+Both are useful; only silence would not be.
+
+---
+
 ## Not yet earned
 
 Geometry findings stay out of this log until they survive: frequency

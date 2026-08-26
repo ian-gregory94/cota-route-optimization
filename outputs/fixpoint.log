@@ -84,3 +84,20 @@
 2026-08-26 18:04:15,878   adequacy lambda=0.5  improvable flow 10.43%, overstatement 1.183%
 2026-08-26 18:05:46,238   adequacy lambda=1.0  improvable flow 5.45%, overstatement 0.494%
 2026-08-26 18:07:16,273   adequacy lambda=2.0  improvable flow 4.47%, overstatement 0.289%
+2026-08-26 18:08:45,290   adequacy lambda=8.0  improvable flow 5.07%, overstatement 0.300%
+2026-08-26 18:08:45,292 iteration 0: worst improvable flow share 10.434% (203161 paths)
+2026-08-26 18:08:45,293 ======================================================================
+2026-08-26 18:08:45,293 ITERATION 1, 4 extra enumeration scenarios
+2026-08-26 18:08:45,355 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 18:11:34,813 rejected 321 malformed candidate paths that failed the re-pricing check
+2026-08-26 18:11:34,976 path set: 35619 paths over 17434/20000 OD pairs (86.9% of flow served), 185046 legs
+2026-08-26 18:11:35,064 period early   : 35619 paths, 20000 OD pairs
+2026-08-26 18:11:35,080 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 21:12:09,884 experiment exp6_fixpoint_20260826T211209Z
+2026-08-26 21:12:09,886 result store: 5 cells already solved
+2026-08-26 21:12:12,034 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 2.1s)
+2026-08-26 21:12:12,351 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 21:12:12,353 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 21:12:12,360 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 21:12:12,390 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 21:12:12,528 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
