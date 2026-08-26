@@ -44,6 +44,10 @@ def main() -> int:
                     help="0 = every origin zone (slow)")
     ap.add_argument("--periods", type=str, default="am_peak,midday")
     ap.add_argument("--seed", type=int, default=20260825)
+    ap.add_argument("--common-lines", type=str, default=None,
+                    choices=[None, "pattern", "same_route"])
+    ap.add_argument("--store", type=str, default="exp2_screen.jsonl")
+    ap.add_argument("--out", type=str, default="exp2_screen")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
@@ -52,10 +56,10 @@ def main() -> int:
                      config_files=["assumptions.yaml", "cost_weights.yaml",
                                    "constraints.yaml", "sources.yaml"])
     log.info("experiment %s", exp.experiment_id)
-    store = ResultStore(OUT / "exp2_screen.jsonl")
+    store = ResultStore(OUT / args.store)
 
     t0 = time.time()
-    H = build_harness(seed=args.seed)
+    H = build_harness(seed=args.seed, common_lines=args.common_lines)
     b, a = H.baseline, H.assumptions
     sg = geo.stops_gdf(b.feed, a["crs"]["projected"])
     model = SegmentTimeModel.fit(b.network, sg)
@@ -77,7 +81,7 @@ def main() -> int:
                          per_kind=args.per_kind)
     cf = candidate_frame(cands)
     cf.to_csv(exp.artifact_path("candidates.csv"), index=False)
-    cf.to_csv(OUT / "exp2_candidates.csv", index=False)
+    cf.to_csv(OUT / f"{args.out}_candidates.csv", index=False)
 
     w = CostWeights.from_config(load_cost_weights())
     wk = dict(
@@ -95,18 +99,17 @@ def main() -> int:
              "periods %s", budget_vh, len(sc.choose_origins()), sc.screen_periods)
 
     if store.has("baseline"):
-        rec = store.get("baseline")
-        base = (rec["gc"], rec["unserved"], rec["served"])
-        log.info("baseline screen resumed: gc=%.6e unserved=%.0f",
-                 base[0], base[1])
+        base = store.get("baseline")["score"]
+        log.info("baseline screen resumed: gc=%.6e unserved=%.0f unreachable=%.0f",
+                 base["generalized_cost"], base["unserved_demand"],
+                 base["unreachable_demand"])
     else:
         t = time.time()
-        gc, uns, srv, k = sc.price(b.network, b.tstats, label="baseline")
-        base = (gc, uns, srv)
-        store.put("baseline", {"gc": gc, "unserved": uns, "served": srv,
-                               "headway_scale": k, "veh_hours": budget_vh,
+        base = sc.price(b.network, b.tstats, label="baseline")
+        store.put("baseline", {"score": base, "veh_hours": budget_vh,
                                "seconds": time.time() - t})
         # the unedited network at its own headways must need no rescaling
+        k = base["headway_scale"]
         assert abs(k - 1.0) < 1e-9, f"baseline headway scale {k} should be 1"
 
     results = []
@@ -120,13 +123,14 @@ def main() -> int:
                       key=e.key, kind=e.kind, description=e.description)
         store.put(cell, _to_record(r))
         results.append(r)
-        log.info("[%2d/%d] %-11s %-26s gc %+7.3f%% unserved %+7.3f%%  (%.0fs)",
+        log.info("[%2d/%d] %-11s %-26s gc %+7.3f%% unserved %+7.3f%% "
+                 "unreachable %+7.3f%%  (%.0fs)",
                  i + 1, len(cands), e.kind, e.route_id, r.gc_change_pct,
-                 r.unserved_change_pct, r.seconds)
+                 r.unserved_change_pct, r.unreachable_change_pct, r.seconds)
 
     df = screen_frame(results)
     df.to_csv(exp.artifact_path("screen.csv"), index=False)
-    df.to_csv(OUT / "exp2_screen.csv", index=False)
+    df.to_csv(OUT / f"{args.out}.csv", index=False)
     exp.log_metrics(budget_vh=budget_vh, n_candidates=len(cands),
                     origin_sample=len(sc.choose_origins()),
                     screen_periods=list(sc.screen_periods),
@@ -143,9 +147,12 @@ def main() -> int:
     print("\n" + "=" * 110)
     print("EXPERIMENT 2 SCREEN — geometry at equal vehicle-hours, frequency NOT "
           "reallocated")
+    print("unserved = retention-adjusted, the production definition. "
+          "unreachable = no path at all.")
     print("These rank candidates. They do not measure them.")
     print("=" * 110)
-    cols = ["kind", "gc_change_pct", "unserved_change_pct", "veh_hours_freed",
+    cols = ["kind", "gc_change_pct", "unserved_change_pct",
+            "unreachable_change_pct", "veh_hours_freed",
             "modelled_share_pct", "description"]
     print(df[cols].head(20).round(3).to_string(index=False))
     bad = df[df["error"].notna()]
@@ -159,8 +166,11 @@ def main() -> int:
 def _to_record(r) -> dict:
     return {"kind": r.kind, "description": r.description,
             "gc": r.generalized_cost, "unserved": r.unserved_flow,
-            "served": r.served_flow, "gc_change_pct": r.gc_change_pct,
+            "served": r.served_flow, "unreachable": r.unreachable_flow,
+            "discouraged": r.discouraged_flow,
+            "gc_change_pct": r.gc_change_pct,
             "unserved_change_pct": r.unserved_change_pct,
+            "unreachable_change_pct": r.unreachable_change_pct,
             "headway_scale": r.headway_scale,
             "veh_hours_at_baseline": r.veh_hours_at_baseline,
             "edit_report": r.edit_report, "seconds": r.seconds,
@@ -173,8 +183,11 @@ def _from_record(rec: dict):
         key=rec["cell"].split("|", 1)[-1], kind=rec["kind"],
         description=rec["description"], generalized_cost=rec["gc"],
         unserved_flow=rec["unserved"], served_flow=rec["served"],
+        unreachable_flow=rec.get("unreachable", float("nan")),
+        discouraged_flow=rec.get("discouraged", float("nan")),
         gc_change_pct=rec["gc_change_pct"],
         unserved_change_pct=rec["unserved_change_pct"],
+        unreachable_change_pct=rec.get("unreachable_change_pct", float("nan")),
         headway_scale=rec["headway_scale"],
         veh_hours_at_baseline=rec["veh_hours_at_baseline"],
         edit_report=rec.get("edit_report", {}), seconds=rec["seconds"],

@@ -487,11 +487,18 @@ class PathSetEvaluator:
             od[self.has_path] = np.minimum.reduceat(path_cost, self._starts)
         return np.minimum(od, ps.od_walk_only)
 
+    @property
+    def retention_curve(self) -> "Retention":
+        from .retention import Retention
+        return Retention(self.ret_full, self.ret_zero, self.ret_floor)
+
     def retention(self, cost: np.ndarray) -> np.ndarray:
-        """Share of an OD's travellers who still make the trip at this cost."""
-        frac = np.clip((cost - self.ret_full) / (self.ret_zero - self.ret_full),
-                       0.0, 1.0)
-        return 1.0 - frac * (1.0 - self.ret_floor)
+        """Share of an OD's travellers who still make the trip at this cost.
+
+        Delegates to :mod:`cota_opt.retention` so the screening tier and the
+        production evaluator cannot drift apart again.
+        """
+        return self.retention_curve.keep(cost)
 
     def path_flows(self, headways: np.ndarray,
                    path_cost: np.ndarray | None = None) -> np.ndarray:
