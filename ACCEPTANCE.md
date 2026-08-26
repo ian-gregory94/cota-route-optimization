@@ -1,0 +1,102 @@
+# Acceptance gates
+
+Committed **before** the results they judge. A gate is not a checklist item to
+be argued with once a number is in hand: if a result fails a gate, the result is
+provisional, and the gate does not move.
+
+Recorded at commit time: the Experiment 1 fixpoint (`scripts/fixpoint.py`) and
+the Experiment 2 geometry screen (`scripts/run_exp2_screen.py`) were both still
+running. No final numbers from either had been seen.
+
+---
+
+## Experiment 1 — final only if all of these hold
+
+| # | Gate | How it is checked |
+|---|------|-------------------|
+| 1 | The fixpoint converges | `outputs/fixpoint_history.csv`: worst improvable flow share moves less than `--tol` (0.002) between consecutive iterations, or the iteration cap is reached **and** the last two iterations are within tolerance |
+| 2 | The converged path set is frozen | its cache key is recorded in the experiment record and used unchanged for every subsequent comparison |
+| 3 | The frontier is rerun at L4 on that same set | `final\|lam*` cells in `outputs/fixpoint.jsonl`, 400,000 iterations / 20 restarts / full width |
+| 4 | The L4 plans pass adequacy against the frozen set | `final\|adequacy`: worst flow-share improvable under any final plan is below the tolerance the loop converged at |
+| 5 | Previously saved plans are repriced on the same yardstick | `outputs/fixpoint_rescored.csv` covers every plan in `outputs/matrix_plans/` |
+| 6 | Decision-relevant λ points stay coherent | λ = 1, 2, 4, 8 remain monotone in the intended direction: unserved demand non-increasing in λ, generalized cost non-decreasing in λ, within seed noise |
+| 7 | Important λ results are seed-stable | at least three seeds at λ = 2; the reported effect must exceed its own standard deviation by a clear margin |
+| 8 | Vehicle-hour and baseline assertions still pass | `vh_relative_error < 1e-9` in `build_setup`; every plan within the 2,517-hour envelope |
+| 9 | Residual path-set inadequacy cannot change the interpretation | the remaining overstatement, applied in full and in the direction that most favours the headline, does not move the balanced point across a qualitative boundary |
+
+**Language gate.** If generalized cost at the balanced point lands near zero,
+that is **not** a free lunch and must not be described as one. The permitted
+form is:
+
+> approximately 6% less unserved demand with no measurable generalized-cost
+> penalty under the converged path set.
+
+"No measurable penalty" is a statement about resolution, not about absence of
+cost, and it is only permitted when the seed standard deviation actually
+straddles zero.
+
+---
+
+## Experiment 2 — substantive only if all of these hold
+
+| # | Gate |
+|---|------|
+| 1 | Geometry is followed by frequency **re-optimization**, never scored at fixed frequency |
+| 2 | Total weekday revenue vehicle-hours stay at 2,517 (`vh_vs_budget_pct` within the configured tolerance) |
+| 3 | Evaluated on the **finalized** path set from Experiment 1, not an interim one |
+| 4 | Compared against the finalized Experiment 1 **frontier**, not against today's schedule alone |
+| 5 | Serious candidates run at matched search effort against the Experiment 1 points they are compared with |
+| 6 | Stochastic results checked across seeds wherever the claimed effect is within a few times the seed spread |
+| 7 | Runtime assumptions observed or independently validated — see the primary/novel split below |
+| 8 | No gain from accidental service deletion or bookkeeping artifact: stops dropped, vehicle-hours freed, and headway rescaling all inspected per candidate |
+| 9 | The geometry change is legible as a real transit proposal, inspected by hand against the network |
+
+### Primary vs novel-link candidates
+
+* **Primary** — the edited alignment is composed of links COTA's schedule
+  already operates. `modelled_share_pct` is a decision variable, not a
+  footnote: the headline Experiment 2 frontier is built from primary
+  candidates only.
+* **Novel-link** — a meaningful share of the alignment needs estimated running
+  time. These stay exploratory unless the novel-link estimator is separately
+  validated as unbiased on held-out observed links, and they are reported
+  separately either way.
+
+The threshold: **`modelled_share_pct` ≤ 2.0 %** to be primary. Chosen before
+results, from the measured distribution over the first 60 candidates (median
+≈ 2.8 %, max ≈ 10.8 %), so it is neither vacuous nor tuned to admit a
+particular proposal.
+
+### Credit rule
+
+Experiment 2 gets no credit for anything Experiment 1 already offers. The
+quantity reported is the improvement **beyond** the best frequency-only
+solution at comparable generalized cost — vertical distance from the
+finalized Experiment 1 frontier, not distance from today.
+
+---
+
+## Estimator gates
+
+* The novel-link running-time estimator is validated **out of sample**: hide an
+  observed link's time, predict it with the same estimator used for novel
+  links, compare. MAE, median absolute percentage error, and **bias** are
+  reported.
+* Directional bias is the dangerous failure. Random error widens uncertainty;
+  systematic **under**estimation is exploitable — the optimizer would buy
+  frequency with running time that does not exist. A recalibration is permitted
+  only if it reduces bias out of sample and introduces no leakage, and it is
+  never adopted because it makes a particular proposal look better.
+
+---
+
+## Standing rules
+
+1. These gates are not revised after seeing results.
+2. A failed gate makes a result provisional and says so in the write-up. It
+   does not make the gate wrong.
+3. Every reported number carries its evidence class: **strongly supported**,
+   **supported but model-dependent**, or **requires outside data or
+   transportation expertise**.
+4. Search effort is matched whenever two things are compared. An effort gap is
+   a confound, and this project has already been burned by one.
