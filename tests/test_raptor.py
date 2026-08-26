@@ -285,3 +285,61 @@ def test_timetabled_respects_round_limit():
                               periods={"all": (0.0, 24.0)}, with_timetable=True)
     rounds = earliest_arrival(rn, "S1", 8 * 3600, max_rounds=1)
     assert not np.isfinite(rounds[1, rn.idx("S6")])   # S6 needs two boardings
+
+
+def test_first_boarding_after_a_walk_is_not_charged_as_a_transfer(rn):
+    """A traveller who walks first and then boards once has made no transfer.
+
+    Labels are carried between rounds, so a first boarding can occur in round 2.
+    Charging it the transfer penalty inflates every walk-then-ride journey.
+    """
+    # S6 has no route serving it outward; reach S3 by walking from S6, then ride
+    # PA from S3 to S4. That is one boarding, no transfer.
+    cost, rounds, par = generalized_cost(
+        rn, "S6", _pat_h(rn, {"A": 10, "B": 1e9, "C": 1e9}), W, WK,
+        max_rounds=3, trace=True)
+    walk = 2.0 * 3.98          # S6 -> S3, weighted
+    ride = 2 * 5 + 10          # wait on A (10-min headway) + one 10-min segment
+    got = cost[rn.idx("S4")]
+    assert got == pytest.approx(walk + ride, abs=0.15), (
+        f"expected a first boarding with no transfer penalty, got {got}")
+    j = reconstruct(rn, par, "S4", int(rounds[rn.idx("S4")]), {"S6"})
+    assert j is not None and j.n_transfers == 0
+
+
+def test_reconstruct_returns_none_for_an_incomplete_trace(rn):
+    """A partial back-walk is not a journey and must not be returned."""
+    cost, rounds, par = generalized_cost(
+        rn, "S1", _pat_h(rn, {"A": 10, "B": 1e9, "C": 1e9}), W, WK,
+        max_rounds=3, trace=True)
+    # ask for a target whose trace cannot reach the declared source
+    assert reconstruct(rn, par, "S4", int(rounds[rn.idx("S4")]), {"ZZZ"}) is None
+
+
+def test_reconstructed_journey_reprices_to_the_router_cost(rn):
+    """Every reconstructed path must cost exactly what the router said."""
+    ph = _pat_h(rn, {"A": 10, "B": 20, "C": 30})
+    cost, rounds, par = generalized_cost(rn, "S1", ph, W, WK, max_rounds=3,
+                                         trace=True)
+    checked = 0
+    for i, sid in enumerate(rn.stop_ids):
+        if not np.isfinite(cost[i]) or rounds[i] == 0:
+            continue
+        j = reconstruct(rn, par, sid, int(rounds[i]), {"S1"})
+        assert j is not None, f"failed to reconstruct {sid}"
+        total = 0.0
+        first = True
+        for leg in j.legs:
+            if leg.kind == "walk":
+                total += W.walking * leg.walk_min
+                continue
+            pi = rn.pattern_ids.index(leg.pattern_id)
+            ew = expected_wait_min(ph[pi], **WK)
+            total += (W.waiting * ew if first
+                      else W.transfer_wait * ew + W.transfer_penalty)
+            total += W.in_vehicle * leg.in_vehicle_min
+            first = False
+        assert total == pytest.approx(cost[i], abs=1e-6), (
+            f"{sid}: legs price to {total}, router said {cost[i]}")
+        checked += 1
+    assert checked >= 4

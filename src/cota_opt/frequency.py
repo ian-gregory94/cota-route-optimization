@@ -378,6 +378,7 @@ def optimize_frequencies(
     initial: FrequencyPlan | None = None,
     candidate_width: int = 0,
     n_restarts: int = 6,
+    greedy_start: bool = True,
 ) -> OptimizationResult:
     """Marginal-exchange search for the best frequency plan inside the budget.
 
@@ -445,7 +446,12 @@ def optimize_frequencies(
             starts.append(init_idx)
         else:
             log.warning("incumbent plan is infeasible under this budget")
-    starts.append(_greedy_build(model, budget, L, L_len, idx0.copy(), obj, feasible))
+    # The greedy build from minimum service costs O(n) evaluations per ladder
+    # step and, as Experiment 1 showed, converges to a worse optimum than the
+    # incumbent start. It is only needed when the caller gave no feasible plan.
+    if greedy_start or not starts:
+        starts.append(_greedy_build(model, budget, L, L_len, idx0.copy(),
+                                    obj, feasible))
 
     width = candidate_width if candidate_width > 0 else n
     best_idx, best_fit, best_obj, moves = None, None, float("inf"), 0

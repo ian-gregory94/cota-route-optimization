@@ -1,0 +1,30 @@
+{
+  "period": "am_peak",
+  "plan_source": "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T022726Z/plan_diff_C.csv",
+  "adequacy_baseline": {
+    "od_pairs_compared": 19557,
+    "mean_cost_overstatement_min": -0.1838379772316046,
+    "mean_cost_overstatement_pct": -0.17017882243237947,
+    "p95_overstatement_min": 2.842170943040401e-14,
+    "max_overstatement_min": 90.2881805981174,
+    "pairs_where_raptor_beats_cache": 86,
+    "pairs_reachable_only_by_raptor": 352
+  },
+  "adequacy_optimized": {
+    "od_pairs_compared": 19557,
+    "mean_cost_overstatement_min": -0.09964524973288855,
+    "mean_cost_overstatement_pct": -0.09392778912968211,
+    "p95_overstatement_min": 2.842170943040401e-14,
+    "max_overstatement_min": 90.2881805981174,
+    "pairs_where_raptor_beats_cache": 832,
+    "pairs_reachable_only_by_raptor": 352
+  },
+  "crowding": {
+    "capacity": 60.0,
+    "route_periods_with_load": 35,
+    "max_peak_point_pax_per_bus": 61.664040918226775,
+    "max_load_factor": 1.0277340153037795,
+    "n_over_capacity": 1,
+    "total_modelled_boardings": 7057.18188519055
+  }
+}

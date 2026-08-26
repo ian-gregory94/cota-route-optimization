@@ -1,0 +1,22 @@
+2026-08-26 03:26:43,241 experiment exp3_ablation_20260826T032643Z
+2026-08-26 03:26:43,263 loaded agency: 1 rows
+2026-08-26 03:26:43,273 loaded stops: 2949 rows
+2026-08-26 03:26:43,274 loaded routes: 42 rows
+2026-08-26 03:26:43,290 loaded trips: 5435 rows
+2026-08-26 03:26:43,876 loaded stop_times: 365224 rows
+2026-08-26 03:26:43,877 loaded calendar: 3 rows
+2026-08-26 03:26:43,878 loaded calendar_dates: 79 rows
+2026-08-26 03:26:43,919 loaded shapes: 98972 rows
+2026-08-26 03:26:43,921 loaded transfers: 1765 rows
+2026-08-26 03:26:45,100 validation: 0 errors, 0 warnings
+2026-08-26 03:26:45,204 representative weekday: 2026-05-26 (service_ids=['110.0.1', '110.119.1'], occurs 45 days)
+2026-08-26 03:26:48,082 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 03:26:48,088 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 03:26:48,182 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 03:26:53,663 LODES OD: 4640957 block rows read, 317706 block-group pairs, 823915 trips
+2026-08-26 03:26:53,665 accessible OD: 78210 of 317706 pairs, 24.7% of commute flow
+2026-08-26 03:26:53,668 OD truncated to top 20000 pairs of 78210 — 64.9% of total flow
+2026-08-26 03:26:53,677 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 03:26:53,681 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 03:26:53,681 === configuration A path ===
+2026-08-26 03:26:53,764 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios

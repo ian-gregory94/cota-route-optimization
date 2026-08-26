@@ -61,6 +61,11 @@ class PathSet:
     od_flow: np.ndarray             # daily trips per OD
     od_walk_only: np.ndarray        # walk-only fallback cost, inf if none
     rp_keys: list[tuple[str, str]] = field(default_factory=list)
+    # ride-leg geometry, used to recover segment loads and peak load points
+    leg_pattern: np.ndarray | None = None    # pattern index, -1 for walk legs
+    leg_board_pos: np.ndarray | None = None  # position along the pattern
+    leg_alight_pos: np.ndarray | None = None
+    leg_headway_mult: np.ndarray | None = None   # pattern headway / route headway
 
     @property
     def n_paths(self) -> int:
@@ -113,6 +118,7 @@ def build_pathset(
     found: list[dict[tuple, list]] = [dict() for _ in range(n_od)]
     walk_only = np.full(n_od, np.inf)
 
+    n_rejected = [0]
     scenarios = _plan_scenarios(rp_keys, baseline_headways, rng, n_random_scenarios)
     origins = np.unique(o_sorted)
     log.info("path enumeration: %d OD pairs, %d origin zones, %d scenarios",
@@ -157,10 +163,19 @@ def build_pathset(
                 access_walk = float(a_walk[list(a_stops).index(
                     rn.stop_index[j.legs[0].from_stop])]) \
                     if rn.stop_index[j.legs[0].from_stop] in list(a_stops) else 0.0
-                legs = ([("walk", -1, 0.0, access_walk, False, False)] if access_walk else []) \
+                legs = ([("walk", -1, 0.0, access_walk, False, False,
+                          -1, -1, -1, 1.0)] if access_walk else []) \
                     + legs \
-                    + ([("walk", -1, 0.0, float(e_walk[k]), False, False)]
-                       if e_walk[k] > 0 else [])
+                    + ([("walk", -1, 0.0, float(e_walk[k]), False, False,
+                         -1, -1, -1, 1.0)] if e_walk[k] > 0 else [])
+                # Self-check: a stored path must re-price to the cost RAPTOR
+                # reported for it. A path that prices cheaper than RAPTOR's
+                # optimum is malformed (a truncated trace, a dropped leg) and
+                # would silently flatter every result that used it.
+                priced = _price_legs(legs, hw, weights, wait_kwargs, period)
+                if priced < tot[k] - 1e-6 or priced > tot[k] + 1e-3:
+                    n_rejected[0] += 1
+                    continue
                 sig = tuple((l[0], l[1], round(l[2], 3), round(l[3], 3)) for l in legs)
                 if len(found[oi]) < max_paths_per_od or sig in found[oi]:
                     found[oi][sig] = legs
@@ -171,24 +186,79 @@ def build_pathset(
         if oz == dz:
             walk_only[oi] = 0.0
 
+    if n_rejected[0]:
+        log.info("rejected %d malformed candidate paths that failed the "
+                 "re-pricing check", n_rejected[0])
     return _flatten(found, o_sorted, d_sorted, f_sorted, walk_only,
                     rp_keys, period)
 
 
+def _price_legs(legs, hw: dict, w: CostWeights, wait_kwargs: dict,
+                period: str) -> float:
+    """Cost a candidate path exactly as PathSetEvaluator will."""
+    from .cost import expected_wait_min
+    rp_keys = sorted(hw)
+    total = 0.0
+    for kind, rp, ivt, walk, board, xfer, _pat, _bp, _ap, mult in legs:
+        total += w.walking * walk + w.in_vehicle * ivt
+        if rp >= 0:
+            h = hw[rp_keys[rp]] * mult
+            ew = expected_wait_min(h, **wait_kwargs)
+            total += (w.transfer_wait * ew + w.transfer_penalty) if xfer \
+                else w.waiting * ew
+    return total
+
+
+def _headway_multiplier(rn, pattern_id: str, route_id: str, direction: int,
+                        period: str) -> float:
+    """How much less frequent one pattern is than its route.
+
+    A passenger riding a specific pattern only benefits from that pattern's
+    trips, so its effective headway is the route's headway scaled by the share
+    of the direction's trips the pattern carries. The ratio is structural — the
+    trip mix between pattern variants is fixed with the geometry — so it is
+    baked into the leg and multiplies whatever headway the optimizer chooses.
+    """
+    n_pat = rn.pattern_trips_period.get((pattern_id, period), 0)
+    n_dir = rn.direction_trips_period.get((route_id, direction, period), 0)
+    if n_pat <= 0 or n_dir <= 0:
+        return 1.0
+    return float(n_dir) / float(n_pat)
+
+
 def _legs_from_journey(j, route_of_pat, rn, rp_index, period):
-    """Journey -> leg tuples, or None if any ride leg has no priceable headway."""
+    """Journey -> leg tuples, or None if any ride leg has no priceable headway.
+
+    Ride legs carry the pattern and the board/alight positions so segment loads
+    (and therefore each route-period's peak load point) can be recovered.
+    """
     out = []
     first_ride = True
+    pid_index = {p: i for i, p in enumerate(rn.pattern_ids)}
     for l in j.legs:
         if l.kind == "walk":
-            out.append(("walk", -1, 0.0, float(l.walk_min), False, False))
+            out.append(("walk", -1, 0.0, float(l.walk_min), False, False,
+                        -1, -1, -1, 1.0))
             continue
         key = (l.route_id, period)
         idx = rp_index.get(key)
         if idx is None:
             return None
+        pi = pid_index.get(l.pattern_id, -1)
+        bpos = apos = -1
+        if pi >= 0:
+            a, b = rn.pat_offsets[pi], rn.pat_offsets[pi + 1]
+            stops = list(rn.pat_stops[a:b])
+            try:
+                bpos = stops.index(rn.stop_index[l.from_stop])
+                apos = stops.index(rn.stop_index[l.to_stop], bpos + 1)
+            except (ValueError, KeyError):
+                bpos = apos = -1
+        mult = _headway_multiplier(rn, l.pattern_id, l.route_id,
+                                   rn.pattern_direction[pi] if pi >= 0 else 0,
+                                   period)
         out.append(("ride", idx, float(l.in_vehicle_min), 0.0,
-                    True, not first_ride))
+                    True, not first_ride, pi, bpos, apos, mult))
         first_ride = False
     return out if any(l[0] == "ride" for l in out) else None
 
@@ -196,19 +266,24 @@ def _legs_from_journey(j, route_of_pat, rn, rp_index, period):
 def _flatten(found, o_sorted, d_sorted, f_sorted, walk_only, rp_keys, period):
     leg_path, leg_rp, leg_ivt, leg_walk = [], [], [], []
     leg_board, leg_xfer = [], []
+    leg_pat, leg_bp, leg_ap, leg_mult = [], [], [], []
     path_od, path_offsets = [], [0]
     od_offsets = np.zeros(len(o_sorted) + 1, dtype=np.int64)
 
     pid = 0
     for oi in range(len(o_sorted)):
         for legs in found[oi].values():
-            for kind, rp, ivt, walk, board, xfer in legs:
+            for kind, rp, ivt, walk, board, xfer, pat, bp, ap, mult in legs:
                 leg_path.append(pid)
                 leg_rp.append(rp)
                 leg_ivt.append(ivt)
                 leg_walk.append(walk)
                 leg_board.append(board)
                 leg_xfer.append(xfer)
+                leg_pat.append(pat)
+                leg_bp.append(bp)
+                leg_ap.append(ap)
+                leg_mult.append(mult)
             path_od.append(oi)
             path_offsets.append(len(leg_path))
             pid += 1
@@ -222,6 +297,10 @@ def _flatten(found, o_sorted, d_sorted, f_sorted, walk_only, rp_keys, period):
         leg_walk=np.asarray(leg_walk, float),
         leg_is_boarding=np.asarray(leg_board, bool),
         leg_is_transfer=np.asarray(leg_xfer, bool),
+        leg_pattern=np.asarray(leg_pat, dtype=np.int64),
+        leg_board_pos=np.asarray(leg_bp, dtype=np.int64),
+        leg_alight_pos=np.asarray(leg_ap, dtype=np.int64),
+        leg_headway_mult=np.asarray(leg_mult, float),
         path_od=np.asarray(path_od, dtype=np.int64),
         path_offsets=np.asarray(path_offsets, dtype=np.int64),
         od_offsets=od_offsets,
@@ -262,6 +341,9 @@ class PathSetEvaluator:
         self.ride_rp = ps.leg_rp[self.ride_mask]
         self.ride_path = ps.leg_path[self.ride_mask]
         self.ride_is_xfer = ps.leg_is_transfer[self.ride_mask]
+        self.ride_mult = (ps.leg_headway_mult[self.ride_mask]
+                          if ps.leg_headway_mult is not None
+                          else np.ones(self.ride_mask.sum()))
         self.has_path = np.diff(ps.od_offsets) > 0
         self.total_flow = float(ps.od_flow.sum())
 
@@ -273,11 +355,12 @@ class PathSetEvaluator:
         ps = self.ps
         if ps.n_paths == 0:
             return np.full(ps.n_od, np.inf)
-        wait = self._wait(headways)
+        # each ride waits on its own pattern's frequency, not the route's
+        wait = self._wait(headways[self.ride_rp] * self.ride_mult)
         # first boarding pays the waiting weight; later boardings the transfer-wait weight
         wcost = np.where(self.ride_is_xfer,
-                         self.w.transfer_wait * wait[self.ride_rp],
-                         self.w.waiting * wait[self.ride_rp])
+                         self.w.transfer_wait * wait,
+                         self.w.waiting * wait)
         path_wait = np.bincount(self.ride_path, weights=wcost,
                                 minlength=ps.n_paths)
         path_cost = self.path_const + path_wait
@@ -292,6 +375,46 @@ class PathSetEvaluator:
         frac = np.clip((cost - self.ret_full) / (self.ret_zero - self.ret_full),
                        0.0, 1.0)
         return 1.0 - frac * (1.0 - self.ret_floor)
+
+    def path_flows(self, headways: np.ndarray) -> np.ndarray:
+        """Demand assigned to each path (all-or-nothing onto the cheapest one).
+
+        Vectorized: paths are stored grouped by OD, so a stable lexsort with the
+        OD as primary key and cost as secondary key puts each OD's cheapest path
+        first in its own group.
+        """
+        ps = self.ps
+        if ps.n_paths == 0:
+            return np.zeros(0)
+        path_cost = self.path_costs(headways)
+        order = np.lexsort((path_cost, ps.path_od))
+        starts = ps.od_offsets[:-1][self.has_path]
+        chosen = order[starts]
+        c = self.od_costs(headways)
+        oi = np.flatnonzero(self.has_path)
+        keep = np.where(np.isfinite(c[oi]), self.retention(np.nan_to_num(c[oi])), 0.0)
+        out = np.zeros(ps.n_paths)
+        np.add.at(out, chosen, ps.od_flow[oi] * keep)
+        return out
+
+    def path_costs(self, headways: np.ndarray) -> np.ndarray:
+        ps = self.ps
+        if ps.n_paths == 0:
+            return np.zeros(0)
+        wait = self._wait(headways[self.ride_rp] * self.ride_mult)
+        wcost = np.where(self.ride_is_xfer,
+                         self.w.transfer_wait * wait,
+                         self.w.waiting * wait)
+        return self.path_const + np.bincount(self.ride_path, weights=wcost,
+                                             minlength=ps.n_paths)
+
+    def boardings_by_rp(self, headways: np.ndarray, path_flow=None) -> np.ndarray:
+        """Passengers boarding each route-period under the current plan."""
+        ps = self.ps
+        pf = self.path_flows(headways) if path_flow is None else path_flow
+        ride = ps.leg_rp >= 0
+        return np.bincount(ps.leg_rp[ride], weights=pf[ps.leg_path[ride]],
+                           minlength=len(ps.rp_keys))
 
     def evaluate(self, headways: np.ndarray) -> dict:
         """Flow-weighted generalized cost and unserved demand for a plan.

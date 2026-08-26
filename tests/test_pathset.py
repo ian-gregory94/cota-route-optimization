@@ -168,3 +168,46 @@ def test_empty_path_set_returns_everything_unserved():
     r = ev.evaluate(np.array([10.0]))
     assert r["unserved_demand"] == pytest.approx(15.0)
     assert r["served_demand"] == pytest.approx(0.0)
+
+
+def _ps_mult(paths, od_flow, rp_keys, mults):
+    """Same as _ps but with an explicit per-leg headway multiplier."""
+    ps = _ps(paths, od_flow, rp_keys)
+    ps.leg_headway_mult = np.array(mults, float)
+    return ps
+
+
+def test_ride_waits_on_its_pattern_frequency_not_the_route_frequency():
+    """A route running two pattern variants is half as frequent on each.
+
+    Pricing a leg at the route headway understates its wait, which is how a
+    cached path can come out cheaper than the router's own optimum.
+    """
+    ps = _ps_mult([(0, [(0, 20.0, 0.0, False)])], [100.0], [("R0", "all")],
+                  mults=[2.0])
+    ev = _ev(ps)
+    # route headway 10 min, but this pattern carries half the trips -> 20 min
+    c = ev.od_costs(np.array([10.0]))[0]
+    expected = W.waiting * expected_wait_min(20.0, **WK) + 20.0
+    assert c == pytest.approx(expected)
+    # and it must differ from the naive route-headway pricing
+    naive = W.waiting * expected_wait_min(10.0, **WK) + 20.0
+    assert c > naive
+
+
+def test_multiplier_scales_with_the_chosen_headway():
+    ps = _ps_mult([(0, [(0, 10.0, 0.0, False)])], [100.0], [("R0", "all")],
+                  mults=[3.0])
+    ev = _ev(ps)
+    for h in (5.0, 10.0, 20.0):
+        got = ev.od_costs(np.array([h]))[0]
+        want = W.waiting * expected_wait_min(h * 3.0, **WK) + 10.0
+        assert got == pytest.approx(want)
+
+
+def test_default_multiplier_is_one_when_absent():
+    ps = _ps([(0, [(0, 10.0, 0.0, False)])], [100.0], [("R0", "all")])
+    assert ps.leg_headway_mult is None
+    ev = _ev(ps)
+    want = W.waiting * expected_wait_min(10.0, **WK) + 10.0
+    assert ev.od_costs(np.array([10.0]))[0] == pytest.approx(want)

@@ -26,3 +26,14 @@
 2026-08-26 01:46:22,352 path set: 32710 paths over 17438/20000 OD pairs (86.9% of flow served), 166907 legs
 2026-08-26 01:46:22,414 period midday  : 32710 paths, 20000 OD pairs
 2026-08-26 01:46:22,429 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:48:02,883 path set: 37626 paths over 18727/20000 OD pairs (93.8% of flow served), 195797 legs
+2026-08-26 01:48:02,947 period pm_peak : 37626 paths, 20000 OD pairs
+2026-08-26 01:48:02,962 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:49:35,769 path set: 30731 paths over 17434/20000 OD pairs (86.9% of flow served), 156147 legs
+2026-08-26 01:49:35,817 period evening : 30731 paths, 20000 OD pairs
+2026-08-26 01:49:35,831 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:51:01,752 path set: 31593 paths over 17045/20000 OD pairs (85.3% of flow served), 162219 legs
+2026-08-26 01:51:01,803 period owl     : 31593 paths, 20000 OD pairs
+2026-08-26 01:51:01,816 setup built in 569s
+2026-08-26 01:51:01,816 checks: {"gtfs_scheduled_revenue_veh_hours": 2517.1833333333334, "model_baseline_revenue_veh_hours": 2517.1833333333334, "vh_relative_error": 0.0, "n_route_periods": 173, "periods_modelled": ["early", "am_peak", "midday", "pm_peak", "evening", "owl"], "od_pairs": 20000, "od_total_trips": 30949.0, "od_source": "LEHD LODES8 2022 OD (JT00 main)", "baseline_generalized_cost": 1781480.990759473, "baseline_unserved_demand": 9776.530730602364, "baseline_served_demand": 21172.469269397636, "baseline_gc_per_served_trip": 84.14138984414059, "total_paths": 201938}
+2026-08-26 01:51:01,816 baseline: gc=1.781481e+06 unserved=9777 served=21172 vh=2517.18

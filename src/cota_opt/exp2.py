@@ -51,10 +51,13 @@ class PathBasedModel(FrequencyModel):
 
     def __init__(self, services, periods, demand, weights, assumptions,
                  evaluators: dict[str, PathSetEvaluator],
-                 connections=None) -> None:
+                 connections=None, crowding=None, locked: set | None = None) -> None:
         super().__init__(services, periods, demand, weights, assumptions,
                          connections)
         self.evaluators = evaluators
+        # crowding: {period: CrowdingModel}; priced at the peak load point
+        self.crowding = crowding or {}
+        self.locked = locked or set()
         # map this model's key order onto each period's rp_keys order
         self._sel: dict[str, np.ndarray] = {}
         for per, ev in evaluators.items():
@@ -69,7 +72,21 @@ class PathBasedModel(FrequencyModel):
         hit = self._cache.get(per)
         if hit is not None and np.array_equal(hit[0], sub):
             return hit[1]
-        res = self.evaluators[per].evaluate(sub)
+        ev = self.evaluators[per]
+        res = dict(ev.evaluate(sub))
+        cm = self.crowding.get(per)
+        if cm is not None:
+            pf = ev.path_flows(sub)
+            boardings = ev.boardings_by_rp(sub, pf)
+            sel = self._sel[per]
+            trips = self._ndir[sel] * self._T[sel] / sub
+            crowd = float(cm.excess_cost(boardings, trips).sum())
+            res["crowding_cost"] = crowd
+            res["generalized_cost_served_only"] += crowd
+            res["generalized_cost"] += crowd
+            res["peak_load_over_capacity"] = float(np.max(
+                boardings * cm.profile.peak_load_factor
+                / np.where(trips > 0, trips, np.inf) / cm.capacity)) if len(trips) else 0.0
         self._cache[per] = (sub.copy(), res)
         self.n_period_evals += 1
         return res
@@ -139,7 +156,11 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                 weights: CostWeights | None = None,
                 constraints: dict | None = None,
                 periods_to_model: list[str] | None = None,
-                seed: int = 0) -> Exp2Setup:
+                seed: int = 0,
+                with_crowding: bool = False,
+                lock_classes: tuple[str, ...] = (),
+                route_classes: dict | None = None,
+                pathset_cache: dict | None = None) -> Exp2Setup:
     from .exp1 import build_setup as exp1_setup
 
     a = b.assumptions
@@ -165,13 +186,21 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     pathsets: dict[str, PathSet] = {}
     evaluators: dict[str, PathSetEvaluator] = {}
     for per in modelled:
-        share = float(shares[per])
-        od_p = ODTable(od.origin, od.dest, od.flow * share, od.source, od.notes)
-        ps = build_pathset(rn, zs, od_p, per, base_hw, w, wk,
-                           max_rounds=int(pa["max_rounds"]),
-                           max_paths_per_od=int(pa["max_paths_per_od"]),
-                           n_random_scenarios=int(pa["n_random_scenarios"]),
-                           seed=seed)
+        # path sets depend only on the network, zones, OD and baseline headways,
+        # none of which vary between model configurations — so they are built
+        # once and reused across an ablation.
+        if pathset_cache is not None and per in pathset_cache:
+            ps = pathset_cache[per]
+        else:
+            share = float(shares[per])
+            od_p = ODTable(od.origin, od.dest, od.flow * share, od.source, od.notes)
+            ps = build_pathset(rn, zs, od_p, per, base_hw, w, wk,
+                               max_rounds=int(pa["max_rounds"]),
+                               max_paths_per_od=int(pa["max_paths_per_od"]),
+                               n_random_scenarios=int(pa["n_random_scenarios"]),
+                               seed=seed)
+            if pathset_cache is not None:
+                pathset_cache[per] = ps
         pathsets[per] = ps
         evaluators[per] = PathSetEvaluator(
             ps, w, wk, unserved_w,
@@ -180,8 +209,35 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
             retention_floor=float(pa["cost_retention_floor"]))
         log.info("period %-8s: %d paths, %d OD pairs", per, ps.n_paths, ps.n_od)
 
+    # crowding priced at each route-period's peak load point, with the load
+    # factor derived from the baseline assignment (see cota_opt.crowding)
+    crowd_models: dict[str, Any] = {}
+    load_profiles: dict[str, Any] = {}
+    if with_crowding:
+        from .crowding import CrowdingModel, build_load_profile
+        cap = float(a["crowding"]["bus_capacity"])
+        pen = float(a["crowding"]["crowding_penalty_per_excess_load"])
+        ride_frac = float(a["passenger"]["avg_ride_fraction"])
+        for per, ev in evaluators.items():
+            sub = np.array([base_hw[k] for k in ev.ps.rp_keys])
+            pf = ev.path_flows(sub)
+            lp = build_load_profile(ev.ps, rn, pf)
+            load_profiles[per] = lp
+            ivt = np.array([services[k].runtime_min * ride_frac
+                            for k in ev.ps.rp_keys])
+            trips = np.array([services[k].n_directions
+                              * periods[k[1]].duration_min / base_hw[k]
+                              for k in ev.ps.rp_keys])
+            crowd_models[per] = CrowdingModel(lp, cap, pen, trips, ivt)
+
+    locked = set()
+    if lock_classes and route_classes:
+        from .routeclass import locked_keys
+        locked = locked_keys(route_classes, services, lock_classes)
+
     model = PathBasedModel(services, periods, e1.model.demand, w, a, evaluators,
-                           e1.model.connections)
+                           e1.model.connections, crowding=crowd_models,
+                           locked=locked)
     fit = model.evaluate(baseline_plan)
 
     gtfs_vh = float(e1.checks["gtfs_scheduled_revenue_veh_hours"])
@@ -216,6 +272,15 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     ladders = build_ladders(model, svc["headway_ladder_min"],
                             float(svc["policy_max_headway_min"]),
                             float(svc["policy_min_headway_min"]))
+    # a locked route-period has exactly one option: today's headway
+    for k in locked:
+        ladders[k] = [baseline_plan.headways[k]]
+    checks["locked_route_periods"] = len(locked)
+    checks["locked_routes"] = sorted({k[0] for k in locked})
+    checks["with_crowding"] = bool(with_crowding)
+    if load_profiles:
+        checks["peak_load_factor_median"] = float(np.median(np.concatenate(
+            [lp.peak_load_factor[lp.boardings > 0] for lp in load_profiles.values()])))
     return Exp2Setup(model, baseline_plan, budget, ladders, pathsets, checks)
 
 

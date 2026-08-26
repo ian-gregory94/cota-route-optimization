@@ -452,6 +452,12 @@ def generalized_cost(
     best = np.full(n, INF)
     prev = np.full(n, INF)
     best_round = np.zeros(n, dtype=np.int8)
+    # Labels are carried forward between rounds, so a label reached in round k
+    # may represent fewer than k boardings (a walk-only path, say). Boarding
+    # cost must key off how many times this traveller has actually boarded, not
+    # off the round counter, or a first boarding gets charged as a transfer.
+    nboard = np.zeros(n, dtype=np.int8)
+    nboard_prev = np.zeros(n, dtype=np.int8)
     parents: dict[tuple[int, int], tuple] = {}
 
     for s, c in zip(src, init):
@@ -464,6 +470,7 @@ def generalized_cost(
             cand = c + w.walking * rn.fp_min[k]
             if cand < prev[j]:
                 prev[j] = best[j] = cand
+                nboard[j] = nboard_prev[j] = 0
                 if trace:
                     parents[(0, j)] = ("walk", s, rn.fp_min[k])
     marked = set(np.flatnonzero(np.isfinite(prev)).tolist())
@@ -478,7 +485,7 @@ def generalized_cost(
                 if pi not in queue or pos < queue[pi]:
                     queue[pi] = pos
         new_marked: set[int] = set()
-        board_penalty = 0.0 if rnd == 1 else w.transfer_penalty
+        cur_nb = nboard_prev.copy()
 
         for pi, start_pos in queue.items():
             wc = wait_cost[pi]
@@ -487,13 +494,11 @@ def generalized_cost(
             a, b = rn.pat_offsets[pi], rn.pat_offsets[pi + 1]
             pstops = rn.pat_stops[a:b]
             pcum = rn.pat_cumsec[a:b]
-            # transfer wait uses the transfer_wait weight, not the initial one
-            wait_here = (wc if rnd == 1
-                         else (w.transfer_wait / w.waiting) * wc if w.waiting
-                         else wc)
+            xfer_wc = ((w.transfer_wait / w.waiting) * wc if w.waiting else wc)
             m = b - a
             best_board = INF
             board_at = -1
+            board_nb = 0
             for pos in range(start_pos, m):
                 s = int(pstops[pos])
                 if np.isfinite(best_board):
@@ -501,15 +506,21 @@ def generalized_cost(
                     if cand < best[s] - 1e-9 and cand <= max_cost:
                         best[s] = cur[s] = cand
                         best_round[s] = rnd
+                        cur_nb[s] = board_nb + 1
                         new_marked.add(s)
                         if trace:
                             parents[(rnd, s)] = ("ride", pi, board_at, pos)
                 ready = prev[s]
                 if np.isfinite(ready):
-                    v = ready + wait_here + board_penalty - ivt_per_sec * pcum[pos]
+                    # first boarding for this traveller, or a transfer?
+                    is_xfer = nboard_prev[s] > 0
+                    wait_here = xfer_wc if is_xfer else wc
+                    pen = w.transfer_penalty if is_xfer else 0.0
+                    v = ready + wait_here + pen - ivt_per_sec * pcum[pos]
                     if v < best_board - 1e-9:
                         best_board = v
                         board_at = pos
+                        board_nb = int(nboard_prev[s])
 
         for s in list(new_marked):
             base = cur[s]
@@ -519,10 +530,12 @@ def generalized_cost(
                 if cand < best[j] - 1e-9 and cand <= max_cost:
                     best[j] = cur[j] = cand
                     best_round[j] = rnd
+                    cur_nb[j] = cur_nb[s]
                     new_marked.add(j)
                     if trace:
                         parents[(rnd, j)] = ("walk_after", s, rn.fp_min[k])
         prev = cur
+        nboard_prev = cur_nb
         marked = new_marked
         if not marked:
             break
@@ -531,14 +544,21 @@ def generalized_cost(
 
 def reconstruct(rn: RaptorNetwork, parents: dict, target: str,
                 rnd: int, sources: set[str]) -> Journey | None:
-    """Rebuild the journey to ``target`` found in round ``rnd``."""
+    """Rebuild the journey to ``target`` found in round ``rnd``.
+
+    Returns ``None`` unless the back-walk actually terminates at a source stop.
+    A partial trace is not a journey: storing one as if it were would understate
+    its cost, because the missing legs are the ones nearest the origin.
+    """
     legs: list[Leg] = []
     s = rn.idx(target)
     k = rnd
     guard = 0
+    complete = False
     while guard < 64:
         guard += 1
         if rn.stop_ids[s] in sources and k == 0:
+            complete = True
             break
         ent = parents.get((k, s))
         if ent is None:
@@ -564,8 +584,10 @@ def reconstruct(rn: RaptorNetwork, parents: dict, target: str,
                             in_vehicle_min=float(ivt)))
             s = frm
             k -= 1
+    if not complete and rn.stop_ids[s] in sources:
+        complete = True
     legs.reverse()
-    if not legs:
+    if not legs or not complete:
         return None
     n_rides = sum(1 for l in legs if l.kind == "ride")
     return Journey(origin=legs[0].from_stop, destination=target, cost=0.0,
