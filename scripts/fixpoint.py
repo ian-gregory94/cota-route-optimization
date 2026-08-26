@@ -42,6 +42,14 @@ log = logging.getLogger("fixpoint")
 OUT = ROOT / "outputs"
 SEP = "::"
 
+# Search RNG scheme. Every checkpoint cell carries it, so a store written
+# under an older scheme is re-solved rather than silently mixed with a newer
+# one: cells produced by different generators are not the same experiment,
+# and a frontier assembled from both could not be reproduced by any single
+# command. "r2" = one generator per restart, seeded on (seed, restart index),
+# which is what makes a killed solve resumable to the same answer.
+RNG = "r2"
+
 
 def key_str(k: tuple[str, str]) -> str:
     return f"{k[0]}{SEP}{k[1]}"
@@ -52,12 +60,42 @@ def key_tuple(s: str) -> tuple[str, str]:
     return (a, b)
 
 
-def solve(setup, mult, iters, restarts, width, seed):
+def solve(setup, mult, iters, restarts, width, seed, store=None, cell=None):
+    """Solve one lambda cell, checkpointing after every restart.
+
+    A full-effort cell is twenty restarts over about forty minutes and this
+    sandbox reaps long-running processes, so the unit of work that has to
+    survive a kill is the restart, not the cell. After each one the incumbent
+    is written to the store; on restart the search rejoins at the next index
+    and *re-evaluates* the saved plan rather than trusting the stored
+    objective, so a checkpoint written under a different path set can never
+    leak a stale number into a result.
+    """
+    part = f"part|{cell}" if cell else None
+    resume = None
+    if part and store is not None and store.has(part):
+        rec = store.get(part)
+        if int(rec.get("n_restarts", -1)) == int(restarts):
+            resume = {"next_restart": int(rec["next_restart"]),
+                      "best_idx": [int(i) for i in rec["best_idx"]],
+                      "best_obj": float(rec["best_obj"]),
+                      "moves": int(rec.get("moves", 0))}
+            log.info("    rejoining at restart %d/%d",
+                     resume["next_restart"], restarts)
+
+    def progress(k, idx, obj, moves):
+        store.put(part, {"next_restart": int(k), "n_restarts": int(restarts),
+                         "best_idx": [int(i) for i in idx],
+                         "best_obj": float(obj), "moves": int(moves),
+                         "rng": RNG})
+
     return optimize_frequencies(
         setup.model, setup.budget, ladder=[], unserved_multiplier=mult,
         local_search_iterations=iters, seed=seed, ladders=setup.ladders,
         initial=setup.baseline_plan, n_restarts=restarts,
-        candidate_width=width, greedy_start=False)
+        candidate_width=width, greedy_start=False,
+        progress=progress if (part and store is not None) else None,
+        resume=resume)
 
 
 def main() -> int:
@@ -132,7 +170,7 @@ def main() -> int:
 
         plans: dict[float, dict] = {}
         for m in lams:
-            cell = f"it{it}|lam{m}"
+            cell = f"it{it}|lam{m}|{RNG}"
             if store.has(cell):
                 rec = store.get(cell)
                 plans[m] = {key_tuple(k): float(v) for k, v in rec["plan"].items()}
@@ -140,7 +178,8 @@ def main() -> int:
                          m, rec["gc_change_pct"])
                 continue
             t = time.time()
-            r = solve(setup, m, args.iterations, args.restarts, args.width, args.seed)
+            r = solve(setup, m, args.iterations, args.restarts, args.width,
+                      args.seed, store=store, cell=cell)
             gc_pct = (r.fitness.generalized_cost / bf.generalized_cost - 1) * 100
             un_pct = (r.fitness.unserved_demand / bf.unserved_demand - 1) * 100
             plans[m] = dict(r.plan.headways)
@@ -165,28 +204,35 @@ def main() -> int:
                 OUT / f"fixpoint_plans{suffix}" / f"it{it}_lam{m}.csv", index=False)
 
         # Adequacy of THIS iteration's path set under the plans it just produced.
-        ad_cell = f"it{it}|adequacy"
-        if store.has(ad_cell):
-            ad = store.get(ad_cell)["adequacy"]
-        else:
-            ad = {}
-            for m in lams:
-                rows = [adequacy(H.raptor, H.zones, ev.ps, ev, plans[m], w, wk,
-                                 int(pa["max_rounds"]))
-                        for ev in setup.model.evaluators.values()]
-                wts = np.array([r["od_pairs_compared"] for r in rows], dtype=float)
-                ad[str(m)] = {
-                    "by_period": rows,
-                    "flow_share_improvable": float(np.average(
-                        [r["flow_share_improvable"] for r in rows], weights=wts)),
-                    "mean_overstatement_pct": float(np.average(
-                        [r["mean_overstatement_pct"] for r in rows], weights=wts)),
-                }
-                log.info("  adequacy lambda=%-4s improvable flow %.2f%%, "
-                         "overstatement %.3f%%", m,
-                         ad[str(m)]["flow_share_improvable"] * 100,
-                         ad[str(m)]["mean_overstatement_pct"])
-            store.put(ad_cell, {"iteration": it, "n_paths": n_paths, "adequacy": ad})
+        # Checkpointed per (iteration, lambda), not per iteration: an adequacy
+        # sweep is one RAPTOR pass per period per lambda, and losing three
+        # finished lambdas because the fourth was interrupted is a waste the
+        # store can trivially prevent.
+        ad = {}
+        for m in lams:
+            ad_cell = f"it{it}|adequacy|lam{m}|{RNG}"
+            if store.has(ad_cell):
+                ad[str(m)] = store.get(ad_cell)["adequacy"]
+                log.info("  adequacy lambda=%-4s resumed, improvable flow %.2f%%",
+                         m, ad[str(m)]["flow_share_improvable"] * 100)
+                continue
+            rows = [adequacy(H.raptor, H.zones, ev.ps, ev, plans[m], w, wk,
+                             int(pa["max_rounds"]))
+                    for ev in setup.model.evaluators.values()]
+            wts = np.array([r["od_pairs_compared"] for r in rows], dtype=float)
+            ad[str(m)] = {
+                "by_period": rows,
+                "flow_share_improvable": float(np.average(
+                    [r["flow_share_improvable"] for r in rows], weights=wts)),
+                "mean_overstatement_pct": float(np.average(
+                    [r["mean_overstatement_pct"] for r in rows], weights=wts)),
+            }
+            store.put(ad_cell, {"iteration": it, "lambda": m, "n_paths": n_paths,
+                                "adequacy": ad[str(m)]})
+            log.info("  adequacy lambda=%-4s improvable flow %.2f%%, "
+                     "overstatement %.3f%%", m,
+                     ad[str(m)]["flow_share_improvable"] * 100,
+                     ad[str(m)]["mean_overstatement_pct"])
 
         worst = max(v["flow_share_improvable"] for v in ad.values())
         history.append({"iteration": it, "n_paths": n_paths,
@@ -215,7 +261,7 @@ def main() -> int:
              args.final_restarts, n_paths)
     final_rows, final_plans = [], {}
     for m in final_lams:
-        cell = f"final|lam{m}"
+        cell = f"final|lam{m}|{RNG}"
         if store.has(cell):
             rec = store.get(cell)
             final_plans[m] = {key_tuple(k): float(v) for k, v in rec["plan"].items()}
@@ -225,7 +271,7 @@ def main() -> int:
             continue
         t = time.time()
         r = solve(setup, m, args.final_iterations, args.final_restarts,
-                  args.final_width, args.seed)
+                  args.final_width, args.seed, store=store, cell=cell)
         gc_pct = (r.fitness.generalized_cost / bf.generalized_cost - 1) * 100
         un_pct = (r.fitness.unserved_demand / bf.unserved_demand - 1) * 100
         final_plans[m] = dict(r.plan.headways)
@@ -259,27 +305,30 @@ def main() -> int:
     fr.to_csv(OUT / f"fixpoint_frontier{suffix}.csv", index=False)
 
     # Does the converged set hold up under plans it never saw during the loop?
-    fa_cell = "final|adequacy"
-    if store.has(fa_cell):
-        fad = store.get(fa_cell)["adequacy"]
-    else:
-        fad = {}
-        for m in final_lams:
-            rows = [adequacy(H.raptor, H.zones, ev.ps, ev, final_plans[m], w, wk,
-                             int(pa["max_rounds"]))
-                    for ev in setup.model.evaluators.values()]
-            wts = np.array([r["od_pairs_compared"] for r in rows], dtype=float)
-            fad[str(m)] = {
-                "by_period": rows,
-                "flow_share_improvable": float(np.average(
-                    [r["flow_share_improvable"] for r in rows], weights=wts)),
-                "mean_overstatement_pct": float(np.average(
-                    [r["mean_overstatement_pct"] for r in rows], weights=wts))}
-            log.info("  final adequacy lambda=%-5s improvable flow %.2f%%, "
-                     "overstatement %.3f%%", m,
-                     fad[str(m)]["flow_share_improvable"] * 100,
-                     fad[str(m)]["mean_overstatement_pct"])
-        store.put(fa_cell, {"n_paths": n_paths, "adequacy": fad})
+    fad = {}
+    for m in final_lams:
+        fa_cell = f"final|adequacy|lam{m}|{RNG}"
+        if store.has(fa_cell):
+            fad[str(m)] = store.get(fa_cell)["adequacy"]
+            log.info("  final adequacy lambda=%-5s resumed, improvable flow %.2f%%",
+                     m, fad[str(m)]["flow_share_improvable"] * 100)
+            continue
+        rows = [adequacy(H.raptor, H.zones, ev.ps, ev, final_plans[m], w, wk,
+                         int(pa["max_rounds"]))
+                for ev in setup.model.evaluators.values()]
+        wts = np.array([r["od_pairs_compared"] for r in rows], dtype=float)
+        fad[str(m)] = {
+            "by_period": rows,
+            "flow_share_improvable": float(np.average(
+                [r["flow_share_improvable"] for r in rows], weights=wts)),
+            "mean_overstatement_pct": float(np.average(
+                [r["mean_overstatement_pct"] for r in rows], weights=wts))}
+        store.put(fa_cell, {"lambda": m, "n_paths": n_paths,
+                            "adequacy": fad[str(m)]})
+        log.info("  final adequacy lambda=%-5s improvable flow %.2f%%, "
+                 "overstatement %.3f%%", m,
+                 fad[str(m)]["flow_share_improvable"] * 100,
+                 fad[str(m)]["mean_overstatement_pct"])
     final_worst = max(v["flow_share_improvable"] for v in fad.values())
     log.info("final worst improvable flow share: %.3f%%", final_worst * 100)
 
@@ -288,7 +337,7 @@ def main() -> int:
     # that no configuration gets to grade its own homework.
     rescored = []
     for csv in sorted((OUT / "matrix_plans").glob("*.csv")):
-        cell = f"rescore|{csv.stem}"
+        cell = f"rescore|{csv.stem}|{RNG}"
         if store.has(cell):
             rescored.append({k: v for k, v in store.get(cell).items()
                              if k != "cell"})

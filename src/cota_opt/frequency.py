@@ -379,6 +379,8 @@ def optimize_frequencies(
     candidate_width: int = 0,
     n_restarts: int = 6,
     greedy_start: bool = True,
+    progress=None,
+    resume: dict | None = None,
 ) -> OptimizationResult:
     """Marginal-exchange search for the best frequency plan inside the budget.
 
@@ -394,6 +396,26 @@ def optimize_frequencies(
     most, subject to the vehicle-hour and per-period peak-vehicle caps. Because
     the incumbent is one of the starts, the returned plan can never be worse
     than the plan it was given.
+
+    Resumability
+    ------------
+    A full-effort solve is twenty restarts over forty minutes, and this sandbox
+    reaps long-running processes, so losing one whole cell to a kill at minute
+    thirty-nine was routine. Each restart therefore draws from its own
+    generator seeded on ``(seed, restart index)`` rather than from one shared
+    stream, which makes restart *k* independent of whether restarts before it
+    ran in this process.
+
+    That is what makes resuming exact rather than approximate: with
+    ``resume={"next_restart": k, "best_idx": [...], "best_obj": x}`` the solve
+    picks up at restart *k* and returns precisely what an uninterrupted run
+    would have returned. ``progress(k, idx, obj)`` is called after every
+    restart so the caller can persist that state.
+
+    The per-restart seeding does change which random sequence is drawn, so it
+    changes results relative to the shared-stream version. That is a deliberate
+    trade: reproducibility under interruption is worth more than agreement with
+    a scheme whose interrupted runs were not reproducible at all.
     """
     rng = np.random.default_rng(seed)
     keys = list(model.keys)
@@ -455,17 +477,35 @@ def optimize_frequencies(
 
     width = candidate_width if candidate_width > 0 else n
     best_idx, best_fit, best_obj, moves = None, None, float("inf"), 0
-    for st in starts:
-        idx, fit, o, n_moves = _exchange_search(
-            model, budget, L, L_len, st.copy(), obj, feasible,
-            local_search_iterations, width, rng)
-        if o < best_obj:
-            best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
+    first_restart = 0
+    if resume and resume.get("best_idx") is not None:
+        # rejoin at a recorded restart: re-evaluate the saved plan rather than
+        # trusting a stored objective, so a resumed run cannot inherit a number
+        # that no longer matches the model it is being scored against
+        best_idx = np.asarray(resume["best_idx"], dtype=int)
+        best_fit = model.evaluate_array(L[np.arange(n), best_idx])
+        best_obj = obj(best_fit)
+        moves = int(resume.get("moves", 0))
+        first_restart = int(resume.get("next_restart", 0))
+        log.info("resuming solve at restart %d/%d, saved objective %.6g",
+                 first_restart, n_restarts, best_obj)
+    else:
+        for st in starts:
+            idx, fit, o, n_moves = _exchange_search(
+                model, budget, L, L_len, st.copy(), obj, feasible,
+                local_search_iterations, width, rng)
+            if o < best_obj:
+                best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
+        if progress is not None:
+            progress(0, best_idx, best_obj, moves)
 
     # perturbation restarts: kick a random subset off the incumbent optimum and
-    # re-converge; keep the best local optimum found. Deterministic given seed.
+    # re-converge; keep the best local optimum found. Each restart draws from
+    # its own generator so it is reproducible on its own, which is what lets an
+    # interrupted solve rejoin exactly where it stopped.
     assert best_idx is not None
-    for _ in range(max(0, n_restarts)):
+    for restart in range(first_restart, max(0, n_restarts)):
+        rng = np.random.default_rng([seed, restart])
         cand = best_idx.copy()
         k = max(1, int(0.15 * n))
         hit = rng.choice(n, size=k, replace=False)
@@ -478,12 +518,16 @@ def optimize_frequencies(
                         model.evaluate_array(L[np.arange(n), cand])):
                     cand[i] += 1
             if not feasible(model.evaluate_array(L[np.arange(n), cand])):
+                if progress is not None:
+                    progress(restart + 1, best_idx, best_obj, moves)
                 continue
         idx, fit, o, n_moves = _exchange_search(
             model, budget, L, L_len, cand, obj, feasible,
             local_search_iterations, width, rng)
         if o < best_obj - 1e-9:
             best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
+        if progress is not None:
+            progress(restart + 1, best_idx, best_obj, moves)
 
     assert best_idx is not None and best_fit is not None
     h = L[np.arange(n), best_idx]
