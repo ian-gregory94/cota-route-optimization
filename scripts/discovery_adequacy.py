@@ -40,6 +40,20 @@ OUT = ROOT / "outputs"
 DEFAULT_FOCUS = ("010", "005", "007", "001", "002", "102", "008", "033")
 
 
+def wait_for_memory(min_free_mb: int = 2200, tries: int = 60) -> None:
+    """Yield to the authoritative Experiment 1 run rather than race it."""
+    for _ in range(tries):
+        try:
+            free = int([l for l in Path("/proc/meminfo").read_text().splitlines()
+                        if l.startswith("MemAvailable")][0].split()[1]) // 1024
+        except Exception:
+            return
+        if free >= min_free_mb:
+            return
+        log.warning("only %d MB available, waiting", free)
+        time.sleep(30)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--common-lines", type=str, default="same_route",
@@ -53,6 +67,7 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=20260825)
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    wait_for_memory()
 
     suffix = "" if args.common_lines == "pattern" else "_modelB"
     exp = Experiment(

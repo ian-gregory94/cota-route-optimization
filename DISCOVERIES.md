@@ -310,6 +310,56 @@ created and found no material flow-weighted omission. A dirty one says the
 correction exposed a discovery mismatch that targeted augmentation closed.
 Both are useful; only silence would not be.
 
+### D12 — The Model B correction removes the same-route residual exactly, not approximately
+
+**Evidence.** Gate 10 re-ran the common-lines diagnostic under Model B on the
+identical periods, path-assignment settings and baseline plan used for D10.
+
+| | Model A | Model B |
+|---|---|---|
+| ride legs with a cheaper common-lines alternative | 22,984 | **3,778** |
+| upper bound as share of generalized cost | 5.095% | **0.516%** |
+| same-route component | 4.301% | **0.000%** |
+| legs whose alternatives are *all* same-route | 19,049 | **0** |
+| cross-route component | 0.794% | **0.516%** |
+
+The same-route figure is `-5.3e-14` generalized minutes, which is floating-point
+zero on a base of 1.77 million. That is the expected result rather than a good
+one: Model B prices a ride leg on the combined frequency of every qualifying
+same-route pattern, so after the correction there is no same-route common-lines
+saving left for the bound to find. A residual near zero is what a correct
+implementation *must* produce, and anything else would have meant the
+multiplier was not being applied where the bound was looking.
+
+The cross-route component also fell, 0.794% → 0.516%, which was not designed in
+and is worth stating for that reason. It follows: Model B makes the chosen path
+cheaper, so a cross-route alternative saves less against it. The direction is a
+weak consistency check that the two diagnostics are measuring the same baseline.
+
+**Confidence.** High for the collapse itself — the same/cross split is exact,
+both runs share every input but the waiting model, and the block-derived fleet
+figures came back bit-identical (197 peak vehicles at 17:13, interlining factor
+1.30699), confirming nothing else moved between them. Moderate for the residual
+0.52%, which is a generous upper bound rather than an estimate.
+
+**Interpretation.** Gate 10 passes. Total remaining common-lines exposure is
+**0.52% of generalized cost, entirely cross-route** — below the 0.79% already
+accepted as non-blocking under Model A, and roughly a quarter of the ~2% effect
+Experiment 1 claims. The correction did not shift the problem somewhere else;
+it removed one of the two problems D10 separated and left the other slightly
+smaller.
+
+This does **not** license freezing the Model B yardstick. Gate 10 is about
+valuation; gate 11 asks whether per-pattern RAPTOR can still *discover* the
+paths the corrected valuation prefers, and that diagnostic is running.
+
+**What would falsify it.** A same-route residual materially above zero under
+Model B would mean the multiplier is not reaching the legs the bound prices,
+and the correct response would be to find where — not to accept a smaller
+number as good enough. A cross-route residual that *rose* would mean the two
+runs are not scoring the same baseline.
+
+
 ---
 
 ## Not yet earned

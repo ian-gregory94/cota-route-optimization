@@ -1,0 +1,66 @@
+2026-08-26 22:35:32,651 experiment exp7_discovery_adequacy_modelB_20260826T223532Z
+2026-08-26 22:35:32,819 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-26 22:35:32,871 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 22:35:32,872 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 22:35:32,873 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 22:35:32,895 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 22:35:33,345 cache hit  pathsets-b56fc18e2263c07f (76.8 MB, 0.4s)
+2026-08-26 22:35:33,437 period early   : 31858 paths, 20000 OD pairs
+2026-08-26 22:35:33,445 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-26 22:35:33,452 period midday  : 32893 paths, 20000 OD pairs
+2026-08-26 22:35:33,460 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-26 22:35:33,466 period evening : 30786 paths, 20000 OD pairs
+2026-08-26 22:35:33,473 period owl     : 31693 paths, 20000 OD pairs
+2026-08-26 22:35:33,473 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 22:35:33,504 waiting model = same_route; focus routes = ['001', '002', '005', '007', '008', '010', '033', '102']
+2026-08-26 22:35:54,867 am_peak  tested  4000 OD pairs (2721 trips) in   21s: 208 with a cheaper Model B path outside the set
+2026-08-26 22:36:14,327 midday   tested  4000 OD pairs (3967 trips) in   19s: 125 with a cheaper Model B path outside the set
+2026-08-26 22:36:14,353 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp7_discovery_adequacy_modelB_20260826T223532Z/experiment.json
+
+================================================================================================
+GATE 11 — MODEL B DISCOVERY ADEQUACY  (waiting model: same_route)
+================================================================================================
+  n_omitted                          333
+  n_sequences_already_in_set         15
+  flow_affected                      326.1427
+  tested_flow                        6,687.7421
+  flow_share                         0.0488
+  flow_weighted_improvement_min      1,194.5759
+  tested_generalized_cost            645,768.3685
+  gc_share                           0.0018
+  median_improvement_min             3.5833
+  p95_improvement_min                9.0023
+  median_improvement_pct             3.3821
+
+  flow share affected   4.877%   (negligible < 1.0%, material >= 3.0%)
+  cost share affected   0.185%   (negligible < 0.25%, material >= 1.0%)
+
+  CASE C: 4.88% of tested flow and 0.18% of tested generalized cost have a materially cheaper Model B path outside the candidate set. The yardstick must not be frozen: augment candidate generation around the affected corridors and re-run this diagnostic
+
+  routes carrying the omitted sequences:
+route  n_od   flow  fw_improvement
+  001    90 165.97          491.93
+  008   119 126.94          402.50
+  002   111  80.61          314.99
+  033    64  38.62          227.70
+  007    65  49.88          204.74
+  034    66  39.42          190.89
+  005    38  42.61          124.79
+  010    37  22.67           97.66
+  102    34  19.66           96.37
+  022    30  17.49           56.36
+
+  largest single omissions:
+ period  flow  best_in_set_min  omitted_path_min  improvement_min  improvement_pct route_sequence  n_boardings  sequence_already_in_set
+am_peak  4.59            74.82             68.92             5.90             7.89        008+001            2                    False
+am_peak  4.48            73.90             68.00             5.90             7.99        008+001            2                    False
+ midday  3.63            39.08             32.84             6.23            15.95            001            1                    False
+am_peak  3.81            66.22             60.35             5.87             8.86        008+001            2                    False
+am_peak  2.37           140.30            132.96             7.34             5.24        071+001            2                    False
+am_peak  2.94            65.64             59.74             5.90             8.99        008+001            2                    False
+am_peak  2.83            73.07             67.17             5.90             8.08        008+001            2                    False
+am_peak  2.22           136.33            128.99             7.34             5.39        071+001            2                    False
+am_peak  2.06            80.05             72.71             7.34             9.18        007+001            2                    False
+am_peak  1.39           126.68            115.95            10.73             8.47        033+034            2                    False
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp7_discovery_adequacy_modelB_20260826T223532Z

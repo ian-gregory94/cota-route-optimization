@@ -19,3 +19,91 @@
 2026-08-26 22:23:01,659 cache store pathset-3b96aac4854664bf (12.4 MB, built in 133s)
 2026-08-26 22:23:01,659 period midday  : 32893 paths, 20000 OD pairs
 2026-08-26 22:23:01,676 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-26 22:25:22,753 rejected 288 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:25:22,932 path set: 37936 paths over 18725/20000 OD pairs (93.8% of flow served), 197645 legs
+2026-08-26 22:25:23,106 cache store pathset-2fc48400fbd8a747 (14.5 MB, built in 141s)
+2026-08-26 22:25:23,106 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-26 22:25:23,123 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-26 22:27:38,895 rejected 178 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:27:39,034 path set: 30786 paths over 17432/20000 OD pairs (86.9% of flow served), 156338 legs
+2026-08-26 22:27:39,180 cache store pathset-c6df2752e86ce2c4 (11.6 MB, built in 136s)
+2026-08-26 22:27:39,180 period evening : 30786 paths, 20000 OD pairs
+2026-08-26 22:27:39,197 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-26 22:29:43,369 rejected 190 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:29:43,508 path set: 31693 paths over 17042/20000 OD pairs (85.3% of flow served), 162748 legs
+2026-08-26 22:29:43,657 cache store pathset-9e987472f213ac90 (12.1 MB, built in 124s)
+2026-08-26 22:29:43,657 period owl     : 31693 paths, 20000 OD pairs
+2026-08-26 22:29:44,478 cache store pathsets-b56fc18e2263c07f (76.8 MB, built in 811s)
+2026-08-26 22:29:44,573 period early   : 31858 paths, 20000 OD pairs
+2026-08-26 22:29:44,579 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-26 22:29:44,584 period midday  : 32893 paths, 20000 OD pairs
+2026-08-26 22:29:44,590 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-26 22:29:44,595 period evening : 30786 paths, 20000 OD pairs
+2026-08-26 22:29:44,600 period owl     : 31693 paths, 20000 OD pairs
+
+========================================================================================
+PEAK VEHICLE REQUIREMENT — read from blocks, not approximated
+========================================================================================
+  284 blocks, median 8 trips and 8.8 h span each
+  peak vehicles in service      197 at 17:13
+  cycle-over-headway formula    150.7
+  interlining factor            1.307  (formula is optimistic)
+  NTD reported VOMS             198  (-0.5% vs blocks)
+  blocks serving >1 route       12.0%
+  share of block span on layover 19.4%
+
+  peak by period (from blocks):
+    early      135   formula   74.2
+    am_peak    187   formula  137.9
+    midday     173   formula  138.4
+    pm_peak    197   formula  150.7
+    evening    178   formula  121.7
+    owl        149   formula   30.9
+
+  BALANCED PLAN (C_lam2.0_seed20260825.csv)
+    baseline peak proxy  197.0
+    candidate peak proxy 196.9  (-0.1, -0.0%)
+    largest per-route increases at the peak period:
+      route 005: +6.49 buses
+      route 102: +5.69 buses
+      route 011: +3.83 buses
+      route 032: +3.19 buses
+      route 001: +3.07 buses
+      route 025: +2.61 buses
+2026-08-26 22:29:44,634 hyperpath bound for am_peak
+2026-08-26 22:29:46,028 hyperpath bound for midday
+
+========================================================================================
+HYPERPATH — upper bound on 'board whichever bus comes first'
+========================================================================================
+  n_legs_with_alternatives                     3778
+  flow_touched                                 1,638.9322
+  total_bound_min                              9,152.4428
+  bound_share_of_generalized_cost_pct          0.5162
+  median_saving_min                            4.9286
+  p95_saving_min                               11.2703
+  median_lines_available                       2.0000
+  cross_route_bound_min                        9,152.4428
+  cross_route_share_of_generalized_cost_pct    0.5162
+  same_route_bound_min                         -0.0000
+  same_route_share_of_generalized_cost_pct     -0.0000
+  same_route_pattern_share_of_bound_pct        0.0000
+  legs_whose_alternatives_are_all_same_route   0
+  exp1_effect_pct_compared_against             2.0000
+
+  VERDICT: LOCALLY_MEANINGFUL
+  the bound is 0.52% of generalized cost against a 2.0% claimed effect: too small to overturn the direction, large enough to matter for corridor-level numbers on the routes listed
+
+  where it concentrates:
+route  n_legs    flow  bound_min  median_lines  share_of_bound
+  102     740 282.164   3103.895           2.0           0.339
+  002     549 284.457   1361.539           3.0           0.149
+  023     211 164.862    911.477           2.0           0.100
+  007     471 220.563    884.391           4.0           0.097
+  034     619 265.804    552.825           2.0           0.060
+  001     314  85.690    494.873           3.0           0.054
+  006     224  76.286    440.161           2.0           0.048
+  101     100  55.856    300.856           2.0           0.033
+2026-08-26 22:29:47,303 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/model_diagnostics_modelB_20260826T221611Z/experiment.json
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/model_diagnostics_modelB_20260826T221611Z
