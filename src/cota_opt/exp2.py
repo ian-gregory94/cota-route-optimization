@@ -186,7 +186,8 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                 route_classes: dict | None = None,
                 pathset_cache: dict | None = None,
                 extra_scenarios: list[tuple[str, dict]] | None = None,
-                max_paths_per_od: int | None = None) -> Exp2Setup:
+                max_paths_per_od: int | None = None,
+                n_random_scenarios: int | None = None) -> Exp2Setup:
     from .exp1 import build_setup as exp1_setup
 
     a = b.assumptions
@@ -224,7 +225,10 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                                max_rounds=int(pa["max_rounds"]),
                                max_paths_per_od=int(max_paths_per_od
                                                     or pa["max_paths_per_od"]),
-                               n_random_scenarios=int(pa["n_random_scenarios"]),
+                               n_random_scenarios=int(
+                                   pa["n_random_scenarios"]
+                                   if n_random_scenarios is None
+                                   else n_random_scenarios),
                                seed=seed,
                                extra_scenarios=extra_scenarios)
             if pathset_cache is not None:
