@@ -95,6 +95,23 @@ def _path_length_m(ctx: StopContext, stops: list[str]) -> float:
     return tot
 
 
+#: Longest gap between consecutive stops that still reads as local service.
+#: Route 073 runs 19 non-stop minutes from downtown to Dublin; a "corridor"
+#: containing that jump is an express alignment, and following it is route
+#: replacement wearing an extension's label. Caught by hand inspection of a
+#: candidate that scored well precisely because it was doing that.
+MAX_LOCAL_GAP_M = 2500.0
+
+
+def _is_local_chain(ctx: StopContext, stops: list[str],
+                    max_gap_m: float = MAX_LOCAL_GAP_M) -> bool:
+    for a, b in zip(stops, stops[1:]):
+        if a in ctx.coords and b in ctx.coords:
+            if _straight_m(ctx, a, b) > max_gap_m:
+                return False
+    return True
+
+
 def _straight_m(ctx: StopContext, a: str, b: str) -> float:
     if a not in ctx.coords or b not in ctx.coords:
         return 0.0
@@ -216,6 +233,7 @@ def extension_candidates(net: TransitNetwork, ctx: StopContext, zs,
                          trips_by_route: dict[str, int],
                          max_reach_m: float = 1500.0, max_new_stops: int = 10,
                          max_donor_trips: int = 40,
+                         max_runtime_growth: float = 0.25,
                          exclude_routes: set[str] | None = None,
                          top_n: int = 20) -> list[GeometryEdit]:
     """Extend a route along a corridor some barely-served line already runs.
@@ -230,9 +248,14 @@ def extension_candidates(net: TransitNetwork, ctx: StopContext, zs,
     """
     skip = exclude_routes or set()
     zone_flow_of = _stop_zone_flow(zs, stop_ids, od_zone_flow)
+    # A donor must be excluded for the same reason it cannot be edited: a
+    # peak express's alignment is a commuter timetable with a long non-stop
+    # run in the middle, not a corridor another route can be continued along.
     donors = [p for p in net.patterns.values()
-              if trips_by_route.get(p.route_id, 0) <= max_donor_trips
-              and len(p.stops) >= 3]
+              if p.route_id not in skip
+              and trips_by_route.get(p.route_id, 0) <= max_donor_trips
+              and len(p.stops) >= 3
+              and _is_local_chain(ctx, p.stops)]
     if not donors:
         return []
 
@@ -253,7 +276,13 @@ def extension_candidates(net: TransitNetwork, ctx: StopContext, zs,
                     continue
                 chain = _donor_chain_from(ctx, d, term, inward, on_route,
                                           max_reach_m, max_new_stops)
-                if len(chain) < 3:
+                if len(chain) < 3 or not _is_local_chain(ctx, [term] + chain):
+                    continue
+                # an extension has to be an extension: bounded growth, not a
+                # second route bolted onto the end of the first
+                added_m = _path_length_m(ctx, [term] + chain)
+                own_m = _path_length_m(ctx, p.stops)
+                if own_m > 0 and added_m > max_runtime_growth * own_m:
                     continue
                 gained = sum(zone_flow_of.get(s, 0.0) for s in chain)
                 if gained <= 0:
@@ -377,7 +406,9 @@ def reroute_candidates(net: TransitNetwork, ctx: StopContext,
     """
     skip = exclude_routes or set()
     out = []
-    pats = [p for p in net.patterns.values() if len(p.stops) >= min_span + 2]
+    pats = [p for p in net.patterns.values()
+            if len(p.stops) >= min_span + 2 and p.route_id not in skip
+            and _is_local_chain(ctx, p.stops)]
     for rid in sorted(net.route_stops):
         if rid in skip:
             continue
@@ -407,6 +438,8 @@ def reroute_candidates(net: TransitNetwork, ctx: StopContext,
                     # reports is meaningless when the stretch it replaces has
                     # almost no uniquely-served demand to divide by.
                     if not (2 <= len(chain) <= 2 * len(cur) + 2):
+                        continue
+                    if not _is_local_chain(ctx, [a_s] + chain + [b_s]):
                         continue
                     alt_w = sum(ctx.exclusive_weight(s) for s in chain)
                     if cur_w < 1.0 or alt_w <= cur_w * min_gain:

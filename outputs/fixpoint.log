@@ -77,3 +77,5 @@
 2026-08-26 17:24:22,170 iteration 0: 203161 candidate paths, baseline gc=1.787982e+06 (enum 0s)
 2026-08-26 17:24:22,171   lambda=0.5  resumed from checkpoint (gc -6.01%)
 2026-08-26 17:24:22,171   lambda=1.0  resumed from checkpoint (gc -2.12%)
+2026-08-26 17:45:17,091 solve lambda=2.0: obj=3.01867e+06 vh=2510.7/2517.2 exchanges=86
+2026-08-26 17:45:17,092   lambda=2.0  1255s gc   +0.41% unserved   -6.35%
