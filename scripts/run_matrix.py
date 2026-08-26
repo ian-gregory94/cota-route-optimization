@@ -75,9 +75,9 @@ def main() -> int:
     ap.add_argument("--iterations", type=int, required=True)
     ap.add_argument("--restarts", type=int, required=True)
     ap.add_argument("--width", type=int, required=True)
-    ap.add_argument("--lambdas", default="0.25,0.5,1,2,4,8,16")
+    ap.add_argument("--lambdas", default="1,2,0.5,4,8,0.25,16")
     ap.add_argument("--seeds", default="20260825")
-    ap.add_argument("--models", default="R,A,B,C")
+    ap.add_argument("--models", default="C,B,A,R")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 

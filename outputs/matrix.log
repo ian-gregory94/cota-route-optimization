@@ -1,0 +1,125 @@
+2026-08-26 14:28:53,177 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-26 14:28:53,222 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 14:28:53,223 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 14:28:53,224 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 14:28:53,244 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 14:28:53,348 cache hit  pathsets-cf1942fbbe78a362 (74.1 MB, 0.1s)
+2026-08-26 14:28:53,422 period early   : 31528 paths, 20000 OD pairs
+2026-08-26 14:28:53,430 period am_peak : 37576 paths, 20000 OD pairs
+2026-08-26 14:28:53,436 period midday  : 32627 paths, 20000 OD pairs
+2026-08-26 14:28:53,445 period pm_peak : 37471 paths, 20000 OD pairs
+2026-08-26 14:28:53,451 period evening : 30623 paths, 20000 OD pairs
+2026-08-26 14:28:53,457 period owl     : 31511 paths, 20000 OD pairs
+2026-08-26 14:28:53,480 load profile: 23 route-periods, peak-load factor median 0.32, p90 0.49
+2026-08-26 14:28:53,504 load profile: 35 route-periods, peak-load factor median 0.37, p90 1.00
+2026-08-26 14:28:53,525 load profile: 25 route-periods, peak-load factor median 0.34, p90 0.48
+2026-08-26 14:28:53,550 load profile: 33 route-periods, peak-load factor median 0.37, p90 0.94
+2026-08-26 14:28:53,570 load profile: 24 route-periods, peak-load factor median 0.33, p90 0.49
+2026-08-26 14:28:53,590 load profile: 22 route-periods, peak-load factor median 0.42, p90 0.50
+2026-08-26 14:28:53,591 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 14:28:53,697 period early   : 31528 paths, 20000 OD pairs
+2026-08-26 14:28:53,704 period am_peak : 37576 paths, 20000 OD pairs
+2026-08-26 14:28:53,711 period midday  : 32627 paths, 20000 OD pairs
+2026-08-26 14:28:53,719 period pm_peak : 37471 paths, 20000 OD pairs
+2026-08-26 14:28:53,725 period evening : 30623 paths, 20000 OD pairs
+2026-08-26 14:28:53,732 period owl     : 31511 paths, 20000 OD pairs
+2026-08-26 14:28:53,732 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 14:28:53,812 period early   : 31528 paths, 20000 OD pairs
+2026-08-26 14:28:53,819 period am_peak : 37576 paths, 20000 OD pairs
+2026-08-26 14:28:53,826 period midday  : 32627 paths, 20000 OD pairs
+2026-08-26 14:28:53,834 period pm_peak : 37471 paths, 20000 OD pairs
+2026-08-26 14:28:53,840 period evening : 30623 paths, 20000 OD pairs
+2026-08-26 14:28:53,847 period owl     : 31511 paths, 20000 OD pairs
+2026-08-26 14:28:53,903 common scorer baseline: gc=1.787982e+06 unserved=10886 vh=2517.18
+2026-08-26 14:34:30,829 solve lambda=1.0: obj=2.39847e+06 vh=2497.9/2517.2 exchanges=65
+2026-08-26 14:34:30,843 C lam=1.0   seed=20260825   337s | own gc  -2.02% uns  -1.01% | scored gc  -2.02% uns  -1.01% | r10 am_peak 24.0
+2026-08-26 14:40:28,559 solve lambda=2.0: obj=3.02043e+06 vh=2509.7/2517.2 exchanges=31
+2026-08-26 14:40:28,591 C lam=2.0   seed=20260825   358s | own gc  +0.49% uns  -6.33% | scored gc  +0.49% uns  -6.33% | r10 am_peak 20.0
+2026-08-26 14:44:50,337 solve lambda=0.5: obj=2.05909e+06 vh=2505.2/2517.2 exchanges=49
+2026-08-26 14:44:50,344 C lam=0.5   seed=20260825   262s | own gc  -5.30% uns +12.01% | scored gc  -5.30% uns +12.01% | r10 am_peak 14.4
+2026-08-26 14:50:32,969 solve lambda=4.0: obj=4.23606e+06 vh=2516.5/2517.2 exchanges=43
+2026-08-26 14:50:33,000 C lam=4.0   seed=20260825   343s | own gc  +0.95% uns  -6.95% | scored gc  +0.95% uns  -6.95% | r10 am_peak 20.0
+2026-08-26 14:54:56,038 solve lambda=8.0: obj=6.67131e+06 vh=2513.1/2517.2 exchanges=104
+2026-08-26 14:54:56,046 C lam=8.0   seed=20260825   263s | own gc  +0.99% uns  -6.88% | scored gc  +0.99% uns  -6.88% | r10 am_peak 20.0
+2026-08-26 14:58:57,740 solve lambda=0.25: obj=1.86814e+06 vh=2510.3/2517.2 exchanges=36
+2026-08-26 14:58:57,747 C lam=0.25  seed=20260825   242s | own gc  -6.25% uns +17.57% | scored gc  -6.25% uns +17.57% | r10 am_peak 60.0
+2026-08-26 15:03:40,837 solve lambda=16.0: obj=1.15318e+07 vh=2512.2/2517.2 exchanges=92
+2026-08-26 15:03:40,844 C lam=16.0  seed=20260825   283s | own gc  +1.11% uns  -6.95% | scored gc  +1.11% uns  -6.95% | r10 am_peak 20.0
+2026-08-26 15:05:09,838 solve lambda=1.0: obj=2.40051e+06 vh=2502.6/2517.2 exchanges=45
+2026-08-26 15:05:09,883 B lam=1.0   seed=20260825    89s | own gc  -1.82% uns  -1.25% | scored gc  -1.81% uns  -1.25% | r10 am_peak 15.0
+2026-08-26 15:06:44,277 solve lambda=2.0: obj=3.02046e+06 vh=2508.0/2517.2 exchanges=34
+2026-08-26 15:06:44,319 B lam=2.0   seed=20260825    94s | own gc  +0.52% uns  -6.36% | scored gc  +0.52% uns  -6.36% | r10 am_peak 24.0
+2026-08-26 15:07:58,152 solve lambda=0.5: obj=2.05996e+06 vh=2504.7/2517.2 exchanges=44
+2026-08-26 15:07:58,192 B lam=0.5   seed=20260825    74s | own gc  -5.22% uns +11.85% | scored gc  -5.21% uns +11.85% | r10 am_peak 14.4
+2026-08-26 15:09:19,258 solve lambda=4.0: obj=4.23932e+06 vh=2513.8/2517.2 exchanges=57
+2026-08-26 15:09:19,297 B lam=4.0   seed=20260825    81s | own gc  +1.00% uns  -6.85% | scored gc  +1.00% uns  -6.85% | r10 am_peak 20.0
+2026-08-26 15:10:30,299 solve lambda=8.0: obj=6.67123e+06 vh=2513.1/2517.2 exchanges=104
+2026-08-26 15:10:30,338 B lam=8.0   seed=20260825    71s | own gc  +0.98% uns  -6.88% | scored gc  +0.99% uns  -6.88% | r10 am_peak 20.0
+2026-08-26 15:11:57,133 solve lambda=0.25: obj=1.86783e+06 vh=2510.5/2517.2 exchanges=32
+2026-08-26 15:11:57,180 B lam=0.25  seed=20260825    87s | own gc  -6.26% uns +17.42% | scored gc  -6.25% uns +17.42% | r10 am_peak 14.4
+2026-08-26 15:13:13,409 solve lambda=16.0: obj=1.15317e+07 vh=2512.2/2517.2 exchanges=92
+2026-08-26 15:13:13,416 B lam=16.0  seed=20260825    76s | own gc  +1.11% uns  -6.95% | scored gc  +1.11% uns  -6.95% | r10 am_peak 20.0
+2026-08-26 15:14:48,079 solve lambda=1.0: obj=2.39811e+06 vh=2476.6/2517.2 exchanges=56
+2026-08-26 15:14:48,117 A lam=1.0   seed=20260825    95s | own gc  -1.98% uns  -1.16% | scored gc  -1.97% uns  -1.16% | r10 am_peak 30.0
+2026-08-26 15:16:35,532 solve lambda=2.0: obj=3.0129e+06 vh=2486.8/2517.2 exchanges=65
+2026-08-26 15:16:35,572 A lam=2.0   seed=20260825   107s | own gc  +1.65% uns  -8.49% | scored gc  +1.65% uns  -8.49% | r10 am_peak 20.0
+2026-08-26 15:18:02,813 solve lambda=0.5: obj=2.05565e+06 vh=2490.7/2517.2 exchanges=57
+2026-08-26 15:18:02,848 A lam=0.5   seed=20260825    87s | own gc  -5.72% uns +13.27% | scored gc  -5.71% uns +13.27% | r10 am_peak 20.0
+2026-08-26 15:19:29,418 solve lambda=4.0: obj=4.19779e+06 vh=2486.0/2517.2 exchanges=37
+2026-08-26 15:19:29,458 A lam=4.0   seed=20260825    87s | own gc  +2.57% uns  -9.52% | scored gc  +2.57% uns  -9.52% | r10 am_peak 20.0
+2026-08-26 15:21:28,996 solve lambda=8.0: obj=6.54945e+06 vh=2489.9/2517.2 exchanges=92
+2026-08-26 15:21:29,037 A lam=8.0   seed=20260825   120s | own gc  +3.03% uns  -9.91% | scored gc  +3.03% uns  -9.91% | r10 am_peak 20.0
+2026-08-26 15:22:48,597 solve lambda=0.25: obj=1.87061e+06 vh=2487.1/2517.2 exchanges=78
+2026-08-26 15:22:48,636 A lam=0.25  seed=20260825    80s | own gc  -6.07% uns +17.13% | scored gc  -6.07% uns +17.13% | r10 am_peak 14.4
+2026-08-26 15:24:42,047 solve lambda=16.0: obj=1.12535e+07 vh=2480.7/2517.2 exchanges=92
+2026-08-26 15:24:42,087 A lam=16.0  seed=20260825   113s | own gc  +3.15% uns  -9.97% | scored gc  +3.15% uns  -9.97% | r10 am_peak 20.0
+2026-08-26 15:24:47,300 solve lambda=1.0: obj=1.80947e+06 vh=2459.3/2517.2 exchanges=110
+2026-08-26 15:24:47,338 R lam=1.0   seed=20260825     5s | own gc  -1.54% uns -14.05% | scored gc  +2.39% uns  -6.07% | r10 am_peak 24.0
+2026-08-26 15:24:51,839 solve lambda=2.0: obj=1.95069e+06 vh=2481.4/2517.2 exchanges=30
+2026-08-26 15:24:51,876 R lam=2.0   seed=20260825     5s | own gc  -1.01% uns -21.05% | scored gc  +2.50% uns  -7.00% | r10 am_peak 24.0
+2026-08-26 15:24:56,176 solve lambda=0.5: obj=1.73194e+06 vh=2437.5/2517.2 exchanges=36
+2026-08-26 15:24:56,213 R lam=0.5   seed=20260825     4s | own gc  -2.38% uns  +3.06% | scored gc  +1.67% uns  -3.08% | r10 am_peak 24.0
+2026-08-26 15:25:00,431 solve lambda=4.0: obj=2.23342e+06 vh=2470.8/2517.2 exchanges=18
+2026-08-26 15:25:00,467 R lam=4.0   seed=20260825     4s | own gc  -0.76% uns -22.71% | scored gc  +2.51% uns  -7.16% | r10 am_peak 24.0
+2026-08-26 15:25:04,985 solve lambda=8.0: obj=2.78074e+06 vh=2481.0/2517.2 exchanges=210
+2026-08-26 15:25:05,021 R lam=8.0   seed=20260825     5s | own gc  -0.27% uns -24.74% | scored gc  +2.43% uns  -7.50% | r10 am_peak 24.0
+2026-08-26 15:25:08,025 solve lambda=0.25: obj=1.67082e+06 vh=2417.2/2517.2 exchanges=67
+2026-08-26 15:25:08,061 R lam=0.25  seed=20260825     3s | own gc  -5.01% uns +69.00% | scored gc  -0.58% uns  +8.41% | r10 am_peak 14.4
+2026-08-26 15:25:12,286 solve lambda=16.0: obj=3.8649e+06 vh=2499.0/2517.2 exchanges=99
+2026-08-26 15:25:12,324 R lam=16.0  seed=20260825     4s | own gc  -0.12% uns -25.65% | scored gc  +2.36% uns  -7.80% | r10 am_peak 24.0
+2026-08-26 15:25:12,330 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp5_matrix_20260826T142853Z/experiment.json
+
+========================================================================================================
+MATRIX — identical envelope, demand, solver and effort; scored on one yardstick (model C)
+========================================================================================================
+model  lambda     seed  scored_gc_change_pct  scored_unserved_change_pct  veh_hours  seconds
+    C    1.00 20260825                -2.017                      -1.013   2497.872  336.923
+    C    2.00 20260825                 0.490                      -6.327   2509.669  357.717
+    C    0.50 20260825                -5.296                      12.010   2505.173  261.746
+    C    4.00 20260825                 0.950                      -6.950   2516.510  342.624
+    C    8.00 20260825                 0.986                      -6.883   2513.073  263.039
+    C    0.25 20260825                -6.254                      17.567   2510.289  241.694
+    C   16.00 20260825                 1.111                      -6.954   2512.205  283.090
+    B    1.00 20260825                -1.809                      -1.246   2502.623   88.994
+    B    2.00 20260825                 0.520                      -6.359   2507.987   94.395
+    B    0.50 20260825                -5.209                      11.847   2504.728   73.833
+    B    4.00 20260825                 0.998                      -6.855   2513.753   81.066
+    B    8.00 20260825                 0.986                      -6.883   2513.073   71.002
+    B    0.25 20260825                -6.250                      17.425   2510.511   86.796
+    B   16.00 20260825                 1.111                      -6.954   2512.205   76.229
+    A    1.00 20260825                -1.975                      -1.161   2476.624   94.663
+    A    2.00 20260825                 1.652                      -8.493   2486.764  107.415
+    A    0.50 20260825                -5.710                      13.274   2490.673   87.241
+    A    4.00 20260825                 2.568                      -9.522   2485.963   86.569
+    A    8.00 20260825                 3.030                      -9.914   2489.947  119.539
+    A    0.25 20260825                -6.071                      17.134   2487.079   79.561
+    A   16.00 20260825                 3.152                      -9.966   2480.735  113.411
+    R    1.00 20260825                 2.385                      -6.073   2459.284    5.214
+    R    2.00 20260825                 2.502                      -6.997   2481.401    4.501
+    R    0.50 20260825                 1.670                      -3.079   2437.491    4.300
+    R    4.00 20260825                 2.512                      -7.159   2470.761    4.218
+    R    8.00 20260825                 2.426                      -7.502   2481.050    4.518
+    R    0.25 20260825                -0.581                       8.407   2417.222    3.003
+    R   16.00 20260825                 2.360                      -7.803   2498.976    4.225
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp5_matrix_20260826T142853Z

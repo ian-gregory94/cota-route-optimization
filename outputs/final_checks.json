@@ -1,0 +1,80 @@
+{
+  "seed_stability": [
+    {
+      "lambda": 1.0,
+      "gc_mean": -2.364,
+      "gc_sd": 0.2515,
+      "uns_mean": -0.0625,
+      "uns_sd": 0.6455
+    },
+    {
+      "lambda": 2.0,
+      "gc_mean": 0.509,
+      "gc_sd": 0.0531,
+      "uns_mean": -6.3531,
+      "uns_sd": 0.0574
+    }
+  ],
+  "path_set_adequacy": [
+    {
+      "plan": "baseline",
+      "period": "am_peak",
+      "od_pairs": 19557,
+      "mean_overstatement_min": -0.1838379772316046,
+      "mean_overstatement_pct": -0.17017882243237947,
+      "pairs_improvable": 86,
+      "pairs_improvable_pct": 0.43974024645906834,
+      "flow_weighted_improvable_pct": 0.4332074308178525
+    },
+    {
+      "plan": "baseline",
+      "period": "midday",
+      "od_pairs": 17678,
+      "mean_overstatement_min": -0.23059225560966745,
+      "mean_overstatement_pct": -0.23146524974475804,
+      "pairs_improvable": 92,
+      "pairs_improvable_pct": 0.5204208620884715,
+      "flow_weighted_improvable_pct": 0.47233064853645834
+    },
+    {
+      "plan": "C lam=1 (both objectives improve)",
+      "period": "am_peak",
+      "od_pairs": 19557,
+      "mean_overstatement_min": 0.2070061743150047,
+      "mean_overstatement_pct": 0.1947973228170096,
+      "pairs_improvable": 1468,
+      "pairs_improvable_pct": 7.506263741882702,
+      "flow_weighted_improvable_pct": 6.387111693517306
+    },
+    {
+      "plan": "C lam=1 (both objectives improve)",
+      "period": "midday",
+      "od_pairs": 17678,
+      "mean_overstatement_min": -0.021543980731008865,
+      "mean_overstatement_pct": -0.02213652023514163,
+      "pairs_improvable": 762,
+      "pairs_improvable_pct": 4.310442357732775,
+      "flow_weighted_improvable_pct": 3.9554488849409366
+    },
+    {
+      "plan": "C lam=0.25 (most aggressive)",
+      "period": "am_peak",
+      "od_pairs": 19557,
+      "mean_overstatement_min": 1.5483271097818578,
+      "mean_overstatement_pct": 1.289319294249975,
+      "pairs_improvable": 3247,
+      "pairs_improvable_pct": 16.60275093316971,
+      "flow_weighted_improvable_pct": 17.55723425576197
+    },
+    {
+      "plan": "C lam=0.25 (most aggressive)",
+      "period": "midday",
+      "od_pairs": 17678,
+      "mean_overstatement_min": 1.5512564463891585,
+      "mean_overstatement_pct": 1.38692237999121,
+      "pairs_improvable": 2510,
+      "pairs_improvable_pct": 14.198438737413735,
+      "flow_weighted_improvable_pct": 13.0629745727244
+    }
+  ]
+}
