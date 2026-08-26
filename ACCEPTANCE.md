@@ -23,6 +23,7 @@ running. No final numbers from either had been seen.
 | 7 | Important λ results are seed-stable | at least three seeds at λ = 2; the reported effect must exceed its own standard deviation by a clear margin |
 | 8 | Vehicle-hour and baseline assertions still pass | `vh_relative_error < 1e-9` in `build_setup`; every plan within the 2,517-hour envelope |
 | 9 | Residual path-set inadequacy cannot change the interpretation | the remaining overstatement, applied in full and in the direction that most favours the headline, does not move the balanced point across a qualitative boundary |
+| 11 | **Model B discovery adequacy** | per-pattern RAPTOR must be shown not to omit a material number of route sequences that become competitive *only* under Model B combined-frequency repricing. Distinct from gate 1: that asks whether the candidate set contains the paths new *headway scenarios* make attractive; this asks whether it contains the paths the corrected *valuation* makes attractive. Thresholds fixed below, before the diagnostic was written. |
 | 10 | **Same-route common-lines residual is small enough not to matter** | after the Model B correction, re-run the common-lines diagnostic: the same-route component must collapse to a level shown not to materially alter the final frontier. Added 2026-08-26, when the defect was identified; the thresholds above are unchanged. |
 
 **Language gate.** If generalized cost at the balanced point lands near zero,
@@ -90,6 +91,48 @@ finalized Experiment 1 frontier, not distance from today.
   never adopted because it makes a particular proposal look better.
 
 ---
+
+## Model B discovery-adequacy decision rule
+
+Committed 2026-08-26, **before the diagnostic was implemented and before any of
+its output was seen**.
+
+RAPTOR searches with per-pattern headways, which is Model A's valuation. Model B
+prices a movement on the combined frequency of the route's qualifying patterns,
+so a route sequence can be cheap under Model B that RAPTOR, searching under
+Model A, never had reason to explore. Correct valuation is not sufficient if
+the corrected model cannot discover its own preferred alternatives.
+
+**Method.** For every tested OD-period, run RAPTOR again with *route-level*
+headways — every pattern priced at its route's full frequency. Because a Model B
+multiplier can never be better than the whole direction's combined frequency,
+that run is a strict **lower bound** on any Model B path cost. Where the bound
+is not below the candidate set's best Model B cost, no omission is possible and
+the pair is cleared outright. Where it is below, reconstruct the bound-optimal
+journey, price it *exactly* under Model B, and compare. That turns "might be
+omitted" into "is omitted, and by this much", with the route sequence named.
+
+**A path counts as materially better** when it beats the candidate set's best
+Model B cost by **at least 1.0 generalized minute AND at least 1%** of that
+cost. Below that is float noise and detours nobody would notice.
+
+**Materiality is flow-weighted**, not counted:
+
+| Case | Flow share with a materially better omitted path | Flow-weighted gc improvement over tested flow | Action |
+|---|---|---|---|
+| **A — negligible** | < 1.0% | < 0.25% | document, keep per-pattern enumeration, proceed |
+| **B — local** | 1.0–3.0% | 0.25–1.0% | document the residual, optionally augment those corridors, name it as a limitation |
+| **C — material** | ≥ 3.0% | ≥ 1.0% | **do not freeze the yardstick.** Augment candidate generation, rerun the diagnostic, proceed only once the residual is non-material |
+
+Either bound triggers the worse case. The 1.0% generalized-cost line is chosen
+against the effect being claimed: Experiment 1's is roughly 2% of generalized
+cost, and the cross-route common-lines bound already accepted as non-blocking is
+0.79%. A discovery gap at or above 1% is therefore comparable to the result
+itself; a quarter of that is not.
+
+If Case C occurs, the response is targeted candidate-generation augmentation
+around the affected corridors — **not** replacing RAPTOR with a full
+common-lines assignment engine, and not compensating anywhere else in the model.
 
 ## Model versions
 
