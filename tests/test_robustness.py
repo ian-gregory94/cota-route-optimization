@@ -197,3 +197,55 @@ def test_a_perturbation_records_why_it_is_plausible():
 def test_an_unknown_perturbation_kind_is_refused():
     with pytest.raises(ValueError):
         Perturbation("x", "vibes")
+
+
+# -- reweighting a built path set --------------------------------------------
+
+def _tiny_pathset():
+    from cota_opt.pathset import PathSet
+    return PathSet(period="am", n_od=3,
+                   leg_path=np.array([0, 1, 2]), leg_rp=np.array([0, 0, 1]),
+                   leg_ivt=np.array([5.0, 6.0, 7.0]),
+                   leg_walk=np.zeros(3),
+                   leg_is_boarding=np.ones(3, bool),
+                   leg_is_transfer=np.zeros(3, bool),
+                   path_od=np.array([0, 1, 2]),
+                   path_offsets=np.array([0, 1, 2, 3]),
+                   od_offsets=np.array([0, 1, 2, 3]),
+                   od_flow=np.array([10.0, 20.0, 30.0]),
+                   od_walk_only=np.full(3, np.inf))
+
+
+def test_reweighting_scales_the_demand_and_leaves_the_paths_alone():
+    from cota_opt.robustness import reweight_pathset
+    ps = _tiny_pathset()
+    out = reweight_pathset(ps, 2.0)
+    assert np.allclose(out.od_flow, [20.0, 40.0, 60.0])
+    assert np.array_equal(out.leg_ivt, ps.leg_ivt)
+    assert out.n_paths == ps.n_paths
+
+
+def test_the_original_path_set_is_not_contaminated():
+    """A sweep must not perturb the run it is testing."""
+    from cota_opt.robustness import reweight_pathset
+    ps = _tiny_pathset()
+    reweight_pathset(ps, 5.0)
+    assert np.allclose(ps.od_flow, [10.0, 20.0, 30.0])
+
+
+def test_a_per_od_vector_reweights_pair_by_pair():
+    from cota_opt.robustness import reweight_pathset
+    out = reweight_pathset(_tiny_pathset(), np.array([0.0, 1.0, 2.0]))
+    assert np.allclose(out.od_flow, [0.0, 20.0, 60.0])
+
+
+def test_a_wrongly_shaped_factor_is_refused_rather_than_broadcast():
+    from cota_opt.robustness import reweight_pathset
+    with pytest.raises(ValueError, match="does not match"):
+        reweight_pathset(_tiny_pathset(), np.array([1.0, 2.0]))
+
+
+def test_negative_demand_is_refused():
+    from cota_opt.robustness import reweight_pathset
+    with pytest.raises(ValueError):
+        reweight_pathset(_tiny_pathset(), np.array([1.0, -1.0, 1.0]))

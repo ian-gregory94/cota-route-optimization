@@ -29,6 +29,7 @@ import numpy as np
 import pandas as pd
 
 from .odmatrix import ODTable
+from .pathset import PathSet
 
 
 # -- perturbing the demand ---------------------------------------------------
@@ -192,3 +193,34 @@ def summary(verdict: pd.DataFrame) -> dict:
             "it is not resting on the demand assumptions that were varied. A "
             "claim that breaks names the assumption it was resting on."),
     }
+
+
+# -- perturbing a built path set ---------------------------------------------
+
+def reweight_pathset(ps: PathSet, factor) -> PathSet:
+    """A path set with different demand on the same paths.
+
+    Which paths exist depends on headways and costs, not on how many people
+    walk them, so a demand perturbation does not require re-enumeration -- it
+    requires replacing one vector. That is what makes a dense sweep affordable
+    at all: re-enumerating six periods per perturbation would put a ten-point
+    sweep out of reach and a two-point one is not a sweep.
+
+    ``factor`` is a scalar or a per-OD vector. The path set is copied
+    shallowly, so the original keeps its own flows and a sweep cannot
+    contaminate the run it is testing.
+    """
+    from dataclasses import replace as _replace
+    f = np.asarray(factor, float)
+    if f.ndim == 0:
+        if f <= 0:
+            raise ValueError("scale factor must be positive")
+        new = ps.od_flow * float(f)
+    elif f.shape == ps.od_flow.shape:
+        if np.any(f < 0):
+            raise ValueError("per-OD factors must be non-negative")
+        new = ps.od_flow * f
+    else:
+        raise ValueError(f"factor shape {f.shape} does not match "
+                         f"{ps.od_flow.shape} OD pairs")
+    return _replace(ps, od_flow=new)
