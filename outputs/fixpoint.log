@@ -79,3 +79,5 @@
 2026-08-26 17:24:22,171   lambda=1.0  resumed from checkpoint (gc -2.12%)
 2026-08-26 17:45:17,091 solve lambda=2.0: obj=3.01867e+06 vh=2510.7/2517.2 exchanges=86
 2026-08-26 17:45:17,092   lambda=2.0  1255s gc   +0.41% unserved   -6.35%
+2026-08-26 18:02:45,255 solve lambda=8.0: obj=6.66346e+06 vh=2512.6/2517.2 exchanges=25
+2026-08-26 18:02:45,256   lambda=8.0  1048s gc   +1.03% unserved   -7.05%

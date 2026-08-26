@@ -42,6 +42,7 @@ class Harness:
     classes: dict
     pathsets: dict
     assumptions: dict
+    common_lines: str = "pattern"
 
     def setup(self, with_crowding: bool, lock_classes: tuple[str, ...],
               seed: int = 20260825,
@@ -50,6 +51,7 @@ class Harness:
                            seed=seed, route_classes=self.classes,
                            with_crowding=with_crowding,
                            lock_classes=lock_classes,
+                           common_lines=self.common_lines,
                            pathset_cache=pathsets if pathsets is not None
                            else self.pathsets)
 
@@ -77,10 +79,12 @@ class Harness:
                                    "access_radius": pa["access_radius_m"],
                                    "seed": seed,
                                    "cap_rule": "max(cfg,n_scenarios)",
+                                   "common_lines": self.common_lines,
                                    "extra": tag},
                       lambda: _build_all_pathsets(
                           self.baseline, self.raptor, self.zones, self.od,
-                          self.classes, seed, extra_scenarios), use_cache)
+                          self.classes, seed, extra_scenarios,
+                          common_lines=self.common_lines), use_cache)
 
 
 def _gtfs_fingerprint() -> str:
@@ -88,7 +92,8 @@ def _gtfs_fingerprint() -> str:
     return rec.sha256[:16] if rec else "UNKNOWN"
 
 
-def build_harness(seed: int = 20260825, use_cache: bool = True) -> Harness:
+def build_harness(seed: int = 20260825, use_cache: bool = True,
+                  common_lines: str | None = None) -> Harness:
     """Assemble everything, reusing cached pieces where the inputs match."""
     fp = _gtfs_fingerprint()
 
@@ -138,6 +143,8 @@ def build_harness(seed: int = 20260825, use_cache: bool = True) -> Harness:
     ts["period"] = ts["first_dep_sec"].map(lambda s: period_of_seconds(s, periods))
     classes = classify_routes(ts.dropna(subset=["period"]), b.feed.routes)
 
+    cl = str(common_lines if common_lines is not None
+             else pa.get("common_lines", "pattern"))
     ps = cached("pathsets", {"gtfs": fp, "lodes": od_rec.sha256[:16] if od_rec else "NA",
                              "top_k": pa["od_top_k"],
                              "scale": a["demand_proxy"]["assumed_weekday_linked_trips"],
@@ -147,19 +154,22 @@ def build_harness(seed: int = 20260825, use_cache: bool = True) -> Harness:
                              "walk_radius": pa["walk_radius_m"],
                              "access_radius": pa["access_radius_m"],
                              "seed": seed,
-                             "cap_rule": "max(cfg,n_scenarios)"},
-                lambda: _build_all_pathsets(b, rn, zs, od, classes, seed),
+                             "cap_rule": "max(cfg,n_scenarios)",
+                             "common_lines": cl},
+                lambda: _build_all_pathsets(b, rn, zs, od, classes, seed,
+                                            common_lines=cl),
                 use_cache)
 
     return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
-                   pathsets=ps, assumptions=a)
+                   pathsets=ps, assumptions=a, common_lines=cl)
 
 
 def _build_all_pathsets(b, rn, zs, od, classes, seed,
-                        extra_scenarios: list | None = None) -> dict:
+                        extra_scenarios: list | None = None,
+                        common_lines: str | None = None) -> dict:
     """Build every period's path set once (the ~9-minute step)."""
     store: dict = {}
     build_setup(b, rn, zs, od, seed=seed, route_classes=classes,
                 with_crowding=False, lock_classes=(), pathset_cache=store,
-                extra_scenarios=extra_scenarios)
+                extra_scenarios=extra_scenarios, common_lines=common_lines)
     return store

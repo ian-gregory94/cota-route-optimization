@@ -23,6 +23,7 @@ running. No final numbers from either had been seen.
 | 7 | Important λ results are seed-stable | at least three seeds at λ = 2; the reported effect must exceed its own standard deviation by a clear margin |
 | 8 | Vehicle-hour and baseline assertions still pass | `vh_relative_error < 1e-9` in `build_setup`; every plan within the 2,517-hour envelope |
 | 9 | Residual path-set inadequacy cannot change the interpretation | the remaining overstatement, applied in full and in the direction that most favours the headline, does not move the balanced point across a qualitative boundary |
+| 10 | **Same-route common-lines residual is small enough not to matter** | after the Model B correction, re-run the common-lines diagnostic: the same-route component must collapse to a level shown not to materially alter the final frontier. Added 2026-08-26, when the defect was identified; the thresholds above are unchanged. |
 
 **Language gate.** If generalized cost at the balanced point lands near zero,
 that is **not** a free lunch and must not be described as one. The permitted
@@ -89,6 +90,32 @@ finalized Experiment 1 frontier, not distance from today.
   never adopted because it makes a particular proposal look better.
 
 ---
+
+## Model versions
+
+Two complete model versions, both preserved. Later results never overwrite
+earlier ones.
+
+**Model A — pattern-specific waiting.** A ride leg is priced at the chosen
+pattern's headway. The Experiment 1 fixpoint and the 60-candidate geometry
+screen were run under it and are kept as the control: the original converged
+result, the path-set adequacy analysis, and a reproducible record of the
+common-lines bias.
+
+**Model B — same-route common-lines corrected.** A ride leg is priced on the
+combined frequency of every same-route pattern that serves the boarding stop,
+the alighting stop, and in that order. Model A is the special case where one
+pattern qualifies, so B is a strict generalisation.
+
+The Experiment 1 headline is not final until Model B completes. Until then the
+result is described as: *the pre-correction model finds roughly 6-7% lower
+unserved demand from frequency redistribution, but a newly identified
+same-route waiting-cost bias systematically undervalues high-frequency trunk
+service; the corrected frontier is being rerun.*
+
+Cross-route common lines (0.79% of generalized cost) stays a documented
+limitation and follow-on task, and is promoted to a required correction only if
+a later diagnostic shows it could reorder the frontier.
 
 ## Standing rules
 

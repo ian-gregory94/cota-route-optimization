@@ -97,8 +97,23 @@ def bound(ps: PathSet, ev: PathSetEvaluator, rn: RaptorNetwork,
           weights: CostWeights, wait_kwargs: dict,
           ivt_tolerance: float = 1.25,
           max_legs: int = 200_000) -> pd.DataFrame:
-    """Per-leg wait saving if riders boarded the first acceptable bus."""
+    """Per-leg wait saving if riders boarded the first acceptable bus.
+
+    The baseline is whatever the **active model** charges, read from the leg's
+    own stored headway multiplier rather than recomputed. That is what makes
+    this diagnostic usable as an A/B test: under Model A the leg carries one
+    pattern's headway and the same-route residual is large; under Model B it
+    already carries the combined same-route frequency and the same-route
+    residual should collapse, leaving only the cross-route part.
+
+    Three frequencies are accumulated per leg:
+
+    ``f_now``    what the model charges for this leg today
+    ``f_same``   every same-route pattern that could carry the movement
+    ``f_cross``  every other route's pattern that could carry it comparably
+    """
     from .attribution import best_paths
+    from .pathset import qualifying_patterns
 
     if ps.leg_pattern is None or ps.leg_board_pos is None:
         raise ValueError("path set carries no ride geometry; rebuild it")
@@ -111,28 +126,28 @@ def bound(ps: PathSet, ev: PathSetEvaluator, rn: RaptorNetwork,
 
     t = float(wait_kwargs.get("random_arrival_threshold_min", 12.0))
     c = float(wait_kwargs.get("schedule_coefficient", 0.25))
-    # headway seen by a pattern, not by its route: a route running three
-    # patterns does not give any one of them the route's frequency
     rp_of_key = {k: i for i, k in enumerate(ps.rp_keys)}
     pat_h = np.full(rn.n_patterns, np.inf)
-    for p in range(rn.n_patterns):
-        key = (rn.pattern_route[p], period)
-        i = rp_of_key.get(key)
+    for q in range(rn.n_patterns):
+        i = rp_of_key.get((rn.pattern_route[q], period))
         if i is None:
             continue
-        n_pat = rn.pattern_trips_period.get((rn.pattern_ids[p], period), 0)
+        n_pat = rn.pattern_trips_period.get((rn.pattern_ids[q], period), 0)
         n_dir = rn.direction_trips_period.get(
-            (rn.pattern_route[p], rn.pattern_direction[p], period), 0)
+            (rn.pattern_route[q], rn.pattern_direction[q], period), 0)
         mult = float(n_dir) / float(n_pat) if n_pat > 0 and n_dir > 0 else 1.0
-        pat_h[p] = h[i] * mult
+        pat_h[q] = h[i] * mult
 
+    mults = (ps.leg_headway_mult if ps.leg_headway_mult is not None
+             else np.ones(ps.n_legs))
     rows = []
     seen = 0
     for oi, p in zip(np.flatnonzero(idx >= 0), chosen):
-        a, b = ps.path_offsets[p], ps.path_offsets[p + 1]
+        lo, hi = ps.path_offsets[p], ps.path_offsets[p + 1]
         flow = float(ps.od_flow[oi])
-        for li in range(a, b):
-            if ps.leg_rp[li] < 0 or ps.leg_pattern[li] < 0:
+        for li in range(lo, hi):
+            rp = int(ps.leg_rp[li])
+            if rp < 0 or ps.leg_pattern[li] < 0:
                 continue
             seen += 1
             if seen > max_legs:
@@ -141,54 +156,52 @@ def bound(ps: PathSet, ev: PathSetEvaluator, rn: RaptorNetwork,
             bpos, apos = int(ps.leg_board_pos[li]), int(ps.leg_alight_pos[li])
             if bpos < 0 or apos <= bpos:
                 continue
+            h_now = float(h[rp] * mults[li])
+            if not (h_now > 0 and np.isfinite(h_now)):
+                continue
+            f_now = 1.0 / h_now
+
+            same = qualifying_patterns(rn, pat, bpos, apos, period)
+            f_same = sum(1.0 / pat_h[q] for q in same
+                         if np.isfinite(pat_h[q]) and pat_h[q] > 0)
             alts = _alternatives(rn, pat, bpos, apos, ivt_tolerance)
-            if len(alts) <= 1:
-                continue
-            ok = [(q, iv) for q, iv in alts
-                  if np.isfinite(pat_h[q]) and pat_h[q] > 0]
-            if len(ok) <= 1:
-                continue
-            hs = np.array([pat_h[q] for q, _ in ok])
             own_route = rn.pattern_route[pat]
-            n_same_route = sum(1 for q, _ in ok
-                               if rn.pattern_route[q] == own_route)
-            # Same-route alternatives are a different problem from hyperpaths:
-            # a rider at a stop served by four patterns of route 10 is already
-            # choosing among one route's departures, and charging them one
-            # pattern's headway is a pattern-aggregation error the current
-            # model could fix cheaply. Cross-route alternatives are the actual
-            # optimal-strategy question. They are counted separately because
-            # the fixes are different and so are the costs.
-            hs_cross = np.array([pat_h[q] for q, _ in ok
-                                 if rn.pattern_route[q] != own_route
-                                 or q == pat])
-            combined = 1.0 / np.sum(1.0 / hs)
-            combined_cross = (1.0 / np.sum(1.0 / hs_cross)
-                              if len(hs_cross) else pat_h[pat])
-            w_now = float(_wait(pat_h[pat], t, c))
-            w_hyp = float(_wait(combined, t, c))
-            w_cross = float(_wait(combined_cross, t, c))
-            if w_hyp >= w_now - 1e-9:
+            f_cross = sum(1.0 / pat_h[q] for q, _ in alts
+                          if rn.pattern_route[q] != own_route
+                          and np.isfinite(pat_h[q]) and pat_h[q] > 0)
+
+            f_with_same = max(f_now, f_same)
+            w_now = float(_wait(h_now, t, c))
+            w_same = float(_wait(1.0 / f_with_same, t, c)) if f_with_same > 0 \
+                else w_now
+            w_all = float(_wait(1.0 / (f_with_same + f_cross), t, c)) \
+                if (f_with_same + f_cross) > 0 else w_same
+            if w_all >= w_now - 1e-9:
                 continue
             wt = (weights.transfer_wait if ps.leg_is_transfer[li]
                   else weights.waiting)
+            n_cross_routes = len({rn.pattern_route[q] for q, _ in alts
+                                  if rn.pattern_route[q] != own_route})
             rows.append({
                 "period": period,
                 "od_index": int(oi),
                 "flow": flow,
-                "route": ps.rp_keys[int(ps.leg_rp[li])][0],
-                "n_attractive_lines": int(len(hs)),
-                "n_same_route_patterns": int(n_same_route),
-                "n_other_routes": int(len({rn.pattern_route[q] for q, _ in ok})
-                                      - 1),
-                "own_headway_min": float(pat_h[pat]),
-                "combined_headway_min": float(combined),
+                "route": ps.rp_keys[rp][0],
+                "n_same_route_patterns": len(same),
+                "n_other_routes": n_cross_routes,
+                "n_attractive_lines": len(same) + n_cross_routes,
+                "own_headway_min": h_now,
+                "combined_headway_min": (1.0 / (f_with_same + f_cross)
+                                         if (f_with_same + f_cross) > 0 else h_now),
                 "wait_now_min": w_now,
-                "wait_hyperpath_min": w_hyp,
-                "saving_min": (w_now - w_hyp) * wt,
-                "flow_weighted_saving": (w_now - w_hyp) * wt * flow,
-                "saving_cross_route_only_min": (w_now - w_cross) * wt,
-                "flow_weighted_saving_cross_route": (w_now - w_cross) * wt * flow,
+                "wait_hyperpath_min": w_all,
+                # the split that says which of the two problems this leg is
+                "saving_min": (w_now - w_all) * wt,
+                "flow_weighted_saving": (w_now - w_all) * wt * flow,
+                "saving_same_route_min": (w_now - w_same) * wt,
+                "flow_weighted_saving_same_route": (w_now - w_same) * wt * flow,
+                "saving_cross_route_only_min": (w_same - w_all) * wt,
+                "flow_weighted_saving_cross_route": (w_same - w_all) * wt * flow,
             })
         if seen > max_legs:
             log.warning("hyperpath bound truncated at %d legs", max_legs)
@@ -223,6 +236,13 @@ def summarize(per_leg: pd.DataFrame, baseline_gc: float,
         # the split that decides which problem this actually is
         "cross_route_bound_min": cross,
         "cross_route_share_of_generalized_cost_pct": cross_share,
+        "same_route_bound_min": float(
+            per_leg.get("flow_weighted_saving_same_route",
+                        pd.Series(dtype=float)).sum()),
+        "same_route_share_of_generalized_cost_pct": 100.0 * float(
+            per_leg.get("flow_weighted_saving_same_route",
+                        pd.Series(dtype=float)).sum()) / baseline_gc
+        if baseline_gc else np.nan,
         "same_route_pattern_share_of_bound_pct":
             100.0 * (1 - cross / total) if total else np.nan,
         "legs_whose_alternatives_are_all_same_route": int(

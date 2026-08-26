@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "n_links": 5832,
+    "n_folds": 5,
+    "mae_sec": 17.180353501285033,
+    "median_ape_pct": 20.503545125660843,
+    "bias_sec_per_link": 0.26882203367734653,
+    "median_signed_pct": 5.763830308841,
+    "aggregate_bias_pct": 0.4125081172890151,
+    "share_underestimated": 0.3698559670781893,
+    "p05_error_sec": -44.74952482457051,
+    "p95_error_sec": 27.865970558699235
+  },
+  "verdict": "unbiased",
+  "explanation": "aggregate bias +0.41% is within +/-2.0%; novel-link candidates are not systematically flattered",
+  "calibration": {
+    "multiplier_to_zero_aggregate_bias": 0.9958918652165606
+  }
+}

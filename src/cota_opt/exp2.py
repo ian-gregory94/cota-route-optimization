@@ -187,7 +187,8 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                 pathset_cache: dict | None = None,
                 extra_scenarios: list[tuple[str, dict]] | None = None,
                 max_paths_per_od: int | None = None,
-                n_random_scenarios: int | None = None) -> Exp2Setup:
+                n_random_scenarios: int | None = None,
+                common_lines: str | None = None) -> Exp2Setup:
     from .exp1 import build_setup as exp1_setup
 
     a = b.assumptions
@@ -230,7 +231,11 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                                    if n_random_scenarios is None
                                    else n_random_scenarios),
                                seed=seed,
-                               extra_scenarios=extra_scenarios)
+                               extra_scenarios=extra_scenarios,
+                               common_lines=str(
+                                   common_lines
+                                   if common_lines is not None
+                                   else pa.get("common_lines", "pattern")))
             if pathset_cache is not None:
                 pathset_cache[per] = ps
         pathsets[per] = ps
@@ -310,6 +315,8 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     checks["locked_route_periods"] = len(locked)
     checks["locked_routes"] = sorted({k[0] for k in locked})
     checks["with_crowding"] = bool(with_crowding)
+    checks["common_lines"] = str(common_lines if common_lines is not None
+                                 else pa.get("common_lines", "pattern"))
     if load_profiles:
         checks["peak_load_factor_median"] = float(np.median(np.concatenate(
             [lp.peak_load_factor[lp.boardings > 0] for lp in load_profiles.values()])))

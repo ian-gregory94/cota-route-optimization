@@ -88,6 +88,16 @@ passenger:
 
 # Path-based (RAPTOR) assignment. Used by Experiment 2.
 path_assignment:
+  # Waiting-time model for a ride leg.
+  #   "pattern"    Model A: the chosen pattern's own headway. Correct when that
+  #                pattern is the only one that can carry the movement.
+  #   "same_route" Model B: the combined frequency of every same-route pattern
+  #                that serves the boarding stop, the alighting stop, and in
+  #                that order. A passenger boards whichever arrives first.
+  # Model A undervalues high-frequency trunk service, which runs the most
+  # pattern variants, so it is biased against exactly the routes the frequency
+  # optimizer proposes to cut. Measured at ~4.3% of generalized cost.
+  common_lines: pattern
   walk_radius_m: 400          # stop-to-stop footpath radius for transfers
   walk_speed_m_per_min: 80    # 4.8 km/h
   access_radius_m: 600        # zone centroid to boarding stop

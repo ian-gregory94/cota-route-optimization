@@ -103,6 +103,7 @@ def build_pathset(
     n_random_scenarios: int = 3,
     seed: int = 0,
     extra_scenarios: list[tuple[str, dict]] | None = None,
+    common_lines: str = "pattern",
 ) -> PathSet:
     """Enumerate candidate paths for every OD pair in ``od``.
 
@@ -130,6 +131,7 @@ def build_pathset(
     walk_only = np.full(n_od, np.inf)
 
     n_rejected = [0]
+    cl_cache: dict = {}
     scenarios = _plan_scenarios(rp_keys, baseline_headways, rng, n_random_scenarios)
     for name, hw in (extra_scenarios or []):
         missing = [k for k in rp_keys if k not in hw]
@@ -180,7 +182,8 @@ def build_pathset(
                                 int(rounds[stop]), src_set)
                 if j is None:
                     continue
-                legs = _legs_from_journey(j, route_of_pat, rn, rp_index, period)
+                legs = _legs_from_journey(j, route_of_pat, rn, rp_index,
+                                          period, common_lines, cl_cache)
                 if legs is None:
                     continue
                 # access and egress walking attach to the ends
@@ -188,10 +191,10 @@ def build_pathset(
                     rn.stop_index[j.legs[0].from_stop])]) \
                     if rn.stop_index[j.legs[0].from_stop] in list(a_stops) else 0.0
                 legs = ([("walk", -1, 0.0, access_walk, False, False,
-                          -1, -1, -1, 1.0)] if access_walk else []) \
+                          -1, -1, -1, 1.0, 1.0)] if access_walk else []) \
                     + legs \
                     + ([("walk", -1, 0.0, float(e_walk[k]), False, False,
-                         -1, -1, -1, 1.0)] if e_walk[k] > 0 else [])
+                         -1, -1, -1, 1.0, 1.0)] if e_walk[k] > 0 else [])
                 # Self-check: a stored path must re-price to the cost RAPTOR
                 # reported for it. A path that prices cheaper than RAPTOR's
                 # optimum is malformed (a truncated trace, a dropped leg) and
@@ -200,6 +203,8 @@ def build_pathset(
                 if priced < tot[k] - 1e-6 or priced > tot[k] + 1e-3:
                     n_rejected[0] += 1
                     continue
+                # the path is sound; store it priced under the active model
+                legs = [l[:9] + (l[10],) for l in legs]
                 sig = tuple((l[0], l[1], round(l[2], 3), round(l[3], 3)) for l in legs)
                 if len(found[oi]) < cap or sig in found[oi]:
                     found[oi][sig] = legs
@@ -223,7 +228,8 @@ def _price_legs(legs, hw: dict, w: CostWeights, wait_kwargs: dict,
     from .cost import expected_wait_min
     rp_keys = sorted(hw)
     total = 0.0
-    for kind, rp, ivt, walk, board, xfer, _pat, _bp, _ap, mult in legs:
+    for leg in legs:
+        kind, rp, ivt, walk, board, xfer, _pat, _bp, _ap, mult = leg[:10]
         total += w.walking * walk + w.in_vehicle * ivt
         if rp >= 0:
             h = hw[rp_keys[rp]] * mult
@@ -235,13 +241,16 @@ def _price_legs(legs, hw: dict, w: CostWeights, wait_kwargs: dict,
 
 def _headway_multiplier(rn, pattern_id: str, route_id: str, direction: int,
                         period: str) -> float:
-    """How much less frequent one pattern is than its route.
+    """How much less frequent one pattern is than its route (**Model A**).
 
     A passenger riding a specific pattern only benefits from that pattern's
     trips, so its effective headway is the route's headway scaled by the share
     of the direction's trips the pattern carries. The ratio is structural — the
     trip mix between pattern variants is fixed with the geometry — so it is
     baked into the leg and multiplies whatever headway the optimizer chooses.
+
+    This is right when the chosen pattern is the only one that can carry the
+    movement, and wrong when it is not. See ``common_lines_multiplier``.
     """
     n_pat = rn.pattern_trips_period.get((pattern_id, period), 0)
     n_dir = rn.direction_trips_period.get((route_id, direction, period), 0)
@@ -250,7 +259,76 @@ def _headway_multiplier(rn, pattern_id: str, route_id: str, direction: int,
     return float(n_dir) / float(n_pat)
 
 
-def _legs_from_journey(j, route_of_pat, rn, rp_index, period):
+def qualifying_patterns(rn, pi: int, bpos: int, apos: int,
+                        period: str) -> list[int]:
+    """Patterns of the same route a passenger could board interchangeably.
+
+    A pattern qualifies for a boarding-to-alighting movement only if it serves
+    the boarding stop, serves the alighting stop, does so in that order, and
+    runs in this period. Sharing a route id is not enough: a short-turn that
+    stops before the destination cannot carry the passenger, and a pattern that
+    passes both stops in the opposite order is going the other way.
+    """
+    off = rn.pat_offsets
+    b_stop = int(rn.pat_stops[off[pi] + bpos])
+    a_stop = int(rn.pat_stops[off[pi] + apos])
+    route = rn.pattern_route[pi]
+    out = []
+    s0, s1 = rn.stop_pat_offsets[b_stop], rn.stop_pat_offsets[b_stop + 1]
+    for k in range(s0, s1):
+        q = int(rn.stop_pat_idx[k])
+        if rn.pattern_route[q] != route:
+            continue
+        if rn.pattern_trips_period.get((rn.pattern_ids[q], period), 0) <= 0:
+            continue
+        qb = int(rn.stop_pat_pos[k])
+        seq = rn.pat_stops[off[q] + qb + 1:off[q + 1]]
+        if a_stop in seq:                      # reaches the destination, after
+            out.append(q)
+    return out
+
+
+def common_lines_multiplier(rn, pi: int, bpos: int, apos: int, period: str,
+                            cache: dict | None = None) -> float:
+    """Headway multiplier over every same-route pattern that serves the movement.
+
+    **Model B.** Where several of a route's patterns all carry a passenger from
+    their boarding stop to their alighting stop, the passenger boards whichever
+    arrives first and waits on the combined frequency. Charging one pattern's
+    headway overstates the wait, and it does so worst on the high-frequency
+    trunk routes that run the most pattern variants.
+
+    The arithmetic stays inside the existing representation. A pattern's
+    headway is ``h_route * n_direction_trips / n_pattern_trips``, so its
+    frequency is ``n_pattern_trips / (h_route * n_direction_trips)``. Summing
+    frequency over the qualifying set and inverting gives a multiplier on the
+    same route headway the optimizer controls:
+
+        mult = 1 / sum_q ( n_trips(q) / n_direction_trips(q) )
+
+    With one qualifying pattern this is exactly ``n_dir / n_pat`` — Model A —
+    so the correction is a strict generalisation rather than a different model.
+    """
+    key = (pi, bpos, apos, period)
+    if cache is not None and key in cache:
+        return cache[key]
+    qs = qualifying_patterns(rn, pi, bpos, apos, period)
+    total = 0.0
+    for q in qs:
+        n_pat = rn.pattern_trips_period.get((rn.pattern_ids[q], period), 0)
+        n_dir = rn.direction_trips_period.get(
+            (rn.pattern_route[q], rn.pattern_direction[q], period), 0)
+        if n_pat > 0 and n_dir > 0:
+            total += float(n_pat) / float(n_dir)
+    mult = (1.0 / total) if total > 0 else 1.0
+    if cache is not None:
+        cache[key] = mult
+    return mult
+
+
+def _legs_from_journey(j, route_of_pat, rn, rp_index, period,
+                       common_lines: str = "pattern",
+                       cl_cache: dict | None = None):
     """Journey -> leg tuples, or None if any ride leg has no priceable headway.
 
     Ride legs carry the pattern and the board/alight positions so segment loads
@@ -262,7 +340,7 @@ def _legs_from_journey(j, route_of_pat, rn, rp_index, period):
     for l in j.legs:
         if l.kind == "walk":
             out.append(("walk", -1, 0.0, float(l.walk_min), False, False,
-                        -1, -1, -1, 1.0))
+                        -1, -1, -1, 1.0, 1.0))
             continue
         key = (l.route_id, period)
         idx = rp_index.get(key)
@@ -278,11 +356,20 @@ def _legs_from_journey(j, route_of_pat, rn, rp_index, period):
                 apos = stops.index(rn.stop_index[l.to_stop], bpos + 1)
             except (ValueError, KeyError):
                 bpos = apos = -1
-        mult = _headway_multiplier(rn, l.pattern_id, l.route_id,
-                                   rn.pattern_direction[pi] if pi >= 0 else 0,
-                                   period)
+        # Model A's multiplier is kept alongside Model B's because the
+        # re-pricing self-check below has to reproduce RAPTOR's own arithmetic
+        # exactly, and RAPTOR prices per pattern. That check is what caught a
+        # truncated-reconstruction bug once; weakening it to accommodate the
+        # correction would trade a real integrity guarantee for convenience.
+        mult_a = _headway_multiplier(
+            rn, l.pattern_id, l.route_id,
+            rn.pattern_direction[pi] if pi >= 0 else 0, period)
+        mult_b = mult_a
+        if common_lines == "same_route" and pi >= 0 and 0 <= bpos < apos:
+            mult_b = common_lines_multiplier(rn, pi, bpos, apos, period,
+                                             cl_cache)
         out.append(("ride", idx, float(l.in_vehicle_min), 0.0,
-                    True, not first_ride, pi, bpos, apos, mult))
+                    True, not first_ride, pi, bpos, apos, mult_a, mult_b))
         first_ride = False
     return out if any(l[0] == "ride" for l in out) else None
 
