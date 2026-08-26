@@ -61,6 +61,8 @@ class PathSet:
     od_flow: np.ndarray             # daily trips per OD
     od_walk_only: np.ndarray        # walk-only fallback cost, inf if none
     rp_keys: list[tuple[str, str]] = field(default_factory=list)
+    od_origin: np.ndarray | None = None     # origin zone id per OD index
+    od_dest: np.ndarray | None = None       # destination zone id per OD index
     # ride-leg geometry, used to recover segment loads and peak load points
     leg_pattern: np.ndarray | None = None    # pattern index, -1 for walk legs
     leg_board_pos: np.ndarray | None = None  # position along the pattern
@@ -100,8 +102,17 @@ def build_pathset(
     max_paths_per_od: int = 4,
     n_random_scenarios: int = 3,
     seed: int = 0,
+    extra_scenarios: list[tuple[str, dict]] | None = None,
 ) -> PathSet:
-    """Enumerate candidate paths for every OD pair in ``od``."""
+    """Enumerate candidate paths for every OD pair in ``od``.
+
+    ``extra_scenarios`` adds named headway vectors to the enumeration sweep on
+    top of the standard baseline/frequent/infrequent/random set. Feeding an
+    optimized plan back in this way is what closes the path-set fixpoint: the
+    optimizer can only choose among paths that were enumerated, so a plan that
+    makes some new path attractive must have that path added and then be
+    re-solved until the set stops growing.
+    """
     rng = np.random.default_rng(seed)
     rp_keys = sorted({k for k in baseline_headways})
     rp_index = {k: i for i, k in enumerate(rp_keys)}
@@ -120,9 +131,22 @@ def build_pathset(
 
     n_rejected = [0]
     scenarios = _plan_scenarios(rp_keys, baseline_headways, rng, n_random_scenarios)
+    for name, hw in (extra_scenarios or []):
+        missing = [k for k in rp_keys if k not in hw]
+        if missing:
+            raise ValueError(
+                f"extra scenario {name!r} is missing {len(missing)} route-period "
+                f"headways, e.g. {missing[:3]}")
+        scenarios.append((name, {k: float(hw[k]) for k in rp_keys}))
     origins = np.unique(o_sorted)
-    log.info("path enumeration: %d OD pairs, %d origin zones, %d scenarios",
-             n_od, len(origins), len(scenarios))
+    # Each scenario contributes at most one path per OD -- its own optimum. A
+    # per-OD cap below the scenario count therefore silently discards whole
+    # scenarios' worth of coverage on a first-come basis, which is one of the
+    # ways a candidate set ends up inadequate under an optimized plan. The cap
+    # is raised to the scenario count so every scenario's optimum is retained.
+    cap = max(int(max_paths_per_od), len(scenarios))
+    log.info("path enumeration: %d OD pairs, %d origin zones, %d scenarios, "
+             "cap %d paths/OD", n_od, len(origins), len(scenarios), cap)
 
     dest_by_origin: dict[int, np.ndarray] = {}
     starts = np.searchsorted(o_sorted, origins, side="left")
@@ -177,7 +201,7 @@ def build_pathset(
                     n_rejected[0] += 1
                     continue
                 sig = tuple((l[0], l[1], round(l[2], 3), round(l[3], 3)) for l in legs)
-                if len(found[oi]) < max_paths_per_od or sig in found[oi]:
+                if len(found[oi]) < cap or sig in found[oi]:
                     found[oi][sig] = legs
 
     # walk-only fallback where origin and destination share an access stop
@@ -306,6 +330,8 @@ def _flatten(found, o_sorted, d_sorted, f_sorted, walk_only, rp_keys, period):
         od_offsets=od_offsets,
         od_flow=np.asarray(f_sorted, float),
         od_walk_only=walk_only,
+        od_origin=np.asarray(o_sorted, dtype=np.int64),
+        od_dest=np.asarray(d_sorted, dtype=np.int64),
         rp_keys=list(rp_keys))
     n_with = int((np.diff(od_offsets) > 0).sum())
     log.info("path set: %d paths over %d/%d OD pairs (%.1f%% of flow served), "

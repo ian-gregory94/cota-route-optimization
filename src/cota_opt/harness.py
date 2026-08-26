@@ -44,12 +44,43 @@ class Harness:
     assumptions: dict
 
     def setup(self, with_crowding: bool, lock_classes: tuple[str, ...],
-              seed: int = 20260825) -> Exp2Setup:
+              seed: int = 20260825,
+              pathsets: dict | None = None) -> Exp2Setup:
         return build_setup(self.baseline, self.raptor, self.zones, self.od,
                            seed=seed, route_classes=self.classes,
                            with_crowding=with_crowding,
                            lock_classes=lock_classes,
-                           pathset_cache=self.pathsets)
+                           pathset_cache=pathsets if pathsets is not None
+                           else self.pathsets)
+
+    def pathsets_with(self, extra_scenarios: list[tuple[str, dict]],
+                      tag: str, seed: int = 20260825,
+                      use_cache: bool = True) -> dict:
+        """Path sets enumerated with extra headway scenarios folded in.
+
+        ``tag`` must identify the scenario list exactly -- it is the cache key,
+        so two different scenario lists sharing a tag would silently return
+        each other's path sets.
+        """
+        fp = _gtfs_fingerprint()
+        pa = self.assumptions["path_assignment"]
+        od_rec = Registry().get("lodes_od_oh")
+        return cached("pathsets", {"gtfs": fp,
+                                   "lodes": od_rec.sha256[:16] if od_rec else "NA",
+                                   "top_k": pa["od_top_k"],
+                                   "scale": self.assumptions["demand_proxy"]
+                                   ["assumed_weekday_linked_trips"],
+                                   "max_rounds": pa["max_rounds"],
+                                   "max_paths": pa["max_paths_per_od"],
+                                   "scenarios": pa["n_random_scenarios"],
+                                   "walk_radius": pa["walk_radius_m"],
+                                   "access_radius": pa["access_radius_m"],
+                                   "seed": seed,
+                                   "cap_rule": "max(cfg,n_scenarios)",
+                                   "extra": tag},
+                      lambda: _build_all_pathsets(
+                          self.baseline, self.raptor, self.zones, self.od,
+                          self.classes, seed, extra_scenarios), use_cache)
 
 
 def _gtfs_fingerprint() -> str:
@@ -115,7 +146,8 @@ def build_harness(seed: int = 20260825, use_cache: bool = True) -> Harness:
                              "scenarios": pa["n_random_scenarios"],
                              "walk_radius": pa["walk_radius_m"],
                              "access_radius": pa["access_radius_m"],
-                             "seed": seed},
+                             "seed": seed,
+                             "cap_rule": "max(cfg,n_scenarios)"},
                 lambda: _build_all_pathsets(b, rn, zs, od, classes, seed),
                 use_cache)
 
@@ -123,9 +155,11 @@ def build_harness(seed: int = 20260825, use_cache: bool = True) -> Harness:
                    pathsets=ps, assumptions=a)
 
 
-def _build_all_pathsets(b, rn, zs, od, classes, seed) -> dict:
+def _build_all_pathsets(b, rn, zs, od, classes, seed,
+                        extra_scenarios: list | None = None) -> dict:
     """Build every period's path set once (the ~9-minute step)."""
     store: dict = {}
     build_setup(b, rn, zs, od, seed=seed, route_classes=classes,
-                with_crowding=False, lock_classes=(), pathset_cache=store)
+                with_crowding=False, lock_classes=(), pathset_cache=store,
+                extra_scenarios=extra_scenarios)
     return store
