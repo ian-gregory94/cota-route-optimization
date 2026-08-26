@@ -81,28 +81,35 @@ def main() -> int:
     ap.add_argument("--tol", type=float, default=0.002,
                     help="stop when worst improvable flow share moves less than this")
     ap.add_argument("--seed", type=int, default=20260825)
+    ap.add_argument("--common-lines", type=str, default=None,
+                    choices=[None, "pattern", "same_route"],
+                    help="waiting model; None uses the config default")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     lams = [float(x) for x in args.lambdas.split(",")]
     final_lams = [float(x) for x in args.final_lambdas.split(",")]
-    (OUT / "fixpoint_plans").mkdir(parents=True, exist_ok=True)
+    # Model A's outputs are the control and are never overwritten, so a
+    # corrected run writes to its own files.
+    suffix = "" if args.common_lines in (None, "pattern") else "_modelB"
+    (OUT / f"fixpoint_plans{suffix}").mkdir(parents=True, exist_ok=True)
 
-    exp = Experiment(name="exp6_fixpoint", seed=args.seed,
+    exp = Experiment(name=f"exp6_fixpoint{suffix}", seed=args.seed,
                      algorithm="path-set fixpoint: enumerate, solve, re-enumerate",
                      config_files=["assumptions.yaml", "cost_weights.yaml",
                                    "constraints.yaml", "sources.yaml"])
     log.info("experiment %s", exp.experiment_id)
-    store = ResultStore(OUT / "fixpoint.jsonl")
+    store = ResultStore(OUT / f"fixpoint{suffix}.jsonl")
 
     t0 = time.time()
-    H = build_harness(seed=args.seed)
+    H = build_harness(seed=args.seed, common_lines=args.common_lines)
     a = H.assumptions
     pa = a["path_assignment"]
     w = CostWeights.from_config(load_cost_weights())
     wk = dict(
         random_arrival_threshold_min=float(a["waiting"]["random_arrival_threshold_min"]),
         schedule_coefficient=float(a["waiting"]["schedule_coefficient"]))
-    log.info("harness ready in %.0fs", time.time() - t0)
+    log.info("harness ready in %.0fs; waiting model = %s", time.time() - t0,
+             H.common_lines)
 
     extra: list[tuple[str, dict]] = []
     history: list[dict] = []
@@ -155,7 +162,7 @@ def main() -> int:
                      m, time.time() - t, gc_pct, un_pct)
             pd.DataFrame([{"route_id": k[0], "period": k[1], "headway_min": v}
                           for k, v in r.plan.headways.items()]).to_csv(
-                OUT / "fixpoint_plans" / f"it{it}_lam{m}.csv", index=False)
+                OUT / f"fixpoint_plans{suffix}" / f"it{it}_lam{m}.csv", index=False)
 
         # Adequacy of THIS iteration's path set under the plans it just produced.
         ad_cell = f"it{it}|adequacy"
@@ -185,7 +192,7 @@ def main() -> int:
         history.append({"iteration": it, "n_paths": n_paths,
                         "worst_flow_share_improvable": worst,
                         "enum_seconds": enum_s})
-        pd.DataFrame(history).to_csv(OUT / "fixpoint_history.csv", index=False)
+        pd.DataFrame(history).to_csv(OUT / f"fixpoint_history{suffix}.csv", index=False)
         log.info("iteration %d: worst improvable flow share %.3f%% (%d paths)",
                  it, worst * 100, n_paths)
 
@@ -246,10 +253,10 @@ def main() -> int:
                  m, time.time() - t, gc_pct, un_pct, r.fitness.revenue_veh_hours)
         pd.DataFrame([{"route_id": k[0], "period": k[1], "headway_min": v}
                       for k, v in r.plan.headways.items()]).to_csv(
-            OUT / "fixpoint_plans" / f"final_lam{m}.csv", index=False)
+            OUT / f"fixpoint_plans{suffix}" / f"final_lam{m}.csv", index=False)
 
     fr = pd.DataFrame(final_rows)
-    fr.to_csv(OUT / "fixpoint_frontier.csv", index=False)
+    fr.to_csv(OUT / f"fixpoint_frontier{suffix}.csv", index=False)
 
     # Does the converged set hold up under plans it never saw during the loop?
     fa_cell = "final|adequacy"
@@ -305,13 +312,14 @@ def main() -> int:
         rescored.append(rec)
     if rescored:
         rs = pd.DataFrame(rescored)
-        rs.to_csv(OUT / "fixpoint_rescored.csv", index=False)
+        rs.to_csv(OUT / f"fixpoint_rescored{suffix}.csv", index=False)
         log.info("re-scored %d earlier plans on the converged yardstick",
                  len(rs))
 
     hist = pd.DataFrame(history)
-    hist.to_csv(OUT / "fixpoint_history.csv", index=False)
-    exp.log_metrics(history=history, lambdas=lams, final_lambdas=final_lams,
+    hist.to_csv(OUT / f"fixpoint_history{suffix}.csv", index=False)
+    exp.log_metrics(common_lines=H.common_lines,
+                    history=history, lambdas=lams, final_lambdas=final_lams,
                     final_adequacy=fad,
                     final_worst_improvable_flow_share=final_worst,
                     converged_n_paths=n_paths,

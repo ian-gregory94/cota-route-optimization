@@ -16,9 +16,27 @@ ROOT=$(pwd)
 alive() { pgrep -f "[p]ython $1" >/dev/null 2>&1; }
 done_() { tail -5 "$2" 2>/dev/null | grep -q "artifacts:"; }
 
-start() {   # name, script+args, log
-  echo "$(date -u +%FT%TZ) supervisor: starting $1" >> outputs/supervisor.log
+# One instance per job, enforced by a lock directory rather than by trusting
+# pgrep to have caught up: a restart racing its own previous attempt would put
+# two copies of the same run on an 8 GB box, which is how both jobs died once.
+start() {   # name, script+args, log, nice
+  local lock="outputs/.lock-$(echo "$1" | tr -c 'a-zA-Z0-9' '-')"
+  mkdir "$lock" 2>/dev/null || return 0
   setsid nohup nice -n "$4" python $2 >> "$3" 2>&1 < /dev/null &
+  local pid=$!
+  echo "$(date -u +%FT%TZ) supervisor: started $1 pid=$pid free=$(awk '/MemAvailable/{print int($2/1024)"MB"}' /proc/meminfo)" \
+    >> outputs/supervisor.log
+  ( sleep 90; rmdir "$lock" 2>/dev/null ) &
+}
+
+log_usage() {
+  for pat in "scripts/fixpoint.py" "scripts/run_exp2_screen.py"; do
+    for pid in $(pgrep -f "[p]ython $pat"); do
+      local rss=$(awk '/VmRSS/{print int($2/1024)}' /proc/$pid/status 2>/dev/null)
+      [ -n "$rss" ] && echo "$(date -u +%FT%TZ) $pat pid=$pid rss=${rss}MB" \
+        >> outputs/memory.log
+    done
+  done
 }
 
 while true; do
@@ -38,5 +56,6 @@ while true; do
       "scripts/run_exp2_screen.py --per-kind 12 --origin-sample 400" \
       outputs/exp2_screen.log 15
   fi
+  log_usage
   sleep 55
 done

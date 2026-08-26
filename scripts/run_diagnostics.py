@@ -49,15 +49,18 @@ def main() -> int:
                     help="size of the Experiment 1 generalized-cost effect the "
                          "bound is judged against")
     ap.add_argument("--skip-hyperpath", action="store_true")
+    ap.add_argument("--common-lines", type=str, default=None,
+                    choices=[None, "pattern", "same_route"])
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
-    exp = Experiment(name="model_diagnostics", seed=20260825,
+    suffix = "" if args.common_lines in (None, "pattern") else "_modelB"
+    exp = Experiment(name=f"model_diagnostics{suffix}", seed=20260825,
                      algorithm="GTFS block reconstruction; combined-frequency "
                                "upper bound on hyperpath behaviour",
                      config_files=["assumptions.yaml", "cost_weights.yaml",
                                    "constraints.yaml", "sources.yaml"])
-    H = build_harness()
+    H = build_harness(common_lines=args.common_lines)
     b, a = H.baseline, H.assumptions
     periods = service_periods(a)
     out: dict = {}
@@ -162,7 +165,8 @@ def main() -> int:
             per_leg.to_csv(exp.artifact_path("hyperpath_legs.csv"), index=False)
             hb.by_route.to_csv(exp.artifact_path("hyperpath_by_route.csv"),
                                index=False)
-            hb.by_route.to_csv(OUT / "hyperpath_by_route.csv", index=False)
+            hb.by_route.to_csv(OUT / f"hyperpath_by_route{suffix}.csv",
+                               index=False)
         out["hyperpath"] = {**hb.summary, "verdict": hb.verdict,
                             "explanation": hb.explanation,
                             "periods": args.periods.split(",")}
@@ -179,8 +183,9 @@ def main() -> int:
             print("\n  where it concentrates:")
             print(hb.by_route.head(8).round(3).to_string(index=False))
 
-    (OUT / "model_diagnostics.json").write_text(json.dumps(out, indent=2,
-                                                           default=str))
+    out["common_lines"] = H.common_lines
+    (OUT / f"model_diagnostics{suffix}.json").write_text(
+        json.dumps(out, indent=2, default=str))
     exp.log_metrics(**out)
     exp.save()
     print(f"\nartifacts: {exp.dir}")
