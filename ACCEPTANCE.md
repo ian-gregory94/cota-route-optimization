@@ -15,7 +15,7 @@ running. No final numbers from either had been seen.
 | # | Gate | How it is checked |
 |---|------|-------------------|
 | 1 | The fixpoint converges | `outputs/fixpoint_history.csv`: worst improvable flow share moves less than `--tol` (0.002) between consecutive iterations, or the iteration cap is reached **and** the last two iterations are within tolerance |
-| 2 | The converged path set is frozen | its cache key is recorded in the experiment record and used unchanged for every subsequent comparison |
+| 2 | The converged path set is frozen | its cache key is recorded in the experiment record and used unchanged for every subsequent comparison. **Amended 2026-08-26 23:25 UTC:** the enumeration cache key is now a content hash of the scenario plans. It was previously a join of scenario *names*, which are stable across runs while the plans they carry are not — so a re-solved iteration silently reused the previous run's path sets. A recorded key only means something if it is derived from the thing it names. |
 | 3 | The frontier is rerun at L4 on that same set | `final\|lam*` cells in `outputs/fixpoint.jsonl`, 400,000 iterations / 20 restarts / full width |
 | 4 | The L4 plans pass adequacy against the frozen set | `final\|adequacy`: worst flow-share improvable under any final plan is below the tolerance the loop converged at |
 | 5 | Previously saved plans are repriced on the same yardstick | `outputs/fixpoint_rescored.csv` covers every plan in `outputs/matrix_plans/` |
