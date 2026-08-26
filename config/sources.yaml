@@ -51,15 +51,21 @@ sources:
     status: BLOCKED_EGRESS
     notes: Linked from cota.com/data.
   ntd_cota:
-    name: National Transit Database agency profile — COTA (NTD ID 50066)
+    name: National Transit Database 2024 Annual Agency Profile — COTA (NTD ID 50016)
     publisher: Federal Transit Administration
-    url: https://www.transit.dot.gov/ntd/transit-agency-profiles/central-ohio-transit-authority
+    url: https://www.transit.dot.gov/sites/fta.dot.gov/files/transit_agency_profile_doc/2024/50016.pdf
     data_type: annual agency statistics (VRM, VRH, fleet, ridership, opex)
-    coverage: COTA, annual
-    status: UNKNOWN
+    coverage: COTA, calendar year 2024
+    license: US federal government work, public domain
+    download_method: HTTP GET (user-mediated in this environment)
+    status: BLOCKED_EGRESS
     notes: >-
-      Not yet retrieved in-session (egress blocked; profile page not fetched).
-      Needed to reconcile scheduled vehicle-hours vs reported actuals.
+      COTA's NTD ID is 50016 (an earlier guess of 50066 was wrong). Parsed
+      deterministically by cota_opt.ntd, which rejects any parse that fails to
+      reproduce the profile's own 18 printed efficiency ratios. Supplies the
+      weekday-boardings anchor for the demand scale, the passenger trip length
+      that validates avg_ride_fraction, VOMS/VAMS/spare ratio, and operating
+      expense per revenue hour. Prior-year profiles use the same URL pattern.
   lodes_od_oh:
     name: LEHD LODES8 Ohio OD (JT00, main)
     publisher: US Census Bureau LEHD

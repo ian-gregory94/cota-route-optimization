@@ -1,0 +1,28 @@
+2026-08-26 01:41:33,096 experiment exp2_frequency_pathbased_20260826T014133Z
+2026-08-26 01:41:33,121 loaded agency: 1 rows
+2026-08-26 01:41:33,136 loaded stops: 2949 rows
+2026-08-26 01:41:33,138 loaded routes: 42 rows
+2026-08-26 01:41:33,155 loaded trips: 5435 rows
+2026-08-26 01:41:33,710 loaded stop_times: 365224 rows
+2026-08-26 01:41:33,711 loaded calendar: 3 rows
+2026-08-26 01:41:33,712 loaded calendar_dates: 79 rows
+2026-08-26 01:41:33,752 loaded shapes: 98972 rows
+2026-08-26 01:41:33,754 loaded transfers: 1765 rows
+2026-08-26 01:41:34,972 validation: 0 errors, 0 warnings
+2026-08-26 01:41:35,103 representative weekday: 2026-05-26 (service_ids=['110.0.1', '110.119.1'], occurs 45 days)
+2026-08-26 01:41:38,561 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 01:41:38,570 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 01:41:38,686 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 01:41:45,125 LODES OD: 4640957 block rows read, 317706 block-group pairs, 823915 trips
+2026-08-26 01:41:45,127 accessible OD: 78210 of 317706 pairs, 24.7% of commute flow
+2026-08-26 01:41:45,130 OD truncated to top 20000 pairs of 78210 — 64.9% of total flow
+2026-08-26 01:41:45,233 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:43:13,279 path set: 31602 paths over 17438/20000 OD pairs (86.9% of flow served), 161105 legs
+2026-08-26 01:43:13,326 period early   : 31602 paths, 20000 OD pairs
+2026-08-26 01:43:13,339 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:44:51,557 path set: 37676 paths over 19318/20000 OD pairs (96.5% of flow served), 192273 legs
+2026-08-26 01:44:51,622 period am_peak : 37676 paths, 20000 OD pairs
+2026-08-26 01:44:51,637 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios
+2026-08-26 01:46:22,352 path set: 32710 paths over 17438/20000 OD pairs (86.9% of flow served), 166907 legs
+2026-08-26 01:46:22,414 period midday  : 32710 paths, 20000 OD pairs
+2026-08-26 01:46:22,429 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios

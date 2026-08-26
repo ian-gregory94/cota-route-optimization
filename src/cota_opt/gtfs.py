@@ -17,7 +17,7 @@ import pandas as pd
 log = logging.getLogger(__name__)
 
 CORE_FILES = ["agency", "stops", "routes", "trips", "stop_times",
-              "calendar", "calendar_dates", "shapes"]
+              "calendar", "calendar_dates", "shapes", "transfers"]
 
 REQUIRED_FILES = {"agency", "stops", "routes", "trips", "stop_times"}
 
@@ -31,11 +31,13 @@ REQUIRED_FIELDS: dict[str, list[str]] = {
                  "friday", "saturday", "sunday", "start_date", "end_date"],
     "calendar_dates": ["service_id", "date", "exception_type"],
     "shapes": ["shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence"],
+    "transfers": ["from_stop_id", "to_stop_id"],
 }
 
 DTYPES = {
     "stop_id": str, "route_id": str, "trip_id": str, "service_id": str,
     "shape_id": str, "agency_id": str, "parent_station": str,
+    "from_stop_id": str, "to_stop_id": str,
 }
 
 
