@@ -1,0 +1,176 @@
+# Model-discovery log
+
+Things the model **revealed**, as distinct from things the experimenter put in.
+Each entry carries what would falsify it, so a later run can retire it rather
+than having it quietly persist because nobody rechecked.
+
+Confidence is one of **strong** (survives an independent attempt to break it),
+**moderate** (consistent across the checks run so far), or **provisional** (one
+run, or the run that produced it is still going).
+
+---
+
+### D1 — Frequency moves from already-frequent routes toward the 30–120 minute tier
+
+**Evidence.** Balanced plan (config C, λ=2, matched effort): routes at ≤15 min
+lose 9.6 min of headway on average and routes at 16–30 min lose 7.6, while the
+31–60 tier gains 17.6 and the 61–120 tier gains 10.1. Biggest single gains are
+11 Bryden/Maize (80→30 early, 68.6→24 evening) and 32 N Broadway (60→20 in
+three periods); biggest payers are 22 OSU-Rickenbacker (15.7→60 pm peak) and 12
+McKinley/Fields (20→60).
+
+**Confidence.** Moderate. Direction is stable across λ and seeds; the specific
+routes are not independently verified.
+
+**Interpretation.** The square-root rule bites: with demand spread as the proxy
+has it, marginal minutes buy more at 60 min than at 12. Whether COTA *should*
+do this is a policy question the model does not answer — the 22 and the 12 are
+real corridors carrying real riders.
+
+**Falsified by.** A demand model with non-work trips concentrated on the trunk
+routes; or observed boardings showing the ≤15 min tier is far busier than the
+proxy implies.
+
+---
+
+### D2 — Frequency-only returns plateau fast
+
+**Evidence.** Unserved demand: −6.33% at λ=2, −6.95% at λ=4, −6.88% at λ=8,
+−6.95% at λ=16, while cost climbs +0.49 → +1.11%. Past λ=4 the optimizer buys
+nothing and pays for it.
+
+**Confidence.** Moderate, pending the converged-path-set rerun.
+
+**Interpretation.** There is a ceiling near 7% on what redistributing frequency
+inside this geometry and this budget can reach.
+
+**Falsified by.** The converged path set moving the aggressive end of the
+frontier enough to un-flatten it — plausible, since that end is exactly where
+path-set inadequacy was worst (17.6% of flow improvable).
+
+---
+
+### D3 — Route-level scoring badly exaggerates the gain from cutting parallel service
+
+**Evidence.** The route-level model's λ=4 plan: it believes −22.71% unserved at
+−0.76% cost. The same plan, scored by path assignment: −7.16% at **+2.51%**.
+All seven route-level plans are strictly dominated by path-level plans at
+matched effort, same demand, same solver, same yardstick.
+
+**Confidence.** Strong. This is a controlled comparison, and it is the most
+transferable result in the project.
+
+**Interpretation.** Without path assignment, cutting one of two parallel routes
+looks free, because the model has no mechanism for the abandoned passengers to
+walk to the other one — so it never charges for the walk, the wait, or the
+transfer. Any network-redesign claim scored this way inherits the error.
+
+**Falsified by.** A path-based scorer showing route-level plans are competitive
+after all — not observed at any λ.
+
+---
+
+### D4 — Peak expresses need a separate class, not a headway
+
+**Evidence.** 14 of 39 routes run in a peak with no midday and no evening
+service. Treated as ordinary low-frequency service, the optimizer multiplied
+their headways twelvefold and called it savings. Their 180-minute "headway" is
+a timetable. Locking them is worth 1.5–3 pp of apparent unserved reduction.
+
+Separately, in Experiment 2 a naive geometry generator read route 045's single
+19-minute non-stop run as "86.3% of running time for 0.8% of demand, truncate
+it" — which is deleting the route's purpose. Same misreading, different module.
+
+**Confidence.** Strong.
+
+**Falsified by.** Nothing in scope; this is a fact about the schedule.
+
+---
+
+### D5 — Crowding does not bind on this system at this demand scale
+
+**Evidence.** Median bus at its route-period peak load point carries 9% of
+capacity; peak-load factors run 0.32–0.42 median by period. NTD corroborates at
+13.0 boardings per revenue hour. Model configurations with and without crowding
+differ in the third decimal.
+
+**Confidence.** Strong at the modelled demand scale; the scale itself is the
+soft part (30,949 assumed weekday linked trips, NTD-derived).
+
+**Falsified by.** A demand model two or three times larger, or observed
+peak-point loads on trunk routes.
+
+---
+
+### D6 — Path-set inadequacy was about scenarios, not the per-OD cap
+
+**Evidence.** Raising the per-OD candidate cap from 4 to 6 added 1,825 paths to
+201,336 — under 1%. Meanwhile the measured improvable flow share runs 0.4% at
+baseline, 6.4% under the balanced plan, and 17.6% under the most aggressive —
+i.e. it scales with how far the plan is from the scenarios that were
+enumerated.
+
+**Confidence.** Moderate. The cap number is measured; the scenario explanation
+is the surviving hypothesis and is being tested directly by the attribution
+diagnostics (`cota_opt.attribution`), which name the mechanism behind each
+recovered path.
+
+**Interpretation.** A candidate set enumerated around today's timetable is
+adequate for plans near today's timetable and progressively wrong as the
+optimizer walks away from it. That is a general warning about pre-enumerated
+path sets in frequency optimization, not a quirk of this feed.
+
+**Falsified by.** Attribution showing the recovered paths are mostly
+stop-relocations within the same routes, which would point at enumeration
+granularity rather than scenario coverage.
+
+---
+
+### D7 — At fixed frequency, geometry moves cost, not reachability
+
+**Evidence.** Screening 33 candidates at budget-matched headways: almost every
+one sits exactly on unserved-change = 0. Only extensions move it, and the two
+largest movers (routes 007 and 101, −3.54%) are novel-link candidates.
+
+**Confidence.** Provisional — screening only, frequency not reallocated, and
+the screen samples 400 origin zones.
+
+**Interpretation.** "Unserved" here means *unreachable*, and a limited geometry
+edit rarely strands a zone outright; it makes trips longer or shorter. So the
+Experiment 2 comparison against the Experiment 1 frontier will mostly be a
+statement about generalized cost at given coverage, and the coverage axis will
+carry little signal until frequency is re-optimized (where freed vehicle-hours
+*can* buy reachability).
+
+**Falsified by.** The full evaluation tier, with frequency re-optimized,
+showing material coverage movement.
+
+---
+
+### D8 — The novel-link running-time estimator is not biased in the exploitable direction
+
+**Evidence.** Five-fold validation held out **by link** (so a link on several
+patterns cannot sit in both sets): MAE 17.2 s, median absolute percentage error
+20.5%, aggregate bias **+0.41%**, and 63% of links are *over*-predicted. Worst
+route-level aggregate bias runs −2.3% to +5.0%.
+
+**Confidence.** Strong for the direction; the spread is real and is why
+`modelled_share_pct` gates which candidates may define the headline.
+
+**Interpretation.** Systematic underestimation would let the optimizer buy
+frequency with running time that does not exist. It is not doing that. The
+0.9959 multiplier that would zero the aggregate bias is noise and was
+deliberately **not** adopted — recalibrating on a 0.41% signal is fitting the
+validation set.
+
+**Falsified by.** Bias appearing once restricted to the link lengths and route
+types that geometry edits actually produce, rather than the whole population.
+
+---
+
+## Not yet earned
+
+Geometry findings stay out of this log until they survive: frequency
+re-optimization, the frozen yardstick, matched effort, a seed check, and a hand
+inspection against the network. Screening evidence is for choosing what to
+evaluate, not for concluding.
