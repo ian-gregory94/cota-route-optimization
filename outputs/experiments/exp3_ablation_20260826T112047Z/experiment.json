@@ -1,0 +1,730 @@
+{
+  "experiment_id": "exp3_ablation_20260826T112047Z",
+  "name": "exp3_ablation",
+  "timestamp": "2026-08-26T11:20:47.253037+00:00",
+  "git_commit": "acb0e91900cdd0d09417db6541e905d9d1e7c2d0",
+  "seed": 20260825,
+  "algorithm": "RAPTOR path sets + marginal-exchange search",
+  "input_checksums": {
+    "cenpop_bg_oh": "ca6e3344ed678e3ac448edf67f151353559fb85cb040266a1dac8868d11805ef",
+    "cota_gtfs_static": "b11634f117a35a27a1813ed1eeef2b29b9484c6afdda0757262026ed2c9b3bf0",
+    "lodes_od_oh": "98cd08aa85ff1dc839bbedabf3a5d2ecbc7e85c0f6d9c220b6b5892ea838f8db",
+    "lodes_rac_oh": "848b5941128427947acad6a9fabba99d35563ee0313e10dfba74053c261041e4",
+    "lodes_wac_oh": "921573335891c204f8fddeffbf0e9f7ea0105560739dae469bfdc59dff892dab",
+    "ntd_cota": "0afcb2a83ff8a354d67ec005d84b9a39436e9bcace3c87b9c50671f9aeed8c3b"
+  },
+  "config_snapshot": {
+    "assumptions.yaml": "# Model assumptions. Everything here is an explicit research assumption,\n# not a verified COTA operating parameter.\ncrs:\n  geographic: \"EPSG:4326\"\n  projected: \"EPSG:32617\"   # UTM 17N, meters \u2014 used for all planar distance math\n\nservice_periods:\n  # Weekday periods, local time, [start_hour, end_hour). Trips assigned by first\n  # departure time. GTFS times >24:00 fold into 'owl'.\n  early:   [4, 6]\n  am_peak: [6, 9]\n  midday:  [9, 15]\n  pm_peak: [15, 18]\n  evening: [18, 22]\n  owl:     [22, 28]\n\noperations:\n  # Layover/recovery as fraction of round-trip running time (industry-typical\n  # 10\u201320%; NOT a verified COTA work rule). NTD cannot pin this down: annual\n  # scheduled hours come in 9.2% BELOW reported VRH while scheduled miles come\n  # in 13.7% ABOVE reported VRM, so the hours gap cannot be attributed to\n  # layover alone (the 2024 report year vs the May-2026 feed is the other\n  # candidate \u2014 COTA's VRH grew 13.3% from 2023 to 2024).\n  layover_ratio: 0.15\n  # Deadhead, operator availability: UNKNOWN \u2014 not modeled.\n  min_terminal_layover_min: 3\n  # NTD 2024 reported facts (agency 50016, motorbus, directly operated).\n  # Recorded for reporting and constraint sanity checks; not model inputs.\n  ntd_voms: 198                    # vehicles operated in maximum service\n  ntd_vams: 285                    # vehicles available for maximum service\n  ntd_spare_ratio_pct: 43.9        # was classified ESTIMABLE; now known\n  ntd_avg_fleet_age_years: 6.5\n  ntd_opex_per_revenue_hour: 209.68\n\ndemand_proxy:\n  # Stop catchment radius for allocating block-group jobs/residents to stops (m).\n  catchment_radius_m: 600\n  # Trip generation weights: how strongly residents vs jobs near a stop drive\n  # boardings. Proxy values; calibrate against APC when available.\n  resident_weight: 1.0\n  job_weight: 1.0\n  # ---------------------------------------------------------------------\n  # SCALE \u2014 now NTD-anchored, no longer a guess.\n  # The proxy's raw units are \"workers + jobs allocated to stops within the\n  # catchment\" (~940k for Central Ohio) \u2014 a relative measure, not trips.\n  # Unscaled it models every bus at ~400 passengers and lets the crowding term\n  # dominate the objective, so it is rescaled to a weekday linked-trip total.\n  # Derived from NTD 2024 (agency 50016): average weekday UPT 38,694 x bus\n  # share of annual UPT 95.98% = 37,139 weekday bus boardings; divided by\n  # (1 + transfer_rate 0.20) = 30,949 linked trips. Sensitivity is still swept.\n  assumed_weekday_linked_trips: 30949\n  # Temporal distribution of weekday transit demand by period (fractions sum to 1).\n  # Shaped from typical US bus demand profiles; NOT COTA-observed.\n  period_shares:\n    early: 0.05\n    am_peak: 0.22\n    midday: 0.33\n    pm_peak: 0.24\n    evening: 0.12\n    owl: 0.04\n\nwaiting:\n  # Expected wait as a function of headway h (minutes).\n  # If h <= random_arrival_threshold: E[wait] = h/2 (random arrivals).\n  # Else: E[wait] = threshold/2 + schedule_coefficient * (h - threshold)\n  # (passengers consult schedules on infrequent service).\n  random_arrival_threshold_min: 12\n  schedule_coefficient: 0.25\n  # Demand retention vs headway: fraction of proxy demand actually served falls\n  # linearly from 1.0 at headway<=retention_full_min to retention_floor at\n  # headway>=retention_zero_min. Beyond policy_max_headway all demand unserved.\n  retention_full_min: 15\n  retention_zero_min: 120\n  retention_floor: 0.25\n\npassenger:\n  # Mean share of a route's one-way runtime that an average passenger rides.\n  # DERIVED from NTD 2024: bus passenger-miles / unlinked trips = 4.601 mi per\n  # boarding; mean one-way route runtime 64.8 min at the NTD in-service speed of\n  # 12.20 mph = 13.18 mi end to end; 4.601 / 13.18 = 0.349. This independently\n  # confirms the 0.35 originally assumed, to within 0.2%.\n  avg_ride_fraction: 0.349\n  # Mean access walk time per trip (each end), minutes. Assumption.\n  access_walk_min: 5.0\n  # Share of passenger trips involving one transfer. COTA's observed rate is\n  # UNKNOWN (would come from APC/fare data); 0.20 is a typical mid-size bus value.\n  transfer_rate: 0.20\n\n# Path-based (RAPTOR) assignment. Used by Experiment 2.\npath_assignment:\n  walk_radius_m: 400          # stop-to-stop footpath radius for transfers\n  walk_speed_m_per_min: 80    # 4.8 km/h\n  access_radius_m: 600        # zone centroid to boarding stop\n  max_rounds: 3               # boardings, i.e. up to 2 transfers\n  max_paths_per_od: 4\n  n_random_scenarios: 3       # extra frequency draws used to widen the path set\n  od_top_k: 20000\n  # Trip retention as a function of the WHOLE journey's generalized cost, not\n  # just headway \u2014 this supersedes the headway-only retention curve used by the\n  # route-level experiment, because a path-based model knows the full journey.\n  # Linear from 1.0 at cost_retention_full to the floor at cost_retention_zero.\n  # A crude discouragement proxy, NOT a mode-choice model (see Step 11).\n  cost_retention_full_min: 60      # ~1 h perceived travel: nobody is put off\n  cost_retention_zero_min: 210\n  cost_retention_floor: 0.10\n\ncrowding:\n  bus_capacity: 60          # seated+standing planning capacity per 40-ft bus\n  # Crowding multiplier on in-vehicle time once load factor exceeds 1.0\n  crowding_penalty_per_excess_load: 1.0\n",
+    "cost_weights.yaml": "# Generalized passenger cost weights, in equivalent in-vehicle minutes.\n# Values follow common transit planning practice (e.g., TCRP 165 ranges);\n# they are assumptions, not COTA-calibrated.\nweights:\n  walking: 2.0            # per walk minute\n  waiting: 2.0            # per expected wait minute\n  in_vehicle: 1.0         # per in-vehicle minute\n  transfer_wait: 2.0      # per transfer wait minute\n  transfer_penalty: 10.0  # fixed minutes-equivalent per transfer\n  crowding: 1.0           # extra multiplier applied via crowding model\n  reliability: 0.0        # placeholder until empirical RT data exists\n  unserved: 60.0          # minutes-equivalent penalty per unserved trip\n",
+    "constraints.yaml": "# Service constraints for frequency optimization.\nresource:\n  # Budgets are set to \"baseline\" \u2014 computed from the current GTFS \u2014 unless\n  # overridden with explicit numbers here.\n  weekday_revenue_vehicle_hours: baseline\n  peak_fleet_by_period: baseline\n  # Solutions may not exceed the baseline envelope at all. Set to 0 so the claim\n  # \"inside COTA's current resource envelope\" needs no asterisk.\n  budget_tolerance: 0.0\n\nservice:\n  policy_max_headway_min: 60      # no route-period may exceed this if it had service\n  policy_min_headway_min: 5       # floor; below this bunching dominates\n  headway_ladder_min: [5, 6, 7.5, 10, 12, 15, 20, 24, 30, 40, 45, 60]\n  preserve_span: true             # a route-period with baseline service keeps service\n  allow_new_service_in_empty_periods: false\n",
+    "sources.yaml": "# Authoritative data sources for the COTA transit optimization project.\n# status: AVAILABLE | BLOCKED_EGRESS (verified URL, sandbox cannot fetch; user-mediated\n#         retrieval) | UNKNOWN (not yet located) | NOT_RETRIEVED\nsources:\n  cota_gtfs_static:\n    name: COTA GTFS static feed\n    publisher: Central Ohio Transit Authority\n    url: https://www.cota.com/data/cota.gtfs.zip\n    retrieval_date: null  # set by registry at ingest\n    data_type: GTFS static (zip of CSV)\n    coverage: COTA fixed-route network, current signup\n    license: >-\n      COTA data terms (cota.com/data): non-exclusive, limited, revocable right to\n      use/reproduce/redistribute; as-is, no warranty; no COTA trademark use.\n    download_method: HTTP GET (user-mediated in this environment)\n    status: BLOCKED_EGRESS\n    notes: URL confirmed on cota.com/data 2026-08-25.\n  cota_gtfs_rt_alerts:\n    name: COTA GTFS-Realtime service alerts\n    publisher: COTA / Vontas\n    url: https://gtfs-rt.cota.vontascloud.com/TMGTFSRealTimeWebService/Alert/Alerts.pb\n    data_type: GTFS-RT protobuf\n    coverage: live alerts\n    license: same COTA data terms\n    download_method: HTTP GET\n    status: BLOCKED_EGRESS\n    notes: Confirmed on cota.com/data 2026-08-25.\n  cota_gtfs_rt_trip_updates:\n    name: COTA GTFS-Realtime trip updates\n    publisher: COTA via Swiftly\n    url: https://api.goswift.ly/real-time/cota/gtfs-rt-trip-updates\n    data_type: GTFS-RT protobuf\n    coverage: live trip updates\n    download_method: HTTP GET with public apiKey query param published on cota.com/data\n    status: BLOCKED_EGRESS\n    notes: Public key published by COTA on its data page; not stored here.\n  cota_gtfs_rt_vehicle_positions:\n    name: COTA GTFS-Realtime vehicle positions\n    publisher: COTA via Swiftly\n    url: https://api.goswift.ly/real-time/cota/gtfs-rt-vehicle-positions\n    data_type: GTFS-RT protobuf\n    coverage: live vehicle positions\n    download_method: HTTP GET with public apiKey query param published on cota.com/data\n    status: BLOCKED_EGRESS\n  cota_gis_open_data:\n    name: COTA open GIS data portal\n    publisher: COTA\n    url: http://cota1974.maps.arcgis.com/home/index.html\n    data_type: ArcGIS Online items (shapefile/GeoJSON services)\n    coverage: routes, stops, park & ride\n    status: BLOCKED_EGRESS\n    notes: Linked from cota.com/data.\n  ntd_cota:\n    name: National Transit Database 2024 Annual Agency Profile \u2014 COTA (NTD ID 50016)\n    publisher: Federal Transit Administration\n    url: https://www.transit.dot.gov/sites/fta.dot.gov/files/transit_agency_profile_doc/2024/50016.pdf\n    data_type: annual agency statistics (VRM, VRH, fleet, ridership, opex)\n    coverage: COTA, calendar year 2024\n    license: US federal government work, public domain\n    download_method: HTTP GET (user-mediated in this environment)\n    status: BLOCKED_EGRESS\n    notes: >-\n      COTA's NTD ID is 50016 (an earlier guess of 50066 was wrong). Parsed\n      deterministically by cota_opt.ntd, which rejects any parse that fails to\n      reproduce the profile's own 18 printed efficiency ratios. Supplies the\n      weekday-boardings anchor for the demand scale, the passenger trip length\n      that validates avg_ride_fraction, VOMS/VAMS/spare ratio, and operating\n      expense per revenue hour. Prior-year profiles use the same URL pattern.\n  lodes_od_oh:\n    name: LEHD LODES8 Ohio OD (JT00, main)\n    publisher: US Census Bureau LEHD\n    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/od/oh_od_main_JT00_2022.csv.gz\n    data_type: block-to-block home\u2192work job flows\n    coverage: Ohio, 2022\n    status: BLOCKED_EGRESS\n    notes: Large; WAC/RAC used first for stop-catchment weights.\n  lodes_wac_oh:\n    name: LEHD LODES8 Ohio WAC (S000 JT00 2022)\n    publisher: US Census Bureau LEHD\n    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/wac/oh_wac_S000_JT00_2022.csv.gz\n    data_type: jobs by workplace census block\n    coverage: Ohio, 2022\n    status: BLOCKED_EGRESS\n  lodes_rac_oh:\n    name: LEHD LODES8 Ohio RAC (S000 JT00 2022)\n    publisher: US Census Bureau LEHD\n    url: https://lehd.ces.census.gov/data/lodes/LODES8/oh/rac/oh_rac_S000_JT00_2022.csv.gz\n    data_type: workers by residence census block\n    coverage: Ohio, 2022\n    status: BLOCKED_EGRESS\n  cenpop_bg_oh:\n    name: 2020 Census block-group population centroids, Ohio\n    publisher: US Census Bureau\n    url: https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG39.txt\n    data_type: CSV (GEOID, population, mean center lat/lon)\n    coverage: Ohio block groups\n    status: BLOCKED_EGRESS\n  acs_5yr:\n    name: ACS 5-year estimates via Census API\n    publisher: US Census Bureau\n    url: https://api.census.gov/data/2023/acs/acs5\n    data_type: demographic/commuting tables\n    coverage: Franklin County + neighbors, tract/BG\n    status: BLOCKED_EGRESS\n    notes: >-\n      Relevant variables \u2014 B01003_001E population; B08301 means of transportation\n      to work (B08301_010E transit); B08201/B25044 vehicles available\n      (zero-car households); B19013_001E median household income; B23025 employment\n      status; S1810/B18101 disability. Recorded for future retrieval; no normative\n      demographic weights are embedded in optimization.\n  morpc_traffic_counts:\n    name: MORPC regional traffic count database\n    publisher: Mid-Ohio Regional Planning Commission\n    url: UNKNOWN\n    data_type: traffic counts\n    status: UNKNOWN\n    notes: Not yet located from within sandbox; MORPC hosts counts via its GIS portal.\n  odot_traffic:\n    name: ODOT Traffic Count/TDMS data\n    publisher: Ohio DOT\n    url: UNKNOWN\n    data_type: statewide traffic monitoring\n    status: UNKNOWN\n  cota_planning_docs:\n    name: COTA planning documents (LinkUS, System Redesign, APC/ridership reports)\n    publisher: COTA\n    url: UNKNOWN\n    data_type: PDF reports\n    status: UNKNOWN\n    notes: Stop-level APC data likely requires a public records request.\n"
+  },
+  "metrics": {
+    "coverage": {
+      "commute_flow_total": 823915.0,
+      "accessible_share": 0.24727672150646607,
+      "top_k_share_of_accessible": 0.6485827177460918
+    },
+    "configs": {
+      "A path": {
+        "checks": {
+          "gtfs_scheduled_revenue_veh_hours": 2517.1833333333334,
+          "model_baseline_revenue_veh_hours": 2517.1833333333334,
+          "vh_relative_error": 0.0,
+          "n_route_periods": 173,
+          "periods_modelled": [
+            "early",
+            "am_peak",
+            "midday",
+            "pm_peak",
+            "evening",
+            "owl"
+          ],
+          "od_pairs": 20000,
+          "od_total_trips": 30949.0,
+          "od_source": "LEHD LODES8 2022 OD (JT00 main)",
+          "baseline_generalized_cost": 1787950.8077469044,
+          "baseline_unserved_demand": 10886.151709668338,
+          "baseline_served_demand": 20062.848290331665,
+          "baseline_gc_per_served_trip": 89.11749627337421,
+          "total_paths": 201336,
+          "locked_route_periods": 0,
+          "locked_routes": [],
+          "with_crowding": false
+        },
+        "baseline": {
+          "periods": {
+            "early": {
+              "generalized_cost": 124249.57590148933,
+              "generalized_cost_served_only": 85023.96631142244,
+              "unserved_demand": 653.7601598344482,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 476.86891463053416,
+              "served_demand": 893.6898401655521,
+              "mean_cost_per_served_trip": 95.13811446672833
+            },
+            "am_peak": {
+              "generalized_cost": 545871.2933639124,
+              "generalized_cost_served_only": 417933.39367093984,
+              "unserved_demand": 2132.2983282162086,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 2008.1688053652715,
+              "served_demand": 4676.481671783791,
+              "mean_cost_per_served_trip": 89.36919312495111
+            },
+            "midday": {
+              "generalized_cost": 791493.8731619503,
+              "generalized_cost_served_only": 581343.0098796277,
+              "unserved_demand": 3502.5143880387086,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2339.128598529177,
+              "served_demand": 6710.655611961293,
+              "mean_cost_per_served_trip": 86.62983819992533
+            },
+            "pm_peak": {
+              "generalized_cost": 588196.5725163554,
+              "generalized_cost_served_only": 439850.029325129,
+              "unserved_demand": 2472.44238652044,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2141.4678000622407,
+              "served_demand": 4955.317613479559,
+              "mean_cost_per_served_trip": 88.7632365135667
+            },
+            "evening": {
+              "generalized_cost": 289565.1699373145,
+              "generalized_cost_served_only": 211255.9406789454,
+              "unserved_demand": 1305.1538209728187,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 881.3455847972764,
+              "served_demand": 2408.7261790271814,
+              "mean_cost_per_served_trip": 87.7044234078387
+            },
+            "owl": {
+              "generalized_cost": 101743.42544598281,
+              "generalized_cost_served_only": 52544.46788083997,
+              "unserved_demand": 819.982626085714,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 658.8236350232721,
+              "served_demand": 417.97737391428615,
+              "mean_cost_per_served_trip": 125.71127328919762
+            }
+          },
+          "total": {
+            "generalized_cost": 1787950.8077469044,
+            "unserved_demand": 10886.151709668338,
+            "served_demand": 20062.848290331665,
+            "gc_per_served_trip": 89.11749627337421,
+            "revenue_veh_hours": 2517.1833333333334,
+            "peak_by_period": {
+              "early": 85.28208333333332,
+              "am_peak": 162.00944444444443,
+              "midday": 159.17277777777775,
+              "pm_peak": 176.49305555555554,
+              "evening": 140.19458333333336,
+              "owl": 35.55736111111111
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8505.803338407772
+          }
+        },
+        "balanced": {
+          "periods": {
+            "early": {
+              "generalized_cost": 123838.51050088342,
+              "generalized_cost_served_only": 84630.23932475396,
+              "unserved_demand": 653.4711862688245,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 476.5799410649104,
+              "served_demand": 893.9788137311759,
+              "mean_cost_per_served_trip": 94.666940675624
+            },
+            "am_peak": {
+              "generalized_cost": 540582.3128009575,
+              "generalized_cost_served_only": 414331.44094815967,
+              "unserved_demand": 2104.1811975466308,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 1980.0516746956937,
+              "served_demand": 4704.598802453369,
+              "mean_cost_per_served_trip": 88.06945253909703
+            },
+            "midday": {
+              "generalized_cost": 787351.4059227044,
+              "generalized_cost_served_only": 580292.7383568638,
+              "unserved_demand": 3450.977792764008,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2287.5920032544764,
+              "served_demand": 6762.192207235994,
+              "mean_cost_per_served_trip": 85.81429225509328
+            },
+            "pm_peak": {
+              "generalized_cost": 582545.2234368855,
+              "generalized_cost_served_only": 435382.96312231757,
+              "unserved_demand": 2452.7043385761326,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2121.7297521179335,
+              "served_demand": 4975.055661423867,
+              "mean_cost_per_served_trip": 87.51318432439618
+            },
+            "evening": {
+              "generalized_cost": 289963.03047450946,
+              "generalized_cost_served_only": 210315.82785383365,
+              "unserved_demand": 1327.453377011264,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 903.6451408357216,
+              "served_demand": 2386.426622988736,
+              "mean_cost_per_served_trip": 88.13002077157364
+            },
+            "owl": {
+              "generalized_cost": 101743.42544598547,
+              "generalized_cost_served_only": 52544.46788081483,
+              "unserved_demand": 819.9826260861773,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 658.8236350237355,
+              "served_demand": 417.9773739138227,
+              "mean_cost_per_served_trip": 125.71127328927687
+            }
+          },
+          "total": {
+            "generalized_cost": 1777497.6774867435,
+            "unserved_demand": 10808.770518253037,
+            "served_demand": 20140.229481746963,
+            "gc_per_served_trip": 88.25607866572152,
+            "revenue_veh_hours": 2489.3991158470135,
+            "peak_by_period": {
+              "early": 85.10638888892622,
+              "am_peak": 161.96368979922983,
+              "midday": 158.04867120727414,
+              "pm_peak": 176.4230138889271,
+              "evening": 136.43455845126678,
+              "owl": 35.55736111106057
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8428.42214699247
+          }
+        },
+        "balanced_lambda": 1.0,
+        "route_010": [
+          {
+            "period": "evening",
+            "baseline_headway_min": 17.77777777777778,
+            "optimized_headway_min": 17.777777778
+          },
+          {
+            "period": "midday",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "am_peak",
+            "baseline_headway_min": 14.4,
+            "optimized_headway_min": 14.4
+          },
+          {
+            "period": "pm_peak",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "owl",
+            "baseline_headway_min": 90.0,
+            "optimized_headway_min": 90.0
+          },
+          {
+            "period": "early",
+            "baseline_headway_min": 21.818181818181817,
+            "optimized_headway_min": 21.818181818
+          }
+        ]
+      },
+      "B path+class": {
+        "checks": {
+          "gtfs_scheduled_revenue_veh_hours": 2517.1833333333334,
+          "model_baseline_revenue_veh_hours": 2517.1833333333334,
+          "vh_relative_error": 0.0,
+          "n_route_periods": 173,
+          "periods_modelled": [
+            "early",
+            "am_peak",
+            "midday",
+            "pm_peak",
+            "evening",
+            "owl"
+          ],
+          "od_pairs": 20000,
+          "od_total_trips": 30949.0,
+          "od_source": "LEHD LODES8 2022 OD (JT00 main)",
+          "baseline_generalized_cost": 1787950.8077469044,
+          "baseline_unserved_demand": 10886.151709668338,
+          "baseline_served_demand": 20062.848290331665,
+          "baseline_gc_per_served_trip": 89.11749627337421,
+          "total_paths": 201336,
+          "locked_route_periods": 28,
+          "locked_routes": [
+            "041",
+            "042",
+            "043",
+            "044",
+            "045",
+            "046",
+            "051",
+            "052",
+            "061",
+            "071",
+            "072",
+            "073",
+            "074",
+            "075"
+          ],
+          "with_crowding": false
+        },
+        "baseline": {
+          "periods": {
+            "early": {
+              "generalized_cost": 124249.57590148933,
+              "generalized_cost_served_only": 85023.96631142244,
+              "unserved_demand": 653.7601598344482,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 476.86891463053416,
+              "served_demand": 893.6898401655521,
+              "mean_cost_per_served_trip": 95.13811446672833
+            },
+            "am_peak": {
+              "generalized_cost": 545871.2933639124,
+              "generalized_cost_served_only": 417933.39367093984,
+              "unserved_demand": 2132.2983282162086,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 2008.1688053652715,
+              "served_demand": 4676.481671783791,
+              "mean_cost_per_served_trip": 89.36919312495111
+            },
+            "midday": {
+              "generalized_cost": 791493.8731619503,
+              "generalized_cost_served_only": 581343.0098796277,
+              "unserved_demand": 3502.5143880387086,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2339.128598529177,
+              "served_demand": 6710.655611961293,
+              "mean_cost_per_served_trip": 86.62983819992533
+            },
+            "pm_peak": {
+              "generalized_cost": 588196.5725163554,
+              "generalized_cost_served_only": 439850.029325129,
+              "unserved_demand": 2472.44238652044,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2141.4678000622407,
+              "served_demand": 4955.317613479559,
+              "mean_cost_per_served_trip": 88.7632365135667
+            },
+            "evening": {
+              "generalized_cost": 289565.1699373145,
+              "generalized_cost_served_only": 211255.9406789454,
+              "unserved_demand": 1305.1538209728187,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 881.3455847972764,
+              "served_demand": 2408.7261790271814,
+              "mean_cost_per_served_trip": 87.7044234078387
+            },
+            "owl": {
+              "generalized_cost": 101743.42544598281,
+              "generalized_cost_served_only": 52544.46788083997,
+              "unserved_demand": 819.982626085714,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 658.8236350232721,
+              "served_demand": 417.97737391428615,
+              "mean_cost_per_served_trip": 125.71127328919762
+            }
+          },
+          "total": {
+            "generalized_cost": 1787950.8077469044,
+            "unserved_demand": 10886.151709668338,
+            "served_demand": 20062.848290331665,
+            "gc_per_served_trip": 89.11749627337421,
+            "revenue_veh_hours": 2517.1833333333334,
+            "peak_by_period": {
+              "early": 85.28208333333332,
+              "am_peak": 162.00944444444443,
+              "midday": 159.17277777777775,
+              "pm_peak": 176.49305555555554,
+              "evening": 140.19458333333336,
+              "owl": 35.55736111111111
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8505.803338407772
+          }
+        },
+        "balanced": {
+          "periods": {
+            "early": {
+              "generalized_cost": 123930.03487847364,
+              "generalized_cost_served_only": 84466.57994647033,
+              "unserved_demand": 657.7242488667217,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 480.83300366280764,
+              "served_demand": 889.7257511332787,
+              "mean_cost_per_served_trip": 94.93552349011134
+            },
+            "am_peak": {
+              "generalized_cost": 542737.1365833433,
+              "generalized_cost_served_only": 415982.48637545155,
+              "unserved_demand": 2112.5775034648623,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 1988.4479806139252,
+              "served_demand": 4696.2024965351375,
+              "mean_cost_per_served_trip": 88.5784815885524
+            },
+            "midday": {
+              "generalized_cost": 784654.8454952256,
+              "generalized_cost_served_only": 579201.4046492211,
+              "unserved_demand": 3424.224014100075,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2260.838224590543,
+              "served_demand": 6788.945985899927,
+              "mean_cost_per_served_trip": 85.31536498481118
+            },
+            "pm_peak": {
+              "generalized_cost": 580894.6257021984,
+              "generalized_cost_served_only": 434524.64729476767,
+              "unserved_demand": 2439.499640123845,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2108.525053665646,
+              "served_demand": 4988.260359876154,
+              "mean_cost_per_served_trip": 87.10945619237
+            },
+            "evening": {
+              "generalized_cost": 289750.5555149761,
+              "generalized_cost_served_only": 211266.93573945895,
+              "unserved_demand": 1308.0603295919527,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 884.2520934164104,
+              "served_demand": 2405.8196704080474,
+              "mean_cost_per_served_trip": 87.81495069562978
+            },
+            "owl": {
+              "generalized_cost": 101717.34808370053,
+              "generalized_cost_served_only": 52386.50531546295,
+              "unserved_demand": 822.1807128039598,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 661.0217217415179,
+              "served_demand": 415.77928719604023,
+              "mean_cost_per_served_trip": 125.99594767875648
+            }
+          },
+          "total": {
+            "generalized_cost": 1777828.5593208326,
+            "unserved_demand": 10764.266448951415,
+            "served_demand": 20184.733551048586,
+            "gc_per_served_trip": 88.07788097992878,
+            "revenue_veh_hours": 2508.125507410281,
+            "peak_by_period": {
+              "early": 84.69506060603429,
+              "am_peak": 161.95623144257496,
+              "midday": 159.14529736468154,
+              "pm_peak": 176.43622916666664,
+              "evening": 138.77438657353906,
+              "owl": 35.046249999964
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8383.91807769085
+          }
+        },
+        "balanced_lambda": 1.0,
+        "route_010": [
+          {
+            "period": "early",
+            "baseline_headway_min": 21.818181818181817,
+            "optimized_headway_min": 24.0
+          },
+          {
+            "period": "evening",
+            "baseline_headway_min": 17.77777777777778,
+            "optimized_headway_min": 17.777777778
+          },
+          {
+            "period": "am_peak",
+            "baseline_headway_min": 14.4,
+            "optimized_headway_min": 14.4
+          },
+          {
+            "period": "midday",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "pm_peak",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "owl",
+            "baseline_headway_min": 90.0,
+            "optimized_headway_min": 90.0
+          }
+        ]
+      },
+      "C path+class+crowd": {
+        "checks": {
+          "gtfs_scheduled_revenue_veh_hours": 2517.1833333333334,
+          "model_baseline_revenue_veh_hours": 2517.1833333333334,
+          "vh_relative_error": 0.0,
+          "n_route_periods": 173,
+          "periods_modelled": [
+            "early",
+            "am_peak",
+            "midday",
+            "pm_peak",
+            "evening",
+            "owl"
+          ],
+          "od_pairs": 20000,
+          "od_total_trips": 30949.0,
+          "od_source": "LEHD LODES8 2022 OD (JT00 main)",
+          "baseline_generalized_cost": 1787982.200265985,
+          "baseline_unserved_demand": 10886.151709668338,
+          "baseline_served_demand": 20062.848290331665,
+          "baseline_gc_per_served_trip": 89.119060982364,
+          "total_paths": 201336,
+          "locked_route_periods": 28,
+          "locked_routes": [
+            "041",
+            "042",
+            "043",
+            "044",
+            "045",
+            "046",
+            "051",
+            "052",
+            "061",
+            "071",
+            "072",
+            "073",
+            "074",
+            "075"
+          ],
+          "with_crowding": true,
+          "peak_load_factor_median": 0.34718148337816596
+        },
+        "baseline": {
+          "periods": {
+            "early": {
+              "generalized_cost": 124249.57590148933,
+              "generalized_cost_served_only": 85023.96631142244,
+              "unserved_demand": 653.7601598344482,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 476.86891463053416,
+              "served_demand": 893.6898401655521,
+              "mean_cost_per_served_trip": 95.13811446672833,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.10712366358236519
+            },
+            "am_peak": {
+              "generalized_cost": 545902.685882993,
+              "generalized_cost_served_only": 417964.7861900205,
+              "unserved_demand": 2132.2983282162086,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 2008.1688053652715,
+              "served_demand": 4676.481671783791,
+              "mean_cost_per_served_trip": 89.36919312495111,
+              "crowding_cost": 31.392519080657696,
+              "peak_load_over_capacity": 1.0277340153037795
+            },
+            "midday": {
+              "generalized_cost": 791493.8731619503,
+              "generalized_cost_served_only": 581343.0098796277,
+              "unserved_demand": 3502.5143880387086,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2339.128598529177,
+              "served_demand": 6710.655611961293,
+              "mean_cost_per_served_trip": 86.62983819992533,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.20240496000919825
+            },
+            "pm_peak": {
+              "generalized_cost": 588196.5725163554,
+              "generalized_cost_served_only": 439850.029325129,
+              "unserved_demand": 2472.44238652044,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2141.4678000622407,
+              "served_demand": 4955.317613479559,
+              "mean_cost_per_served_trip": 88.7632365135667,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.43224634019037145
+            },
+            "evening": {
+              "generalized_cost": 289565.1699373145,
+              "generalized_cost_served_only": 211255.9406789454,
+              "unserved_demand": 1305.1538209728187,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 881.3455847972764,
+              "served_demand": 2408.7261790271814,
+              "mean_cost_per_served_trip": 87.7044234078387,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.11039813661130522
+            },
+            "owl": {
+              "generalized_cost": 101743.42544598281,
+              "generalized_cost_served_only": 52544.46788083997,
+              "unserved_demand": 819.982626085714,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 658.8236350232721,
+              "served_demand": 417.97737391428615,
+              "mean_cost_per_served_trip": 125.71127328919762,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.07334074378675634
+            }
+          },
+          "total": {
+            "generalized_cost": 1787982.200265985,
+            "unserved_demand": 10886.151709668338,
+            "served_demand": 20062.848290331665,
+            "gc_per_served_trip": 89.119060982364,
+            "revenue_veh_hours": 2517.1833333333334,
+            "peak_by_period": {
+              "early": 85.28208333333332,
+              "am_peak": 162.00944444444443,
+              "midday": 159.17277777777775,
+              "pm_peak": 176.49305555555554,
+              "evening": 140.19458333333336,
+              "owl": 35.55736111111111
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8505.803338407772
+          }
+        },
+        "balanced": {
+          "periods": {
+            "early": {
+              "generalized_cost": 123876.03993810344,
+              "generalized_cost_served_only": 84419.20759769809,
+              "unserved_demand": 657.6138723400893,
+              "unserved_structural": 176.89124520391405,
+              "unserved_discouraged": 480.7226271361752,
+              "served_demand": 889.8361276599111,
+              "mean_cost_per_served_trip": 94.87051039353,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.10745668480510627
+            },
+            "am_peak": {
+              "generalized_cost": 542886.8782455632,
+              "generalized_cost_served_only": 416430.68952832185,
+              "unserved_demand": 2107.603145287355,
+              "unserved_structural": 124.12952285093729,
+              "unserved_discouraged": 1983.4736224364178,
+              "served_demand": 4701.176854712645,
+              "mean_cost_per_served_trip": 88.5648620451963,
+              "crowding_cost": 71.60994062660507,
+              "peak_load_over_capacity": 1.0612655800091861
+            },
+            "midday": {
+              "generalized_cost": 784654.8454952256,
+              "generalized_cost_served_only": 579201.4046492211,
+              "unserved_demand": 3424.224014100075,
+              "unserved_structural": 1163.3857895095316,
+              "unserved_discouraged": 2260.838224590543,
+              "served_demand": 6788.945985899927,
+              "mean_cost_per_served_trip": 85.31536498481118,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.19065589319115345
+            },
+            "pm_peak": {
+              "generalized_cost": 582456.4478980149,
+              "generalized_cost_served_only": 435125.85264539893,
+              "unserved_demand": 2455.5099208769325,
+              "unserved_structural": 330.9745864581994,
+              "unserved_discouraged": 2124.5353344187333,
+              "served_demand": 4972.250079123067,
+              "mean_cost_per_served_trip": 87.5108543860972,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.4088782933936492
+            },
+            "evening": {
+              "generalized_cost": 289479.4920837565,
+              "generalized_cost_served_only": 210413.44883823086,
+              "unserved_demand": 1317.767387425427,
+              "unserved_structural": 423.80823617554245,
+              "unserved_discouraged": 893.9591512498846,
+              "served_demand": 2396.112612574573,
+              "mean_cost_per_served_trip": 87.81450743758909,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.10859520808807012
+            },
+            "owl": {
+              "generalized_cost": 101717.34808370053,
+              "generalized_cost_served_only": 52386.50531546295,
+              "unserved_demand": 822.1807128039598,
+              "unserved_structural": 161.15899106244183,
+              "unserved_discouraged": 661.0217217415179,
+              "served_demand": 415.77928719604023,
+              "mean_cost_per_served_trip": 125.99594767875648,
+              "crowding_cost": 0.0,
+              "peak_load_over_capacity": 0.07308849347647092
+            }
+          },
+          "total": {
+            "generalized_cost": 1777977.1085743338,
+            "unserved_demand": 10784.899052833838,
+            "served_demand": 20164.100947166164,
+            "gc_per_served_trip": 88.17537232297026,
+            "revenue_veh_hours": 2510.0629700305244,
+            "peak_by_period": {
+              "early": 85.04761111114844,
+              "am_peak": 161.95570780430907,
+              "midday": 159.14529736468154,
+              "pm_peak": 176.3616805555938,
+              "evening": 139.21143601130598,
+              "owl": 35.046249999964
+            },
+            "unserved_structural": 2380.3483712605666,
+            "unserved_discouraged": 8404.550681573272
+          }
+        },
+        "balanced_lambda": 1.0,
+        "route_010": [
+          {
+            "period": "evening",
+            "baseline_headway_min": 17.77777777777778,
+            "optimized_headway_min": 17.777777778
+          },
+          {
+            "period": "midday",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "am_peak",
+            "baseline_headway_min": 14.4,
+            "optimized_headway_min": 14.4
+          },
+          {
+            "period": "pm_peak",
+            "baseline_headway_min": 15.0,
+            "optimized_headway_min": 15.0
+          },
+          {
+            "period": "owl",
+            "baseline_headway_min": 90.0,
+            "optimized_headway_min": 90.0
+          },
+          {
+            "period": "early",
+            "baseline_headway_min": 21.818181818181817,
+            "optimized_headway_min": 21.818181818
+          }
+        ]
+      }
+    },
+    "route_class_counts": {
+      "all_day": 25,
+      "peak_express": 14
+    },
+    "setup_seconds": 2318.3718061447144
+  },
+  "output_paths": [
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/route_classes.csv",
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/plan_diff_A.csv",
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/plan_diff_B.csv",
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/plan_diff_C.csv",
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/ablation_frontier.csv",
+    "/home/claude/columbus-transit-opt/outputs/experiments/exp3_ablation_20260826T112047Z/ablation_bands.csv"
+  ],
+  "notes": ""
+}

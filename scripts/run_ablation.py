@@ -119,11 +119,26 @@ def main() -> int:
     ]
 
     all_rows, band_rows, detail_out = [], [], {}
+    # path sets are expensive (~9 min) and depend only on network + OD + baseline
+    # headways, so they survive across runs on disk
+    import pickle
+    cache_file = Path("/tmp/cota_pathsets.pkl")
     pathset_cache: dict = {}
+    if cache_file.exists():
+        try:
+            pathset_cache = pickle.load(open(cache_file, "rb"))
+            log.info("loaded %d cached path sets from %s",
+                     len(pathset_cache), cache_file)
+        except Exception as e:
+            log.warning("path set cache unreadable (%s), rebuilding", e)
+            pathset_cache = {}
     for name, kw in configs:
         log.info("=== configuration %s ===", name)
         setup = build_setup(b, rn, zs, od, seed=seed, route_classes=classes,
                             pathset_cache=pathset_cache, **kw)
+        if not cache_file.exists() and pathset_cache:
+            pickle.dump(pathset_cache, open(cache_file, "wb"))
+            log.info("cached %d path sets to %s", len(pathset_cache), cache_file)
         bf = setup.model.evaluate(setup.baseline_plan)
         log.info("%s baseline: gc=%.6e unserved=%.0f served=%.0f",
                  name, bf.generalized_cost, bf.unserved_demand, bf.served_demand)
