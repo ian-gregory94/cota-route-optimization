@@ -233,15 +233,31 @@ says, which should *reduce* the case for cutting it. So the direction of the
 bias runs against the current Experiment 1 result, and the finalized frontier
 has to carry that as a stated known bias until the fix is made and re-run.
 
-**Deliberately not fixed yet.** The fixpoint is mid-run on the current cost
-model. Changing the model underneath it would invalidate the converged
-yardstick and every comparison built on it. The fix is staged for after
-Experiment 1 is finalized, and Experiment 1's numbers are reported with this
-bias named.
+**Status.** The correction is **implemented and unit-tested** as Model B,
+behind a config flag, without touching the running Model A job. A pattern's
+headway is `h_route * n_direction_trips / n_pattern_trips`, so summing
+frequency over the patterns that actually serve the movement and inverting
+gives a multiplier on the same route headway the optimizer controls:
 
-**Falsified by.** Implementing the movement-level combined frequency and
-finding the frontier barely moves — which is the test, and it is the next
-substantive piece of work.
+    mult = 1 / sum_q ( n_trips(q) / n_direction_trips(q) )
+
+With one qualifying pattern that is exactly `n_dir / n_pat`, so Model B is a
+strict generalisation of Model A rather than a different model, and the only
+thing that changes is how `leg_headway_mult` is computed at enumeration. A
+pattern qualifies only if it serves the boarding stop, serves the alighting
+stop, in that order, and runs in the period — sharing a route id is not
+enough.
+
+Legs carry **both** multipliers during enumeration: Model A's is used for the
+re-pricing self-check, which has to reproduce RAPTOR's own per-pattern
+arithmetic exactly, and Model B's is what gets stored. That check caught a
+truncated-reconstruction bug once and was not going to be weakened to
+accommodate the correction.
+
+**Falsified by.** Running the common-lines diagnostic under Model B and
+finding the same-route residual does not collapse — which would mean the
+implementation is wrong, not that the defect is not there. That is the next
+thing to run, and it is gated behind the Model A fixpoint finishing.
 
 ---
 

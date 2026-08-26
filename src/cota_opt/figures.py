@@ -341,3 +341,62 @@ def complexity_ladder(t: Theme, n_edits: Sequence[int],
     ax.set_xticks(x)
     _finish(ax, t, title, "geometry edits allowed", ylabel, subtitle)
     return fig
+
+
+# ---------------------------------------------------------------------------
+# Model A vs Model B
+# ---------------------------------------------------------------------------
+
+def ab_bars(t: Theme, labels: Sequence[str], model_a: Sequence[float],
+            model_b: Sequence[float], title: str, xlabel: str,
+            subtitle: str | None = None):
+    """Paired horizontal bars: the same quantity under both waiting models."""
+    fig, ax = plt.subplots(figsize=(7.6, 0.6 + 0.55 * len(labels)))
+    y = np.arange(len(labels))[::-1]
+    h = 0.34
+    for off, vals, lab, c in ((h / 2, np.asarray(model_a, float),
+                               "Model A — pattern waiting", t.series[0]),
+                              (-h / 2, np.asarray(model_b, float),
+                               "Model B — same-route common lines", t.series[1])):
+        ax.barh(y + off, vals, height=h, color=c, label=lab, zorder=3)
+        for v, yi in zip(vals, y + off):
+            ax.annotate(f"{v:+.2f}", (v, yi), textcoords="offset points",
+                        xytext=(6 if v >= 0 else -6, 0),
+                        ha="left" if v >= 0 else "right", va="center",
+                        fontsize=8, color=t.text_secondary)
+    ax.axvline(0, color=t.accent_neutral, lw=1.2, ls=":")
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels)
+    ax.grid(axis="y", visible=False)
+    _finish(ax, t, title, xlabel, "", subtitle)
+    ax.legend(loc="best", labelcolor=t.text_secondary)
+    return fig
+
+
+def residual_split(t: Theme, rows: Sequence[dict], title: str,
+                   subtitle: str | None = None):
+    """Where the common-lines bound sits, before and after the correction.
+
+    ``rows``: ``{"model", "same_route_pct", "cross_route_pct"}``. Two stacked
+    segments with a surface gap between them, because the whole point is the
+    same-route part collapsing while the cross-route part does not.
+    """
+    fig, ax = plt.subplots(figsize=(7.2, 1.2 + 0.9 * len(rows)))
+    y = np.arange(len(rows))[::-1]
+    same = np.array([r["same_route_pct"] for r in rows], float)
+    cross = np.array([r["cross_route_pct"] for r in rows], float)
+    ax.barh(y, same, height=0.42, color=t.series[0], zorder=3,
+            label="same-route patterns")
+    ax.barh(y, cross, height=0.42, left=same + 0.012 * max(1e-9, (same + cross).max()),
+            color=t.series[1], zorder=3, label="cross-route lines")
+    for yi, a_, b_ in zip(y, same, cross):
+        ax.annotate(f"{a_:.2f}%", (a_ / 2, yi), ha="center", va="center",
+                    fontsize=8, color=t.surface, fontweight="600")
+        ax.annotate(f"{b_:.2f}%", (a_ + b_ + 0.02 * (same + cross).max(), yi),
+                    ha="left", va="center", fontsize=8, color=t.text_secondary)
+    ax.set_yticks(y)
+    ax.set_yticklabels([r["model"] for r in rows])
+    ax.grid(axis="y", visible=False)
+    _finish(ax, t, title, "upper bound, % of generalized cost", "", subtitle)
+    ax.legend(loc="lower right", labelcolor=t.text_secondary)
+    return fig

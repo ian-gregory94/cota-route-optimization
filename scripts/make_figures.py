@@ -176,6 +176,80 @@ def exp2_vs_exp1(final: pd.DataFrame) -> None:
                  "converged path set"))
 
 
+def ab_frontier(final_a: pd.DataFrame, final_b: pd.DataFrame) -> None:
+    if final_a.empty or final_b.empty:
+        return _skip("ab_frontier", "final frontiers under both models")
+    _done("ab_frontier", F.render(
+        F.frontier, "ab_frontier", FIG, series=[
+            {"label": "Model B — same-route common lines",
+             "gc": final_b["gc_change_pct"].tolist(),
+             "unserved": final_b["unserved_change_pct"].tolist(),
+             "annotate": final_b["lambda"].tolist()},
+            {"label": "Model A — pattern waiting",
+             "gc": final_a["gc_change_pct"].tolist(),
+             "unserved": final_a["unserved_change_pct"].tolist(),
+             "annotate": None}],
+        title="What correcting same-route waiting did to the frontier",
+        subtitle="same budget, same solver effort, same demand — only the "
+                 "valuation of waiting changed"))
+
+
+def ab_residual() -> None:
+    rows = []
+    for label, path in (("Model A — pattern waiting", "model_diagnostics.json"),
+                        ("Model B — corrected", "model_diagnostics_modelB.json")):
+        p = OUT / path
+        if not p.exists():
+            continue
+        h = json.loads(p.read_text()).get("hyperpath", {})
+        if not h:
+            continue
+        rows.append({
+            "model": label,
+            "same_route_pct": float(h.get(
+                "same_route_share_of_generalized_cost_pct",
+                h.get("bound_share_of_generalized_cost_pct", 0.0)
+                - h.get("cross_route_share_of_generalized_cost_pct", 0.0))),
+            "cross_route_pct": float(
+                h.get("cross_route_share_of_generalized_cost_pct", 0.0))})
+    if len(rows) < 2:
+        return _skip("ab_common_lines_residual",
+                     "model_diagnostics_modelB.json")
+    _done("ab_common_lines_residual", F.render(
+        F.residual_split, "ab_common_lines_residual", FIG, rows=rows,
+        title="The common-lines bound, before and after the correction",
+        subtitle="the same-route half is a defect and should collapse; the "
+                 "cross-route half is a deferred limitation and should not"))
+
+
+def ab_trunk_frequency(final_a: pd.DataFrame, final_b: pd.DataFrame) -> None:
+    """Do the trunk routes stop losing so much frequency once waiting is right?"""
+    trunk = ["010", "005", "007", "001", "002"]
+    pa = OUT / "fixpoint_plans" / "final_lam2.0.csv"
+    pb = OUT / "fixpoint_plans_modelB" / "final_lam2.0.csv"
+    base = (OUT / "experiments" /
+            "exp1_frequency_redistribution_20260826T003902Z" /
+            "frequency_plan_baseline.csv")
+    if not (pa.exists() and pb.exists() and base.exists()):
+        return _skip("ab_trunk_frequency", "final lambda=2 plans under both models")
+    b = pd.read_csv(base, dtype={"route_id": str}).rename(
+        columns={"headway_min": "base"})
+    out_a, out_b = [], []
+    for r in trunk:
+        for df, sink in ((pd.read_csv(pa, dtype={"route_id": str}), out_a),
+                         (pd.read_csv(pb, dtype={"route_id": str}), out_b)):
+            m = b.merge(df, on=["route_id", "period"])
+            m = m[m["route_id"] == r]
+            sink.append(float((m["headway_min"] - m["base"]).mean())
+                        if len(m) else np.nan)
+    _done("ab_trunk_frequency", F.render(
+        F.ab_bars, "ab_trunk_frequency", FIG,
+        labels=[f"route {r}" for r in trunk], model_a=out_a, model_b=out_b,
+        title="Trunk-route headway change at the balanced point",
+        xlabel="mean headway change, minutes (positive = less service)",
+        subtitle="the routes carrying most of the same-route waiting bias"))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--outdir", type=Path, default=FIG)
@@ -200,6 +274,13 @@ def main() -> int:
     exp2_screen(audit)
     exp2_ladder()
     exp2_vs_exp1(final)
+
+    fxb = _jsonl(OUT / "fixpoint_modelB.jsonl")
+    final_b = (fxb[fxb.get("phase") == "final"].sort_values("lambda")
+               if "phase" in fxb.columns else pd.DataFrame())
+    ab_frontier(final, final_b)
+    ab_residual()
+    ab_trunk_frequency(final, final_b)
 
     made = sorted(args.outdir.glob("*.svg")) if args.outdir.exists() else []
     log.info("\n%d figure files in %s", len(made), args.outdir)
