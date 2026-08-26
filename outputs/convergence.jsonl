@@ -1,0 +1,1 @@
+{"cell": "conv|lam=1.0|L0 ablation|seed=20260825", "lambda": 1.0, "level": "L0 ablation", "iterations": 20000, "restarts": 0, "width": 24, "seconds": 245.38403344154358, "objective_change_pct": -0.658715872423532, "gc_change_pct": -0.5595744571821104, "unserved_change_pct": -0.9301051421557349, "veh_hours": 2510.0629700305244, "exchanges": 41}

@@ -346,6 +346,11 @@ class PathSetEvaluator:
                           else np.ones(self.ride_mask.sum()))
         self.has_path = np.diff(ps.od_offsets) > 0
         self.total_flow = float(ps.od_flow.sum())
+        # group structure, precomputed: OD pairs that own at least one path
+        self._oi = np.flatnonzero(self.has_path)
+        self._starts = ps.od_offsets[:-1][self.has_path]
+        self._group_sizes = np.diff(ps.od_offsets)[self.has_path]
+        self._path_index = np.arange(ps.n_paths, dtype=np.int64)
 
     def _wait(self, h: np.ndarray) -> np.ndarray:
         return np.where(h <= self.t, h / 2.0, self.t / 2.0 + self.c * (h - self.t))
@@ -365,9 +370,8 @@ class PathSetEvaluator:
                                 minlength=ps.n_paths)
         path_cost = self.path_const + path_wait
         od = np.full(ps.n_od, np.inf)
-        idx = ps.od_offsets[:-1][self.has_path]
-        od[self.has_path] = np.minimum.reduceat(path_cost, idx)[
-            np.arange(len(idx))] if len(idx) else np.zeros(0)
+        if len(self._starts):
+            od[self.has_path] = np.minimum.reduceat(path_cost, self._starts)
         return np.minimum(od, ps.od_walk_only)
 
     def retention(self, cost: np.ndarray) -> np.ndarray:
@@ -376,25 +380,34 @@ class PathSetEvaluator:
                        0.0, 1.0)
         return 1.0 - frac * (1.0 - self.ret_floor)
 
-    def path_flows(self, headways: np.ndarray) -> np.ndarray:
+    def path_flows(self, headways: np.ndarray,
+                   path_cost: np.ndarray | None = None) -> np.ndarray:
         """Demand assigned to each path (all-or-nothing onto the cheapest one).
 
-        Vectorized: paths are stored grouped by OD, so a stable lexsort with the
-        OD as primary key and cost as secondary key puts each OD's cheapest path
-        first in its own group.
+        Paths are stored grouped by OD, so the cheapest path per group is found
+        with two ``reduceat`` passes rather than a full lexsort: one for the
+        group minimum, one for the first path index attaining it. That matters
+        because this runs inside the optimizer's inner loop.
         """
         ps = self.ps
         if ps.n_paths == 0:
             return np.zeros(0)
-        path_cost = self.path_costs(headways)
-        order = np.lexsort((path_cost, ps.path_od))
-        starts = ps.od_offsets[:-1][self.has_path]
-        chosen = order[starts]
-        c = self.od_costs(headways)
-        oi = np.flatnonzero(self.has_path)
-        keep = np.where(np.isfinite(c[oi]), self.retention(np.nan_to_num(c[oi])), 0.0)
+        if path_cost is None:
+            path_cost = self.path_costs(headways)
+        starts = self._starts
+        gmin = np.minimum.reduceat(path_cost, starts)
+        # index of the first path in each group that attains the group minimum
+        attains = path_cost <= np.repeat(gmin, self._group_sizes) + 1e-12
+        keyed = np.where(attains, self._path_index, np.iinfo(np.int64).max)
+        chosen = np.minimum.reduceat(keyed, starts)
+
+        oi = self._oi
+        c = np.minimum(gmin, ps.od_walk_only[oi])
+        keep = np.where(np.isfinite(c), self.retention(np.nan_to_num(c)), 0.0)
         out = np.zeros(ps.n_paths)
-        np.add.at(out, chosen, ps.od_flow[oi] * keep)
+        # exactly one path is chosen per OD group, so the indices are unique and
+        # a plain scatter is correct — np.add.at is unbuffered and far slower
+        out[chosen] = ps.od_flow[oi] * keep
         return out
 
     def path_costs(self, headways: np.ndarray) -> np.ndarray:

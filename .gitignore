@@ -7,3 +7,4 @@ data/interim/
 data/processed/
 outputs/experiments/*/artifacts/
 .venv/
+data/cache/

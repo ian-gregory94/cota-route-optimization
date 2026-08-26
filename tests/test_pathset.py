@@ -211,3 +211,57 @@ def test_default_multiplier_is_one_when_absent():
     ev = _ev(ps)
     want = W.waiting * expected_wait_min(10.0, **WK) + 10.0
     assert ev.od_costs(np.array([10.0]))[0] == pytest.approx(want)
+
+
+def test_path_flows_picks_the_cheapest_path_per_od():
+    ps = _ps([(0, [(0, 30.0, 0.0, False)]),
+              (0, [(1, 10.0, 0.0, False)]),
+              (1, [(0, 20.0, 0.0, False)])],
+             [100.0, 50.0], [("R0", "all"), ("R1", "all")])
+    ev = _ev(ps)
+    f = ev.path_flows(np.array([10.0, 10.0]))
+    # OD 0 has two candidates; the 10-minute ride is cheaper, so path 1 takes all
+    assert f[0] == pytest.approx(0.0)
+    assert f[1] == pytest.approx(100.0)
+    assert f[2] == pytest.approx(50.0)
+    assert f.sum() == pytest.approx(150.0)
+
+
+def test_path_flows_switches_when_headways_change():
+    ps = _ps([(0, [(0, 30.0, 0.0, False)]),
+              (0, [(1, 20.0, 0.0, False)])],
+             [100.0], [("R0", "all"), ("R1", "all")])
+    ev = _ev(ps)
+    # R1 frequent -> R1 chosen
+    f = ev.path_flows(np.array([30.0, 10.0]))
+    assert f[1] == pytest.approx(100.0) and f[0] == pytest.approx(0.0)
+    # R1 hourly, R0 frequent -> flow moves to R0
+    f = ev.path_flows(np.array([10.0, 60.0]))
+    assert f[0] == pytest.approx(100.0) and f[1] == pytest.approx(0.0)
+
+
+def test_path_flows_respects_retention():
+    ps = _ps([(0, [(0, 100.0, 0.0, False)])], [100.0], [("R0", "all")])
+    ev = _ev(ps, retention_full_min=60.0, retention_zero_min=210.0,
+             retention_floor=0.10)
+    cheap = ev.path_flows(np.array([5.0])).sum()
+    dear = ev.path_flows(np.array([60.0])).sum()
+    assert dear < cheap <= 100.0
+
+
+def test_path_flows_skips_ods_with_no_paths():
+    ps = _ps([(0, [(0, 10.0, 0.0, False)])], [100.0, 40.0], [("R0", "all")])
+    ev = _ev(ps)
+    f = ev.path_flows(np.array([10.0]))
+    assert f.sum() == pytest.approx(100.0)   # the second OD contributes nothing
+
+
+def test_boardings_match_the_flow_on_ride_legs():
+    ps = _ps([(0, [(0, 10.0, 0.0, False), (1, 5.0, 0.0, True)])],
+             [80.0], [("R0", "all"), ("R1", "all")])
+    ev = _ev(ps)
+    h = np.array([10.0, 10.0])
+    b = ev.boardings_by_rp(h)
+    # the single path boards both routes, so each sees the full flow
+    assert b[0] == pytest.approx(80.0)
+    assert b[1] == pytest.approx(80.0)

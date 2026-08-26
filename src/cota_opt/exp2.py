@@ -21,6 +21,7 @@ Resource accounting is unchanged and still ties exactly to the GTFS schedule.
 from __future__ import annotations
 
 import logging
+from collections import OrderedDict
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -60,23 +61,44 @@ class PathBasedModel(FrequencyModel):
         self.locked = locked or set()
         # map this model's key order onto each period's rp_keys order
         self._sel: dict[str, np.ndarray] = {}
+        # A period's path set is indexed against the FULL route-period key list,
+        # so _sel[per] spans every key in the network. Using that for the cache
+        # key would mean any single-key change invalidates all six periods. The
+        # cache key therefore uses only the keys that period's rides actually
+        # reference, which is what its cost can possibly depend on.
+        self._cachesel: dict[str, np.ndarray] = {}
+        idx = {k: i for i, k in enumerate(self.keys)}
         for per, ev in evaluators.items():
-            idx = {k: i for i, k in enumerate(self.keys)}
             self._sel[per] = np.array([idx[k] for k in ev.ps.rp_keys], dtype=np.int64)
-        self._cache: dict[str, tuple[np.ndarray, dict]] = {}
+            used = np.unique(ev.ps.leg_rp[ev.ps.leg_rp >= 0])
+            keys_used = [ev.ps.rp_keys[i] for i in used]
+            self._cachesel[per] = np.array(
+                sorted(idx[k] for k in keys_used if k in idx), dtype=np.int64)
+        # A single cache slot per period is useless here: the optimizer scans
+        # keys one at a time, so each period's slot is evicted by the next key
+        # that happens to live in it. A tiny keyed cache instead means the five
+        # periods a trial does NOT touch are always hits.
+        self._cache: dict[str, "OrderedDict[bytes, dict]"] = {
+            per: OrderedDict() for per in evaluators}
+        self._cache_max = 8
         self.n_evals = 0
         self.n_period_evals = 0
+        self.n_cache_hits = 0
 
     def _period_result(self, per: str, h: np.ndarray) -> dict:
         sub = h[self._sel[per]]
-        hit = self._cache.get(per)
-        if hit is not None and np.array_equal(hit[0], sub):
-            return hit[1]
+        slot = self._cache[per]
+        key = h[self._cachesel[per]].tobytes()
+        hit = slot.get(key)
+        if hit is not None:
+            slot.move_to_end(key)
+            self.n_cache_hits += 1
+            return hit
         ev = self.evaluators[per]
         res = dict(ev.evaluate(sub))
         cm = self.crowding.get(per)
         if cm is not None:
-            pf = ev.path_flows(sub)
+            pf = ev.path_flows(sub)   # shares path_costs internally
             boardings = ev.boardings_by_rp(sub, pf)
             sel = self._sel[per]
             trips = self._ndir[sel] * self._T[sel] / sub
@@ -87,7 +109,9 @@ class PathBasedModel(FrequencyModel):
             res["peak_load_over_capacity"] = float(np.max(
                 boardings * cm.profile.peak_load_factor
                 / np.where(trips > 0, trips, np.inf) / cm.capacity)) if len(trips) else 0.0
-        self._cache[per] = (sub.copy(), res)
+        slot[key] = res
+        if len(slot) > self._cache_max:
+            slot.popitem(last=False)
         self.n_period_evals += 1
         return res
 
