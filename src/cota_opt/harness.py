@@ -67,24 +67,26 @@ class Harness:
         fp = _gtfs_fingerprint()
         pa = self.assumptions["path_assignment"]
         od_rec = Registry().get("lodes_od_oh")
-        return cached("pathsets", {"gtfs": fp,
-                                   "lodes": od_rec.sha256[:16] if od_rec else "NA",
-                                   "top_k": pa["od_top_k"],
-                                   "scale": self.assumptions["demand_proxy"]
-                                   ["assumed_weekday_linked_trips"],
-                                   "max_rounds": pa["max_rounds"],
-                                   "max_paths": pa["max_paths_per_od"],
-                                   "scenarios": pa["n_random_scenarios"],
-                                   "walk_radius": pa["walk_radius_m"],
-                                   "access_radius": pa["access_radius_m"],
-                                   "seed": seed,
-                                   "cap_rule": "max(cfg,n_scenarios)",
-                                   "common_lines": self.common_lines,
-                                   "extra": tag},
+        params = {"gtfs": fp,
+                  "lodes": od_rec.sha256[:16] if od_rec else "NA",
+                  "top_k": pa["od_top_k"],
+                  "scale": self.assumptions["demand_proxy"]
+                  ["assumed_weekday_linked_trips"],
+                  "max_rounds": pa["max_rounds"],
+                  "max_paths": pa["max_paths_per_od"],
+                  "scenarios": pa["n_random_scenarios"],
+                  "walk_radius": pa["walk_radius_m"],
+                  "access_radius": pa["access_radius_m"],
+                  "seed": seed,
+                  "cap_rule": "max(cfg,n_scenarios)",
+                  "common_lines": self.common_lines,
+                  "extra": tag}
+        return cached("pathsets", params,
                       lambda: _build_all_pathsets(
                           self.baseline, self.raptor, self.zones, self.od,
                           self.classes, seed, extra_scenarios,
-                          common_lines=self.common_lines), use_cache)
+                          common_lines=self.common_lines, params=params,
+                          use_cache=use_cache), use_cache)
 
 
 def _gtfs_fingerprint() -> str:
@@ -152,7 +154,7 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
         # authoritative run for the one core it would use.
         return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
                        pathsets={}, assumptions=a, common_lines=cl)
-    ps = cached("pathsets", {"gtfs": fp, "lodes": od_rec.sha256[:16] if od_rec else "NA",
+    ps_params = {"gtfs": fp, "lodes": od_rec.sha256[:16] if od_rec else "NA",
                              "top_k": pa["od_top_k"],
                              "scale": a["demand_proxy"]["assumed_weekday_linked_trips"],
                              "max_rounds": pa["max_rounds"],
@@ -162,9 +164,11 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
                              "access_radius": pa["access_radius_m"],
                              "seed": seed,
                              "cap_rule": "max(cfg,n_scenarios)",
-                             "common_lines": cl},
+                             "common_lines": cl}
+    ps = cached("pathsets", ps_params,
                 lambda: _build_all_pathsets(b, rn, zs, od, classes, seed,
-                                            common_lines=cl),
+                                            common_lines=cl, params=ps_params,
+                                            use_cache=use_cache),
                 use_cache)
 
     return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
@@ -173,10 +177,47 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
 
 def _build_all_pathsets(b, rn, zs, od, classes, seed,
                         extra_scenarios: list | None = None,
-                        common_lines: str | None = None) -> dict:
-    """Build every period's path set once (the ~9-minute step)."""
+                        common_lines: str | None = None,
+                        params: dict | None = None,
+                        use_cache: bool = True) -> dict:
+    """Build every period's path set, checkpointing each one as it lands.
+
+    The whole set takes 15-25 minutes and used to be stored only once every
+    period had finished, so a process that died four periods in lost all four.
+    Background jobs here do not survive an idle session, so that was happening
+    repeatedly. Caching per period bounds the loss to whichever period was in
+    flight -- three or four minutes instead of twenty-five.
+    """
+    from .cost import CostWeights
+    from .configs import load_cost_weights, service_periods
+    from .exp1 import build_setup as exp1_setup
+    from .odmatrix import ODTable
+    from .pathset import build_pathset
+
+    a = b.assumptions
+    pa = a["path_assignment"]
+    w = CostWeights.from_config(load_cost_weights())
+    wk = dict(
+        random_arrival_threshold_min=float(a["waiting"]["random_arrival_threshold_min"]),
+        schedule_coefficient=float(a["waiting"]["schedule_coefficient"]))
+    e1 = exp1_setup(b, weights=w)
+    base_hw = {k: v.baseline_headway_min for k, v in e1.model.services.items()}
+    shares = a["demand_proxy"]["period_shares"]
+    cl = str(common_lines or pa.get("common_lines", "pattern"))
+
     store: dict = {}
-    build_setup(b, rn, zs, od, seed=seed, route_classes=classes,
-                with_crowding=False, lock_classes=(), pathset_cache=store,
-                extra_scenarios=extra_scenarios, common_lines=common_lines)
+    for per in service_periods(a):
+        def build(per=per):
+            od_p = ODTable(od.origin, od.dest, od.flow * float(shares[per]),
+                           od.source, od.notes)
+            return build_pathset(
+                rn, zs, od_p, per, base_hw, w, wk,
+                max_rounds=int(pa["max_rounds"]),
+                max_paths_per_od=int(pa["max_paths_per_od"]),
+                n_random_scenarios=int(pa["n_random_scenarios"]),
+                seed=seed, extra_scenarios=extra_scenarios, common_lines=cl)
+        store[per] = cached("pathset", {**(params or {}), "period": per},
+                            build, use_cache)
+        log.info("period %-8s: %d paths, %d OD pairs", per,
+                 store[per].n_paths, store[per].n_od)
     return store
