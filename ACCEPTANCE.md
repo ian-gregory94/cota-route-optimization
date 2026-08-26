@@ -167,6 +167,19 @@ Either way the plan diff is reported: how many route-periods differ and by how
 much, so "no material change" is visible as a fact about the plans rather than
 only as two close numbers.
 
+**Known residual, recorded now rather than after it bites.** The route-level
+search scenario runs at *baseline* headways only, and gate 11 tested at baseline
+headways only. Under an optimized plan the route headways move, so the set of
+sequences that only win once patterns combine moves with them — a discovery gap
+could reopen at a plan the diagnostic never saw. This is the same shape as the
+gap the fixpoint exists to close, and the fixpoint's own adequacy check runs
+under the optimized plans, so the mechanism to catch it is already in place.
+The Model B fixpoint's adequacy trace is where it would show up; if improvable
+flow stays elevated there while the discovery diagnostic reports clean, this is
+the first place to look. Adding route-level variants of every optimized
+scenario would roughly double enumeration cost and is not justified before the
+data asks for it.
+
 
 ## Model versions
 
