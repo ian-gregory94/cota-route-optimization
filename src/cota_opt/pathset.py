@@ -31,7 +31,8 @@ import numpy as np
 
 from .cost import CostWeights
 from .odmatrix import ODTable, ZoneSystem
-from .raptor import RaptorNetwork, generalized_cost, pattern_headways, reconstruct
+from .raptor import (RaptorNetwork, generalized_cost, pattern_headways,
+                     reconstruct, route_level_headways)
 
 log = logging.getLogger(__name__)
 
@@ -79,14 +80,39 @@ class PathSet:
 
 
 def _plan_scenarios(rp_keys, baseline: dict, rng, n_random: int = 3,
-                    ladder=(5, 10, 15, 20, 30, 45, 60)):
-    """Diverse headway vectors used only to widen the candidate path set."""
-    scen = [("baseline", dict(baseline))]
-    scen.append(("frequent", {k: min(baseline[k], 10.0) for k in rp_keys}))
-    scen.append(("infrequent", {k: max(baseline[k], 45.0) for k in rp_keys}))
+                    ladder=(5, 10, 15, 20, 30, 45, 60),
+                    common_lines: str = "pattern"):
+    """Diverse headway vectors used only to widen the candidate path set.
+
+    Each entry is ``(name, headways, pricing)``. ``pricing`` selects how the
+    search converts route-period headways into the per-pattern headways RAPTOR
+    waits on: ``"pattern"`` applies the usual trips-share multiplier, ``"route"``
+    prices every pattern at its route's whole frequency.
+
+    The route-level scenario exists because of gate 11. RAPTOR searches under
+    Model A's valuation, so a route sequence that only becomes attractive once
+    several of a route's patterns are counted together is one the search has no
+    reason to explore -- and the diagnostic found 4.88% of tested flow with
+    exactly that shape. Route-level pricing is a strict *lower* bound on any
+    Model B path cost, so a search under it explores the sequences that can win
+    once patterns combine, for every OD pair rather than only the ones the
+    diagnostic sampled. It is a search device and nothing else: whatever it
+    finds is priced honestly by the evaluator afterwards.
+
+    It is added only under Model B. Model A is the preserved control and its
+    candidate set must not move; route-level pricing would also not bound
+    anything under a valuation that is per-pattern by design.
+    """
+    scen = [("baseline", dict(baseline), "pattern")]
+    scen.append(("frequent", {k: min(baseline[k], 10.0) for k in rp_keys},
+                 "pattern"))
+    scen.append(("infrequent", {k: max(baseline[k], 45.0) for k in rp_keys},
+                 "pattern"))
     for i in range(n_random):
         scen.append((f"random{i}",
-                     {k: float(rng.choice(ladder)) for k in rp_keys}))
+                     {k: float(rng.choice(ladder)) for k in rp_keys}, "pattern"))
+    if common_lines == "same_route":
+        scen.append(("route_level", dict(baseline), "route"))
     return scen
 
 
@@ -132,14 +158,15 @@ def build_pathset(
 
     n_rejected = [0]
     cl_cache: dict = {}
-    scenarios = _plan_scenarios(rp_keys, baseline_headways, rng, n_random_scenarios)
+    scenarios = _plan_scenarios(rp_keys, baseline_headways, rng,
+                                n_random_scenarios, common_lines=common_lines)
     for name, hw in (extra_scenarios or []):
         missing = [k for k in rp_keys if k not in hw]
         if missing:
             raise ValueError(
                 f"extra scenario {name!r} is missing {len(missing)} route-period "
                 f"headways, e.g. {missing[:3]}")
-        scenarios.append((name, {k: float(hw[k]) for k in rp_keys}))
+        scenarios.append((name, {k: float(hw[k]) for k in rp_keys}, "pattern"))
     origins = np.unique(o_sorted)
     # Each scenario contributes at most one path per OD -- its own optimum. A
     # per-OD cap below the scenario count therefore silently discards whole
@@ -156,8 +183,9 @@ def build_pathset(
     for z, a, b in zip(origins, starts, ends):
         dest_by_origin[int(z)] = np.arange(a, b)
 
-    for sname, hw in scenarios:
-        ph = pattern_headways(rn, hw, period)
+    for sname, hw, pricing in scenarios:
+        ph = (route_level_headways(rn, hw, period) if pricing == "route"
+              else pattern_headways(rn, hw, period))
         for z in origins:
             a_stops, a_walk = zs.access_of(int(z))
             if len(a_stops) == 0:
@@ -199,7 +227,9 @@ def build_pathset(
                 # reported for it. A path that prices cheaper than RAPTOR's
                 # optimum is malformed (a truncated trace, a dropped leg) and
                 # would silently flatter every result that used it.
-                priced = _price_legs(legs, hw, weights, wait_kwargs, period)
+                priced = _price_legs(legs, hw, weights, wait_kwargs, period,
+                                     search_mult=1.0 if pricing == "route"
+                                     else None)
                 if priced < tot[k] - 1e-6 or priced > tot[k] + 1e-3:
                     n_rejected[0] += 1
                     continue
@@ -223,13 +253,24 @@ def build_pathset(
 
 
 def _price_legs(legs, hw: dict, w: CostWeights, wait_kwargs: dict,
-                period: str) -> float:
-    """Cost a candidate path exactly as PathSetEvaluator will."""
+                period: str, search_mult: float | None = None) -> float:
+    """Cost a candidate path exactly as the SEARCH that produced it priced it.
+
+    The self-check that calls this compares against the cost RAPTOR reported,
+    so it has to use the multiplier RAPTOR was waiting on -- Model A's
+    per-pattern share for the ordinary scenarios, and a flat 1.0 for the
+    route-level scenario, which prices every pattern at its route's whole
+    frequency. Getting that wrong does not produce a wrong number; it produces
+    a rejected path, which is how the route-level scenario was silently
+    contributing nothing the first time it was wired in.
+    """
     from .cost import expected_wait_min
     rp_keys = sorted(hw)
     total = 0.0
     for leg in legs:
         kind, rp, ivt, walk, board, xfer, _pat, _bp, _ap, mult = leg[:10]
+        if search_mult is not None:
+            mult = search_mult
         total += w.walking * walk + w.in_vehicle * ivt
         if rp >= 0:
             h = hw[rp_keys[rp]] * mult

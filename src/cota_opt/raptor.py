@@ -396,6 +396,35 @@ class Journey:
         return sum(l.walk_min for l in self.legs)
 
 
+def route_level_headways(rn: RaptorNetwork, headway_by_route_period: dict,
+                         period: str, fallback: float = np.inf) -> np.ndarray:
+    """Every pattern at its route's whole frequency -- multiplier 1.0.
+
+    Deliberately more generous than any real Model B multiplier, which counts
+    only the patterns that serve a particular movement in a particular order:
+    this counts every trip the direction runs. A path priced here can only be
+    cheaper than the same path priced properly, which is what makes it a strict
+    lower bound.
+
+    One definition, two callers. The gate 11 diagnostic uses it to decide which
+    OD pairs *could* be hiding a cheaper Model B path, and path enumeration uses
+    it as a search scenario to go find them. If those two drifted apart the
+    rerun would be testing something other than what the augmentation provides.
+    """
+    out = np.full(rn.n_patterns, fallback)
+    for pi in range(rn.n_patterns):
+        h = headway_by_route_period.get((rn.pattern_route[pi], period))
+        if h is None:
+            continue
+        n_pat = rn.pattern_trips_period.get((rn.pattern_ids[pi], period), 0)
+        n_dir = rn.direction_trips_period.get(
+            (rn.pattern_route[pi], rn.pattern_direction[pi], period), 0)
+        if n_pat <= 0 or n_dir <= 0:
+            continue
+        out[pi] = h
+    return out
+
+
 def pattern_headways(rn: RaptorNetwork, headway_by_route_period: dict,
                      period: str, fallback: float = np.inf) -> np.ndarray:
     """Effective headway per pattern in a period.

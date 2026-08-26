@@ -81,6 +81,11 @@ class Harness:
                   "cap_rule": "max(cfg,n_scenarios)",
                   "common_lines": self.common_lines,
                   "extra": tag}
+        # Only Model B gained the route-level search scenario (gate 11), so
+        # only Model B's cache key moves. Model A is the preserved control and
+        # its enumeration is byte-for-byte what it was.
+        if self.common_lines == "same_route":
+            params["enum"] = "route_level_v1"
         return cached("pathsets", params,
                       lambda: _build_all_pathsets(
                           self.baseline, self.raptor, self.zones, self.od,
@@ -165,6 +170,8 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
                              "seed": seed,
                              "cap_rule": "max(cfg,n_scenarios)",
                              "common_lines": cl}
+    if cl == "same_route":
+        ps_params["enum"] = "route_level_v1"
     ps = cached("pathsets", ps_params,
                 lambda: _build_all_pathsets(b, rn, zs, od, classes, seed,
                                             common_lines=cl, params=ps_params,

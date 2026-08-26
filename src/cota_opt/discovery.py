@@ -39,31 +39,20 @@ import pandas as pd
 
 from .cost import CostWeights, expected_wait_min
 from .pathset import PathSet, PathSetEvaluator, common_lines_multiplier
-from .raptor import RaptorNetwork, generalized_cost, reconstruct
+from .raptor import (RaptorNetwork, generalized_cost, reconstruct,
+                     route_level_headways as _route_level)
 
 log = logging.getLogger(__name__)
 
 
 def route_level_headways(rn: RaptorNetwork, headway_by_route_period: dict,
                          period: str, fallback: float = np.inf) -> np.ndarray:
-    """Every pattern at its route's full frequency — the optimistic bound.
+    """Every pattern at its route's full frequency -- the optimistic bound.
 
-    This is deliberately more generous than any real Model B multiplier: it
-    assumes every trip the direction runs serves the movement in question. A
-    path priced here can only be cheaper than the same path priced properly.
+    Re-exported from :mod:`cota_opt.raptor` so this diagnostic and the path
+    enumeration that answers it cannot drift apart.
     """
-    out = np.full(rn.n_patterns, fallback)
-    for pi in range(rn.n_patterns):
-        h = headway_by_route_period.get((rn.pattern_route[pi], period))
-        if h is None:
-            continue
-        n_pat = rn.pattern_trips_period.get((rn.pattern_ids[pi], period), 0)
-        n_dir = rn.direction_trips_period.get(
-            (rn.pattern_route[pi], rn.pattern_direction[pi], period), 0)
-        if n_pat <= 0 or n_dir <= 0:
-            continue
-        out[pi] = h                      # multiplier 1.0, not n_dir / n_pat
-    return out
+    return _route_level(rn, headway_by_route_period, period, fallback)
 
 
 def price_journey_model_b(j, rn: RaptorNetwork, headways: dict, period: str,
