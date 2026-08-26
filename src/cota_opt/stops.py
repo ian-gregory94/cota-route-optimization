@@ -322,3 +322,107 @@ def summary(df: pd.DataFrame, spacing: pd.DataFrame) -> dict[str, Any]:
         out[f"pairs_under_{int(b)}m"] = int((d["metres"] < b).sum())
         out[f"share_under_{int(b)}m"] = float((d["metres"] < b).mean())
     return out
+
+
+# -- transfer nodes ----------------------------------------------------------
+
+def transfer_audit(ev, headways, net, pattern_index: dict[str, int],
+                   names: dict[str, str] | None = None,
+                   top: int = 0) -> pd.DataFrame:
+    """Where transfers actually happen, weighted by the flow that makes them.
+
+    ``is_transfer_point`` in the stop audit means only that two routes touch
+    the stop, which 645 of COTA's stops do. That is a fact about geometry, not
+    about behaviour: a stop where two routes cross and nobody changes is not a
+    transfer node, and removing it costs nothing structural. This attributes
+    every transfer leg in the chosen paths to the stop it boards at, so the
+    protection rule can rest on riders rather than on adjacency.
+
+    Costs are reported in generalized minutes actually paid at the stop -- the
+    transfer wait plus the fixed transfer penalty -- which is what would have
+    to be re-paid somewhere else if the connection were broken.
+    """
+    ps = ev.ps
+    cols = ["stop_id", "stop_name", "n_transfer_legs", "transfer_flow",
+            "transfer_wait_min", "penalty_min", "generalized_min",
+            "routes_arriving", "routes_departing", "period"]
+    if ps.n_paths == 0 or ps.leg_pattern is None:
+        return pd.DataFrame(columns=cols)
+
+    hw = np.asarray(headways, float)
+    pf = ev.path_flows(hw)
+    flow = pf[ps.leg_path]
+    xfer = np.asarray(ps.leg_is_transfer, bool) & (ps.leg_pattern >= 0)
+    if not xfer.any():
+        return pd.DataFrame(columns=cols)
+
+    ix_pattern = {v: k for k, v in pattern_index.items()}
+    # price waiting only where a rider actually waits: walk legs carry
+    # leg_rp = -1 and would otherwise index the headway vector from the end
+    wait = np.zeros(ps.n_legs)
+    wait[ev.ride_mask] = ev._wait(hw[ev.ride_rp] * ev.ride_mult)
+    rows: dict[str, dict] = {}
+    idx = np.flatnonzero(xfer)
+    for j in idx:
+        f = float(flow[j])
+        if f <= 0:
+            continue
+        pid = ix_pattern.get(int(ps.leg_pattern[j]))
+        p = net.patterns.get(pid) if pid else None
+        if p is None:
+            continue
+        pos = int(ps.leg_board_pos[j])
+        if not 0 <= pos < len(p.stops):
+            continue
+        sid = p.stops[pos]
+        r = rows.setdefault(sid, {
+            "stop_id": sid,
+            "stop_name": (names or {}).get(sid, sid),
+            "n_transfer_legs": 0, "transfer_flow": 0.0,
+            "transfer_wait_min": 0.0, "penalty_min": 0.0,
+            "routes_departing": set(), "routes_arriving": set()})
+        r["n_transfer_legs"] += 1
+        r["transfer_flow"] += f
+        r["transfer_wait_min"] += f * float(wait[j]) * ev.w.transfer_wait
+        r["penalty_min"] += f * ev.w.transfer_penalty
+        r["routes_departing"].add(p.route_id)
+        # the leg before this one in the same path is what the rider arrived on
+        k = j - 1
+        if k >= 0 and ps.leg_path[k] == ps.leg_path[j] and ps.leg_pattern[k] >= 0:
+            q = net.patterns.get(ix_pattern.get(int(ps.leg_pattern[k])))
+            if q is not None:
+                r["routes_arriving"].add(q.route_id)
+
+    out = pd.DataFrame(list(rows.values()))
+    if out.empty:
+        return pd.DataFrame(columns=cols)
+    out["generalized_min"] = out["transfer_wait_min"] + out["penalty_min"]
+    for c in ("routes_arriving", "routes_departing"):
+        out[c] = out[c].map(lambda s: ";".join(sorted(s)))
+    out["period"] = ps.period
+    out = out.sort_values("transfer_flow", ascending=False, ignore_index=True)
+    return out.head(top)[cols] if top else out[cols]
+
+
+def transfer_summary(df: pd.DataFrame, n_geometric: int | None = None) -> dict:
+    """How concentrated transferring is, and how much of the geometry is idle."""
+    if df.empty:
+        return {"n_transfer_nodes_used": 0,
+                "note": "no transfer legs in the chosen paths"}
+    f = df["transfer_flow"].to_numpy(float)
+    order = np.sort(f)[::-1]
+    tot = order.sum()
+    share = np.cumsum(order) / tot if tot > 0 else np.zeros_like(order)
+    out = {
+        "n_transfer_nodes_used": int(len(df)),
+        "transfer_flow_total": float(tot),
+        "generalized_min_total": float(df["generalized_min"].sum()),
+        "nodes_for_half_the_transfers": int(np.searchsorted(share, 0.5) + 1),
+        "nodes_for_ninety_pct": int(np.searchsorted(share, 0.9) + 1),
+        "median_flow_per_node": float(np.median(f)),
+        "busiest": df.iloc[0]["stop_id"],
+    }
+    if n_geometric:
+        out["geometric_transfer_points"] = int(n_geometric)
+        out["share_of_geometric_points_used"] = float(len(df) / n_geometric)
+    return out
