@@ -134,6 +134,40 @@ If Case C occurs, the response is targeted candidate-generation augmentation
 around the affected corridors — **not** replacing RAPTOR with a full
 common-lines assignment engine, and not compensating anywhere else in the model.
 
+## Gate 11 follow-up: does the augmentation change the answer?
+
+Committed 2026-08-26 23:05 UTC, **before the comparison was run**.
+
+A clean rerun of the discovery diagnostic after augmenting candidate generation
+is close to circular: the diagnostic finds suspects with route-level RAPTOR and
+the augmentation adds route-level RAPTOR's optima to the set. It proves the
+wiring works — which is not nothing, given that the first attempt silently
+contributed no paths at all — but it is not evidence of discovery adequacy.
+
+The non-circular question is whether the wider candidate set changes the plan
+the optimizer recommends. Method:
+
+1. Solve Model B at matched effort on the **un-augmented** set → `plan_plain`.
+2. Solve Model B at matched effort on the **augmented** set → `plan_wide`.
+3. Score **both plans on the augmented evaluator**. The augmented set is a
+   superset, so it is the legitimate common yardstick and neither plan is
+   graded on its own homework.
+
+**Thresholds**, mirroring the negligible line already in force: the
+augmentation **changed the answer** if, at any decision-relevant λ (1, 2, 4),
+`plan_plain` scored on the common yardstick is worse than `plan_wide` by
+**≥0.25% of generalized cost or ≥1.0% of unserved demand**. Below both, the
+omission was real, widespread, and irrelevant to the recommendation — which is
+what gate 11's 0.185% cost share predicts.
+
+If it did change the answer, the augmented set is the basis for every Model B
+result and the un-augmented frontier is discarded, not averaged with it.
+
+Either way the plan diff is reported: how many route-periods differ and by how
+much, so "no material change" is visible as a fact about the plans rather than
+only as two close numbers.
+
+
 ## Model versions
 
 Two complete model versions, both preserved. Later results never overwrite
