@@ -73,6 +73,16 @@ def test_a_feed_without_block_id_says_so():
         reconstruct(trips.drop(columns=["block_id"]), tstats)
 
 
+def test_block_id_already_on_tstats_is_used_rather_than_merged():
+    """tstats is built from trips, so it often already carries block_id.
+    Merging then yields block_id_x / block_id_y and the column vanishes."""
+    trips, tstats = _frames()
+    both = tstats.merge(trips, on="trip_id")          # tstats WITH block_id
+    p = reconstruct(trips, both)
+    assert p.peak_vehicles == 2
+    assert set(p.blocks["block_id"]) == {"B1", "B2"}
+
+
 class _Svc:
     def __init__(self, runtime, ndir):
         self.runtime_min = runtime

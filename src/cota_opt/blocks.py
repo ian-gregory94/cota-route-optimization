@@ -63,9 +63,14 @@ def reconstruct(trips: pd.DataFrame, tstats: pd.DataFrame,
     trip's first departure, last arrival and running time for the representative
     weekday, so only that day's trips are counted.
     """
-    if "block_id" not in trips.columns:
+    have = ("block_id" in tstats.columns) or ("block_id" in trips.columns)
+    if not have:
         raise ValueError("feed has no block_id; peak fleet cannot be read from blocks")
-    t = tstats.merge(trips[["trip_id", "block_id"]], on="trip_id", how="left")
+    # tstats is built from trips and may already carry the column; merging then
+    # would produce block_id_x / block_id_y and silently lose it
+    t = (tstats.copy() if "block_id" in tstats.columns
+         else tstats.merge(trips[["trip_id", "block_id"]], on="trip_id",
+                           how="left"))
     missing = int(t["block_id"].isna().sum())
     if missing:
         log.warning("%d of %d weekday trips have no block_id", missing, len(t))

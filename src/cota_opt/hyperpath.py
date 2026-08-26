@@ -144,13 +144,30 @@ def bound(ps: PathSet, ev: PathSetEvaluator, rn: RaptorNetwork,
             alts = _alternatives(rn, pat, bpos, apos, ivt_tolerance)
             if len(alts) <= 1:
                 continue
-            hs = np.array([pat_h[q] for q, _ in alts])
-            hs = hs[np.isfinite(hs) & (hs > 0)]
-            if len(hs) <= 1:
+            ok = [(q, iv) for q, iv in alts
+                  if np.isfinite(pat_h[q]) and pat_h[q] > 0]
+            if len(ok) <= 1:
                 continue
+            hs = np.array([pat_h[q] for q, _ in ok])
+            own_route = rn.pattern_route[pat]
+            n_same_route = sum(1 for q, _ in ok
+                               if rn.pattern_route[q] == own_route)
+            # Same-route alternatives are a different problem from hyperpaths:
+            # a rider at a stop served by four patterns of route 10 is already
+            # choosing among one route's departures, and charging them one
+            # pattern's headway is a pattern-aggregation error the current
+            # model could fix cheaply. Cross-route alternatives are the actual
+            # optimal-strategy question. They are counted separately because
+            # the fixes are different and so are the costs.
+            hs_cross = np.array([pat_h[q] for q, _ in ok
+                                 if rn.pattern_route[q] != own_route
+                                 or q == pat])
             combined = 1.0 / np.sum(1.0 / hs)
+            combined_cross = (1.0 / np.sum(1.0 / hs_cross)
+                              if len(hs_cross) else pat_h[pat])
             w_now = float(_wait(pat_h[pat], t, c))
             w_hyp = float(_wait(combined, t, c))
+            w_cross = float(_wait(combined_cross, t, c))
             if w_hyp >= w_now - 1e-9:
                 continue
             wt = (weights.transfer_wait if ps.leg_is_transfer[li]
@@ -161,12 +178,17 @@ def bound(ps: PathSet, ev: PathSetEvaluator, rn: RaptorNetwork,
                 "flow": flow,
                 "route": ps.rp_keys[int(ps.leg_rp[li])][0],
                 "n_attractive_lines": int(len(hs)),
+                "n_same_route_patterns": int(n_same_route),
+                "n_other_routes": int(len({rn.pattern_route[q] for q, _ in ok})
+                                      - 1),
                 "own_headway_min": float(pat_h[pat]),
                 "combined_headway_min": float(combined),
                 "wait_now_min": w_now,
                 "wait_hyperpath_min": w_hyp,
                 "saving_min": (w_now - w_hyp) * wt,
                 "flow_weighted_saving": (w_now - w_hyp) * wt * flow,
+                "saving_cross_route_only_min": (w_now - w_cross) * wt,
+                "flow_weighted_saving_cross_route": (w_now - w_cross) * wt * flow,
             })
         if seen > max_legs:
             log.warning("hyperpath bound truncated at %d legs", max_legs)
@@ -187,6 +209,9 @@ def summarize(per_leg: pd.DataFrame, baseline_gc: float,
 
     total = float(per_leg["flow_weighted_saving"].sum())
     share = 100.0 * total / baseline_gc if baseline_gc else np.nan
+    cross = float(per_leg.get("flow_weighted_saving_cross_route",
+                              pd.Series(dtype=float)).sum())
+    cross_share = 100.0 * cross / baseline_gc if baseline_gc else np.nan
     summary = {
         "n_legs_with_alternatives": int(len(per_leg)),
         "flow_touched": float(per_leg["flow"].sum()),
@@ -195,6 +220,13 @@ def summarize(per_leg: pd.DataFrame, baseline_gc: float,
         "median_saving_min": float(per_leg["saving_min"].median()),
         "p95_saving_min": float(per_leg["saving_min"].quantile(0.95)),
         "median_lines_available": float(per_leg["n_attractive_lines"].median()),
+        # the split that decides which problem this actually is
+        "cross_route_bound_min": cross,
+        "cross_route_share_of_generalized_cost_pct": cross_share,
+        "same_route_pattern_share_of_bound_pct":
+            100.0 * (1 - cross / total) if total else np.nan,
+        "legs_whose_alternatives_are_all_same_route": int(
+            (per_leg.get("n_other_routes", pd.Series(dtype=int)) == 0).sum()),
         "exp1_effect_pct_compared_against": exp1_effect_pct,
     }
     by_route = (per_leg.groupby("route")
@@ -205,6 +237,7 @@ def summarize(per_leg: pd.DataFrame, baseline_gc: float,
                 .reset_index().sort_values("bound_min", ascending=False))
     by_route["share_of_bound"] = by_route["bound_min"] / total if total else np.nan
 
+    share = cross_share if np.isfinite(cross_share) else share
     if share < 0.25 * exp1_effect_pct:
         v = "negligible"
         why = (f"the whole upper bound is {share:.2f}% of generalized cost, "

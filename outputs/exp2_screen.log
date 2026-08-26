@@ -248,3 +248,53 @@
 2026-08-26 17:32:27,700 footpaths: 15529 links (9 from transfers.txt)
 2026-08-26 17:32:27,708 raptor network: 2946 stops, 111 patterns, 15529 footpaths
 2026-08-26 17:32:27,874 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:32:48,828 [55/60] reroute     002                        gc  +0.023% unserved  +0.000%  (21s)
+2026-08-26 17:32:49,068 footpaths: 15517 links (9 from transfers.txt)
+2026-08-26 17:32:49,077 raptor network: 2946 stops, 111 patterns, 15517 footpaths
+2026-08-26 17:32:49,184 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:33:07,785 [56/60] reroute     006                        gc  +0.028% unserved  +0.000%  (19s)
+2026-08-26 17:33:08,028 footpaths: 15473 links (9 from transfers.txt)
+2026-08-26 17:33:08,036 raptor network: 2938 stops, 111 patterns, 15473 footpaths
+2026-08-26 17:33:08,143 zones: 1397 (637 with transit access within 600 m), 3921 access links
+2026-08-26 17:33:26,599 [57/60] reroute     004                        gc  +0.039% unserved  +0.000%  (19s)
+2026-08-26 17:33:26,836 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:33:26,844 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:33:26,949 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:33:45,740 [58/60] reroute     010                        gc  +0.020% unserved  +0.000%  (19s)
+2026-08-26 17:33:46,077 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:33:46,087 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:33:46,201 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:34:05,274 [59/60] reroute     003                        gc  -0.010% unserved  +0.000%  (20s)
+2026-08-26 17:34:05,565 footpaths: 15573 links (9 from transfers.txt)
+2026-08-26 17:34:05,573 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-26 17:34:05,679 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-26 17:34:24,085 [60/60] reroute     008                        gc  -0.061% unserved  +0.000%  (19s)
+2026-08-26 17:34:24,092 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_screen_20260826T172426Z/experiment.json
+
+==============================================================================================================
+EXPERIMENT 2 SCREEN — geometry at equal vehicle-hours, frequency NOT reallocated
+These rank candidates. They do not measure them.
+==============================================================================================================
+      kind  gc_change_pct  unserved_change_pct  veh_hours_freed  modelled_share_pct                                                                                                                                                           description
+    extend          1.410              -16.619          -36.189               1.481   extend route 102 past its end terminal along route 073's corridor for 10 stops, reaching 751 daily trips' worth of zone flow on a corridor with 8 trips a day today
+    extend          0.878               -3.541          -58.963               2.469   extend route 007 past its end terminal along route 074's corridor for 10 stops, reaching 776 daily trips' worth of zone flow on a corridor with 2 trips a day today
+    extend          0.956               -3.541          -64.400               2.222 extend route 101 past its start terminal along route 074's corridor for 10 stops, reaching 776 daily trips' worth of zone flow on a corridor with 2 trips a day today
+    splice          0.281               -0.172           -0.435               0.685                              through-route 002 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice         -0.355               -0.120           -0.558               0.000                              through-route 033 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.430               -0.092            1.330               0.599                             through-route 005 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.106               -0.069           -0.229               0.719                              through-route 011 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.375               -0.052            0.283               0.000                              through-route 007 and 101 at EMO4THW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice         -0.264               -0.046           -0.516               0.971                             through-route 006 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    extend         -0.301               -0.034          -60.987               1.739 extend route 006 past its start terminal along route 071's corridor for 10 stops, reaching 837 daily trips' worth of zone flow on a corridor with 4 trips a day today
+    splice         -0.126               -0.034            0.482               0.617                              through-route 001 and 021 at PICBETS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.010               -0.029            0.372               0.730                              through-route 008 and 035 at BOASHAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.149               -0.017            0.950               0.000                              through-route 011 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice          0.459               -0.017            0.817               0.000                              through-route 002 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+    splice         -0.374                0.000            0.579               0.641                             through-route 005 and 006 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it
+  truncate         -0.148                0.000           17.235               0.000                                            truncate route 007 at its end terminal, dropping 5 stops: 19.4% of running time for 2.1% of the demand it uniquely reaches
+  truncate         -0.134                0.000           10.649               0.000                                          truncate route 007 at its start terminal, dropping 3 stops: 15.9% of running time for 0.0% of the demand it uniquely reaches
+  truncate         -0.123                0.000           10.606               0.000                                            truncate route 035 at its end terminal, dropping 3 stops: 31.6% of running time for 0.0% of the demand it uniquely reaches
+straighten         -0.101                0.000            1.679               1.786         straighten route 102 between HUNTPARK and CAMVANW, removing a 3-stop deviation that runs 2.89x the direct distance for 4.7% of the demand it uniquely reaches
+straighten         -0.096                0.000            4.237               1.653          straighten route 024 between HAMSTON and MORKOHW, removing a 4-stop deviation that runs 3.29x the direct distance for 5.8% of the demand it uniquely reaches
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_screen_20260826T172426Z

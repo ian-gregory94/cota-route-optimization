@@ -168,6 +168,83 @@ types that geometry edits actually produce, rather than the whole population.
 
 ---
 
+### D9 — The peak-fleet formula the budget uses is 24% optimistic, and blocks say the balanced plan needs no more buses
+
+**Evidence.** COTA's feed blocks all 5,435 weekday trips into 299 blocks. Read
+directly, the peak requirement is **197 vehicles at pm peak** — against NTD's
+reported VOMS of **198**, a 0.5% match that nothing in the pipeline was tuned
+to produce. The cycle-time-over-headway formula the optimizer's budget uses
+gives **150.7**: an interlining factor of **1.307**, i.e. the formula is
+optimistic by a quarter, because it ignores the 19.4% of block span spent on
+layover.
+
+Applying that factor to the balanced plan (config C, λ=2): peak proxy **196.9
+against a baseline 197.0** — essentially unchanged. Route 005 (+6.5 buses),
+102 (+5.7) and 011 (+3.8) rise at the peak period; others fall by as much.
+
+**Confidence.** Strong for the baseline reading, which is externally
+corroborated. Moderate for the candidate proxy, which assumes a re-blocked
+network would interline about as well as today's — a scheduler's judgement.
+
+**Interpretation.** The balanced plan is not quietly buying its coverage with
+capital. That was a live risk and it is now measured rather than assumed. Only
+12% of blocks serve more than one route, so COTA's interlining is modest and
+the assumption that a new plan could match it is not demanding.
+
+**Falsified by.** A scheduler showing the redistributed plan cannot be blocked
+at today's efficiency.
+
+---
+
+### D10 — What looked like a hyperpath problem is mostly a pattern-aggregation error inside the current model
+
+**Evidence.** The combined-frequency upper bound over chosen ride legs comes to
+**5.09% of generalized cost** — 2.5× the Experiment 1 effect, which would be
+alarming. Split by where the alternative comes from: **84.4% of it is the same
+route's own patterns**, and 19,049 of 22,984 affected legs have alternatives
+that are *entirely* same-route. The genuine cross-route hyperpath bound is
+**0.79%**.
+
+Concentration: route 010 E Broad carries 23% of the bound with a median of
+**4 attractive patterns** per leg; 005, 007, 001, 002 follow at 2 each.
+
+**Confidence.** Moderate. The bound is deliberately generous; the same/cross
+split is exact.
+
+**Interpretation.** Two different problems were hiding in one number.
+
+*Cross-route hyperpaths* — 0.79%, locally meaningful, follow-on work. Not
+capable of overturning the direction of the Experiment 1 result.
+
+*Same-route patterns* — roughly **4.3% of generalized cost**, and this one is
+the current model's own error. Each ride leg is priced at its pattern's
+headway (route headway × direction-trips ÷ pattern-trips). That multiplier was
+added to stop a quarter-frequency pattern being priced at the route's full
+frequency, which was right. But where several of a route's patterns all carry
+the same stop-to-stop movement, the rider can take any of them, and charging
+them one pattern's headway overcharges the wait. The fix is inside the
+existing model: price the movement on the combined frequency of the patterns
+that serve it.
+
+**Why it matters to the headline.** The overcharge concentrates on
+high-frequency trunk routes — exactly the ones the balanced plan proposes to
+cut. Correcting it makes trunk service look better than the model currently
+says, which should *reduce* the case for cutting it. So the direction of the
+bias runs against the current Experiment 1 result, and the finalized frontier
+has to carry that as a stated known bias until the fix is made and re-run.
+
+**Deliberately not fixed yet.** The fixpoint is mid-run on the current cost
+model. Changing the model underneath it would invalidate the converged
+yardstick and every comparison built on it. The fix is staged for after
+Experiment 1 is finalized, and Experiment 1's numbers are reported with this
+bias named.
+
+**Falsified by.** Implementing the movement-level combined frequency and
+finding the frontier barely moves — which is the test, and it is the next
+substantive piece of work.
+
+---
+
 ## Not yet earned
 
 Geometry findings stay out of this log until they survive: frequency
