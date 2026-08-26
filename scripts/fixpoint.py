@@ -62,17 +62,29 @@ def solve(setup, mult, iters, restarts, width, seed):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--iterations", type=int, default=400_000)
-    ap.add_argument("--restarts", type=int, default=20)
-    ap.add_argument("--width", type=int, default=0, help="0 = full width")
+    # Probe effort drives the fixpoint iterations. Their job is to produce
+    # plans diverse enough to expose missing paths, not to be the answer, so
+    # they run one rung below the measured plateau (L3: -1.83% vs L4's -1.87%
+    # on the convergence study). The answer itself is solved at full effort on
+    # the converged set, and its adequacy is then re-checked -- if the full-
+    # effort plan still finds improvable flow, the loop was not done.
+    ap.add_argument("--iterations", type=int, default=300_000)
+    ap.add_argument("--restarts", type=int, default=10)
+    ap.add_argument("--width", type=int, default=80)
+    ap.add_argument("--final-iterations", type=int, default=400_000)
+    ap.add_argument("--final-restarts", type=int, default=20)
+    ap.add_argument("--final-width", type=int, default=0, help="0 = full width")
+    ap.add_argument("--final-lambdas", type=str,
+                    default="0.25,0.5,1,2,4,8,16")
     ap.add_argument("--lambdas", type=str, default="0.5,1,2,8")
-    ap.add_argument("--max-iterations", type=int, default=4)
+    ap.add_argument("--max-iterations", type=int, default=3)
     ap.add_argument("--tol", type=float, default=0.002,
                     help="stop when worst improvable flow share moves less than this")
     ap.add_argument("--seed", type=int, default=20260825)
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     lams = [float(x) for x in args.lambdas.split(",")]
+    final_lams = [float(x) for x in args.final_lambdas.split(",")]
     (OUT / "fixpoint_plans").mkdir(parents=True, exist_ok=True)
 
     exp = Experiment(name="exp6_fixpoint", seed=args.seed,
@@ -184,9 +196,125 @@ def main() -> int:
         prev_share = worst
         extra = extra + [(f"opt_it{it}_lam{m}", plans[m]) for m in lams]
 
+    # ------------------------------------------------------------------
+    # Final answer: full effort on the converged set, across the whole
+    # frontier, then re-check adequacy. If a full-effort plan still finds
+    # improvable flow, the probe iterations did not reach the fixpoint and
+    # the run says so rather than reporting a number it cannot stand behind.
+    # ------------------------------------------------------------------
+    log.info("=" * 70)
+    log.info("FINAL FRONTIER: full effort (%d iters, %d restarts) on the "
+             "converged set (%d paths)", args.final_iterations,
+             args.final_restarts, n_paths)
+    final_rows, final_plans = [], {}
+    for m in final_lams:
+        cell = f"final|lam{m}"
+        if store.has(cell):
+            rec = store.get(cell)
+            final_plans[m] = {key_tuple(k): float(v) for k, v in rec["plan"].items()}
+            final_rows.append({k: v for k, v in rec.items() if k != "plan"})
+            log.info("  lambda=%-5s resumed from checkpoint (gc %+.2f%%)",
+                     m, rec["gc_change_pct"])
+            continue
+        t = time.time()
+        r = solve(setup, m, args.final_iterations, args.final_restarts,
+                  args.final_width, args.seed)
+        gc_pct = (r.fitness.generalized_cost / bf.generalized_cost - 1) * 100
+        un_pct = (r.fitness.unserved_demand / bf.unserved_demand - 1) * 100
+        final_plans[m] = dict(r.plan.headways)
+        rec = {"phase": "final", "lambda": m, "n_paths": n_paths,
+               "seconds": time.time() - t,
+               "baseline_gc": bf.generalized_cost,
+               "baseline_unserved": bf.unserved_demand,
+               "baseline_served": bf.served_demand,
+               "gc": r.fitness.generalized_cost,
+               "unserved": r.fitness.unserved_demand,
+               "served": r.fitness.served_demand,
+               "gc_change_pct": gc_pct, "unserved_change_pct": un_pct,
+               "served_change_pct": (r.fitness.served_demand
+                                     / bf.served_demand - 1) * 100,
+               "gc_per_trip_change_pct": (r.fitness.gc_per_served_trip
+                                          / bf.gc_per_served_trip - 1) * 100,
+               "revenue_veh_hours": r.fitness.revenue_veh_hours,
+               "vh_vs_budget_pct": (r.fitness.revenue_veh_hours
+                                    / setup.budget.revenue_veh_hours - 1) * 100}
+        store.put(cell, {**rec,
+                         "plan": {key_str(k): float(v)
+                                  for k, v in r.plan.headways.items()}})
+        final_rows.append(rec)
+        log.info("  lambda=%-5s %4.0fs gc %+7.2f%% unserved %+7.2f%% vh=%.1f",
+                 m, time.time() - t, gc_pct, un_pct, r.fitness.revenue_veh_hours)
+        pd.DataFrame([{"route_id": k[0], "period": k[1], "headway_min": v}
+                      for k, v in r.plan.headways.items()]).to_csv(
+            OUT / "fixpoint_plans" / f"final_lam{m}.csv", index=False)
+
+    fr = pd.DataFrame(final_rows)
+    fr.to_csv(OUT / "fixpoint_frontier.csv", index=False)
+
+    # Does the converged set hold up under plans it never saw during the loop?
+    fa_cell = "final|adequacy"
+    if store.has(fa_cell):
+        fad = store.get(fa_cell)["adequacy"]
+    else:
+        fad = {}
+        for m in final_lams:
+            rows = [adequacy(H.raptor, H.zones, ev.ps, ev, final_plans[m], w, wk,
+                             int(pa["max_rounds"]))
+                    for ev in setup.model.evaluators.values()]
+            wts = np.array([r["od_pairs_compared"] for r in rows], dtype=float)
+            fad[str(m)] = {
+                "by_period": rows,
+                "flow_share_improvable": float(np.average(
+                    [r["flow_share_improvable"] for r in rows], weights=wts)),
+                "mean_overstatement_pct": float(np.average(
+                    [r["mean_overstatement_pct"] for r in rows], weights=wts))}
+            log.info("  final adequacy lambda=%-5s improvable flow %.2f%%, "
+                     "overstatement %.3f%%", m,
+                     fad[str(m)]["flow_share_improvable"] * 100,
+                     fad[str(m)]["mean_overstatement_pct"])
+        store.put(fa_cell, {"n_paths": n_paths, "adequacy": fad})
+    final_worst = max(v["flow_share_improvable"] for v in fad.values())
+    log.info("final worst improvable flow share: %.3f%%", final_worst * 100)
+
+    # Common-yardstick re-scoring: every plan any earlier configuration
+    # produced, priced by this converged model. Scoring is cheap; the point is
+    # that no configuration gets to grade its own homework.
+    rescored = []
+    for csv in sorted((OUT / "matrix_plans").glob("*.csv")):
+        cell = f"rescore|{csv.stem}"
+        if store.has(cell):
+            rescored.append({k: v for k, v in store.get(cell).items()
+                             if k != "cell"})
+            continue
+        d = pd.read_csv(csv, dtype={"route_id": str})
+        col = ("headway_min" if "headway_min" in d.columns
+               else "optimized_headway_min")
+        hw = dict(setup.baseline_plan.headways)
+        for row in d.itertuples():
+            hw[(row.route_id, row.period)] = float(getattr(row, col))
+        fit = setup.model.evaluate_array(
+            np.array([hw[k] for k in setup.model.keys]))
+        rec = {"source": csv.stem,
+               "gc_change_pct": (fit.generalized_cost / bf.generalized_cost - 1) * 100,
+               "unserved_change_pct": (fit.unserved_demand
+                                       / bf.unserved_demand - 1) * 100,
+               "revenue_veh_hours": fit.revenue_veh_hours,
+               "vh_vs_budget_pct": (fit.revenue_veh_hours
+                                    / setup.budget.revenue_veh_hours - 1) * 100}
+        store.put(cell, rec)
+        rescored.append(rec)
+    if rescored:
+        rs = pd.DataFrame(rescored)
+        rs.to_csv(OUT / "fixpoint_rescored.csv", index=False)
+        log.info("re-scored %d earlier plans on the converged yardstick",
+                 len(rs))
+
     hist = pd.DataFrame(history)
     hist.to_csv(OUT / "fixpoint_history.csv", index=False)
-    exp.log_metrics(history=history, lambdas=lams,
+    exp.log_metrics(history=history, lambdas=lams, final_lambdas=final_lams,
+                    final_adequacy=fad,
+                    final_worst_improvable_flow_share=final_worst,
+                    converged_n_paths=n_paths,
                     search_iterations=args.iterations, restarts=args.restarts,
                     total_seconds=time.time() - t0)
     exp.save()
@@ -195,6 +323,12 @@ def main() -> int:
     print("PATH-SET FIXPOINT")
     print("=" * 84)
     print(hist.to_string(index=False))
+    print("\nFINAL FRONTIER (full effort, converged set)")
+    print(fr.drop(columns=[c for c in ("phase", "baseline_gc",
+                                       "baseline_unserved", "baseline_served")
+                           if c in fr.columns]).round(3).to_string(index=False))
+    print(f"\nworst improvable flow share under a final plan: "
+          f"{final_worst * 100:.3f}%")
     print(f"\nartifacts: {exp.dir}")
     return 0
 
