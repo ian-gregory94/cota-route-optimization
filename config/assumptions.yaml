@@ -28,6 +28,16 @@ demand_proxy:
   # boardings. Proxy values; calibrate against APC when available.
   resident_weight: 1.0
   job_weight: 1.0
+  # ---------------------------------------------------------------------
+  # SCALE. The proxy's raw units are "workers + jobs allocated to stops within
+  # the catchment" (~940k for Central Ohio) — a *relative* measure, not trips.
+  # Leaving it unscaled makes every route model as ~400 passengers per bus,
+  # which drives the crowding term to dominate the objective. The proxy is
+  # therefore rescaled so the system total equals an assumed weekday linked-trip
+  # count. COTA's actual figure is UNKNOWN here (NTD is unreachable from this
+  # sandbox); the value below is an explicit assumption and every result is
+  # reported with a sensitivity sweep across it.
+  assumed_weekday_linked_trips: 40000
   # Temporal distribution of weekday transit demand by period (fractions sum to 1).
   # Shaped from typical US bus demand profiles; NOT COTA-observed.
   period_shares:

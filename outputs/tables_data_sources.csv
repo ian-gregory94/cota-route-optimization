@@ -1,0 +1,15 @@
+source,publisher,status,retrieved_at,sha256,url
+COTA GTFS static feed,Central Ohio Transit Authority,RETRIEVED,2026-08-25T23:50:49.250246+00:00,b11634f117a35a27,https://www.cota.com/data/cota.gtfs.zip
+COTA GTFS-Realtime service alerts,COTA / Vontas,BLOCKED_EGRESS,,,https://gtfs-rt.cota.vontascloud.com/TMGTFSRealTimeWebService/Alert/Alerts.pb
+COTA GTFS-Realtime trip updates,COTA via Swiftly,BLOCKED_EGRESS,,,https://api.goswift.ly/real-time/cota/gtfs-rt-trip-updates
+COTA GTFS-Realtime vehicle positions,COTA via Swiftly,BLOCKED_EGRESS,,,https://api.goswift.ly/real-time/cota/gtfs-rt-vehicle-positions
+COTA open GIS data portal,COTA,BLOCKED_EGRESS,,,http://cota1974.maps.arcgis.com/home/index.html
+National Transit Database agency profile — COTA (NTD ID 50066),Federal Transit Administration,UNKNOWN,,,https://www.transit.dot.gov/ntd/transit-agency-profiles/central-ohio-transit-authority
+"LEHD LODES8 Ohio OD (JT00, main)",US Census Bureau LEHD,BLOCKED_EGRESS,,,https://lehd.ces.census.gov/data/lodes/LODES8/oh/od/oh_od_main_JT00_2022.csv.gz
+LEHD LODES8 Ohio WAC (S000 JT00 2022),US Census Bureau LEHD,RETRIEVED,2026-08-26T00:47:18.403181+00:00,921573335891c204,https://lehd.ces.census.gov/data/lodes/LODES8/oh/wac/oh_wac_S000_JT00_2022.csv.gz
+LEHD LODES8 Ohio RAC (S000 JT00 2022),US Census Bureau LEHD,RETRIEVED,2026-08-26T00:47:18.399973+00:00,848b594112842794,https://lehd.ces.census.gov/data/lodes/LODES8/oh/rac/oh_rac_S000_JT00_2022.csv.gz
+"2020 Census block-group population centroids, Ohio",US Census Bureau,RETRIEVED,2026-08-26T00:47:18.404255+00:00,ca6e3344ed678e3a,https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG39.txt
+ACS 5-year estimates via Census API,US Census Bureau,BLOCKED_EGRESS,,,https://api.census.gov/data/2023/acs/acs5
+MORPC regional traffic count database,Mid-Ohio Regional Planning Commission,UNKNOWN,,,UNKNOWN
+ODOT Traffic Count/TDMS data,Ohio DOT,UNKNOWN,,,UNKNOWN
+"COTA planning documents (LinkUS, System Redesign, APC/ridership reports)",COTA,UNKNOWN,,,UNKNOWN

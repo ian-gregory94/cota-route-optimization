@@ -1,0 +1,117 @@
+2026-08-26 00:39:02,348 experiment exp1_frequency_redistribution_20260826T003902Z
+2026-08-26 00:39:02,370 loaded agency: 1 rows
+2026-08-26 00:39:02,382 loaded stops: 2949 rows
+2026-08-26 00:39:02,384 loaded routes: 42 rows
+2026-08-26 00:39:02,399 loaded trips: 5435 rows
+2026-08-26 00:39:02,872 loaded stop_times: 365224 rows
+2026-08-26 00:39:02,874 loaded calendar: 3 rows
+2026-08-26 00:39:02,875 loaded calendar_dates: 79 rows
+2026-08-26 00:39:02,912 loaded shapes: 98972 rows
+2026-08-26 00:39:04,004 validation: 0 errors, 0 warnings
+2026-08-26 00:39:04,092 representative weekday: 2026-05-26 (service_ids=['110.0.1', '110.119.1'], occurs 45 days)
+2026-08-26 00:39:06,713 Created 2,949 records
+2026-08-26 00:39:06,714 wrote /home/claude/columbus-transit-opt/data/processed/stops.geojson (2949 features)
+2026-08-26 00:39:06,906 Created 39 records
+2026-08-26 00:39:06,906 wrote /home/claude/columbus-transit-opt/data/processed/routes.geojson (39 features)
+2026-08-26 00:39:06,915 wrote processed tables to /home/claude/columbus-transit-opt/data/processed
+2026-08-26 00:39:06,951 baseline: gc=2.171123e+06 unserved=7029 vh=2517.18
+2026-08-26 00:39:27,912 solve lambda=0.25: obj=2.21392e+06 vh=2456.1/2517.2 exchanges=108
+2026-08-26 00:40:12,278 solve lambda=0.5: obj=2.30498e+06 vh=2447.5/2517.2 exchanges=119
+2026-08-26 00:40:58,506 solve lambda=1.0: obj=2.43199e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:41:44,711 solve lambda=2.0: obj=2.67997e+06 vh=2460.8/2517.2 exchanges=116
+2026-08-26 00:42:28,192 solve lambda=4.0: obj=3.16784e+06 vh=2463.6/2517.2 exchanges=79
+2026-08-26 00:43:11,329 solve lambda=8.0: obj=4.14602e+06 vh=2465.3/2517.2 exchanges=66
+2026-08-26 00:43:55,690 solve lambda=16.0: obj=6.09131e+06 vh=2470.1/2517.2 exchanges=106
+2026-08-26 00:43:55,690 7 solutions, 7 on the frontier
+2026-08-26 00:43:55,702 verification: all checks pass = True
+2026-08-26 00:44:41,506 solve lambda=1.0: obj=2.43199e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:45:27,209 solve lambda=1.0: obj=2.43267e+06 vh=2455.0/2517.2 exchanges=42
+2026-08-26 00:46:11,854 solve lambda=1.0: obj=2.43232e+06 vh=2455.6/2517.2 exchanges=43
+2026-08-26 00:46:56,873 solve lambda=1.0: obj=2.43201e+06 vh=2456.7/2517.2 exchanges=49
+2026-08-26 00:46:56,875 seed stability (gc %): mean 0.45 sd 0.02
+2026-08-26 00:47:42,472 solve lambda=1.0: obj=2.43199e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:47:42,472 sensitivity baseline assumptions     gc +0.46%
+2026-08-26 00:48:26,887 solve lambda=1.0: obj=2.78863e+06 vh=2458.6/2517.2 exchanges=119
+2026-08-26 00:48:26,887 sensitivity wait weight 1.5x         gc -0.13%
+2026-08-26 00:49:13,731 solve lambda=1.0: obj=2.19605e+06 vh=2457.3/2517.2 exchanges=133
+2026-08-26 00:49:13,731 sensitivity wait weight 0.67x        gc +0.96%
+2026-08-26 00:49:57,031 solve lambda=1.0: obj=2.36095e+06 vh=2456.7/2517.2 exchanges=81
+2026-08-26 00:49:57,031 sensitivity transfer penalty 0       gc +0.19%
+2026-08-26 00:50:43,268 solve lambda=1.0: obj=2.42073e+06 vh=2457.3/2517.2 exchanges=113
+2026-08-26 00:50:43,268 sensitivity retention floor 0.10     gc +3.69%
+2026-08-26 00:51:31,677 solve lambda=1.0: obj=2.44936e+06 vh=2460.5/2517.2 exchanges=76
+2026-08-26 00:51:31,677 sensitivity retention floor 0.50     gc -4.64%
+2026-08-26 00:52:18,208 solve lambda=1.0: obj=2.43199e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:52:18,208 sensitivity no crowding penalty      gc +0.46%
+2026-08-26 00:53:04,206 solve lambda=1.0: obj=2.43199e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:53:04,207 sensitivity layover 25%              gc +0.46%
+2026-08-26 00:53:49,407 solve lambda=1.0: obj=1.216e+06 vh=2458.8/2517.2 exchanges=113
+2026-08-26 00:53:49,407 sensitivity demand scale 20k trips   gc +0.46%
+2026-08-26 00:54:35,563 solve lambda=1.0: obj=3.65011e+06 vh=2458.4/2517.2 exchanges=115
+2026-08-26 00:54:35,563 sensitivity demand scale 60k trips   gc -0.10%
+2026-08-26 00:55:20,507 solve lambda=1.0: obj=4.90639e+06 vh=2465.5/2517.2 exchanges=91
+2026-08-26 00:55:20,507 sensitivity demand scale 80k trips   gc -1.59%
+2026-08-26 00:55:20,514 loaded agency: 1 rows
+2026-08-26 00:55:20,519 loaded stops: 2949 rows
+2026-08-26 00:55:20,521 loaded routes: 42 rows
+2026-08-26 00:55:20,528 loaded trips: 5435 rows
+2026-08-26 00:55:21,056 loaded stop_times: 365224 rows
+2026-08-26 00:55:21,057 loaded calendar: 3 rows
+2026-08-26 00:55:21,058 loaded calendar_dates: 79 rows
+2026-08-26 00:55:21,113 loaded shapes: 98972 rows
+2026-08-26 00:55:22,160 validation: 0 errors, 0 warnings
+2026-08-26 00:55:22,255 representative weekday: 2026-05-26 (service_ids=['110.0.1', '110.119.1'], occurs 45 days)
+2026-08-26 00:56:10,286 solve lambda=1.0: obj=2.42679e+06 vh=2458.6/2517.2 exchanges=122
+2026-08-26 00:56:10,287 sensitivity jobs weighted 2x residents gc +0.27%
+2026-08-26 00:56:10,295 loaded agency: 1 rows
+2026-08-26 00:56:10,301 loaded stops: 2949 rows
+2026-08-26 00:56:10,302 loaded routes: 42 rows
+2026-08-26 00:56:10,310 loaded trips: 5435 rows
+2026-08-26 00:56:10,695 loaded stop_times: 365224 rows
+2026-08-26 00:56:10,696 loaded calendar: 3 rows
+2026-08-26 00:56:10,697 loaded calendar_dates: 79 rows
+2026-08-26 00:56:10,737 loaded shapes: 98972 rows
+2026-08-26 00:56:11,697 validation: 0 errors, 0 warnings
+2026-08-26 00:56:11,783 representative weekday: 2026-05-26 (service_ids=['110.0.1', '110.119.1'], occurs 45 days)
+2026-08-26 00:57:03,995 solve lambda=1.0: obj=2.43969e+06 vh=2454.1/2517.2 exchanges=88
+2026-08-26 00:57:03,995 sensitivity catchment 400 m          gc +0.27%
+2026-08-26 00:57:04,013 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp1_frequency_redistribution_20260826T003902Z/experiment.json
+
+==============================================================================
+EXPERIMENT 1 — PARETO FRONTIER (proxy demand)
+==============================================================================
+                 solution  gc_change_pct  unserved_change_pct  mean_wait_min  revenue_veh_hours  on_pareto_front
+baseline (COTA scheduled)          0.000                0.000         11.239           2517.183            False
+              lambda=0.25         -3.789               18.611         12.232           2456.125             True
+               lambda=0.5         -0.447              -31.913         10.269           2447.497             True
+               lambda=1.0          0.458              -40.503          9.960           2458.758             True
+               lambda=2.0          0.808              -41.752          9.909           2460.814             True
+               lambda=4.0          0.830              -41.985          9.908           2463.572             True
+               lambda=8.0          0.887              -42.036          9.892           2465.295             True
+              lambda=16.0          0.963              -42.214          9.880           2470.056             True
+
+SENSITIVITY
+                   variant  gc_change_pct  unserved_change_pct
+      baseline assumptions          0.458              -40.503
+          wait weight 1.5x         -0.126              -40.687
+         wait weight 0.67x          0.962              -40.492
+        transfer penalty 0          0.187              -40.286
+      retention floor 0.10          3.691              -39.859
+      retention floor 0.50         -4.636              -41.271
+       no crowding penalty          0.458              -40.503
+               layover 25%          0.458              -40.503
+    demand scale 20k trips          0.458              -40.503
+    demand scale 60k trips         -0.096              -40.435
+    demand scale 80k trips         -1.590              -39.012
+jobs weighted 2x residents          0.274              -39.793
+           catchment 400 m          0.271              -37.098
+
+SEED STABILITY
+    seed  gc_change_pct  unserved_change_pct
+20260825          0.458              -40.503
+20260826          0.430              -40.196
+20260827          0.439              -40.327
+20260828          0.461              -40.515
+
+verification all pass: True
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp1_frequency_redistribution_20260826T003902Z

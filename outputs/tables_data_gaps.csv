@@ -1,0 +1,13 @@
+variable,classification,note
+current stop-level boardings/alightings,REQUIRES PUBLIC RECORDS REQUEST,COTA operates APC-equipped buses; stop-level boardings are not in any public feed located. Not derivable from GTFS.
+trip-level APC,REQUIRES PUBLIC RECORDS REQUEST,Same source as above; needed to calibrate the demand proxy.
+driver work rules,REQUIRES PUBLIC RECORDS REQUEST,"Union agreement (TWU Local 208) governs run length, breaks, spread; may be partly public but not retrieved."
+operator availability,LIKELY INTERNAL ONLY,"Headcount, absence and extraboard levels are operational data."
+maintenance reserve,ESTIMABLE,NTD reports fleet size and vehicles operated in max service; the ratio bounds spare ratio. Not yet retrieved in this environment.
+deadhead rules,DERIVABLE (partially),"GTFS block_id is present, so vehicle blocks and the pull-out/pull-in structure are partly reconstructable; depot locations are not in GTFS."
+depot assignments,LIKELY INTERNAL ONLY,COTA garage locations are public; per-block assignment is not.
+real fuel/energy cost,PUBLICLY AVAILABLE,NTD reports annual fuel/energy consumption and operating expense by mode.
+observed route runtime distributions,DERIVABLE,GTFS-Realtime vehicle positions and trip updates are public; sustained collection yields empirical segment travel-time distributions.
+transfer behavior,ESTIMABLE,Fare-system transfer data is internal; transfer rates can be estimated from network structure and a mode-choice model.
+latent non-work OD demand,ESTIMABLE,"LODES covers home→work only. Non-work travel needs NHTS rates, a regional travel model (MORPC), or LBS data."
+service-area population/demographics,PUBLICLY AVAILABLE,ACS 5-year at tract/block-group level via the Census API.

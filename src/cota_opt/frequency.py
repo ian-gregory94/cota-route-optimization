@@ -172,6 +172,63 @@ class FrequencyModel:
         self.avg_ride_fraction = float(pax.get("avg_ride_fraction", 0.35))
         self.access_walk_min = float(pax.get("access_walk_min", 5.0))
         self.transfer_rate = float(pax.get("transfer_rate", 0.20))
+        self._build_arrays()
+
+    # -- vectorized state -------------------------------------------------
+    def _build_arrays(self) -> None:
+        """Flatten the model into numpy arrays so ``evaluate`` is O(n) in C.
+
+        Layout: one row per (route, period) service. The transfer term needs a
+        per-period route×route mix, handled as a small matrix product.
+        """
+        self.keys: list[tuple[str, str]] = list(self.services)
+        self.key_index = {k: i for i, k in enumerate(self.keys)}
+        svcs = [self.services[k] for k in self.keys]
+        self.route_names: list[str] = sorted({s.route_id for s in svcs})
+        self.period_names: list[str] = list(self.periods)
+        r_ix = {r: i for i, r in enumerate(self.route_names)}
+        p_ix = {p: i for i, p in enumerate(self.period_names)}
+
+        self._runtime = np.array([s.runtime_min for s in svcs], float)
+        self._ndir = np.array([s.n_directions for s in svcs], float)
+        self._T = np.array([self.periods[s.period].duration_min for s in svcs], float)
+        self._demand = np.array([self.demand.get(*k) for k in self.keys], float)
+        self._ri = np.array([r_ix[s.route_id] for s in svcs], int)
+        self._pi = np.array([p_ix[s.period] for s in svcs], int)
+        self._cycle = 2.0 * self._runtime * (1.0 + self.layover)
+        self._ivt = self._runtime * self.avg_ride_fraction
+
+        # per-period route→route transfer share matrix (rows sum to 1 where defined)
+        n_r = len(self.route_names)
+        C = np.zeros((n_r, n_r))
+        for r, d in self.connections.items():
+            if r not in r_ix:
+                continue
+            for other, share in d.items():
+                if other in r_ix:
+                    C[r_ix[r], r_ix[other]] = share
+        rs = C.sum(axis=1)
+        self._has_conn = rs > 0
+        C[self._has_conn] /= rs[self._has_conn, None]
+        self._C = C
+        # mask of which (route, period) cells actually exist
+        self._cell_exists = np.zeros((n_r, len(self.period_names)), bool)
+        self._cell_exists[self._ri, self._pi] = True
+
+    def _vec_wait(self, h: np.ndarray) -> np.ndarray:
+        t = self._wait_kw["random_arrival_threshold_min"]
+        c = self._wait_kw["schedule_coefficient"]
+        return np.where(h <= t, h / 2.0, t / 2.0 + c * (h - t))
+
+    def _vec_retention(self, h: np.ndarray) -> np.ndarray:
+        full = self._ret_kw["full_min"]
+        zero = self._ret_kw["zero_min"]
+        floor = self._ret_kw["floor"]
+        frac = np.clip((h - full) / (zero - full), 0.0, 1.0)
+        return 1.0 - frac * (1.0 - floor)
+
+    def headway_array(self, plan: FrequencyPlan) -> np.ndarray:
+        return np.array([plan.headways[k] for k in self.keys], float)
 
     # -- per route-period physics ----------------------------------------
     def trips(self, svc: RouteService, headway: float) -> float:
@@ -186,49 +243,54 @@ class FrequencyModel:
 
     # -- evaluation -------------------------------------------------------
     def evaluate(self, plan: FrequencyPlan) -> FitnessVector:
-        vh = 0.0
-        peak: dict[str, float] = {p: 0.0 for p in self.periods}
-        served_total = unserved_total = 0.0
-        wait_weighted = 0.0
-        gc_total = 0.0
+        return self.evaluate_array(self.headway_array(plan))
 
-        # Pass 1: resources, served demand, and per-route mean headway (for transfers)
-        served_rp: dict[tuple[str, str], float] = {}
-        for key, svc in self.services.items():
-            h = plan.headways[key]
-            vh += self.revenue_veh_hours(svc, h)
-            peak[svc.period] += self.peak_vehicles(svc, h)
-            d = self.demand.get(*key)
-            rho = demand_retention(h, **self._ret_kw)
-            served_rp[key] = d * rho
-            served_total += d * rho
-            unserved_total += d * (1.0 - rho)
+    def evaluate_array(self, h: np.ndarray) -> FitnessVector:
+        """Vectorized evaluation. Identical arithmetic to the scalar helpers."""
+        trips = self._ndir * self._T / h
+        vh_i = trips * self._runtime / 60.0
+        vh = float(vh_i.sum())
+        peak_i = self._cycle / h
+        peak_arr = np.bincount(self._pi, weights=peak_i,
+                               minlength=len(self.period_names))
+        peak = {p: float(peak_arr[i]) for i, p in enumerate(self.period_names)}
 
-        # Pass 2: passenger cost (transfer term needs connecting headways)
-        for key, svc in self.services.items():
-            h = plan.headways[key]
-            served = served_rp[key]
-            if served <= 0:
-                continue
-            wait = expected_wait_min(h, **self._wait_kw)
-            ivt = svc.runtime_min * self.avg_ride_fraction
-            n_trips = self.trips(svc, h)
-            pax_per_trip = served / n_trips if n_trips > 0 else 0.0
-            crowd = crowding_excess_min(pax_per_trip, self.capacity, ivt,
-                                        self.crowd_penalty)
-            t_wait = self._transfer_wait(key[0], key[1], plan)
-            per_trip = (
-                self.w.walking * self.access_walk_min
-                + self.w.waiting * wait
-                + self.w.in_vehicle * ivt
-                + self.w.crowding * crowd
-                + self.transfer_rate * (self.w.transfer_wait * t_wait
-                                        + self.w.transfer_penalty)
-            )
-            gc_total += served * per_trip
-            wait_weighted += served * wait
+        rho = self._vec_retention(h)
+        served = self._demand * rho
+        served_total = float(served.sum())
+        unserved_total = float((self._demand - served).sum())
 
-        peak_system = max(peak.values()) if peak else 0.0
+        wait = self._vec_wait(h)
+
+        # transfer wait: per-period route→route mix of connecting-route waits
+        n_r, n_p = self._C.shape[0], len(self.period_names)
+        wait_rp = np.zeros((n_r, n_p))
+        wait_rp[self._ri, self._pi] = wait
+        mixed = self._C @ wait_rp                       # (routes × periods)
+        # a route with no connections (or no connecting service this period)
+        # falls back to its own wait
+        denom = self._C @ self._cell_exists.astype(float)
+        t_wait_rp = np.where(denom > 0, np.divide(mixed, np.where(denom > 0, denom, 1)),
+                             wait_rp)
+        t_wait = t_wait_rp[self._ri, self._pi]
+        t_wait = np.where(self._has_conn[self._ri], t_wait, wait)
+
+        pax_per_trip = np.divide(served, trips, out=np.zeros_like(served),
+                                 where=trips > 0)
+        load = np.divide(pax_per_trip, self.capacity)
+        crowd = self.crowd_penalty * np.maximum(load - 1.0, 0.0) * self._ivt
+
+        per_trip = (
+            self.w.walking * self.access_walk_min
+            + self.w.waiting * wait
+            + self.w.in_vehicle * self._ivt
+            + self.w.crowding * crowd
+            + self.transfer_rate * (self.w.transfer_wait * t_wait
+                                    + self.w.transfer_penalty)
+        )
+        gc_total = float((served * per_trip).sum())
+        wait_weighted = float((served * wait).sum())
+        peak_system = float(peak_arr.max()) if len(peak_arr) else 0.0
         return FitnessVector(
             generalized_cost=gc_total,
             unserved_demand=unserved_total,
@@ -262,14 +324,45 @@ class FrequencyModel:
 # Solver
 # ---------------------------------------------------------------------------
 
+# Numerical slack, distinct from the *policy* budget tolerance. A plan whose
+# vehicle-hours equal the budget to within floating-point summation noise is
+# feasible; without this a zero policy tolerance rejects the incumbent itself.
+_EPS_REL = 1e-9
+
+
 def _feasible(model: FrequencyModel, fit: FitnessVector,
               budget: ResourceBudget) -> bool:
-    if fit.revenue_veh_hours > budget.vh_cap():
+    if fit.revenue_veh_hours > budget.vh_cap() * (1.0 + _EPS_REL):
         return False
     for p, v in fit.peak_by_period.items():
-        if p in budget.peak_vehicles_by_period and v > budget.peak_cap(p):
-            return False
+        if p in budget.peak_vehicles_by_period:
+            if v > budget.peak_cap(p) * (1.0 + _EPS_REL):
+                return False
     return True
+
+
+def build_ladders(model: FrequencyModel, ladder: Iterable[float],
+                  max_headway: float = 60.0, min_headway: float = 5.0,
+                  ) -> dict[tuple[str, str], list[float]]:
+    """Per-route-period headway options honouring the minimum-service policy.
+
+    The worst service a route-period may be given is ``max(policy_max_headway,
+    its own baseline headway)`` — the policy floor cannot *require* an
+    improvement on a route-period that is already worse than the floor today,
+    and no route-period with service today may lose it entirely.
+    """
+    base = sorted(h for h in ladder if h >= min_headway)
+    out: dict[tuple[str, str], list[float]] = {}
+    for k, svc in model.services.items():
+        worst = max(max_headway, svc.baseline_headway_min)
+        opts = [h for h in base if h <= worst]
+        # today's headway is always an option, so the incumbent schedule is an
+        # exactly representable — and therefore exactly feasible — search point
+        opts.append(svc.baseline_headway_min)
+        if worst not in opts:
+            opts.append(worst)
+        out[k] = sorted(set(round(h, 9) for h in opts))
+    return out
 
 
 def optimize_frequencies(
@@ -281,112 +374,245 @@ def optimize_frequencies(
     min_headway: float = 5.0,
     local_search_iterations: int = 3000,
     seed: int = 0,
+    ladders: dict[tuple[str, str], list[float]] | None = None,
+    initial: FrequencyPlan | None = None,
+    candidate_width: int = 0,
+    n_restarts: int = 6,
 ) -> OptimizationResult:
-    """Greedy marginal allocation + randomized pairwise local search.
+    """Marginal-exchange search for the best frequency plan inside the budget.
 
-    Phase A starts every route-period at the policy maximum headway (minimum
-    service preserved everywhere it exists today) and spends the vehicle-hour
-    budget on whichever single ladder step buys the largest objective reduction
-    per vehicle-hour. Phase B then tries budget-neutral pairwise swaps.
+    Two starting points are tried and the better kept:
+
+    * **incumbent** — the caller's plan (normally today's schedule), and
+    * **greedy build** — every route-period at its worst allowed headway, then
+      spend the vehicle-hour budget on whichever single ladder step buys the
+      largest objective reduction per vehicle-hour.
+
+    From each start, an exchange heuristic repeatedly moves service hours from
+    the route-period where they buy the least to the one where they buy the
+    most, subject to the vehicle-hour and per-period peak-vehicle caps. Because
+    the incumbent is one of the starts, the returned plan can never be worse
+    than the plan it was given.
     """
     rng = np.random.default_rng(seed)
-    lad = sorted(h for h in ladder if min_headway <= h <= max_headway)
-    if not lad:
-        raise ValueError("empty headway ladder after applying policy bounds")
-    keys = list(model.services)
+    keys = list(model.keys)
+    if ladders is None:
+        lad_global = sorted(h for h in ladder if min_headway <= h <= max_headway)
+        if not lad_global:
+            raise ValueError("empty headway ladder after applying policy bounds")
+        lads = {k: list(lad_global) for k in keys}
+    else:
+        lads = {k: sorted(ladders[k]) for k in keys}
+        if any(not v for v in lads.values()):
+            raise ValueError("a route-period has an empty headway ladder")
 
-    plan = FrequencyPlan({k: lad[-1] for k in keys})
-    fit = model.evaluate(plan)
-    if not _feasible(model, fit, budget):
+    n = len(keys)
+    max_len = max(len(lads[k]) for k in keys)
+    L = np.full((n, max_len), np.nan)
+    L_len = np.empty(n, int)
+    for i, k in enumerate(keys):
+        v = lads[k]
+        L[i, :len(v)] = v
+        L_len[i] = len(v)
+
+    w_uns = model.w.unserved
+
+    def obj(f: FitnessVector) -> float:
+        return f.scalarized(w_uns, unserved_multiplier)
+
+    def feasible(f: FitnessVector) -> bool:
+        return _feasible(model, f, budget)
+
+    # ---- starting point A: minimum service everywhere --------------------
+    idx0 = L_len - 1
+    h0 = L[np.arange(n), idx0]
+    if not feasible(model.evaluate_array(h0)):
         raise ValueError(
             "minimum-service plan already exceeds the budget; the policy maximum "
             "headway is infeasible under this envelope")
 
-    def obj(f: FitnessVector) -> float:
-        return f.scalarized(model.w.unserved, unserved_multiplier)
+    starts: list[np.ndarray] = []
+    if initial is not None:
+        init_idx = np.array(
+            [int(np.nanargmin(np.abs(L[i] - initial.headways[k]))) for i, k in
+             enumerate(keys)], int)
+        init_h = L[np.arange(n), init_idx]
+        drift = float(np.max(np.abs(
+            init_h - np.array([initial.headways[k] for k in keys]))))
+        if drift > 1e-6:
+            log.warning("incumbent snapped to ladder, max drift %.4f min", drift)
+        if feasible(model.evaluate_array(init_h)):
+            starts.append(init_idx)
+        else:
+            log.warning("incumbent plan is infeasible under this budget")
+    starts.append(_greedy_build(model, budget, L, L_len, idx0.copy(), obj, feasible))
 
-    idx_of = {k: len(lad) - 1 for k in keys}
-    cur_obj = obj(fit)
+    width = candidate_width if candidate_width > 0 else n
+    best_idx, best_fit, best_obj, moves = None, None, float("inf"), 0
+    for st in starts:
+        idx, fit, o, n_moves = _exchange_search(
+            model, budget, L, L_len, st.copy(), obj, feasible,
+            local_search_iterations, width, rng)
+        if o < best_obj:
+            best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
 
-    # -- Phase A: greedy marginal allocation ------------------------------
-    improved = True
-    n_steps = 0
-    while improved:
-        improved = False
-        best = None  # (ratio, key, new_idx, new_fit, new_obj)
-        for k in keys:
-            i = idx_of[k]
-            if i == 0:
+    # perturbation restarts: kick a random subset off the incumbent optimum and
+    # re-converge; keep the best local optimum found. Deterministic given seed.
+    assert best_idx is not None
+    for _ in range(max(0, n_restarts)):
+        cand = best_idx.copy()
+        k = max(1, int(0.15 * n))
+        hit = rng.choice(n, size=k, replace=False)
+        for i in hit:
+            cand[i] = int(np.clip(cand[i] + rng.integers(-2, 3), 0, L_len[i] - 1))
+        if not feasible(model.evaluate_array(L[np.arange(n), cand])):
+            # pull service back until the kick fits the envelope
+            for i in sorted(hit, key=lambda x: -L_len[x]):
+                while cand[i] < L_len[i] - 1 and not feasible(
+                        model.evaluate_array(L[np.arange(n), cand])):
+                    cand[i] += 1
+            if not feasible(model.evaluate_array(L[np.arange(n), cand])):
                 continue
-            trial = plan.copy()
-            trial.headways[k] = lad[i - 1]
-            tf = model.evaluate(trial)
-            if not _feasible(model, tf, budget):
+        idx, fit, o, n_moves = _exchange_search(
+            model, budget, L, L_len, cand, obj, feasible,
+            local_search_iterations, width, rng)
+        if o < best_obj - 1e-9:
+            best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
+
+    assert best_idx is not None and best_fit is not None
+    h = L[np.arange(n), best_idx]
+    plan = FrequencyPlan({k: float(h[i]) for i, k in enumerate(keys)})
+    log.info("solve lambda=%s: obj=%.6g vh=%.1f/%.1f exchanges=%d",
+             unserved_multiplier, best_obj, best_fit.revenue_veh_hours,
+             budget.revenue_veh_hours, moves)
+    return OptimizationResult(
+        plan=plan, fitness=best_fit,
+        label=f"lambda={unserved_multiplier}",
+        meta={"exchanges": moves, "unserved_multiplier": unserved_multiplier,
+              "seed": seed, "n_starts": len(starts), "n_restarts": n_restarts,
+              "candidate_width": width})
+
+
+def _greedy_build(model, budget, L, L_len, idx, obj, feasible) -> np.ndarray:
+    """Spend the budget from minimum service, best objective gain per veh-hour."""
+    n = len(idx)
+    h = L[np.arange(n), idx].copy()
+    fit = model.evaluate_array(h)
+    cur = obj(fit)
+    while True:
+        best = None
+        for i in range(n):
+            if idx[i] == 0:
+                continue
+            old = h[i]
+            h[i] = L[i, idx[i] - 1]
+            tf = model.evaluate_array(h)
+            h[i] = old
+            if not feasible(tf):
                 continue
             d_vh = tf.revenue_veh_hours - fit.revenue_veh_hours
-            d_obj = cur_obj - obj(tf)
+            d_obj = cur - obj(tf)
             if d_obj <= 0 or d_vh <= 0:
                 continue
-            ratio = d_obj / d_vh
-            if best is None or ratio > best[0]:
-                best = (ratio, k, i - 1, tf, obj(tf))
-        if best is not None:
-            _, k, new_i, tf, new_obj = best
-            plan.headways[k] = lad[new_i]
-            idx_of[k] = new_i
-            fit, cur_obj = tf, new_obj
-            improved = True
-            n_steps += 1
+            r = d_obj / d_vh
+            if best is None or r > best[0]:
+                best = (r, i, tf, obj(tf))
+        if best is None:
+            return idx
+        _, i, tf, o = best
+        idx[i] -= 1
+        h[i] = L[i, idx[i]]
+        fit, cur = tf, o
 
-    log.info("phase A: %d ladder steps, obj=%.1f, vh=%.1f/%.1f",
-             n_steps, cur_obj, fit.revenue_veh_hours, budget.revenue_veh_hours)
 
-    # -- Phase B: randomized budget-neutral pairwise swaps -----------------
-    n_accept = 0
-    for _ in range(local_search_iterations):
-        if len(keys) < 2:
-            break
-        a, b = rng.choice(len(keys), size=2, replace=False)
-        ka, kb = keys[a], keys[b]
-        ia, ib = idx_of[ka], idx_of[kb]
-        if ia == len(lad) - 1 or ib == 0:
-            continue
-        trial = plan.copy()
-        trial.headways[ka] = lad[ia + 1]   # worse service on a (frees hours)
-        trial.headways[kb] = lad[ib - 1]   # better service on b (spends them)
-        tf = model.evaluate(trial)
-        if not _feasible(model, tf, budget):
-            continue
-        to = obj(tf)
-        if to < cur_obj - 1e-9:
-            plan = trial
-            idx_of[ka], idx_of[kb] = ia + 1, ib - 1
-            fit, cur_obj = tf, to
-            n_accept += 1
+def _exchange_search(model, budget, L, L_len, idx, obj, feasible,
+                     max_evaluations, width, rng):
+    """Move service hours from where they buy least to where they buy most.
 
-    # -- Phase C: final single-step sweep to spend any freed budget --------
-    improved = True
-    while improved:
-        improved = False
-        for k in keys:
-            i = idx_of[k]
-            if i == 0:
+    Each pass prices one ladder step in each direction for every route-period
+    (2n evaluations), then applies as many verified-improving moves as that
+    price snapshot supports before repricing. ``max_evaluations`` bounds total
+    model evaluations, so runtime is predictable.
+    """
+    n = len(idx)
+    h = L[np.arange(n), idx].copy()
+    fit = model.evaluate_array(h)
+    cur = obj(fit)
+    moves = 0
+    evals = 1
+
+    while evals + 2 * n < max_evaluations:
+        down_rate = np.full(n, -np.inf)   # objective gain per veh-hour spent
+        up_rate = np.full(n, np.inf)      # objective loss per veh-hour freed
+        for i in range(n):
+            old = h[i]
+            if idx[i] > 0:
+                h[i] = L[i, idx[i] - 1]
+                tf = model.evaluate_array(h)
+                evals += 1
+                d_vh = tf.revenue_veh_hours - fit.revenue_veh_hours
+                if d_vh > 0:
+                    down_rate[i] = (cur - obj(tf)) / d_vh
+            if idx[i] < L_len[i] - 1:
+                h[i] = L[i, idx[i] + 1]
+                tf = model.evaluate_array(h)
+                evals += 1
+                d_vh = fit.revenue_veh_hours - tf.revenue_veh_hours
+                if d_vh > 0:
+                    up_rate[i] = (obj(tf) - cur) / d_vh
+            h[i] = old
+
+        order_down = [int(i) for i in np.argsort(-down_rate)[:width]
+                      if np.isfinite(down_rate[i])]
+        order_up = [int(j) for j in np.argsort(up_rate)[:width]
+                    if np.isfinite(up_rate[j])]
+        applied_this_pass = 0
+
+        # (a) plain step-downs, if the envelope still has room
+        for i in order_down:
+            if down_rate[i] <= 0 or idx[i] == 0:
                 continue
-            trial = plan.copy()
-            trial.headways[k] = lad[i - 1]
-            tf = model.evaluate(trial)
-            if _feasible(model, tf, budget) and obj(tf) < cur_obj - 1e-9:
-                plan, idx_of[k] = trial, i - 1
-                fit, cur_obj = tf, obj(tf)
-                improved = True
+            old = h[i]
+            h[i] = L[i, idx[i] - 1]
+            tf = model.evaluate_array(h)
+            evals += 1
+            to = obj(tf)
+            if feasible(tf) and to < cur - 1e-9:
+                idx[i] -= 1
+                fit, cur = tf, to
+                moves += 1
+                applied_this_pass += 1
+            else:
+                h[i] = old
 
-    log.info("phase B/C: %d swaps accepted, obj=%.1f, vh=%.1f",
-             n_accept, cur_obj, fit.revenue_veh_hours)
-    return OptimizationResult(
-        plan=plan, fitness=fit,
-        label=f"lambda={unserved_multiplier}",
-        meta={"phase_a_steps": n_steps, "swaps_accepted": n_accept,
-              "unserved_multiplier": unserved_multiplier, "seed": seed})
+        # (b) exchanges, best expected net gain first
+        pairs = [(down_rate[i] - up_rate[j], i, j)
+                 for i in order_down for j in order_up
+                 if i != j and down_rate[i] > up_rate[j]]
+        pairs.sort(reverse=True)
+        for _, i, j in pairs:
+            if idx[i] == 0 or idx[j] >= L_len[j] - 1:
+                continue
+            oi, oj = h[i], h[j]
+            h[i] = L[i, idx[i] - 1]
+            h[j] = L[j, idx[j] + 1]
+            tf = model.evaluate_array(h)
+            evals += 1
+            to = obj(tf)
+            if feasible(tf) and to < cur - 1e-9:
+                idx[i] -= 1
+                idx[j] += 1
+                fit, cur = tf, to
+                moves += 1
+                applied_this_pass += 1
+            else:
+                h[i], h[j] = oi, oj
+            if evals >= max_evaluations:
+                break
+
+        if applied_this_pass == 0:
+            break
+    return idx, fit, cur, moves
 
 
 def pareto_filter(results: list[OptimizationResult]) -> list[OptimizationResult]:

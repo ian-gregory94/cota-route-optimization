@@ -1,0 +1,410 @@
+{
+  "lambda=0.25": {
+    "gc_relative_error": 0.0,
+    "unserved_relative_error": 2.1817896933837037e-16,
+    "vh_relative_error": 1.851482996211442e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2456.1249107714266,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.425664501800562,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.94925395269217,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 84.93104292929293,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.17612758018672,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.1176361879688,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.55736111106057,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.41101851851846,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=0.5": {
+    "gc_relative_error": 6.463301223077309e-16,
+    "unserved_relative_error": 9.50196228208491e-16,
+    "vh_relative_error": 7.432039689691792e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2447.496891154641,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.7684293494193435,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.9853055399706,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.27342929292928,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.16684400769847,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.15816365413684,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.54458333329733,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.4474305555555,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=1.0": {
+    "gc_relative_error": 2.1350114201206516e-16,
+    "unserved_relative_error": 2.1747818525429712e-16,
+    "vh_relative_error": 0.0,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2458.7580456113783,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.32105810285127,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.96647621381882,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.20685900673402,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.15763008616082,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.11358947377025,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.54202777774177,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.35632175925926,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=2.0": {
+    "gc_relative_error": 0.0,
+    "unserved_relative_error": 0.0,
+    "vh_relative_error": 1.8479553095936684e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2460.8135733891463,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.239398267012216,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.93298474556482,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.19408122895625,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.13096217941478,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.12051077006655,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.387142857105175,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.39332407407406,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=4.0": {
+    "gc_relative_error": 2.1271317529154875e-16,
+    "unserved_relative_error": 1.1151562025446965e-16,
+    "vh_relative_error": 5.537659261783376e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2463.5716792369867,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.1298271518965017,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.9306237201159,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.18473021885522,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.09562966924526,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.12366691377403,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.387142857105175,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.4681851851852,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=8.0": {
+    "gc_relative_error": 6.377809741750853e-16,
+    "unserved_relative_error": 1.1161503450240598e-16,
+    "vh_relative_error": 7.378383441649585e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2465.2953020549244,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -2.061352885635759,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 162.00494475178962,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.25903493265994,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.18356889735583,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 158.917958001737,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.387142857105175,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.47504861111113,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "lambda=16.0": {
+    "gc_relative_error": 4.2486917580473766e-16,
+    "unserved_relative_error": 0.0,
+    "vh_relative_error": 1.8410403916769185e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2470.056349346338,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -1.8722110290071092,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 161.9669827615103,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.14744234006734,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.13480618542042,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.05877976099626,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.387142857105175,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.46126388888894,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  },
+  "baseline": {
+    "gc_relative_error": 2.1447947543555373e-16,
+    "unserved_relative_error": 2.587850871711185e-16,
+    "vh_relative_error": 7.226288921661875e-16,
+    "peak_relative_error": 0.0,
+    "vectorized_matches_scalar": true,
+    "veh_hours": 2517.1833333333316,
+    "veh_hours_budget": 2517.1833333333334,
+    "veh_hours_cap": 2517.1833333333334,
+    "within_veh_hour_budget": true,
+    "veh_hours_headroom_pct": -7.771561172376096e-14,
+    "within_peak_budget": true,
+    "peak_detail": {
+      "am_peak": {
+        "used": 162.00944444444443,
+        "cap": 162.00944444444443,
+        "ok": true
+      },
+      "early": {
+        "used": 85.28208333333332,
+        "cap": 85.28208333333332,
+        "ok": true
+      },
+      "evening": {
+        "used": 140.19458333333336,
+        "cap": 140.19458333333336,
+        "ok": true
+      },
+      "midday": {
+        "used": 159.17277777777775,
+        "cap": 159.17277777777775,
+        "ok": true
+      },
+      "owl": {
+        "used": 35.55736111111111,
+        "cap": 35.55736111111111,
+        "ok": true
+      },
+      "pm_peak": {
+        "used": 176.49305555555554,
+        "cap": 176.49305555555554,
+        "ok": true
+      }
+    },
+    "all_headways_on_ladder": true,
+    "off_ladder_keys": [],
+    "minimum_service_preserved": true,
+    "service_violations": [],
+    "all_route_periods_served": true,
+    "n_route_periods": 173
+  }
+}

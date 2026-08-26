@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-08-26T01:10:47.098249+00:00",
+  "feed_version": "2026-MAY-04-BB_20260630",
+  "service_date": "2026-05-26",
+  "n_typical_days": 45,
+  "system": {
+    "service_date": "2026-05-26",
+    "n_routes": 39,
+    "n_stops_served": 2949,
+    "n_trips": 2331,
+    "revenue_veh_hours": 2517.1833333333334,
+    "peak_concurrent_buses": 171,
+    "peak_by_period": {
+      "early": 116,
+      "am_peak": 153,
+      "midday": 149,
+      "pm_peak": 171,
+      "evening": 149,
+      "owl": 124
+    },
+    "veh_miles_scheduled": 38471.42786129006
+  },
+  "validation": {
+    "n_errors": 0,
+    "n_warnings": 0
+  },
+  "diagnostics": {
+    "vehicle_miles": {
+      "from_shape_geometry_miles": 38531.17774552619,
+      "from_shape_dist_traveled": 61913.7616,
+      "sdt_over_geometry_ratio": 1.6068484075130232,
+      "sdt_units": "kilometers",
+      "from_shape_dist_traveled_converted_miles": 38471.42786129006,
+      "agreement_pct": 0.15506892789715065,
+      "method": "shape_dist_traveled (km, converted; cross-checked against projected geometry)"
+    },
+    "unassigned_trips": 0,
+    "n_patterns": 111,
+    "n_transfer_stops": 645
+  },
+  "demand": {
+    "status": "PROXY",
+    "n_block_groups": 1397,
+    "total_workers": 976504.0,
+    "total_jobs": 1086541.0,
+    "workers_within_catchment": 368626.0,
+    "jobs_within_catchment": 571047.0,
+    "unreachable_workers": 607878.0,
+    "unreachable_jobs": 515494.0,
+    "catchment_radius_m": 600.0,
+    "n_stops_with_access": 2432
+  },
+  "runtime_min": {
+    "mean": 64.79236379236379,
+    "median": 66.0
+  },
+  "stop_spacing_m": {
+    "median": 473.3431949537591
+  }
+}

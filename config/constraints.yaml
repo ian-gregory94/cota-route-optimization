@@ -4,7 +4,9 @@ resource:
   # overridden with explicit numbers here.
   weekday_revenue_vehicle_hours: baseline
   peak_fleet_by_period: baseline
-  budget_tolerance: 0.005   # solutions may not exceed baseline budget by more than 0.5%
+  # Solutions may not exceed the baseline envelope at all. Set to 0 so the claim
+  # "inside COTA's current resource envelope" needs no asterisk.
+  budget_tolerance: 0.0
 
 service:
   policy_max_headway_min: 60      # no route-period may exceed this if it had service

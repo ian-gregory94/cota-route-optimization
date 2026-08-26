@@ -1,0 +1,10 @@
+access (as built)      gini=0.467  λ=0.5 gc  -0.49% uns  -31.24%  Δhw frequent  +11.8 infrequent   -65.6
+sharpened alpha=1.5    gini=0.606  λ=0.5 gc  -1.08% uns  -30.38%  Δhw frequent   +9.6 infrequent   -64.2
+sharpened alpha=2.0    gini=0.700  λ=0.5 gc  -2.99% uns  -24.86%  Δhw frequent  +11.5 infrequent   -61.1
+sharpened alpha=3.0    gini=0.812  λ=0.5 gc -10.40% uns  -14.72%  Δhw frequent  +14.0 infrequent   -58.4
+revealed blend 0.5     gini=0.435  λ=0.5 gc  -1.67% uns   -9.80%  Δhw frequent   +9.9 infrequent   -62.0
+revealed blend 0.8     gini=0.444  λ=0.5 gc  -2.62% uns   +3.96%  Δhw frequent   +7.6 infrequent   -59.8
+
+wrote /home/claude/columbus-transit-opt/outputs/demand_concentration_test.csv
+
+Δhw > 0 on frequent routes = service moved AWAY from trunks.
