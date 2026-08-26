@@ -28,7 +28,7 @@ from cota_opt.cache import ResultStore
 from cota_opt.candidates import (candidate_frame, generate_all, stop_context)
 from cota_opt.configs import load_cost_weights, service_periods
 from cota_opt.cost import CostWeights
-from cota_opt.exp3 import Screener, screen_frame
+from cota_opt.geometry_eval import Screener, screen_frame
 from cota_opt.experiment import Experiment
 from cota_opt.geometry import SegmentTimeModel
 from cota_opt.harness import build_harness
@@ -178,7 +178,7 @@ def _to_record(r) -> dict:
 
 
 def _from_record(rec: dict):
-    from cota_opt.exp3 import ScreenResult
+    from cota_opt.geometry_eval import ScreenResult
     return ScreenResult(
         key=rec["cell"].split("|", 1)[-1], kind=rec["kind"],
         description=rec["description"], generalized_cost=rec["gc"],

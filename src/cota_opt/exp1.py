@@ -13,6 +13,13 @@ exactly:  ``h = k · T / n_trips``.  Because revenue vehicle-hours are
 model's baseline vehicle-hours are *identically* the GTFS scheduled
 vehicle-hours. There is no calibration gap to explain away — this is asserted
 at run time.
+
+Module naming: these files are numbered by the order the models were built,
+not by the write-up's experiment numbers. This is the route-level frequency
+model; the path-based model in ``exp2`` is what the *first* experiment's
+headline rests on, and Experiment 2's geometry funnel lives in
+``geometry_eval``.
+
 """
 from __future__ import annotations
 

@@ -24,7 +24,7 @@ from cota_opt.audit import (PRIMARY_MAX_MODELLED_PCT, audit_row, audit_table,
 from cota_opt.cache import ResultStore
 from cota_opt.candidates import generate_all, stop_context
 from cota_opt.configs import service_periods
-from cota_opt.exp3 import baseline_headways
+from cota_opt.geometry_eval import baseline_headways
 from cota_opt.experiment import Experiment
 from cota_opt.geometry import SegmentTimeModel, apply_edits
 from cota_opt.harness import build_harness

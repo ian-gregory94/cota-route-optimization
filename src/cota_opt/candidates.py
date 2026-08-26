@@ -8,7 +8,7 @@ reading the result sees "truncate route 25 past X: 11 stops, 3.1% of the
 route's running time, 0.4% of its access demand" rather than an opaque index.
 
 Nothing here evaluates an edit. Generation proposes; the screening evaluator in
-``exp3`` disposes. Keeping those apart matters: a generator that also scored
+``geometry_eval`` disposes. Keeping those apart matters: a generator that also scored
 its own proposals would quietly become the optimizer, and its priors would be
 indistinguishable from the result.
 

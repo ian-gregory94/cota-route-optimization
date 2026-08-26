@@ -219,3 +219,43 @@
 2026-08-26 21:56:09,753 ======================================================================
 2026-08-26 21:56:09,753 ITERATION 1, 4 extra enumeration scenarios
 2026-08-26 21:56:09,822 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 21:59:37,558 rejected 321 malformed candidate paths that failed the re-pricing check
+2026-08-26 21:59:37,889 path set: 35619 paths over 17434/20000 OD pairs (86.9% of flow served), 185046 legs
+2026-08-26 21:59:38,107 cache store pathset-88cdd61636fd6617 (13.6 MB, built in 208s)
+2026-08-26 21:59:38,107 period early   : 35619 paths, 20000 OD pairs
+2026-08-26 21:59:38,124 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 22:03:33,946 rejected 367 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:03:34,189 path set: 42774 paths over 19316/20000 OD pairs (96.5% of flow served), 222170 legs
+2026-08-26 22:03:34,421 cache store pathset-ee8bda916e9edf0f (16.2 MB, built in 236s)
+2026-08-26 22:03:34,421 period am_peak : 42774 paths, 20000 OD pairs
+2026-08-26 22:03:34,439 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 22:07:08,029 rejected 229 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:07:08,221 path set: 35287 paths over 17437/20000 OD pairs (86.9% of flow served), 181975 legs
+2026-08-26 22:07:08,414 cache store pathset-8112c7b008ffa051 (13.4 MB, built in 214s)
+2026-08-26 22:07:08,414 period midday  : 35287 paths, 20000 OD pairs
+2026-08-26 22:07:08,431 path enumeration: 20000 OD pairs, 636 origin zones, 10 scenarios, cap 10 paths/OD
+2026-08-26 22:10:07,075 experiment exp6_fixpoint_20260826T221007Z
+2026-08-26 22:10:07,076 result store: 5 cells already solved
+2026-08-26 22:10:07,254 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-26 22:10:07,305 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 22:10:07,306 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 22:10:07,308 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 22:10:07,339 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 22:10:07,846 cache hit  pathsets-c46c302e5c74673a (76.8 MB, 0.5s)
+2026-08-26 22:10:07,848 harness ready in 1s; waiting model = pattern
+2026-08-26 22:10:07,848 ======================================================================
+2026-08-26 22:10:07,848 ITERATION 0, 0 extra enumeration scenarios
+2026-08-26 22:10:07,947 period early   : 31858 paths, 20000 OD pairs
+2026-08-26 22:10:07,956 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-26 22:10:07,963 period midday  : 32893 paths, 20000 OD pairs
+2026-08-26 22:10:07,971 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-26 22:10:07,977 period evening : 30786 paths, 20000 OD pairs
+2026-08-26 22:10:07,983 period owl     : 31693 paths, 20000 OD pairs
+2026-08-26 22:10:08,011 load profile: 23 route-periods, peak-load factor median 0.32, p90 0.49
+2026-08-26 22:10:08,038 load profile: 35 route-periods, peak-load factor median 0.37, p90 1.00
+2026-08-26 22:10:08,061 load profile: 25 route-periods, peak-load factor median 0.34, p90 0.48
+2026-08-26 22:10:08,088 load profile: 33 route-periods, peak-load factor median 0.37, p90 0.94
+2026-08-26 22:10:08,108 load profile: 24 route-periods, peak-load factor median 0.33, p90 0.49
+2026-08-26 22:10:08,133 load profile: 22 route-periods, peak-load factor median 0.42, p90 0.50
+2026-08-26 22:10:08,133 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-26 22:10:08,188 iteration 0: 203161 candidate paths, baseline gc=1.787982e+06 (enum 0s)

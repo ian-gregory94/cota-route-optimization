@@ -1,5 +1,10 @@
 """Experiment 2 — does route geometry bind, once frequency is already optimal?
 
+Named ``geometry_eval`` rather than ``exp3``: the module names in this package
+follow the order the models were built, and that stopped matching the write-up's
+experiment numbers once stop spacing became a real Experiment 3. This file is
+Experiment 2's evaluation funnel.
+
 Evaluating a geometry edit properly means re-optimizing frequency on the edited
 network, because moving a route changes where the vehicle-hour budget is best
 spent. That costs a path-set enumeration and a full solve per candidate, which

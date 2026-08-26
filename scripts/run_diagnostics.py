@@ -22,6 +22,7 @@ import argparse
 import json
 import logging
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,6 +42,25 @@ log = logging.getLogger("diagnostics")
 OUT = ROOT / "outputs"
 
 
+def wait_for_memory(min_free_mb: int = 2200, tries: int = 60) -> None:
+    """Yield to the authoritative Experiment 1 run rather than race it.
+
+    Running a second harness-loading job next to the long one is what put this
+    container into the OOM killer once already. This job is not on anyone's
+    critical path minute to minute, so it waits.
+    """
+    for _ in range(tries):
+        try:
+            free = int([l for l in Path("/proc/meminfo").read_text().splitlines()
+                        if l.startswith("MemAvailable")][0].split()[1]) // 1024
+        except Exception:
+            return
+        if free >= min_free_mb:
+            return
+        log.warning("only %d MB available, waiting", free)
+        time.sleep(30)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--periods", type=str, default="am_peak,midday",
@@ -53,6 +73,7 @@ def main() -> int:
                     choices=[None, "pattern", "same_route"])
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    wait_for_memory()
 
     suffix = "" if args.common_lines in (None, "pattern") else "_modelB"
     exp = Experiment(name=f"model_diagnostics{suffix}", seed=20260825,

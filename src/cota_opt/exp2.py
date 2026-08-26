@@ -17,6 +17,12 @@ What changes from Experiment 1
   that some travellers give up), and only the second responds to frequency.
 
 Resource accounting is unchanged and still ties exactly to the GTFS schedule.
+
+Module naming: these files are numbered by the order the models were built,
+not by the write-up's experiment numbers. Despite the name, this is the model
+the *first* experiment's headline rests on; Experiment 2's geometry funnel is
+``geometry_eval``.
+
 """
 from __future__ import annotations
 
