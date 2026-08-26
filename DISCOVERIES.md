@@ -360,6 +360,65 @@ number as good enough. A cross-route residual that *rose* would mean the two
 runs are not scoring the same baseline.
 
 
+### D13 — The corrected valuation does have a discovery gap: wide in trips, narrow in cost
+
+**Evidence.** Gate 11, run under Model B on the top 4,000 OD pairs per period
+riding the eight routes D10 named:
+
+| | |
+|---|---|
+| OD pairs with a materially better omitted path | 333 |
+| flow affected / tested flow | 326.1 / 6,687.7 = **4.877%** |
+| generalized-cost improvement / tested cost | 1,194.6 / 645,768.4 = **0.185%** |
+| median improvement | 3.58 min (3.38%) |
+| p95 improvement | 9.00 min |
+| omitted sequences already present in the set under other pricing | 15 of 333 |
+
+Concentrated on 001 (90 pairs), 008 (119), 002 (111), 033, 007, 034. The
+dominant sequence is `008+001`, and nearly all omissions are two-boarding
+journeys — one-transfer trips whose second leg only becomes worth waiting for
+once a route's patterns are counted together.
+
+**Case C**, on the flow bound alone. The cost bound is *negligible* by the same
+pre-committed table (0.185% against a 0.25% line). The rule says either bound
+triggers the worse case, so Case C it is.
+
+**Confidence.** High on the numbers — the bound clears most pairs exactly and
+the survivors are priced exactly under Model B, not estimated. Moderate on
+coverage: only the focus routes' top-flow pairs were tested, so this is a
+lower bound on the true omission.
+
+**Interpretation.** The two bounds disagree by a factor of 26, and that
+disagreement is the finding rather than a nuisance. A lot of trips have a
+slightly better path they were never offered — 3.6 minutes on journeys
+averaging 74. That is far too small to move the frontier and far too widespread
+to dismiss, and it is exactly the situation a rule written *after* seeing the
+numbers would have been argued out of.
+
+**Response, as pre-committed.** Targeted augmentation of candidate generation:
+Model B enumeration gains a route-level-priced search scenario. Not a
+valuation change, not a replacement for RAPTOR, and no compensation elsewhere.
+
+**The rerun is a consistency check, not an independent test — and that has to
+be said out loud.** The diagnostic finds suspects with route-level RAPTOR and
+the augmentation adds route-level RAPTOR's optima to the candidate set. After
+augmenting, the diagnostic's bound cannot beat the set for the paths it looks
+at, close to by construction. A clean rerun therefore proves the augmentation
+was wired in — worth knowing, given the self-check bug that made the scenario
+contribute nothing on first attempt — but it does not prove discovery adequacy.
+
+The non-circular evidence is the frontier's *sensitivity* to the augmentation:
+solve Model B on both candidate sets and compare. If the wider set moves the
+frontier, discovery mattered; if it does not, the omission was real, widespread,
+and irrelevant to the answer — which is what the 0.185% cost share predicts. That
+comparison is the one to report.
+
+**What would falsify it.** A rerun that still shows material flow share would
+mean the augmentation does not reach the sequences involved. A frontier that
+moves materially on the wider set would mean the cost share understated the
+omission and the whole Model B result needs the augmented set as its basis.
+
+
 ---
 
 ## Not yet earned
