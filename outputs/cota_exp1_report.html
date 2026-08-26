@@ -1,0 +1,672 @@
+<title>COTA Frequency Reallocation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    color-scheme: light;
+    --paper:      #f6f6f2;
+    --card:       #ffffff;
+    --ink:        #10141c;
+    --ink-2:      #4d5768;
+    --ink-3:      #78829a;
+    --navy:       #16305c;
+    --signal:     #b5232c;
+    --gain:       #17624a;
+    --caution:    #8a5d0c;
+    --rule:       #d9dad3;
+    --rule-soft:  #e8e8e2;
+    --band:       #eef1ec;
+    --chart-fill: #16305c;
+    --gain-wash:  rgba(23, 98, 74, 0.07);
+    --signal-wash:rgba(181, 35, 44, 0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper:      #0e1118;
+      --card:       #161b25;
+      --ink:        #eef0f4;
+      --ink-2:      #a4aec1;
+      --ink-3:      #7b8599;
+      --navy:       #7ea6e8;
+      --signal:     #ef6a6a;
+      --gain:       #4fbf94;
+      --caution:    #d8a13f;
+      --rule:       #2b323f;
+      --rule-soft:  #212734;
+      --band:       #1a212c;
+      --chart-fill: #7ea6e8;
+      --gain-wash:  rgba(79, 191, 148, 0.10);
+      --signal-wash:rgba(239, 106, 106, 0.12);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper:      #0e1118;
+    --card:       #161b25;
+    --ink:        #eef0f4;
+    --ink-2:      #a4aec1;
+    --ink-3:      #7b8599;
+    --navy:       #7ea6e8;
+    --signal:     #ef6a6a;
+    --gain:       #4fbf94;
+    --caution:    #d8a13f;
+    --rule:       #2b323f;
+    --rule-soft:  #212734;
+    --band:       #1a212c;
+    --chart-fill: #7ea6e8;
+    --gain-wash:  rgba(79, 191, 148, 0.10);
+    --signal-wash:rgba(239, 106, 106, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    margin: 0;
+    padding: 0 20px 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; }
+  .wide { max-width: 980px; margin: 0 auto; }
+
+  /* ---------- masthead ---------- */
+  header.mast {
+    border-bottom: 2px solid var(--ink);
+    padding: 52px 0 20px;
+    margin-bottom: 34px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: Archivo, "Helvetica Neue", sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.1rem, 5.4vw, 3.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    margin: 0 0 18px;
+  }
+  .standfirst {
+    font-size: 1.16rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 62ch;
+    margin: 0 0 26px;
+  }
+
+  /* provenance strip — a document-control block */
+  .provenance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  .provenance div { background: var(--card); padding: 10px 12px; }
+  .provenance dt {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 3px;
+  }
+  .provenance dd {
+    margin: 0; font-size: 13px; font-weight: 500; color: var(--ink);
+    font-variant-numeric: tabular-nums; overflow-wrap: anywhere;
+  }
+
+  /* ---------- sections ---------- */
+  section { margin: 54px 0 0; }
+  h2 {
+    font-family: Archivo, sans-serif;
+    font-weight: 700; font-size: 1.42rem; letter-spacing: -0.012em;
+    margin: 0 0 6px; text-wrap: balance;
+  }
+  h2 + .kicker {
+    color: var(--ink-3); font-size: 0.95rem; margin: 0 0 22px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-family: Archivo, sans-serif; font-weight: 600; font-size: 1.06rem;
+    margin: 30px 0 8px; letter-spacing: -0.005em;
+  }
+  p { margin: 0 0 16px; max-width: 66ch; }
+  a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+  strong { font-weight: 600; }
+  code, .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.88em; font-variant-numeric: tabular-nums;
+  }
+  code { background: var(--band); padding: 1px 5px; border-radius: 2px; }
+
+  /* ---------- headline stats ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 26px 0 8px;
+  }
+  .stat { background: var(--card); padding: 18px 16px 16px; }
+  .stat .n {
+    font-family: Archivo, sans-serif; font-weight: 700;
+    font-size: 2.02rem; line-height: 1; letter-spacing: -0.028em;
+    font-variant-numeric: tabular-nums; display: block; margin-bottom: 7px;
+  }
+  .stat .n.good { color: var(--gain); }
+  .stat .n.flat { color: var(--ink); }
+  .stat .l {
+    font-size: 12.5px; line-height: 1.4; color: var(--ink-2);
+  }
+  .stat .l b { display: block; font-weight: 600; color: var(--ink); }
+
+  /* ---------- chart ---------- */
+  figure { margin: 26px 0 8px; }
+  .chartbox {
+    background: var(--card); border: 1px solid var(--rule); padding: 14px 10px 6px;
+    overflow-x: auto;
+  }
+  .chartbox svg { display: block; min-width: 560px; width: 100%; height: auto; }
+  figcaption {
+    font-size: 13.5px; color: var(--ink-2); margin-top: 10px; max-width: 68ch;
+  }
+  .ax-label { font-family: "Source Sans 3", sans-serif; font-size: 12.5px; fill: var(--ink-2); }
+  .ax-tick  { font-family: "IBM Plex Mono", monospace; font-size: 11px; fill: var(--ink-3); }
+  .pt-label { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; fill: var(--ink-2); }
+  .quad-label { font-family: "Source Sans 3", sans-serif; font-size: 12px; fill: var(--gain); }
+
+  /* ---------- tables ---------- */
+  .tablebox { overflow-x: auto; margin: 20px 0 8px; border: 1px solid var(--rule); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; background: var(--card); }
+  caption {
+    caption-side: top; text-align: left; padding: 12px 14px 11px;
+    font-family: "IBM Plex Mono", monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    background: var(--band); border-bottom: 1px solid var(--rule);
+  }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--rule-soft); }
+  thead th {
+    font-family: Archivo, sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.02em; color: var(--ink-2); border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; font-family: "IBM Plex Mono", monospace;
+                   font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  tr.hi td { background: var(--gain-wash); }
+  tr.hi td:first-child { box-shadow: inset 3px 0 0 var(--gain); font-weight: 600; }
+  tr.base td { background: var(--band); color: var(--ink-2); }
+  .up   { color: var(--signal); }
+  .down { color: var(--gain); }
+  .rt {
+    font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 12.5px;
+    background: var(--band); padding: 1px 6px; border-radius: 2px; color: var(--ink);
+  }
+
+  /* ---------- callouts ---------- */
+  .note {
+    border-left: 3px solid var(--signal); background: var(--signal-wash);
+    padding: 16px 18px; margin: 24px 0; font-size: 15.5px;
+  }
+  .note p { margin: 0 0 10px; max-width: none; }
+  .note p:last-child { margin: 0; }
+  .note .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--signal);
+    display: block; margin-bottom: 7px; font-weight: 600;
+  }
+  .note.ok { border-left-color: var(--gain); background: var(--gain-wash); }
+  .note.ok .tag { color: var(--gain); }
+
+  ul, ol { max-width: 66ch; padding-left: 22px; margin: 0 0 16px; }
+  li { margin-bottom: 9px; }
+  li::marker { color: var(--ink-3); }
+
+  details {
+    border: 1px solid var(--rule); background: var(--card);
+    padding: 0; margin: 18px 0;
+  }
+  summary {
+    cursor: pointer; padding: 12px 16px; font-family: Archivo, sans-serif;
+    font-weight: 600; font-size: 14.5px; list-style-position: inside;
+  }
+  details[open] summary { border-bottom: 1px solid var(--rule-soft); }
+  .details-body { padding: 14px 16px 4px; }
+  .details-body p, .details-body ul { font-size: 15px; }
+
+  footer {
+    margin-top: 66px; padding-top: 20px; border-top: 2px solid var(--ink);
+    font-size: 13.5px; color: var(--ink-3);
+  }
+  footer p { max-width: 70ch; }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">Columbus transit optimization · Experiment 1</p>
+    <h1>COTA runs a steeper frequency ladder than passenger cost justifies</h1>
+    <p class="standfirst">
+      Holding route geometry, stop patterns and the scheduled resource envelope
+      fixed, a reallocation of headways cuts the share of modelled demand that
+      loses usable service access by <strong>32%</strong> — at slightly
+      <em>lower</em> total passenger generalized cost, using <strong>97%</strong>
+      of today's vehicle-hours. The direction survives every robustness test
+      thrown at it. The specific plan is not implementable, and the reason why
+      is the most useful thing in this report.
+    </p>
+
+    <dl class="provenance">
+      <div><dt>Feed</dt><dd>2026-MAY-04-BB</dd></div>
+      <div><dt>SHA-256</dt><dd>b11634f117a3…</dd></div>
+      <div><dt>Service day</dt><dd>Tue 2026-05-26</dd></div>
+      <div><dt>Validation</dt><dd>0 errors</dd></div>
+      <div><dt>Demand</dt><dd>LODES proxy</dd></div>
+      <div><dt>Seed</dt><dd>20260825</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>The result</h2>
+    <p class="kicker">Seven scalarizations of the two objectives, each solved to a local optimum inside the same envelope.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="n good">−31.9%</span>
+        <span class="l"><b>Unserved demand</b>modelled trips losing usable access, vs today</span>
+      </div>
+      <div class="stat">
+        <span class="n good">−0.45%</span>
+        <span class="l"><b>Generalized cost</b>total, across a 6.8% larger served population</span>
+      </div>
+      <div class="stat">
+        <span class="n good">−6.8%</span>
+        <span class="l"><b>Cost per served trip</b>equivalent in-vehicle minutes</span>
+      </div>
+      <div class="stat">
+        <span class="n flat">97.2%</span>
+        <span class="l"><b>Of the vehicle-hour budget</b>2,447 of 2,517 scheduled hours</span>
+      </div>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-3);margin-top:10px">
+      Figures for the λ&nbsp;=&nbsp;0.5 plan. Mean passenger wait falls from 11.24 to 10.27 minutes.
+    </p>
+  </section>
+
+  <section class="wide">
+    <figure>
+      <div class="chartbox">
+        <svg viewBox="0 0 700 442" role="img" aria-label="Pareto frontier: passenger generalized cost versus unserved demand, both as percent change from COTA's current schedule. Seven optimized plans trace a curve from minus 3.8 percent cost with plus 18.6 percent unserved, through minus 0.4 percent cost with minus 31.9 percent unserved, to plus 1.0 percent cost with minus 42.2 percent unserved.">
+          <!-- quadrant where both objectives beat today -->
+          <rect x="64" y="146.2" width="459.7" height="241.8" fill="var(--gain-wash)"/>
+          <text class="quad-label" x="74" y="380">better than today on both objectives</text>
+
+          <!-- grid -->
+          <g stroke="var(--rule-soft)" stroke-width="1">
+            <line x1="96.1"  y1="28" x2="96.1"  y2="388"/>
+            <line x1="203.0" y1="28" x2="203.0" y2="388"/>
+            <line x1="309.9" y1="28" x2="309.9" y2="388"/>
+            <line x1="416.8" y1="28" x2="416.8" y2="388"/>
+            <line x1="630.6" y1="28" x2="630.6" y2="388"/>
+            <line x1="64" y1="38.7"  x2="684" y2="38.7"/>
+            <line x1="64" y1="92.5"  x2="684" y2="92.5"/>
+            <line x1="64" y1="199.9" x2="684" y2="199.9"/>
+            <line x1="64" y1="253.7" x2="684" y2="253.7"/>
+            <line x1="64" y1="307.4" x2="684" y2="307.4"/>
+            <line x1="64" y1="361.1" x2="684" y2="361.1"/>
+          </g>
+          <!-- zero axes -->
+          <g stroke="var(--rule)" stroke-width="1.5">
+            <line x1="523.7" y1="28" x2="523.7" y2="388"/>
+            <line x1="64" y1="146.2" x2="684" y2="146.2"/>
+          </g>
+
+          <!-- frontier -->
+          <polyline points="118.6,46.2 475.9,317.7 572.6,363.8 610.0,370.6 612.4,371.8 618.5,372.1 626.6,373.0"
+                    fill="none" stroke="var(--chart-fill)" stroke-width="2"
+                    stroke-linejoin="round" stroke-linecap="round"/>
+          <g fill="var(--chart-fill)" stroke="var(--card)" stroke-width="2">
+            <circle cx="118.6" cy="46.2"  r="5.5"/>
+            <circle cx="572.6" cy="363.8" r="5.5"/>
+            <circle cx="610.0" cy="370.6" r="5.5"/>
+            <circle cx="612.4" cy="371.8" r="5.5"/>
+            <circle cx="618.5" cy="372.1" r="5.5"/>
+            <circle cx="626.6" cy="373.0" r="5.5"/>
+          </g>
+          <!-- the strict-improvement plan, emphasised -->
+          <circle cx="475.9" cy="317.7" r="8" fill="var(--gain)" stroke="var(--card)" stroke-width="2.5"/>
+          <!-- today -->
+          <path d="M523.7,136.2 l3.1,6.3 6.9,1 -5,4.9 1.2,6.9 -6.2,-3.3 -6.2,3.3 1.2,-6.9 -5,-4.9 6.9,-1 z"
+                fill="var(--signal)" stroke="var(--card)" stroke-width="1.5"/>
+
+          <!-- point labels -->
+          <text class="pt-label" x="128" y="42">λ=0.25</text>
+          <text class="pt-label" x="452" y="341" fill="var(--gain)" font-weight="600">λ=0.5</text>
+          <text class="pt-label" x="560" y="384">λ=1</text>
+          <text class="pt-label" x="622" y="394">λ=16</text>
+          <text class="pt-label" x="470" y="132" fill="var(--signal)" font-weight="600" text-anchor="end">today's schedule</text>
+
+          <!-- ticks -->
+          <g class="ax-tick" text-anchor="middle">
+            <text x="96.1"  y="406">−4</text>
+            <text x="203.0" y="406">−3</text>
+            <text x="309.9" y="406">−2</text>
+            <text x="416.8" y="406">−1</text>
+            <text x="523.7" y="406">0</text>
+            <text x="630.6" y="406">+1</text>
+          </g>
+          <g class="ax-tick" text-anchor="end">
+            <text x="56" y="42.7">+20</text>
+            <text x="56" y="96.5">+10</text>
+            <text x="56" y="150.2">0</text>
+            <text x="56" y="203.9">−10</text>
+            <text x="56" y="257.7">−20</text>
+            <text x="56" y="311.4">−30</text>
+            <text x="56" y="365.1">−40</text>
+          </g>
+          <text class="ax-label" x="374" y="430" text-anchor="middle">Passenger generalized cost — % change vs today</text>
+          <text class="ax-label" x="-208" y="16" transform="rotate(-90)" text-anchor="middle">Unserved demand — % change</text>
+        </svg>
+      </div>
+      <figcaption>
+        Down and to the left is better on both objectives. λ is the weight on
+        unserved demand in the scalarized objective; sweeping it traces the
+        frontier. Every point respects the vehicle-hour budget and the
+        per-period peak-vehicle cap. <strong>Demand is a proxy, not observed
+        COTA ridership.</strong>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>What the plan actually does</h2>
+    <p class="kicker">It flattens the frequency ladder — and that is the whole finding.</p>
+
+    <p>
+      Grouped by how much service a route-period has today, the reallocation is
+      almost monotone: hours come off everything already running every 15
+      minutes, and go to everything running worse than every 30.
+    </p>
+
+    <div class="tablebox">
+      <table>
+        <caption>Reallocation by current service level · λ = 0.5 plan · 173 route-periods</caption>
+        <thead>
+          <tr>
+            <th>Current headway band</th>
+            <th class="num">Route-periods</th>
+            <th class="num">Mean headway change</th>
+            <th class="num">Vehicle-hours moved</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>15 min or better</td><td class="num">29</td><td class="num up">+10.6 min</td><td class="num up">−377.3</td></tr>
+          <tr><td>16–30 min</td><td class="num">49</td><td class="num up">+5.0 min</td><td class="num up">−76.2</td></tr>
+          <tr><td>31–60 min</td><td class="num">40</td><td class="num down">−19.1 min</td><td class="num down">+240.1</td></tr>
+          <tr><td>61–120 min</td><td class="num">31</td><td class="num down">−24.1 min</td><td class="num down">+58.2</td></tr>
+          <tr><td>over 120 min</td><td class="num">24</td><td class="num down">−118.7 min</td><td class="num down">+85.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-3)">
+      Positive headway change = less service. 73 route-periods gain service,
+      53 lose it, 47 are unchanged; net −69.7 vehicle-hours (the plan does not
+      need the whole budget).
+    </p>
+
+    <h3>Why this happens</h3>
+    <p>
+      Expected wait is concave in headway. Taking a route from a 15-minute to a
+      24-minute headway costs each rider about 1.5 minutes of expected wait.
+      Taking a different route from 60 minutes to 24 saves each of its riders
+      about 9 minutes — and recovers demand that the retention curve had
+      written off entirely at 60. One vehicle-hour buys roughly six times more
+      wait reduction at the bottom of the ladder than it costs at the top.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why you should not act on this plan</h2>
+    <p class="kicker">The direction is robust. The prescription is not.</p>
+
+    <div class="note">
+      <span class="tag">The tell</span>
+      <p>
+        The λ&nbsp;=&nbsp;0.5 plan cuts <span class="rt">10</span> E&nbsp;BROAD/W&nbsp;BROAD
+        from a 14.4-minute AM-peak headway to <strong>60 minutes</strong>, and
+        raises <span class="rt">75</span>, <span class="rt">43</span>,
+        <span class="rt">42</span> and <span class="rt">46</span> from 180-minute
+        headways to 15–24 minutes in the peaks. No planner would sign that.
+      </p>
+    </div>
+
+    <p>Three model gaps produce it, and each is a concrete next milestone:</p>
+
+    <ol>
+      <li>
+        <strong>Passengers cannot re-route.</strong> Cost is computed per
+        route-period, not per origin–destination path, so a rider stranded by a
+        cut on route 10 is charged the full penalty instead of walking two
+        blocks to route 2. Route-level assignment systematically overstates the
+        value of spreading service. A RAPTOR or CSA implementation over the
+        existing network abstraction fixes this.
+      </li>
+      <li>
+        <strong>Crowding never binds.</strong> At the assumed 40,000 weekday
+        linked trips, the busiest bus in the model carries far less than its
+        60-passenger planning capacity, so nothing pushes back on cutting a
+        trunk route. Turning the crowding penalty off entirely changes the
+        answer by 0.00 percentage points — proof the term is inert at this
+        demand scale, and that the real trunk-route capacity constraint is
+        simply absent.
+      </li>
+      <li>
+        <strong>A 180-minute headway is not always bad service.</strong> Routes
+        42, 43, 46 and 75 run two peak trips by design — commuter expresses, not
+        neglected corridors. The retention curve reads them as a coverage
+        failure worth 12× more service. The model has no concept of "peak-only
+        by design", and no route-type taxonomy to give it one.
+      </li>
+    </ol>
+
+    <p>
+      There is also the demand proxy itself. It measures <em>spatial access</em> —
+      LODES workers and jobs within 600&nbsp;m of a stop, split among the routes
+      serving it — which is flatter than real ridership. That was the obvious
+      line of attack, so it was tested directly.
+    </p>
+  </section>
+
+  <section>
+    <h2>What survived the skeptic pass</h2>
+    <p class="kicker">Four independent attacks on the result. None reversed it.</p>
+
+    <h3>1 · Does a sharper demand distribution reverse it?</h3>
+    <p>
+      The proxy was re-weighted to concentrate demand on the busiest routes, up
+      to a Gini of 0.81 — far more concentrated than any real bus network — and
+      separately blended with COTA's own service allocation as a
+      revealed-preference signal. Service still moves off the frequent routes
+      in every case.
+    </p>
+
+    <div class="tablebox">
+      <table>
+        <caption>Demand concentration test · λ = 0.5</caption>
+        <thead>
+          <tr>
+            <th>Demand model</th><th class="num">Gini</th>
+            <th class="num">Δ cost</th><th class="num">Δ unserved</th>
+            <th class="num">Δ headway, ≤15-min routes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hi"><td>Access proxy (as built)</td><td class="num">0.467</td><td class="num down">−0.49%</td><td class="num down">−31.2%</td><td class="num up">+11.8 min</td></tr>
+          <tr><td>Sharpened α = 1.5</td><td class="num">0.606</td><td class="num down">−1.08%</td><td class="num down">−30.4%</td><td class="num up">+9.6 min</td></tr>
+          <tr><td>Sharpened α = 2.0</td><td class="num">0.700</td><td class="num down">−2.99%</td><td class="num down">−24.9%</td><td class="num up">+11.5 min</td></tr>
+          <tr><td>Sharpened α = 3.0</td><td class="num">0.812</td><td class="num down">−10.40%</td><td class="num down">−14.7%</td><td class="num up">+14.0 min</td></tr>
+          <tr><td>Revealed-preference blend 0.5</td><td class="num">0.435</td><td class="num down">−1.67%</td><td class="num down">−9.8%</td><td class="num up">+9.9 min</td></tr>
+          <tr><td>Revealed-preference blend 0.8</td><td class="num">0.444</td><td class="num down">−2.62%</td><td class="num up">+4.0%</td><td class="num up">+7.6 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2 · Does it depend on the cost weights?</h3>
+    <p>
+      Thirteen assumption variants — wait weight ±50%, transfer penalty removed,
+      retention floor 0.10 to 0.50, crowding off, layover 25%, demand scale
+      20k–80k trips, jobs weighted double, catchment 400&nbsp;m. Unserved-demand
+      reduction ranged from <strong>−37.1% to −42.2%</strong> across all of them.
+      Total generalized cost moved between −4.6% and +3.7%, so the cost sign is
+      <em>not</em> robust — only the coverage gain is.
+    </p>
+
+    <h3>3 · Is it solver noise?</h3>
+    <p>
+      Four seeds: generalized cost changed by 0.430%, 0.439%, 0.458%, 0.461%
+      (standard deviation 0.015 percentage points). The heuristic is not
+      wandering.
+    </p>
+
+    <h3>4 · Is the arithmetic right?</h3>
+    <div class="note ok">
+      <span class="tag">Verified</span>
+      <p>
+        Every reported plan was re-evaluated by a second, independent scalar
+        implementation that shares no code with the vectorized solver. Maximum
+        relative disagreement across cost, unserved demand, vehicle-hours and
+        peak vehicles: <span class="mono">6.5 × 10⁻¹⁶</span> — floating-point
+        noise.
+      </p>
+      <p>
+        The model's baseline vehicle-hours reproduce the GTFS scheduled
+        vehicle-hours <em>exactly</em> (relative error 0.0), because baseline
+        headways are defined as <span class="mono">k·T/n_trips</span>. There is
+        no calibration gap. Every peak-vehicle cap is respected in all six
+        periods; every headway lies on its allowed ladder; no route-period lost
+        service.
+      </p>
+    </div>
+
+    <details>
+      <summary>Two data errors the skeptic pass caught before they reached the result</summary>
+      <div class="details-body">
+        <p>
+          <strong>Unscaled demand.</strong> The first run showed an −11% cost
+          improvement. Turning off the crowding penalty collapsed baseline cost
+          by two-thirds, which meant crowding was dominating the objective. The
+          cause: the LODES proxy's raw units are "workers + jobs near a stop"
+          (~940,000), which modelled every bus as carrying 400 passengers. The
+          proxy is now rescaled to an explicit weekday linked-trip assumption,
+          and that assumption is swept in the sensitivity table. The −11% was an
+          artifact and is gone.
+        </p>
+        <p>
+          <strong>Kilometres reported as miles.</strong> GTFS does not fix the
+          unit of <code>shape_dist_traveled</code>. COTA's feed uses kilometres.
+          Taken at face value it inflates scheduled vehicle-miles by 61%. The
+          units are now inferred by comparison against the projected shape
+          geometry — the two independent methods agree to 0.16% once converted
+          (38,471 vs 38,531 miles).
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>The baseline this rests on</h2>
+    <p class="kicker">COTA's published schedule, parsed and validated. Scheduled estimates — not COTA's reported operating statistics.</p>
+
+    <div class="tablebox">
+      <table>
+        <caption>Weekday scheduled service · representative Tuesday, 45 of 54 midweek dates in the feed window</caption>
+        <thead><tr><th>Measure</th><th class="num">Value</th><th>Method</th></tr></thead>
+        <tbody>
+          <tr><td>Routes with weekday service</td><td class="num">39</td><td>of 42 defined in the feed</td></tr>
+          <tr><td>Stops served</td><td class="num">2,949</td><td>645 served by more than one route</td></tr>
+          <tr><td>Trips</td><td class="num">2,331</td><td>across 111 distinct stop patterns</td></tr>
+          <tr><td>Revenue vehicle-hours</td><td class="num">2,517.2</td><td>Σ trip runtimes; excludes layover and deadhead</td></tr>
+          <tr><td>Revenue vehicle-miles</td><td class="num">38,531</td><td>projected shape geometry, EPSG:32617</td></tr>
+          <tr><td>Peak buses in service</td><td class="num">171</td><td>max simultaneous scheduled trips</td></tr>
+          <tr><td>Median stop spacing</td><td class="num">473 m</td><td>1,553 ft, straight-line lower bound</td></tr>
+          <tr><td>Median weekday headway</td><td class="num">29–30 min</td><td>consistent across all six periods</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      That last row is the baseline's own headline: the median COTA
+      route-direction runs about every half hour in <em>every</em> period,
+      including both peaks. Only 26% of route-directions reach a 15-minute
+      headway in the AM peak, and 10% in the PM peak. The frequency ladder is
+      steep — a handful of trunk routes at 15 minutes, a long tail at 30 to 60 —
+      which is precisely the structure Experiment 1 pushes against.
+    </p>
+  </section>
+
+  <section>
+    <h2>What would make this credible</h2>
+    <p class="kicker">Ranked by how much each unlocks, not by effort.</p>
+
+    <ol>
+      <li>
+        <strong>Stop- and trip-level APC boardings</strong> — replaces the proxy
+        with observed demand. Almost certainly requires a public records
+        request; it is the precondition for calling any of this a real COTA
+        result.
+      </li>
+      <li>
+        <strong>The NTD agency profile for COTA</strong> — reconciles 2,517
+        scheduled vehicle-hours and 38,531 vehicle-miles against reported
+        actuals. The cheapest validation available, and it needs no records
+        request.
+      </li>
+      <li>
+        <strong>Sustained GTFS-Realtime collection</strong> — the feeds are
+        public and the collector is built. Empirical segment runtime
+        distributions turn the reliability cost term from a zero-weighted
+        placeholder into a measured quantity, and show where schedule padding
+        is misallocated.
+      </li>
+      <li>
+        <strong>RAPTOR or CSA over the existing network abstraction</strong> —
+        removes model gap #1 above, and is the only way transfer timing becomes
+        optimizable at all.
+      </li>
+      <li>
+        <strong>Vehicle blocks from GTFS <code>block_id</code></strong> — the
+        field is present and unexploited. It yields a true peak-vehicle count
+        including interlining, instead of the continuous cycle-over-headway
+        approximation used here.
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>
+      Built from COTA GTFS feed <span class="mono">2026-MAY-04-BB_20260630</span>
+      (SHA-256 <span class="mono">b11634f117a3…</span>), LEHD LODES8 2022 RAC/WAC
+      for seven Central Ohio counties, and 2020 Census block-group population
+      centroids. 70 deterministic tests, including a Mohring square-root-rule
+      benchmark the solver reproduces to within 30%. Experiment record, config
+      snapshot, input checksums and every plan are persisted under
+      <span class="mono">outputs/experiments/</span>.
+    </p>
+    <p>
+      Demand figures throughout are a LODES-derived proxy scaled to an assumed
+      40,000 weekday linked trips. They are not observed COTA ridership, and no
+      claim here should be read as one.
+    </p>
+  </footer>
+</div>
