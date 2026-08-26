@@ -1,0 +1,46 @@
+{
+  "stop_audit": {
+    "n_stops_served": 2949,
+    "n_transfer_points": 645,
+    "n_terminals": 73,
+    "n_protected": 1209,
+    "n_unprotected": 1740,
+    "median_spacing_m": 330.79999999999995,
+    "distance_basis": "shape_dist_traveled",
+    "median_nearest_walk_min": 0.5886242700883986,
+    "stops_with_no_walk_alternative": 10,
+    "stops_that_are_sole_access": 13,
+    "flow_with_sole_access": 3045.5039541694605,
+    "pairs_under_150m": 132,
+    "share_under_150m": 0.022625985601645526,
+    "pairs_under_200m": 545,
+    "share_under_200m": 0.09341789509770312,
+    "pairs_under_300m": 2368,
+    "share_under_300m": 0.4058964689749743,
+    "pairs_under_400m": 3889,
+    "share_under_400m": 0.6666095303393897
+  },
+  "stop_penalty": {
+    "n_comparisons": 11,
+    "n_routes": 3,
+    "total_extra_stops_observed": 19,
+    "median_sec_per_stop": -180.0,
+    "mean_sec_per_stop": -157.05263157894737,
+    "pooled_sec_per_stop": -157.05263157894737,
+    "p25_sec_per_stop": -198.5,
+    "p75_sec_per_stop": -78.5,
+    "share_negative": 0.9090909090909091,
+    "negatives_kept": true,
+    "interpretation": "scheduled stop-service penalty: deceleration, door time, boarding, acceleration and schedule padding combined. NOT a passenger dwell estimate."
+  },
+  "penalty_validation": {
+    "n_folds": 0,
+    "note": "too few routes with a natural experiment to hold out"
+  },
+  "penalty_verdict": "insufficient",
+  "penalty_explanation": "the pooled estimate is -157 s per extra stop across 11 comparisons -- patterns serving MORE stops are scheduled faster, which no dwell penalty can produce. These comparisons are measuring something other than stop cost, so this feed cannot price a stop and any Experiment 3 consolidation result would rest on an assumed penalty rather than a measured one",
+  "distance_basis": {
+    "along_route": "kilometers",
+    "walking": "router footpaths: straight-line within radius plus transfers.txt, NO pedestrian network and NO barriers"
+  }
+}

@@ -1,0 +1,68 @@
+2026-08-26 21:42:56,673 experiment exp3_stop_audit_20260826T214256Z
+2026-08-26 21:42:57,231 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.6s)
+2026-08-26 21:42:57,269 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-26 21:42:57,269 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-26 21:42:57,270 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-26 21:42:57,282 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-26 21:42:57,364 shape_dist_traveled units: kilometers (x1000.0 to metres)
+2026-08-26 21:43:02,389 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp3_stop_audit_20260826T214256Z/experiment.json
+
+============================================================================================
+EXPERIMENT 3 INFRASTRUCTURE — descriptive only, not a result
+============================================================================================
+
+STOP NETWORK
+  n_stops_served                     2949
+  n_transfer_points                  645
+  n_terminals                        73
+  n_protected                        1209
+  n_unprotected                      1740
+  median_spacing_m                   330.8000
+  distance_basis                     shape_dist_traveled
+  median_nearest_walk_min            0.5886
+  stops_with_no_walk_alternative     10
+  stops_that_are_sole_access         13
+  flow_with_sole_access              3,045.5040
+  pairs_under_150m                   132
+  share_under_150m                   0.0226
+  pairs_under_200m                   545
+  share_under_200m                   0.0934
+  pairs_under_300m                   2368
+  share_under_300m                   0.4059
+  pairs_under_400m                   3889
+  share_under_400m                   0.6666
+
+SPACING BY ROUTE (tightest 10)
+route_id  n_pairs  median_m  q25_m  q75_m               basis  pairs_under_150m  pairs_under_200m  pairs_under_300m  pairs_under_400m
+     075       97     269.6  223.4  357.7 shape_dist_traveled                 3                13                56                83
+     006       95     270.3  222.3  347.2 shape_dist_traveled                 2                13                56                77
+     002      375     280.1  229.0  347.0 shape_dist_traveled                 8                50               209               326
+     010      670     288.9  232.2  400.0 shape_dist_traveled                28                76               358               502
+     011      183     300.2  233.9  390.0 shape_dist_traveled                 2                20                91               141
+     005      418     306.2  229.7  446.6 shape_dist_traveled                12                50               197               291
+     001      354     308.0  237.5  406.8 shape_dist_traveled                 4                32               159               260
+     008      406     308.3  232.7  389.3 shape_dist_traveled                 5                41               196               323
+     012       48     314.4  211.9  402.8 shape_dist_traveled                 6                11                23                36
+     003      191     321.3  237.0  397.7 shape_dist_traveled                 7                27                87               145
+
+CAN COTA'S SCHEDULE PRICE A STOP?
+  n_comparisons                      11
+  n_routes                           3
+  total_extra_stops_observed         19
+  median_sec_per_stop                -180.0000
+  mean_sec_per_stop                  -157.0526
+  pooled_sec_per_stop                -157.0526
+  p25_sec_per_stop                   -198.5000
+  p75_sec_per_stop                   -78.5000
+  share_negative                     0.9091
+  negatives_kept                     True
+
+  VERDICT: INSUFFICIENT — the pooled estimate is -157 s per extra stop across 11 comparisons -- patterns serving MORE stops are scheduled faster, which no dwell penalty can produce. These comparisons are measuring something other than stop cost, so this feed cannot price a stop and any Experiment 3 consolidation result would rest on an assumed penalty rather than a measured one
+
+  penalty by route (most comparisons first):
+route_id  n  extra_stops  median_sec  pooled_sec
+     010  8           16      -150.0      -156.5
+     007  2            2      -150.0      -150.0
+     004  1            1      -180.0      -180.0
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp3_stop_audit_20260826T214256Z

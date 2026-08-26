@@ -93,7 +93,8 @@ def _gtfs_fingerprint() -> str:
 
 
 def build_harness(seed: int = 20260825, use_cache: bool = True,
-                  common_lines: str | None = None) -> Harness:
+                  common_lines: str | None = None,
+                  with_pathsets: bool = True) -> Harness:
     """Assemble everything, reusing cached pieces where the inputs match."""
     fp = _gtfs_fingerprint()
 
@@ -145,6 +146,12 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
 
     cl = str(common_lines if common_lines is not None
              else pa.get("common_lines", "pattern"))
+    if not with_pathsets:
+        # A descriptive job needing only the network, zones and demand should
+        # not pay for a path-set enumeration, nor contend with the
+        # authoritative run for the one core it would use.
+        return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
+                       pathsets={}, assumptions=a, common_lines=cl)
     ps = cached("pathsets", {"gtfs": fp, "lodes": od_rec.sha256[:16] if od_rec else "NA",
                              "top_k": pa["od_top_k"],
                              "scale": a["demand_proxy"]["assumed_weekday_linked_trips"],
