@@ -53,33 +53,55 @@ def _xy(coords, stops):
 
 def draw(t: Theme, edit, before_net, after_net, coords, names,
          all_stops_xy) -> plt.Figure:
+    """Before and after, coloured by route.
+
+    Colouring by route rather than by "the affected set" is what makes a splice
+    legible: its geography does not change at all, so a single-colour pair of
+    panels looks identical and says nothing. Two colours before and one after
+    shows the actual change, which is that one vehicle now runs both halves.
+    """
     routes = edit.routes_touched()
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 5.6), sharex=True, sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.6), sharex=True, sharey=True)
     before = _patterns_of(before_net, routes)
     after = _patterns_of(after_net, routes)
     b_stops = {s for p in before for s in p.stops}
     a_stops = {s for p in after for s in p.stops}
     removed, added = b_stops - a_stops, a_stops - b_stops
 
+    def colour_of(order, rid):
+        return t.series[order.index(rid) % len(t.series)]
+
     for ax, pats, title, extra, extra_c, extra_lab in (
             (axes[0], before, "today", removed, t.series[1], "dropped"),
             (axes[1], after, "after the edit", added, t.series[2], "added")):
-        ax.scatter(all_stops_xy[0], all_stops_xy[1], s=1.5, color=t.grid,
+        ax.scatter(all_stops_xy[0], all_stops_xy[1], s=1.2, color=t.grid,
                    zorder=1, linewidths=0)
+        order = sorted({p.route_id for p in pats})
         for p in pats:
             x, y = _xy(coords, p.stops)
+            if not len(x):
+                continue
+            c = colour_of(order, p.route_id)
+            ax.plot(x, y, "-", color=c, lw=1.7, alpha=0.9, zorder=3,
+                    solid_capstyle="round")
+            ax.scatter(x, y, s=8, color=c, zorder=4, linewidths=0)
+        for i, rid in enumerate(order):                 # direct labels
+            pat = max((p for p in pats if p.route_id == rid),
+                      key=lambda q: len(q.stops))
+            x, y = _xy(coords, pat.stops)
             if len(x):
-                ax.plot(x, y, "-", color=t.series[0], lw=1.6, alpha=0.85,
-                        zorder=3, solid_capstyle="round")
-                ax.scatter(x, y, s=9, color=t.series[0], zorder=4,
-                           linewidths=0)
+                ax.annotate(rid, (x[-1], y[-1]), textcoords="offset points",
+                            xytext=(6, 4), fontsize=9, fontweight="600",
+                            color=colour_of(order, rid))
         if extra:
             ex, ey = _xy(coords, sorted(extra))
             if len(ex):
-                ax.scatter(ex, ey, s=42, facecolor="none", edgecolor=extra_c,
+                ax.scatter(ex, ey, s=44, facecolor="none", edgecolor=extra_c,
                            linewidth=1.8, zorder=5, label=extra_lab)
                 ax.legend(loc="upper right", labelcolor=t.text_secondary)
-        ax.set_title(title, loc="left", fontsize=11)
+        n = len(order)
+        ax.set_title(f"{title} — {n} route{'s' if n != 1 else ''}", loc="left",
+                     fontsize=11)
         ax.set_aspect("equal")
         ax.set_xticks([])
         ax.set_yticks([])
@@ -87,9 +109,9 @@ def draw(t: Theme, edit, before_net, after_net, coords, names,
         for sp in ax.spines.values():
             sp.set_visible(False)
 
-    fig.suptitle(edit.description, x=0.005, ha="left", fontsize=11,
+    fig.suptitle(edit.description, x=0.005, ha="left", fontsize=10.5,
                  fontweight="600", color=t.text_primary, wrap=True)
-    fig.tight_layout(rect=(0, 0, 1, 0.90))
+    fig.tight_layout(rect=(0, 0, 1, 0.88))
     return fig
 
 
