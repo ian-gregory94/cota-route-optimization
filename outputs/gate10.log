@@ -4,3 +4,13 @@
 2026-08-26 22:16:12,211 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
 2026-08-26 22:16:12,234 route classes: {'all_day': 25, 'peak_express': 14}
 2026-08-26 22:16:12,325 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-26 22:18:23,557 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:18:23,710 path set: 31858 paths over 17434/20000 OD pairs (86.9% of flow served), 162561 legs
+2026-08-26 22:18:23,858 cache store pathset-eca3bfc701aa7919 (12.0 MB, built in 131s)
+2026-08-26 22:18:23,858 period early   : 31858 paths, 20000 OD pairs
+2026-08-26 22:18:23,875 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-26 22:20:48,560 rejected 235 malformed candidate paths that failed the re-pricing check
+2026-08-26 22:20:48,741 path set: 37995 paths over 19315/20000 OD pairs (96.5% of flow served), 194067 legs
+2026-08-26 22:20:49,044 cache store pathset-dbedd55f5b553e34 (14.2 MB, built in 145s)
+2026-08-26 22:20:49,044 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-26 22:20:49,061 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
