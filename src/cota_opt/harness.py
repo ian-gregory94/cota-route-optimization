@@ -43,6 +43,9 @@ class Harness:
     pathsets: dict
     assumptions: dict
     common_lines: str = "pattern"
+    #: gate 11's augmentation. On for Model B, off for Model A. Held here so
+    #: both candidate sets can be built and compared rather than inferred.
+    route_level: bool = False
 
     def setup(self, with_crowding: bool, lock_classes: tuple[str, ...],
               seed: int = 20260825,
@@ -84,13 +87,14 @@ class Harness:
         # Only Model B gained the route-level search scenario (gate 11), so
         # only Model B's cache key moves. Model A is the preserved control and
         # its enumeration is byte-for-byte what it was.
-        if self.common_lines == "same_route":
+        if self.route_level:
             params["enum"] = "route_level_v1"
         return cached("pathsets", params,
                       lambda: _build_all_pathsets(
                           self.baseline, self.raptor, self.zones, self.od,
                           self.classes, seed, extra_scenarios,
                           common_lines=self.common_lines, params=params,
+                          route_level=self.route_level,
                           use_cache=use_cache), use_cache)
 
 
@@ -101,7 +105,8 @@ def _gtfs_fingerprint() -> str:
 
 def build_harness(seed: int = 20260825, use_cache: bool = True,
                   common_lines: str | None = None,
-                  with_pathsets: bool = True) -> Harness:
+                  with_pathsets: bool = True,
+                  route_level: bool | None = None) -> Harness:
     """Assemble everything, reusing cached pieces where the inputs match."""
     fp = _gtfs_fingerprint()
 
@@ -153,12 +158,17 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
 
     cl = str(common_lines if common_lines is not None
              else pa.get("common_lines", "pattern"))
+    # Default: on for Model B, off for Model A. Passing it explicitly builds
+    # the un-augmented Model B set, which is what makes the sensitivity
+    # comparison in gate 11's follow-up possible at all.
+    rl = (cl == "same_route") if route_level is None else bool(route_level)
     if not with_pathsets:
         # A descriptive job needing only the network, zones and demand should
         # not pay for a path-set enumeration, nor contend with the
         # authoritative run for the one core it would use.
         return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
-                       pathsets={}, assumptions=a, common_lines=cl)
+                       pathsets={}, assumptions=a, common_lines=cl,
+                       route_level=rl)
     ps_params = {"gtfs": fp, "lodes": od_rec.sha256[:16] if od_rec else "NA",
                              "top_k": pa["od_top_k"],
                              "scale": a["demand_proxy"]["assumed_weekday_linked_trips"],
@@ -170,22 +180,24 @@ def build_harness(seed: int = 20260825, use_cache: bool = True,
                              "seed": seed,
                              "cap_rule": "max(cfg,n_scenarios)",
                              "common_lines": cl}
-    if cl == "same_route":
+    if rl:
         ps_params["enum"] = "route_level_v1"
     ps = cached("pathsets", ps_params,
                 lambda: _build_all_pathsets(b, rn, zs, od, classes, seed,
                                             common_lines=cl, params=ps_params,
+                                            route_level=rl,
                                             use_cache=use_cache),
                 use_cache)
 
     return Harness(baseline=b, raptor=rn, zones=zs, od=od, classes=classes,
-                   pathsets=ps, assumptions=a, common_lines=cl)
+                   pathsets=ps, assumptions=a, common_lines=cl, route_level=rl)
 
 
 def _build_all_pathsets(b, rn, zs, od, classes, seed,
                         extra_scenarios: list | None = None,
                         common_lines: str | None = None,
                         params: dict | None = None,
+                        route_level: bool = False,
                         use_cache: bool = True) -> dict:
     """Build every period's path set, checkpointing each one as it lands.
 
@@ -222,7 +234,8 @@ def _build_all_pathsets(b, rn, zs, od, classes, seed,
                 max_rounds=int(pa["max_rounds"]),
                 max_paths_per_od=int(pa["max_paths_per_od"]),
                 n_random_scenarios=int(pa["n_random_scenarios"]),
-                seed=seed, extra_scenarios=extra_scenarios, common_lines=cl)
+                seed=seed, extra_scenarios=extra_scenarios, common_lines=cl,
+                route_level_scenario=route_level)
         store[per] = cached("pathset", {**(params or {}), "period": per},
                             build, use_cache)
         log.info("period %-8s: %d paths, %d OD pairs", per,

@@ -81,7 +81,7 @@ class PathSet:
 
 def _plan_scenarios(rp_keys, baseline: dict, rng, n_random: int = 3,
                     ladder=(5, 10, 15, 20, 30, 45, 60),
-                    common_lines: str = "pattern"):
+                    route_level: bool = False):
     """Diverse headway vectors used only to widen the candidate path set.
 
     Each entry is ``(name, headways, pricing)``. ``pricing`` selects how the
@@ -99,9 +99,12 @@ def _plan_scenarios(rp_keys, baseline: dict, rng, n_random: int = 3,
     diagnostic sampled. It is a search device and nothing else: whatever it
     finds is priced honestly by the evaluator afterwards.
 
-    It is added only under Model B. Model A is the preserved control and its
-    candidate set must not move; route-level pricing would also not bound
-    anything under a valuation that is per-pattern by design.
+    Whether to add it is the caller's policy, not this function's inference:
+    it is on for Model B and off for Model A -- the preserved control, whose
+    candidate set must not move, and under whose per-pattern valuation
+    route-level pricing bounds nothing anyway. Passing it explicitly is what
+    lets the augmented and un-augmented sets both be built, which is the only
+    non-circular evidence that the augmentation mattered.
     """
     scen = [("baseline", dict(baseline), "pattern")]
     scen.append(("frequent", {k: min(baseline[k], 10.0) for k in rp_keys},
@@ -111,7 +114,7 @@ def _plan_scenarios(rp_keys, baseline: dict, rng, n_random: int = 3,
     for i in range(n_random):
         scen.append((f"random{i}",
                      {k: float(rng.choice(ladder)) for k in rp_keys}, "pattern"))
-    if common_lines == "same_route":
+    if route_level:
         scen.append(("route_level", dict(baseline), "route"))
     return scen
 
@@ -130,6 +133,7 @@ def build_pathset(
     seed: int = 0,
     extra_scenarios: list[tuple[str, dict]] | None = None,
     common_lines: str = "pattern",
+    route_level_scenario: bool = False,
 ) -> PathSet:
     """Enumerate candidate paths for every OD pair in ``od``.
 
@@ -159,7 +163,7 @@ def build_pathset(
     n_rejected = [0]
     cl_cache: dict = {}
     scenarios = _plan_scenarios(rp_keys, baseline_headways, rng,
-                                n_random_scenarios, common_lines=common_lines)
+                                n_random_scenarios, route_level=route_level_scenario)
     for name, hw in (extra_scenarios or []):
         missing = [k for k in rp_keys if k not in hw]
         if missing:

@@ -1,0 +1,34 @@
+{
+  "common_lines": "same_route",
+  "case": "C",
+  "explanation": "4.88% of tested flow and 0.18% of tested generalized cost have a materially cheaper Model B path outside the candidate set. The yardstick must not be frozen: augment candidate generation around the affected corridors and re-run this diagnostic",
+  "summary": {
+    "n_omitted": 333,
+    "n_sequences_already_in_set": 15,
+    "flow_affected": 326.14272099834267,
+    "tested_flow": 6687.742121553819,
+    "flow_share": 0.04876723938670159,
+    "flow_weighted_improvement_min": 1194.5758534696504,
+    "tested_generalized_cost": 645768.3684951693,
+    "gc_share": 0.0018498519155612473,
+    "median_improvement_min": 3.5833333333333144,
+    "p95_improvement_min": 9.002315591488607,
+    "median_improvement_pct": 3.3821494715903975
+  },
+  "periods": [
+    "am_peak",
+    "midday"
+  ],
+  "focus_routes": [
+    "001",
+    "002",
+    "005",
+    "007",
+    "008",
+    "010",
+    "033",
+    "102"
+  ],
+  "targeted": true,
+  "seconds": 41.70033049583435
+}

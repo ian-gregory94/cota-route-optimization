@@ -101,11 +101,19 @@ def _routes_of(ps, p):
     return tuple(ps.rp_keys[int(k)][0] for k in rp[rp >= 0])
 
 
-def _paths(rn, zs, mode):
+def _paths(rn, zs, mode, route_level=None):
+    """``mode`` is the valuation; ``route_level`` is the search augmentation.
+
+    They default together the way the harness defaults them, but they are
+    separable on purpose -- the un-augmented Model B set is what the
+    sensitivity comparison needs.
+    """
+    if route_level is None:
+        route_level = mode == "same_route"
     od = ODTable(np.array([0]), np.array([1]), np.array([500.0]), "t", "")
     ps = build_pathset(rn, zs, od, "all", HW, W, WK, max_rounds=2,
                        max_paths_per_od=4, n_random_scenarios=0, seed=1,
-                       common_lines=mode)
+                       common_lines=mode, route_level_scenario=route_level)
     return ps, {_routes_of(ps, p) for p in range(ps.n_paths)}
 
 
@@ -114,17 +122,17 @@ def _paths(rn, zs, mode):
 def test_model_b_enumeration_gains_a_route_level_scenario():
     rng = np.random.default_rng(0)
     base = {("A", "am"): 10.0}
-    names = lambda m: [s[0] for s in _plan_scenarios(list(base), base, rng, 0,
-                                                     common_lines=m)]
-    assert "route_level" not in names("pattern")
-    assert "route_level" in names("same_route")
+    names = lambda rl: [s[0] for s in _plan_scenarios(list(base), base, rng, 0,
+                                                      route_level=rl)]
+    assert "route_level" not in names(False)
+    assert "route_level" in names(True)
 
 
 def test_model_a_enumeration_is_untouched():
     """Model A is the preserved control; its candidate set must not move."""
     rng = np.random.default_rng(0)
     base = {("A", "am"): 10.0}
-    scen = _plan_scenarios(list(base), base, rng, 3, common_lines="pattern")
+    scen = _plan_scenarios(list(base), base, rng, 3, route_level=False)
     assert [s[0] for s in scen] == ["baseline", "frequent", "infrequent",
                                     "random0", "random1", "random2"]
     assert {s[2] for s in scen} == {"pattern"}
@@ -158,6 +166,15 @@ def test_the_wider_set_is_a_superset_not_a_replacement(rn, zs):
     _, a = _paths(rn, zs, "pattern")
     _, b = _paths(rn, zs, "same_route")
     assert a <= b
+
+
+def test_model_b_without_the_augmentation_is_still_buildable(rn, zs):
+    """The sensitivity comparison needs both sets, so both must be reachable."""
+    _, plain = _paths(rn, zs, "same_route", route_level=False)
+    _, wide = _paths(rn, zs, "same_route", route_level=True)
+    assert ("T",) not in plain
+    assert ("T",) in wide
+    assert plain < wide
 
 
 def test_the_found_path_is_priced_by_the_evaluator_not_by_the_bound(rn, zs):
