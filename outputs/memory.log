@@ -6853,3 +6853,23 @@
       echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
      
 2026-08-27T11:43:30Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:44:25Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:44:25Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:45:20Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:45:20Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:46:15Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:46:15Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:47:10Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:47:10Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
