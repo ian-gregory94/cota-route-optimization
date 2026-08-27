@@ -8073,3 +8073,683 @@
       echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
      
 2026-08-27T13:37:09Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:38:03Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:38:03Z pid=1502 rss=356MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:38:03Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:38:03Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:38:04Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:38:04Z pid=1502 rss=356MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:38:04Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:38:04Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:38:58Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:38:58Z pid=1502 rss=365MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:38:58Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:38:58Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:38:59Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:38:59Z pid=1502 rss=365MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:38:59Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:38:59Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:39:53Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:39:53Z pid=1502 rss=370MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:39:53Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:39:53Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:39:54Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:39:54Z pid=1502 rss=370MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:39:54Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:39:54Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:40:48Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:40:48Z pid=1502 rss=373MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:40:48Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:40:48Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:40:49Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:40:49Z pid=1502 rss=373MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:40:49Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:40:49Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:41:44Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:41:44Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:41:44Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:41:44Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:41:44Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:41:44Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:41:44Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:41:44Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:42:39Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:42:39Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:42:39Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:42:39Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:42:39Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:42:39Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:42:39Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:42:39Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:43:34Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:43:34Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:43:34Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:43:34Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:43:34Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:43:34Z pid=1502 rss=395MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:43:34Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:43:35Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:44:29Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:44:29Z pid=1502 rss=399MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:44:29Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:44:29Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:44:30Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:44:30Z pid=1502 rss=399MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:44:30Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:44:30Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:45:24Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:45:24Z pid=1502 rss=407MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:45:24Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:45:24Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:45:25Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:45:25Z pid=1502 rss=407MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:45:25Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:45:25Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:46:19Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:46:19Z pid=1502 rss=409MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:46:19Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:46:19Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:46:20Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:46:20Z pid=1502 rss=409MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:46:20Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:46:20Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:47:14Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:47:14Z pid=1502 rss=410MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:47:14Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:47:14Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:47:15Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:47:15Z pid=1502 rss=410MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:47:15Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:47:15Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:48:10Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:48:10Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:48:10Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:48:10Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:48:10Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:48:10Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:48:10Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:48:10Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:49:05Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:49:05Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:49:05Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:49:05Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:49:05Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:49:05Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:49:05Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:49:05Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:50:00Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:50:00Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:50:00Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:50:00Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:50:00Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:50:00Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:50:00Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:50:00Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:50:55Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:50:55Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:50:55Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:50:55Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:50:55Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:50:55Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:50:55Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:50:56Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:51:50Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:51:50Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:51:50Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:51:50Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:51:51Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:51:51Z pid=1502 rss=454MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:51:51Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:51:51Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:52:45Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:52:45Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:52:45Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:52:45Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:52:46Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:52:46Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:52:46Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:52:46Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:53:40Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:53:40Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:53:40Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:53:40Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:53:41Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:53:41Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:53:41Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:53:41Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:54:36Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:54:36Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:54:36Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:54:36Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:54:36Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:54:36Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:54:36Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:54:36Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:55:31Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:55:31Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:55:31Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:55:31Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:55:31Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:55:31Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:55:31Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:55:31Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:56:26Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:56:26Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:56:26Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:56:26Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:56:26Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:56:26Z pid=1502 rss=462MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:56:26Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:56:26Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:57:21Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:57:21Z pid=1502 rss=463MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:57:21Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:57:21Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:57:21Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:57:21Z pid=1502 rss=463MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:57:21Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:57:21Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:58:16Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:58:16Z pid=1502 rss=464MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:58:16Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:58:16Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:58:16Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:58:16Z pid=1502 rss=464MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:58:16Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:58:16Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:59:11Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:59:11Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:59:11Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:59:11Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:59:12Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:59:12Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:59:12Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:59:12Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:00:06Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:00:06Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:00:06Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:00:06Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:00:07Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:00:07Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:00:07Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:00:07Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:01:02Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:01:02Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:01:02Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:01:02Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:01:02Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:01:02Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:01:02Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:01:02Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:01:57Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:01:57Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:01:57Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:01:57Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:01:57Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:01:57Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:01:57Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:01:57Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:02:52Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:02:52Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:02:52Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:02:52Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:02:52Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:02:52Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:02:52Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:02:52Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:03:47Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:03:47Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:03:47Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:03:47Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:03:47Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:03:47Z pid=1502 rss=488MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:03:47Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:03:47Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:04:42Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:04:42Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:04:42Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:04:42Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:04:42Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:04:42Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:04:42Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:04:42Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:05:37Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:05:37Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:05:37Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:05:37Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:05:37Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:05:38Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:05:38Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:05:38Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:06:33Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:06:33Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:06:33Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:06:33Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:06:33Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:06:33Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:06:33Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:06:33Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:07:28Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:07:28Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:07:28Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:07:28Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:07:28Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:07:28Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:07:28Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:07:28Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:08:23Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:08:23Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:08:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:08:23Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T14:08:23Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T14:08:23Z pid=1502 rss=497MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T14:08:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T14:08:23Z pid=29645 rss=505MB python scripts/frontier_certify.py 

@@ -46,6 +46,13 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=20260825)
     ap.add_argument("--common-lines", type=str, default=None,
                     choices=[None, "pattern", "same_route"])
+    ap.add_argument("--pricing", type=str, default="pattern",
+                    choices=["pattern", "route"],
+                    help="waiting model for the screen's RAPTOR search: "
+                         "'pattern' is Model A, 'route' is the strict lower "
+                         "bound on any Model B cost. Run both to bracket the "
+                         "candidate ranking; Model B itself is a per-leg "
+                         "quantity the screen cannot express")
     ap.add_argument("--store", type=str, default="exp2_screen.jsonl")
     ap.add_argument("--out", type=str, default="exp2_screen")
     args = ap.parse_args()
@@ -89,7 +96,8 @@ def main() -> int:
         schedule_coefficient=float(a["waiting"]["schedule_coefficient"]))
     budget_vh = float(b.tstats["runtime_min"].sum() / 60.0)
 
-    sc = Screener(feed=b.feed, stops_projected=sg, assumptions=a, weights=w,
+    sc = Screener(pricing=args.pricing,
+                  feed=b.feed, stops_projected=sg, assumptions=a, weights=w,
                   wait_kwargs=wk, od=H.od, bg_frame=b.demand["bg_frame"],
                   budget_vh=budget_vh, periods=service_periods(a),
                   screen_periods=tuple(args.periods.split(",")),

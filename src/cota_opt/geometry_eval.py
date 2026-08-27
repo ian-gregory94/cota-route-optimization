@@ -41,7 +41,8 @@ from .cost import CostWeights
 from .geometry import EditedNetwork, GeometryEdit, SegmentTimeModel, apply_edits
 from .odmatrix import ODTable, ZoneSystem, build_zone_system
 from .retention import Retention, score as retention_score
-from .raptor import build_raptor_network, generalized_cost, pattern_headways
+from .raptor import (build_raptor_network, generalized_cost, pattern_headways,
+                     route_level_headways)
 
 log = logging.getLogger(__name__)
 
@@ -133,6 +134,21 @@ class Screener:
     screen_periods: tuple[str, ...] = ("am_peak", "midday")
     origin_sample: int = 0          # 0 = every origin zone with access
     max_rounds: int = 3
+    #: How the search prices waiting. ``"pattern"`` is Model A: a rider waits
+    #: the boarding pattern's own headway. ``"route"`` prices every pattern at
+    #: its route's whole frequency, which is a strict *lower* bound on any
+    #: Model B cost, since Model B's qualifying set is always a subset of the
+    #: direction.
+    #:
+    #: Model B itself is **not expressible here**, and that is a fact about the
+    #: screen rather than an omission. Model B's multiplier depends on the
+    #: boarding stop, the alighting stop and their order, so it is a property of
+    #: a *leg*; the screen has no path set and prices straight out of RAPTOR's
+    #: labels, where waiting is a per-pattern quantity fixed before the
+    #: alighting stop is known. Running both ends therefore brackets the
+    #: candidate ranking rather than reproducing it: if the ordering survives
+    #: both, no waiting model between them can overturn it.
+    pricing: str = "pattern"
     retention: Retention | None = None
     _origins: np.ndarray | None = None
 
@@ -140,6 +156,9 @@ class Screener:
         # the screen must use the production retention curve, not its own copy
         if self.retention is None:
             self.retention = Retention.from_assumptions(self.assumptions)
+        if self.pricing not in ("pattern", "route"):
+            raise ValueError(f"unknown pricing {self.pricing!r}; "
+                             "use 'pattern' (Model A) or 'route' (lower bound)")
 
     def _period_od(self, per: str) -> ODTable:
         share = float(self.assumptions["demand_proxy"]["period_shares"][per])
@@ -194,7 +213,8 @@ class Screener:
         flows: list[np.ndarray] = []
         for per in self.screen_periods:
             od_p = self._period_od(per)
-            ph = pattern_headways(rn, hw, per)
+            ph = (route_level_headways(rn, hw, per) if self.pricing == "route"
+                  else pattern_headways(rn, hw, per))
             order = np.lexsort((od_p.dest, od_p.origin))
             o_s, d_s, f_s = od_p.origin[order], od_p.dest[order], od_p.flow[order]
             lo = np.searchsorted(o_s, origins, side="left")

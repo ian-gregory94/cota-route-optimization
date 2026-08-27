@@ -181,6 +181,41 @@ scenario would roughly double enumeration cost and is not justified before the
 data asks for it.
 
 
+## Experiment 2 screen: bracketing rule, committed before the second screen ran
+
+Committed 2026-08-27 14:10 UTC.
+
+The 60-candidate screen was run under Model A. Rescoring it under Model B is
+**not possible**, and that is a fact about the screen rather than an oversight:
+Model B's multiplier depends on the boarding stop, the alighting stop and their
+order, so it is a property of a *leg*. The screen has no path set — it prices
+straight out of RAPTOR's labels, where waiting is a per-pattern quantity fixed
+before the alighting stop is known.
+
+So the screen is **bracketed** instead. It is re-run with every pattern priced
+at its route's whole frequency, which is a strict *lower* bound on any Model B
+path cost (Model B's qualifying set is always a subset of the direction). Model A
+is the upper end. Any real Model B ranking lies between them.
+
+The question the bracket answers is not "what are the Model B screen numbers"
+but "does the candidate *ranking* depend on the waiting model". Thresholds,
+fixed before the second screen was read:
+
+| Spearman ρ | top-10 overlap | Verdict |
+|---|---|---|
+| ≥ 0.80 | ≥ 7 / 10 | The ranking is not waiting-model-sensitive. The Model A shortlist stands as triage; proceed to evaluate it. |
+| 0.50 – 0.80 | 4 – 6 / 10 | Model-sensitive. Re-derive the shortlist from the intersection of both rankings and say so in the write-up. |
+| < 0.50 | ≤ 3 / 10 | The screen is not measuring a model-independent property. All screening evidence becomes bracket-only, and no candidate is promoted on screen evidence alone. |
+
+Whichever bound is worse decides the verdict, matching every other two-bound
+rule in this file.
+
+**Independent of the outcome:** a screen number is never a result. The screen
+holds frequency fixed, so it ranks candidates and cannot size them. Only the
+evaluation tier — geometry with frequency re-optimized on the frozen yardstick —
+produces an Experiment 2 number.
+
+
 ## Model versions
 
 Two complete model versions, both preserved. Later results never overwrite

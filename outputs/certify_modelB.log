@@ -9,3 +9,28 @@
 2026-08-27 13:36:09,001 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.1s)
 2026-08-27 13:36:09,004 enumeration tag sc-e99acaee75fb7745
 2026-08-27 13:36:09,126 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
+2026-08-27 13:41:24,297 rejected 419 malformed candidate paths that failed the re-pricing check
+2026-08-27 13:41:24,494 path set: 38236 paths over 17437/20000 OD pairs (86.9% of flow served), 199287 legs
+2026-08-27 13:41:24,772 cache store pathset-b806768efcb198db (14.6 MB, built in 315s)
+2026-08-27 13:41:24,772 period early   : 38236 paths, 20000 OD pairs
+2026-08-27 13:41:24,792 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
+2026-08-27 13:47:21,310 rejected 421 malformed candidate paths that failed the re-pricing check
+2026-08-27 13:47:21,545 path set: 46567 paths over 19318/20000 OD pairs (96.5% of flow served), 242951 legs
+2026-08-27 13:47:21,812 cache store pathset-282afb8c3a1a9b17 (17.6 MB, built in 357s)
+2026-08-27 13:47:21,812 period am_peak : 46567 paths, 20000 OD pairs
+2026-08-27 13:47:21,848 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
+2026-08-27 13:52:38,654 rejected 320 malformed candidate paths that failed the re-pricing check
+2026-08-27 13:52:38,836 path set: 37865 paths over 17439/20000 OD pairs (86.9% of flow served), 196923 legs
+2026-08-27 13:52:39,031 cache store pathset-3a5fc15bc9d3550e (14.4 MB, built in 317s)
+2026-08-27 13:52:39,031 period midday  : 37865 paths, 20000 OD pairs
+2026-08-27 13:52:39,049 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
+2026-08-27 13:58:27,011 rejected 688 malformed candidate paths that failed the re-pricing check
+2026-08-27 13:58:27,250 path set: 44638 paths over 18727/20000 OD pairs (93.8% of flow served), 236060 legs
+2026-08-27 13:58:27,527 cache store pathset-873911b8a26f98d7 (17.1 MB, built in 348s)
+2026-08-27 13:58:27,527 period pm_peak : 44638 paths, 20000 OD pairs
+2026-08-27 13:58:27,552 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
+2026-08-27 14:04:10,731 rejected 384 malformed candidate paths that failed the re-pricing check
+2026-08-27 14:04:10,939 path set: 40846 paths over 17442/20000 OD pairs (86.9% of flow served), 212377 legs
+2026-08-27 14:04:11,194 cache store pathset-e79597544c7462bc (15.5 MB, built in 344s)
+2026-08-27 14:04:11,195 period evening : 40846 paths, 20000 OD pairs
+2026-08-27 14:04:11,212 path enumeration: 20000 OD pairs, 636 origin zones, 14 scenarios, cap 14 paths/OD
