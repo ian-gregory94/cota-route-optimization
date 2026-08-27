@@ -47,7 +47,7 @@ from cota_opt.configs import (load_constraints, load_cost_weights,
                               period_of_seconds, service_periods)
 from cota_opt.exp2 import build_setup
 from cota_opt.experiment import Experiment
-from cota_opt.frequency import optimize_frequencies
+from cota_opt.frequency import FrequencyPlan, optimize_frequencies
 from cota_opt.geometry import GeometryEdit, SegmentTimeModel, apply_edits, describe
 from cota_opt.harness import build_harness
 from cota_opt.odmatrix import build_zone_system
@@ -120,6 +120,42 @@ def build_edited(H, model, edits, a, cons, seed, n_random_scenarios):
                         lock_classes=("peak_express",), constraints=cons,
                         n_random_scenarios=n_random_scenarios)
     return setup, ed
+
+
+def fit_incumbent(setup, budget_vh: float, label: str = ""):
+    """Scale the edited network's own schedule until it fits the pinned budget.
+
+    A splice lengthens a route, so running the merged line at today's headways
+    costs more vehicle-hours than today's network does. The incumbent start is
+    then infeasible, ``optimize_frequencies`` discards it, and the edited
+    network is solved from the greedy build while the unedited one is solved
+    from the incumbent. That is not a geometry comparison -- it is a comparison
+    of starting points, and it showed up as ``exchanges=0`` on the first
+    candidate that hit it.
+
+    Vehicle-hours are linear in 1/headway, so one scale factor fixes it. The
+    factor is reported: it is the honest price of the edit at today's
+    frequencies, and a candidate needing a large one is buying its geometry
+    with service.
+    """
+    plan = setup.baseline_plan
+    fit = setup.model.evaluate(plan)
+    k = fit.revenue_veh_hours / budget_vh
+    if k <= 1.0:
+        return plan, 1.0
+    # scale, then walk up in small steps: the optimizer snaps to the headway
+    # ladder, and snapping can put a just-feasible plan back over the line
+    for bump in (1.0, 1.01, 1.02, 1.05, 1.10, 1.20):
+        scaled = FrequencyPlan({key: h * k * bump
+                                for key, h in plan.headways.items()})
+        f = setup.model.evaluate(scaled)
+        if f.revenue_veh_hours <= budget_vh:
+            log.info("  %s incumbent rescaled x%.4f to fit the envelope "
+                     "(%.1f -> %.1f veh-hours)", label, k * bump,
+                     fit.revenue_veh_hours, f.revenue_veh_hours)
+            return scaled, k * bump
+    log.warning("  %s incumbent could not be scaled into the envelope", label)
+    return plan, k
 
 
 class _Baseline:
@@ -276,8 +312,11 @@ def main() -> int:
             store.put(cell, {"label": label, "error": f"{type(exc).__name__}: {exc}",
                              "n_edits": len(edits)})
             continue
+        incumbent, hw_scale = fit_incumbent(
+            setup, setup.budget.revenue_veh_hours, label)
         bf = setup.model.evaluate(setup.baseline_plan)
         rec: dict = {
+            "incumbent_headway_scale": hw_scale,
             "label": label, "seed": job_seed, "n_edits": len(edits),
             "edits": describe(edits),
             "edit_keys": [e.key for e in edits],
@@ -293,7 +332,7 @@ def main() -> int:
             r = optimize_frequencies(
                 setup.model, setup.budget, ladder=[], unserved_multiplier=m,
                 local_search_iterations=args.iterations, seed=job_seed,
-                ladders=setup.ladders, initial=setup.baseline_plan,
+                ladders=setup.ladders, initial=incumbent,
                 n_restarts=args.restarts, candidate_width=args.width,
                 greedy_start=False)
             rec[f"gc_lam{m}"] = r.fitness.generalized_cost
