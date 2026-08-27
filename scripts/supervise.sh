@@ -37,6 +37,8 @@ JOBS=(
   "fixpoint-B|python scripts/fixpoint.py --common-lines same_route --max-iterations 8|outputs/fixpoint_modelB.log|0"
   "certify-A|python scripts/frontier_certify.py|outputs/certify.log|0"
   "certify-B|python scripts/frontier_certify.py --common-lines same_route|outputs/certify_modelB.log|0"
+  "exp2-bracket|python scripts/run_exp2_screen.py --pricing route --per-kind 12 --origin-sample 400 --store exp2_screen_bound.jsonl --out exp2_screen_bound|outputs/exp2_screen_bound.log|5"
+  "seedcheck-A|python scripts/seed_check.py|outputs/seedcheck.log|0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }
@@ -78,6 +80,20 @@ log_usage() {
   return 0
 }
 
+# This box has two cores. Starting every pending job at once would put three
+# or four CPU-bound solves on them and slow all of them proportionally, so the
+# table is a QUEUE: jobs start in order, and only while a slot is free.
+MAX_RUNNING=2
+
+running() {
+  local n=0 spec label cmd log nice_
+  for spec in "${JOBS[@]}"; do
+    IFS='|' read -r label cmd log nice_ <<< "$spec"
+    alive "$cmd" && n=$((n + 1))
+  done
+  echo "$n"
+}
+
 while true; do
   reap_locks
   pending=0
@@ -86,6 +102,9 @@ while true; do
     if done_ "$log"; then continue; fi
     pending=1
     if ! alive "$cmd"; then
+      if [ "$(running)" -ge "$MAX_RUNNING" ]; then
+        continue                     # queued; a later pass will start it
+      fi
       start "$label" "$cmd" "$log" "$nice_"
       sleep 5
     fi

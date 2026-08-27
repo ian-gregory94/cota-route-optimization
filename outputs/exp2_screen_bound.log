@@ -1,0 +1,14 @@
+2026-08-27 17:21:52,115 experiment exp2_geometry_screen_20260827T172152Z
+2026-08-27 17:21:52,251 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-27 17:21:52,291 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-27 17:21:52,292 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-27 17:21:52,293 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-27 17:21:52,306 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-27 17:21:52,411 cache hit  pathsets-c46c302e5c74673a (76.8 MB, 0.1s)
+2026-08-27 17:21:52,571 running-time model: 3209 observed links, MAE median 17.2s, MAPE(>=30s) median 26.6%
+2026-08-27 17:21:52,571 excluding 14 peak-express routes from geometry edits
+2026-08-27 17:23:05,245 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-27 17:23:05,254 budget 2517.2 revenue veh-hours; screening on 400 origin zones, periods ('am_peak', 'midday')
+2026-08-27 17:23:05,605 footpaths: 15573 links (9 from transfers.txt)
+2026-08-27 17:23:05,614 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-27 17:23:05,747 zones: 1397 (637 with transit access within 600 m), 3938 access links

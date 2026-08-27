@@ -12858,3 +12858,28 @@
       echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
      
 2026-08-27T17:20:28Z pid=1502 rss=519MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:21:24Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:21:24Z pid=1502 rss=519MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:21:56Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:21:56Z pid=1502 rss=519MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:21:56Z pid=19327 rss=3MB bash -c 
+      nice -n 5 python scripts/run_exp2_screen.py --pricing 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-bracket exit
+     
+2026-08-27T17:21:56Z pid=19330 rss=289MB python scripts/run_exp2_screen.py --pricing route --per-kind
+2026-08-27T17:22:51Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:22:51Z pid=1502 rss=519MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:22:51Z pid=19327 rss=3MB bash -c 
+      nice -n 5 python scripts/run_exp2_screen.py --pricing 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-bracket exit
+     
+2026-08-27T17:22:51Z pid=19330 rss=292MB python scripts/run_exp2_screen.py --pricing route --per-kind
