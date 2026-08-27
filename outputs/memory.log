@@ -14492,3 +14492,18 @@ ps aux | grep "[s]upervise.sh" | awk '"'"'{print $2}'"'"' |
       echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
      
 2026-08-27T19:52:08Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T19:53:03Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T19:53:03Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T19:53:58Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T19:53:58Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T19:54:53Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T19:54:53Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 

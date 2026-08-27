@@ -147,6 +147,18 @@ def main() -> int:
     ap.add_argument("--ladder", type=str, default="1,2,4")
     ap.add_argument("--primary-only", action="store_true", default=True)
     ap.add_argument("--seed", type=int, default=20260825)
+    ap.add_argument("--common-lines", type=str, default=None,
+                    choices=[None, "pattern", "same_route"],
+                    help="waiting model; same_route is Model B, the corrected one")
+    ap.add_argument("--noise-seeds", type=str, default="",
+                    help="extra seeds for the ZERO-EDIT rung only, to measure "
+                         "the search's own spread at this effort. D17 found "
+                         "the optimum is flat, so a geometry effect smaller "
+                         "than a few times that spread is not measurable and "
+                         "must not be reported as one")
+    ap.add_argument("--include", type=str, default="",
+                    help="comma-separated candidate keys forced into the "
+                         "shortlist regardless of screen rank")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     lams = [float(x) for x in args.lambdas.split(",")]
@@ -159,7 +171,8 @@ def main() -> int:
     log.info("experiment %s", exp.experiment_id)
     store = ResultStore(OUT / "exp2_eval.jsonl")
 
-    H = build_harness(seed=args.seed)
+    H = build_harness(seed=args.seed, common_lines=args.common_lines)
+    log.info("waiting model: %s", H.common_lines)
     a = H.assumptions
     sg = geo.stops_gdf(H.baseline.feed, a["crs"]["projected"])
     model = SegmentTimeModel.fit(H.baseline.network, sg)
@@ -181,6 +194,12 @@ def main() -> int:
         ok = ok[ok["evidence_class"] == "primary"]
     ok = ok.sort_values(["screen_unserved_change_pct", "screen_gc_change_pct"])
     shortlist = ok.head(args.top)["candidate_id"].tolist()
+    # candidates the bracket promoted are carried in even if the Model A screen
+    # buried them -- adding a candidate is the conservative error (D16)
+    for k in [x.strip() for x in args.include.split(",") if x.strip()]:
+        if k not in shortlist:
+            shortlist.append(k)
+            log.info("forced into the shortlist: %s", k)
     log.info("shortlist (%d, primary=%s): %s", len(shortlist),
              args.primary_only, shortlist)
 
@@ -215,9 +234,19 @@ def main() -> int:
         c = by_key.get(key)
         if c is not None:
             jobs.append((f"single:{key}", [c]))
+    # replicate the zero-edit rung under other seeds: its spread IS the noise
+    # floor at this effort, and D17 showed that floor is not small
+    noise_seeds = [int(x) for x in args.noise_seeds.split(",") if x.strip()]
+    for sd_ in noise_seeds:
+        jobs.append((f"0 edits seed{sd_}", []))
 
     rows = []
     for label, edits in jobs:
+        # a replicate rung carries its seed in its label; everything else uses
+        # the run's seed, so a candidate and the zero rung it is compared with
+        # are searched identically
+        job_seed = (int(label.rsplit("seed", 1)[1]) if "seed" in label
+                    else args.seed)
         cell = f"eval|{label}|{args.iterations}/{args.restarts}/{args.width}"
         if store.has(cell):
             rows.append(store.get(cell))
@@ -227,7 +256,7 @@ def main() -> int:
         t0 = time.time()
         try:
             setup, ed = build_edited(H, model, edits, a, cons, args.seed,
-                                     args.scenarios)
+                                     args.scenarios)   # set is seed-independent
         except Exception as exc:
             log.warning("%s failed to build: %s: %s", label,
                         type(exc).__name__, exc)
@@ -236,7 +265,7 @@ def main() -> int:
             continue
         bf = setup.model.evaluate(setup.baseline_plan)
         rec: dict = {
-            "label": label, "n_edits": len(edits),
+            "label": label, "seed": job_seed, "n_edits": len(edits),
             "edits": describe(edits),
             "edit_keys": [e.key for e in edits],
             "n_paths": sum(p.n_paths for p in setup.pathsets.values()),
@@ -250,7 +279,7 @@ def main() -> int:
             t = time.time()
             r = optimize_frequencies(
                 setup.model, setup.budget, ladder=[], unserved_multiplier=m,
-                local_search_iterations=args.iterations, seed=args.seed,
+                local_search_iterations=args.iterations, seed=job_seed,
                 ladders=setup.ladders, initial=setup.baseline_plan,
                 n_restarts=args.restarts, candidate_width=args.width,
                 greedy_start=False)
@@ -291,6 +320,31 @@ def main() -> int:
                 df[f"gc_lam{m}"] / z[f"gc_lam{m}"] - 1) * 100
             df[f"unserved_vs_noedit_pct_lam{m}"] = (
                 df[f"unserved_lam{m}"] / z[f"unserved_lam{m}"] - 1) * 100
+
+    # the noise floor: how far the SAME network moves when only the seed
+    # changes. D17 measured 26% of route-periods and 0.13 points of unserved
+    # at full effort on Experiment 1; at this effort it will be larger, and a
+    # geometry effect inside it is not an effect.
+    noise = {}
+    reps = df[df["label"].str.startswith("0 edits")]
+    if len(reps) > 1:
+        for m in lams:
+            v = reps[f"unserved_lam{m}"].to_numpy(float)
+            g = reps[f"gc_lam{m}"].to_numpy(float)
+            noise[str(m)] = {
+                "n_replicates": int(len(v)),
+                "unserved_sd_pct": float(np.std(v / z[f"unserved_lam{m}"] * 100,
+                                                ddof=1)),
+                "gc_sd_pct": float(np.std(g / z[f"gc_lam{m}"] * 100, ddof=1)),
+            }
+            df[f"measurable_lam{m}"] = (
+                df[f"unserved_vs_noedit_pct_lam{m}"].abs()
+                >= 3.0 * noise[str(m)]["unserved_sd_pct"])
+        log.info("noise floor at this effort: %s", noise)
+    else:
+        log.warning("no zero-edit replicates: pass --noise-seeds, or every "
+                    "effect below is unjudgeable against search noise")
+
     df.to_csv(exp.artifact_path("eval.csv"), index=False)
     df.to_csv(OUT / "exp2_eval.csv", index=False)
 
@@ -300,7 +354,8 @@ def main() -> int:
         lad[["n_edits", "improvement_vs_exp1"]].to_csv(
             OUT / "exp2_ladder.csv", index=False)
 
-    exp.log_metrics(envelope_vh=base_vh, peak=peak, lambdas=lams,
+    exp.log_metrics(noise_floor=noise, waiting_model=H.common_lines,
+                    envelope_vh=base_vh, peak=peak, lambdas=lams,
                     effort=f"{args.iterations}/{args.restarts}/{args.width}",
                     scenarios=args.scenarios, shortlist=shortlist,
                     primary_only=args.primary_only,
@@ -317,9 +372,19 @@ def main() -> int:
     print("=" * 104)
     cols = ["label", "n_edits", "n_paths", "modelled_share_pct"] + [
         c for m in lams for c in (f"gc_vs_noedit_pct_lam{m}",
-                                  f"unserved_vs_noedit_pct_lam{m}")
+                                  f"unserved_vs_noedit_pct_lam{m}",
+                                  f"measurable_lam{m}")
         if c in df.columns]
     print(df[cols].round(3).to_string(index=False))
+    if noise:
+        print("\n  search noise at this effort, from the zero-edit replicates:")
+        for m, v in noise.items():
+            print(f"    lambda={m}: unserved sd {v['unserved_sd_pct']:.3f} pts "
+                  f"over {v['n_replicates']} seeds -> anything under "
+                  f"{3 * v['unserved_sd_pct']:.3f} pts is not measurable")
+    else:
+        print("\n  NO NOISE FLOOR MEASURED — every number above is "
+              "unjudgeable against search noise. Re-run with --noise-seeds.")
     print(f"\nartifacts: {exp.dir}")
     return 0
 
