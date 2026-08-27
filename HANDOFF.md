@@ -147,20 +147,61 @@ the cap was never the binding constraint — scenario coverage was.
 
 ## 2. What is provisional
 
-* **Experiment 2 screening.** 60 candidate geometry edits, priced with full
-  RAPTOR at headways scaled so the edited network spends exactly today's
-  vehicle-hours. Frequency is not reallocated, so these **rank** candidates and
-  do not measure them. Note also that the screen's "unserved" means
-  *unreachable*, while the model's also applies the retention curve — the two
-  are not the same quantity.
-* **Experiment 2 evaluation tier.** Geometry with frequency re-optimized, but on
-  a reduced enumeration sweep and pre-fixpoint yardstick. Exploratory.
-* **Anything geometry.** `DISCOVERIES.md` deliberately excludes geometry
-  findings until they survive frequency re-optimization on the frozen yardstick,
-  matched effort, a seed check, and hand inspection against the network.
-* **Model A's headline.** Preserved as the control and never overwritten, but
-  it carries the same-route waiting bias D10 identified. The Model B frontier
-  is the one to quote once its fixpoint closes.
+### Experiment 2 — geometry, and the one claim it supports
+
+The supportable claim is a single sentence:
+
+> Through-routing **33 Henderson** and **34 Morse** at Westview Turnaround
+> reduces unserved demand by about **0.9%** at roughly neutral generalized cost,
+> using only track COTA already runs — and adding further edits from the same
+> shortlist costs half that benefit or more.
+
+Three things had to be established to get there, and each is a warning to
+anyone tempted to shortcut the funnel.
+
+**The screen ranks candidates and does not reliably rank them.** Its
+first-ranked candidate of 60, `splice|002|033|WESHIGW`, is second-worst of the
+twelve when evaluated with frequency re-optimized: **+0.98% unserved** against a
+measured 0.288-point noise floor. Its fifth-ranked is the worst. The mechanism
+is visible in the columns — every candidate that helps costs slightly more
+generalized cost and serves more people, and both that hurt *save* generalized
+cost by serving fewer. The screen holds frequency fixed, so it cannot see the
+reallocation an edit triggers; it rewards edits that make the network cheaper,
+and the cheapest edits are the ones that quietly drop demand. See D19.
+
+**Edits do not compose.** Four splices that individually reduce unserved demand
+by 0.49–0.94% are, together, **worse than making no change at all** (+0.47%).
+The second edit already hurts. They compete for one vehicle-hour envelope, and
+through-routing consumes it — the merged line is longer, so hours that were
+buying frequency go into running it. "Which edits should COTA make" is therefore
+not answerable by taking the top N: the top N is not the best set of N. Any
+recommendation is a set, evaluated as a set. See D20.
+
+**Screen numbers were bracketed, not rescored.** Model B cannot be run in the
+screen — its multiplier depends on the boarding stop, the alighting stop and
+their order, so it is a property of a leg, and the screen prices straight out of
+RAPTOR's labels where waiting is fixed per pattern before the alighting stop is
+known. Running it with a Model B flag would have produced Model A numbers under
+a Model B label. It was bracketed between Model A and route-level pricing (a
+strict lower bound on any Model B cost) instead. Aggregate Spearman 0.857 — but
+**within splices, the only kind that takes a top-ten slot, 0.336.** The set
+{splices are the good kind} is robust; the ordering inside it is not, which is
+why all twelve were evaluated rather than the top eight. See D16.
+
+**Still provisional in Experiment 2:**
+
+* Magnitudes. Candidate path sets use the reduced scenario sweep and the solver
+  runs below L4, so the evaluation ranks candidates against a measured noise
+  floor and does not size them. The two harmful candidates should be re-run at
+  full effort before D19 goes in a write-up.
+* Everything that is not a splice. Extends, truncates, straightens and reroutes
+  take no top-ten slot at either end of the bracket and were never evaluated.
+* A joint search over subsets. The ladder is greedy over singles; D20's
+  non-additivity might be a property of greedy composition rather than of the
+  budget, and nothing here distinguishes them.
+
+**Model A's headline.** Preserved as the control and never overwritten, but it
+carries the same-route waiting bias D10 identified. Quote Model B.
 
 ---
 
