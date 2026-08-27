@@ -28,9 +28,15 @@ LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 # and gate 1 requires the last two iterations to be within --tol of each other.
 # Hitting the cap mid-descent fails that gate. Raising the cap costs nothing
 # when the loop converges sooner, since it exits on the tolerance test.
+# certify-* repairs gate 4 and may only run once its model's fixpoint has
+# written final|lam cells, so a job is added here when that happens rather
+# than up front -- otherwise the supervisor hot-loops on a job that cannot
+# start yet.
 JOBS=(
   "fixpoint-A|python scripts/fixpoint.py --max-iterations 8|outputs/fixpoint.log|0"
   "fixpoint-B|python scripts/fixpoint.py --common-lines same_route --max-iterations 8|outputs/fixpoint_modelB.log|0"
+  "certify-A|python scripts/frontier_certify.py|outputs/certify.log|0"
+  "certify-B|python scripts/frontier_certify.py --common-lines same_route|outputs/certify_modelB.log|0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }

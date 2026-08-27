@@ -6873,3 +6873,1203 @@
       echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
      
 2026-08-27T11:47:10Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:48:42Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:48:42Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:48:42Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:48:42Z pid=29645 rss=301MB python scripts/frontier_certify.py 
+2026-08-27T11:49:37Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:49:37Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:49:37Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:49:37Z pid=29645 rss=341MB python scripts/frontier_certify.py 
+2026-08-27T11:50:32Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:50:32Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:50:32Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:50:32Z pid=29645 rss=353MB python scripts/frontier_certify.py 
+2026-08-27T11:51:27Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:51:27Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:51:27Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:51:27Z pid=29645 rss=362MB python scripts/frontier_certify.py 
+2026-08-27T11:52:22Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:52:23Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:52:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:52:23Z pid=29645 rss=365MB python scripts/frontier_certify.py 
+2026-08-27T11:53:18Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:53:18Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:53:18Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:53:18Z pid=29645 rss=382MB python scripts/frontier_certify.py 
+2026-08-27T11:54:13Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:54:13Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:54:13Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:54:13Z pid=29645 rss=382MB python scripts/frontier_certify.py 
+2026-08-27T11:55:08Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:55:08Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:55:08Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:55:08Z pid=29645 rss=382MB python scripts/frontier_certify.py 
+2026-08-27T11:56:03Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:56:03Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:56:03Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:56:03Z pid=29645 rss=390MB python scripts/frontier_certify.py 
+2026-08-27T11:56:58Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:56:58Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:56:58Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:56:58Z pid=29645 rss=396MB python scripts/frontier_certify.py 
+2026-08-27T11:57:53Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:57:53Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:57:53Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:57:53Z pid=29645 rss=398MB python scripts/frontier_certify.py 
+2026-08-27T11:58:48Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:58:48Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:58:48Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:58:49Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T11:59:44Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T11:59:44Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T11:59:44Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T11:59:44Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T12:00:39Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:00:39Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:00:39Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:00:39Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T12:01:34Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:01:34Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:01:34Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:01:34Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T12:02:29Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:02:29Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:02:29Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:02:29Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T12:03:24Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:03:24Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:03:24Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:03:24Z pid=29645 rss=432MB python scripts/frontier_certify.py 
+2026-08-27T12:04:19Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:04:19Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:04:19Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:04:19Z pid=29645 rss=451MB python scripts/frontier_certify.py 
+2026-08-27T12:05:14Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:05:14Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:05:14Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:05:14Z pid=29645 rss=451MB python scripts/frontier_certify.py 
+2026-08-27T12:06:10Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:06:10Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:06:10Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:06:10Z pid=29645 rss=451MB python scripts/frontier_certify.py 
+2026-08-27T12:07:05Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:07:05Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:07:05Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:07:05Z pid=29645 rss=453MB python scripts/frontier_certify.py 
+2026-08-27T12:08:00Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:08:00Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:08:00Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:08:00Z pid=29645 rss=454MB python scripts/frontier_certify.py 
+2026-08-27T12:08:55Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:08:55Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:08:55Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:08:55Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:09:50Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:09:50Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:09:50Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:09:50Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:10:45Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:10:45Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:10:45Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:10:45Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:11:40Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:11:40Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:11:40Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:11:40Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:12:35Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:12:36Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:12:36Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:12:36Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:13:31Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:13:31Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:13:31Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:13:31Z pid=29645 rss=483MB python scripts/frontier_certify.py 
+2026-08-27T12:14:26Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:14:26Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:14:26Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:14:26Z pid=29645 rss=487MB python scripts/frontier_certify.py 
+2026-08-27T12:15:21Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:15:21Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:15:21Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:15:21Z pid=29645 rss=487MB python scripts/frontier_certify.py 
+2026-08-27T12:16:16Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:16:16Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:16:16Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:16:16Z pid=29645 rss=487MB python scripts/frontier_certify.py 
+2026-08-27T12:17:11Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:17:11Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:17:11Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:17:11Z pid=29645 rss=487MB python scripts/frontier_certify.py 
+2026-08-27T12:18:06Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:18:06Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:18:06Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:18:06Z pid=29645 rss=487MB python scripts/frontier_certify.py 
+2026-08-27T12:19:01Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:19:01Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:19:01Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:19:01Z pid=29645 rss=507MB python scripts/frontier_certify.py 
+2026-08-27T12:19:57Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:19:57Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:19:57Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:19:57Z pid=29645 rss=506MB python scripts/frontier_certify.py 
+2026-08-27T12:20:52Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:20:52Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:20:52Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:20:52Z pid=29645 rss=506MB python scripts/frontier_certify.py 
+2026-08-27T12:21:47Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:21:47Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:21:47Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:21:47Z pid=29645 rss=506MB python scripts/frontier_certify.py 
+2026-08-27T12:22:42Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:22:42Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:22:42Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:22:42Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:23:37Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:23:37Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:23:37Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:23:37Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:24:32Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:24:32Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:24:32Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:24:32Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:25:27Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:25:27Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:25:27Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:25:28Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:26:23Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:26:23Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:26:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:26:23Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:27:18Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:27:18Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:27:18Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:27:18Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:28:13Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:28:13Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:28:13Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:28:13Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:29:08Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:29:08Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:29:08Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:29:08Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:30:03Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:30:03Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:30:03Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:30:03Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:30:58Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:30:58Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:30:58Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:30:58Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:31:53Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:31:53Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:31:54Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:31:54Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:32:49Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:32:49Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:32:49Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:32:49Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:33:44Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:33:44Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:33:44Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:33:44Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:34:39Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:34:39Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:34:39Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:34:39Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:35:34Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:35:34Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:35:34Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:35:34Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:36:29Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:36:29Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:36:29Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:36:29Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:37:24Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:37:24Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:37:24Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:37:24Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:38:19Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:38:19Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:38:20Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:38:20Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:39:15Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:39:15Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:39:15Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:39:15Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:40:10Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:40:10Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:40:10Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:40:10Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:41:05Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:41:05Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:41:05Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:41:05Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:42:00Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:42:00Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:42:00Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:42:00Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:42:55Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:42:55Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:42:55Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:42:55Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:43:50Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:43:50Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:43:50Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:43:50Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:44:45Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:44:45Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:44:45Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:44:45Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:45:41Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:45:41Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:45:41Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:45:41Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:46:36Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:46:36Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:46:36Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:46:36Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:47:31Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:47:31Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:47:31Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:47:31Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:48:26Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:48:26Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:48:26Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:48:26Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:49:21Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:49:21Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:49:21Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:49:21Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:50:16Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:50:16Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:50:16Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:50:16Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:51:11Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:51:11Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:51:12Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:51:12Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:52:07Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:52:07Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:52:07Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:52:07Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:53:02Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:53:02Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:53:02Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:53:02Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:53:57Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:53:57Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:53:57Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:53:57Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:54:52Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:54:52Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:54:52Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:54:52Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:55:47Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:55:47Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:55:47Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:55:47Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:56:42Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:56:42Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:56:42Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:56:42Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:57:38Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:57:38Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:57:38Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:57:38Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:58:33Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:58:33Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:58:33Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:58:33Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T12:59:28Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T12:59:28Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T12:59:28Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T12:59:28Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:00:23Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:00:23Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:00:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:00:23Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:01:18Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:01:18Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:01:18Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:01:18Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:02:13Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:02:13Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:02:13Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:02:13Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:03:08Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:03:08Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:03:08Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:03:08Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:04:04Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:04:04Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:04:04Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:04:04Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:04:59Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:04:59Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:04:59Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:04:59Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:05:54Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:05:54Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:05:54Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:05:54Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:06:49Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:06:49Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:06:49Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:06:49Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:07:44Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:07:44Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:07:44Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:07:44Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:08:39Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:08:39Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:08:39Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:08:39Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:09:34Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:09:34Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:09:34Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:09:35Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:10:30Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:10:30Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:10:30Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:10:30Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:11:25Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:11:25Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:11:25Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:11:25Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:12:20Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:12:20Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:12:20Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:12:20Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:13:15Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:13:15Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:13:15Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:13:15Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:14:10Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:14:10Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:14:10Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:14:10Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:15:05Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:15:05Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:15:05Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:15:05Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:16:00Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:16:00Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:16:01Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:16:01Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:16:56Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:16:56Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:16:56Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:16:56Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:17:51Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:17:51Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:17:51Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:17:51Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:18:46Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:18:46Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:18:46Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:18:46Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:19:41Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:19:41Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:19:41Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:19:41Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:20:36Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:20:36Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:20:36Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:20:36Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:21:31Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:21:31Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:21:31Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:21:31Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:22:26Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:22:26Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:22:27Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:22:27Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:23:22Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:23:22Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:23:22Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:23:22Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:24:17Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:24:17Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:24:17Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:24:17Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:25:12Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:25:12Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:25:12Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:25:12Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:26:07Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:26:07Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:26:07Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:26:07Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:27:02Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:27:02Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:27:02Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:27:02Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:27:57Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:27:57Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:27:57Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:27:57Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:28:52Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:28:52Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:28:52Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:28:52Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:29:48Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:29:48Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:29:48Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:29:48Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:30:43Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:30:43Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:30:43Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:30:43Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:31:38Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:31:38Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:31:38Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:31:38Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:32:33Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:32:33Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:32:33Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:32:33Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:33:28Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T13:33:28Z pid=11046 rss=620MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T13:33:28Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:33:28Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:34:23Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:34:23Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:35:18Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:35:18Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:36:13Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:36:13Z pid=1502 rss=306MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:36:13Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:36:13Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:36:13Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:36:13Z pid=1502 rss=306MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:36:13Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:36:13Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:37:08Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:37:08Z pid=1502 rss=345MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:37:08Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:37:08Z pid=29645 rss=505MB python scripts/frontier_certify.py 
+2026-08-27T13:37:09Z pid=1500 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T13:37:09Z pid=1502 rss=345MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T13:37:09Z pid=29643 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py >> 'outpu
+      echo "$(date -u +%FT%TZ) supervisor: certify-A exited 
+     
+2026-08-27T13:37:09Z pid=29645 rss=505MB python scripts/frontier_certify.py 

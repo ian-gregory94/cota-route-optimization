@@ -9,3 +9,6 @@
 2026-08-27T02:51:29Z supervisor: started fixpoint-A free=7340MB
 2026-08-27T02:51:35Z supervisor: started fixpoint-B free=6841MB
 2026-08-27T09:37:11Z supervisor: fixpoint-A exited status=0
+2026-08-27T11:48:37Z supervisor: started certify-A free=6668MB
+2026-08-27T13:34:12Z supervisor: fixpoint-B exited status=0
+2026-08-27T13:36:08Z supervisor: started certify-B free=6757MB
