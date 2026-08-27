@@ -155,3 +155,49 @@
 2026-08-27 04:00:57,884 ======================================================================
 2026-08-27 04:00:57,884 ITERATION 2, 8 extra enumeration scenarios
 2026-08-27 04:00:57,964 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:06:12,300 rejected 480 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:06:12,493 path set: 38170 paths over 17437/20000 OD pairs (86.9% of flow served), 199165 legs
+2026-08-27 04:06:12,663 cache store pathset-04186a5b39fc5a51 (14.6 MB, built in 315s)
+2026-08-27 04:06:12,663 period early   : 38170 paths, 20000 OD pairs
+2026-08-27 04:06:12,680 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:12:16,769 rejected 454 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:12:17,001 path set: 44475 paths over 19318/20000 OD pairs (96.5% of flow served), 230961 legs
+2026-08-27 04:12:17,271 cache store pathset-80d9d97ee345c951 (16.8 MB, built in 364s)
+2026-08-27 04:12:17,271 period am_peak : 44475 paths, 20000 OD pairs
+2026-08-27 04:12:17,289 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:17:43,868 rejected 357 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:17:44,062 path set: 37051 paths over 17439/20000 OD pairs (86.9% of flow served), 191644 legs
+2026-08-27 04:17:44,259 cache store pathset-de92bfa30a31f314 (14.0 MB, built in 327s)
+2026-08-27 04:17:44,259 period midday  : 37051 paths, 20000 OD pairs
+2026-08-27 04:17:44,279 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:23:44,765 rejected 753 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:23:44,971 path set: 44501 paths over 18727/20000 OD pairs (93.8% of flow served), 235484 legs
+2026-08-27 04:23:45,213 cache store pathset-24e6f42d4168e6dd (17.1 MB, built in 361s)
+2026-08-27 04:23:45,213 period pm_peak : 44501 paths, 20000 OD pairs
+2026-08-27 04:23:45,230 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:29:51,431 rejected 404 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:29:51,647 path set: 40425 paths over 17443/20000 OD pairs (86.9% of flow served), 209767 legs
+2026-08-27 04:29:51,866 cache store pathset-06d87e0d1c8835ca (15.3 MB, built in 367s)
+2026-08-27 04:29:51,866 period evening : 40425 paths, 20000 OD pairs
+2026-08-27 04:29:51,885 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
+2026-08-27 04:35:02,211 rejected 620 malformed candidate paths that failed the re-pricing check
+2026-08-27 04:35:02,372 path set: 35101 paths over 17044/20000 OD pairs (85.3% of flow served), 181083 legs
+2026-08-27 04:35:02,593 cache store pathset-3a350053a0e1e447 (13.3 MB, built in 311s)
+2026-08-27 04:35:02,593 period owl     : 35101 paths, 20000 OD pairs
+2026-08-27 04:35:03,718 cache store pathsets-293c626322507eee (91.0 MB, built in 2045s)
+2026-08-27 04:35:03,775 period early   : 38170 paths, 20000 OD pairs
+2026-08-27 04:35:03,783 period am_peak : 44475 paths, 20000 OD pairs
+2026-08-27 04:35:03,788 period midday  : 37051 paths, 20000 OD pairs
+2026-08-27 04:35:03,795 period pm_peak : 44501 paths, 20000 OD pairs
+2026-08-27 04:35:03,801 period evening : 40425 paths, 20000 OD pairs
+2026-08-27 04:35:03,812 period owl     : 35101 paths, 20000 OD pairs
+2026-08-27 04:35:03,839 load profile: 23 route-periods, peak-load factor median 0.33, p90 0.48
+2026-08-27 04:35:03,867 load profile: 35 route-periods, peak-load factor median 0.41, p90 1.00
+2026-08-27 04:35:03,891 load profile: 25 route-periods, peak-load factor median 0.34, p90 0.48
+2026-08-27 04:35:03,921 load profile: 32 route-periods, peak-load factor median 0.38, p90 0.99
+2026-08-27 04:35:03,949 load profile: 24 route-periods, peak-load factor median 0.32, p90 0.45
+2026-08-27 04:35:03,972 load profile: 22 route-periods, peak-load factor median 0.37, p90 0.51
+2026-08-27 04:35:03,972 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-27 04:35:04,036 iteration 2: 239723 candidate paths, baseline gc=1.772737e+06 (enum 2046s)
+2026-08-27 04:48:28,408 solve lambda=0.5: obj=2.04012e+06 vh=2511.5/2517.2 exchanges=29
+2026-08-27 04:48:28,408   lambda=0.5   804s gc   -3.55% unserved   +7.32%

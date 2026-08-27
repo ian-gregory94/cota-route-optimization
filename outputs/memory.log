@@ -2563,3 +2563,633 @@
       echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
      
 2026-08-27T04:06:05Z pid=11046 rss=505MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:07:00Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:07:00Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:07:00Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:07:00Z pid=11046 rss=520MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:07:55Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:07:55Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:07:55Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:07:55Z pid=11046 rss=520MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:08:51Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:08:51Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:08:51Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:08:51Z pid=11046 rss=522MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:09:46Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:09:46Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:09:46Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:09:46Z pid=11046 rss=529MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:10:41Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:10:41Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:10:41Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:10:41Z pid=11046 rss=531MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:11:36Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:11:36Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:11:36Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:11:36Z pid=11046 rss=532MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:12:31Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:12:31Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:12:31Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:12:31Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:13:26Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:13:26Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:13:26Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:13:26Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:14:21Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:14:21Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:14:21Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:14:21Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:15:16Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:15:16Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:15:16Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:15:16Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:16:12Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:16:12Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:16:12Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:16:12Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:17:07Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:17:07Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:17:07Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:17:07Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:18:02Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:18:02Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:18:02Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:18:02Z pid=11046 rss=573MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:18:57Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:18:57Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:18:57Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:18:57Z pid=11046 rss=573MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:19:52Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:19:52Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:19:52Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:19:52Z pid=11046 rss=573MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:20:47Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:20:47Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:20:47Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:20:47Z pid=11046 rss=573MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:21:42Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:21:42Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:21:42Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:21:42Z pid=11046 rss=574MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:22:37Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:22:37Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:22:37Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:22:37Z pid=11046 rss=577MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:23:33Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:23:33Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:23:33Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:23:33Z pid=11046 rss=578MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:24:28Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:24:28Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:24:28Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:24:28Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:25:23Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:25:23Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:25:23Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:25:23Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:26:18Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:26:18Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:26:18Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:26:18Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:27:13Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:27:13Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:27:13Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:27:13Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:28:08Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:28:08Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:28:08Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:28:08Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:29:03Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:29:03Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:29:03Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:29:03Z pid=11046 rss=600MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:29:59Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:29:59Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:29:59Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:29:59Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:30:54Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:30:54Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:30:54Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:30:54Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:31:49Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:31:49Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:31:49Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:31:49Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:32:44Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:32:44Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:32:44Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:32:44Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:33:39Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:33:39Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:33:39Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:33:39Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:34:34Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:34:34Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:34:34Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:34:34Z pid=11046 rss=609MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:35:29Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:35:29Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:35:29Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:35:29Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:36:25Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:36:25Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:36:25Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:36:25Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:37:20Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:37:20Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:37:20Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:37:20Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:38:15Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:38:15Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:38:15Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:38:15Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:39:10Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:39:10Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:39:10Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:39:10Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:40:05Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:40:05Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:40:05Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:40:05Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:41:00Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:41:00Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:41:00Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:41:00Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:41:55Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:41:55Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:41:55Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:41:55Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:42:50Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:42:50Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:42:50Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:42:50Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:43:46Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:43:46Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:43:46Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:43:46Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:44:41Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:44:41Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:44:41Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:44:41Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:45:36Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:45:36Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:45:36Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:45:36Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:46:31Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:46:31Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:46:31Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:46:31Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:47:26Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:47:26Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:47:26Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:47:26Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:48:21Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:48:21Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:48:21Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:48:21Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:49:16Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:49:16Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:49:16Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:49:16Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:50:11Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:50:11Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:50:12Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:50:12Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:51:07Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:51:07Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:51:07Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:51:07Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:52:02Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:52:02Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:52:02Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:52:02Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:52:57Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:52:57Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:52:57Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:52:57Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:53:52Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:53:52Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:53:52Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:53:52Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:54:47Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:54:47Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:54:47Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:54:47Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:55:42Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:55:42Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:55:42Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:55:42Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:56:37Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:56:37Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:56:37Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:56:37Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:57:33Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:57:33Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:57:33Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:57:33Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:58:28Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:58:28Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:58:28Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:58:28Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T04:59:23Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T04:59:23Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T04:59:23Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T04:59:23Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T05:00:18Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T05:00:18Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T05:00:18Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T05:00:18Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T05:01:13Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T05:01:13Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T05:01:13Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T05:01:13Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T05:02:08Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T05:02:08Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T05:02:08Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T05:02:08Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T05:03:03Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T05:03:03Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T05:03:03Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T05:03:03Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i
+2026-08-27T05:03:58Z pid=11028 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --max-iterations 
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-A exited
+     
+2026-08-27T05:03:59Z pid=11031 rss=571MB python scripts/fixpoint.py --max-iterations 8 
+2026-08-27T05:03:59Z pid=11043 rss=3MB bash -c 
+      nice -n 0 python scripts/fixpoint.py --common-lines sa
+      echo "$(date -u +%FT%TZ) supervisor: fixpoint-B exited
+     
+2026-08-27T05:03:59Z pid=11046 rss=581MB python scripts/fixpoint.py --common-lines same_route --max-i

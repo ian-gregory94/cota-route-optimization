@@ -571,3 +571,17 @@
 2026-08-27 03:37:17,158 iteration 3: 227791 candidate paths, baseline gc=1.788020e+06 (enum 2395s)
 2026-08-27 03:48:16,315 solve lambda=0.5: obj=2.05356e+06 vh=2509.2/2517.2 exchanges=113
 2026-08-27 03:48:16,316   lambda=0.5   659s gc   -5.83% unserved  +13.25%
+2026-08-27 04:06:47,174 solve lambda=1.0: obj=2.39489e+06 vh=2509.2/2517.2 exchanges=54
+2026-08-27 04:06:47,174   lambda=1.0  1111s gc   -2.17% unserved   -1.14%
+2026-08-27 04:31:32,965 solve lambda=2.0: obj=3.01369e+06 vh=2511.5/2517.2 exchanges=50
+2026-08-27 04:31:32,966   lambda=2.0  1486s gc   +0.56% unserved   -6.92%
+2026-08-27 04:51:01,744 solve lambda=8.0: obj=6.6411e+06 vh=2512.9/2517.2 exchanges=57
+2026-08-27 04:51:01,744   lambda=8.0  1169s gc   +1.10% unserved   -7.48%
+2026-08-27 04:52:55,036   adequacy lambda=0.5  improvable flow 1.03%, overstatement 0.110%
+2026-08-27 04:54:48,076   adequacy lambda=1.0  improvable flow 0.89%, overstatement 0.094%
+2026-08-27 04:56:43,252   adequacy lambda=2.0  improvable flow 0.62%, overstatement 0.088%
+2026-08-27 04:58:34,358   adequacy lambda=8.0  improvable flow 0.71%, overstatement 0.090%
+2026-08-27 04:58:34,360 iteration 3: worst improvable flow share 1.029% (227791 paths)
+2026-08-27 04:58:34,360 converged: improvable share moved 0.0011, below tol 0.0020
+2026-08-27 04:58:34,361 ======================================================================
+2026-08-27 04:58:34,361 FINAL FRONTIER: full effort (400000 iters, 20 restarts) on the converged set (227791 paths)
