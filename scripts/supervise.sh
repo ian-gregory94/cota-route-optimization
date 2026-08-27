@@ -39,6 +39,7 @@ JOBS=(
   "certify-B|python scripts/frontier_certify.py --common-lines same_route|outputs/certify_modelB.log|0"
   "exp2-bracket|python scripts/run_exp2_screen.py --pricing route --per-kind 12 --origin-sample 400 --store exp2_screen_bound.jsonl --out exp2_screen_bound|outputs/exp2_screen_bound.log|5"
   "seedcheck-A|python scripts/seed_check.py|outputs/seedcheck.log|0"
+  "seedcheck-B|python scripts/seed_check.py --common-lines same_route|outputs/seedcheck_modelB.log|0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }

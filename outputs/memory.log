@@ -13123,3 +13123,937 @@
       echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
      
 2026-08-27T17:46:58Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:47:53Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:47:53Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:47:53Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:47:53Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:48:48Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:48:48Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:48:48Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:48:48Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:49:43Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:49:43Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:49:43Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:49:43Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:50:38Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:50:38Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:50:38Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:50:38Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:51:33Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:51:34Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:51:34Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:51:34Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:52:29Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:52:29Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:52:29Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:52:29Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:53:24Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:53:24Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:53:24Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:53:24Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:54:19Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:54:19Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:54:19Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:54:19Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:55:14Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:55:14Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:55:14Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:55:14Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:56:09Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:56:09Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:56:09Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:56:09Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:57:04Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:57:04Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:57:04Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:57:04Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:57:59Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:57:59Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:57:59Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:57:59Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:58:54Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:58:54Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:58:55Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:58:55Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T17:59:50Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T17:59:50Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T17:59:50Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T17:59:50Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:00:45Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:00:45Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:00:45Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:00:45Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:01:40Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:01:40Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:01:40Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:01:40Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:02:35Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:02:35Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:02:35Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:02:35Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:03:30Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:03:30Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:03:30Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:03:30Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:04:25Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:04:25Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:04:25Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:04:25Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:05:20Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:05:20Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:05:20Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:05:20Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:06:15Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:06:15Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:06:15Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:06:15Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:07:11Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:07:11Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:07:11Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:07:11Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:08:06Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:08:06Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:08:06Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:08:06Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:09:01Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:09:01Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:09:01Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:09:01Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:09:56Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:09:56Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:09:56Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:09:56Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:10:51Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:10:51Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:10:51Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:10:51Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:11:46Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:11:46Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:11:46Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:11:46Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:12:41Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:12:41Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:12:41Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:12:41Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:13:36Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:13:36Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:13:36Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:13:36Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:14:32Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:14:32Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:14:32Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:14:32Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:15:27Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:15:27Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:15:27Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:15:27Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:16:22Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:16:22Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:16:22Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:16:22Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:17:17Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:17:17Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:17:17Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:17:17Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:18:12Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:18:12Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:18:12Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:18:12Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:19:07Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:19:07Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:19:07Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:19:07Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:20:02Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:20:02Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:20:02Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:20:02Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:20:57Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:20:57Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:20:57Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:20:57Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:21:52Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:21:53Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:21:53Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:21:53Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:22:48Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:22:48Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:22:48Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:22:48Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:23:43Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:23:43Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:23:43Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:23:43Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:24:38Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:24:38Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:24:38Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:24:38Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:25:33Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:25:33Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:25:33Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:25:33Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:26:28Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:26:28Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:26:28Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:26:28Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:27:23Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:27:23Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:27:23Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:27:23Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:28:18Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:28:18Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:28:18Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:28:18Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:29:14Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:29:14Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:29:14Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:29:14Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:30:09Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:30:09Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:30:09Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:30:09Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:31:04Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:31:04Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:31:04Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:31:04Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:31:59Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:31:59Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:31:59Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:31:59Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:32:54Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:32:54Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:32:54Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:32:54Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:33:49Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:33:49Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:33:49Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:33:49Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:34:44Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:34:44Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:34:44Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:34:44Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:35:39Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:35:39Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:35:39Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:35:40Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:36:35Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:36:35Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:36:35Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:36:35Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:37:30Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:37:30Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:37:30Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:37:30Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:38:25Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:38:25Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:38:25Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:38:25Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:39:20Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:39:20Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:39:20Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:39:20Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:40:15Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:40:15Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:40:15Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:40:15Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:41:10Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:41:10Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:41:10Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:41:10Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:42:05Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:42:05Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:42:05Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:42:05Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:43:00Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:43:00Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:43:00Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:43:00Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:43:56Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:43:56Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:43:56Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:43:56Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:44:51Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:44:51Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:44:51Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:44:51Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:45:46Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:45:46Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:45:46Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:45:46Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:46:41Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:46:41Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:46:41Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:46:41Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:47:36Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:47:36Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:47:36Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:47:36Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:48:31Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:48:31Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:48:31Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:48:31Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:49:26Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:49:26Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:49:26Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:49:26Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:50:21Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:50:21Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:50:21Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:50:21Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:51:17Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:51:17Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:51:17Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:51:17Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:52:12Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:52:12Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:52:12Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:52:12Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:53:07Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:53:07Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:53:07Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:53:07Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:54:02Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:54:02Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:54:02Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:54:02Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:54:57Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:54:57Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:54:57Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:54:57Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:55:52Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:55:52Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:55:52Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:55:52Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:56:47Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:56:47Z pid=1682 rss=416MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:56:47Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:56:47Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:57:42Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:57:42Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:57:42Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:57:42Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:58:38Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:58:38Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:58:38Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:58:38Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T18:59:33Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T18:59:33Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T18:59:33Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T18:59:33Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:00:28Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:00:28Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:00:28Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:00:28Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:01:23Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:01:23Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:01:23Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:01:23Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:02:18Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:02:18Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:02:18Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:02:18Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:03:13Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:03:13Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:03:13Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:03:13Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:04:08Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:04:08Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:04:08Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:04:08Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:05:03Z pid=1679 rss=3MB bash -c 
+      nice -n 0 python scripts/frontier_certify.py --common-
+      echo "$(date -u +%FT%TZ) supervisor: certify-B exited 
+     
+2026-08-27T19:05:03Z pid=1682 rss=417MB python scripts/frontier_certify.py --common-lines same_route
+2026-08-27T19:05:03Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:05:03Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:05:58Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:05:59Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:06:54Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:06:54Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:07:49Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:07:49Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:08:44Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:08:44Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:09:39Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:09:39Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:10:34Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:10:34Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:11:29Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:11:29Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:11:29Z pid=6907 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+import pathlib
+p = pathlib.Path("scripts/supervise.sh"); s = p.read_text()
+old = '"'"''"'"''"'"'  "seedcheck-A|python scripts/seed_chec
+)'"'"''"'"''"'"'
+new = '"'"''"'"''"'"'  "seedcheck-A|python scripts/seed_chec
+  "seedcheck-B|python scripts/seed_check.py --common-lines s
+)'"'"''"'"''"'"'
+assert old in s
+p.write_text(s.replace(old, new))
+print("seedcheck-B queued")
+PY
+bash -n scripts/supervise.sh && echo "syntax ok"
+python - <<'"'"'PY'"'"'
+import pathlib
+p = pathlib.Path("ACCEPTANCE.md"); s = p.read_text()
+old = "The balanced point is inside the certified range and 
+new = ("The balanced point is inside the certified range and
+       "**Model B repair result, 2026-08-27 19:05 UTC** (243
+       "λ = 0.25 (1.371%), 0.5 (0.926%) and 1.0 (0.789%) st
+       "That makes D15 structural rather than a property of 
+assert old in s
+p.write_text(s.replace(old, new))
+print("gate 4 Model B recorded")
+PY
+git add -A && git commit -q -m "docs: certify-B lands in the
+
+Model B'"'"'s repair step, on its own 243,257-path widened s
+0.671% line, splits exactly where Model A'"'"'s did:
+
+  lambda      0.25    0.5     1.0     2.0     4.0     8.0   
+  improvable  1.371%  0.926%  0.789%  0.508%  0.530%  0.522%
+  certified   no      no      no      YES     YES     YES   
+
+Two independent models, two candidate sets 4% apart, two dif
+and the boundary falls between lambda=1 and lambda=2 in both
+therefore a property of the method rather than of either run
+set enumerated around plausible headways cannot cover plans 
+service toward the policy ceiling, and re-enumerating around
+only lets the search find another one.
+
+Model B'"'"'s certified balanced point: +0.84% generalized c
+unserved, +3.27% served, -2.36% per trip actually served.
+
+Both frontiers are quoted from lambda=2 upward.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011QusixhUPcn
+ps aux | grep "[s]upervise.sh" | awk '"'"'{print $2}'"'"' | 

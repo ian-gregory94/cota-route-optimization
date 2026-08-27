@@ -20,3 +20,7 @@
 2026-08-27 17:42:21,778 load profile: 22 route-periods, peak-load factor median 0.42, p90 0.50
 2026-08-27 17:42:21,779 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-27 17:42:21,838 one shared set: 233589 paths, lambda=2.0, 3 seeds
+2026-08-27 18:24:15,273 solve lambda=2.0: obj=3.0104e+06 vh=2516.7/2517.2 exchanges=87
+2026-08-27 18:24:15,274   seed 20260825  2513s gc  +0.535% unserved  -7.035%
+2026-08-27 19:06:53,622 solve lambda=2.0: obj=3.01156e+06 vh=2516.2/2517.2 exchanges=123
+2026-08-27 19:06:53,622   seed 20260826  2558s gc  +0.472% unserved  -6.859%
