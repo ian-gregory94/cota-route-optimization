@@ -211,7 +211,13 @@ def main() -> int:
             print(hb.by_route.head(8).round(3).to_string(index=False))
 
     out["common_lines"] = H.common_lines
-    (OUT / f"model_diagnostics{suffix}.json").write_text(
+    # A gate's evidence file must not be overwritten by a later run of the same
+    # script under different flags: re-running with --skip-hyperpath to redo the
+    # fleet check silently destroyed gate 10's record once already. A run that
+    # skips a section writes somewhere else.
+    out_name = (f"model_diagnostics{suffix}.json" if not args.skip_hyperpath
+                else f"fleet_check{suffix}.json")
+    (OUT / out_name).write_text(
         json.dumps(out, indent=2, default=str))
     exp.log_metrics(**out)
     exp.save()

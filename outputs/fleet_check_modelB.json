@@ -1,0 +1,66 @@
+{
+  "peak_fleet": {
+    "n_blocks": 284,
+    "peak_vehicles": 197,
+    "peak_time": "17:13",
+    "peak_by_period": {
+      "early": 135,
+      "am_peak": 187,
+      "midday": 173,
+      "pm_peak": 197,
+      "evening": 178,
+      "owl": 149
+    },
+    "interline_share": 0.11971830985915492,
+    "layover_share": 0.19370578971251634,
+    "block_span_hours_median": 8.791666666666668,
+    "trips_per_block_median": 8.0,
+    "routewise_peak_by_period": {
+      "am_peak": 137.92222222222225,
+      "early": 74.1583333333333,
+      "evening": 121.73333333333333,
+      "midday": 138.41111111111113,
+      "owl": 30.919444444444448,
+      "pm_peak": 150.72777777777782
+    },
+    "routewise_peak": 150.72777777777782,
+    "interlining_factor": 1.3069920017691936,
+    "ntd_reported_voms": 198,
+    "block_peak_vs_ntd_voms_pct": -0.5050505050505052
+  },
+  "candidate_fleet": {
+    "plan": "lam2.0.csv",
+    "baseline_peak_proxy": 197.0,
+    "candidate_peak_proxy": 196.99929230908117,
+    "change": -0.0007076909188299396,
+    "change_pct": -0.0003592339689492079,
+    "peak_period": "pm_peak",
+    "largest_increases_by_route": [
+      {
+        "route_id": "005",
+        "buses": 6.4944444444444445
+      },
+      {
+        "route_id": "102",
+        "buses": 5.688888888888888
+      },
+      {
+        "route_id": "032",
+        "buses": 4.255555555555556
+      },
+      {
+        "route_id": "025",
+        "buses": 2.611111111111111
+      },
+      {
+        "route_id": "011",
+        "buses": 2.55
+      },
+      {
+        "route_id": "021",
+        "buses": 2.194444444444444
+      }
+    ]
+  },
+  "common_lines": "same_route"
+}
