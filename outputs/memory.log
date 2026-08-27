@@ -14057,3 +14057,23 @@ Both frontiers are quoted from lambda=2 upward.
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_011QusixhUPcn
 ps aux | grep "[s]upervise.sh" | awk '"'"'{print $2}'"'"' | 
+2026-08-27T19:11:43Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:11:43Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:11:43Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T19:11:43Z pid=7005 rss=415MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T19:12:38Z pid=2680 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py >> 'outputs/see
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-A exite
+     
+2026-08-27T19:12:38Z pid=2682 rss=407MB python scripts/seed_check.py 
+2026-08-27T19:12:38Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T19:12:38Z pid=7005 rss=415MB python scripts/seed_check.py --common-lines same_route 
