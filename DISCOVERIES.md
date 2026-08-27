@@ -751,6 +751,65 @@ a materially different total — rather than a different per-route split — wou
 mean the zero is a property of this plan rather than of the envelope.
 
 
+### D19 — The screen's best candidate is one of the two that make things worse
+
+**Evidence.** All twelve splices evaluated with frequency re-optimized inside
+today's envelope on the certified Model B yardstick, at λ=2, against a noise
+floor of **0.288 points** measured from three zero-edit replicates at the same
+effort (unserved sd 0.096).
+
+| candidate | screen rank | gen. cost | unserved | measurable |
+|---|---|---|---|---|
+| splice 033+034 WESHIGW | 2 | +0.14% | **−0.94%** | yes |
+| splice 011+034 WESHIGW | 9 | +0.27% | **−0.86%** | yes |
+| splice 005+006 NMURBEAN | 11 | +0.21% | **−0.68%** | yes |
+| splice 011+033 WESHIGW | 4 | +0.18% | **−0.62%** | yes |
+| splice 001+021 PICBETS | 7 | −0.18% | **−0.51%** | yes |
+| splice 008+035 BOASHAN | 8 | −0.01% | **−0.49%** | yes |
+| splice 005+021 NMURBEAN | 3 | −0.03% | −0.35% | yes |
+| splice 006+021 NMURBEAN | 6 | −0.10% | −0.25% | no |
+| splice 002+011 HIGFITN | 53 | −0.19% | −0.16% | no |
+| splice 002+034 WESHIGW | 10 | −0.21% | −0.09% | no |
+| **splice 002+033 WESHIGW** | **1** | −0.82% | **+0.98%** | yes |
+| **splice 007+101 EMO4THW** | **5** | −1.04% | **+1.25%** | yes |
+
+**Confidence.** Moderate-to-high on the ordering, which is what is claimed. The
+noise floor is measured rather than assumed, every candidate is solved at
+identical effort from an identically-fitted incumbent, and the two harmful
+candidates miss by three to four times the floor. Low on the magnitudes: the
+path sets use the reduced scenario sweep and the solver runs well below L4, so
+these rank candidates and do not size them.
+
+**Interpretation.** The screen ranked `splice|002|033|WESHIGW` first of sixty.
+Evaluated properly it is the second-worst of the twelve, and the screen's
+fifth-ranked candidate is the worst of all. This is not a small reordering: it
+is the top of the list inverting.
+
+The mechanism is visible in the columns. Every candidate that *helps* costs
+slightly more generalized cost and serves more people; both candidates that
+*hurt* save generalized cost by serving fewer. The screen holds frequency fixed,
+so it cannot see the reallocation that follows an edit — it rewards an edit that
+makes the network cheaper, and the cheapest edits are the ones that quietly drop
+demand. A splice that looks cheap is usually cheap because it dropped someone.
+
+That is the concrete content of "a screen ranks candidates and cannot size
+them", and it turns out to be stronger than that phrasing: here the screen does
+not reliably rank them either.
+
+**It broke the ladder, which is how it was caught.** The 0/1/2/4 rungs were
+composed greedily from screen order, so the first two rungs took the two harmful
+candidates and the ladder ran backwards: four edits gave −2.09% generalized cost
+for **+4.25%** unserved. Read naively that says geometry hurts. It says the
+screen picked badly. The ladder is being recomposed from measured performance;
+the screen-ordered run is preserved as `exp2_eval_screenorder.csv` because it is
+the evidence, not a failed attempt.
+
+**What would falsify it.** Re-running the two harmful candidates at full effort
+and finding they clear the floor in the other direction would mean the low-effort
+solve, not the screen, produced the inversion. That is the check to run before
+this goes in a write-up.
+
+
 ---
 
 ## Not yet earned

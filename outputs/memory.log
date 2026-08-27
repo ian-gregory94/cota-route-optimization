@@ -15807,3 +15807,50 @@ ps aux | grep "[s]upervise.sh" | awk '"'"'{print $2}'"'"' |
       echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
      
 2026-08-27T22:13:36Z pid=10465 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T22:17:26Z pid=16259 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+import pathlib
+p = pathlib.Path("scripts/supervise.sh"); s = p.read_text()
+old = '"'"''"'"''"'"'  "exp2-eval-B@@python scripts/run_exp2
+)'"'"''"'"''"'"'
+new = '"'"''"'"''"'"'  "exp2-eval-B@@python scripts/run_exp2
+  "exp2-ladder@@python scripts/run_exp2_eval.py --common-lin
+)'"'"''"'"''"'"'
+assert old in s
+p.write_text(s.replace(old, new))
+print("corrected ladder queued")
+PY
+bash -n scripts/supervise.sh && echo "syntax ok"
+git add -A && git commit -q -m "fix: compose the ladder from
+
+The 0/1/2/4 ladder was built greedily from the screen'"'"'s 
+ranks candidates and cannot size them -- and D16 found it ca
+order splices either (within-kind Spearman 0.336). So the fi
+were filled with splice|002|033|WESHIGW and splice|007|101|E
+the evaluation shows are the two candidates that make things
+and +1.25% unserved against a 0.29-point noise floor.
+
+The ladder therefore ran the wrong way -- 4 edits gave -2.09
+cost for +4.25% unserved, which reads as '"'"'geometry hurts
+actually shows is '"'"'the screen picked badly'"'"'.
+
+--ladder-from orders the rungs by MEASURED single-candidate 
+instead. The screen-ordered run is preserved as exp2_eval_sc
+rather than overwritten: it is the evidence for the finding.
+
+Also dropped '"'"'pre-fixpoint yardstick'"'"' from the print
+yardstick is the certified Model B set now, and the honest c
+reduced sweep and low effort, which the noise floor quantifi
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011QusixhUPcn
+rm -rf outputs/.lock-*; nohup setsid bash scripts/supervise.
+2026-08-27T22:17:26Z pid=16316 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-ladder exite
+     
+2026-08-27T22:17:26Z pid=16319 rss=315MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T22:18:21Z pid=16316 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-ladder exite
+     
+2026-08-27T22:18:21Z pid=16319 rss=347MB python scripts/run_exp2_eval.py --common-lines same_route --
