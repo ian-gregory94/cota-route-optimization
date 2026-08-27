@@ -23,9 +23,14 @@ cd "$(dirname "$0")/.."
 LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 
 # label | exact command | log | nice
+# --max-iterations 8: the default cap of 3 would have stopped the loop while
+# the improvable-flow share was still falling fast (9.44% -> 4.52% -> 1.14%),
+# and gate 1 requires the last two iterations to be within --tol of each other.
+# Hitting the cap mid-descent fails that gate. Raising the cap costs nothing
+# when the loop converges sooner, since it exits on the tolerance test.
 JOBS=(
-  "fixpoint-A|python scripts/fixpoint.py|outputs/fixpoint.log|0"
-  "fixpoint-B|python scripts/fixpoint.py --common-lines same_route|outputs/fixpoint_modelB.log|0"
+  "fixpoint-A|python scripts/fixpoint.py --max-iterations 8|outputs/fixpoint.log|0"
+  "fixpoint-B|python scripts/fixpoint.py --common-lines same_route --max-iterations 8|outputs/fixpoint_modelB.log|0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }
