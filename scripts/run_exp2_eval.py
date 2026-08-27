@@ -156,9 +156,13 @@ def main() -> int:
                          "the optimum is flat, so a geometry effect smaller "
                          "than a few times that spread is not measurable and "
                          "must not be reported as one")
-    ap.add_argument("--include", type=str, default="",
-                    help="comma-separated candidate keys forced into the "
-                         "shortlist regardless of screen rank")
+    ap.add_argument("--include-file", type=str, default="",
+                    help="file of candidate keys, one per line, forced into "
+                         "the shortlist regardless of screen rank. A file "
+                         "rather than a flag because candidate keys contain "
+                         "pipes (splice|002|011|HIGFITN) and passing them "
+                         "through a shell command line invites exactly the "
+                         "kind of silent truncation this project keeps finding")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     lams = [float(x) for x in args.lambdas.split(",")]
@@ -196,7 +200,16 @@ def main() -> int:
     shortlist = ok.head(args.top)["candidate_id"].tolist()
     # candidates the bracket promoted are carried in even if the Model A screen
     # buried them -- adding a candidate is the conservative error (D16)
-    for k in [x.strip() for x in args.include.split(",") if x.strip()]:
+    inc = []
+    if args.include_file:
+        f = Path(args.include_file)
+        f = f if f.is_absolute() else (ROOT / args.include_file)
+        if f.exists():
+            inc = [x.strip() for x in f.read_text().splitlines()
+                   if x.strip() and not x.startswith("#")]
+        else:
+            log.warning("include file %s not found", f)
+    for k in inc:
         if k not in shortlist:
             shortlist.append(k)
             log.info("forced into the shortlist: %s", k)

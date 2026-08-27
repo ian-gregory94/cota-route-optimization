@@ -22,7 +22,10 @@ cd "$(dirname "$0")/.."
 
 LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 
-# label | exact command | log | nice
+# label @@ exact command @@ log @@ nice
+# ('@@' rather than '|': Experiment 2 candidate keys contain
+#  pipes, e.g. splice|002|011|HIGFITN, and a separator that
+#  appears inside a field silently truncates the command)
 # --max-iterations 8: the default cap of 3 would have stopped the loop while
 # the improvable-flow share was still falling fast (9.44% -> 4.52% -> 1.14%),
 # and gate 1 requires the last two iterations to be within --tol of each other.
@@ -33,13 +36,14 @@ LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 # than up front -- otherwise the supervisor hot-loops on a job that cannot
 # start yet.
 JOBS=(
-  "fixpoint-A|python scripts/fixpoint.py --max-iterations 8|outputs/fixpoint.log|0"
-  "fixpoint-B|python scripts/fixpoint.py --common-lines same_route --max-iterations 8|outputs/fixpoint_modelB.log|0"
-  "certify-A|python scripts/frontier_certify.py|outputs/certify.log|0"
-  "certify-B|python scripts/frontier_certify.py --common-lines same_route|outputs/certify_modelB.log|0"
-  "exp2-bracket|python scripts/run_exp2_screen.py --pricing route --per-kind 12 --origin-sample 400 --store exp2_screen_bound.jsonl --out exp2_screen_bound|outputs/exp2_screen_bound.log|5"
-  "seedcheck-A|python scripts/seed_check.py|outputs/seedcheck.log|0"
-  "seedcheck-B|python scripts/seed_check.py --common-lines same_route|outputs/seedcheck_modelB.log|0"
+  "fixpoint-A@@python scripts/fixpoint.py --max-iterations 8@@outputs/fixpoint.log@@0"
+  "fixpoint-B@@python scripts/fixpoint.py --common-lines same_route --max-iterations 8@@outputs/fixpoint_modelB.log@@0"
+  "certify-A@@python scripts/frontier_certify.py@@outputs/certify.log@@0"
+  "certify-B@@python scripts/frontier_certify.py --common-lines same_route@@outputs/certify_modelB.log@@0"
+  "exp2-bracket@@python scripts/run_exp2_screen.py --pricing route --per-kind 12 --origin-sample 400 --store exp2_screen_bound.jsonl --out exp2_screen_bound@@outputs/exp2_screen_bound.log@@5"
+  "seedcheck-A@@python scripts/seed_check.py@@outputs/seedcheck.log@@0"
+  "seedcheck-B@@python scripts/seed_check.py --common-lines same_route@@outputs/seedcheck_modelB.log@@0"
+  "exp2-eval-B@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB.log@@0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }
@@ -89,7 +93,7 @@ MAX_RUNNING=2
 running() {
   local n=0 spec label cmd log nice_
   for spec in "${JOBS[@]}"; do
-    IFS='|' read -r label cmd log nice_ <<< "$spec"
+    IFS=$'\x01' read -r label cmd log nice_ <<< "${spec//@@/$'\x01'}"
     alive "$cmd" && n=$((n + 1))
   done
   echo "$n"
@@ -99,7 +103,7 @@ while true; do
   reap_locks
   pending=0
   for spec in "${JOBS[@]}"; do
-    IFS='|' read -r label cmd log nice_ <<< "$spec"
+    IFS=$'\x01' read -r label cmd log nice_ <<< "${spec//@@/$'\x01'}"
     if done_ "$log"; then continue; fi
     pending=1
     if ! alive "$cmd"; then
