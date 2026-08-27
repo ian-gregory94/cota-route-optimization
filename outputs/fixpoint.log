@@ -517,3 +517,11 @@
 2026-08-27 02:51:32,026   lambda=2.0  resumed from checkpoint (gc +0.55%)
 2026-08-27 02:51:32,026   lambda=8.0  resumed from checkpoint (gc +1.13%)
 2026-08-27 02:51:32,026   adequacy lambda=0.5  resumed, improvable flow 1.14%
+2026-08-27 02:53:33,585   adequacy lambda=1.0  improvable flow 0.88%, overstatement 0.094%
+2026-08-27 02:55:25,962   adequacy lambda=2.0  improvable flow 0.70%, overstatement 0.089%
+2026-08-27 02:57:21,984   adequacy lambda=8.0  improvable flow 1.09%, overstatement 0.103%
+2026-08-27 02:57:21,986 iteration 2: worst improvable flow share 1.138% (225810 paths)
+2026-08-27 02:57:21,989 enumeration scenarios opt_it0_lam0.5, opt_it0_lam1.0, opt_it0_lam2.0, opt_it0_lam8.0, opt_it1_lam0.5, opt_it1_lam1.0, opt_it1_lam2.0, opt_it1_lam8.0, opt_it2_lam0.5, opt_it2_lam1.0, opt_it2_lam2.0, opt_it2_lam8.0 -> sc-86b166d504d52460
+2026-08-27 02:57:21,989 ======================================================================
+2026-08-27 02:57:21,989 ITERATION 3, 12 extra enumeration scenarios
+2026-08-27 02:57:22,062 path enumeration: 20000 OD pairs, 636 origin zones, 18 scenarios, cap 18 paths/OD
