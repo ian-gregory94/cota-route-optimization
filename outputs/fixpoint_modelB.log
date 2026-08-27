@@ -140,3 +140,18 @@
 2026-08-27 02:51:36,746   lambda=0.5  resumed from checkpoint (gc -3.68%)
 2026-08-27 02:51:36,746     rejoining at restart 0/10
 2026-08-27 02:51:36,877 resuming solve at restart 0/10, saved objective 2.35676e+06
+2026-08-27 03:10:21,605 solve lambda=1.0: obj=2.35583e+06 vh=2512.0/2517.2 exchanges=86
+2026-08-27 03:10:21,606   lambda=1.0  1125s gc   -1.11% unserved   -2.10%
+2026-08-27 03:33:51,112 solve lambda=2.0: obj=2.93836e+06 vh=2516.2/2517.2 exchanges=58
+2026-08-27 03:33:51,113   lambda=2.0  1410s gc   +0.85% unserved   -6.58%
+2026-08-27 03:53:37,073 solve lambda=8.0: obj=6.37165e+06 vh=2514.6/2517.2 exchanges=66
+2026-08-27 03:53:37,074   lambda=8.0  1186s gc   +1.41% unserved   -7.15%
+2026-08-27 03:55:28,345   adequacy lambda=0.5  improvable flow 2.41%, overstatement 0.178%
+2026-08-27 03:57:17,736   adequacy lambda=1.0  improvable flow 0.65%, overstatement 0.076%
+2026-08-27 03:59:08,452   adequacy lambda=2.0  improvable flow 0.76%, overstatement 0.075%
+2026-08-27 04:00:57,880   adequacy lambda=8.0  improvable flow 0.83%, overstatement 0.079%
+2026-08-27 04:00:57,882 iteration 1: worst improvable flow share 2.406% (234429 paths)
+2026-08-27 04:00:57,884 enumeration scenarios opt_it0_lam0.5, opt_it0_lam1.0, opt_it0_lam2.0, opt_it0_lam8.0, opt_it1_lam0.5, opt_it1_lam1.0, opt_it1_lam2.0, opt_it1_lam8.0 -> sc-bdf81d8896c1d14d
+2026-08-27 04:00:57,884 ======================================================================
+2026-08-27 04:00:57,884 ITERATION 2, 8 extra enumeration scenarios
+2026-08-27 04:00:57,964 path enumeration: 20000 OD pairs, 636 origin zones, 15 scenarios, cap 15 paths/OD
