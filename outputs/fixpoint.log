@@ -585,3 +585,11 @@
 2026-08-27 04:58:34,360 converged: improvable share moved 0.0011, below tol 0.0020
 2026-08-27 04:58:34,361 ======================================================================
 2026-08-27 04:58:34,361 FINAL FRONTIER: full effort (400000 iters, 20 restarts) on the converged set (227791 paths)
+2026-08-27 05:09:57,565 solve lambda=0.25: obj=1.8582e+06 vh=2499.8/2517.2 exchanges=64
+2026-08-27 05:09:57,565   lambda=0.25   683s gc   -7.92% unserved  +29.68% vh=2499.8
+2026-08-27 05:25:45,759 solve lambda=0.5: obj=2.05244e+06 vh=2511.2/2517.2 exchanges=95
+2026-08-27 05:25:45,759   lambda=0.5    948s gc   -6.31% unserved  +15.56% vh=2511.2
+2026-08-27 06:01:13,238 solve lambda=1.0: obj=2.39474e+06 vh=2513.6/2517.2 exchanges=12
+2026-08-27 06:01:13,239   lambda=1.0   2127s gc   -2.18% unserved   -1.14% vh=2513.6
+2026-08-27 06:49:15,778 solve lambda=2.0: obj=3.01253e+06 vh=2516.4/2517.2 exchanges=84
+2026-08-27 06:49:15,778   lambda=2.0   2883s gc   +0.53% unserved   -6.97% vh=2516.4
