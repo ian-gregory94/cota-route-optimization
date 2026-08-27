@@ -181,6 +181,27 @@ scenario would roughly double enumeration cost and is not justified before the
 data asks for it.
 
 
+## Gate 7 thresholds, committed before the replicates ran
+
+Committed 2026-08-27 15:10 UTC. Gate 7 asked for "a clear margin" and three
+seeds; both are made numeric here, before any replicate existed.
+
+**The effect.** The reported coverage change must exceed its own across-seed
+standard deviation by at least **3 sigma**. Below that it is not a measured
+effect and may not be quoted as one — no softening to "suggests" or "trends
+toward".
+
+**The plan.** D14's second job. If the worst pair of independent seeds
+disagrees on **10% or more** of route-periods, the optimum is flat and **no
+individual route headway may be quoted as a recommendation**. The aggregate
+result is unaffected either way; what changes is the unit of claim. D14 saw
+~25% disagreement across two candidate sets, so this is a live possibility
+rather than a formality.
+
+The replicates share **one** candidate set. Varying the seed and the set at
+once would confound the two, which is precisely the confound D14 could not
+resolve.
+
 ## Experiment 2 screen: bracketing rule, committed before the second screen ran
 
 Committed 2026-08-27 14:10 UTC.

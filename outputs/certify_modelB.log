@@ -53,3 +53,7 @@
 2026-08-27 14:09:23,564 load profile: 22 route-periods, peak-load factor median 0.37, p90 0.51
 2026-08-27 14:09:23,565 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-27 14:09:23,631 widened set: 243257 candidate paths, baseline gc=1.772779e+06 (enum 1995s)
+2026-08-27 14:25:51,919 solve lambda=0.25: obj=1.86881e+06 vh=2510.1/2517.2 exchanges=39
+2026-08-27 14:25:51,919   lambda=0.25   988s gc   -4.59% unserved  +15.31% vh=2510.1
+2026-08-27 14:52:10,292 solve lambda=0.5: obj=2.04076e+06 vh=2511.0/2517.2 exchanges=54
+2026-08-27 14:52:10,293   lambda=0.5   1578s gc   -3.44% unserved   +6.85% vh=2511.0
