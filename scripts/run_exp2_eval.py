@@ -192,6 +192,15 @@ def main() -> int:
                          "the optimum is flat, so a geometry effect smaller "
                          "than a few times that spread is not measurable and "
                          "must not be reported as one")
+    ap.add_argument("--ladder-from", type=str, default="",
+                    help="an eval CSV whose MEASURED singles order the ladder, "
+                         "instead of the screen's order. The screen ranks "
+                         "candidates and cannot size them, and D16 found it "
+                         "cannot reliably order splices either -- composing a "
+                         "ladder from screen rank put the two candidates that "
+                         "make things WORSE into the first two rungs")
+    ap.add_argument("--ladder-metric", type=str,
+                    default="unserved_vs_noedit_pct_lam2.0")
     ap.add_argument("--include-file", type=str, default="",
                     help="file of candidate keys, one per line, forced into "
                          "the shortlist regardless of screen rank. A file "
@@ -266,9 +275,24 @@ def main() -> int:
     # the ladder composes the shortlist greedily on disjoint routes, so "two
     # edits" is two independent interventions rather than two bites at one route
     ladder_sets: list[tuple[str, list[GeometryEdit]]] = [("0 edits", [])]
+    ladder_order = shortlist
+    if args.ladder_from:
+        f = Path(args.ladder_from)
+        f = f if f.is_absolute() else (OUT / args.ladder_from)
+        if f.exists():
+            ev = pd.read_csv(f)
+            ev = ev[ev["label"].astype(str).str.startswith("single:")].copy()
+            ev["key"] = ev["label"].str.replace("single:", "", regex=False)
+            ev = ev.dropna(subset=[args.ladder_metric]).sort_values(
+                args.ladder_metric)
+            ladder_order = [k for k in ev["key"] if k in set(shortlist)]
+            log.info("ladder ordered by MEASURED %s, best first: %s",
+                     args.ladder_metric, ladder_order[:6])
+        else:
+            log.warning("ladder-from %s not found; falling back to screen order", f)
     chosen: list[GeometryEdit] = []
     used: set[str] = set()
-    for key in shortlist:
+    for key in ladder_order:
         c = by_key.get(key)
         if c is None or (c.routes_touched() & used):
             continue
@@ -296,7 +320,9 @@ def main() -> int:
         # are searched identically
         job_seed = (int(label.rsplit("seed", 1)[1]) if "seed" in label
                     else args.seed)
-        cell = f"eval|{label}|{args.iterations}/{args.restarts}/{args.width}"
+        tag = "m" if (args.ladder_from and label.endswith("edits")) else "s"
+        cell = (f"eval|{label}|{tag}|"
+                f"{args.iterations}/{args.restarts}/{args.width}")
         if store.has(cell):
             rows.append(store.get(cell))
             log.info("%-38s resumed from checkpoint", label)
@@ -419,8 +445,9 @@ def main() -> int:
     print("\n" + "=" * 104)
     print("EXPERIMENT 2 EVALUATION — geometry WITH frequency re-optimized, "
           "same 2,517 vehicle-hours")
-    print("EXPLORATORY: reduced path-set sweep, pre-fixpoint yardstick, "
-          "low search effort")
+    print("Candidate path sets use the reduced scenario sweep and the solver "
+          "runs at low effort, so these RANK candidates; the noise floor below "
+          "says which differences are real at this effort.")
     print("=" * 104)
     cols = ["label", "n_edits", "n_paths", "modelled_share_pct"] + [
         c for m in lams for c in (f"gc_vs_noedit_pct_lam{m}",

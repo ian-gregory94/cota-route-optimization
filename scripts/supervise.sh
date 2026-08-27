@@ -44,6 +44,7 @@ JOBS=(
   "seedcheck-A@@python scripts/seed_check.py@@outputs/seedcheck.log@@0"
   "seedcheck-B@@python scripts/seed_check.py --common-lines same_route@@outputs/seedcheck_modelB.log@@0"
   "exp2-eval-B@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB.log@@0"
+  "exp2-ladder@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --ladder-from exp2_eval_screenorder.csv --ladder 1,2,4@@outputs/exp2_ladder_measured.log@@0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }

@@ -699,3 +699,145 @@
 2026-08-27 21:55:21,492 period owl     : 22531 paths, 20000 OD pairs
 2026-08-27 21:55:21,492 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-27 21:55:21,532 incumbent plan is infeasible under this budget
+2026-08-27 21:56:36,520 solve lambda=1.0: obj=2.4053e+06 vh=2511.1/2517.2 exchanges=0
+2026-08-27 21:56:36,524   single:splice|005|006|NMURBEAN     lam=1.0    75s gc=1.686736e+06 unserved=11976
+2026-08-27 21:56:36,541 incumbent plan is infeasible under this budget
+2026-08-27 21:57:56,236 solve lambda=2.0: obj=3.0342e+06 vh=2513.5/2517.2 exchanges=0
+2026-08-27 21:57:56,239   single:splice|005|006|NMURBEAN     lam=2.0    80s gc=1.798110e+06 unserved=10301
+2026-08-27 21:57:56,242 single:splice|005|006|NMURBEAN         done in 415s (152678 paths)
+2026-08-27 21:57:56,550 footpaths: 15573 links (9 from transfers.txt)
+2026-08-27 21:57:56,558 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-27 21:57:56,638 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-27 21:57:56,646 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-27 21:57:56,689 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 21:58:38,088 rejected 102 malformed candidate paths that failed the re-pricing check
+2026-08-27 21:58:38,175 path set: 24010 paths over 17384/20000 OD pairs (86.6% of flow served), 118793 legs
+2026-08-27 21:58:38,218 period early   : 24010 paths, 20000 OD pairs
+2026-08-27 21:58:38,230 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 21:59:26,438 rejected 113 malformed candidate paths that failed the re-pricing check
+2026-08-27 21:59:26,539 path set: 28564 paths over 19273/20000 OD pairs (96.2% of flow served), 142377 legs
+2026-08-27 21:59:26,576 period am_peak : 28564 paths, 20000 OD pairs
+2026-08-27 21:59:26,586 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:00:08,975 rejected 75 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:00:09,058 path set: 23835 paths over 17387/20000 OD pairs (86.6% of flow served), 118797 legs
+2026-08-27 22:00:09,089 period midday  : 23835 paths, 20000 OD pairs
+2026-08-27 22:00:09,099 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:00:55,267 rejected 139 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:00:55,372 path set: 27733 paths over 18672/20000 OD pairs (93.6% of flow served), 140019 legs
+2026-08-27 22:00:55,410 period pm_peak : 27733 paths, 20000 OD pairs
+2026-08-27 22:00:55,420 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:01:38,919 rejected 104 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:01:38,999 path set: 23671 paths over 17384/20000 OD pairs (86.6% of flow served), 117731 legs
+2026-08-27 22:01:39,035 period evening : 23671 paths, 20000 OD pairs
+2026-08-27 22:01:39,044 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:02:19,689 rejected 155 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:02:19,772 path set: 22568 paths over 17011/20000 OD pairs (85.1% of flow served), 112660 legs
+2026-08-27 22:02:19,800 period owl     : 22568 paths, 20000 OD pairs
+2026-08-27 22:02:19,801 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-27 22:02:19,839 incumbent plan is infeasible under this budget
+2026-08-27 22:03:30,422 solve lambda=1.0: obj=2.40604e+06 vh=2513.8/2517.2 exchanges=0
+2026-08-27 22:03:30,425   single:splice|002|011|HIGFITN      lam=1.0    71s gc=1.720680e+06 unserved=11423
+2026-08-27 22:03:30,440 incumbent plan is infeasible under this budget
+2026-08-27 22:04:50,390 solve lambda=2.0: obj=3.03364e+06 vh=2514.1/2517.2 exchanges=0
+2026-08-27 22:04:50,393   single:splice|002|011|HIGFITN      lam=2.0    80s gc=1.790980e+06 unserved=10356
+2026-08-27 22:04:50,397 single:splice|002|011|HIGFITN          done in 414s (150381 paths)
+2026-08-27 22:04:50,650 footpaths: 15573 links (9 from transfers.txt)
+2026-08-27 22:04:50,658 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-27 22:04:50,753 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-27 22:04:50,761 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-27 22:04:50,857 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:05:29,733 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:05:29,810 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-27 22:05:29,840 period early   : 24668 paths, 20000 OD pairs
+2026-08-27 22:05:29,849 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:06:14,986 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:06:15,083 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-27 22:06:15,119 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-27 22:06:15,129 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:06:55,855 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:06:55,947 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-27 22:06:55,984 period midday  : 24097 paths, 20000 OD pairs
+2026-08-27 22:06:55,995 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:07:40,207 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:07:40,317 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-27 22:07:40,359 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-27 22:07:40,369 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:08:22,595 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:08:22,682 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-27 22:08:22,715 period evening : 24058 paths, 20000 OD pairs
+2026-08-27 22:08:22,725 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:09:02,760 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:09:02,845 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-27 22:09:02,880 period owl     : 22669 paths, 20000 OD pairs
+2026-08-27 22:09:02,880 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-27 22:09:17,893 solve lambda=1.0: obj=2.40846e+06 vh=2499.3/2517.2 exchanges=86
+2026-08-27 22:09:17,896   0 edits seed20260826               lam=1.0    15s gc=1.755504e+06 unserved=10883
+2026-08-27 22:09:34,335 solve lambda=2.0: obj=3.03755e+06 vh=2509.7/2517.2 exchanges=37
+2026-08-27 22:09:34,337   0 edits seed20260826               lam=2.0    16s gc=1.790886e+06 unserved=10389
+2026-08-27 22:09:34,339 0 edits seed20260826                   done in 284s (152241 paths)
+2026-08-27 22:09:34,587 footpaths: 15573 links (9 from transfers.txt)
+2026-08-27 22:09:34,595 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-27 22:09:34,671 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-27 22:09:34,679 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-27 22:09:34,722 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:10:12,557 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:10:12,643 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-27 22:10:12,676 period early   : 24668 paths, 20000 OD pairs
+2026-08-27 22:10:12,686 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:10:57,624 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:10:57,719 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-27 22:10:57,760 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-27 22:10:57,770 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:11:38,696 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:11:38,782 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-27 22:11:38,817 period midday  : 24097 paths, 20000 OD pairs
+2026-08-27 22:11:38,828 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:12:23,641 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:12:23,736 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-27 22:12:23,784 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-27 22:12:23,795 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:13:04,017 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:13:04,100 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-27 22:13:04,135 period evening : 24058 paths, 20000 OD pairs
+2026-08-27 22:13:04,145 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-27 22:13:40,666 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-27 22:13:40,745 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-27 22:13:40,776 period owl     : 22669 paths, 20000 OD pairs
+2026-08-27 22:13:40,777 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-27 22:13:53,372 solve lambda=1.0: obj=2.40765e+06 vh=2506.3/2517.2 exchanges=44
+2026-08-27 22:13:53,375   0 edits seed20260827               lam=1.0    13s gc=1.753419e+06 unserved=10904
+2026-08-27 22:14:12,916 solve lambda=2.0: obj=3.03894e+06 vh=2506.9/2517.2 exchanges=148
+2026-08-27 22:14:12,918   0 edits seed20260827               lam=2.0    20s gc=1.794342e+06 unserved=10372
+2026-08-27 22:14:12,920 0 edits seed20260827                   done in 279s (152241 paths)
+2026-08-27 22:14:12,927 noise floor at this effort: {'1.0': {'n_replicates': 3, 'unserved_sd_pct': 0.17677584799753515, 'gc_sd_pct': 0.06010522296350631}, '2.0': {'n_replicates': 3, 'unserved_sd_pct': 0.09598056230373322, 'gc_sd_pct': 0.11119469683531372}}
+2026-08-27 22:14:12,933 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_eval_20260827T201407Z/experiment.json
+
+========================================================================================================
+EXPERIMENT 2 EVALUATION — geometry WITH frequency re-optimized, same 2,517 vehicle-hours
+EXPLORATORY: reduced path-set sweep, pre-fixpoint yardstick, low search effort
+========================================================================================================
+                         label  n_edits  n_paths  modelled_share_pct  gc_vs_noedit_pct_lam1.0  unserved_vs_noedit_pct_lam1.0  measurable_lam1.0  gc_vs_noedit_pct_lam2.0  unserved_vs_noedit_pct_lam2.0  measurable_lam2.0
+                       0 edits        0   152241               0.000                    0.000                          0.000              False                    0.000                          0.000              False
+                       1 edits        1   154335               0.685                   -4.307                          7.756               True                   -0.822                          0.978               True
+                       2 edits        2   153866               0.639                   -6.947                         14.584               True                   -0.991                          1.720               True
+                       4 edits        4   157154               0.538                   -9.974                         21.854               True                   -2.085                          4.246               True
+ single:splice|002|033|WESHIGW        1   154335               0.685                   -4.307                          7.756               True                   -0.822                          0.978               True
+ single:splice|033|034|WESHIGW        1   154189               0.000                   -2.778                          5.430               True                    0.137                         -0.936               True
+single:splice|005|021|NMURBEAN        1   151864               0.599                   -4.669                         10.406               True                   -0.031                         -0.353               True
+ single:splice|011|033|WESHIGW        1   149646               0.719                   -1.959                          4.285               True                    0.177                         -0.615               True
+ single:splice|007|101|EMO4THW        1   155040               0.000                   -3.376                          5.376               True                   -1.042                          1.251               True
+single:splice|006|021|NMURBEAN        1   152799               0.971                   -3.779                          8.867               True                   -0.102                         -0.247              False
+ single:splice|001|021|PICBETS        1   153966               0.617                   -3.264                          7.415               True                   -0.175                         -0.512               True
+ single:splice|008|035|BOASHAN        1   152543               0.730                   -3.383                          7.778               True                   -0.012                         -0.490               True
+ single:splice|011|034|WESHIGW        1   150046               0.000                   -1.658                          3.721               True                    0.268                         -0.860               True
+ single:splice|002|034|WESHIGW        1   157962               0.000                   -3.489                          7.215               True                   -0.211                         -0.088              False
+single:splice|005|006|NMURBEAN        1   152678               0.641                   -3.875                          9.660               True                    0.210                         -0.684               True
+ single:splice|002|011|HIGFITN        1   150381               1.047                   -1.941                          4.592               True                   -0.187                         -0.155              False
+          0 edits seed20260826        0   152241               0.000                    0.044                         -0.353              False                   -0.193                          0.166              False
+          0 edits seed20260827        0   152241               0.000                   -0.075                         -0.158              False                    0.000                          0.000              False
+
+  search noise at this effort, from the zero-edit replicates:
+    lambda=1.0: unserved sd 0.177 pts over 3 seeds -> anything under 0.530 pts is not measurable
+    lambda=2.0: unserved sd 0.096 pts over 3 seeds -> anything under 0.288 pts is not measurable
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_eval_20260827T201407Z
