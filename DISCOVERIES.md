@@ -481,6 +481,64 @@ would make the augmentation matter for composition even though it does not
 matter for score.
 
 
+### D15 — The path-set method certifies the service-favouring half of the frontier and not the other half
+
+**Evidence.** Model A's fixpoint converged (worst improvable flow 9.443% →
+1.029% over four iterations) and the full-effort frontier was then re-checked
+against the frozen set. It split by λ:
+
+| λ | improvable, frozen set | improvable, after one repair step |
+|---|---|---|
+| 0.25 | 9.721% | **3.893%** |
+| 0.5 | 1.618% | **1.792%** |
+| 1.0 | 0.691% | **1.115%** |
+| 2.0 | 0.678% | 0.749% |
+| 4.0 | 0.656% | 0.732% |
+| 8.0 | 0.688% | 0.767% |
+| 16.0 | 0.988% | 0.812% |
+
+The repair step is the fixpoint's own logic applied to the full-effort plans:
+all seven go back in as enumeration scenarios, the set is rebuilt (227,791 →
+233,589 paths), and every λ is re-solved on it. It fixed most of λ=0.25's gap
+and **made λ=1.0 worse**, moving it from pass to fail.
+
+**Confidence.** High. The pattern is consistent, the line was fixed in advance
+and read from the loop's own last iteration, and the repair was specified
+before its output was seen.
+
+**Interpretation.** Aggregate convergence is not pointwise convergence. The
+loop's exit test is the *worst* improvable share across the probe λ, and the
+probe set is {0.5, 1, 2, 8}. A frontier solved at {0.25 … 16} and at higher
+effort produces plans the loop never tested, and at low λ those plans are
+qualitatively different rather than merely different: with almost no penalty on
+unserved demand the optimizer pushes headways to the policy ceiling across much
+of the network, and a candidate set enumerated around plausible headways covers
+that region badly.
+
+Re-enumerating around those plans does not converge it, because the wider set
+lets the search find a *new* extreme plan, which the set covers no better. That
+is the λ=1.0 regression: not noise, but the target moving. Two more repair
+rounds might close λ=0.25, on its 9.7% → 3.9% trend; nothing suggests λ=0.5 or
+1.0 would follow, and each round costs about five hours per model.
+
+So the honest boundary is drawn rather than pushed: **λ ≥ 2 is certified, λ ≤ 1
+is not, and the frontier is quoted from λ=2 upward.** The pre-committed
+language said exactly this before the numbers arrived — quote the frontier
+without the corner rather than moving the line.
+
+**Why this costs nothing that matters.** The uncertified points are the ones
+that spend less and serve fewer people: λ=0.25 gives up 13.3% of served trips.
+No one proposes that. The decision-relevant region — coverage bought at small
+cost — is entirely inside the certified range, and the balanced point barely
+moved between the two sets (+0.531%/−6.973% frozen, +0.535%/−7.035% widened),
+which is what a certified point should look like.
+
+**What would falsify it.** λ=0.5 or 1.0 dropping below the line under further
+repair rounds would mean the boundary is an artifact of stopping after one
+step. A balanced point that moved materially between the frozen and widened
+sets would mean λ=2's certification is worth less than it looks.
+
+
 ---
 
 ## Not yet earned

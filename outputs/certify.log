@@ -61,3 +61,33 @@
 2026-08-27 13:29:56,015   lambda=1.0   2332s gc   -2.46% unserved   -0.43% vh=2512.9
 2026-08-27 14:24:06,012 solve lambda=2.0: obj=3.0104e+06 vh=2516.7/2517.2 exchanges=87
 2026-08-27 14:24:06,012   lambda=2.0   3250s gc   +0.54% unserved   -7.04% vh=2516.7
+2026-08-27 15:18:45,654 solve lambda=4.0: obj=4.21916e+06 vh=2515.8/2517.2 exchanges=72
+2026-08-27 15:18:45,655   lambda=4.0   3280s gc   +0.97% unserved   -7.47% vh=2515.8
+2026-08-27 16:09:47,448 solve lambda=8.0: obj=6.62991e+06 vh=2515.7/2517.2 exchanges=81
+2026-08-27 16:09:47,448   lambda=8.0   3062s gc   +1.21% unserved   -7.59% vh=2515.7
+2026-08-27 17:03:04,756 solve lambda=16.0: obj=1.14485e+07 vh=2516.7/2517.2 exchanges=37
+2026-08-27 17:03:04,757   lambda=16.0  3197s gc   +1.24% unserved   -7.61% vh=2516.7
+2026-08-27 17:05:02,299   adequacy lambda=0.25  improvable 3.893%, overstatement 0.3438%
+2026-08-27 17:06:58,200   adequacy lambda=0.5   improvable 1.792%, overstatement 0.1381%
+2026-08-27 17:08:55,165   adequacy lambda=1.0   improvable 1.115%, overstatement 0.1082%
+2026-08-27 17:10:52,072   adequacy lambda=2.0   improvable 0.749%, overstatement 0.0923%
+2026-08-27 17:12:47,361   adequacy lambda=4.0   improvable 0.732%, overstatement 0.0936%
+2026-08-27 17:14:44,356   adequacy lambda=8.0   improvable 0.767%, overstatement 0.0965%
+2026-08-27 17:16:40,587   adequacy lambda=16.0  improvable 0.812%, overstatement 0.0966%
+2026-08-27 17:16:40,595 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp6_certify_20260827T114838Z/experiment.json
+
+========================================================================================================
+GATE 4 CERTIFICATION — pattern — line 1.029%
+========================================================================================================
+ lambda  seconds  gc_change_pct  unserved_change_pct  served_change_pct  gc_per_trip_change_pct  revenue_veh_hours  vh_vs_budget_pct  improvable_flow_pct  overstatement_pct  certified
+   0.25  792.250         -7.392               24.589            -13.303                   6.818           2502.131            -0.598                3.893              0.344      False
+   0.50 1162.740         -6.048               13.958             -7.551                   1.626           2509.712            -0.297                1.792              0.138      False
+   1.00 2331.665         -2.458               -0.428              0.232                  -2.684           2512.924            -0.169                1.115              0.108      False
+   2.00 3249.994          0.535               -7.035              3.806                  -3.151           2516.666            -0.021                0.749              0.092       True
+   4.00 3279.640          0.974               -7.465              4.039                  -2.946           2515.774            -0.056                0.732              0.094       True
+   8.00 3061.791          1.215               -7.592              4.107                  -2.778           2515.687            -0.059                0.767              0.097       True
+  16.00 3197.306          1.244               -7.605              4.115                  -2.757           2516.683            -0.020                0.812              0.097       True
+
+  STILL FAILING: lambda [0.25, 0.5, 1.0]. The corner is not certifiable at this cost; quote the frontier without it rather than moving the line.
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp6_certify_20260827T114838Z
