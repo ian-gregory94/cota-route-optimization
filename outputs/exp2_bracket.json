@@ -1,6 +1,63 @@
 {
   "n_compared": 60,
   "metric": "unserved_change_pct",
+  "by_kind": [
+    {
+      "kind": "extend",
+      "n": 12,
+      "spearman_within_kind": 0.9892823091721038,
+      "mean_rank_pattern": 39.916666666666664,
+      "mean_rank_route": 41.583333333333336,
+      "mean_rank_move": 1.6666666666666667,
+      "worst_rank_move": 5,
+      "in_top10_pattern": 0,
+      "in_top10_route": 0
+    },
+    {
+      "kind": "reroute",
+      "n": 12,
+      "spearman_within_kind": 0.9213992892015423,
+      "mean_rank_pattern": 34.583333333333336,
+      "mean_rank_route": 36.75,
+      "mean_rank_move": 2.1666666666666665,
+      "worst_rank_move": 11,
+      "in_top10_pattern": 0,
+      "in_top10_route": 0
+    },
+    {
+      "kind": "splice",
+      "n": 12,
+      "spearman_within_kind": 0.33572635196228773,
+      "mean_rank_pattern": 9.916666666666666,
+      "mean_rank_route": 6.5,
+      "mean_rank_move": -3.4166666666666665,
+      "worst_rank_move": 43,
+      "in_top10_pattern": 10,
+      "in_top10_route": 10
+    },
+    {
+      "kind": "straighten",
+      "n": 12,
+      "spearman_within_kind": 0.9540792744059167,
+      "mean_rank_pattern": 32.666666666666664,
+      "mean_rank_route": 34.5,
+      "mean_rank_move": 1.8333333333333333,
+      "worst_rank_move": 15,
+      "in_top10_pattern": 0,
+      "in_top10_route": 0
+    },
+    {
+      "kind": "truncate",
+      "n": 12,
+      "spearman_within_kind": 0.6383188108170227,
+      "mean_rank_pattern": 35.416666666666664,
+      "mean_rank_route": 33.166666666666664,
+      "mean_rank_move": -2.25,
+      "worst_rank_move": 38,
+      "in_top10_pattern": 0,
+      "in_top10_route": 0
+    }
+  ],
   "spearman": 0.8564601278132813,
   "top_n": 10,
   "top_n_overlap": 8,

@@ -127,7 +127,29 @@ def main() -> int:
     m = m.sort_values("rank_pattern", ignore_index=True)
     m.to_csv(OUT / f"{args.out}.csv", index=False)
 
+    # per-kind: a ranking stable overall can still be stable WITHIN splices and
+    # unstable across kinds, and that would change which candidates are safe to
+    # promote. Aggregate agreement is not per-kind agreement.
+    by_kind = []
+    for kind, g in m.groupby("kind", dropna=False):
+        sub_a = ra[ra.index.isin(g["key"])]
+        sub_b = rb[rb.index.isin(g["key"])]
+        r = spearman(sub_a, sub_b)
+        by_kind.append({
+            "kind": kind, "n": int(len(g)),
+            "spearman_within_kind": r,
+            "mean_rank_pattern": float(g["rank_pattern"].mean()),
+            "mean_rank_route": float(g["rank_route"].mean()),
+            "mean_rank_move": float(g["rank_move"].mean()),
+            "worst_rank_move": int(g["rank_move"].abs().max()),
+            "in_top10_pattern": int(g["in_top10_pattern"].sum()),
+            "in_top10_route": int(g["in_top10_route"].sum()),
+        })
+    bk = pd.DataFrame(by_kind).sort_values("n", ascending=False, ignore_index=True)
+    bk.to_csv(OUT / f"{args.out}_by_kind.csv", index=False)
+
     out = {"n_compared": len(keys), "metric": args.metric,
+           "by_kind": by_kind,
            "spearman": rho, "top_n": TOP_N, "top_n_overlap": overlap,
            "thresholds": {"rho_keep": RHO_KEEP, "rho_floor": RHO_FLOOR,
                           "overlap_keep": OVERLAP_KEEP,
@@ -164,6 +186,8 @@ def main() -> int:
         print(f"  top ten under the bound only:")
         for k in sorted(top_b - top_a):
             print(f"    {k}")
+    print("\n  by edit kind (a stable total can hide an unstable kind):")
+    print(bk.round(3).to_string(index=False))
     print("\n  largest rank moves:")
     print(m.reindex(m["rank_move"].abs().sort_values(ascending=False).index)
           .head(8)[["key", "rank_pattern", "rank_route", "rank_move"]]

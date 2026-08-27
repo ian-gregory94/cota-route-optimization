@@ -14652,3 +14652,53 @@ ps aux | grep "[s]upervise.sh" | awk '"'"'{print $2}'"'"' |
       echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
      
 2026-08-27T20:08:23Z pid=9345 rss=453MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T20:09:25Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T20:09:26Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T20:09:26Z pid=10111 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
+     
+2026-08-27T20:09:26Z pid=10113 rss=307MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T20:10:21Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T20:10:21Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T20:10:21Z pid=10111 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
+     
+2026-08-27T20:10:21Z pid=10113 rss=345MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T20:11:16Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T20:11:16Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T20:11:16Z pid=10111 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
+     
+2026-08-27T20:11:16Z pid=10113 rss=377MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T20:12:11Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T20:12:11Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T20:12:11Z pid=10111 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
+     
+2026-08-27T20:12:11Z pid=10113 rss=398MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-27T20:13:06Z pid=7002 rss=3MB bash -c 
+      nice -n 0 python scripts/seed_check.py --common-lines 
+      echo "$(date -u +%FT%TZ) supervisor: seedcheck-B exite
+     
+2026-08-27T20:13:06Z pid=7005 rss=416MB python scripts/seed_check.py --common-lines same_route 
+2026-08-27T20:13:06Z pid=10111 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B exite
+     
+2026-08-27T20:13:06Z pid=10113 rss=425MB python scripts/run_exp2_eval.py --common-lines same_route --

@@ -581,10 +581,39 @@ the Model A shortlist as triage and says nothing against widening it, so the two
 bound-only entrants (`002|011|HIGFITN`, `005|006|NMURBEAN`) are carried into
 evaluation alongside the eight. Adding candidates is the conservative error.
 
+**Amendment, same day, after breaking the comparison down by edit kind — which
+is what the original directive asked for and the first pass skipped.** The
+aggregate correlation is not what it looks like:
+
+| kind | n | Spearman *within* kind | top-10 under A | top-10 under bound |
+|---|---|---|---|---|
+| extend | 12 | 0.989 | 0 | 0 |
+| straighten | 12 | 0.954 | 0 | 0 |
+| reroute | 12 | 0.921 | 0 | 0 |
+| truncate | 12 | 0.638 | 0 | 0 |
+| **splice** | 12 | **0.336** | **10** | **10** |
+
+The 0.857 overall is carried by *between*-kind separation: splices at the top
+under both ends, everything else at the bottom under both. That ordering is
+what the correlation is measuring. Within splices — the only kind that takes a
+top-ten slot under either end — the ranking is nearly uncorrelated.
+
+So the finding splits, and only the first half survives as stated: **the set
+{splices are the good kind} is robust to the waiting model; the ordering inside
+that set is not.** Eleven of the twelve splices occupy ranks 1–11 under Model A
+and reshuffle freely between the ends; the twelfth sits at 53 under Model A and
+10 under the bound.
+
+The consequence is concrete. The shortlist is no longer the screen's top eight —
+it is **all twelve splices**, because the screen cannot order them and the
+evaluation tier can: it re-optimizes frequency and, having path sets, can
+express Model B properly. Promoting eight on a within-kind correlation of 0.336
+would have been promoting on noise.
+
 **What would falsify it.** A Spearman computed on a different screening metric —
 generalized cost rather than retention-adjusted unserved — coming out materially
-lower would mean the stability is specific to the metric rather than to the
-geometry.
+higher within splices would mean the instability is specific to the metric
+rather than to the ranking.
 
 
 ### D17 — The aggregate result is measured to 55 sigma; the plan behind it is not identified at all

@@ -1,6 +1,24 @@
-# Candidates the waiting-model bracket promoted that the Model A screen buried
-# (D16). splice|002|011|HIGFITN moves from rank 53 of 60 to rank 10 between the
-# two ends, the largest move in the set; the truth lies between them, so it is
-# carried into evaluation. Adding a candidate is the conservative error.
-splice|002|011|HIGFITN
+# Every splice, because the screen cannot order them.
+#
+# The bracket's aggregate Spearman of 0.857 is carried by BETWEEN-kind
+# separation: splices sit at the top under both ends and every other kind sits
+# at the bottom, and that ordering is what the correlation measures. Within
+# splices -- the only kind that takes a top-ten slot under either end -- the
+# rank correlation is 0.336. The set {splices are the good kind} is robust; the
+# ordering inside it is not.
+#
+# So the shortlist is not the top eight. It is all twelve, and the evaluation
+# tier decides the order, because that is the tier that re-optimizes frequency
+# and can express Model B properly.
+splice|002|033|WESHIGW
+splice|033|034|WESHIGW
+splice|005|021|NMURBEAN
+splice|011|033|WESHIGW
+splice|007|101|EMO4THW
+splice|006|021|NMURBEAN
+splice|001|021|PICBETS
+splice|008|035|BOASHAN
+splice|011|034|WESHIGW
+splice|002|034|WESHIGW
 splice|005|006|NMURBEAN
+splice|002|011|HIGFITN
