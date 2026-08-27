@@ -595,3 +595,40 @@
 2026-08-27 06:49:15,778   lambda=2.0   2883s gc   +0.53% unserved   -6.97% vh=2516.4
 2026-08-27 07:42:37,148 solve lambda=4.0: obj=4.22278e+06 vh=2516.7/2517.2 exchanges=47
 2026-08-27 07:42:37,149   lambda=4.0   3201s gc   +1.03% unserved   -7.50% vh=2516.7
+2026-08-27 08:31:48,006 solve lambda=8.0: obj=6.63769e+06 vh=2516.3/2517.2 exchanges=64
+2026-08-27 08:31:48,007   lambda=8.0   2951s gc   +1.17% unserved   -7.57% vh=2516.3
+2026-08-27 09:23:53,346 solve lambda=16.0: obj=1.14655e+07 vh=2516.1/2517.2 exchanges=54
+2026-08-27 09:23:53,346   lambda=16.0  3125s gc   +1.24% unserved   -7.59% vh=2516.1
+2026-08-27 09:25:47,820   final adequacy lambda=0.25  improvable flow 9.72%, overstatement 1.134%
+2026-08-27 09:27:41,443   final adequacy lambda=0.5   improvable flow 1.62%, overstatement 0.202%
+2026-08-27 09:29:34,574   final adequacy lambda=1.0   improvable flow 0.69%, overstatement 0.095%
+2026-08-27 09:31:27,681   final adequacy lambda=2.0   improvable flow 0.68%, overstatement 0.087%
+2026-08-27 09:33:21,812   final adequacy lambda=4.0   improvable flow 0.66%, overstatement 0.088%
+2026-08-27 09:35:16,492   final adequacy lambda=8.0   improvable flow 0.69%, overstatement 0.092%
+2026-08-27 09:37:10,214   final adequacy lambda=16.0  improvable flow 0.99%, overstatement 0.097%
+2026-08-27 09:37:10,215 final worst improvable flow share: 9.721%
+2026-08-27 09:37:11,443 re-scored 28 earlier plans on the converged yardstick
+2026-08-27 09:37:11,446 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp6_fixpoint_20260827T025130Z/experiment.json
+
+====================================================================================
+PATH-SET FIXPOINT
+====================================================================================
+ iteration  n_paths  worst_flow_share_improvable  enum_seconds
+         0   203161                     0.094427  9.536743e-07
+         1   220278                     0.045242  1.282344e-01
+         2   225810                     0.011380  1.160719e-01
+         3   227791                     0.010289  2.394850e+03
+
+FINAL FRONTIER (full effort, converged set)
+ lambda  n_paths  seconds          gc  unserved    served  gc_change_pct  unserved_change_pct  served_change_pct  gc_per_trip_change_pct  revenue_veh_hours  vh_vs_budget_pct
+   0.25   227791  683.205 1646481.028 14114.890 16834.110         -7.916               29.684            -16.102                   9.757           2499.815            -0.690
+   0.50   227791  948.191 1675122.014 12577.226 18371.774         -6.314               15.556             -8.438                   2.320           2511.162            -0.239
+   1.00   227791 2127.466 1749115.668 10760.437 20188.563         -2.176               -1.136              0.616                  -2.775           2513.552            -0.144
+   2.00   227791 2882.536 1797518.452 10125.086 20823.914          0.531               -6.973              3.783                  -3.133           2516.400            -0.031
+   4.00   227791 3201.368 1806407.112 10068.211 20880.789          1.028               -7.496              4.066                  -2.919           2516.660            -0.021
+   8.00   227791 2950.855 1808964.405 10059.841 20889.159          1.171               -7.573              4.108                  -2.821           2516.268            -0.036
+  16.00   227791 3125.337 1810274.849 10057.524 20891.476          1.245               -7.594              4.119                  -2.761           2516.060            -0.045
+
+worst improvable flow share under a final plan: 9.721%
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp6_fixpoint_20260827T025130Z
