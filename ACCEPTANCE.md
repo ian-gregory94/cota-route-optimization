@@ -51,7 +51,7 @@ straddles zero.
 | 6 | Stochastic results checked across seeds wherever the claimed effect is within a few times the seed spread |
 | 7 | Runtime assumptions observed or independently validated — see the primary/novel split below |
 | 8 | No gain from accidental service deletion or bookkeeping artifact: stops dropped, vehicle-hours freed, and headway rescaling all inspected per candidate |
-| 9 | The geometry change is legible as a real transit proposal, inspected by hand against the network |
+| 9 | The geometry change is legible as a real transit proposal, inspected by hand against the network. ✅ **PASSED for the promoted candidate, 2026-08-27 23:20 UTC.** `splice|033|034|WESHIGW`: routes **33 HENDERSON** (78 daily trips) and **34 MORSE** (154) both *terminate* at WESTVIEW TURNAROUND, so the edit through-routes two lines that already meet — a crosstown Henderson–Morse via Westview, 97 stops and 93.5 min end to end. `modelled_share_pct = 0.0` (every link one COTA already operates), `stops_added = 0`, 2 patterns changed, vehicle-hours 2517.18 → 2517.74 (+0.02%). The trip-count asymmetry is handled the way an agency would: only ~25 trips per direction run through, and the short-turns are preserved (77 trips MEIJER↔WESTVIEW, 20 WESTVIEW→METRO PL, 19 WESTVIEW→SUMMER DR). Contrast the rejected `extend|102`, which grafted a downtown–Dublin peak express onto a local route and was caught by this same gate rather than by any metric. |
 
 ### Primary vs novel-link candidates
 
