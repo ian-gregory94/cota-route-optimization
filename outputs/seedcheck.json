@@ -1,0 +1,88 @@
+{
+  "common_lines": "pattern",
+  "lambda": 2.0,
+  "seeds": [
+    20260825,
+    20260826,
+    20260827
+  ],
+  "n_paths": 233589,
+  "enumeration_tag": "sc-e52d812781657140",
+  "set": "frozen",
+  "effort": {
+    "iterations": 400000,
+    "restarts": 20,
+    "width": 0
+  },
+  "stats": {
+    "gc_change_pct": {
+      "mean": 0.5378679203671263,
+      "sd": 0.06698441750785823,
+      "min": 0.47218281054750566,
+      "max": 0.606080122573105,
+      "sigmas": 8.029746922917209
+    },
+    "unserved_change_pct": {
+      "mean": -6.999971211786071,
+      "sd": 0.1268912721235537,
+      "min": -7.105526098157123,
+      "max": -6.8591879766688235,
+      "sigmas": 55.16511178932951
+    },
+    "served_change_pct": {
+      "mean": 3.787096446300294,
+      "sd": 0.06865020886321932,
+      "min": 3.7109304631440354,
+      "max": 3.8442033290246647,
+      "sigmas": 55.16511178932923
+    },
+    "gc_per_trip_change_pct": {
+      "mean": -3.130666271662589,
+      "sd": 0.017662707762303748,
+      "min": -3.150887056287266,
+      "max": -3.118251286681606,
+      "sigmas": 177.2472439556604
+    }
+  },
+  "plan_disagreement": {
+    "pairs": [
+      {
+        "seed_a": 20260825,
+        "seed_b": 20260826,
+        "n_changed": 45,
+        "share_changed_pct": 26.011560693641616,
+        "mean_abs_change_min": 8.110459433044444,
+        "max_abs_change_min": 30.0
+      },
+      {
+        "seed_a": 20260825,
+        "seed_b": 20260827,
+        "n_changed": 36,
+        "share_changed_pct": 20.809248554913296,
+        "mean_abs_change_min": 7.826963180194444,
+        "max_abs_change_min": 30.0
+      },
+      {
+        "seed_a": 20260826,
+        "seed_b": 20260827,
+        "n_changed": 36,
+        "share_changed_pct": 20.809248554913296,
+        "mean_abs_change_min": 6.966666666666667,
+        "max_abs_change_min": 15.0
+      }
+    ],
+    "n_route_periods": 173,
+    "mean_share_changed_pct": 22.54335260115607,
+    "worst_share_changed_pct": 26.011560693641616,
+    "mean_abs_change_min": 7.634696426635185
+  },
+  "thresholds": {
+    "sigma_margin": 3.0,
+    "plan_agreement_pct": 10.0,
+    "committed": "ACCEPTANCE.md, before this ran"
+  },
+  "effect_clears_spread": true,
+  "plan_identified": false,
+  "explanation": "the coverage effect clears its own spread, but independent seeds disagree on 26.0% of route-periods -- the optimum is flat, so the aggregate result stands and NO individual route headway may be quoted as a recommendation",
+  "seconds": 7644.754545211792
+}

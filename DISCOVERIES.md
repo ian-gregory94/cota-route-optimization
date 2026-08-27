@@ -587,6 +587,76 @@ lower would mean the stability is specific to the metric rather than to the
 geometry.
 
 
+### D17 — The aggregate result is measured to 55 sigma; the plan behind it is not identified at all
+
+**Evidence.** Three seeds at λ=2, full effort, **one shared candidate set** —
+so seed spread and candidate-set spread cannot be confounded, which is the
+confound D14 could not resolve.
+
+| seed | gen. cost | unserved | served | cost/trip |
+|---|---|---|---|---|
+| 20260825 | +0.5353% | −7.0352% | +3.8062% | −3.1509% |
+| 20260826 | +0.4722% | −6.8592% | +3.7109% | −3.1229% |
+| 20260827 | +0.6061% | −7.1055% | +3.8442% | −3.1183% |
+
+| quantity | mean | sd | σ |
+|---|---|---|---|
+| generalized cost | +0.538% | 0.067 | 8.0 |
+| unserved demand | **−7.000%** | 0.127 | **55.2** |
+| served trips | +3.787% | 0.069 | 55.2 |
+| cost per served trip | −3.131% | 0.018 | 177.3 |
+
+And the plans behind those numbers:
+
+| seed pair | route-periods differing | mean move | max move |
+|---|---|---|---|
+| 25 vs 26 | 45 / 173 = **26.0%** | 8.11 min | 30 min |
+| 25 vs 27 | 36 / 173 = 20.8% | 7.83 min | 30 min |
+| 26 vs 27 | 36 / 173 = 20.8% | 6.97 min | 15 min |
+
+Thresholds were committed before the replicates existed: 3σ on the effect, 10%
+route-period disagreement on the plan.
+
+**Confidence.** High. Three independent seeds, one set, matched effort,
+thresholds fixed in advance, and the pattern is consistent across all three
+pairs rather than driven by one outlier.
+
+**Interpretation.** These two findings point in opposite directions and both
+are real.
+
+*The effect is about as well determined as anything in this project.* A 7%
+reduction in unserved demand with a seed standard deviation of 0.127 points is
+55 sigma. The cost figure is the noisiest of the four at 8 sigma, and 8 sigma is
+still not close to a judgement call.
+
+*The plan is not determined at all.* A quarter of the network's route-periods
+move by an average of eight minutes of headway — one by thirty — between runs
+that differ only in a random seed and score within 0.13 points of each other.
+This settles D14: that instability was **not** a candidate-set effect, because
+these replicates share a set. The optimum is flat.
+
+**What this licenses and what it forbids.** "Redistributing service under the
+existing envelope reduces unserved demand by about 7%, at a cost per trip
+actually served that falls by about 3%" is supported to a degree the rest of the
+model's assumptions do not deserve. "Route 010 should run every 15 minutes at
+midday" is **not supported at all** — the model does not distinguish that plan
+from many others that score the same. Any per-route number in a write-up or a
+handoff must be labelled as one arbitrary member of a large indifference set,
+and the Experiment 2 comparisons must use aggregate frontier positions rather
+than plan diffs.
+
+There is a constructive reading. A flat optimum means COTA has *freedom*: many
+different concrete schedules realise essentially the same passenger benefit, so
+operational constraints this model does not represent — operator bidding,
+layover geography, garage assignment, political commitments — can be satisfied
+almost for free. That is worth more to a planner than a single plan they would
+have to take on faith.
+
+**What would falsify it.** Seeds agreeing to within a handful of route-periods
+on the Model B set would mean the flatness is specific to Model A's valuation.
+Model B's replicates are running.
+
+
 ---
 
 ## Not yet earned

@@ -24,3 +24,30 @@
 2026-08-27 18:24:15,274   seed 20260825  2513s gc  +0.535% unserved  -7.035%
 2026-08-27 19:06:53,622 solve lambda=2.0: obj=3.01156e+06 vh=2516.2/2517.2 exchanges=123
 2026-08-27 19:06:53,622   seed 20260826  2558s gc  +0.472% unserved  -6.859%
+2026-08-27 19:49:43,005 solve lambda=2.0: obj=3.01074e+06 vh=2515.7/2517.2 exchanges=64
+2026-08-27 19:49:43,005   seed 20260827  2569s gc  +0.606% unserved  -7.106%
+2026-08-27 19:49:43,014 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp6_seedcheck_20260827T174218Z/experiment.json
+
+============================================================================================
+GATE 7 — seed stability at lambda=2.0 (pattern, 233,589 paths)
+============================================================================================
+    seed  gc_change_pct  unserved_change_pct  served_change_pct  gc_per_trip_change_pct
+20260825         0.5353              -7.0352             3.8062                 -3.1509
+20260826         0.4722              -6.8592             3.7109                 -3.1229
+20260827         0.6061              -7.1055             3.8442                 -3.1183
+
+  spread:
+    gc_change_pct              mean  +0.5379  sd  0.0670  =   8.03 sigma
+    unserved_change_pct        mean  -7.0000  sd  0.1269  =  55.17 sigma
+    served_change_pct          mean  +3.7871  sd  0.0687  =  55.17 sigma
+    gc_per_trip_change_pct     mean  -3.1307  sd  0.0177  = 177.25 sigma
+
+  plan disagreement across seeds (173 route-periods):
+    worst pair differs on 26.0% (mean 22.5%), average move 7.63 min
+
+  effect clears 3 sigma: YES
+  plan identified (< 10% disagreement): NO
+
+  the coverage effect clears its own spread, but independent seeds disagree on 26.0% of route-periods -- the optimum is flat, so the aggregate result stands and NO individual route headway may be quoted as a recommendation
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp6_seedcheck_20260827T174218Z
