@@ -1,0 +1,85 @@
+{
+  "n_compared": 60,
+  "metric": "unserved_change_pct",
+  "spearman": 0.8564601278132813,
+  "top_n": 10,
+  "top_n_overlap": 8,
+  "thresholds": {
+    "rho_keep": 0.8,
+    "rho_floor": 0.5,
+    "overlap_keep": 7,
+    "overlap_floor": 3,
+    "committed": "ACCEPTANCE.md, before the second screen ran"
+  },
+  "verdict": "stable",
+  "explanation": "Spearman 0.856 and 8/10 of the top ten survive both ends of the bracket, so the ranking does not depend on the waiting model and the Model A shortlist stands as triage",
+  "kept_in_both_top10": [
+    "splice|001|021|PICBETS",
+    "splice|002|033|WESHIGW",
+    "splice|002|034|WESHIGW",
+    "splice|005|021|NMURBEAN",
+    "splice|006|021|NMURBEAN",
+    "splice|007|101|EMO4THW",
+    "splice|008|035|BOASHAN",
+    "splice|033|034|WESHIGW"
+  ],
+  "top10_pattern_only": [
+    "splice|011|033|WESHIGW",
+    "splice|011|034|WESHIGW"
+  ],
+  "top10_route_only": [
+    "splice|002|011|HIGFITN",
+    "splice|005|006|NMURBEAN"
+  ],
+  "largest_rank_moves": [
+    {
+      "key": "splice|002|011|HIGFITN",
+      "rank_pattern": 53,
+      "rank_route": 10,
+      "rank_move": -43
+    },
+    {
+      "key": "truncate|025|d15:SCAALSE",
+      "rank_pattern": 56,
+      "rank_route": 18,
+      "rank_move": -38
+    },
+    {
+      "key": "truncate|032|d7:EASTER6",
+      "rank_pattern": 55,
+      "rank_route": 30,
+      "rank_move": -25
+    },
+    {
+      "key": "truncate|101|d11:EMO4THW",
+      "rank_pattern": 29,
+      "rank_route": 49,
+      "rank_move": 20
+    },
+    {
+      "key": "straighten|034|d10:MOR415S",
+      "rank_pattern": 30,
+      "rank_route": 45,
+      "rank_move": 15
+    },
+    {
+      "key": "reroute|023|rSTEOPPN-MOR342N",
+      "rank_pattern": 31,
+      "rank_route": 42,
+      "rank_move": 11
+    },
+    {
+      "key": "splice|011|033|WESHIGW",
+      "rank_pattern": 4,
+      "rank_route": 11,
+      "rank_move": 7
+    },
+    {
+      "key": "splice|001|021|PICBETS",
+      "rank_pattern": 7,
+      "rank_route": 1,
+      "rank_move": -6
+    }
+  ],
+  "note": "a screen ranks candidates and cannot size them: frequency is held fixed, so no screen number is an Experiment 2 result"
+}

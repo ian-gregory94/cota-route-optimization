@@ -539,6 +539,54 @@ step. A balanced point that moved materially between the frozen and widened
 sets would mean λ=2's certification is worth less than it looks.
 
 
+### D16 — The geometry ranking does not depend on the waiting model
+
+**Evidence.** The 60-candidate screen was run at both ends of the bracket: Model
+A's per-pattern waiting, and route-level pricing, which is a strict lower bound
+on any Model B path cost. Any real Model B ranking lies between them.
+
+| | |
+|---|---|
+| Spearman rank correlation | **0.8565** (keep ≥ 0.80) |
+| top-10 overlap | **8 / 10** (keep ≥ 7) |
+| verdict | **stable** |
+
+Both thresholds were committed to `ACCEPTANCE.md` before the second screen ran,
+and the worse of the two bounds decides, as everywhere else in this project.
+
+The eight that hold their place are all **splices** — through-routings that
+remove a forced transfer: 001+021 at PICBETS, 002+033 and 002+034 and 033+034 at
+WESHIGW, 005+021 and 006+021 at NMURBEAN, 007+101 at EMO4THW, 008+035 at BOASHAN.
+
+**Confidence.** Moderate-to-high on the ranking's model-independence; the two
+ends genuinely bracket Model B, and the correlation is computed over all 60
+candidates rather than the survivors.
+
+**Interpretation.** The screen is measuring something about geometry rather than
+something about how waiting is priced. That matters because the screen was run
+under Model A and Model A is now known to be wrong: had the ranking moved with
+the waiting model, every candidate would have needed re-screening under a model
+the screen cannot express, and the shortlist would have been unusable.
+
+That through-routings dominate both ends is itself worth noting. A splice
+removes a transfer outright — a fixed penalty plus a wait — and that saving is
+large under any waiting model, which is precisely why it survives a bracket that
+varies the waiting model.
+
+**One candidate the Model A screen buries.** `splice|002|011|HIGFITN` sits at
+rank 53 of 60 under Model A and rank **10** under the bound: the largest single
+move in the set. Under combined-frequency pricing the corridor it joins is far
+more attractive than per-pattern pricing suggests. The pre-committed rule keeps
+the Model A shortlist as triage and says nothing against widening it, so the two
+bound-only entrants (`002|011|HIGFITN`, `005|006|NMURBEAN`) are carried into
+evaluation alongside the eight. Adding candidates is the conservative error.
+
+**What would falsify it.** A Spearman computed on a different screening metric —
+generalized cost rather than retention-adjusted unserved — coming out materially
+lower would mean the stability is specific to the metric rather than to the
+geometry.
+
+
 ---
 
 ## Not yet earned

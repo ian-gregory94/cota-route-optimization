@@ -93,3 +93,5 @@
 2026-08-27 17:25:55,325   lambda=2.0   resumed (gc +0.84%)
 2026-08-27 17:25:55,325     rejoining at restart 17/20
 2026-08-27 17:25:55,449 resuming solve at restart 17/20, saved objective 4.08176e+06
+2026-08-27 17:31:42,701 solve lambda=4.0: obj=4.08176e+06 vh=2516.4/2517.2 exchanges=135
+2026-08-27 17:31:42,701   lambda=4.0    347s gc   +1.24% unserved   -7.12% vh=2516.4
