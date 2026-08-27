@@ -22,3 +22,32 @@
 2026-08-27 19:11:40,746 one shared set: 243257 paths, lambda=2.0, 3 seeds
 2026-08-27 19:59:21,323 solve lambda=2.0: obj=2.93767e+06 vh=2516.6/2517.2 exchanges=83
 2026-08-27 19:59:21,324   seed 20260825  2861s gc  +0.842% unserved  -6.602%
+2026-08-27 20:49:29,592 solve lambda=2.0: obj=2.9376e+06 vh=2515.4/2517.2 exchanges=68
+2026-08-27 20:49:29,592   seed 20260826  3008s gc  +0.922% unserved  -6.724%
+2026-08-27 21:36:38,880 solve lambda=2.0: obj=2.93784e+06 vh=2516.3/2517.2 exchanges=42
+2026-08-27 21:36:38,880   seed 20260827  2829s gc  +0.871% unserved  -6.630%
+2026-08-27 21:36:38,888 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp6_seedcheck_modelB_20260827T191138Z/experiment.json
+
+============================================================================================
+GATE 7 — seed stability at lambda=2.0 (same_route, 243,257 paths)
+============================================================================================
+    seed  gc_change_pct  unserved_change_pct  served_change_pct  gc_per_trip_change_pct
+20260825         0.8416              -6.6023             3.2744                 -2.3557
+20260826         0.9223              -6.7238             3.3347                 -2.3345
+20260827         0.8707              -6.6298             3.2881                 -2.3404
+
+  spread:
+    gc_change_pct              mean  +0.8782  sd  0.0409  =  21.49 sigma
+    unserved_change_pct        mean  -6.6520  sd  0.0637  = 104.40 sigma
+    served_change_pct          mean  +3.2991  sd  0.0316  = 104.40 sigma
+    gc_per_trip_change_pct     mean  -2.3435  sd  0.0109  = 214.59 sigma
+
+  plan disagreement across seeds (173 route-periods):
+    worst pair differs on 19.7% (mean 19.1%), average move 6.92 min
+
+  effect clears 3 sigma: YES
+  plan identified (< 10% disagreement): NO
+
+  the coverage effect clears its own spread, but independent seeds disagree on 19.7% of route-periods -- the optimum is flat, so the aggregate result stands and NO individual route headway may be quoted as a recommendation
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp6_seedcheck_modelB_20260827T191138Z

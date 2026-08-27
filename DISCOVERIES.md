@@ -681,9 +681,27 @@ layover geography, garage assignment, political commitments — can be satisfied
 almost for free. That is worth more to a planner than a single plan they would
 have to take on faith.
 
-**What would falsify it.** Seeds agreeing to within a handful of route-periods
-on the Model B set would mean the flatness is specific to Model A's valuation.
-Model B's replicates are running.
+**Confirmed on Model B, 2026-08-27 21:40 UTC**, on its own 243,257-path set:
+
+| quantity | mean | sd | σ |
+|---|---|---|---|
+| unserved demand | **−6.652%** | 0.064 | **104.4** |
+| served trips | +3.299% | 0.032 | 104.4 |
+| cost per served trip | −2.344% | 0.011 | 214.6 |
+| generalized cost | +0.878% | 0.041 | 21.5 |
+
+Plan disagreement: worst pair **19.7%** of route-periods, mean 19.1%, average
+move 6.92 min. Same verdict, same side of the line.
+
+Model B is better conditioned than Model A on both counts — half the objective
+spread (0.064 against 0.127) and a quarter less plan disagreement (19.7%
+against 26.0%) — which is what a corrected valuation should do. It is nowhere
+near enough to change the conclusion. Two models, two candidate sets, six
+independent seeds: the effect is measured to a precision the rest of the model
+does not deserve, and the plan is not identified.
+
+**What would falsify it.** Nothing available. Both models, both sets and all six
+seeds agree; a third model would have to disagree with both.
 
 
 ---
