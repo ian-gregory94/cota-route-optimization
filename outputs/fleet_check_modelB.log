@@ -1,0 +1,45 @@
+2026-08-27 21:55:19,647 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.3s)
+2026-08-27 21:55:19,681 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-27 21:55:19,682 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-27 21:55:19,683 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-27 21:55:19,694 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-27 21:55:20,245 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.6s)
+2026-08-27 21:55:20,344 period early   : 33571 paths, 20000 OD pairs
+2026-08-27 21:55:20,352 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-27 21:55:20,358 period midday  : 34003 paths, 20000 OD pairs
+2026-08-27 21:55:20,366 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-27 21:55:20,373 period evening : 34989 paths, 20000 OD pairs
+2026-08-27 21:55:20,379 period owl     : 34494 paths, 20000 OD pairs
+
+========================================================================================
+PEAK VEHICLE REQUIREMENT — read from blocks, not approximated
+========================================================================================
+  284 blocks, median 8 trips and 8.8 h span each
+  peak vehicles in service      197 at 17:13
+  cycle-over-headway formula    150.7
+  interlining factor            1.307  (formula is optimistic)
+  NTD reported VOMS             198  (-0.5% vs blocks)
+  blocks serving >1 route       12.0%
+  share of block span on layover 19.4%
+
+  peak by period (from blocks):
+    early      135   formula   74.2
+    am_peak    187   formula  137.9
+    midday     173   formula  138.4
+    pm_peak    197   formula  150.7
+    evening    178   formula  121.7
+    owl        149   formula   30.9
+
+  BALANCED PLAN (lam2.0.csv)
+    baseline peak proxy  197.0
+    candidate peak proxy 197.0  (-0.0, -0.0%)
+    largest per-route increases at the peak period:
+      route 005: +6.49 buses
+      route 102: +5.69 buses
+      route 032: +4.26 buses
+      route 025: +2.61 buses
+      route 011: +2.55 buses
+      route 021: +2.19 buses
+2026-08-27 21:55:20,412 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/model_diagnostics_modelB_20260827T215519Z/experiment.json
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/model_diagnostics_modelB_20260827T215519Z

@@ -29,11 +29,11 @@
     "block_peak_vs_ntd_voms_pct": -0.5050505050505052
   },
   "candidate_fleet": {
-    "plan": "C_lam2.0_seed20260825.csv",
+    "plan": "lam2.0.csv",
     "baseline_peak_proxy": 197.0,
-    "candidate_peak_proxy": 196.91215950896319,
-    "change": -0.08784049103681468,
-    "change_pct": -0.04458908174457598,
+    "candidate_peak_proxy": 196.99929230908117,
+    "change": -0.0007076909188299396,
+    "change_pct": -0.0003592339689492079,
     "peak_period": "pm_peak",
     "largest_increases_by_route": [
       {
@@ -45,43 +45,21 @@
         "buses": 5.688888888888888
       },
       {
-        "route_id": "011",
-        "buses": 3.825
-      },
-      {
         "route_id": "032",
-        "buses": 3.191666666666667
-      },
-      {
-        "route_id": "001",
-        "buses": 3.0694444444444446
+        "buses": 4.255555555555556
       },
       {
         "route_id": "025",
         "buses": 2.611111111111111
+      },
+      {
+        "route_id": "011",
+        "buses": 2.55
+      },
+      {
+        "route_id": "021",
+        "buses": 2.194444444444444
       }
-    ]
-  },
-  "hyperpath": {
-    "n_legs_with_alternatives": 3778,
-    "flow_touched": 1638.9322263676886,
-    "total_bound_min": 9152.442755687227,
-    "bound_share_of_generalized_cost_pct": 0.5162293808952048,
-    "median_saving_min": 4.928571428571429,
-    "p95_saving_min": 11.27027027027027,
-    "median_lines_available": 2.0,
-    "cross_route_bound_min": 9152.442755687227,
-    "cross_route_share_of_generalized_cost_pct": 0.5162293808952048,
-    "same_route_bound_min": -5.340837432088143e-14,
-    "same_route_share_of_generalized_cost_pct": -3.012416766349691e-18,
-    "same_route_pattern_share_of_bound_pct": 0.0,
-    "legs_whose_alternatives_are_all_same_route": 0,
-    "exp1_effect_pct_compared_against": 2.0,
-    "verdict": "locally_meaningful",
-    "explanation": "the bound is 0.52% of generalized cost against a 2.0% claimed effect: too small to overturn the direction, large enough to matter for corridor-level numbers on the routes listed",
-    "periods": [
-      "am_peak",
-      "midday"
     ]
   },
   "common_lines": "same_route"

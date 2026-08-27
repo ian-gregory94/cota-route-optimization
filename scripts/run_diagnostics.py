@@ -71,6 +71,12 @@ def main() -> int:
     ap.add_argument("--skip-hyperpath", action="store_true")
     ap.add_argument("--common-lines", type=str, default=None,
                     choices=[None, "pattern", "same_route"])
+    ap.add_argument("--plan", type=str, default="matrix_plans/C_lam2.0_seed20260825.csv",
+                    help="plan to apply the block-derived fleet proxy to, "
+                         "relative to outputs/. The point of the check is "
+                         "whether a RECOMMENDED plan needs more buses than "
+                         "COTA runs today, so it should be pointed at the "
+                         "certified balanced plan, not at an old matrix cell")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     wait_for_memory()
@@ -129,7 +135,7 @@ def main() -> int:
         print(f"    {k:9s} {v:4d}   formula {rw.get(k, float('nan')):6.1f}")
 
     # the same proxy applied to a saved optimized plan, if one exists
-    plan_csv = OUT / "matrix_plans" / "C_lam2.0_seed20260825.csv"
+    plan_csv = OUT / args.plan
     if plan_csv.exists():
         d = pd.read_csv(plan_csv, dtype={"route_id": str})
         hw = dict(base_hw)

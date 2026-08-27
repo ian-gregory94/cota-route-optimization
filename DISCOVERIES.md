@@ -704,6 +704,53 @@ does not deserve, and the plan is not identified.
 seeds agree; a third model would have to disagree with both.
 
 
+### D18 — The recommended plan needs no additional buses, measured against COTA's own blocks
+
+**Evidence.** The block-derived fleet proxy applied to the **certified Model B
+balanced plan** (λ=2, the plan behind the −6.65% headline):
+
+| | |
+|---|---|
+| baseline peak proxy | 197.0 vehicles |
+| balanced plan peak proxy | **197.0 vehicles** (−0.0, −0.0%) |
+| peak vehicles read from blocks | 197 at 17:13 |
+| NTD reported VOMS | 198 (−0.5% against blocks) |
+| cycle-over-headway formula | 150.7 — 24% optimistic |
+
+Largest per-route increases at the peak period: 005 +6.49, 102 +5.69, 032
++4.26, 025 +2.61, 011 +2.55, 021 +2.19 buses — offset elsewhere to a net zero.
+
+**Confidence.** High on the *comparison*, which is what matters here. The proxy
+is not tuned: reconstructing COTA's blocks from the feed gives 197 peak vehicles
+against NTD's independently reported 198, a 0.5% match nothing was fitted to,
+and the same proxy is applied to both plans. Moderate on the absolute figure,
+since the interlining factor (1.307) is a system-wide constant applied per
+route.
+
+**Interpretation.** This is the constraint a planner asks about first and the
+one the optimizer was never given: the vehicle-hour envelope is a budget, not a
+fleet cap, and a plan can respect the hours while needing more buses at the peak
+minute. It does not. The redistribution is genuinely a *redistribution* —
+service moves toward the 30–120 minute tier and the routes that gain at the peak
+are paid for by routes that give up peak frequency, netting to zero buses.
+
+So the result costs no capital, no garage space and no additional operators at
+the peak. That is a materially different proposition from one requiring six more
+vehicles, and it is worth stating alongside the headline rather than buried in a
+constraints appendix.
+
+**A caveat that belongs with it.** Per-route figures here inherit D17: the plan
+is one arbitrary member of a large indifference set, so "route 005 needs 6.5
+more buses at the peak" is **not** a claim about route 005. The claim is about
+the *total*, which is what the indifference set holds fixed — every plan in it
+respects the same envelope.
+
+**What would falsify it.** A block reconstruction that disagreed materially with
+NTD's VOMS would undermine the proxy. A plan drawn from a different seed showing
+a materially different total — rather than a different per-route split — would
+mean the zero is a property of this plan rather than of the envelope.
+
+
 ---
 
 ## Not yet earned
