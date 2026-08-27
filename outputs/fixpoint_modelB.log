@@ -260,3 +260,19 @@
 2026-08-27 06:42:27,622 load profile: 22 route-periods, peak-load factor median 0.37, p90 0.51
 2026-08-27 06:42:27,622 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-27 06:42:27,685 iteration 3: 240965 candidate paths, baseline gc=1.772727e+06 (enum 2551s)
+2026-08-27 06:58:26,855 solve lambda=0.5: obj=2.04047e+06 vh=2512.3/2517.2 exchanges=45
+2026-08-27 06:58:26,856   lambda=0.5   959s gc   -3.53% unserved   +7.31%
+2026-08-27 07:21:51,846 solve lambda=1.0: obj=2.35555e+06 vh=2512.0/2517.2 exchanges=35
+2026-08-27 07:21:51,850   lambda=1.0  1405s gc   -1.36% unserved   -1.44%
+2026-08-27 07:48:21,361 solve lambda=2.0: obj=2.9381e+06 vh=2515.4/2517.2 exchanges=66
+2026-08-27 07:48:21,362   lambda=2.0  1590s gc   +0.91% unserved   -6.67%
+2026-08-27 08:08:38,963 solve lambda=8.0: obj=6.37091e+06 vh=2514.7/2517.2 exchanges=55
+2026-08-27 08:08:38,963   lambda=8.0  1218s gc   +1.36% unserved   -7.14%
+2026-08-27 08:10:34,589   adequacy lambda=0.5  improvable flow 0.67%, overstatement 0.076%
+2026-08-27 08:12:26,989   adequacy lambda=1.0  improvable flow 0.48%, overstatement 0.064%
+2026-08-27 08:14:19,271   adequacy lambda=2.0  improvable flow 0.47%, overstatement 0.069%
+2026-08-27 08:16:16,022   adequacy lambda=8.0  improvable flow 0.54%, overstatement 0.075%
+2026-08-27 08:16:16,024 iteration 3: worst improvable flow share 0.671% (240965 paths)
+2026-08-27 08:16:16,024 converged: improvable share moved 0.0006, below tol 0.0020
+2026-08-27 08:16:16,024 ======================================================================
+2026-08-27 08:16:16,024 FINAL FRONTIER: full effort (400000 iters, 20 restarts) on the converged set (240965 paths)
