@@ -810,6 +810,59 @@ solve, not the screen, produced the inversion. That is the check to run before
 this goes in a write-up.
 
 
+### D20 — Geometry edits do not compose: four individually good splices are jointly worse than none
+
+**Evidence.** The 0/1/2/4 ladder, recomposed from *measured* single-candidate
+performance rather than screen rank, each rung solved with frequency
+re-optimized inside the same 2,517-vehicle-hour envelope on the certified
+Model B yardstick:
+
+| rung | edits | gen. cost vs 0 | unserved vs 0 |
+|---|---|---|---|
+| 0 | — | — | — |
+| 1 | 033+034 WESHIGW | +0.137% | **−0.936%** |
+| 2 | + 005+006 NMURBEAN | +0.164% | **−0.485%** |
+| 4 | + 001+021 PICBETS, 008+035 BOASHAN | −0.192% | **+0.473%** |
+
+Every one of those four splices, evaluated **alone**, reduces unserved demand:
+−0.936%, −0.684%, −0.512%, −0.490%. Their individual effects sum to roughly
+−2.6%. Together they give **+0.47%** — worse than making no change at all. Every
+figure clears the 0.288-point noise floor measured from three zero-edit
+replicates at the same effort.
+
+**Confidence.** Moderate-to-high on the direction and the non-additivity, which
+is the claim. Same effort, same envelope, same incumbent-fitting for every rung,
+and the reversal is three to ten times the measured floor. Low on the
+magnitudes: reduced scenario sweep and sub-L4 effort, so this ranks and does not
+size.
+
+**Interpretation.** This is the finding the ladder was built to look for, and it
+came back the unwelcome way.
+
+The mechanism is the shared budget. Evaluated alone, a splice gets the entire
+vehicle-hour envelope reallocated to exploit it — the optimizer buys frequency
+wherever the new through-routing makes it most valuable. Four splices cannot
+each have the whole budget. They also *consume* it: through-routing lengthens
+the merged line, so vehicle-hours that were buying frequency go into running
+the longer route instead. By four edits, the reallocation each one needs is
+competing with three others and the envelope is thinner than when they started.
+
+The second edit already hurts: two edits (−0.485%) is worse than one (−0.936%).
+There is no accumulation to find here, and the best geometry intervention
+discovered is a **single splice**.
+
+**What it means for how Experiment 2 gets reported.** "Which edits should COTA
+make?" is not answerable by ranking candidates and taking the top N — the top N
+is not the best set of N. Any recommendation is a *set*, evaluated as a set,
+and this evidence supports exactly one: through-route 033 and 034 at WESHIGW,
+alone. Adding the next-best measured candidate to it costs half the benefit.
+
+**What would falsify it.** A joint optimization over subsets — rather than a
+greedy ladder over singles — finding a two- or four-edit set that beats the
+single would show the non-additivity is a property of greedy composition rather
+than of the budget. That search is the obvious follow-on and has not been run.
+
+
 ---
 
 ## Not yet earned
