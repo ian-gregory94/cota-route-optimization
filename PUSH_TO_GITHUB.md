@@ -34,8 +34,17 @@ Local clone (kept current by the sandbox):
 4. **Fast-forward the clone** over the device bridge:
 
        cd "$HOME/mnt/cota-route-optimization"
-       git fetch "$HOME/mnt/Downloads/cota.bundle" 'refs/heads/master:refs/heads/master'
-       git merge --ff-only master     # or: git reset --hard master, if HEAD is unborn
+       git fetch "$HOME/mnt/Downloads/cota.bundle" \
+           'refs/heads/master:refs/remotes/bundle/master'
+       git merge --ff-only bundle/master
+
+   Fetch into a *remote-tracking* ref, not into `master` itself: git refuses
+   `refs/heads/master:refs/heads/master` on a non-bare repo with the checked-out
+   branch, and the accompanying `Already up to date` from the merge makes it look
+   like a no-op succeeded. On the very first import, where `HEAD` is unborn, use
+   `git fetch ... 'refs/heads/master:refs/heads/master'` (legal while the branch
+   does not exist), then `git symbolic-ref HEAD refs/heads/master` and
+   `git reset --hard master`.
 
 5. **Ian clicks Push** in GitHub Desktop. The credentials are his and never
    pass through the sandbox.
