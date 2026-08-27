@@ -71,7 +71,44 @@ effort gap that biased the comparison toward its own conclusion. Everything
 comparative is now run at matched effort against this ladder. **If you change
 one thing about how you use this repo, keep that discipline.**
 
-### Path-set convergence
+### The Experiment 1 result
+
+Corrected waiting model (Model B), full search effort, on a candidate set that
+converged and was then independently certified. Three seeds:
+
+> **−6.65% ± 0.06 unserved demand · +3.30% ± 0.03 trips served ·
+> +0.88% ± 0.04 generalized cost · −2.34% ± 0.01 cost per trip actually served**,
+> at 2,516.5 of 2,517.2 weekday revenue vehicle-hours.
+
+Read the cost column carefully. Total generalized cost **rises**, because the
+plan serves 3.3% more people; cost per person actually served **falls**. It is
+not a free lunch and the +0.88% is 21 standard deviations from zero — there is
+no version of this where the cost is "not measurable".
+
+**It needs no additional buses.** The block-derived fleet proxy puts the
+balanced plan at **197.0 peak vehicles against a 197.0 baseline**. The proxy is
+not tuned: reconstructing COTA's blocks from the feed gives 197 peak vehicles
+against NTD's independently reported VOMS of 198. The optimizer was given a
+vehicle-hour budget, not a fleet cap, and hours are not buses — a plan can
+respect the hours and still need more vehicles at the peak minute. This one
+does not.
+
+**The plan behind the number is not identified.** Independent seeds on one
+shared candidate set produce plans differing on **20–26% of route-periods** at
+an average of seven minutes of headway, while scoring within 0.13 points of each
+other. The aggregate is measured to a precision the rest of the model's
+assumptions do not deserve; no individual route headway is supported at all.
+Quote the total, label any specific plan as one arbitrary member of a large
+indifference set, and read D17 before writing a sentence with a route number in
+it.
+
+There is a constructive reading, and it is the better one for a planner: a flat
+optimum means COTA has *freedom*. Many concrete schedules realise the same
+passenger benefit, so constraints this model cannot see — operator bidding,
+layover geography, garage assignment, the politics of cutting a named route —
+can be satisfied almost for free.
+
+### Path-set convergence, and where it stops working
 
 The candidate set is enumerated in advance, which makes the optimizer
 affordable and is its main structural error: an optimized plan can make
@@ -83,7 +120,24 @@ under the most aggressive.**
 scenarios, re-enumerate, re-solve, until the improvable share stops moving, then
 solve the final frontier at full effort on the converged set and re-check. The
 candidate set only grows, so each iteration is a tighter lower bound and the
-loop is monotone by construction.
+loop is monotone by construction. Both models converged on the tolerance test
+rather than an iteration cap:
+
+| iteration | 0 | 1 | 2 | 3 | converged set |
+|---|---|---|---|---|---|
+| Model A | 9.443% | 4.524% | 1.138% | 1.029% | 227,791 paths |
+| Model B | 5.302% | 2.406% | 0.732% | 0.671% | 240,965 paths |
+
+**But convergence in aggregate is not convergence at every λ**, and this is the
+limitation to carry forward. The loop probes at λ ∈ {0.5, 1, 2, 8} and exits on
+the worst improvable share across them; the frontier is then solved at
+{0.25 … 16} and at higher effort. Re-checking the full-effort plans against the
+frozen set, **λ ≥ 2 passes on both models and λ ≤ 1 fails on both** — at
+different thresholds, on candidate sets 4% apart. A repair step (feed the
+full-effort plans back, rebuild, re-solve every λ) closed most of the λ=0.25 gap
+and made λ=1 *worse*, because a wider set lets the search find a new extreme
+plan the set covers no better. **Both frontiers are quoted from λ = 2 upward and
+the cost-favouring corner is reported as uncertified.** See D15.
 
 Raising the per-OD candidate cap from 4 to 6 added **under 1%** more paths, so
 the cap was never the binding constraint — scenario coverage was.
