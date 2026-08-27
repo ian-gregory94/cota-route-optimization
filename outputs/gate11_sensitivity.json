@@ -1,0 +1,71 @@
+{
+  "lambdas": [
+    1.0,
+    2.0,
+    4.0
+  ],
+  "n_paths_plain": 203161,
+  "n_paths_wide": 217338,
+  "paths_added_pct": 6.978209400426261,
+  "effort": {
+    "iterations": 100000,
+    "restarts": 6,
+    "width": 0,
+    "seed": 20260825
+  },
+  "thresholds": {
+    "gc_pct": 0.25,
+    "unserved_pct": 1.0,
+    "committed": "ACCEPTANCE.md, before this ran"
+  },
+  "rows": [
+    {
+      "lambda": 1.0,
+      "plain_gc_change_pct": -1.2264763400005596,
+      "wide_gc_change_pct": -1.218906876524195,
+      "plain_unserved_change_pct": -1.517542478787448,
+      "wide_unserved_change_pct": -1.5464129728783416,
+      "gc_gap_pct": -0.0076628666853206795,
+      "unserved_gap_pct": 0.02932396366923662,
+      "material": false,
+      "diff_n_route_periods": 173,
+      "diff_n_changed": 39,
+      "diff_share_changed": 0.2254335260115607,
+      "diff_max_abs_change_min": 40.0,
+      "diff_mean_abs_change_min": 8.405128205128205
+    },
+    {
+      "lambda": 2.0,
+      "plain_gc_change_pct": 0.8311158277543251,
+      "wide_gc_change_pct": 0.8182975505746315,
+      "plain_unserved_change_pct": -6.312180040802417,
+      "wide_unserved_change_pct": -6.294167208732393,
+      "gc_gap_pct": 0.012714236890642994,
+      "unserved_gap_pct": -0.019222743700653133,
+      "material": false,
+      "diff_n_route_periods": 173,
+      "diff_n_changed": 43,
+      "diff_share_changed": 0.24855491329479767,
+      "diff_max_abs_change_min": 38.571428571,
+      "diff_mean_abs_change_min": 7.908590134534885
+    },
+    {
+      "lambda": 4.0,
+      "plain_gc_change_pct": 1.1730160721329153,
+      "wide_gc_change_pct": 1.2305649880876013,
+      "plain_unserved_change_pct": -6.74423926221105,
+      "wide_unserved_change_pct": -6.746277638324127,
+      "gc_gap_pct": -0.056849347784893034,
+      "unserved_gap_pct": 0.002185838872126311,
+      "material": false,
+      "diff_n_route_periods": 173,
+      "diff_n_changed": 42,
+      "diff_share_changed": 0.24277456647398843,
+      "diff_max_abs_change_min": 20.0,
+      "diff_mean_abs_change_min": 7.007526881714286
+    }
+  ],
+  "material": false,
+  "verdict": "the augmentation did not change the answer: the omission gate 11 found is real and widespread but does not move the recommended plan past the pre-committed line",
+  "seconds": 5355.88675737381
+}

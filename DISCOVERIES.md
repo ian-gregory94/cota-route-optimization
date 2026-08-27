@@ -419,6 +419,68 @@ moves materially on the wider set would mean the cost share understated the
 omission and the whole Model B result needs the augmented set as its basis.
 
 
+### D14 — The frontier is robust where the plan is not
+
+**Evidence.** Gate 11's follow-up solved Model B at matched effort (100,000
+iterations, 6 restarts, full width, seed 20260825) on both candidate sets and
+scored both plans on the augmented evaluator — a superset, so neither plan
+grades its own homework. Candidate paths 203,161 → 217,338 (+6.98%).
+
+| λ | gc gap | unserved gap | route-periods changed | mean change | max change |
+|---|---|---|---|---|---|
+| 1 | −0.0077% | +0.0293% | 39 / 173 | 8.41 min | 40.0 min |
+| 2 | +0.0127% | −0.0192% | 43 / 173 | 7.91 min | 38.6 min |
+| 4 | −0.0568% | +0.0022% | 42 / 173 | 7.01 min | 20.0 min |
+
+Committed thresholds were 0.25% generalized cost and 1.0% unserved. Every gap
+comes in **one to two orders of magnitude below** them, and two of six have the
+sign that favours the *un*-augmented set, which is what noise looks like.
+
+**Confidence.** High on the non-materiality. The comparison was specified in
+`ACCEPTANCE.md` before it ran, effort and seed were identical on both sets, and
+the yardstick is the superset.
+
+**Interpretation, first half — the question that was asked.** Gate 11's
+discovery gap does not change the recommendation. It was real (333 OD pairs,
+4.877% of tested flow) and it is irrelevant to the answer, exactly as its
+0.185% cost share predicted. The flow bound and the cost bound disagreed by a
+factor of 26 and the cost bound was the one that mattered. That is worth
+recording precisely because the pre-committed rule sent the run down the
+expensive path on the flow bound, and the expensive path was still the right
+call: without it, "the omission is immaterial" would have been an assertion.
+
+**Interpretation, second half — the finding nobody asked for.** A quarter of
+the network's route-periods move by an average of **eight minutes of headway**
+between two plans whose objectives differ by 0.01%. One route-period moves by
+forty minutes. The two plans are, for practical purposes, the same plan in
+objective space and visibly different plans in the world.
+
+That splits the result in two, and the split has to survive into how it is
+stated:
+
+* **The aggregate claim is robust.** Roughly 6% less unserved demand at little
+  generalized cost holds across candidate sets that differ by 7% in size, under
+  plans that differ substantially in composition.
+* **The per-route claim is not.** "Route X should go from 30 to 15 minutes" is
+  not identified by this objective at this effort. Anyone acting on a specific
+  headway from a specific plan would be acting on something the model does not
+  actually distinguish from many alternatives.
+
+**Which is it — a flat optimum or an under-converged search?** Not yet known,
+and the two have the same practical consequence. Gate 7 already requires three
+seeds at λ=2 on one candidate set; that check now has a second job, because if
+independent seeds also disagree on 40 route-periods the flatness is intrinsic,
+and if they agree closely then the candidate set is doing more work than the
+gap sizes suggest. Either answer changes what may be said about individual
+routes, and neither changes the aggregate.
+
+**What would falsify it.** Seed replicates that agree to within a handful of
+route-periods would mean the plan is better identified than this comparison
+suggests, and the difference here is a candidate-set effect after all — which
+would make the augmentation matter for composition even though it does not
+matter for score.
+
+
 ---
 
 ## Not yet earned

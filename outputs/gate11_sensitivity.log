@@ -43,3 +43,31 @@
 2026-08-26 23:37:13,407 solve lambda=1.0: obj=2.35745e+06 vh=2516.0/2517.2 exchanges=48
 2026-08-26 23:37:13,408   lambda=1.0  wide  solved in 715s
 2026-08-26 23:37:13,491   lambda=1.0  gap: gc -0.0077%, unserved +0.0293%  (below the line)
+2026-08-26 23:53:58,757 solve lambda=2.0: obj=2.94379e+06 vh=2515.7/2517.2 exchanges=77
+2026-08-26 23:53:58,757   lambda=2.0  plain solved in 1005s
+2026-08-27 00:10:39,096 solve lambda=2.0: obj=2.94155e+06 vh=2515.9/2517.2 exchanges=128
+2026-08-27 00:10:39,096   lambda=2.0  wide  solved in 1000s
+2026-08-27 00:10:39,159   lambda=2.0  gap: gc +0.0127%, unserved -0.0192%  (below the line)
+2026-08-27 00:25:45,901 solve lambda=4.0: obj=4.09671e+06 vh=2516.0/2517.2 exchanges=67
+2026-08-27 00:25:45,901   lambda=4.0  plain solved in 907s
+2026-08-27 00:43:02,090 solve lambda=4.0: obj=4.0922e+06 vh=2516.0/2517.2 exchanges=58
+2026-08-27 00:43:02,091   lambda=4.0  wide  solved in 1036s
+2026-08-27 00:43:02,160   lambda=4.0  gap: gc -0.0568%, unserved +0.0022%  (below the line)
+2026-08-27 00:43:02,165 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/gate11_sensitivity_20260826T231346Z/experiment.json
+
+================================================================================================
+GATE 11 FOLLOW-UP — does the wider candidate set change the answer?
+================================================================================================
+  candidate paths: 203,161 -> 217,338 (+6.98%)
+  effort: 100,000 iterations, 6 restarts, seed 20260825, identical on both sets
+
+ lambda  plain_gc_change_pct  wide_gc_change_pct  plain_unserved_change_pct  wide_unserved_change_pct  gc_gap_pct  unserved_gap_pct  material  diff_n_route_periods  diff_n_changed  diff_share_changed  diff_max_abs_change_min  diff_mean_abs_change_min
+    1.0              -1.2265             -1.2189                    -1.5175                   -1.5464     -0.0077            0.0293     False                   173              39              0.2254                  40.0000                    8.4051
+    2.0               0.8311              0.8183                    -6.3122                   -6.2942      0.0127           -0.0192     False                   173              43              0.2486                  38.5714                    7.9086
+    4.0               1.1730              1.2306                    -6.7442                   -6.7463     -0.0568            0.0022     False                   173              42              0.2428                  20.0000                    7.0075
+
+  thresholds (committed before the run): gc >= 0.25%, unserved >= 1.0%
+
+  VERDICT: the augmentation did not change the answer: the omission gate 11 found is real and widespread but does not move the recommended plan past the pre-committed line
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/gate11_sensitivity_20260826T231346Z
