@@ -1,0 +1,67 @@
+2026-08-28 00:12:47,554 shared candidate universe: 12 (Model A shortlist UNION D16 bound-only entrants, then widened to every splice)
+2026-08-28 00:12:47,558 result store: 5 cells already solved
+2026-08-28 00:12:48,334 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.8s)
+2026-08-28 00:12:48,380 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-28 00:12:48,381 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-28 00:12:48,382 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-28 00:12:48,395 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-28 00:12:49,123 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.7s)
+2026-08-28 00:12:49,425 period early   : 33571 paths, 20000 OD pairs
+2026-08-28 00:12:49,436 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-28 00:12:49,444 period midday  : 34003 paths, 20000 OD pairs
+2026-08-28 00:12:49,455 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-28 00:12:49,464 period evening : 34989 paths, 20000 OD pairs
+2026-08-28 00:12:49,473 period owl     : 34494 paths, 20000 OD pairs
+2026-08-28 00:12:49,473 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-28 00:12:49,514 envelope pinned: 2517.2 veh-hours; waiting model same_route
+2026-08-28 00:14:10,031 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-28 00:14:10,480 footpaths: 15573 links (9 from transfers.txt)
+2026-08-28 00:14:10,492 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-28 00:14:10,674 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-28 00:14:10,686 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-28 00:14:10,784 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:15:22,024 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:15:22,293 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-28 00:15:22,361 period early   : 24668 paths, 20000 OD pairs
+2026-08-28 00:15:22,375 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:16:44,662 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:16:44,971 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-28 00:16:45,059 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-28 00:16:45,074 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:17:58,379 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:17:58,572 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-28 00:17:58,649 period midday  : 24097 paths, 20000 OD pairs
+2026-08-28 00:17:58,664 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:19:17,585 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:19:17,834 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-28 00:19:17,913 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-28 00:19:17,928 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:20:33,548 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:20:33,759 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-28 00:20:33,825 period evening : 24058 paths, 20000 OD pairs
+2026-08-28 00:20:33,840 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 00:21:44,979 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-28 00:21:45,162 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-28 00:21:45,230 period owl     : 22669 paths, 20000 OD pairs
+2026-08-28 00:21:45,230 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-28 00:22:14,325 solve lambda=4.0: obj=4.13719e+06 vh=2512.2/2517.2 exchanges=46
+2026-08-28 00:22:14,326   control                    path_level  lam=4.0    29s  Model B gc  +1.134% unserved  -6.203%  (optimizer claimed  +0.000%)
+2026-08-28 00:22:14,345 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2_treatments_20260828T001247Z/experiment.json
+
+====================================================================================================
+EXPERIMENT 2 — route-level vs path-level decision representation
+both plans independently re-scored by the frozen Model B evaluator
+====================================================================================================
+
+UNEDITED NETWORK (the treatment question on its own)
+  treatment  lambda  gc_vs_base_pct  unserved_vs_base_pct  served_vs_base_pct  gc_per_trip_vs_base_pct  claim_gap_unserved_pct
+route_level     1.0           3.177                -5.127               2.604                    0.559                 -60.933
+route_level     2.0           3.071                -5.877               2.985                    0.084                 -63.228
+route_level     4.0           3.218                -6.802               3.455                   -0.229                 -64.211
+ path_level     1.0          -0.888                -1.906               0.968                   -1.839                   0.000
+ path_level     2.0           0.828                -5.865               2.979                   -2.088                   0.000
+ path_level     4.0           1.134                -6.203               3.150                   -1.954                   0.000
+
+  claim_gap_unserved_pct = how much LESS unserved demand the optimizer believed it had than Model B measures.
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2_treatments_20260828T001247Z

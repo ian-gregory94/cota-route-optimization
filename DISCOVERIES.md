@@ -863,6 +863,65 @@ single would show the non-additivity is a property of greedy composition rather
 than of the budget. That search is the obvious follow-on and has not been run.
 
 
+### D21 — Path-level representation buys the same coverage at a quarter of the cost
+
+**Evidence.** Both treatments optimize frequencies on the unedited network under
+the same pinned envelope, and **both plans are then re-scored by the same frozen
+Model B evaluator** — the optimizer's own objective is never compared across
+treatments.
+
+| treatment | λ | gen. cost | unserved | served | cost per served trip |
+|---|---|---|---|---|---|
+| route-level | 1 | +3.177% | −5.127% | +2.604% | **+0.559%** |
+| route-level | **2** | **+3.071%** | **−5.877%** | **+2.985%** | **+0.084%** |
+| route-level | 4 | +3.218% | −6.802% | +3.455% | −0.229% |
+| path-level | 1 | −0.888% | −1.906% | +0.968% | −1.839% |
+| path-level | **2** | **+0.828%** | **−5.865%** | **+2.979%** | **−2.088%** |
+| path-level | 4 | +1.134% | −6.203% | +3.150% | −1.954% |
+
+At λ=2 the two treatments deliver **the same coverage** — −5.877% versus −5.865%
+unserved, +2.985% versus +2.979% served, differences well inside the seed noise
+Experiment 1 measured. They do not deliver it at the same price: **+3.071%
+generalized cost against +0.828%**, a factor of 3.7.
+
+**Confidence.** Moderate. The comparison is structurally sound — one evaluator,
+one envelope, identically fitted incumbents, matched effort — and the cost gap
+is far larger than anything seed noise produced. Low on magnitudes: this ran at
+60,000 iterations / 2 restarts / width 32, well below L4, so it ranks the
+treatments rather than sizing the gap.
+
+**Interpretation. The answer to Experiment 2's question is yes**, and the
+mechanism is visible in the last column rather than the first.
+
+Cost per trip actually served is the column that separates them: path-level
+**−2.088%**, route-level **+0.084%**. The route-level plan makes the average
+rider very slightly *worse off* and buys its coverage purely by spending more;
+the path-level plan makes the average rider better off and buys the same
+coverage nearly for free. Both hit the same served-demand number, so an analysis
+reporting only coverage would call them equivalent.
+
+The reason is the one D3 identified and this quantifies under Model B: the
+route-level optimizer cannot see passengers re-route. When it cuts a headway it
+charges the full penalty to everyone on that route, so it never finds the cheap
+reallocations that work precisely because riders shift to a parallel service. It
+compensates by buying coverage the expensive way.
+
+**The optimizer's own claim, recorded because its size is the finding.** The
+route-level optimizer believed it had **63% less unserved demand than the
+independent evaluator measures** (−60.9%, −63.2%, −64.2% at λ = 1, 2, 4). It is
+not a slightly optimistic optimizer. Its objective is a different function, and
+any comparison against a path-level result using that objective would be
+measuring the disagreement between two yardsticks rather than the quality of two
+plans. The path-level treatment's gap is 0.000% by construction: its optimizer
+*is* the evaluator, which is the only reason it is safe to compare them at all —
+after both are re-scored.
+
+**What would falsify it.** Running both treatments at L4 and finding the cost
+gap collapses would mean the route-level plans are merely under-searched rather
+than structurally blind. That is the check to run before this is quoted with a
+number attached; the direction is unlikely to move, the factor of 3.7 might.
+
+
 ---
 
 ## Not yet earned
