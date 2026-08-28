@@ -1,0 +1,71 @@
+{
+  "what_this_is": "the shared Experiment 2 candidate universe. Both treatments -- route-level and path-level decision representation -- optimize over exactly this set, so neither can gain from a better pool.",
+  "rule": "Model A shortlist UNION D16 bound-only entrants, then widened to every splice. Adding a candidate is the preferred error: a candidate is never dropped for ranking poorly under Model A when the lower-bound screen calls it plausibly competitive.",
+  "why_all_splices": "D16 amendment. The bracket's aggregate Spearman of 0.857 is carried by BETWEEN-kind separation; within splices -- the only kind taking a top-ten slot at either endpoint -- it is 0.336. The set {splices are the good kind} is robust; the ordering inside it is not, and a top-eight shortlist is exactly an ordering.",
+  "n": 12,
+  "members": [
+    "splice|001|021|PICBETS",
+    "splice|002|011|HIGFITN",
+    "splice|002|033|WESHIGW",
+    "splice|002|034|WESHIGW",
+    "splice|005|006|NMURBEAN",
+    "splice|005|021|NMURBEAN",
+    "splice|006|021|NMURBEAN",
+    "splice|007|101|EMO4THW",
+    "splice|008|035|BOASHAN",
+    "splice|011|033|WESHIGW",
+    "splice|011|034|WESHIGW",
+    "splice|033|034|WESHIGW"
+  ],
+  "provenance": {
+    "model_a_top8": [
+      "splice|001|021|PICBETS",
+      "splice|002|033|WESHIGW",
+      "splice|005|021|NMURBEAN",
+      "splice|006|021|NMURBEAN",
+      "splice|007|101|EMO4THW",
+      "splice|008|035|BOASHAN",
+      "splice|011|033|WESHIGW",
+      "splice|033|034|WESHIGW"
+    ],
+    "in_top10_model_a": [
+      "splice|001|021|PICBETS",
+      "splice|002|033|WESHIGW",
+      "splice|002|034|WESHIGW",
+      "splice|005|021|NMURBEAN",
+      "splice|006|021|NMURBEAN",
+      "splice|007|101|EMO4THW",
+      "splice|008|035|BOASHAN",
+      "splice|011|033|WESHIGW",
+      "splice|011|034|WESHIGW",
+      "splice|033|034|WESHIGW"
+    ],
+    "in_top10_lower_bound": [
+      "splice|001|021|PICBETS",
+      "splice|002|011|HIGFITN",
+      "splice|002|033|WESHIGW",
+      "splice|002|034|WESHIGW",
+      "splice|005|006|NMURBEAN",
+      "splice|005|021|NMURBEAN",
+      "splice|006|021|NMURBEAN",
+      "splice|007|101|EMO4THW",
+      "splice|008|035|BOASHAN",
+      "splice|033|034|WESHIGW"
+    ],
+    "bound_only_entrants": [
+      "splice|002|011|HIGFITN",
+      "splice|005|006|NMURBEAN"
+    ],
+    "widened_beyond_both_top10": []
+  },
+  "excluded_kinds": {
+    "kinds": [
+      "extend",
+      "truncate",
+      "straighten",
+      "reroute"
+    ],
+    "reason": "none takes a top-ten slot at either endpoint of the bracket; within-kind Spearman 0.64-0.99, so the bracket agrees they rank low. Documented as a limitation: they were never evaluated, not shown to be worthless."
+  },
+  "screen_status": "non-authoritative triage. The screen holds frequency fixed and cannot express Model B (its multiplier is a property of a leg; the screen prices from RAPTOR labels before the alighting stop is known), so no Experiment 2 conclusion rests on a screen score. See D19: the screen's first-ranked candidate of sixty is second-worst of twelve on evaluation."
+}

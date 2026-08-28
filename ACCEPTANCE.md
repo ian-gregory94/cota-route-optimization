@@ -237,6 +237,45 @@ evaluation tier — geometry with frequency re-optimized on the frozen yardstick
 produces an Experiment 2 number.
 
 
+## Methodology decision — Model B is the sole authoritative evaluator
+
+Recorded 2026-08-28. Governing rule: **Model A may tell us where to look; Model
+B decides whether what we found is real.**
+
+Model A misprices waiting because it treats a route's patterns independently: a
+rider who could board any of several patterns serving the same movement is
+charged one pattern's headway. Model B prices waiting at the **leg** level, on
+the combined frequency of the patterns that qualify — those serving the boarding
+stop, the alighting stop, and in that order.
+
+**Model A is demoted to screening and diagnostic status.** It remains admissible
+for RAPTOR and path-set integrity checks, candidate triage, historical
+comparison against the preserved control, and debugging. **No Experiment 2
+conclusion rests on a Model A score.** Every candidate, plan, treatment and
+frontier used inferentially is evaluated under the frozen Model B evaluator.
+
+**Candidate generation is non-authoritative triage, structurally.** The screen
+cannot represent leg-level pricing: it prices out of RAPTOR's labels, where
+waiting is fixed per pattern at boarding, before the alighting stop is known.
+Forcing a Model B flag through it would produce Model A numbers under a Model B
+label. D16 therefore *brackets* the unavailable screen between Model A at one
+end and route-level combined-frequency pricing — a strict lower bound on any
+Model B path cost — at the other, and candidates promoted by **either** endpoint
+are conservatively retained. See D16 and its amendment for the evidence; it is
+cross-referenced here rather than repeated.
+
+**Frozen artifacts, written before Experiment 2 optimization began:**
+
+| artifact | what it fixes |
+|---|---|
+| `outputs/exp1_baseline_modelB.json` | the certified Model B Experiment 1 frontier, per-λ, with adequacy, vehicle-hours, served/unserved and a `certified` flag. Not replaced during Experiment 2. |
+| `outputs/exp2_candidate_set.json` | the shared candidate universe both treatments optimize over, with provenance for every member |
+
+The frozen baseline carries its own quoting rule (λ ≥ 2 only, per gate 4 and
+D15) and its own identification rule (aggregate only, per gate 7 and D17). Both
+travel with the file so a reader cannot pick up the frontier without them.
+
+
 ## Model versions
 
 Two complete model versions, both preserved. Later results never overwrite
