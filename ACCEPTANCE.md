@@ -473,6 +473,14 @@ same effort); pricing was the only difference and it is now gone.
 * the geometry screen and its D16 bracket, which are Model A by design and
   labelled so
 
+Four further scripts share the omission — `run_ablation.py`,
+`fairness_checks.py`, `frontier_extend.py`, `run_exp2.py` — and every one of
+them predates the Model B correction, so Model A was what they were built to
+use. Their outputs were checked against DISCOVERIES, ACCEPTANCE and HANDOFF:
+**none is cited in any finding.** They now log their pricing like everything
+else, so the next run of any of them states which model it used rather than
+leaving it to be reconstructed.
+
 **What makes it not recur.** `build_setup` decides the pricing once and logs it
 as `explicit` or `CONFIG DEFAULT — caller did not specify`, and records both
 the value and its source in `checks`. `run_exp2_eval.py` asserts the setup came
