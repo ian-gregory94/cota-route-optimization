@@ -44,7 +44,20 @@ JOBS=(
   "seedcheck-A@@python scripts/seed_check.py@@outputs/seedcheck.log@@0"
   "seedcheck-B@@python scripts/seed_check.py --common-lines same_route@@outputs/seedcheck_modelB.log@@0"
   "exp2-eval-B@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB.log@@0"
-  "exp2-ladder@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --ladder-from exp2_eval_screenorder.csv --ladder 1,2,4@@outputs/exp2_ladder_measured.log@@0"
+  "exp2-frontier@@python scripts/exp2_treatments.py --lambdas 1,2,4@@outputs/exp2_treatments_full.log@@0"
+  "exp2-recheck@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_recheck.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_recheck.log@@0"
+  "exp2b-stageA@@python scripts/exp2b_subsets.py --stage A@@outputs/exp2b_stageA.log@@0"
+  # exp2-ladder retired 2026-08-29, not abandoned. Its deliverable is the
+  # measured-order ladder, and all four rungs (0/1/2/4 edits, tag "m") are
+  # banked in outputs/exp2_eval.jsonl; outputs/exp2_ladder_measured.csv is
+  # built from those cells. Everything the job had left to do was re-deriving
+  # the twelve single-candidate evaluations under a second cell tag ("s"),
+  # which are the same computation on the same network at the same effort as
+  # the untagged cells already banked -- about 90 minutes of duplication on a
+  # two-core box that the frontier needs. The tagged cells are NOT copied from
+  # the untagged ones: a duplicate result is left uncomputed rather than
+  # forged.
+  # "exp2-ladder@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --ladder-from exp2_eval_screenorder.csv --ladder 1,2,4@@outputs/exp2_ladder_measured.log@@0"
 )
 
 alive()  { pgrep -fx "$1" >/dev/null 2>&1; }

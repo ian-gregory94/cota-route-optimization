@@ -292,15 +292,98 @@ combined frequency of every same-route pattern that serves the boarding stop,
 the alighting stop, and in that order. Model A is the special case where one
 pattern qualifies, so B is a strict generalisation.
 
-The Experiment 1 headline is not final until Model B completes. Until then the
-result is described as: *the pre-correction model finds roughly 6-7% lower
-unserved demand from frequency redistribution, but a newly identified
-same-route waiting-cost bias systematically undervalues high-frequency trunk
-service; the corrected frontier is being rerun.*
+**Model B completed 2026-08-27; the Experiment 1 headline is final.** The
+condition this section was waiting on has been met, so the interim wording is
+retired. It is kept here because retiring it is a status change and not a
+revision of a gate:
+
+> *Retired 2026-08-29, condition satisfied.* "The Experiment 1 headline is not
+> final until Model B completes. Until then the result is described as: the
+> pre-correction model finds roughly 6-7% lower unserved demand from frequency
+> redistribution, but a newly identified same-route waiting-cost bias
+> systematically undervalues high-frequency trunk service; the corrected
+> frontier is being rerun."
+
+The final Model B headline, three seeds at λ=2 sharing one 243,257-path
+candidate set, at full effort (400,000 iterations / 20 restarts):
+
+| quantity | mean | sd |
+|---|---|---|
+| unserved demand | **−6.65%** | 0.06 |
+| trips served | **+3.30%** | 0.03 |
+| generalized cost | +0.88% | 0.04 |
+| cost per trip actually served | **−2.34%** | 0.01 |
+
+at 2,516.5 of 2,517.2 revenue vehicle-hours and **197.0 against 197.0 peak
+vehicles** — no additional buses (D18). Certified for λ≥2 (gate 4); λ≤1 remains
+uncertified and is quoted only as an uncertified corner. The aggregate is what
+is claimed; no individual route headway is identified (gate 7, D17), and that
+restriction travels with every quotation of these numbers.
 
 Cross-route common lines (0.79% of generalized cost) stays a documented
 limitation and follow-on task, and is promoted to a required correction only if
 a later diagnostic shows it could reorder the frontier.
+
+## Experiment 2B gates, committed 2026-08-29 before the joint search ran
+
+Experiment 2B asks a question the single-candidate evidence cannot answer:
+**what is the best SET of geometry edits**, given D20's finding that a set's
+effect is not the sum of its members'. These gates are fixed now, before any
+subset has been solved.
+
+**Gate 2B-1 — the search space is enumerated, not sampled.** The frozen
+candidate set admits 240 structurally feasible subsets (including the empty
+set), maximum cardinality 6, after removing pairs of splices that share a route
+— which `geometry.apply_edits` rejects outright, since a splice removes both of
+its routes from the live set. 240 is small enough to enumerate completely, so
+Stage A evaluates **every** feasible subset. No subset is skipped for looking
+unpromising, and in particular no subset is skipped because a member scores
+badly alone. A run that evaluates fewer than 240 subsets fails this gate and is
+reported as partial, naming which were not run.
+
+**Gate 2B-2 — no set is ranked by anything but its own measured score.** Every
+subset is solved with frequency re-optimized inside the same pinned envelope and
+scored by the frozen Model B evaluator, exactly as the singles were. Screen
+scores, single-candidate scores and sums of single-candidate scores may appear
+in the analysis as comparisons; none may order the search or select a winner.
+This is D19 and D20 stated as a procedure.
+
+**Gate 2B-3 — cardinality winners are reported non-nested.** The best set of
+size k is reported for each k, and it is *not* required to contain the best set
+of size k−1. If it does, that is a finding about this network and is stated as
+one; if the search is arranged so that it must, the gate fails.
+
+**Gate 2B-4 — a headline set must clear the floor measured at its own effort.**
+An improvement is reportable only if it exceeds 3σ of the zero-edit replicate
+spread at the effort it was measured at. Stage A's floor is the one already
+measured at 60,000/2/32 (0.288 points of unserved at λ=2). A headline claim must
+additionally clear the floor at the effort it is certified at, which is measured
+in the same run rather than carried over.
+
+**Gate 2B-5 — only the headline is certified.** Stage C runs full effort and
+three seeds on the single best set and on the incumbent it must beat
+(`splice|033|034|WESHIGW`, the best single), and on nothing else. Every other
+number in Experiment 2B is explicitly a Stage A or Stage B number and is
+labelled with its effort. Certifying the whole frontier is not affordable and
+pretending otherwise is the failure mode this gate exists to prevent.
+
+**Gate 2B-6 — interaction is measured, not inferred.** For every set reported,
+the difference between its measured effect and the sum of its members' measured
+single effects is computed and published as the interaction term. A set is
+called synergistic, substituting or cannibalizing on the sign and size of that
+term against the noise floor, and on nothing else.
+
+**Gate 2B-7 — the incumbent may win.** The experiment's null result — that no
+multi-edit set beats the best single — is a permitted and publishable outcome,
+and D20 makes it the prior. A 2B write-up that cannot state what it would have
+taken for the incumbent to win has failed this gate.
+
+**Eligibility, frozen with these gates.** All 12 candidates are eligible,
+including the two that are harmful alone. Nothing is excluded on performance.
+The only exclusions are structural (gate 2B-1) and are properties of the edit
+algebra rather than of any measurement. Recorded in
+`outputs/exp2_candidate_classes.json`.
+
 
 ## Standing rules
 

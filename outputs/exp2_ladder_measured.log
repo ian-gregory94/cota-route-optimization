@@ -302,3 +302,66 @@
 2026-08-27 23:06:06,568 path set: 27698 paths over 18676/20000 OD pairs (93.6% of flow served), 138932 legs
 2026-08-27 23:06:06,614 period pm_peak : 27698 paths, 20000 OD pairs
 2026-08-27 23:06:06,625 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:09:14,219 experiment exp2_geometry_eval_20260828T150914Z
+2026-08-28 15:09:14,678 result store: 25 cells already solved
+2026-08-28 15:09:16,315 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 1.6s)
+2026-08-28 15:09:16,509 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-28 15:09:16,510 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-28 15:09:16,512 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-28 15:09:16,536 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-28 15:09:18,685 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 2.1s)
+2026-08-28 15:09:18,686 waiting model: same_route
+2026-08-28 15:09:18,892 period early   : 33571 paths, 20000 OD pairs
+2026-08-28 15:09:18,900 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-28 15:09:18,907 period midday  : 34003 paths, 20000 OD pairs
+2026-08-28 15:09:18,916 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-28 15:09:18,923 period evening : 34989 paths, 20000 OD pairs
+2026-08-28 15:09:18,930 period owl     : 34494 paths, 20000 OD pairs
+2026-08-28 15:09:18,930 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-28 15:09:19,004 envelope pinned: 2517.2 revenue veh-hours, peak {'early': 85.3, 'am_peak': 162.0, 'midday': 159.2, 'pm_peak': 176.5, 'evening': 140.2, 'owl': 35.6}
+2026-08-28 15:09:19,052 forced into the shortlist: splice|011|034|WESHIGW
+2026-08-28 15:09:19,053 forced into the shortlist: splice|002|034|WESHIGW
+2026-08-28 15:09:19,053 forced into the shortlist: splice|005|006|NMURBEAN
+2026-08-28 15:09:19,053 forced into the shortlist: splice|002|011|HIGFITN
+2026-08-28 15:09:19,053 shortlist (12, primary=True): ['splice|002|033|WESHIGW', 'splice|033|034|WESHIGW', 'splice|005|021|NMURBEAN', 'splice|011|033|WESHIGW', 'splice|007|101|EMO4THW', 'splice|006|021|NMURBEAN', 'splice|001|021|PICBETS', 'splice|008|035|BOASHAN', 'splice|011|034|WESHIGW', 'splice|002|034|WESHIGW', 'splice|005|006|NMURBEAN', 'splice|002|011|HIGFITN']
+2026-08-28 15:10:18,808 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-28 15:10:18,816 ladder ordered by MEASURED unserved_vs_noedit_pct_lam2.0, best first: ['splice|033|034|WESHIGW', 'splice|011|034|WESHIGW', 'splice|005|006|NMURBEAN', 'splice|011|033|WESHIGW', 'splice|001|021|PICBETS', 'splice|008|035|BOASHAN']
+2026-08-28 15:10:18,816 0 edits                                resumed from checkpoint
+2026-08-28 15:10:18,816 1 edits                                resumed from checkpoint
+2026-08-28 15:10:18,816 2 edits                                resumed from checkpoint
+2026-08-28 15:10:18,816 4 edits                                resumed from checkpoint
+2026-08-28 15:10:18,816 single:splice|002|033|WESHIGW          resumed from checkpoint
+2026-08-28 15:10:18,816 single:splice|033|034|WESHIGW          resumed from checkpoint
+2026-08-28 15:10:18,816 single:splice|005|021|NMURBEAN         resumed from checkpoint
+2026-08-28 15:10:19,216 footpaths: 15573 links (9 from transfers.txt)
+2026-08-28 15:10:19,225 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-28 15:10:19,340 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-28 15:10:19,349 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-28 15:10:19,407 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:11:11,022 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:11:11,169 path set: 23852 paths over 17313/20000 OD pairs (86.3% of flow served), 116721 legs
+2026-08-28 15:11:11,213 period early   : 23852 paths, 20000 OD pairs
+2026-08-28 15:11:11,225 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:12:10,554 rejected 103 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:12:10,742 path set: 28453 paths over 19281/20000 OD pairs (96.2% of flow served), 140940 legs
+2026-08-28 15:12:10,808 period am_peak : 28453 paths, 20000 OD pairs
+2026-08-28 15:12:10,820 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:13:03,566 rejected 74 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:13:03,736 path set: 23679 paths over 17388/20000 OD pairs (86.7% of flow served), 117163 legs
+2026-08-28 15:13:03,782 period midday  : 23679 paths, 20000 OD pairs
+2026-08-28 15:13:03,794 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:14:01,874 rejected 127 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:14:02,053 path set: 27698 paths over 18676/20000 OD pairs (93.6% of flow served), 138932 legs
+2026-08-28 15:14:02,103 period pm_peak : 27698 paths, 20000 OD pairs
+2026-08-28 15:14:02,114 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:14:58,610 rejected 103 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:14:58,737 path set: 23638 paths over 17385/20000 OD pairs (86.6% of flow served), 116778 legs
+2026-08-28 15:14:58,781 period evening : 23638 paths, 20000 OD pairs
+2026-08-28 15:14:58,793 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-28 15:15:49,913 rejected 130 malformed candidate paths that failed the re-pricing check
+2026-08-28 15:15:50,039 path set: 22326 paths over 17005/20000 OD pairs (85.1% of flow served), 109676 legs
+2026-08-28 15:15:50,081 period owl     : 22326 paths, 20000 OD pairs
+2026-08-28 15:15:50,081 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-28 15:15:50,113   single:splice|011|033|WESHIGW incumbent rescaled x1.0001 to fit the envelope (2517.4 -> 2517.2 veh-hours)
+2026-08-28 15:15:50,125 incumbent snapped to ladder, max drift 0.0218 min
+2026-08-28 15:15:50,133 incumbent plan is infeasible under this budget

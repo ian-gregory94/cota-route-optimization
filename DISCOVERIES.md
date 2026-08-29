@@ -39,14 +39,36 @@ proxy implies.
 −6.95% at λ=16, while cost climbs +0.49 → +1.11%. Past λ=4 the optimizer buys
 nothing and pays for it.
 
-**Confidence.** Moderate, pending the converged-path-set rerun.
+**Confidence.** High. The converged-path-set rerun this was pending has since
+run on both models, and on Model B it is now the certified gate-4 frontier.
 
 **Interpretation.** There is a ceiling near 7% on what redistributing frequency
 inside this geometry and this budget can reach.
 
+**Confirmed on the converged Model B frontier, 2026-08-27** (gate 4
+certification, `outputs/certify_modelB.log`), and confirmed *better* than the
+original evidence deserved:
+
+| λ | gen. cost | unserved | certified |
+|---|---|---|---|
+| 2 | +0.842% | −6.602% | yes |
+| 4 | +1.236% | −7.125% | yes |
+| 8 | +1.460% | −7.247% | yes |
+| 16 | +1.485% | −7.276% | yes |
+
+Past λ=4 the last 0.151 points of unserved demand cost 0.249 points of
+generalized cost — the plateau in the original entry, at the same place. The
+improvement is in its shape: the pre-convergence sweep was **non-monotone**
+(−6.95%, −6.88%, −6.95% at λ = 4, 8, 16), so what it actually showed was a
+plateau indistinguishable from search noise. The converged sweep is monotone in
+both columns across all four λ, which means the flattening is a property of the
+problem and not of the search. The ceiling sits at **−7.28%**, marginally above
+the ~7% originally claimed.
+
 **Falsified by.** The converged path set moving the aggressive end of the
-frontier enough to un-flatten it — plausible, since that end is exactly where
-path-set inadequacy was worst (17.6% of flow improvable).
+frontier enough to un-flatten it — the check this entry was waiting on. It did
+not: path-set inadequacy at the aggressive end fell from 17.6% of flow
+improvable to 0.52–0.56%, and the frontier flattened rather than opening up.
 
 ---
 
@@ -466,8 +488,16 @@ stated:
   headway from a specific plan would be acting on something the model does not
   actually distinguish from many alternatives.
 
-**Which is it — a flat optimum or an under-converged search?** Not yet known,
-and the two have the same practical consequence. Gate 7 already requires three
+**Which is it — a flat optimum or an under-converged search?** **Resolved by
+D17: a flat optimum.** Gate 7's replicates share one candidate set and run at
+the top of the effort ladder, so neither candidate-set spread nor under-search
+can explain them — and the objective barely moves across seeds (Model B sd
+0.064 points on a −6.65% effect, 104σ) while 19.1% of route-periods do. A search
+that had not converged would scatter the *objective*; this one scatters only the
+plan. The paragraph below is kept as written because it is the reasoning that
+set up the test, and because the test's second job — distinguishing the two —
+is the reason gate 7 reports plan disagreement at all. The two have the same
+practical consequence either way. Gate 7 already requires three
 seeds at λ=2 on one candidate set; that check now has a second job, because if
 independent seeds also disagree on 40 route-periods the flatness is intrinsic,
 and if they agree closely then the candidate set is doing more work than the
@@ -857,13 +887,48 @@ is not the best set of N. Any recommendation is a *set*, evaluated as a set,
 and this evidence supports exactly one: through-route 033 and 034 at WESHIGW,
 alone. Adding the next-best measured candidate to it costs half the benefit.
 
+**Provenance, 2026-08-29.** The four measured-order rungs are banked in
+`outputs/exp2_eval.jsonl` under `eval|<n> edits|m|60000/2/32`, and
+`outputs/exp2_ladder_measured.csv` puts them beside the screen-order rungs so
+the two ladders can be read against each other in one place:
+
+| rung | measured order, unserved vs 0 | screen order, unserved vs 0 |
+|---|---|---|
+| 1 | **−0.936%** | +0.978% |
+| 2 | −0.485% | +1.720% |
+| 4 | +0.473% | +4.246% |
+
+Ordering the ladder by measured performance rather than screen rank moves every
+rung by 1.9 to 3.8 points in the right direction and still cannot make
+composition pay. The screen made the ladder worse (D19); it is not what made it
+fail.
+
 **What would falsify it.** A joint optimization over subsets — rather than a
 greedy ladder over singles — finding a two- or four-edit set that beats the
 single would show the non-additivity is a property of greedy composition rather
-than of the budget. That search is the obvious follow-on and has not been run.
+than of the budget. That search is Experiment 2B, and it is the reason 2B
+searches sets directly instead of extending this ladder: a greedy ladder can
+only ever visit nested sets, and nothing here licenses the assumption that the
+best pair contains the best single.
 
 
 ### D21 — Path-level representation buys the same coverage at a quarter of the cost
+
+**What this is, corrected 2026-08-29.** D21 is a **Model B revalidation and
+quantification of D3** — the decision-representation question — and *not* a
+result of Experiment 2. Experiment 2 is the route-geometry experiment; its
+findings are D16, D19, D20 and its conclusion is recorded separately. The two
+were run by the same script (`exp2_treatments.py`) on a shared candidate set,
+and the shared filename is the whole reason the label slipped. The numbers,
+provenance and confidence below are unchanged by this correction; only the
+question they answer is restated.
+
+**Scope.** Everything below is measured on the **unedited (control) network**.
+Whether the representation advantage survives on edited geometry is a separate
+question, measured by the same script across all twelve candidate networks; that
+run is in flight and its cells land in `outputs/exp2_treatments.jsonl` under
+`t|<candidate>|<treatment>|lam<λ>`. Nothing here should be quoted as holding on
+edited geometry until those cells exist.
 
 **Evidence.** Both treatments optimize frequencies on the unedited network under
 the same pinned envelope, and **both plans are then re-scored by the same frozen
@@ -890,8 +955,10 @@ is far larger than anything seed noise produced. Low on magnitudes: this ran at
 60,000 iterations / 2 restarts / width 32, well below L4, so it ranks the
 treatments rather than sizing the gap.
 
-**Interpretation. The answer to Experiment 2's question is yes**, and the
-mechanism is visible in the last column rather than the first.
+**Interpretation. The answer to the representation question is yes** — the
+path-level representation does uncover materially better plans than the
+route-level one under a common evaluator — **and the mechanism is visible in the
+last column rather than the first.**
 
 Cost per trip actually served is the column that separates them: path-level
 **−2.088%**, route-level **+0.084%**. The route-level plan makes the average

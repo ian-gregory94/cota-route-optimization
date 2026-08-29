@@ -288,10 +288,14 @@ route-periods**, by a mean of **8 minutes of headway**, one by forty.
   from a specific plan means acting on something the model does not distinguish
   from many alternatives.
 
-Flat optimum or under-converged search is not yet resolved and has the same
-practical consequence. Gate 7's seed replicates now report route-period
-disagreement across seeds as well as the objective's standard deviation, and
-that is the number to read before quoting any individual route.
+Flat optimum or under-converged search is **resolved: a flat optimum** (D17).
+Gate 7's replicates share one candidate set and run at full effort, so the
+19.1% mean route-period disagreement (Model B; 26.0% Model A) cannot be a
+candidate-set effect or under-search — and the objective's own spread across
+those same seeds is 0.064 points on a −6.65% effect. The search scatters the
+plan and not the score, which is what a flat optimum means. The practical
+consequence is unchanged: read the route-period disagreement number before
+quoting any individual route, and quote none.
 
 ---
 

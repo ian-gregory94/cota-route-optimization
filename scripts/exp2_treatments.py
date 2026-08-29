@@ -50,7 +50,7 @@ import numpy as np
 import pandas as pd
 
 from cota_opt import geo
-from cota_opt.cache import ResultStore
+from cota_opt.cache import ResultStore, cached, digest
 from cota_opt.configs import load_constraints, load_cost_weights, service_periods
 from cota_opt.cost import CostWeights
 from cota_opt.exp1 import build_setup as route_level_setup
@@ -67,6 +67,47 @@ SEP = "::"
 
 def key_str(k) -> str:
     return f"{k[0]}{SEP}{k[1]}"
+
+
+class DiskPathsets:
+    """A ``pathset_cache`` for :func:`cota_opt.exp2.build_setup` that survives
+    process death.
+
+    Every edited network is outside the ordinary cache key scheme, so each
+    candidate paid ~7 minutes rebuilding six periods of path sets — and paid it
+    again from scratch every time the run was restarted. That is why a run that
+    died twice had banked nothing but the control cells.
+
+    The key is a content hash of the RAPTOR network, the zone system, the OD
+    table and the enumeration parameters: exactly the inputs
+    :func:`build_pathset` reads. It is deliberately *not* the candidate's name.
+    Keying a path-set cache by name is the bug that silently reused the wrong
+    path sets once already; a content key cannot make that mistake, because a
+    network that differs at all produces a different key.
+    """
+
+    def __init__(self, netsig: str, params: dict):
+        self.netsig = netsig
+        self.params = params
+
+    def _key(self, per: str) -> tuple[str, dict]:
+        return "edited-pathset", {"net": self.netsig, "period": per,
+                                  **self.params}
+
+    def __contains__(self, per: str) -> bool:
+        from cota_opt.cache import cache_dir, key_of
+        name, params = self._key(per)
+        return (cache_dir() / f"{key_of(name, params)}.pkl").exists()
+
+    def __getitem__(self, per: str):
+        name, params = self._key(per)
+        def _absent():
+            raise KeyError(per)          # __contains__ said it was there
+        return cached(name, params, _absent)
+
+    def __setitem__(self, per: str, ps) -> None:
+        name, params = self._key(per)
+        cached(name, params, lambda: ps)
 
 
 class _Baseline:
@@ -172,7 +213,27 @@ def main() -> int:
         jobs += [(k, [by_key[k]]) for k in members if k in by_key]
 
     rows = []
+    effort = f"{args.iterations}/{args.restarts}/{args.width}"
+
+    def cells_for(label: str) -> list[str]:
+        return [f"t|{label}|{t}|lam{m}|{effort}"
+                for t in ("route_level", "path_level") for m in lams]
+
     for label, edits in jobs:
+        # A finished network must not be rebuilt. Each edited network costs
+        # ~7 minutes of uncached path enumeration before a single cell is
+        # solved, so a run that is restarted (this one has been, twice) spent
+        # all its time re-deriving results it had already banked. Check the
+        # store first and skip the build outright.
+        banked = cells_for(label)
+        if all(store.has(c) for c in banked):
+            for c in banked:
+                rows.append({k: v for k, v in store.get(c).items()
+                             if k not in ("cell", "plan")})
+            log.info("%-26s all %d cells already banked, skipping build",
+                     label, len(banked))
+            continue
+
         net = H.baseline.network
         ts = H.baseline.tstats
         if edits:
@@ -201,10 +262,25 @@ def main() -> int:
             lambda x: period_of_seconds(x, periods))
         classes = classify_routes(tp.dropna(subset=["period"]), H.baseline.routes)
 
+        # path sets for an edited network are outside the ordinary cache key
+        # scheme, so key them on the content of what they are built from
+        psc = DiskPathsets(
+            digest((rn, zs, H.od, ts[["route_id", "direction_id",
+                                      "first_dep_sec", "runtime_min"]])),
+            {"seed": args.seed, "n_random_scenarios": 0,
+             "common_lines": "same_route", "with_crowding": False,
+             "lock_classes": ["peak_express"], "shares": dict(
+                 a["demand_proxy"]["period_shares"]),
+             "max_rounds": int(a["path_assignment"]["max_rounds"]),
+             "max_paths_per_od": int(a["path_assignment"]["max_paths_per_od"]),
+             "weights": w.as_dict() if hasattr(w, "as_dict") else repr(w),
+             "waiting": dict(a["waiting"])})
+
         judge = path_level_setup(b_ed, rn, zs, H.od, seed=args.seed,
                                  route_classes=classes, with_crowding=False,
                                  lock_classes=("peak_express",),
                                  constraints=cons, n_random_scenarios=0,
+                                 pathset_cache=psc,
                                  common_lines="same_route")
         rl = route_level_setup(b_ed, constraints=cons, weights=w)
         base_fit = judge.model.evaluate(judge.baseline_plan)
@@ -213,8 +289,7 @@ def main() -> int:
             inc, scale = fit_incumbent(setup, setup.budget.revenue_veh_hours,
                                        f"{label}/{treat}")
             for m in lams:
-                cell = (f"t|{label}|{treat}|lam{m}|"
-                        f"{args.iterations}/{args.restarts}/{args.width}")
+                cell = f"t|{label}|{treat}|lam{m}|{effort}"
                 if store.has(cell):
                     rows.append({k: v for k, v in store.get(cell).items()
                                  if k not in ("cell", "plan")})
