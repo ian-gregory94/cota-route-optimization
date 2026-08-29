@@ -391,7 +391,9 @@ def main() -> int:
             plans.mkdir(parents=True, exist_ok=True)
             pd.DataFrame([{"route_id": k[0], "period": k[1], "headway_min": v}
                           for k, v in r.plan.headways.items()]).to_csv(
-                plans / f"{safe_name(label)}_lam{m}.csv", index=False)
+                plans / f"{safe_name(label)}_lam{m}"
+                f"_{args.iterations}-{args.restarts}-{args.width}.csv",
+                index=False)
             log.info("  %-34s lam=%-4s %4.0fs gc=%.6e unserved=%.0f",
                      label, m, rec[f"seconds_lam{m}"], rec[f"gc_lam{m}"],
                      rec[f"unserved_lam{m}"])
