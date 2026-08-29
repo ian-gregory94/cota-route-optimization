@@ -191,28 +191,43 @@
     ]
   },
   "recheck_D19": {
-    "status": "running",
-    "have_baseline": true,
-    "n_replicates": 0,
-    "n_candidates": 2,
-    "note": "needs the zero-edit baseline plus at least two replicates at this effort before a verdict is possible; the cheap floor may not be carried over"
+    "status": "ok",
+    "effort": "400000/20/0",
+    "n_replicates": 3,
+    "full_effort_floor_pts": 0.1717,
+    "rank_effort_floor_pts": 0.2879416869111997,
+    "candidates": [
+      {
+        "candidate": "splice|002|033|WESHIGW",
+        "unserved_vs_noedit_pct": 1.8779,
+        "clears_full_effort_floor": true,
+        "still_harmful": true
+      },
+      {
+        "candidate": "splice|007|101|EMO4THW",
+        "unserved_vs_noedit_pct": 0.8693,
+        "clears_full_effort_floor": true,
+        "still_harmful": true
+      }
+    ],
+    "verdict": "D19 stands: both remain harmful at full effort"
   },
   "representation_frontier": {
     "status": "running",
-    "n_networks_complete": 9,
+    "n_networks_complete": 12,
     "n_networks_expected": 13,
     "spread_at_lambda2": {
       "route_level": {
         "min": -7.4539,
         "max": -1.0937,
         "range_pts": 6.3602,
-        "n_networks": 9
+        "n_networks": 13
       },
       "path_level": {
-        "min": -6.541,
+        "min": -6.7015,
         "max": -5.1102,
-        "range_pts": 1.4308,
-        "n_networks": 9
+        "range_pts": 1.5913,
+        "n_networks": 12
       }
     },
     "table": {
@@ -305,6 +320,46 @@
         "('gc_vs_base_pct', 'route_level')": 1.2949,
         "('unserved_vs_base_pct', 'path_level')": -6.3652,
         "('unserved_vs_base_pct', 'route_level')": -4.6047
+      },
+      "splice|008|035|BOASHAN": {
+        "('claim_gap_unserved_pct', 'path_level')": 0.0,
+        "('claim_gap_unserved_pct', 'route_level')": -70.6813,
+        "('gc_per_trip_vs_base_pct', 'path_level')": -2.1136,
+        "('gc_per_trip_vs_base_pct', 'route_level')": -0.3282,
+        "('gc_vs_base_pct', 'path_level')": 0.7817,
+        "('gc_vs_base_pct', 'route_level')": 1.9993,
+        "('unserved_vs_base_pct', 'path_level')": -5.8072,
+        "('unserved_vs_base_pct', 'route_level')": -4.5847
+      },
+      "splice|011|033|WESHIGW": {
+        "('claim_gap_unserved_pct', 'path_level')": 0.0,
+        "('claim_gap_unserved_pct', 'route_level')": -70.3184,
+        "('gc_per_trip_vs_base_pct', 'path_level')": -2.2591,
+        "('gc_per_trip_vs_base_pct', 'route_level')": -0.9856,
+        "('gc_vs_base_pct', 'path_level')": 0.9241,
+        "('gc_vs_base_pct', 'route_level')": 1.5068,
+        "('unserved_vs_base_pct', 'path_level')": -6.3823,
+        "('unserved_vs_base_pct', 'route_level')": -4.9331
+      },
+      "splice|011|034|WESHIGW": {
+        "('claim_gap_unserved_pct', 'path_level')": 0.0,
+        "('claim_gap_unserved_pct', 'route_level')": -69.6141,
+        "('gc_per_trip_vs_base_pct', 'path_level')": -2.3506,
+        "('gc_per_trip_vs_base_pct', 'route_level')": -0.0878,
+        "('gc_vs_base_pct', 'path_level')": 0.9881,
+        "('gc_vs_base_pct', 'route_level')": 3.377,
+        "('unserved_vs_base_pct', 'path_level')": -6.7015,
+        "('unserved_vs_base_pct', 'route_level')": -6.7971
+      },
+      "splice|033|034|WESHIGW": {
+        "('claim_gap_unserved_pct', 'path_level')": null,
+        "('claim_gap_unserved_pct', 'route_level')": -70.1863,
+        "('gc_per_trip_vs_base_pct', 'path_level')": null,
+        "('gc_per_trip_vs_base_pct', 'route_level')": -0.7048,
+        "('gc_vs_base_pct', 'path_level')": null,
+        "('gc_vs_base_pct', 'route_level')": 0.4283,
+        "('unserved_vs_base_pct', 'path_level')": null,
+        "('unserved_vs_base_pct', 'route_level')": -2.2564
       }
     }
   },
@@ -314,7 +369,6 @@
     "n_subsets_expected": 240
   },
   "incomplete": [
-    "recheck_D19",
     "representation_frontier",
     "subset_search_2B"
   ]

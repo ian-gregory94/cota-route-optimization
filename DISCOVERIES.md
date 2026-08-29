@@ -839,6 +839,32 @@ and finding they clear the floor in the other direction would mean the low-effor
 solve, not the screen, produced the inversion. That is the check to run before
 this goes in a write-up.
 
+**Falsification test run 2026-08-29; D19 stands.** Both candidates were re-solved
+at gate 7's own effort — 400,000 iterations, 20 restarts — alongside three
+zero-edit replicates *in the same run*, so the floor is the one measured at that
+effort rather than the cheap one carried over. That distinction is the point: at
+60,000/2/32 the floor is 0.288 points, at full effort it is **0.172**, and using
+the wrong one is the effort-mismatch confound this project has already been
+burned by once.
+
+| candidate | screen rank | at 60,000/2/32 | at 400,000/20 | × the full-effort floor |
+|---|---|---|---|---|
+| `splice\|002\|033\|WESHIGW` | **1st of 60** | +0.978% | **+1.878%** | 10.9 |
+| `splice\|007\|101\|EMO4THW` | 5th of 60 | +1.251% | **+0.869%** | 5.1 |
+
+Neither crosses zero, let alone the floor in the other direction. The harm on
+the screen's top pick is *larger* at full effort, not smaller — more search
+found more of the damage rather than recovering from it, which is what should
+happen if the edit genuinely drops demand and is not merely under-optimised.
+The second moves the other way and stays five floors clear.
+
+So the inversion is the screen's, and it is now established at the effort the
+rest of the project reports at. D19 may be quoted.
+
+**What would falsify it now.** Nothing available at this effort. A third
+candidate set, or a screen that re-optimizes frequency, would be needed — and a
+screen that re-optimizes frequency is not a screen.
+
 
 ### D20 — Geometry edits do not compose: four individually good splices are jointly worse than none
 

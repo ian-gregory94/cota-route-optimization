@@ -108,7 +108,9 @@ def recheck(floor: float) -> dict:
     for k, v in sorted(cands.items()):
         eff = (v["unserved_lam2.0"] / b - 1) * 100
         out.append({
-            "candidate": k.split("single:")[1].split("|60")[0].rstrip("|"),
+            # cells are eval|single:<key>|<tag>|<effort>; the key itself
+            # contains pipes, so split from the right rather than the left
+            "candidate": k.split("single:")[1].rsplit("|", 2)[0],
             "unserved_vs_noedit_pct": round(eff, 4),
             "clears_full_effort_floor": bool(abs(eff) >= full_floor),
             "still_harmful": bool(eff >= full_floor)})

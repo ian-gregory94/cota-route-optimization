@@ -17960,3 +17960,64 @@ sleep 15; tail -2 outputs/supervisor.log; ps -eo pid,args |
       echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
      
 2026-08-29T19:18:41Z pid=5452 rss=363MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:19:03Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:19:03Z pid=1622 rss=539MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:19:03Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:19:03Z pid=5452 rss=371MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:19:04Z pid=5711 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:19:59Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:19:59Z pid=1622 rss=539MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:19:59Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:19:59Z pid=5452 rss=385MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:20:54Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:20:54Z pid=1622 rss=539MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:20:54Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:20:54Z pid=5452 rss=407MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:21:49Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:21:49Z pid=1622 rss=539MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:21:49Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:21:49Z pid=5452 rss=416MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:22:50Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:22:50Z pid=1622 rss=541MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:22:50Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:22:50Z pid=6090 rss=313MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:23:45Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:23:45Z pid=1622 rss=541MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:23:45Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:23:45Z pid=6090 rss=330MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
