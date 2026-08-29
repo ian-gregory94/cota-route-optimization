@@ -58,6 +58,25 @@ log = logging.getLogger("exp2eval")
 OUT = ROOT / "outputs"
 
 
+WINDOWS_FORBIDDEN = '<>:"/\\|?*'
+
+
+def safe_name(label: str) -> str:
+    """Turn a candidate label into a filename every filesystem can hold.
+
+    Candidate keys are pipe-separated (``splice|033|034|WESHIGW``), and a pipe
+    is one of the nine characters Windows forbids in a filename. The plans this
+    writes were therefore uncheckoutable on Windows: `git clone` on that
+    platform reports them permanently deleted, and a careless "commit all" from
+    such a clone would remove them from history. Keys keep their pipes -- they
+    are content, and they live inside JSON and CSV cells where the character is
+    harmless. Only paths are sanitised.
+    """
+    out = "".join("-" if c in WINDOWS_FORBIDDEN else c for c in label)
+    out = "".join(c for c in out if ord(c) >= 32)
+    return out.rstrip(" .") or "unnamed"
+
+
 def wait_for_memory(min_free_mb: int = 1800, tries: int = 40) -> None:
     """Do not start a path-set build that will get the other run OOM-killed.
 
@@ -368,11 +387,11 @@ def main() -> int:
             rec[f"vh_vs_budget_pct_lam{m}"] = (
                 r.fitness.revenue_veh_hours / setup.budget.revenue_veh_hours - 1) * 100
             rec[f"seconds_lam{m}"] = time.time() - t
+            plans = OUT / "exp2_eval_plans"
+            plans.mkdir(parents=True, exist_ok=True)
             pd.DataFrame([{"route_id": k[0], "period": k[1], "headway_min": v}
                           for k, v in r.plan.headways.items()]).to_csv(
-                OUT / "exp2_eval_plans" / f"{label.replace(':', '_')}_lam{m}.csv"
-                if (OUT / "exp2_eval_plans").mkdir(parents=True, exist_ok=True)
-                or True else None, index=False)
+                plans / f"{safe_name(label)}_lam{m}.csv", index=False)
             log.info("  %-34s lam=%-4s %4.0fs gc=%.6e unserved=%.0f",
                      label, m, rec[f"seconds_lam{m}"], rec[f"gc_lam{m}"],
                      rec[f"unserved_lam{m}"])

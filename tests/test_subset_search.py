@@ -264,3 +264,54 @@ def test_lambdas_are_analysed_independently():
 def test_missing_zero_edit_row_does_not_fabricate_a_comparison():
     df = analyse(_frame([("a", ("a",), 9900.0, 1e6)]), floor=0.288)
     assert "unserved_vs_noedit_pct" not in df or df["unserved_vs_noedit_pct"].isna().all()
+
+
+# --------------------------------------------------------------------------
+# filenames every filesystem can hold
+# --------------------------------------------------------------------------
+
+from run_exp2_eval import safe_name, WINDOWS_FORBIDDEN
+
+
+def test_safe_name_removes_every_character_windows_forbids():
+    got = safe_name('a<b>c:d"e/f\\g|h?i*j')
+    assert not any(c in got for c in WINDOWS_FORBIDDEN)
+
+
+def test_safe_name_keeps_a_candidate_key_readable():
+    assert safe_name("single:splice|033|034|WESHIGW") == "single-splice-033-034-WESHIGW"
+
+
+def test_safe_name_strips_trailing_dots_and_spaces():
+    # Windows silently drops these, so two labels could collide into one file
+    assert safe_name("plan. ") == "plan"
+    assert safe_name("...") == "unnamed"
+
+
+def test_safe_name_is_injective_on_the_frozen_candidate_set():
+    """Sanitising must not merge two candidates into one filename."""
+    import json
+    p = Path(__file__).resolve().parents[1] / "outputs" / "exp2_candidate_classes.json"
+    if not p.exists():
+        pytest.skip("classification artifact not built in this checkout")
+    keys = json.loads(p.read_text())["rule"]["eligible_for_2B"]
+    labels = [f"single:{k}" for k in keys]
+    assert len({safe_name(x) for x in labels}) == len(labels)
+
+
+def test_no_tracked_path_is_unusable_on_windows():
+    """A repo that cannot be checked out on Windows shows those files as
+    permanently deleted there, and a "commit all" from such a clone removes
+    them from history. This caught 24 of them."""
+    import subprocess
+    root = Path(__file__).resolve().parents[1]
+    try:
+        out = subprocess.run(["git", "ls-files"], cwd=root, capture_output=True,
+                             text=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        pytest.skip("git not available")
+    if out.returncode != 0:
+        pytest.skip("not a git checkout")
+    bad = [p for p in out.stdout.splitlines()
+           if any(c in Path(p).name for c in WINDOWS_FORBIDDEN)]
+    assert not bad, f"paths unusable on Windows: {bad[:5]}"
