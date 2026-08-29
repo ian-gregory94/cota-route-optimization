@@ -378,6 +378,28 @@ multi-edit set beats the best single — is a permitted and publishable outcome,
 and D20 makes it the prior. A 2B write-up that cannot state what it would have
 taken for the incumbent to win has failed this gate.
 
+**Gate 2B-8 — the sweep must reproduce the ladder it replaces.** Three of the
+240 subsets are the rungs of D20's measured-order ladder, and they were already
+solved, independently, by `run_exp2_eval.py` at the same effort under the same
+evaluator:
+
+| set | members | measured unserved vs no edit | sum of member singles | interaction |
+|---|---|---|---|---|
+| k=1 | 033+034 WESHIGW | −0.9363% | −0.9363% | 0.000 pts |
+| k=2 | + 005+006 NMURBEAN | −0.4853% | −1.6200% | **+1.135 pts** (3.9× floor) |
+| k=4 | + 001+021 PICBETS, 008+035 BOASHAN | +0.4733% | −2.6225% | **+3.096 pts** (10.8× floor) |
+
+Stage A re-derives all three through a different script and a different code
+path. **They must agree to within the 0.288-point noise floor.** If they do not,
+the 2B pipeline is measuring something other than what the ladder measured, and
+the whole sweep is void regardless of how sensible its rankings look — that is
+the failure a 240-row table of plausible numbers would otherwise hide.
+
+The table also settles that the interaction term is measurable at all: at 3.9
+and 10.8 times the floor, it is not a quantity 2B has to strain to see. It
+predicts what Stage A should find, which is the point — a check is only a check
+if its expected value was written down first.
+
 **Eligibility, frozen with these gates.** All 12 candidates are eligible,
 including the two that are harmful alone. Nothing is excluded on performance.
 The only exclusions are structural (gate 2B-1) and are properties of the edit
