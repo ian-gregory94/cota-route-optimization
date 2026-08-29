@@ -1,0 +1,37 @@
+2026-08-29 15:07:20,492 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.7s)
+2026-08-29 15:07:20,573 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-29 15:07:20,574 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-29 15:07:20,575 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-29 15:07:20,590 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 15:07:21,574 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 1.0s)
+2026-08-29 15:07:22,020 committed         11 comparisons, 3 routes, 0 wayside (0%), pooled -157 s/stop
+2026-08-29 15:07:22,398 relaxed-period    15 comparisons, 4 routes, 0 wayside (0%), pooled -117 s/stop
+2026-08-29 15:07:22,760 relaxed-all       15 comparisons, 4 routes, 0 wayside (0%), pooled -117 s/stop
+
+====================================================================================================
+EXPERIMENT 3 FOUNDATION — what the stop-price comparisons are made of
+====================================================================================================
+
+the 11 committed comparisons, by what their extra stops are:
+route_id  n_extra_stops      extra_stops  seconds_per_extra_stop extra_stop_kind                                               closest_pair
+     004              1          NORTER1                  -180.0      co-located SPRING ST TERMINAL BAY 1 -> SPRING ST TERMINAL BAY 2 (9 m)
+     007              1          NORTER3                     0.0      co-located SPRING ST TERMINAL BAY 3 -> SPRING ST TERMINAL BAY 2 (9 m)
+     007              1          NORTER3                  -300.0      co-located SPRING ST TERMINAL BAY 3 -> SPRING ST TERMINAL BAY 2 (9 m)
+     010              2 HIGLONN2+NORTER4                   -97.0      co-located SPRING ST TERMINAL BAY 4 -> SPRING ST TERMINAL BAY 5 (9 m)
+     010              2 HIGLONN2+NORTER4                  -120.0      co-located SPRING ST TERMINAL BAY 4 -> SPRING ST TERMINAL BAY 5 (9 m)
+     010              2 HIGLONN2+NORTER4                   -60.0      co-located SPRING ST TERMINAL BAY 4 -> SPRING ST TERMINAL BAY 5 (9 m)
+     010              2 HIGLONN2+NORTER4                   -53.0      co-located SPRING ST TERMINAL BAY 4 -> SPRING ST TERMINAL BAY 5 (9 m)
+     010              2 HIGLONN2+FROLONS                  -180.0      co-located      N HIGH ST & E LONG ST -> W LONG ST & N HIGH ST (64 m)
+     010              2 HIGLONN2+FROLONS                  -199.5      co-located      N HIGH ST & E LONG ST -> W LONG ST & N HIGH ST (64 m)
+     010              2 HIGLONN2+FROLONS                  -197.5      co-located      N HIGH ST & E LONG ST -> W LONG ST & N HIGH ST (64 m)
+     010              2 HIGLONN2+FROLONS                  -345.0      co-located      N HIGH ST & E LONG ST -> W LONG ST & N HIGH ST (64 m)
+
+by filter setting:
+                n_comparisons  n_routes  n_wayside  share_wayside_pct  pooled_sec_per_stop  pooled_sec_per_stop_wayside_only  median_nearest_other_stop_m
+committed                11.0       3.0        0.0                0.0              -157.05                               NaN                          9.0
+relaxed-period           15.0       4.0        0.0                0.0              -116.70                               NaN                          9.0
+relaxed-all              15.0       4.0        0.0                0.0              -116.70                               NaN                          9.0
+
+Relaxing every threshold -- dropping the period control, cutting the minimum segment to 30 seconds and allowing 40 skipped stops -- still does not produce enough wayside comparisons to price a stop. The scarcity is in the feed, not in the filter. Same-route pattern pairs that differ by stop SET while sharing endpoints are downtown routing variants: which terminal bay, which corner of an intersection. COTA does not run wayside skip-stop service outside the peak-express class, so the schedule contains no natural experiment on the quantity Experiment 3 needs. Experiment 3 must therefore price a stop by ASSUMPTION and report the break-even penalty at which consolidation stops paying, labelled as such -- not estimate one and present it as measured.
+
+artifacts: /home/claude/columbus-transit-opt/outputs/exp3_stopprice_diagnosis.json

@@ -1,0 +1,35 @@
+{
+  "colocated_threshold_m": 80.0,
+  "median_stop_spacing_m": 330.8,
+  "settings": {
+    "committed": {
+      "n_comparisons": 11,
+      "n_routes": 3,
+      "n_wayside": 0,
+      "share_wayside_pct": 0.0,
+      "pooled_sec_per_stop": -157.05,
+      "pooled_sec_per_stop_wayside_only": null,
+      "median_nearest_other_stop_m": 9.0
+    },
+    "relaxed-period": {
+      "n_comparisons": 15,
+      "n_routes": 4,
+      "n_wayside": 0,
+      "share_wayside_pct": 0.0,
+      "pooled_sec_per_stop": -116.7,
+      "pooled_sec_per_stop_wayside_only": null,
+      "median_nearest_other_stop_m": 9.0
+    },
+    "relaxed-all": {
+      "n_comparisons": 15,
+      "n_routes": 4,
+      "n_wayside": 0,
+      "share_wayside_pct": 0.0,
+      "pooled_sec_per_stop": -116.7,
+      "pooled_sec_per_stop_wayside_only": null,
+      "median_nearest_other_stop_m": 9.0
+    }
+  },
+  "filter_is_the_problem": false,
+  "conclusion": "Relaxing every threshold -- dropping the period control, cutting the minimum segment to 30 seconds and allowing 40 skipped stops -- still does not produce enough wayside comparisons to price a stop. The scarcity is in the feed, not in the filter. Same-route pattern pairs that differ by stop SET while sharing endpoints are downtown routing variants: which terminal bay, which corner of an intersection. COTA does not run wayside skip-stop service outside the peak-express class, so the schedule contains no natural experiment on the quantity Experiment 3 needs. Experiment 3 must therefore price a stop by ASSUMPTION and report the break-even penalty at which consolidation stops paying, labelled as such -- not estimate one and present it as measured."
+}
