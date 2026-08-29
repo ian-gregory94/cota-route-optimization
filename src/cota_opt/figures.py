@@ -92,10 +92,11 @@ def render(builder, stem: str, outdir: Path, **kwargs) -> list[Path]:
 
 def _finish(ax, t: Theme, title: str, xlabel: str, ylabel: str,
             subtitle: str | None = None) -> None:
-    ax.set_title(title, loc="left", pad=18 if subtitle else 10)
+    lines = subtitle.count("\n") + 1 if subtitle else 0
+    ax.set_title(title, loc="left", pad=10 + 12 * lines)
     if subtitle:
         ax.text(0, 1.02, subtitle, transform=ax.transAxes, fontsize=9,
-                color=t.text_secondary, va="bottom")
+                color=t.text_secondary, va="bottom", linespacing=1.5)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.grid(axis="both", alpha=0.7)
@@ -340,6 +341,58 @@ def complexity_ladder(t: Theme, n_edits: Sequence[int],
     ax.axhline(0, color=t.accent_neutral, lw=1, ls=":")
     ax.set_xticks(x)
     _finish(ax, t, title, "geometry edits allowed", ylabel, subtitle)
+    return fig
+
+
+def candidate_classes(t: Theme, labels: Sequence[str],
+                      effect: Sequence[float], floor: float,
+                      title: str, xlabel: str,
+                      subtitle: str | None = None):
+    """Every candidate against the floor its classification was decided by.
+
+    The floor is drawn rather than described, because the whole point of the
+    classification is that three of these candidates are inside it. A bar chart
+    without the band invites the reader to rank all twelve, which is exactly
+    what the evidence does not support.
+    """
+    fig, ax = plt.subplots(figsize=(7.4, 5.0))
+    y = np.arange(len(labels))
+    v = np.asarray(effect, float)
+    colors = [t.series[2] if x <= -floor else
+              (t.series[1] if x >= floor else t.accent_neutral) for x in v]
+    ax.barh(y, v, color=colors, height=0.66, zorder=3)
+    ax.axvspan(-floor, floor, color=t.accent_neutral, alpha=0.18, zorder=1)
+    ax.axvline(0, color=t.text_muted, lw=1)
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels, fontsize=8)
+    ax.invert_yaxis()
+    band = (f"shaded band = ±{floor:.3f} pts, the measured noise floor — "
+            f"nothing inside it is distinguishable from search noise")
+    _finish(ax, t, title, xlabel, "",
+            f"{subtitle}\n{band}" if subtitle else band)
+    ax.grid(axis="y", alpha=0)
+    return fig
+
+
+def ladder_orders(t: Theme, n_edits: Sequence[int],
+                  measured: Sequence[float], screened: Sequence[float],
+                  floor: float, title: str, ylabel: str,
+                  subtitle: str | None = None):
+    """Two orderings of the same ladder, so the reader can see that the
+    ordering is not what broke it."""
+    fig, ax = plt.subplots(figsize=(6.8, 4.4))
+    x = np.asarray(n_edits, float)
+    ax.axhspan(-floor, floor, color=t.accent_neutral, alpha=0.18, zorder=1)
+    ax.plot(x, np.asarray(measured, float), "-o", color=t.series[0],
+            markeredgecolor=t.surface, markeredgewidth=1.5, zorder=3,
+            label="composed in measured order (best first)")
+    ax.plot(x, np.asarray(screened, float), "--s", color=t.series[1],
+            markeredgecolor=t.surface, markeredgewidth=1.5, zorder=3,
+            label="composed in screen order")
+    ax.axhline(0, color=t.text_muted, lw=1, ls=":")
+    ax.set_xticks(x)
+    ax.legend(frameon=False, fontsize=8, loc="upper left")
+    _finish(ax, t, title, "geometry edits applied", ylabel, subtitle)
     return fig
 
 

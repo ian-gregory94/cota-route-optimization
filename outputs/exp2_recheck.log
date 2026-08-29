@@ -130,3 +130,24 @@
 2026-08-29 15:35:06,686 path set: 25280 paths over 17388/20000 OD pairs (86.7% of flow served), 124683 legs
 2026-08-29 15:35:06,761 period early   : 25280 paths, 20000 OD pairs
 2026-08-29 15:35:06,777 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:36:33,467 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:36:33,631 path set: 29216 paths over 19282/20000 OD pairs (96.2% of flow served), 144496 legs
+2026-08-29 15:36:33,714 period am_peak : 29216 paths, 20000 OD pairs
+2026-08-29 15:36:33,728 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:37:45,766 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:37:45,906 path set: 24686 paths over 17389/20000 OD pairs (86.7% of flow served), 122434 legs
+2026-08-29 15:37:45,978 period midday  : 24686 paths, 20000 OD pairs
+2026-08-29 15:37:45,993 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:39:04,055 rejected 219 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:39:04,226 path set: 28381 paths over 18666/20000 OD pairs (93.6% of flow served), 142149 legs
+2026-08-29 15:39:04,312 period pm_peak : 28381 paths, 20000 OD pairs
+2026-08-29 15:39:04,328 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:40:20,206 rejected 81 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:40:20,351 path set: 24663 paths over 17386/20000 OD pairs (86.6% of flow served), 122129 legs
+2026-08-29 15:40:20,413 period evening : 24663 paths, 20000 OD pairs
+2026-08-29 15:40:20,429 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:41:30,929 rejected 134 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:41:31,073 path set: 22814 paths over 17005/20000 OD pairs (85.1% of flow served), 113123 legs
+2026-08-29 15:41:31,137 period owl     : 22814 paths, 20000 OD pairs
+2026-08-29 15:41:31,138 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 15:41:31,201 incumbent plan is infeasible under this budget

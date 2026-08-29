@@ -376,3 +376,53 @@
 2026-08-29 15:34:27,955 solve lambda=2.0: obj=2.96355e+06 vh=2514.8/2517.2 exchanges=0
 2026-08-29 15:34:27,965   splice|005|006|NMURBEAN    path_level  lam=2.0   140s  Model B gc  +1.028% unserved  -6.123%  (optimizer claimed  +0.000%)
 2026-08-29 15:34:27,989 incumbent plan is infeasible under this budget
+2026-08-29 15:36:50,565 solve lambda=4.0: obj=4.13593e+06 vh=2515.2/2517.2 exchanges=0
+2026-08-29 15:36:50,574   splice|005|006|NMURBEAN    path_level  lam=4.0   143s  Model B gc  +1.263% unserved  -6.364%  (optimizer claimed  +0.000%)
+2026-08-29 15:36:50,986 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 15:36:50,999 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 15:36:51,172 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 15:36:51,184 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-29 15:36:51,289 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:38:02,661 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:38:02,794 path set: 24432 paths over 17385/20000 OD pairs (86.6% of flow served), 120179 legs
+2026-08-29 15:38:02,872 cache store edited-pathset-70fd0096f206e58a (9.1 MB, built in 0s)
+2026-08-29 15:38:02,877 period early   : 24432 paths, 20000 OD pairs
+2026-08-29 15:38:02,892 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:39:26,714 rejected 81 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:39:26,872 path set: 28719 paths over 19283/20000 OD pairs (96.3% of flow served), 141348 legs
+2026-08-29 15:39:27,024 cache store edited-pathset-20576ba0c2908d1d (10.6 MB, built in 0s)
+2026-08-29 15:39:27,029 period am_peak : 28719 paths, 20000 OD pairs
+2026-08-29 15:39:27,046 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:40:43,474 rejected 79 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:40:43,610 path set: 24054 paths over 17387/20000 OD pairs (86.7% of flow served), 118313 legs
+2026-08-29 15:40:43,736 cache store edited-pathset-f953b8c99c916be3 (9.0 MB, built in 0s)
+2026-08-29 15:40:43,741 period midday  : 24054 paths, 20000 OD pairs
+2026-08-29 15:40:43,757 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:42:08,187 rejected 140 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:42:08,342 path set: 28131 paths over 18736/20000 OD pairs (93.8% of flow served), 140397 legs
+2026-08-29 15:42:08,499 cache store edited-pathset-7f1566940f9fff29 (10.5 MB, built in 0s)
+2026-08-29 15:42:08,504 period pm_peak : 28131 paths, 20000 OD pairs
+2026-08-29 15:42:08,521 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:43:27,864 rejected 83 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:43:27,988 path set: 23966 paths over 17384/20000 OD pairs (86.6% of flow served), 117534 legs
+2026-08-29 15:43:28,124 cache store edited-pathset-1106c3cb3dfe69d8 (8.9 MB, built in 0s)
+2026-08-29 15:43:28,129 period evening : 23966 paths, 20000 OD pairs
+2026-08-29 15:43:28,146 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 15:44:49,127 rejected 135 malformed candidate paths that failed the re-pricing check
+2026-08-29 15:44:49,277 path set: 22562 paths over 17004/20000 OD pairs (85.1% of flow served), 110938 legs
+2026-08-29 15:44:49,415 cache store edited-pathset-269452d345df3f12 (8.5 MB, built in 0s)
+2026-08-29 15:44:49,420 period owl     : 22562 paths, 20000 OD pairs
+2026-08-29 15:44:49,420 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 15:44:49,541 incumbent plan is infeasible under this budget
+2026-08-29 15:45:04,402 solve lambda=1.0: obj=1.84451e+06 vh=2438.2/2517.2 exchanges=0
+2026-08-29 15:45:04,417   splice|005|021|NMURBEAN    route_level lam=1.0    15s  Model B gc  +1.122% unserved  -2.573%  (optimizer claimed -71.727%)
+2026-08-29 15:45:04,421 incumbent plan is infeasible under this budget
+2026-08-29 15:45:18,890 solve lambda=2.0: obj=2.01353e+06 vh=2442.8/2517.2 exchanges=0
+2026-08-29 15:45:18,905   splice|005|021|NMURBEAN    route_level lam=2.0    14s  Model B gc  +0.595% unserved  -1.816%  (optimizer claimed -72.732%)
+2026-08-29 15:45:18,910 incumbent plan is infeasible under this budget
+2026-08-29 15:45:33,481 solve lambda=4.0: obj=2.3475e+06 vh=2446.1/2517.2 exchanges=0
+2026-08-29 15:45:33,496   splice|005|021|NMURBEAN    route_level lam=4.0    15s  Model B gc  +0.553% unserved  -1.873%  (optimizer claimed -72.983%)
+2026-08-29 15:45:33,524 incumbent plan is infeasible under this budget
+2026-08-29 15:47:57,790 solve lambda=1.0: obj=2.36094e+06 vh=2514.2/2517.2 exchanges=0
+2026-08-29 15:47:57,798   splice|005|021|NMURBEAN    path_level  lam=1.0   144s  Model B gc  -3.982% unserved  +5.159%  (optimizer claimed  +0.000%)
+2026-08-29 15:47:57,826 incumbent plan is infeasible under this budget

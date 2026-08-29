@@ -156,6 +156,52 @@ def exp2_ladder() -> None:
         subtitle="frequency re-optimized at every level, same 2,517-hour budget"))
 
 
+def exp2_candidate_classes() -> None:
+    p = OUT / "exp2_candidate_classes.json"
+    if not p.exists():
+        return _skip("exp2_candidate_classes", "exp2_candidate_classes.json")
+    d = json.loads(p.read_text())
+    rows = sorted(d["candidates"], key=lambda r: r["unserved_vs_noedit_pct_lam2.0"])
+    n = d["rule"]["counts"]
+    _done("exp2_candidate_classes", F.render(
+        F.candidate_classes, "exp2_candidate_classes", FIG,
+        labels=[r["candidate"].replace("splice|", "") for r in rows],
+        effect=[r["unserved_vs_noedit_pct_lam2.0"] for r in rows],
+        floor=float(d["rule"]["noise_floor_pts"]),
+        title="Twelve geometry candidates, each evaluated on its own",
+        xlabel="change in unserved demand vs no edit, % (negative is better)",
+        subtitle=f"{n.get('beneficial', 0)} beneficial, "
+                 f"{n.get('noise-floor', 0)} inside the noise floor, "
+                 f"{n.get('harmful', 0)} harmful — frequency re-optimized on "
+                 f"every network, one frozen Model B evaluator"))
+
+
+def exp2_ladder_orders() -> None:
+    p = OUT / "exp2_ladder_measured.csv"
+    if not p.exists():
+        return _skip("exp2_ladder_orders", "exp2_ladder_measured.csv")
+    d = pd.read_csv(p)
+    m = d[d["order"] == "measured"].sort_values("n_edits")
+    sc = d[d["order"] == "screen"].sort_values("n_edits")
+    if m.empty or sc.empty or list(m["n_edits"]) != list(sc["n_edits"]):
+        return _skip("exp2_ladder_orders", "matching measured and screen rungs")
+    floor = 0.288
+    q = OUT / "exp2_candidate_classes.json"
+    if q.exists():
+        floor = float(json.loads(q.read_text())["rule"]["noise_floor_pts"])
+    _done("exp2_ladder_orders", F.render(
+        F.ladder_orders, "exp2_ladder_orders", FIG,
+        n_edits=m["n_edits"].tolist(),
+        measured=m["unserved_vs_0edit_pct"].tolist(),
+        screened=sc["unserved_vs_0edit_pct"].tolist(),
+        floor=floor,
+        title="Geometry edits do not compose, in either ordering",
+        ylabel="change in unserved demand vs no edit, %",
+        subtitle="best-first ordering helps every rung and still cannot make "
+                 "composition pay: one edit beats two, two beat four, four are "
+                 "worse than none"))
+
+
 def exp2_vs_exp1(final: pd.DataFrame) -> None:
     p = OUT / "exp2_frontier.csv"
     if not p.exists() or final.empty:
@@ -273,6 +319,8 @@ def main() -> int:
     exp1_fidelity()
     exp2_screen(audit)
     exp2_ladder()
+    exp2_candidate_classes()
+    exp2_ladder_orders()
     exp2_vs_exp1(final)
 
     fxb = _jsonl(OUT / "fixpoint_modelB.jsonl")
