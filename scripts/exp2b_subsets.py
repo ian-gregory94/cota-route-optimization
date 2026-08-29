@@ -108,8 +108,26 @@ class ShardedStore:
                      self.base.with_suffix(f".shard{shard}of{n}.jsonl"))
         self._own = ResultStore(self.path)
         self._all: dict[str, dict] = {}
+        self.reload()
+        log.info("result store: %d cells solved across %d shard file(s); "
+                 "writing to %s", len(self._all),
+                 len(list(self.base.parent.glob(self.base.stem + "*.jsonl"))),
+                 self.path.name)
+
+    def reload(self) -> None:
+        """Re-read every shard from disk.
+
+        Called at startup and again before the summary is written. Without the
+        second call, whichever worker finishes last would summarise the other
+        worker's cells only as they stood when IT started -- so a two-shard run
+        would report roughly half the sweep and look complete doing it.
+        """
         for f in sorted(self.base.parent.glob(self.base.stem + "*.jsonl")):
-            for line in f.read_text().splitlines():
+            try:
+                text = f.read_text()
+            except OSError:
+                continue
+            for line in text.splitlines():
                 if not line.strip():
                     continue
                 try:
@@ -117,10 +135,6 @@ class ShardedStore:
                 except json.JSONDecodeError:
                     continue          # a torn line from an older shared write
                 self._all[rec["cell"]] = rec
-        log.info("result store: %d cells solved across %d shard file(s); "
-                 "writing to %s", len(self._all),
-                 len(list(self.base.parent.glob(self.base.stem + "*.jsonl"))),
-                 self.path.name)
 
     def has(self, cell: str) -> bool:
         return cell in self._all
@@ -525,6 +539,7 @@ def main() -> int:
 
     # the summary is over EVERY shard's cells, so whichever worker finishes
     # last writes a complete table rather than its own half of one
+    store.reload()
     allrows = [{k: v for k, v in r.items() if k not in ("cell", "plan")}
                for r in store.rows()
                if str(r.get("cell", "")).startswith("b|")
