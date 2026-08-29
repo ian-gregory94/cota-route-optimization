@@ -385,6 +385,33 @@ algebra rather than of any measurement. Recorded in
 `outputs/exp2_candidate_classes.json`.
 
 
+## Pre-registration note: representation stability across geometry
+
+Recorded 2026-08-29 15:30 UTC, **with 5 of the 12 candidate networks scored and
+visible.** This is written down now precisely because it is contaminated, and
+the contamination has to travel with the claim rather than be discovered later.
+
+While the treatment frontier was running, the partial results showed something
+the experiment was not designed to test. Across the five networks scored so
+far, at λ=2, measured unserved demand under the **route-level** representation
+ranges −1.09% to −7.45% — a spread of 6.4 points — while under the
+**path-level** representation on the same five networks it ranges −5.11% to
+−6.42%, a spread of 1.3 points. Same envelope, same evaluator, same effort, so
+the spread is a property of the representation and not of the networks.
+
+If that survives all twelve, it is a stronger statement than D21's: the
+route-level representation would be not merely more expensive but substantially
+less stable under a change of geometry.
+
+**It will be reported as exploratory.** It was noticed mid-run, its threshold
+was not committed in advance, and the remaining seven networks were already
+queued when it was written down — so nothing here is a test, and no p-value or
+sigma may be attached to it. Promoting it to a finding requires either a
+pre-registered threshold applied to an independent candidate set, or the
+Experiment 2B networks, which are a different set and were enumerated before
+this was noticed. Whichever is used must be named in the write-up.
+
+
 ## Standing rules
 
 1. These gates are not revised after seeing results.
