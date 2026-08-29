@@ -22,6 +22,22 @@ cd "$(dirname "$0")/.."
 
 LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 
+# One supervisor at a time. Restarting it without killing the old one leaves
+# two, and two supervisors 90 seconds out of phase both see a free slot and
+# both start the same job -- two copies of a solve writing the same cells to an
+# append-only store, on a two-core box. Killing the old one from the same shell
+# is how this kept being avoided: `pkill -f supervise.sh` matches the shell
+# running the pkill and kills it before the restart line executes. So the
+# supervisor refuses to start instead.
+_me=$$
+for _pid in $(pgrep -f "bash scripts/supervise.sh" 2>/dev/null); do
+  [ "$_pid" = "$_me" ] && continue
+  [ "$_pid" = "$PPID" ] && continue
+  echo "$(date -u +%FT%TZ) supervisor: already running as pid $_pid, exiting" \
+    >> outputs/supervisor.log
+  exit 0
+done
+
 # label @@ exact command @@ log @@ nice
 # ('@@' rather than '|': Experiment 2 candidate keys contain
 #  pipes, e.g. splice|002|011|HIGFITN, and a separator that
