@@ -109,7 +109,8 @@ def pinned_constraints(vh: float, peak: dict[str, float]) -> dict:
     return cons
 
 
-def build_edited(H, model, edits, a, cons, seed, n_random_scenarios):
+def build_edited(H, model, edits, a, cons, seed, n_random_scenarios,
+                 common_lines: str | None = None):
     """Edited network -> router -> zones -> path sets -> configured model."""
     ed = (apply_edits(H.baseline.network, H.baseline.tstats, model, edits)
           if edits else None)
@@ -134,10 +135,16 @@ def build_edited(H, model, edits, a, cons, seed, n_random_scenarios):
     tp["period"] = tp["first_dep_sec"].map(lambda x: period_of_seconds(x, periods))
     classes = classify_routes(tp.dropna(subset=["period"]), H.baseline.routes)
 
+    # The pricing has to be threaded from the harness. Omitting it silently
+    # fell back to the config default (`pattern` = Model A) while the run's own
+    # log reported the harness's same_route, so every number this script
+    # produced before 2026-08-29 was a Model A number wearing a Model B label.
     setup = build_setup(_Baseline(H.baseline, net, ts), rn, zs, H.od, seed=seed,
                         route_classes=classes, with_crowding=False,
                         lock_classes=("peak_express",), constraints=cons,
-                        n_random_scenarios=n_random_scenarios)
+                        n_random_scenarios=n_random_scenarios,
+                        common_lines=common_lines
+                        if common_lines is not None else H.common_lines)
     return setup, ed
 
 
@@ -350,7 +357,16 @@ def main() -> int:
         t0 = time.time()
         try:
             setup, ed = build_edited(H, model, edits, a, cons, args.seed,
-                                     args.scenarios)   # set is seed-independent
+                                     args.scenarios,   # set is seed-independent
+                                     common_lines=H.common_lines)
+            # the evaluator must be the model the run was asked for, not the
+            # one a config default handed it
+            got = setup.checks.get("common_lines")
+            if got != H.common_lines:
+                raise SystemExit(
+                    f"evaluator pricing is {got!r} but the run asked for "
+                    f"{H.common_lines!r}; refusing to score plans under a "
+                    f"model the results would then be labelled with")
         except Exception as exc:
             log.warning("%s failed to build: %s: %s", label,
                         type(exc).__name__, exc)

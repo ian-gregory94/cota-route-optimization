@@ -211,6 +211,19 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     baseline_plan = e1.baseline_plan
     base_hw = {k: v.baseline_headway_min for k, v in services.items()}
 
+    # The evaluator's leg pricing is the single most consequential choice in
+    # this setup -- it is the difference between Model A and Model B -- and it
+    # used to be decided silently by a config default that four call sites
+    # never overrode. A run could therefore be launched with
+    # --common-lines same_route, log "waiting model: same_route" from the
+    # harness, and score every plan under Model A anyway. It is now decided
+    # once, here, and stated.
+    cl = str(common_lines if common_lines is not None
+             else pa.get("common_lines", "pattern"))
+    log.info("evaluator pricing: common_lines=%s (%s)", cl,
+             "explicit" if common_lines is not None else
+             "CONFIG DEFAULT -- caller did not specify")
+
     periods_cfg = service_periods(a)
     periods = {n: ServicePeriod(n, s, e) for n, (s, e) in periods_cfg.items()}
     modelled = periods_to_model or list(periods)
@@ -238,10 +251,7 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                                    else n_random_scenarios),
                                seed=seed,
                                extra_scenarios=extra_scenarios,
-                               common_lines=str(
-                                   common_lines
-                                   if common_lines is not None
-                                   else pa.get("common_lines", "pattern")))
+                               common_lines=cl)
             if pathset_cache is not None:
                 pathset_cache[per] = ps
         pathsets[per] = ps
@@ -321,8 +331,9 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     checks["locked_route_periods"] = len(locked)
     checks["locked_routes"] = sorted({k[0] for k in locked})
     checks["with_crowding"] = bool(with_crowding)
-    checks["common_lines"] = str(common_lines if common_lines is not None
-                                 else pa.get("common_lines", "pattern"))
+    checks["common_lines"] = cl
+    checks["common_lines_source"] = ("explicit" if common_lines is not None
+                                     else "config default")
     if load_profiles:
         checks["peak_load_factor_median"] = float(np.median(np.concatenate(
             [lp.peak_load_factor[lp.boardings > 0] for lp in load_profiles.values()])))

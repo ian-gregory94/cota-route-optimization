@@ -362,3 +362,45 @@ def test_shard_is_parsed_before_it_is_used():
     src = (Path(__file__).resolve().parents[1] / "scripts"
            / "exp2b_subsets.py").read_text()
     assert src.index("si, sn = (int(x)") < src.index("if sn > 1:")
+
+
+# --------------------------------------------------------------------------
+# the evaluator must be the model the run asked for
+# --------------------------------------------------------------------------
+
+SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
+
+
+def test_the_evaluation_script_threads_the_pricing_through():
+    """Regression, and the most expensive bug in this project so far.
+
+    run_exp2_eval.py built its evaluator with build_setup() and did not pass
+    common_lines, so it fell back to the config default -- `pattern`, Model A.
+    Every run launched with --common-lines same_route logged the harness's
+    "waiting model: same_route" and then scored every plan under Model A. Three
+    discoveries, two noise floors and a full-effort falsification test were
+    labelled Model B and were not.
+    """
+    src = (SCRIPTS / "run_exp2_eval.py").read_text()
+    i = src.index("setup = build_setup(")
+    call = src[i:src.index("return setup", i)]
+    assert "common_lines=" in call, (
+        "build_setup called without common_lines: the evaluator will silently "
+        "use the config default instead of the model the run asked for")
+    assert "H.common_lines" in src
+
+
+def test_the_evaluation_script_refuses_a_mismatched_evaluator():
+    src = (SCRIPTS / "run_exp2_eval.py").read_text()
+    assert 'setup.checks.get("common_lines")' in src
+    assert "refusing to score plans under a" in src
+
+
+def test_build_setup_records_where_its_pricing_came_from():
+    """A run's own artifacts must show whether the pricing was chosen or
+    defaulted. Nothing in the affected runs recorded it, which is why the
+    mislabel survived three days."""
+    src = (Path(__file__).resolve().parents[1] / "src" / "cota_opt"
+           / "exp2.py").read_text()
+    assert 'checks["common_lines_source"]' in src
+    assert "CONFIG DEFAULT" in src

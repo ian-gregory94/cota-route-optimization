@@ -46,3 +46,65 @@
 2026-08-29 19:29:07,019 period owl     : 22678 paths, 20000 OD pairs
 2026-08-29 19:29:07,019 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-29 19:29:07,062 incumbent plan is infeasible under this budget
+2026-08-29 19:30:37,225 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-29 19:30:37,233 [  2/120] splice|011|034|WESHIGW                         k=1 lam=2.0    90s  vs no-edit: unserved  -0.585%  gc  +0.102%  (elapsed 0.1h, ~6.8h left)
+2026-08-29 19:30:37,721 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 19:30:37,731 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 19:30:37,848 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 19:30:37,857 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-29 19:30:37,918 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:31:27,118 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:31:27,205 path set: 23852 paths over 17313/20000 OD pairs (86.3% of flow served), 116721 legs
+2026-08-29 19:31:27,250 period early   : 23852 paths, 20000 OD pairs
+2026-08-29 19:31:27,262 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:32:25,006 rejected 103 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:32:25,108 path set: 28453 paths over 19281/20000 OD pairs (96.2% of flow served), 140940 legs
+2026-08-29 19:32:25,167 period am_peak : 28453 paths, 20000 OD pairs
+2026-08-29 19:32:25,179 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:33:16,476 rejected 74 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:33:16,565 path set: 23679 paths over 17388/20000 OD pairs (86.7% of flow served), 117163 legs
+2026-08-29 19:33:16,614 period midday  : 23679 paths, 20000 OD pairs
+2026-08-29 19:33:16,625 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:34:12,093 rejected 127 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:34:12,198 path set: 27698 paths over 18676/20000 OD pairs (93.6% of flow served), 138932 legs
+2026-08-29 19:34:12,258 period pm_peak : 27698 paths, 20000 OD pairs
+2026-08-29 19:34:12,270 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:35:06,396 rejected 103 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:35:06,498 path set: 23638 paths over 17385/20000 OD pairs (86.6% of flow served), 116778 legs
+2026-08-29 19:35:06,548 period evening : 23638 paths, 20000 OD pairs
+2026-08-29 19:35:06,560 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:35:56,042 rejected 130 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:35:56,130 path set: 22326 paths over 17005/20000 OD pairs (85.1% of flow served), 109676 legs
+2026-08-29 19:35:56,177 period owl     : 22326 paths, 20000 OD pairs
+2026-08-29 19:35:56,177 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 19:35:56,208     splice|011|033|WESHIGW incumbent rescaled x1.0001
+2026-08-29 19:35:56,219 incumbent snapped to ladder, max drift 0.0218 min
+2026-08-29 19:35:56,227 incumbent plan is infeasible under this budget
+2026-08-29 19:37:19,879 solve lambda=2.0: obj=2.95868e+06 vh=2513.3/2517.2 exchanges=0
+2026-08-29 19:37:19,885     incumbent rescaled x1.0001 to fit the envelope (2517.4 -> 2517.2 veh-hours)
+2026-08-29 19:37:19,885 [  3/120] splice|011|033|WESHIGW                         k=1 lam=2.0    84s  vs no-edit: unserved  -0.233%  gc  -0.074%  (elapsed 0.2h, ~8.8h left)
+2026-08-29 19:37:20,197 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 19:37:20,205 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 19:37:20,312 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 19:37:20,321 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-29 19:37:20,377 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:38:11,852 rejected 102 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:38:11,941 path set: 24786 paths over 17385/20000 OD pairs (86.6% of flow served), 121967 legs
+2026-08-29 19:38:11,991 period early   : 24786 paths, 20000 OD pairs
+2026-08-29 19:38:12,002 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:39:11,633 rejected 59 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:39:11,734 path set: 28573 paths over 19276/20000 OD pairs (96.2% of flow served), 140411 legs
+2026-08-29 19:39:11,792 period am_peak : 28573 paths, 20000 OD pairs
+2026-08-29 19:39:11,804 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:40:04,652 rejected 57 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:40:04,775 path set: 24063 paths over 17385/20000 OD pairs (86.6% of flow served), 118670 legs
+2026-08-29 19:40:04,883 period midday  : 24063 paths, 20000 OD pairs
+2026-08-29 19:40:04,894 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:41:01,774 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:41:01,870 path set: 27870 paths over 18675/20000 OD pairs (93.6% of flow served), 139271 legs
+2026-08-29 19:41:01,935 period pm_peak : 27870 paths, 20000 OD pairs
+2026-08-29 19:41:01,959 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:41:56,869 rejected 58 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:41:56,952 path set: 24087 paths over 17384/20000 OD pairs (86.6% of flow served), 118279 legs
+2026-08-29 19:41:57,001 period evening : 24087 paths, 20000 OD pairs
+2026-08-29 19:41:57,012 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
