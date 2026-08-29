@@ -1,0 +1,44 @@
+2026-08-29 22:06:56,879 experiment exp2_geometry_eval_20260829T220656Z
+2026-08-29 22:06:56,881 result store: 49 cells already solved
+2026-08-29 22:06:56,999 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-29 22:06:57,033 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-29 22:06:57,033 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-29 22:06:57,034 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-29 22:06:57,045 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 22:06:57,153 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.1s)
+2026-08-29 22:06:57,154 waiting model: same_route
+2026-08-29 22:06:57,324 evaluator pricing: common_lines=same_route (explicit)
+2026-08-29 22:06:57,333 period early   : 33571 paths, 20000 OD pairs
+2026-08-29 22:06:57,341 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-29 22:06:57,348 period midday  : 34003 paths, 20000 OD pairs
+2026-08-29 22:06:57,356 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-29 22:06:57,368 period evening : 34989 paths, 20000 OD pairs
+2026-08-29 22:06:57,375 period owl     : 34494 paths, 20000 OD pairs
+2026-08-29 22:06:57,375 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 22:06:57,408 envelope pinned: 2517.2 revenue veh-hours, peak {'early': 85.3, 'am_peak': 162.0, 'midday': 159.2, 'pm_peak': 176.5, 'evening': 140.2, 'owl': 35.6}
+2026-08-29 22:06:57,416 forced into the shortlist: splice|002|033|WESHIGW
+2026-08-29 22:06:57,416 forced into the shortlist: splice|007|101|EMO4THW
+2026-08-29 22:06:57,416 shortlist (2, primary=True): ['splice|002|033|WESHIGW', 'splice|007|101|EMO4THW']
+2026-08-29 22:07:54,168 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-29 22:07:54,481 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 22:07:54,489 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 22:07:54,602 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 22:07:54,615 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 22:07:54,658 evaluator pricing: common_lines=same_route (explicit)
+2026-08-29 22:07:54,671 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 22:08:43,117 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-29 22:08:43,209 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-29 22:08:43,255 period early   : 24668 paths, 20000 OD pairs
+2026-08-29 22:08:43,267 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 22:09:39,360 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-29 22:09:39,463 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-29 22:09:39,523 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-29 22:09:39,538 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 22:10:30,269 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-29 22:10:30,356 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-29 22:10:30,404 period midday  : 24097 paths, 20000 OD pairs
+2026-08-29 22:10:30,416 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 22:11:24,411 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-29 22:11:24,531 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-29 22:11:24,589 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-29 22:11:24,601 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

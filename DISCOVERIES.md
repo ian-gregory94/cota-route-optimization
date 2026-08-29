@@ -1078,6 +1078,93 @@ number attached; the direction is now established on thirteen networks and is
 very unlikely to move, the factor of 3.7 might.
 
 
+
+### D23 — Correcting the waiting model reorders the geometry candidates and halves the best effect
+
+*(D22 is reserved for Experiment 2B, which is still running.)*
+
+**How it came up.** `run_exp2_eval.py` never passed `common_lines` to
+`build_setup`, so it scored every plan under Model A while its log reported the
+harness's Model B (ACCEPTANCE.md, *Defect: the Experiment 2 evaluator was Model
+A*). Every candidate was then re-evaluated under the corrected evaluator, at
+the same effort, on the same networks, with the same seed. This entry is the
+difference.
+
+**Evidence.** All twelve candidates, λ=2, frequency re-optimized inside the same
+2,517-vehicle-hour envelope, unserved demand against each model's own zero-edit
+solve:
+
+| candidate | Model A | Model B | rank A → B |
+|---|---|---|---|
+| `splice\|011\|034\|WESHIGW` | −0.860% | **−0.585%** | 2 → **1** |
+| `splice\|033\|034\|WESHIGW` | **−0.936%** | −0.485% | **1** → 2 |
+| `splice\|005\|006\|NMURBEAN` | −0.684% | −0.272% | 3 → 3 |
+| `splice\|011\|033\|WESHIGW` | −0.615% | −0.233% | 4 → 4 |
+| `splice\|006\|021\|NMURBEAN` | −0.247% | +0.026% | 8 → 5 |
+| `splice\|002\|034\|WESHIGW` | −0.089% | +0.052% | 10 → 6 |
+| `splice\|007\|101\|EMO4THW` | +1.251% | +0.153% | 12 → 7 |
+| `splice\|008\|035\|BOASHAN` | −0.490% | +0.257% | 6 → 8 |
+| `splice\|002\|011\|HIGFITN` | −0.155% | +0.322% | 9 → 9 |
+| `splice\|001\|021\|PICBETS` | −0.512% | +0.372% | 5 → 10 |
+| `splice\|005\|021\|NMURBEAN` | −0.353% | +0.395% | 7 → 11 |
+| `splice\|002\|033\|WESHIGW` | +0.978% | +1.483% | 11 → 12 |
+
+Spearman **ρ = 0.657**, Kendall **τ = 0.515**, n = 12. Largest rank move: five
+places. **Six of the twelve change sign** — they reduce unserved demand under
+Model A and increase it under Model B.
+
+The measured noise floor also tightens, from **0.288** points to **0.130**, so
+Model B is the better-conditioned model as well as the correct one — the same
+direction D17 found on the seed replicates. Against their respective floors the
+classification goes from **7 beneficial / 3 at the floor / 2 harmful** to
+**4 / 2 / 6**.
+
+**Confidence.** High on the reordering, which is the claim. Same networks, same
+effort, same seed, same envelope, one variable changed, and the variable is a
+documented correction to leg pricing rather than a tuning choice. Moderate on
+individual magnitudes: still 60,000/2/32, which ranks rather than sizes.
+
+**Interpretation.** Model A prices a ride leg at the chosen pattern's own
+headway; Model B prices it on the combined frequency of every same-route pattern
+that can carry the movement. Model A therefore undervalues frequent trunk
+service, which runs the most pattern variants — and a splice is precisely an
+intervention that merges two lines and changes how many patterns serve a
+movement. Geometry edits are the class of change most exposed to this bias, so
+it is the ranking of geometry edits that moves most.
+
+**This overturns D16's headline and vindicates its amendment.** D16 concluded
+that the geometry ranking does not depend on the waiting model, from an
+aggregate Spearman of 0.857 across all edit kinds on the *screen*. Its own
+amendment then found that within splices — the only kind that reaches the top
+ten — the correlation was **0.336**. Every candidate here is a splice, and 0.657
+on a proper evaluation sits between the two. The aggregate figure was measuring
+the ease of ranking truncations and extensions, not splices. **D16's headline
+should not be quoted; its amendment should.**
+
+**What survives unchanged.** D19: the screen's first-ranked candidate of sixty,
+`splice\|002\|033\|WESHIGW`, is still the worst of the twelve, and by a wider
+margin under Model B (+1.483%, 11 floors). The screen's inversion is not an
+artifact of the evaluator's model.
+
+**What this costs Experiment 2's recommendation.** The claim was "through-route
+33 Henderson and 34 Morse at Westview Turnaround, ≈0.9% less unserved demand".
+Under the corrected evaluator that edit is worth **−0.485%**, and it is no
+longer the best single: through-routing **11 Bryden/Maize and 34 Morse** at the
+same turnaround is, at −0.585%. Both use only existing track
+(`modelled_share_pct = 0.0`).
+
+**The recommendation does not move yet.** Gate 9 — does it read as a transit
+proposal a planner would recognise — was passed on 33+34 by hand inspection
+against the network. Nothing has inspected 11+34, and 11 Bryden/Maize runs 38
+trips a day against 34 Morse's 154, a four-to-one asymmetry that 33 Henderson's
+78 did not present. A candidate that wins by 0.1 points on a model and has not
+been looked at is not a recommendation. Gate 9 on 11+34 is the next thing owed.
+
+**What would falsify it.** Re-running both candidates at full effort and finding
+the gap between them inside the 0.130-point floor would mean the reordering at
+the top is real but the *leader* is not identified — which would leave the
+correction standing and the recommendation still open.
+
 ---
 
 ## Not yet earned
