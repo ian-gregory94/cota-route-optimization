@@ -340,6 +340,7 @@ def main() -> int:
 
     effort = f"{args.iterations}/{args.restarts}/{args.width}"
     rows: list[dict] = []
+    skipped: list[dict] = []
     t_start = time.time()
 
     # Two different comparisons, and conflating them would answer the wrong
@@ -373,9 +374,23 @@ def main() -> int:
 
         wait_for_memory()
         edits = [by_key[k] for k in sorted(combo)]
+
+        # The incompatibility relation is derived from the candidate keys, and
+        # apply_edits enforces the same rule from the live-route set. If they
+        # ever disagree, one bad subset must not kill a worker 100 subsets in
+        # -- the supervisor would restart it, resume, and hit the same subset
+        # forever. Record the refusal and carry on; gate 2B-1 requires a
+        # short run to name what it did not evaluate, and this is that list.
         net, ts = H.baseline.network, H.baseline.tstats
         if edits:
-            ed = apply_edits(net, ts, stm, edits)
+            try:
+                ed = apply_edits(net, ts, stm, edits)
+            except Exception as e:
+                log.error("[%3d/%3d] %s REFUSED by apply_edits: %s",
+                          i, len(subsets), name, e)
+                skipped.append({"set_key": name, "members": sorted(combo),
+                                "reason": f"{type(e).__name__}: {e}"})
+                continue
             net, ts = ed.network, ed.tstats
 
         b_ed = _Baseline(H.baseline, net, ts)
@@ -518,7 +533,13 @@ def main() -> int:
     tag = f"stage{args.stage}"
     df.to_csv(OUT / f"exp2b_{tag}.csv", index=False)
     df.to_csv(exp.artifact_path(f"{tag}.csv"), index=False)
+    if skipped:
+        (OUT / f"exp2b_{tag}_skipped.json").write_text(
+            json.dumps(skipped, indent=2))
+        log.error("GATE 2B-1 NOT MET: %d subset(s) were not evaluated; see "
+                  "outputs/exp2b_%s_skipped.json", len(skipped), tag)
     exp.log_metrics(stage=args.stage, lambdas=lams, n_subsets=len(subsets),
+                    n_skipped=len(skipped), skipped=skipped,
                     effort=effort, by_cardinality=by_size, rows=rows)
     exp.save()
 
