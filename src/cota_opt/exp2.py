@@ -221,9 +221,10 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     cl = str(common_lines if common_lines is not None
              else pa.get("common_lines", "pattern"))
     if common_lines is None:
-        log.warning("evaluator pricing: common_lines=%s taken from the CONFIG "
-                    "DEFAULT -- the caller did not specify. If this run is "
-                    "meant to be Model B, it is not.", cl)
+        log.warning(
+            "evaluator pricing: common_lines=%s from the CONFIG DEFAULT"
+            " -- the caller did not specify. If this run is meant to be"
+            " Model B, it is not.", cl)
     else:
         log.info("evaluator pricing: common_lines=%s (explicit)", cl)
 
