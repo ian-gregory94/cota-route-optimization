@@ -119,6 +119,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=8)
     ap.add_argument("--primary-only", action="store_true", default=True)
+    ap.add_argument("--order-from", type=str, default="",
+                    help="CSV of MEASURED performance (label, "
+                         "unserved_vs_noedit_pct_lam2.0) to select and order "
+                         "by, instead of screen rank. D19 showed screen rank "
+                         "puts the two worst candidates near the top, so the "
+                         "inspection tier should not be fed by it either.")
+    ap.add_argument("--out", type=str, default="exp2_candidate_inspection.md")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     MAPS.mkdir(parents=True, exist_ok=True)
@@ -144,18 +151,42 @@ def main() -> int:
         exclude_routes=express, per_kind=12)}
 
     audit = pd.read_csv(OUT / "exp2_audit.csv")
-    ok = audit.dropna(subset=["screen_gc_change_pct"])
-    if args.primary_only:
-        ok = ok[ok["evidence_class"] == "primary"]
-    ok = ok.sort_values(["screen_unserved_change_pct", "screen_gc_change_pct"])
-    shortlist = ok.head(args.top)
+    if args.order_from:
+        f = Path(args.order_from)
+        f = f if f.is_absolute() else (OUT / args.order_from)
+        if not f.exists():
+            raise SystemExit(
+                f"--order-from {f} does not exist. Refusing to fall back to "
+                f"screen rank: the file would be titled as a measured "
+                f"selection and be a screened one.")
+        m = pd.read_csv(f)
+        m["candidate_id"] = m["label"].str.replace("single:", "", regex=False)
+        m = m.sort_values("unserved_vs_noedit_pct_lam2.0")
+        shortlist = (m.head(args.top)
+                     .merge(audit, on="candidate_id", how="left"))
+        provenance = (
+            "**Selected and ordered by measured performance**, from "
+            f"`{f.name}` — not by screen rank. D19 found the screen's "
+            "first-ranked candidate of sixty to be the worst of the twelve on "
+            "evaluation, so an inspection tier fed by screen rank inspects the "
+            "wrong candidates. Effects quoted below the fold are the screen's "
+            "and are kept only for comparison.")
+    else:
+        ok = audit.dropna(subset=["screen_gc_change_pct"])
+        if args.primary_only:
+            ok = ok[ok["evidence_class"] == "primary"]
+        ok = ok.sort_values(["screen_unserved_change_pct",
+                             "screen_gc_change_pct"])
+        shortlist = ok.head(args.top)
+        provenance = (
+            "Screening rank got these here. Whether they survive is a question "
+            "about what they actually do, which is what this file is for. "
+            "Everything below is pre-fixpoint and exploratory.")
 
     lines: list[str] = [
         "# Strongest geometry candidates, inspected",
         "",
-        "Screening rank got these here. Whether they survive is a question "
-        "about what they actually do, which is what this file is for. "
-        "Everything below is pre-fixpoint and exploratory.",
+        provenance,
         "",
     ]
     for i, row in enumerate(shortlist.itertuples(), 1):
@@ -220,9 +251,9 @@ def main() -> int:
                   ""]
         log.info("inspected %s", e.key)
 
-    (OUT / "exp2_candidate_inspection.md").write_text("\n".join(lines))
+    (OUT / args.out).write_text("\n".join(lines))
     log.info("\nwrote %s and %d maps",
-             OUT / "exp2_candidate_inspection.md", 2 * len(shortlist))
+             OUT / args.out, 2 * len(shortlist))
     return 0
 
 

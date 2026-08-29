@@ -1153,12 +1153,47 @@ longer the best single: through-routing **11 Bryden/Maize and 34 Morse** at the
 same turnaround is, at −0.585%. Both use only existing track
 (`modelled_share_pct = 0.0`).
 
-**The recommendation does not move yet.** Gate 9 — does it read as a transit
-proposal a planner would recognise — was passed on 33+34 by hand inspection
-against the network. Nothing has inspected 11+34, and 11 Bryden/Maize runs 38
-trips a day against 34 Morse's 154, a four-to-one asymmetry that 33 Henderson's
-78 did not present. A candidate that wins by 0.1 points on a model and has not
-been looked at is not a recommendation. Gate 9 on 11+34 is the next thing owed.
+**The recommendation does not move, and the reason is arithmetic.** 11+34 leads
+33+34 by **0.100 points** against a measured noise floor of **0.130**. The gap
+is 0.77 of a floor. *The two leaders are not distinguishable.* Reordering a
+recommendation on a difference smaller than the noise the same run measured
+would be the D13/D17 mistake — reading a flat optimum as a ranking — committed
+one level up, on candidates instead of route-periods.
+
+Gate 9 was then run on 11+34 anyway, because a candidate that had never been
+looked at could not be compared at all. It had never been inspected: the
+inspection tier selects by *screen* rank, the screen scored 11+34 at −0.017%
+unserved, and it fell outside the top eight. `inspect_candidates.py` now takes
+`--order-from`, so the tier can be driven by measured performance instead —
+which is D19's lesson applied to one more decision that was still taking the
+screen's word.
+
+What the inspection found, with 33+34 alongside:
+
+| | `splice\|011\|034` | `splice\|033\|034` |
+|---|---|---|
+| measured effect | −0.585% | −0.485% |
+| running-time model exposure | 0.0% (0 of 280 segments) | 0.0% (0 of 192) |
+| cycle time | 61.2 → **91.5 min (+49.4%)** | 43.4 → 59.0 min (+35.9%) |
+| vehicle-hours at baseline | **+1.0** | **−0.6** |
+| trips per day, the two routes | 38 vs 154 (**1 : 4.1**) | 78 vs 154 (1 : 2.0) |
+| stops lost, or left without service | 0 / 0 | 0 / 0 |
+| mean headway today, 12 route-periods | 53.2 min | 31.8 min |
+
+Both are clean on the things that disqualify a candidate outright: no stops
+dropped, nobody left without service, and no invented track. On everything else
+11+34 is the worse proposal. A **91-minute cycle** is a long line to run
+reliably, and this model carries no reliability penalty — a documented
+limitation, and one that is biased in exactly this direction. It *consumes* a
+vehicle-hour where 33+34 releases half of one. And through-routing a 38-trip
+route into a 154-trip route means most of 34 Morse still short-turns, so the
+through-running benefit reaches about a quarter of its trips.
+
+**So the recommendation stays 33 Henderson + 34 Morse, at the corrected
+−0.485%.** Not because it scores better — it does not — but because the two are
+inside each other's noise, and on every criterion the model does not represent,
+33+34 is the more defensible line. That is a judgement about the proposal and
+is labelled as one; the model does not make it.
 
 **What would falsify it.** Re-running both candidates at full effort and finding
 the gap between them inside the 0.130-point floor would mean the reordering at
