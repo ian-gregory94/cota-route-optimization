@@ -7,6 +7,19 @@ than published.
 
 Everything below is sorted by how much you should trust it.
 
+**Live as of 2026-08-29 15:00 UTC.** Experiment 1 is complete and final on
+Model B. Three runs are in flight, all checkpointed below the cell level and
+all supervised by `scripts/supervise.sh`:
+
+| job | what it settles | progress file |
+|---|---|---|
+| `exp2-frontier` | the decision-representation comparison (D21) on all twelve candidate networks, not just the unedited one | `outputs/exp2_treatments.jsonl` |
+| `exp2-recheck` | D19's own falsification test: the two harmful splices at full effort against a floor measured at that effort | `outputs/exp2_recheck.log` |
+| `exp2b-stageA-{0,1}` | Experiment 2B — every one of the 240 structurally feasible geometry subsets | `outputs/exp2b_subsets.shard*.jsonl` |
+
+Nothing in sections 1–3 depends on those finishing. Section 2's Experiment 2
+material is what they extend.
+
 ---
 
 ## 1. What is established
@@ -204,6 +217,52 @@ why all twelve were evaluated rather than the top eight. See D16.
 carries the same-route waiting bias D10 identified. Quote Model B.
 
 ---
+
+### Experiment 2B — the joint subset search, and why it is not a bigger ladder
+
+D20 rules out the obvious way to answer "which edits should COTA make?".
+Ranking candidates and taking the top N does not give the best set of N,
+because the effect of a set is not the sum of its members'. Re-ordering the
+ladder by *measured* rather than screened performance improves every rung by
+1.9 to 3.8 points and still cannot make composition pay — one edit −0.94%, two
+−0.49%, four +0.47% — so the failure is not the screen's, and a longer or
+better-ordered ladder will not fix it. A greedy ladder can only ever visit
+nested sets, and nothing licenses the assumption that the best pair contains
+the best single.
+
+So 2B enumerates instead. The twelve candidates admit exactly **240
+structurally feasible subsets**, maximum cardinality 6, because
+`geometry.apply_edits` removes both of a splice's routes from its live set and
+raises if a later edit names one — any two splices sharing a route cannot
+coexist. That is a much better position than heuristic search: no candidate
+ordering to defend, no greedy path to justify, and no way for the answer to be
+an artifact of where the search started.
+
+**All twelve are eligible, including the two that are harmful alone.** Nothing
+is excluded on performance. Removing a member because it scores badly by itself
+would assume exactly the composability the experiment exists to test — a
+candidate that hurts alone can substitute for one that helps, and the search
+cannot discover that if the candidate is not in it. The classification (7
+beneficial, 3 inside the noise floor, 2 harmful, in
+`outputs/exp2_candidate_classes.json`) is evidence about singles and is not a
+filter on sets.
+
+The comparison every set is ranked on is against the **unedited** network's
+optimized outcome, not against its own network with baseline frequencies. The
+second is easy to compute and answers a different question — how much frequency
+re-optimization gains on that geometry — and ranking on it would have produced
+a clean, defensible, irrelevant answer.
+
+Gate 2B-6 requires the interaction term for **every** set, not for the ones
+that look interesting: measured effect minus the sum of its members' measured
+single effects, classified against the same 0.288-point floor. Unserved demand
+is a cost, so a positive term means the set delivered less than its members
+promised — "substituting", which is D20's pattern — and a negative term is real
+synergy. Gate 2B-7 makes the null result publishable and names it the prior:
+**no multi-edit set beating the single splice is a permitted outcome.**
+
+The seven 2B gates were committed to `ACCEPTANCE.md` before any subset was
+solved.
 
 ## 3. What is limited, and how much
 
