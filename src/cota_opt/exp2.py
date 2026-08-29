@@ -220,9 +220,12 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     # once, here, and stated.
     cl = str(common_lines if common_lines is not None
              else pa.get("common_lines", "pattern"))
-    log.info("evaluator pricing: common_lines=%s (%s)", cl,
-             "explicit" if common_lines is not None else
-             "CONFIG DEFAULT -- caller did not specify")
+    if common_lines is None:
+        log.warning("evaluator pricing: common_lines=%s taken from the CONFIG "
+                    "DEFAULT -- the caller did not specify. If this run is "
+                    "meant to be Model B, it is not.", cl)
+    else:
+        log.info("evaluator pricing: common_lines=%s (explicit)", cl)
 
     periods_cfg = service_periods(a)
     periods = {n: ServicePeriod(n, s, e) for n, (s, e) in periods_cfg.items()}

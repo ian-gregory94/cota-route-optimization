@@ -403,4 +403,9 @@ def test_build_setup_records_where_its_pricing_came_from():
     src = (Path(__file__).resolve().parents[1] / "src" / "cota_opt"
            / "exp2.py").read_text()
     assert 'checks["common_lines_source"]' in src
+    # and the fallback must be a WARNING, not an INFO line a reader can miss
     assert "CONFIG DEFAULT" in src
+    i = src.index("CONFIG DEFAULT")
+    assert "log.warning" in src[max(0, i - 300):i], (
+        "the config-default fallback must warn: an INFO line is exactly what "
+        "nobody read for three days")
