@@ -949,12 +949,10 @@ and the shared filename is the whole reason the label slipped. The numbers,
 provenance and confidence below are unchanged by this correction; only the
 question they answer is restated.
 
-**Scope.** Everything below is measured on the **unedited (control) network**.
-Whether the representation advantage survives on edited geometry is a separate
-question, measured by the same script across all twelve candidate networks; that
-run is in flight and its cells land in `outputs/exp2_treatments.jsonl` under
-`t|<candidate>|<treatment>|lam<λ>`. Nothing here should be quoted as holding on
-edited geometry until those cells exist.
+**Scope, and its extension.** The tables below are measured on the **unedited
+(control) network**. Whether the advantage survives on edited geometry was the
+open question, and it has since been answered on all twelve candidate networks
+— see *Confirmed across thirteen networks* at the end of this entry.
 
 **Evidence.** Both treatments optimize frequencies on the unedited network under
 the same pinned envelope, and **both plans are then re-scored by the same frozen
@@ -1009,10 +1007,51 @@ plans. The path-level treatment's gap is 0.000% by construction: its optimizer
 *is* the evaluator, which is the only reason it is safe to compare them at all —
 after both are re-scored.
 
+**Confirmed across thirteen networks, 2026-08-29.** The same script re-ran both
+treatments on the control and on each of the twelve frozen geometry candidates —
+one envelope, one frozen Model B evaluator, matched effort, both plans
+reconstructed and independently re-scored. 72 cells.
+
+Cost per trip actually served, the column that separates the treatments:
+
+| λ | route-level, mean | path-level, mean | networks where path-level wins |
+|---|---|---|---|
+| 1 | −0.334% | **−1.624%** | **13 of 13** |
+| 2 | −0.445% | **−2.257%** | **13 of 13** |
+| 4 | −0.534% | **−2.125%** | **13 of 13** |
+
+Unanimous at every λ, on every network. No p-value is attached and none should
+be: the thirteen networks share one demand table, one envelope and one base
+geometry, and twelve of them differ from the control by a single splice, so they
+are nowhere near independent and a sign test's nominal 1-in-8192 would be a
+fiction. Unanimity across thirteen dependent replications is what this is, and
+it is enough — the effect is not marginal on any of them.
+
+The optimizer's claim gap holds its size everywhere: the route-level optimizer
+believes it has **63% to 73%** less unserved demand than the evaluator measures,
+on all thirteen. The path-level gap is 0.000% by construction.
+
+**An exploratory observation, flagged as such.** Route-level measured unserved
+demand ranges **−1.094% to −7.454%** across the thirteen networks — a spread of
+6.36 points — against path-level's **−5.110% to −6.702%**, a spread of 1.59.
+Same envelope, same evaluator, same effort, so the spread belongs to the
+representation and not to the networks. If it holds it says something stronger
+than this entry does: that the route-level representation is not merely more
+expensive but substantially less stable under a change of geometry.
+
+It is **not a finding**. It was noticed at five of thirteen networks, with the
+remaining eight already queued, and no threshold was committed in advance. The
+contamination is recorded in ACCEPTANCE.md under *Pre-registration note:
+representation stability across geometry*, written while it was still five. It
+can be promoted only against an independent candidate set — the Experiment 2B
+networks qualify, having been enumerated before it was noticed — and the
+write-up must name which.
+
 **What would falsify it.** Running both treatments at L4 and finding the cost
 gap collapses would mean the route-level plans are merely under-searched rather
 than structurally blind. That is the check to run before this is quoted with a
-number attached; the direction is unlikely to move, the factor of 3.7 might.
+number attached; the direction is now established on thirteen networks and is
+very unlikely to move, the factor of 3.7 might.
 
 
 ---

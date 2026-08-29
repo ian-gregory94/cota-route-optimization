@@ -213,8 +213,8 @@
     "verdict": "D19 stands: both remain harmful at full effort"
   },
   "representation_frontier": {
-    "status": "running",
-    "n_networks_complete": 12,
+    "status": "ok",
+    "n_networks_complete": 13,
     "n_networks_expected": 13,
     "spread_at_lambda2": {
       "route_level": {
@@ -227,7 +227,7 @@
         "min": -6.7015,
         "max": -5.1102,
         "range_pts": 1.5913,
-        "n_networks": 12
+        "n_networks": 13
       }
     },
     "table": {
@@ -352,13 +352,13 @@
         "('unserved_vs_base_pct', 'route_level')": -6.7971
       },
       "splice|033|034|WESHIGW": {
-        "('claim_gap_unserved_pct', 'path_level')": null,
+        "('claim_gap_unserved_pct', 'path_level')": 0.0,
         "('claim_gap_unserved_pct', 'route_level')": -70.1863,
-        "('gc_per_trip_vs_base_pct', 'path_level')": null,
+        "('gc_per_trip_vs_base_pct', 'path_level')": -2.3327,
         "('gc_per_trip_vs_base_pct', 'route_level')": -0.7048,
-        "('gc_vs_base_pct', 'path_level')": null,
+        "('gc_vs_base_pct', 'path_level')": 0.6629,
         "('gc_vs_base_pct', 'route_level')": 0.4283,
-        "('unserved_vs_base_pct', 'path_level')": null,
+        "('unserved_vs_base_pct', 'path_level')": -6.0646,
         "('unserved_vs_base_pct', 'route_level')": -2.2564
       }
     }
@@ -369,7 +369,6 @@
     "n_subsets_expected": 240
   },
   "incomplete": [
-    "representation_frontier",
     "subset_search_2B"
   ]
 }

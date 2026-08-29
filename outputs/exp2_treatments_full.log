@@ -807,3 +807,55 @@
 2026-08-29 19:23:44,161   splice|033|034|WESHIGW     path_level  lam=1.0    85s  Model B gc  -3.236% unserved  +3.143%  (optimizer claimed  +0.000%)
 2026-08-29 19:23:44,171 incumbent snapped to ladder, max drift 0.0532 min
 2026-08-29 19:23:44,179 incumbent plan is infeasible under this budget
+2026-08-29 19:25:16,245 solve lambda=2.0: obj=2.95914e+06 vh=2516.0/2517.2 exchanges=0
+2026-08-29 19:25:16,252   splice|033|034|WESHIGW     path_level  lam=2.0    92s  Model B gc  +0.663% unserved  -6.065%  (optimizer claimed  +0.000%)
+2026-08-29 19:25:16,261 incumbent snapped to ladder, max drift 0.0532 min
+2026-08-29 19:25:16,269 incumbent plan is infeasible under this budget
+2026-08-29 19:26:46,449 solve lambda=4.0: obj=4.1293e+06 vh=2514.5/2517.2 exchanges=0
+2026-08-29 19:26:46,457   splice|033|034|WESHIGW     path_level  lam=4.0    90s  Model B gc  +0.909% unserved  -6.304%  (optimizer claimed  +0.000%)
+2026-08-29 19:26:46,478 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2_treatments_20260829T183849Z/experiment.json
+
+====================================================================================================
+EXPERIMENT 2 — route-level vs path-level decision representation
+both plans independently re-scored by the frozen Model B evaluator
+====================================================================================================
+
+UNEDITED NETWORK (the treatment question on its own)
+  treatment  lambda  gc_vs_base_pct  unserved_vs_base_pct  served_vs_base_pct  gc_per_trip_vs_base_pct  claim_gap_unserved_pct
+route_level     1.0           3.177                -5.127               2.604                    0.559                 -60.933
+route_level     2.0           3.071                -5.877               2.985                    0.084                 -63.228
+route_level     4.0           3.218                -6.802               3.455                   -0.229                 -64.211
+ path_level     1.0          -0.888                -1.906               0.968                   -1.839                   0.000
+ path_level     2.0           0.828                -5.865               2.979                   -2.088                   0.000
+ path_level     4.0           1.134                -6.203               3.150                   -1.954                   0.000
+
+  claim_gap_unserved_pct = how much LESS unserved demand the optimizer believed it had than Model B measures.
+
+BY CANDIDATE NETWORK, lambda=2
+                network   treatment  gc_vs_base_pct  unserved_vs_base_pct
+ splice|001|021|PICBETS route_level           1.054                -1.094
+ splice|001|021|PICBETS  path_level           0.624                -5.600
+ splice|002|011|HIGFITN route_level           3.030                -7.454
+ splice|002|011|HIGFITN  path_level           0.675                -6.322
+ splice|002|033|WESHIGW route_level          -0.300                -1.457
+ splice|002|033|WESHIGW  path_level           0.164                -5.110
+ splice|002|034|WESHIGW route_level           2.771                -6.695
+ splice|002|034|WESHIGW  path_level           0.879                -6.420
+splice|005|006|NMURBEAN route_level           2.005                -3.627
+splice|005|006|NMURBEAN  path_level           1.028                -6.123
+splice|005|021|NMURBEAN route_level           0.595                -1.816
+splice|005|021|NMURBEAN  path_level           1.011                -6.541
+splice|006|021|NMURBEAN route_level           1.604                -4.341
+splice|006|021|NMURBEAN  path_level           0.615                -5.561
+ splice|007|101|EMO4THW route_level           1.295                -4.605
+ splice|007|101|EMO4THW  path_level           0.823                -6.365
+ splice|008|035|BOASHAN route_level           1.999                -4.585
+ splice|008|035|BOASHAN  path_level           0.782                -5.807
+ splice|011|033|WESHIGW route_level           1.507                -4.933
+ splice|011|033|WESHIGW  path_level           0.924                -6.382
+ splice|011|034|WESHIGW route_level           3.377                -6.797
+ splice|011|034|WESHIGW  path_level           0.988                -6.702
+ splice|033|034|WESHIGW route_level           0.428                -2.256
+ splice|033|034|WESHIGW  path_level           0.663                -6.065
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2_treatments_20260829T183849Z
