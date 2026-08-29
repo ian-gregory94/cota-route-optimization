@@ -237,3 +237,57 @@
 2026-08-29 18:45:19,347 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
 2026-08-29 18:45:19,392 period owl     : 22669 paths, 20000 OD pairs
 2026-08-29 18:45:19,393 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 18:54:50,388 solve lambda=2.0: obj=3.02813e+06 vh=2516.5/2517.2 exchanges=70
+2026-08-29 18:54:50,392   0 edits seed20260826               lam=2.0   571s gc=1.795146e+06 unserved=10275
+2026-08-29 18:54:50,394 0 edits seed20260826                   done in 896s (152241 paths)
+2026-08-29 18:54:50,671 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 18:54:50,679 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 18:54:50,789 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 18:54:50,798 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 18:54:50,854 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:55:40,017 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:55:40,105 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-29 18:55:40,152 period early   : 24668 paths, 20000 OD pairs
+2026-08-29 18:55:40,164 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:56:36,777 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:56:36,875 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-29 18:56:36,936 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-29 18:56:36,949 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:57:27,218 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:57:27,302 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-29 18:57:27,353 period midday  : 24097 paths, 20000 OD pairs
+2026-08-29 18:57:27,365 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:58:22,119 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:58:22,212 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-29 18:58:22,267 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-29 18:58:22,278 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:59:15,843 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:59:15,929 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-29 18:59:15,979 period evening : 24058 paths, 20000 OD pairs
+2026-08-29 18:59:15,991 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:00:05,167 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:00:05,264 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-29 19:00:05,309 period owl     : 22669 paths, 20000 OD pairs
+2026-08-29 19:00:05,309 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 19:09:40,608 solve lambda=2.0: obj=3.02776e+06 vh=2515.8/2517.2 exchanges=37
+2026-08-29 19:09:40,676   0 edits seed20260827               lam=2.0   575s gc=1.795565e+06 unserved=10268
+2026-08-29 19:09:40,682 0 edits seed20260827                   done in 890s (152241 paths)
+2026-08-29 19:09:40,689 noise floor at this effort: {'2.0': {'n_replicates': 3, 'unserved_sd_pct': 0.05724459081359082, 'gc_sd_pct': 0.024482870517430325}}
+2026-08-29 19:09:40,696 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_eval_20260829T183849Z/experiment.json
+
+========================================================================================================
+EXPERIMENT 2 EVALUATION — geometry WITH frequency re-optimized, same 2,517 vehicle-hours
+Candidate path sets use the reduced scenario sweep and the solver runs at low effort, so these RANK candidates; the noise floor below says which differences are real at this effort.
+========================================================================================================
+                        label  n_edits  n_paths  modelled_share_pct  gc_vs_noedit_pct_lam2.0  unserved_vs_noedit_pct_lam2.0  measurable_lam2.0
+                      0 edits        0   152241               0.000                    0.000                          0.000              False
+                      1 edits        1   154335               0.685                   -0.841                          1.878               True
+single:splice|002|033|WESHIGW        1   154335               0.685                   -0.841                          1.878               True
+single:splice|007|101|EMO4THW        1   155040               0.000                   -0.300                          0.869               True
+         0 edits seed20260826        0   152241               0.000                    0.026                         -0.050              False
+         0 edits seed20260827        0   152241               0.000                    0.049                         -0.114              False
+
+  search noise at this effort, from the zero-edit replicates:
+    lambda=2.0: unserved sd 0.057 pts over 3 seeds -> anything under 0.172 pts is not measurable
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2_geometry_eval_20260829T183849Z

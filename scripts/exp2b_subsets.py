@@ -268,6 +268,9 @@ def main() -> int:
                          "where the same dozen networks are revisited across "
                          "three lambdas.")
     args = ap.parse_args()
+    si, sn = (int(x) for x in args.shard.split("/"))
+    if not 0 <= si < sn:
+        raise SystemExit(f"--shard {args.shard}: i must be in [0, n)")
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
     lams = ([float(x) for x in args.lambdas.split(",")] if args.lambdas
@@ -319,7 +322,6 @@ def main() -> int:
                   "evaluator",
         config_files=["assumptions.yaml", "cost_weights.yaml",
                       "constraints.yaml", "sources.yaml"])
-    si, sn = (int(x) for x in args.shard.split("/"))
     store = ShardedStore(OUT / "exp2b_subsets.jsonl", si, sn)
 
     from cota_opt.harness import build_harness

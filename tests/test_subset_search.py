@@ -315,3 +315,50 @@ def test_no_tracked_path_is_unusable_on_windows():
     bad = [p for p in out.stdout.splitlines()
            if any(c in Path(p).name for c in WINDOWS_FORBIDDEN)]
     assert not bad, f"paths unusable on Windows: {bad[:5]}"
+
+
+# --------------------------------------------------------------------------
+# sharding
+# --------------------------------------------------------------------------
+
+def _shard(subs, i, n):
+    return [c for j, c in enumerate(subs) if j % n == i]
+
+
+def test_shards_partition_the_sweep_exactly():
+    """Disjoint and complete. An overlap wastes a worker's hours on subsets
+    the other already solved; a gap silently drops them from a sweep whose
+    whole claim is that it is exhaustive."""
+    subs = feasible_subsets(CANDS, _pairs(CANDS))
+    for n in (2, 3, 4):
+        parts = [_shard(subs, i, n) for i in range(n)]
+        keys = [{set_key(c) for c in p} for p in parts]
+        assert sum(len(p) for p in parts) == len(subs)
+        assert set().union(*keys) == {set_key(c) for c in subs}
+        for a in range(n):
+            for b in range(a + 1, n):
+                assert not (keys[a] & keys[b])
+
+
+def test_every_shard_still_ascends_in_cardinality():
+    subs = feasible_subsets(CANDS, _pairs(CANDS))
+    for i in range(3):
+        sizes = [len(c) for c in _shard(subs, i, 3)]
+        assert sizes == sorted(sizes)
+
+
+def test_shard_zero_holds_the_empty_set():
+    """The zero-edit reference every other subset is measured against. It has
+    to be solved, and shard 0 is the one that gets it under any n."""
+    subs = feasible_subsets(CANDS, _pairs(CANDS))
+    for n in (1, 2, 3, 5):
+        assert () in _shard(subs, 0, n)
+
+
+def test_shard_is_parsed_before_it_is_used():
+    """Regression: the shard filter was inserted above the line that parses
+    --shard, so every sharded worker died on an UnboundLocalError before doing
+    any work -- and the supervisor dutifully restarted it, forever."""
+    src = (Path(__file__).resolve().parents[1] / "scripts"
+           / "exp2b_subsets.py").read_text()
+    assert src.index("si, sn = (int(x)") < src.index("if sn > 1:")

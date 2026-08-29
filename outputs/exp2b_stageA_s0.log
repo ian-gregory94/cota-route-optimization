@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 600, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 303, in main
+    if sn > 1:
+       ^^
+UnboundLocalError: cannot access local variable 'sn' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 600, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 303, in main
+    if sn > 1:
+       ^^
+UnboundLocalError: cannot access local variable 'sn' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 600, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_subsets.py", line 303, in main
+    if sn > 1:
+       ^^
+UnboundLocalError: cannot access local variable 'sn' where it is not associated with a value
+2026-08-29 19:16:46,817 shard 0 of 2: 120 subsets
+2026-08-29 19:16:46,817 stage A: 120 subsets, by cardinality {0: 1, 1: 6, 2: 24, 3: 42, 4: 34, 5: 12, 6: 1}, lambdas [2.0], effort 60000/2/32
+2026-08-29 19:16:46,823 result store: 1 cells solved across 1 shard file(s); writing to exp2b_subsets.shard0of2.jsonl
+2026-08-29 19:16:47,598 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.8s)
+2026-08-29 19:16:47,642 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-29 19:16:47,642 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-29 19:16:47,643 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-29 19:16:47,683 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 19:16:48,426 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.7s)
+2026-08-29 19:16:48,735 period early   : 33571 paths, 20000 OD pairs
+2026-08-29 19:16:48,763 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-29 19:16:48,788 period midday  : 34003 paths, 20000 OD pairs
+2026-08-29 19:16:48,818 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-29 19:16:48,855 period evening : 34989 paths, 20000 OD pairs
+2026-08-29 19:16:48,904 period owl     : 34494 paths, 20000 OD pairs
+2026-08-29 19:16:48,904 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 19:16:48,988 envelope pinned: 2517.2 veh-hours; waiting model same_route
+2026-08-29 19:18:16,380 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-29 19:18:16,719 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 19:18:16,728 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 19:18:16,839 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 19:18:16,849 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-29 19:18:16,924 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

@@ -17616,3 +17616,347 @@ sleep 15; tail -2 outputs/supervisor.log; ps -eo pid,args |
       echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
      
 2026-08-29T18:46:13Z pid=1648 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:47:09Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:47:09Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:47:09Z pid=1622 rss=463MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:47:09Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:47:09Z pid=1648 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:48:04Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:48:04Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:48:04Z pid=1622 rss=480MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:48:04Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:48:04Z pid=1648 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:48:59Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:48:59Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:48:59Z pid=1622 rss=497MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:48:59Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:48:59Z pid=1648 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:49:55Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:49:55Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:49:55Z pid=1622 rss=514MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:49:55Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:49:55Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:50:50Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:50:50Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:50:50Z pid=1622 rss=521MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:50:50Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:50:50Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:51:45Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:51:45Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:51:45Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:51:45Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:51:45Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:52:41Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:52:41Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:52:41Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:52:41Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:52:41Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:53:36Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:53:36Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:53:36Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:53:36Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:53:36Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:54:32Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:54:32Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:54:32Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:54:32Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:54:32Z pid=1648 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:55:27Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:55:27Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:55:27Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:55:27Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:55:27Z pid=1648 rss=413MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:56:23Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:56:23Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:56:23Z pid=1622 rss=530MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:56:23Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:56:23Z pid=1648 rss=417MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:57:18Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:57:18Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:57:18Z pid=1622 rss=529MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:57:18Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:57:18Z pid=1648 rss=423MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:58:14Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:58:14Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:58:14Z pid=1622 rss=533MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:58:14Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:58:14Z pid=1648 rss=422MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:59:09Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:59:09Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:59:09Z pid=1622 rss=533MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:59:09Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:59:09Z pid=1648 rss=428MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:00:05Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:00:05Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:00:05Z pid=1622 rss=533MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:00:05Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:00:05Z pid=1648 rss=441MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:01:00Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:01:00Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:01:00Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:01:00Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:01:00Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:01:55Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:01:55Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:01:55Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:01:55Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:01:56Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:02:51Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:02:51Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:02:51Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:02:51Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:02:51Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:03:46Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:03:46Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:03:46Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:03:46Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:03:46Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:04:42Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:04:42Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:04:42Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:04:42Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:04:42Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:05:37Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:05:37Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:05:37Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:05:37Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:05:37Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:06:33Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:06:33Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:06:33Z pid=1622 rss=536MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:06:33Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:06:33Z pid=1648 rss=446MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:07:28Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:07:28Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:07:28Z pid=1622 rss=533MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:07:28Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:07:28Z pid=1648 rss=440MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:08:23Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:08:23Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:08:23Z pid=1622 rss=536MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:08:23Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:08:23Z pid=1648 rss=440MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:09:19Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:09:19Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:09:19Z pid=1622 rss=536MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:09:19Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T19:09:19Z pid=1648 rss=440MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T19:10:24Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:10:24Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:10:24Z pid=1622 rss=536MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:11:29Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:11:29Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:11:29Z pid=1622 rss=535MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:12:34Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:12:34Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:12:34Z pid=1622 rss=535MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:13:40Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:13:40Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:13:40Z pid=1622 rss=535MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:14:45Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:14:45Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:14:45Z pid=1622 rss=535MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:15:50Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:15:50Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:15:50Z pid=1622 rss=535MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:16:51Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:16:51Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:16:51Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:16:51Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:16:51Z pid=5452 rss=312MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:17:46Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:17:46Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:17:46Z pid=1622 rss=534MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:17:46Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:17:46Z pid=5452 rss=315MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T19:18:41Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T19:18:41Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T19:18:41Z pid=1622 rss=539MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T19:18:41Z pid=5450 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T19:18:41Z pid=5452 rss=363MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
