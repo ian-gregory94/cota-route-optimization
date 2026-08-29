@@ -33,32 +33,77 @@ import pandas as pd
 
 OUT = ROOT / "outputs"
 LAM = 2.0                      # the certified region; see gate 4
+EFFORT = "60000/2/32"          # the ranking effort the singles are measured at
 SIGMA = 3.0                    # committed in ACCEPTANCE.md before the runs
 
 
-def noise_floor(log_path: Path, lam: float) -> float:
-    """Recover the floor from the evaluation run's own log line.
+#: Runs before this scored under Model A while reporting Model B -- see the
+#: defect note in ACCEPTANCE.md. Their logs are not evidence about Model B and
+#: are not read here.
+MODEL_B_LOGS = ("exp2_eval_modelB_fixed.log",)
 
-    Read rather than recomputed, so the number classified against is the number
-    the run committed to at the time, not one derived later.
+
+def noise_floor(lam: float) -> tuple[float, str]:
+    """Recover the floor from a Model B evaluation run's own log line.
+
+    Read rather than recomputed, so the number classified against is the one
+    the run committed to at the time. It must come from a run whose evaluator
+    was Model B: classifying Model B effects against a Model A floor would mix
+    the two models inside a single verdict, which is worse than either alone.
     """
     pat = re.compile(r"noise floor at this effort: (\{.*\})")
-    txt = log_path.read_text(errors="replace")
-    hits = pat.findall(txt)
-    if not hits:
-        raise SystemExit(f"no noise floor recorded in {log_path}")
-    d = json.loads(hits[-1].replace("'", '"'))
-    return SIGMA * float(d[str(lam)]["unserved_sd_pct"])
+    for name in MODEL_B_LOGS:
+        p = OUT / name
+        if not p.exists():
+            continue
+        hits = pat.findall(p.read_text(errors="replace"))
+        if hits:
+            d = json.loads(hits[-1].replace("'", '"'))
+            return SIGMA * float(d[str(lam)]["unserved_sd_pct"]), name
+    raise SystemExit(
+        "no Model B noise floor available yet. The only completed evaluation "
+        "runs scored under Model A (ACCEPTANCE.md, 'Defect: the Experiment 2 "
+        "evaluator was Model A'), and their floor may not be used to classify "
+        "Model B effects. Wait for exp2-eval-B-fixed.")
 
 
 def main() -> int:
-    ev = pd.read_csv(OUT / "exp2_eval.csv")
-    s = ev[ev["label"].str.startswith("single:")].copy()
-    s["candidate"] = s["label"].str.replace("single:", "", regex=False)
-    floor = noise_floor(OUT / "exp2_eval_modelB.log", LAM)
+    floor, floor_src = noise_floor(LAM)
+
+    # Read the cells, not exp2_eval.csv. The CSV carries no record of which
+    # evaluator wrote it, so mid-re-run it can hold Model A rows while the
+    # floor above comes from the Model B log -- a verdict mixing two models
+    # inside one comparison. Cell keys carry the pricing since 2026-08-29;
+    # keys without it are Model A by construction and are ignored here.
+    cells = {}
+    for line in (OUT / "exp2_eval.jsonl").read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if f"|same_route|{EFFORT}" in r.get("cell", ""):
+            cells[r["cell"]] = r
+    base = [v for k, v in cells.items() if "|0 edits|" in k]
+    singles = {k.split("single:")[1].rsplit("|", 3)[0]: v
+               for k, v in cells.items() if "single:" in k}
+    if not base or not singles:
+        raise SystemExit(
+            f"no Model B cells at effort {EFFORT} yet "
+            f"({len(base)} zero-edit, {len(singles)} candidates). "
+            "Wait for exp2-eval-B-fixed.")
+    b_un = float(base[0][f"unserved_lam{LAM}"])
+    b_gc = float(base[0][f"gc_lam{LAM}"])
 
     u = f"unserved_vs_noedit_pct_lam{LAM}"
     g = f"gc_vs_noedit_pct_lam{LAM}"
+    s = pd.DataFrame([{
+        "candidate": k,
+        u: (float(v[f"unserved_lam{LAM}"]) / b_un - 1) * 100,
+        g: (float(v[f"gc_lam{LAM}"]) / b_gc - 1) * 100,
+        "modelled_share_pct": float(v.get("modelled_share_pct", float("nan"))),
+    } for k, v in sorted(singles.items())])
 
     def klass(x: float) -> str:
         if x <= -floor:
@@ -100,6 +145,8 @@ def main() -> int:
         "noise_floor_pts": floor,
         "sigma_margin": SIGMA,
         "threshold_source": "ACCEPTANCE.md, committed before the evaluations ran",
+        "noise_floor_from": floor_src,
+        "evaluator_pricing": "same_route (Model B)",
         "effort": "60000/2/32",
         "evaluator": "frozen Model B (same_route common lines)",
         "counts": s["class"].value_counts().to_dict(),
