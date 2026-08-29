@@ -157,3 +157,110 @@ def test_frozen_candidate_set_enumerates_to_the_committed_count():
     subs = feasible_subsets(d["rule"]["eligible_for_2B"], inc)
     assert len(subs) == 240
     assert max(len(c) for c in subs) == 6
+
+
+# --------------------------------------------------------------------------
+# the analysis that turns raw subset scores into the experiment's answer
+# --------------------------------------------------------------------------
+
+from exp2b_subsets import analyse
+
+
+def _frame(rows, lam=2.0):
+    out = []
+    for key, members, unserved, gc in rows:
+        out.append({
+            "set_key": key, "members": list(members),
+            "cardinality": len(members), "lambda": lam,
+            "modelB_unserved": unserved, "modelB_gc": gc,
+            "modelB_served": 30000.0 - unserved,
+            "modelB_gc_per_trip": gc / (30000.0 - unserved),
+        })
+    return pd.DataFrame(out)
+
+
+def test_vs_noedit_is_measured_against_the_empty_set():
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_010_000.0),
+    ]), floor=0.288)
+    r = df[df.set_key == "a"].iloc[0]
+    assert r["unserved_vs_noedit_pct"] == pytest.approx(-1.0)
+    assert r["gc_vs_noedit_pct"] == pytest.approx(1.0)
+    # and the empty set is its own reference, so it must read as exactly zero
+    z = df[df.set_key == "<none>"].iloc[0]
+    assert z["unserved_vs_noedit_pct"] == pytest.approx(0.0)
+
+
+def test_perfectly_additive_pair_reads_as_additive():
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_000_000.0),      # -1.0 pts
+        ("b", ("b",), 9800.0, 1_000_000.0),      # -2.0 pts
+        ("a+b", ("a", "b"), 9700.0, 1_000_000.0),  # -3.0 pts = the sum
+    ]), floor=0.288)
+    r = df[df.set_key == "a+b"].iloc[0]
+    assert r["sum_of_singles_unserved_pct"] == pytest.approx(-3.0)
+    assert r["interaction_unserved_pts"] == pytest.approx(0.0, abs=1e-9)
+    assert r["interaction_class"] == "additive within measurement"
+
+
+def test_a_pair_delivering_less_than_its_members_is_substituting():
+    """D20's pattern: each edit helps, the pair delivers under half of it."""
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_000_000.0),
+        ("b", ("b",), 9800.0, 1_000_000.0),
+        ("a+b", ("a", "b"), 9950.0, 1_000_000.0),   # -0.5 against a promised -3
+    ]), floor=0.288)
+    r = df[df.set_key == "a+b"].iloc[0]
+    assert r["interaction_unserved_pts"] == pytest.approx(2.5)
+    assert r["interaction_class"] == "substituting"
+
+
+def test_a_pair_beating_its_members_is_synergistic():
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_000_000.0),
+        ("b", ("b",), 9800.0, 1_000_000.0),
+        ("a+b", ("a", "b"), 9500.0, 1_000_000.0),   # -5 against a promised -3
+    ]), floor=0.288)
+    r = df[df.set_key == "a+b"].iloc[0]
+    assert r["interaction_unserved_pts"] == pytest.approx(-2.0)
+    assert r["interaction_class"] == "synergistic"
+
+
+def test_singles_and_the_empty_set_are_never_classified():
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_000_000.0),
+    ]), floor=0.288)
+    assert set(df["interaction_class"]) == {""}
+
+
+def test_a_set_whose_member_was_not_measured_gets_no_interaction():
+    """A partial sweep must leave the term missing, not silently treat the
+    absent single as zero -- which would read as a large false synergy."""
+    df = analyse(_frame([
+        ("<none>", (), 10000.0, 1_000_000.0),
+        ("a", ("a",), 9900.0, 1_000_000.0),
+        ("a+b", ("a", "b"), 9700.0, 1_000_000.0),
+    ]), floor=0.288)
+    r = df[df.set_key == "a+b"].iloc[0]
+    assert not np.isfinite(r["interaction_unserved_pts"])
+    assert r["interaction_class"] == ""
+
+
+def test_lambdas_are_analysed_independently():
+    a = _frame([("<none>", (), 10000.0, 1e6), ("a", ("a",), 9900.0, 1e6)], lam=1.0)
+    b = _frame([("<none>", (), 20000.0, 2e6), ("a", ("a",), 19000.0, 2e6)], lam=2.0)
+    df = analyse(pd.concat([a, b], ignore_index=True), floor=0.288)
+    got = {r["lambda"]: r["unserved_vs_noedit_pct"]
+           for _, r in df[df.set_key == "a"].iterrows()}
+    assert got[1.0] == pytest.approx(-1.0)
+    assert got[2.0] == pytest.approx(-5.0)
+
+
+def test_missing_zero_edit_row_does_not_fabricate_a_comparison():
+    df = analyse(_frame([("a", ("a",), 9900.0, 1e6)]), floor=0.288)
+    assert "unserved_vs_noedit_pct" not in df or df["unserved_vs_noedit_pct"].isna().all()

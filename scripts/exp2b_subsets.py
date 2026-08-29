@@ -93,6 +93,92 @@ def set_key(combo: tuple[str, ...]) -> str:
     return "+".join(sorted(combo)) if combo else "<none>"
 
 
+def analyse(df: pd.DataFrame, floor: float) -> pd.DataFrame:
+    """Derive the comparison and interaction columns from the raw scores.
+
+    Kept out of ``main`` so it can be tested without a 22-hour sweep in front
+    of it. Everything here is arithmetic on columns the solve already wrote;
+    nothing is re-solved, and nothing is inferred.
+    """
+    # every derived column exists before anything fills it: a stage that
+    # filters out the zero-edit row (or a run cut short before it) must leave
+    # the comparison MISSING rather than crash on the subtraction below, and a
+    # missing comparison must not be mistaken for a measured zero
+    for c in ("gc_vs_noedit_pct", "unserved_vs_noedit_pct",
+              "served_vs_noedit_pct", "gc_per_trip_vs_noedit_pct",
+              "sum_of_singles_unserved_pct", "sum_of_singles_gc_pct"):
+        if c not in df:
+            df[c] = float("nan")
+    if df.empty:
+        for c in ("interaction_unserved_pts", "interaction_gc_pts"):
+            df[c] = float("nan")
+        df["interaction_class"] = ""
+        return df
+
+    for m in df["lambda"].unique():
+        sel = df["lambda"] == m
+        base = df[sel & (df["set_key"] == "<none>")]
+        if base.empty:
+            log.warning("no zero-edit row at lambda=%s; the vs-no-edit "
+                        "comparison is unavailable for it", m)
+            continue
+        b = base.iloc[0]
+        for col, ref in (("gc", "modelB_gc"),
+                         ("unserved", "modelB_unserved"),
+                         ("served", "modelB_served"),
+                         ("gc_per_trip", "modelB_gc_per_trip")):
+            df.loc[sel, f"{col}_vs_noedit_pct"] = (
+                df.loc[sel, ref] / float(b[ref]) - 1) * 100
+
+    for m in df["lambda"].unique():
+        sel = df["lambda"] == m
+        one = df[sel & (df["cardinality"] == 1)]
+        singles = {r["set_key"]: r["unserved_vs_noedit_pct"]
+                   for _, r in one.iterrows()}
+        gsingles = {r["set_key"]: r["gc_vs_noedit_pct"]
+                    for _, r in one.iterrows()}
+
+        def _sum(members, tab):
+            vals = [tab.get(k) for k in members]
+            return (float(np.sum(vals)) if vals and all(
+                v is not None and np.isfinite(v) for v in vals)
+                else float("nan"))
+
+        idx = df.index[sel]
+        df.loc[idx, "sum_of_singles_unserved_pct"] = [
+            _sum(df.at[i, "members"], singles) for i in idx]
+        df.loc[idx, "sum_of_singles_gc_pct"] = [
+            _sum(df.at[i, "members"], gsingles) for i in idx]
+
+    df["interaction_unserved_pts"] = (df["unserved_vs_noedit_pct"]
+                                      - df["sum_of_singles_unserved_pct"])
+    df["interaction_gc_pts"] = (df["gc_vs_noedit_pct"]
+                                - df["sum_of_singles_gc_pct"])
+
+    def _interp(row) -> str:
+        v = row["interaction_unserved_pts"]
+        if not np.isfinite(v) or row["cardinality"] < 2:
+            return ""
+        if abs(v) < floor:
+            return "additive within measurement"
+        # unserved demand is a cost, so a POSITIVE interaction term means the
+        # set delivered LESS than its members promised separately
+        return "substituting" if v > 0 else "synergistic"
+
+    df["interaction_class"] = df.apply(_interp, axis=1)
+    return df
+
+
+def noise_floor(default: float = 0.288) -> float:
+    """The floor committed before the single-candidate evaluations ran."""
+    try:
+        cl = json.loads((OUT / "exp2_candidate_classes.json").read_text())
+        return float(cl["rule"]["noise_floor_pts"])
+    except Exception:
+        log.warning("using the default %.3f-point floor", default)
+        return default
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", choices=["A", "B"], default="A")
@@ -137,10 +223,10 @@ def main() -> int:
 
     if args.stage == "B":
         sa = pd.read_csv(OUT / "exp2b_stageA.csv")
-        sa = sa.sort_values("unserved_vs_base_pct")
+        sa = sa.sort_values("unserved_vs_noedit_pct")
         keep = list(sa.head(args.promote)["set_key"])
         for k, grp in sa.groupby("cardinality"):
-            best = grp.sort_values("unserved_vs_base_pct").iloc[0]["set_key"]
+            best = grp.sort_values("unserved_vs_noedit_pct").iloc[0]["set_key"]
             if best not in keep:
                 keep.append(best)
         want = set(keep)
@@ -197,6 +283,26 @@ def main() -> int:
     effort = f"{args.iterations}/{args.restarts}/{args.width}"
     rows: list[dict] = []
     t_start = time.time()
+
+    # Two different comparisons, and conflating them would answer the wrong
+    # question. `*_vs_base_pct` measures a set against ITS OWN network with
+    # baseline frequencies -- how much frequency re-optimization gains on that
+    # geometry. That is not what 2B is asking. "Which set of edits is best"
+    # compares a set's optimized outcome against the UNEDITED network's
+    # optimized outcome, which is `*_vs_noedit_pct` below and is the column
+    # everything is ranked on. Unserved demand and generalized cost are both
+    # totals over the same OD table under the same evaluator, so they are
+    # directly comparable across networks; that is the same comparison
+    # run_exp2_eval.py makes, so 2B's singles line up with the singles already
+    # measured there.
+    noedit: dict[str, dict[str, float]] = {}
+    for m in lams:
+        c = f"b|<none>|lam{m}|{effort}"
+        if store.has(c):
+            r0 = store.get(c)
+            noedit[str(m)] = {k: float(r0[k]) for k in
+                              ("modelB_gc", "modelB_unserved", "modelB_served",
+                               "modelB_gc_per_trip")}
 
     for i, combo in enumerate(subsets, 1):
         name = set_key(combo)
@@ -303,18 +409,36 @@ def main() -> int:
                     (r.fitness.unserved_demand / f.unserved_demand - 1) * 100
                     if f.unserved_demand else float("nan")),
             }
+            ne = noedit.get(str(m))
+            if name == "<none>" and ne is None:
+                ne = {"modelB_gc": f.generalized_cost,
+                      "modelB_unserved": f.unserved_demand,
+                      "modelB_served": f.served_demand,
+                      "modelB_gc_per_trip": f.gc_per_served_trip}
+                noedit[str(m)] = ne
+            if ne:
+                rec["gc_vs_noedit_pct"] = (
+                    f.generalized_cost / ne["modelB_gc"] - 1) * 100
+                rec["unserved_vs_noedit_pct"] = (
+                    f.unserved_demand / ne["modelB_unserved"] - 1) * 100
+                rec["served_vs_noedit_pct"] = (
+                    f.served_demand / ne["modelB_served"] - 1) * 100
+                rec["gc_per_trip_vs_noedit_pct"] = (
+                    f.gc_per_served_trip / ne["modelB_gc_per_trip"] - 1) * 100
             store.put(cell, {**rec, "plan": {key_str(k): float(v)
                                              for k, v in hw.items()}})
             rows.append(rec)
             el = time.time() - t_start
-            log.info("[%3d/%3d] %-46s k=%d lam=%-4s %4.0fs  unserved %+7.3f%%  "
-                     "gc %+7.3f%%  (elapsed %.1fh, ~%.1fh left)",
+            log.info("[%3d/%3d] %-46s k=%d lam=%-4s %4.0fs  vs no-edit: "
+                     "unserved %+7.3f%%  gc %+7.3f%%  (elapsed %.1fh, "
+                     "~%.1fh left)",
                      i, len(subsets), name[:46], len(combo), m, rec["seconds"],
-                     rec["unserved_vs_base_pct"], rec["gc_vs_base_pct"],
+                     rec.get("unserved_vs_noedit_pct", float("nan")),
+                     rec.get("gc_vs_noedit_pct", float("nan")),
                      el / 3600, el / 3600 * (len(subsets) - i) / max(i, 1))
         del judge
 
-    df = pd.DataFrame(rows)
+    df = analyse(pd.DataFrame(rows), floor := noise_floor())
     tag = f"stage{args.stage}"
     df.to_csv(OUT / f"exp2b_{tag}.csv", index=False)
     df.to_csv(exp.artifact_path(f"{tag}.csv"), index=False)
@@ -329,16 +453,33 @@ def main() -> int:
           f"frozen Model B evaluator")
     print("=" * 104)
     for m in lams:
-        d = df[df["lambda"] == m].sort_values("unserved_vs_base_pct")
-        print(f"\nlambda={m}: best 12 by measured unserved demand")
-        print(d.head(12)[["set_key", "cardinality", "unserved_vs_base_pct",
-                          "gc_vs_base_pct", "gc_per_trip_vs_base_pct"]]
+        d = df[df["lambda"] == m].sort_values("unserved_vs_noedit_pct")
+        print(f"\nlambda={m}: best 12 by measured unserved demand, "
+              f"against the UNEDITED network")
+        print(d.head(12)[["set_key", "cardinality", "unserved_vs_noedit_pct",
+                          "gc_vs_noedit_pct", "gc_per_trip_vs_noedit_pct"]]
               .round(4).to_string(index=False))
+        print(f"\nlambda={m}: interaction, measured effect minus the sum of "
+              f"member singles (floor {floor:.3f} pts)")
+        it = d[d["cardinality"] >= 2].dropna(subset=["interaction_unserved_pts"])
+        if not it.empty:
+            print(it["interaction_class"].value_counts().to_string())
+            print("  most substituting:")
+            print(it.nlargest(5, "interaction_unserved_pts")[
+                ["set_key", "cardinality", "unserved_vs_noedit_pct",
+                 "sum_of_singles_unserved_pct", "interaction_unserved_pts"]]
+                .round(4).to_string(index=False))
+            print("  most synergistic:")
+            print(it.nsmallest(5, "interaction_unserved_pts")[
+                ["set_key", "cardinality", "unserved_vs_noedit_pct",
+                 "sum_of_singles_unserved_pct", "interaction_unserved_pts"]]
+                .round(4).to_string(index=False))
+
         print(f"\nlambda={m}: best set at each cardinality (NOT required to "
               f"be nested)")
-        w_ = d.sort_values("unserved_vs_base_pct").groupby("cardinality").head(1)
-        print(w_[["cardinality", "set_key", "unserved_vs_base_pct",
-                  "gc_vs_base_pct"]].round(4).to_string(index=False))
+        w_ = d.sort_values("unserved_vs_noedit_pct").groupby("cardinality").head(1)
+        print(w_[["cardinality", "set_key", "unserved_vs_noedit_pct",
+                  "gc_vs_noedit_pct"]].round(4).to_string(index=False))
     print(f"\nartifacts: {exp.dir}")
     return 0
 
