@@ -58,3 +58,5 @@
 2026-08-29T21:18:56Z supervisor: already running as pid 16501, exiting
 2026-08-29T22:06:55Z supervisor: exp2-eval-B-fixed exited status=0
 2026-08-29T22:06:56Z supervisor: started exp2-recheck-B-fixed free=7018MB
+2026-08-29T23:34:07Z supervisor: exp2-recheck-B-fixed exited status=0
+2026-08-29T23:34:51Z supervisor: started exp2-ladder-B-fixed free=7017MB

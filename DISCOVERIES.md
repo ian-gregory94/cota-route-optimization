@@ -783,18 +783,6 @@ mean the zero is a property of this plan rather than of the envelope.
 
 ### D19 — The screen's best candidate is one of the two that make things worse
 
-> **⚠ PROVISIONAL — scored under the wrong model, 2026-08-29.** The numbers in
-> this entry come from `run_exp2_eval.py`, which built its evaluator without
-> passing `common_lines` and therefore fell back to the config default
-> `pattern` — **Model A** — while the run was launched with
-> `--common-lines same_route` and its log reported Model B. Under the
-> methodology committed in ACCEPTANCE.md, Model B is the sole authoritative
-> evaluator, so nothing here may be quoted until it is re-measured. The
-> re-run is queued as `exp2-eval-B-fixed`. The entry is left standing rather
-> than deleted: it is the record of what was run, and the direction of these
-> findings is not what is in doubt — their model is.
-
-
 **Evidence.** All twelve splices evaluated with frequency re-optimized inside
 today's envelope on the certified Model B yardstick, at λ=2, against a noise
 floor of **0.288 points** measured from three zero-edit replicates at the same
@@ -851,31 +839,39 @@ and finding they clear the floor in the other direction would mean the low-effor
 solve, not the screen, produced the inversion. That is the check to run before
 this goes in a write-up.
 
-**Falsification test run 2026-08-29; D19 stands.** Both candidates were re-solved
-at gate 7's own effort — 400,000 iterations, 20 restarts — alongside three
-zero-edit replicates *in the same run*, so the floor is the one measured at that
-effort rather than the cheap one carried over. That distinction is the point: at
-60,000/2/32 the floor is 0.288 points, at full effort it is **0.172**, and using
-the wrong one is the effort-mismatch confound this project has already been
-burned by once.
+**Falsification test run twice, 2026-08-29; D19 stands both times.** Both
+candidates were re-solved at gate 7's own effort — 400,000 iterations, 20
+restarts — alongside three zero-edit replicates *in the same run*, so the floor
+is measured at the effort it is applied at rather than carried over from a
+cheaper one. The first pass ran under the mislabelled Model A evaluator (D23);
+the second, under Model B, is the one that counts. Both are shown, because the
+agreement between them is itself the point.
 
-| candidate | screen rank | at 60,000/2/32 | at 400,000/20 | × the full-effort floor |
+| candidate | screen rank | Model B, ranking effort | **Model B, full effort** | × its floor |
 |---|---|---|---|---|
-| `splice\|002\|033\|WESHIGW` | **1st of 60** | +0.978% | **+1.878%** | 10.9 |
-| `splice\|007\|101\|EMO4THW` | 5th of 60 | +1.251% | **+0.869%** | 5.1 |
+| `splice\|002\|033\|WESHIGW` | **1st of 60** | +1.483% | **+2.119%** | 7.4 |
+| `splice\|007\|101\|EMO4THW` | 5th of 60 | +0.153% | **+0.802%** | 2.8 |
 
-Neither crosses zero, let alone the floor in the other direction. The harm on
-the screen's top pick is *larger* at full effort, not smaller — more search
-found more of the damage rather than recovering from it, which is what should
-happen if the edit genuinely drops demand and is not merely under-optimised.
-The second moves the other way and stays five floors clear.
+*(Under the mislabelled Model A evaluator the same test gave +1.878% and
++0.869%. Same verdict, different model, so the inversion is not a property of
+either.)*
 
-So the inversion is the screen's, and it is now established at the effort the
-rest of the project reports at. D19 may be quoted.
+Neither crosses zero, let alone the floor in the other direction. **Both are
+worse at full effort than at ranking effort** — more search finds more of the
+damage rather than recovering from it, which is what should happen if the edit
+genuinely drops demand and is not merely under-optimised.
 
-**What would falsify it now.** Nothing available at this effort. A third
-candidate set, or a screen that re-optimizes frequency, would be needed — and a
-screen that re-optimizes frequency is not a screen.
+So the inversion is the screen's; it is established at the effort the rest of
+the project reports at, and under the authoritative model. D19 may be quoted.
+
+*A caveat on the floors.* Each is 3σ from three seeds, so the floor estimate is
+itself noisy — Model B's is 0.130 points at ranking effort and 0.287 at full
+effort, which is the opposite of the direction Model A showed. Nothing here
+depends on which is larger: both candidates clear both floors by a multiple.
+
+**What would falsify it now.** Nothing available at this effort or model. A
+third candidate set, or a screen that re-optimizes frequency, would be needed —
+and a screen that re-optimizes frequency is not a screen.
 
 
 ### D20 — Geometry edits do not compose: four individually good splices are jointly worse than none
