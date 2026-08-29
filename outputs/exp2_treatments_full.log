@@ -188,3 +188,21 @@
 2026-08-29 14:41:11,141 cache store edited-pathset-9c7970e848f933f7 (9.0 MB, built in 0s)
 2026-08-29 14:41:11,146 period evening : 23671 paths, 20000 OD pairs
 2026-08-29 14:41:11,161 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 14:42:26,348 rejected 155 malformed candidate paths that failed the re-pricing check
+2026-08-29 14:42:26,469 path set: 22568 paths over 17011/20000 OD pairs (85.1% of flow served), 112660 legs
+2026-08-29 14:42:26,580 cache store edited-pathset-5eec6dc04305ffcb (8.6 MB, built in 0s)
+2026-08-29 14:42:26,584 period owl     : 22568 paths, 20000 OD pairs
+2026-08-29 14:42:26,584 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 14:42:26,684 incumbent plan is infeasible under this budget
+2026-08-29 14:42:39,518 solve lambda=1.0: obj=1.85046e+06 vh=2436.1/2517.2 exchanges=0
+2026-08-29 14:42:39,530   splice|002|011|HIGFITN     route_level lam=1.0    13s  Model B gc  +3.031% unserved  -7.361%  (optimizer claimed -69.428%)
+2026-08-29 14:42:39,534 incumbent plan is infeasible under this budget
+2026-08-29 14:42:51,944 solve lambda=2.0: obj=2.02038e+06 vh=2442.2/2517.2 exchanges=0
+2026-08-29 14:42:51,957   splice|002|011|HIGFITN     route_level lam=2.0    12s  Model B gc  +3.030% unserved  -7.454%  (optimizer claimed -70.864%)
+2026-08-29 14:42:51,961 incumbent plan is infeasible under this budget
+2026-08-29 14:43:04,247 solve lambda=4.0: obj=2.35438e+06 vh=2446.4/2517.2 exchanges=0
+2026-08-29 14:43:04,258   splice|002|011|HIGFITN     route_level lam=4.0    12s  Model B gc  +2.985% unserved  -7.193%  (optimizer claimed -71.353%)
+2026-08-29 14:43:04,285 incumbent plan is infeasible under this budget
+2026-08-29 14:45:14,542 solve lambda=1.0: obj=2.36735e+06 vh=2514.7/2517.2 exchanges=1
+2026-08-29 14:45:14,551   splice|002|011|HIGFITN     path_level  lam=1.0   130s  Model B gc  -1.806% unserved  -0.364%  (optimizer claimed  +0.000%)
+2026-08-29 14:45:14,575 incumbent plan is infeasible under this budget
