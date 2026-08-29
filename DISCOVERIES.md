@@ -783,6 +783,18 @@ mean the zero is a property of this plan rather than of the envelope.
 
 ### D19 — The screen's best candidate is one of the two that make things worse
 
+> **⚠ PROVISIONAL — scored under the wrong model, 2026-08-29.** The numbers in
+> this entry come from `run_exp2_eval.py`, which built its evaluator without
+> passing `common_lines` and therefore fell back to the config default
+> `pattern` — **Model A** — while the run was launched with
+> `--common-lines same_route` and its log reported Model B. Under the
+> methodology committed in ACCEPTANCE.md, Model B is the sole authoritative
+> evaluator, so nothing here may be quoted until it is re-measured. The
+> re-run is queued as `exp2-eval-B-fixed`. The entry is left standing rather
+> than deleted: it is the record of what was run, and the direction of these
+> findings is not what is in doubt — their model is.
+
+
 **Evidence.** All twelve splices evaluated with frequency re-optimized inside
 today's envelope on the certified Model B yardstick, at λ=2, against a noise
 floor of **0.288 points** measured from three zero-edit replicates at the same
@@ -867,6 +879,18 @@ screen that re-optimizes frequency is not a screen.
 
 
 ### D20 — Geometry edits do not compose: four individually good splices are jointly worse than none
+
+> **⚠ PROVISIONAL — scored under the wrong model, 2026-08-29.** The numbers in
+> this entry come from `run_exp2_eval.py`, which built its evaluator without
+> passing `common_lines` and therefore fell back to the config default
+> `pattern` — **Model A** — while the run was launched with
+> `--common-lines same_route` and its log reported Model B. Under the
+> methodology committed in ACCEPTANCE.md, Model B is the sole authoritative
+> evaluator, so nothing here may be quoted until it is re-measured. The
+> re-run is queued as `exp2-eval-B-fixed`. The entry is left standing rather
+> than deleted: it is the record of what was run, and the direction of these
+> findings is not what is in doubt — their model is.
+
 
 **Evidence.** The 0/1/2/4 ladder, recomposed from *measured* single-candidate
 performance rather than screen rank, each rung solved with frequency

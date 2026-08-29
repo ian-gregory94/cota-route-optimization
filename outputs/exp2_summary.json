@@ -191,26 +191,11 @@
     ]
   },
   "recheck_D19": {
-    "status": "ok",
-    "effort": "400000/20/0",
-    "n_replicates": 3,
-    "full_effort_floor_pts": 0.1717,
-    "rank_effort_floor_pts": 0.2879416869111997,
-    "candidates": [
-      {
-        "candidate": "splice|002|033|WESHIGW",
-        "unserved_vs_noedit_pct": 1.8779,
-        "clears_full_effort_floor": true,
-        "still_harmful": true
-      },
-      {
-        "candidate": "splice|007|101|EMO4THW",
-        "unserved_vs_noedit_pct": 0.8693,
-        "clears_full_effort_floor": true,
-        "still_harmful": true
-      }
-    ],
-    "verdict": "D19 stands: both remain harmful at full effort"
+    "status": "running",
+    "have_baseline": false,
+    "n_replicates": 0,
+    "n_candidates": 0,
+    "note": "needs the zero-edit baseline plus at least two replicates at this effort before a verdict is possible; the cheap floor may not be carried over"
   },
   "representation_frontier": {
     "status": "ok",
@@ -365,10 +350,11 @@
   },
   "subset_search_2B": {
     "status": "running",
-    "n_subsets_solved": 1,
+    "n_subsets_solved": 5,
     "n_subsets_expected": 240
   },
   "incomplete": [
+    "recheck_D19",
     "subset_search_2B"
   ]
 }

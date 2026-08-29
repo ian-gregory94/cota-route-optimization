@@ -53,3 +53,5 @@
 2026-08-29T19:22:44Z supervisor: started exp2b-stageA-0 free=6946MB
 2026-08-29T19:26:46Z supervisor: exp2-frontier exited status=0
 2026-08-29T19:27:26Z supervisor: started exp2b-stageA-1 free=7063MB
+2026-08-29T19:43:46Z supervisor: exp2b-stageA-1 exited status=0
+2026-08-29T19:43:56Z supervisor: started exp2-eval-B-fixed free=7020MB

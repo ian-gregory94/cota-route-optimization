@@ -347,7 +347,13 @@ def main() -> int:
         job_seed = (int(label.rsplit("seed", 1)[1]) if "seed" in label
                     else args.seed)
         tag = "m" if (args.ladder_from and label.endswith("edits")) else "s"
-        cell = (f"eval|{label}|{tag}|"
+        # The pricing belongs in the key. Without it, re-running under the
+        # corrected evaluator finds the Model A cells already banked and
+        # returns them -- a healthy-looking resume that quietly reproduces the
+        # very numbers the re-run exists to replace. Cells written before
+        # 2026-08-29 carry no pricing segment and are Model A by construction;
+        # they are kept as the record of what was actually run.
+        cell = (f"eval|{label}|{tag}|{H.common_lines}|"
                 f"{args.iterations}/{args.restarts}/{args.width}")
         if store.has(cell):
             rows.append(store.get(cell))

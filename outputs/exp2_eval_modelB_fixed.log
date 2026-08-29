@@ -1,0 +1,23 @@
+2026-08-29 19:43:57,032 experiment exp2_geometry_eval_20260829T194357Z
+2026-08-29 19:43:57,032 result store: 31 cells already solved
+2026-08-29 19:43:57,154 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-29 19:43:57,189 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-29 19:43:57,189 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-29 19:43:57,190 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-29 19:43:57,201 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-29 19:43:57,312 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.1s)
+2026-08-29 19:43:57,312 waiting model: same_route
+2026-08-29 19:43:57,495 evaluator pricing: common_lines=same_route (explicit)
+2026-08-29 19:43:57,503 period early   : 33571 paths, 20000 OD pairs
+2026-08-29 19:43:57,512 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-29 19:43:57,519 period midday  : 34003 paths, 20000 OD pairs
+2026-08-29 19:43:57,528 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-29 19:43:57,535 period evening : 34989 paths, 20000 OD pairs
+2026-08-29 19:43:57,542 period owl     : 34494 paths, 20000 OD pairs
+2026-08-29 19:43:57,542 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-29 19:43:57,575 envelope pinned: 2517.2 revenue veh-hours, peak {'early': 85.3, 'am_peak': 162.0, 'midday': 159.2, 'pm_peak': 176.5, 'evening': 140.2, 'owl': 35.6}
+2026-08-29 19:43:57,591 forced into the shortlist: splice|011|034|WESHIGW
+2026-08-29 19:43:57,591 forced into the shortlist: splice|002|034|WESHIGW
+2026-08-29 19:43:57,591 forced into the shortlist: splice|005|006|NMURBEAN
+2026-08-29 19:43:57,591 forced into the shortlist: splice|002|011|HIGFITN
+2026-08-29 19:43:57,591 shortlist (12, primary=True): ['splice|002|033|WESHIGW', 'splice|033|034|WESHIGW', 'splice|005|021|NMURBEAN', 'splice|011|033|WESHIGW', 'splice|007|101|EMO4THW', 'splice|006|021|NMURBEAN', 'splice|001|021|PICBETS', 'splice|008|035|BOASHAN', 'splice|011|034|WESHIGW', 'splice|002|034|WESHIGW', 'splice|005|006|NMURBEAN', 'splice|002|011|HIGFITN']

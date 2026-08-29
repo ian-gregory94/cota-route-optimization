@@ -88,3 +88,7 @@
 2026-08-29 19:42:06,180 zones: 1397 (637 with transit access within 600 m), 3938 access links
 2026-08-29 19:42:06,190 route classes: {'all_day': 24, 'peak_express': 14}
 2026-08-29 19:42:06,251 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 19:43:02,258 rejected 95 malformed candidate paths that failed the re-pricing check
+2026-08-29 19:43:02,354 path set: 24621 paths over 17385/20000 OD pairs (86.6% of flow served), 120665 legs
+2026-08-29 19:43:02,406 period early   : 24621 paths, 20000 OD pairs
+2026-08-29 19:43:02,418 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

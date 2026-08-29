@@ -46,6 +46,14 @@ JOBS=(
   "exp2-eval-B@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB.log@@0"
   "exp2-frontier@@python scripts/exp2_treatments.py --lambdas 1,2,4@@outputs/exp2_treatments_full.log@@0"
   "exp2-recheck@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_recheck.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_recheck.log@@0"
+  # 2026-08-29: run_exp2_eval.py scored every plan under Model A while
+  # reporting Model B (it never passed common_lines to build_setup). These two
+  # re-run everything that script produced, under the corrected evaluator. They
+  # sit above the 2B shards because D19, D20, the candidate classification and
+  # gate 2B-8's expected values all rest on them, and 2B's interaction
+  # threshold is the noise floor they measure.
+  "exp2-eval-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB_fixed.log@@0"
+  "exp2-recheck-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_recheck.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_recheck_fixed.log@@0"
   # Stage A is 240 subsets at ~6 minutes each, so it is split across two
   # single-threaded workers on disjoint slices -- this box has two cores and
   # one worker would take a day. They write separate checkpoint files (a

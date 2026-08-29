@@ -89,7 +89,11 @@ def recheck(floor: float) -> dict:
     already been burned by.
     """
     c = _cells("exp2_eval.jsonl")
-    want = {k: v for k, v in c.items() if FULL_EFFORT in k}
+    # only Model B cells count: cells with no pricing segment predate the
+    # 2026-08-29 fix and were scored under Model A whatever their run was
+    # labelled, so treating them as evidence here would launder the mislabel
+    want = {k: v for k, v in c.items()
+            if FULL_EFFORT in k and "|same_route|" in k}
     base = [v for k, v in want.items() if "|0 edits|" in k]
     cands = {k: v for k, v in want.items() if "single:" in k}
     reps = [v for k, v in want.items() if "0 edits seed" in k]
@@ -110,7 +114,7 @@ def recheck(floor: float) -> dict:
         out.append({
             # cells are eval|single:<key>|<tag>|<effort>; the key itself
             # contains pipes, so split from the right rather than the left
-            "candidate": k.split("single:")[1].rsplit("|", 2)[0],
+            "candidate": k.split("single:")[1].rsplit("|", 3)[0],
             "unserved_vs_noedit_pct": round(eff, 4),
             "clears_full_effort_floor": bool(abs(eff) >= full_floor),
             "still_harmful": bool(eff >= full_floor)})
