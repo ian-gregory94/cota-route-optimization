@@ -17583,3 +17583,36 @@ sleep 15; tail -2 outputs/supervisor.log; ps -eo pid,args |
       echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
      
 2026-08-29T18:43:27Z pid=1648 rss=408MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:44:23Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:44:23Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:44:23Z pid=1622 rss=445MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:44:23Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:44:23Z pid=1648 rss=425MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:45:18Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:45:18Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:45:18Z pid=1622 rss=445MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:45:18Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:45:18Z pid=1648 rss=434MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T18:46:13Z pid=1577 rss=4MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T18:46:13Z pid=1619 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2_treatments.py --lambdas 
+      echo "$(date -u +%FT%TZ) supervisor: exp2-frontier exi
+     
+2026-08-29T18:46:13Z pid=1622 rss=447MB python scripts/exp2_treatments.py --lambdas 1,2,4 
+2026-08-29T18:46:13Z pid=1645 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-recheck exit
+     
+2026-08-29T18:46:13Z pid=1648 rss=442MB python scripts/run_exp2_eval.py --common-lines same_route --

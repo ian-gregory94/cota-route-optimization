@@ -580,3 +580,13 @@
 2026-08-29 18:42:38,357 solve lambda=1.0: obj=2.35048e+06 vh=2514.0/2517.2 exchanges=0
 2026-08-29 18:42:38,366   splice|007|101|EMO4THW     path_level  lam=1.0    92s  Model B gc  -3.285% unserved  +1.699%  (optimizer claimed  +0.000%)
 2026-08-29 18:42:38,383 incumbent plan is infeasible under this budget
+2026-08-29 18:44:12,193 solve lambda=2.0: obj=2.96197e+06 vh=2513.7/2517.2 exchanges=0
+2026-08-29 18:44:12,202   splice|007|101|EMO4THW     path_level  lam=2.0    94s  Model B gc  +0.823% unserved  -6.365%  (optimizer claimed  +0.000%)
+2026-08-29 18:44:12,219 incumbent plan is infeasible under this budget
+2026-08-29 18:45:43,799 solve lambda=4.0: obj=4.13577e+06 vh=2515.4/2517.2 exchanges=0
+2026-08-29 18:45:43,808   splice|007|101|EMO4THW     path_level  lam=4.0    92s  Model B gc  +1.207% unserved  -6.853%  (optimizer claimed  +0.000%)
+2026-08-29 18:45:44,073 footpaths: 15573 links (9 from transfers.txt)
+2026-08-29 18:45:44,082 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-29 18:45:44,194 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-29 18:45:44,203 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-29 18:45:44,274 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

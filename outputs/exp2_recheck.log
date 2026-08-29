@@ -229,3 +229,11 @@
 2026-08-29 18:43:35,334 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
 2026-08-29 18:43:35,391 period pm_peak : 27986 paths, 20000 OD pairs
 2026-08-29 18:43:35,403 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:44:29,907 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:44:29,992 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-29 18:44:30,040 period evening : 24058 paths, 20000 OD pairs
+2026-08-29 18:44:30,055 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-29 18:45:19,268 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-29 18:45:19,347 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-29 18:45:19,392 period owl     : 22669 paths, 20000 OD pairs
+2026-08-29 18:45:19,393 locking 28 route-periods across 14 routes in classes ('peak_express',)
