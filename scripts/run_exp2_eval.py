@@ -315,7 +315,16 @@ def main() -> int:
             log.info("ladder ordered by MEASURED %s, best first: %s",
                      args.ladder_metric, ladder_order[:6])
         else:
-            log.warning("ladder-from %s not found; falling back to screen order", f)
+            # Falling back to screen order here was silent and lethal: the rung
+            # cells are tagged "m" whenever --ladder-from was PASSED, not
+            # whenever it was honoured, so a missing file produced a
+            # screen-ordered ladder filed as the measured-ordered one. That is
+            # the same class of mislabel as the Model A evaluator.
+            raise SystemExit(
+                f"--ladder-from {f} does not exist. Refusing to fall back to "
+                f"screen order: the rungs would be written under the "
+                f"measured-order tag and would be indistinguishable from a "
+                f"real measured-order ladder afterwards.")
     chosen: list[GeometryEdit] = []
     used: set[str] = set()
     for key in ladder_order:

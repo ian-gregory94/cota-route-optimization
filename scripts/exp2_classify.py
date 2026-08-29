@@ -178,6 +178,14 @@ def main() -> int:
             "not gate 2B, because 2B does not exclude them either way.",
     }
 
+    # the ordering file the measured-order ladder needs, in the shape
+    # --ladder-from expects. It has to be built from Model B cells: ordering a
+    # Model B ladder by Model A performance would reintroduce, as an ordering,
+    # exactly the model mixing this script refuses everywhere else.
+    order = s[["candidate", u]].copy()
+    order.insert(0, "label", "single:" + order["candidate"])
+    order.to_csv(OUT / "exp2_eval_order_modelB.csv", index=False)
+
     (OUT / "exp2_candidate_classes.json").write_text(
         json.dumps({"rule": rule,
                     "candidates": s[["candidate", "class", u, g,
@@ -202,6 +210,8 @@ def main() -> int:
     print("\neligible for the 2B joint search: all "
           f"{len(cands)} — nothing excluded on performance.")
     print("artifacts:", OUT / "exp2_candidate_classes.json")
+    print("           ", OUT / "exp2_eval_order_modelB.csv",
+          "(measured order, for --ladder-from)")
     return 0
 
 

@@ -54,6 +54,13 @@ JOBS=(
   # threshold is the noise floor they measure.
   "exp2-eval-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB_fixed.log@@0"
   "exp2-recheck-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_recheck.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_recheck_fixed.log@@0"
+  # The measured-order ladder under Model B. It can only run after
+  # exp2-eval-B-fixed, because its ordering file is written by exp2_classify.py
+  # from that run's cells -- ordering a Model B ladder by Model A performance
+  # would reintroduce the model mixing as an ordering. Until that file exists
+  # the job exits immediately with an error rather than silently falling back
+  # to screen order, and the supervisor retries it on the next pass.
+  "exp2-ladder-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --ladder-from exp2_eval_order_modelB.csv --ladder 1,2,4@@outputs/exp2_ladder_measured_modelB.log@@0"
   # Stage A is 240 subsets at ~6 minutes each, so it is split across two
   # single-threaded workers on disjoint slices -- this box has two cores and
   # one worker would take a day. They write separate checkpoint files (a

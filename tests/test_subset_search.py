@@ -409,3 +409,15 @@ def test_build_setup_records_where_its_pricing_came_from():
     assert "log.warning" in src[max(0, i - 300):i], (
         "the config-default fallback must warn: an INFO line is exactly what "
         "nobody read for three days")
+
+
+def test_ladder_from_refuses_to_fall_back_silently():
+    """The rung cells are tagged "m" whenever --ladder-from was PASSED, not
+    whenever it was honoured. A missing file therefore produced a
+    screen-ordered ladder filed as the measured-ordered one, and nothing
+    downstream could tell the difference."""
+    src = (SCRIPTS / "run_exp2_eval.py").read_text()
+    i = src.index("ladder_from")
+    seg = src[i:i + 3000]
+    assert "falling back to screen order" not in seg
+    assert "Refusing to fall back to" in seg

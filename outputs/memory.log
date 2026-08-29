@@ -18702,3 +18702,463 @@ sleep 15; tail -2 outputs/supervisor.log; ps -eo pid,args |
       echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
      
 2026-08-29T20:26:32Z pid=7748 rss=421MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:27:27Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:27:27Z pid=6090 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:27:27Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:27:27Z pid=7748 rss=424MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:28:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:28:23Z pid=6090 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:28:23Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:28:23Z pid=7748 rss=424MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:28:23Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:29:18Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:29:18Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:29:18Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:29:18Z pid=7748 rss=436MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:29:18Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:30:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:30:14Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:30:14Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:30:14Z pid=7748 rss=445MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:30:14Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:31:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:31:09Z pid=6090 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:31:09Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:31:09Z pid=7748 rss=455MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:31:09Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:32:05Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:32:05Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:32:05Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:32:05Z pid=7748 rss=455MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:32:05Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:33:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:33:00Z pid=6090 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:33:00Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:33:00Z pid=7748 rss=455MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:33:00Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:33:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:33:55Z pid=6090 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:33:55Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:33:55Z pid=7748 rss=420MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:33:55Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:34:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:34:51Z pid=6090 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:34:51Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:34:51Z pid=7748 rss=421MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:34:51Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:35:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:35:46Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:35:47Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:35:47Z pid=7748 rss=421MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:35:47Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:36:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:36:42Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:36:42Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:36:42Z pid=7748 rss=421MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:36:42Z pid=12362 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+2026-08-29T20:37:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:37:38Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:37:38Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:37:38Z pid=7748 rss=433MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:38:33Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:38:33Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:38:33Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:38:33Z pid=7748 rss=443MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:39:28Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:39:28Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:39:29Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:39:29Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:40:24Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:40:24Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:40:24Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:40:24Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:41:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:41:20Z pid=6090 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:41:20Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:41:20Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:42:15Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:42:15Z pid=6090 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:42:15Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:42:15Z pid=7748 rss=419MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:43:10Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:43:10Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:43:10Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:43:10Z pid=7748 rss=419MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:44:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:44:06Z pid=6090 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:44:06Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:44:06Z pid=7748 rss=423MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:45:01Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:45:01Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:45:01Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:45:01Z pid=7748 rss=422MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:45:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:45:57Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:45:57Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:45:57Z pid=7748 rss=434MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:46:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:46:52Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:46:52Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:46:52Z pid=7748 rss=441MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:47:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:47:48Z pid=6090 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:47:48Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:47:48Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:48:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:48:43Z pid=6090 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:48:43Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:48:43Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:49:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:49:38Z pid=6090 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:49:38Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:49:38Z pid=7748 rss=451MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:50:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:50:34Z pid=6090 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:50:34Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:50:34Z pid=7748 rss=419MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:51:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:51:29Z pid=6090 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:51:29Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:51:29Z pid=7748 rss=423MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:52:24Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:52:24Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:52:24Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:52:24Z pid=7748 rss=424MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:53:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:53:20Z pid=6090 rss=458MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:53:20Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:53:20Z pid=7748 rss=438MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:54:15Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:54:15Z pid=6090 rss=458MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:54:15Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:54:15Z pid=7748 rss=447MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:55:11Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:55:11Z pid=6090 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:55:11Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:55:11Z pid=7748 rss=459MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:56:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:56:06Z pid=6090 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:56:06Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:56:06Z pid=7748 rss=459MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:57:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:57:02Z pid=6090 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:57:02Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:57:02Z pid=7748 rss=459MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:57:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:57:57Z pid=6090 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:57:57Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:57:57Z pid=7748 rss=423MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:58:53Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:58:53Z pid=6090 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:58:53Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:58:53Z pid=7748 rss=423MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T20:59:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T20:59:48Z pid=6090 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T20:59:48Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T20:59:48Z pid=7748 rss=426MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:00:44Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:00:44Z pid=6090 rss=458MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:00:44Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:00:44Z pid=7748 rss=426MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:01:39Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:01:39Z pid=6090 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:01:39Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:01:39Z pid=7748 rss=434MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:02:35Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:02:35Z pid=6090 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:02:35Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:02:35Z pid=7748 rss=444MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:03:30Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:03:30Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:03:30Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:03:30Z pid=7748 rss=454MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:04:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:04:26Z pid=6090 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:04:26Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:04:26Z pid=7748 rss=454MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:05:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:05:21Z pid=6090 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:05:21Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:05:21Z pid=7748 rss=454MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:06:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:06:16Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:06:16Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:06:16Z pid=7748 rss=422MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:07:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:07:12Z pid=6090 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:07:12Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:07:12Z pid=7748 rss=422MB python scripts/run_exp2_eval.py --common-lines same_route --
+2026-08-29T21:08:07Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-29T21:08:07Z pid=6090 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-29T21:08:07Z pid=7746 rss=3MB bash -c 
+      nice -n 0 python scripts/run_exp2_eval.py --common-lin
+      echo "$(date -u +%FT%TZ) supervisor: exp2-eval-B-fixed
+     
+2026-08-29T21:08:07Z pid=7748 rss=424MB python scripts/run_exp2_eval.py --common-lines same_route --
