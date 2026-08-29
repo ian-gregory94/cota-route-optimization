@@ -46,7 +46,13 @@ JOBS=(
   "exp2-eval-B@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --noise-seeds 20260826,20260827 --ladder 1,2,4@@outputs/exp2_eval_modelB.log@@0"
   "exp2-frontier@@python scripts/exp2_treatments.py --lambdas 1,2,4@@outputs/exp2_treatments_full.log@@0"
   "exp2-recheck@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_recheck.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_recheck.log@@0"
-  "exp2b-stageA@@python scripts/exp2b_subsets.py --stage A@@outputs/exp2b_stageA.log@@0"
+  # Stage A is 240 subsets at ~6 minutes each, so it is split across two
+  # single-threaded workers on disjoint slices -- this box has two cores and
+  # one worker would take a day. They write separate checkpoint files (a
+  # solved cell carries its whole plan, over the size Linux appends atomically)
+  # and each reads both, so either can resume the other's boundary.
+  "exp2b-stageA-0@@python scripts/exp2b_subsets.py --stage A --shard 0/2@@outputs/exp2b_stageA_s0.log@@0"
+  "exp2b-stageA-1@@python scripts/exp2b_subsets.py --stage A --shard 1/2@@outputs/exp2b_stageA_s1.log@@0"
   # exp2-ladder retired 2026-08-29, not abandoned. Its deliverable is the
   # measured-order ladder, and all four rungs (0/1/2/4 edits, tag "m") are
   # banked in outputs/exp2_eval.jsonl; outputs/exp2_ladder_measured.csv is

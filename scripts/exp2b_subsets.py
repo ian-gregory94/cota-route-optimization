@@ -44,6 +44,7 @@ interventions are substitutes for each other.
 from __future__ import annotations
 
 import argparse
+import gc
 import itertools
 import json
 import logging
@@ -69,6 +70,7 @@ from cota_opt.geometry import SegmentTimeModel, apply_edits
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from exp2_treatments import DiskPathsets, _Baseline, fit_incumbent, pinned, key_str
+from run_exp2_eval import wait_for_memory
 
 log = logging.getLogger("exp2b")
 OUT = ROOT / "outputs"
@@ -85,6 +87,53 @@ def feasible_subsets(cands: list[str],
                 continue
             out.append(combo)
     return out
+
+
+class ShardedStore:
+    """Read every shard, write only your own.
+
+    Two single-threaded workers on disjoint slices of the subset list finish in
+    half the wall-clock of one, and this box has two cores. They must not share
+    an output file: a solved cell carries its full 173-route-period plan, about
+    4.4 KB, which is over the size Linux guarantees to append atomically, so
+    concurrent writers could interleave a line and corrupt the checkpoint that
+    exists to make the run survivable. Each worker appends to its own shard;
+    every worker reads all of them, so a shard boundary moved between runs
+    resumes correctly instead of re-solving.
+    """
+
+    def __init__(self, base: Path, shard: int, n: int) -> None:
+        self.base = Path(base)
+        self.path = (self.base if n <= 1 else
+                     self.base.with_suffix(f".shard{shard}of{n}.jsonl"))
+        self._own = ResultStore(self.path)
+        self._all: dict[str, dict] = {}
+        for f in sorted(self.base.parent.glob(self.base.stem + "*.jsonl")):
+            for line in f.read_text().splitlines():
+                if not line.strip():
+                    continue
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue          # a torn line from an older shared write
+                self._all[rec["cell"]] = rec
+        log.info("result store: %d cells solved across %d shard file(s); "
+                 "writing to %s", len(self._all),
+                 len(list(self.base.parent.glob(self.base.stem + "*.jsonl"))),
+                 self.path.name)
+
+    def has(self, cell: str) -> bool:
+        return cell in self._all
+
+    def get(self, cell: str) -> dict | None:
+        return self._all.get(cell)
+
+    def put(self, cell: str, record: dict) -> None:
+        self._own.put(cell, record)
+        self._all[cell] = {"cell": cell, **record}
+
+    def rows(self) -> list[dict]:
+        return list(self._all.values())
 
 
 def set_key(combo: tuple[str, ...]) -> str:
@@ -187,6 +236,10 @@ def main() -> int:
     ap.add_argument("--restarts", type=int, default=2)
     ap.add_argument("--width", type=int, default=32)
     ap.add_argument("--seed", type=int, default=20260825)
+    ap.add_argument("--shard", type=str, default="0/1",
+                    help="i/n: take every n-th subset starting at i, so n "
+                         "single-threaded workers can split the sweep. Each "
+                         "writes its own checkpoint file and reads them all.")
     ap.add_argument("--limit", type=int, default=0,
                     help="stop after this many subsets; for smoke-testing the "
                          "pipeline before committing the full enumeration")
@@ -233,6 +286,10 @@ def main() -> int:
         subsets = [c for c in subsets if set_key(c) in want]
         log.info("stage B on %d promoted sets: %s", len(subsets), keep)
 
+    if sn > 1:
+        subsets = [c for j, c in enumerate(subsets) if j % sn == si]
+        log.info("shard %d of %d: %d subsets", si, sn, len(subsets))
+
     by_size: dict[int, int] = {}
     for c in subsets:
         by_size[len(c)] = by_size.get(len(c), 0) + 1
@@ -248,7 +305,8 @@ def main() -> int:
                   "evaluator",
         config_files=["assumptions.yaml", "cost_weights.yaml",
                       "constraints.yaml", "sources.yaml"])
-    store = ResultStore(OUT / "exp2b_subsets.jsonl")
+    si, sn = (int(x) for x in args.shard.split("/"))
+    store = ShardedStore(OUT / "exp2b_subsets.jsonl", si, sn)
 
     from cota_opt.harness import build_harness
     H = build_harness(seed=args.seed, common_lines="same_route")
@@ -313,6 +371,7 @@ def main() -> int:
                              if k not in ("cell", "plan")})
             continue
 
+        wait_for_memory()
         edits = [by_key[k] for k in sorted(combo)]
         net, ts = H.baseline.network, H.baseline.tstats
         if edits:
@@ -429,6 +488,11 @@ def main() -> int:
                                              for k, v in hw.items()}})
             rows.append(rec)
             el = time.time() - t_start
+            if scale > 1.0:
+                log.info("    incumbent rescaled x%.4f to fit the envelope "
+                         "(%.1f -> %.1f veh-hours)", scale,
+                         rec["edited_baseline_vh"],
+                         judge.budget.revenue_veh_hours)
             log.info("[%3d/%3d] %-46s k=%d lam=%-4s %4.0fs  vs no-edit: "
                      "unserved %+7.3f%%  gc %+7.3f%%  (elapsed %.1fh, "
                      "~%.1fh left)",
@@ -436,9 +500,21 @@ def main() -> int:
                      rec.get("unserved_vs_noedit_pct", float("nan")),
                      rec.get("gc_vs_noedit_pct", float("nan")),
                      el / 3600, el / 3600 * (len(subsets) - i) / max(i, 1))
-        del judge
+        # 240 iterations each holding six periods of path sets and their
+        # evaluators; without this the run is a slow memory leak with a
+        # deadline
+        del judge, rn, zs, psc, b_ed, inc, base_fit
+        if edits:
+            del ed
+        gc.collect()
 
-    df = analyse(pd.DataFrame(rows), floor := noise_floor())
+    # the summary is over EVERY shard's cells, so whichever worker finishes
+    # last writes a complete table rather than its own half of one
+    allrows = [{k: v for k, v in r.items() if k not in ("cell", "plan")}
+               for r in store.rows()
+               if str(r.get("cell", "")).startswith("b|")
+               and f"|{effort}" in str(r.get("cell", ""))]
+    df = analyse(pd.DataFrame(allrows or rows), floor := noise_floor())
     tag = f"stage{args.stage}"
     df.to_csv(OUT / f"exp2b_{tag}.csv", index=False)
     df.to_csv(exp.artifact_path(f"{tag}.csv"), index=False)
