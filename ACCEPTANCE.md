@@ -434,6 +434,60 @@ Experiment 2B networks, which are a different set and were enumerated before
 this was noticed. Whichever is used must be named in the write-up.
 
 
+## Defect: the Experiment 2 evaluator was Model A, 2026-08-27 to 2026-08-29
+
+Recorded here rather than only in the commit log, because it changes which
+results a reader may trust and the gates are where that is decided.
+
+**What happened.** `run_exp2_eval.py` constructed its evaluator with
+`build_setup(...)` and did not pass `common_lines`. The parameter falls back to
+`config/assumptions.yaml`, which says `pattern` — Model A. Runs launched with
+`--common-lines same_route` set the harness to Model B, logged *"waiting model:
+same_route"* from that harness, and scored every plan under Model A. No
+artifact recorded the evaluator's own pricing, so the run's outputs could not
+be used to detect it.
+
+**Confirmed, not inferred.** The same script re-run with the fix scores the
+zero-edit rung at **9,812** unserved where it previously scored **10,371** —
+and 9,812 is what `exp2b_subsets.py`, which always passed the pricing
+explicitly, independently reports for the same network. The two pipelines
+enumerate identical path sets (152,241 paths, same six periods, same seed,
+same effort); pricing was the only difference and it is now gone.
+
+**Affected**, all marked provisional in place and re-running:
+
+* the twelve single-candidate evaluations and their classification
+* both complexity ladders, screen-ordered and measured-ordered
+* both noise floors (0.288 pts at ranking effort, 0.172 at full effort)
+* the full-effort D19 falsification recheck
+* D19, D20, and gate 2B-8's expected values, which are derived from the above
+
+**Not affected**, verified by reading the call sites rather than assuming:
+
+* everything through `harness.setup()`, which passes `common_lines` — the
+  Experiment 1 fixpoint, gate 4 certification and gate 7 seed checks, so the
+  −6.65% headline stands
+* `exp2_treatments.py`, which passes it explicitly — the thirteen-network
+  representation frontier
+* `exp2b_subsets.py`, which passes it explicitly — the Experiment 2B sweep
+* the geometry screen and its D16 bracket, which are Model A by design and
+  labelled so
+
+**What makes it not recur.** `build_setup` decides the pricing once and logs it
+as `explicit` or `CONFIG DEFAULT — caller did not specify`, and records both
+the value and its source in `checks`. `run_exp2_eval.py` asserts the setup came
+back with the model the run asked for and refuses to score otherwise. The
+pricing is part of the result-store cell key, so a corrected re-run cannot
+resume the old cells and silently reproduce the numbers it exists to replace.
+Three tests hold all of that in place.
+
+**The general lesson, for the gates.** A run's log reported the model the
+*harness* held, not the model the *evaluator* used, and those were different
+objects. Any future claim of the form "this was run under model X" must cite an
+artifact written by the thing that did the scoring, not by something adjacent
+to it.
+
+
 ## Standing rules
 
 1. These gates are not revised after seeing results.
