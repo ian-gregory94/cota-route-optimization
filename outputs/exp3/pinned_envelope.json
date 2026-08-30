@@ -1,0 +1,47 @@
+{
+  "weekday_revenue_veh_hours": 2517.1833333333334,
+  "peak_fleet_by_period": {
+    "early": 85.28208333333332,
+    "am_peak": 162.00944444444443,
+    "midday": 159.17277777777775,
+    "pm_peak": 176.49305555555554,
+    "evening": 140.19458333333336,
+    "owl": 35.55736111111111
+  },
+  "constraints": {
+    "resource": {
+      "weekday_revenue_vehicle_hours": 2517.1833333333334,
+      "peak_fleet_by_period": {
+        "early": 85.28208333333332,
+        "am_peak": 162.00944444444443,
+        "midday": 159.17277777777775,
+        "pm_peak": 176.49305555555554,
+        "evening": 140.19458333333336,
+        "owl": 35.55736111111111
+      },
+      "budget_tolerance": 0.0
+    },
+    "service": {
+      "policy_max_headway_min": 60,
+      "policy_min_headway_min": 5,
+      "headway_ladder_min": [
+        5,
+        6,
+        7.5,
+        10,
+        12,
+        15,
+        20,
+        24,
+        30,
+        40,
+        45,
+        60
+      ],
+      "preserve_span": true,
+      "allow_new_service_in_empty_periods": false
+    }
+  },
+  "waiting_model": "same_route",
+  "note": "Computed once from the UNEDITED network and handed to every Experiment 3 state. Experiment 2B does the same. Resolving the config's 'baseline' sentinel per state instead gives a mutation that lengthens its routes a larger budget to spend, so every state would be judged against a different envelope."
+}

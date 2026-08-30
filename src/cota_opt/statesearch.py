@@ -99,13 +99,30 @@ class Checkpoint:
         return self.scores.get(key)
 
     def put(self, key: str, score: float, extra: dict | None = None) -> None:
+        """Append and **fsync**. The container can vanish between two states.
+
+        Not a hypothetical: the sandbox running this was recycled at 20:42:45Z
+        while the session was idle, killing every worker. The disk survived that
+        one, but a write sitting in the page cache would not have. Experiment 2
+        lost twenty-five minutes of path-set work to the same class of event
+        before it started checkpointing per period.
+
+        fsync costs about a millisecond against a 413-second state. There is no
+        argument for skipping it.
+        """
         self.scores[key] = score
         if not self.path:
             return
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        rec = {"state": key, "score": score, **(extra or {})}
+        rec = {"state": key, "score": score,
+               "at": __import__("time").strftime("%Y-%m-%dT%H:%M:%SZ",
+                                                 __import__("time").gmtime()),
+               **(extra or {})}
+        import os
         with self.path.open("a") as f:
             f.write(json.dumps(rec) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
 
 
 def feasible(ids: Sequence[str], incompatible: set[tuple[str, str]]) -> bool:

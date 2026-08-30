@@ -54,7 +54,7 @@ from cota_opt.contract import ContractLimits, ContractViolation  # noqa: E402
 from cota_opt.exp3_score import score_state                     # noqa: E402
 from cota_opt.experiment import Experiment                      # noqa: E402
 from cota_opt.geometry import GeometryEdit, SegmentTimeModel    # noqa: E402
-from exp2_treatments import pinned                          # noqa: E402
+from exp3_pin_envelope import load as pin_load              # noqa: E402
 from cota_opt.harness import build_harness                      # noqa: E402
 from cota_opt.mutate import edit_from_record                    # noqa: E402
 from cota_opt.statesearch import (Checkpoint, NULL, Policy,     # noqa: E402
@@ -72,6 +72,66 @@ N_REPLICATES = 3                 # the same-run noise floor (gate 3-3)
 TIE_FLOORS = 2.0
 DIVERSITY_PER_KIND = 2
 PER_CARDINALITY = 1
+
+
+def heartbeat(tag: str, extra: dict | None = None) -> None:
+    """Write liveness to disk, so 'alive but slow' is distinguishable from dead.
+
+    A 413-second state produces no output for seven minutes. Without a
+    heartbeat the only way to tell a working process from a hung one is to
+    watch the log and guess, and the guess that matters -- 'is this still
+    running?' -- was answered wrongly twice today.
+    """
+    p = OUT / "heartbeat.json"
+    rec = {"at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+           "pid": __import__("os").getpid(), "tag": tag, **(extra or {})}
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(rec) + "\n")
+    tmp.replace(p)
+
+
+def wait_for_memory(min_free_mb: int, timeout_s: float = 300.0) -> bool:
+    """Hold off starting a state until there is room for it.
+
+    Experiment 2 learned this the same way: two workers each holding a RAPTOR
+    network, a zone system and six periods of path sets can exhaust the box,
+    and the failure is a kill with no traceback -- indistinguishable from every
+    other silent death.
+    """
+    t0 = time.time()
+    while time.time() - t0 < timeout_s:
+        try:
+            info = dict(
+                (l.split(":")[0], int(l.split()[1]))
+                for l in Path("/proc/meminfo").read_text().splitlines()[:5])
+            free_mb = info.get("MemAvailable", 0) // 1024
+        except Exception:
+            return True
+        if free_mb >= min_free_mb:
+            return True
+        log.warning("waiting for memory: %d MB free, need %d", free_mb,
+                    min_free_mb)
+        time.sleep(20)
+    return False
+
+
+def a1_complete(pool: list[str]) -> tuple[bool, list[str]]:
+    """Is every single scored? Phase A2 may not start otherwise.
+
+    Experiment 2B's Stage A finished at 183 of 240 because two workers
+    partitioned two different orderings, and the only reason it was caught was
+    a completeness check downstream. A2's neighbour ordering is derived from
+    the A1 singles, so a partial A1 does not merely lose coverage -- it
+    silently changes the search.
+    """
+    from cota_opt.statesearch import Checkpoint
+    have = set()
+    for p in list(OUT.glob("stageA_states.shard*.jsonl")) + \
+            [OUT / "stageA_states.jsonl"]:
+        if p.exists():
+            have |= set(Checkpoint(p).scores)
+    missing = sorted(set(pool) - have)
+    return (not missing), missing
 
 
 def load_pool():
@@ -104,6 +164,19 @@ def main() -> int:
     ap.add_argument("--checkpoint", default=str(OUT / "stageA_states.jsonl"))
     ap.add_argument("--common-lines", default="same_route")
     ap.add_argument("--phase", choices=["A1", "A2", "both"], default="both")
+    ap.add_argument("--deadline-seconds", type=float, default=0.0,
+                    help="stop cleanly BETWEEN states after this many seconds. "
+                         "The container is recycled when the session goes "
+                         "idle, so work has to happen in bounded slices that "
+                         "end on a state boundary; a slice killed mid-state "
+                         "throws away up to 413 s.")
+    ap.add_argument("--state-seconds", type=float, default=430.0,
+                    help="how long a state is expected to take. A slice will "
+                         "not START a state it cannot finish before its "
+                         "deadline — measured at 413 s, with headroom.")
+    ap.add_argument("--min-free-mb", type=int, default=900,
+                    help="wait for this much free memory before starting a "
+                         "state. Experiment 2 needed the same guard.")
     ap.add_argument("--shard", default="",
                     help="I/N — run only the A1 singles whose index mod N is "
                          "I. A1's states are independent, so sharding it is "
@@ -168,6 +241,12 @@ def main() -> int:
 
     t_start = time.time()
     deadline = t_start + args.max_hours * 3600.0
+    if args.deadline_seconds:
+        # A slice boundary, not the experiment's own limit. Whichever is nearer
+        # wins, and both are checked only BETWEEN states.
+        deadline = min(deadline, t_start + args.deadline_seconds)
+        log.info("slice deadline: %.0f s from now, checked between states",
+                 args.deadline_seconds)
     exp = Experiment(name="exp3_stage_a", seed=args.seed,
                      algorithm="preregistered three-lane first-improvement "
                                "search over network states",
@@ -205,10 +284,7 @@ def main() -> int:
     # does the same and for the same reason: the config's budget is the
     # sentinel "baseline", which resolves against whatever network is being
     # scored, so passing the raw config gives every state its own envelope.
-    _ctrl = H.setup(with_crowding=False, lock_classes=("peak_express",))
-    _peak = dict(_ctrl.model.evaluate(_ctrl.baseline_plan).peak_by_period)
-    CONS = pinned(budget_vh, _peak)
-    del _ctrl
+    CONS = pin_load()
     limits = ContractLimits(veh_hour_budget=budget_vh,
                             peak_vehicle_budget=197.0,
                             required_waiting_model=args.common_lines)
@@ -216,7 +292,24 @@ def main() -> int:
     rows_path = OUT / f"stageA_rows{suffix}.jsonl"
     refused: list[dict] = []
 
+    def out_of_slice() -> bool:
+        """Never START a state the slice cannot finish.
+
+        Checking the deadline only AFTER a state is the wrong end of the loop:
+        a worker that begins a 413-second state one second before its deadline
+        runs seven minutes past it and gets killed mid-enumeration, throwing
+        away everything it did. Two workers did exactly that on the first slice.
+        Stopping early wastes at most one state's worth of idle; starting late
+        wastes a whole state.
+        """
+        return time.time() + args.state_seconds > deadline
+
     def evaluate(edits, seed, tag) -> dict | None:
+        if not wait_for_memory(args.min_free_mb):
+            log.error("no memory for %s after 5 minutes; stopping this slice "
+                      "cleanly rather than being killed mid-state", tag)
+            raise SystemExit(0)
+        heartbeat("scoring", {"state": tag, "shard": args.shard or "single"})
         try:
             s = score_state(list(edits), harness=H, seg_model=stm,
                             stops_gdf=sg, limits=limits, lam=args.lam,
@@ -234,6 +327,8 @@ def main() -> int:
         log.info("%-58.58s obj=%.7g unserved=%.1f vh=%.1f %.0fs",
                  tag, s.metrics["objective"], s.metrics["unserved_demand"],
                  s.metrics["revenue_veh_hours"], s.seconds)
+        heartbeat("scored", {"state": tag, "objective": s.metrics["objective"],
+                             "shard": args.shard or "single"})
         return row
 
     cp_path = (Path(args.checkpoint) if not args.shard else
@@ -253,6 +348,9 @@ def main() -> int:
         key = f"{NULL}|rep{i}"
         if cp.get(key) is not None:
             continue
+        if out_of_slice():
+            log.info("slice ends here — not starting a state it cannot finish")
+            return 0
         r = evaluate([], args.seed + i, key)
         if r:
             reps.append(r)
@@ -266,8 +364,13 @@ def main() -> int:
         log.info("shard %d/%d: %d of %d singles", shard_i, shard_n,
                  len(mine), len(pool))
     for mid in mine:
-        if time.time() >= deadline or len(cp.scores) >= args.max_states:
-            log.warning("A1 stopped early at the preregistered limit")
+        if len(cp.scores) >= args.max_states:
+            log.warning("A1 stopped at the preregistered 420-state limit")
+            break
+        if out_of_slice():
+            log.info("slice ends here — not starting a state it cannot finish "
+                     "(%.0f s left, a state needs %.0f)",
+                     deadline - time.time(), args.state_seconds)
             break
         hit = cp.get(mid)
         if hit is not None:
@@ -319,7 +422,18 @@ def main() -> int:
                  "only, as requested " if args.phase == "A1" else "shard done ")
         return 0
 
-    # ---------------- the gate ------------------------------------------
+    # ---------------- the gates -----------------------------------------
+    ok_a1, missing = a1_complete(pool)
+    if not ok_a1:
+        log.error("phase A1 is INCOMPLETE — %d of %d singles unscored "
+                  "(%s%s). Phase A2 will not run: its neighbour ordering is "
+                  "derived from the A1 singles, so a partial census does not "
+                  "merely lose coverage, it silently changes the search. 2B "
+                  "finished stage A at 183 of 240 for the same class of "
+                  "reason.", len(missing), len(pool), missing[:3],
+                  "..." if len(missing) > 3 else "")
+        return 2
+
     bench = OUT / "policy_benchmark.json"
     ok = bench.exists() and json.loads(bench.read_text()).get("pass") is True
     if not ok:
@@ -339,6 +453,10 @@ def main() -> int:
              remaining, max(0.0, (deadline - time.time()) / 3600.0))
 
     def score(st: State) -> float:
+        if out_of_slice():
+            # The search treats this as "no improvement here" and stops; the
+            # state is simply not scored, so the next slice picks it up.
+            raise SystemExit(0)
         r = evaluate([by_id[i] for i in st.ids], args.seed, st.key)
         return r["objective"] if r else float("inf")
 

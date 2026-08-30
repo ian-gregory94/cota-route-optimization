@@ -34,7 +34,7 @@ from cota_opt import geo                                     # noqa: E402
 from cota_opt.contract import ContractLimits                 # noqa: E402
 from cota_opt.exp3_score import score_state                  # noqa: E402
 from cota_opt.geometry import GeometryEdit, SegmentTimeModel  # noqa: E402
-from exp2_treatments import pinned                          # noqa: E402
+from exp3_pin_envelope import load as pin_load              # noqa: E402
 from cota_opt.harness import build_harness                   # noqa: E402
 
 OUT = ROOT / "outputs"
@@ -59,10 +59,7 @@ def main() -> int:
     sg = geo.stops_gdf(H.baseline.feed, H.assumptions["crs"]["projected"])
     stm = SegmentTimeModel.fit(H.baseline.network, sg)
     budget = float(H.baseline.tstats["runtime_min"].sum() / 60.0)
-    _ctrl = H.setup(with_crowding=False, lock_classes=("peak_express",))
-    _peak = dict(_ctrl.model.evaluate(_ctrl.baseline_plan).peak_by_period)
-    CONS = pinned(budget, _peak)
-    del _ctrl
+    CONS = pin_load()
     limits = ContractLimits(veh_hour_budget=budget, peak_vehicle_budget=197.0)
 
     kind, a, b, jx = TARGET.split("|")

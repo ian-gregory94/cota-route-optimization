@@ -92,3 +92,804 @@
 2026-08-30 20:33:36,254 path set: 28822 paths over 19278/20000 OD pairs (96.2% of flow served), 141894 legs
 2026-08-30 20:33:36,311 period am_peak : 28822 paths, 20000 OD pairs
 2026-08-30 20:33:36,322 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:34:27,049 rejected 68 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:34:27,163 path set: 24118 paths over 17389/20000 OD pairs (86.7% of flow served), 118748 legs
+2026-08-30 20:34:27,214 period midday  : 24118 paths, 20000 OD pairs
+2026-08-30 20:34:27,226 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:35:21,377 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:35:21,531 path set: 28007 paths over 18673/20000 OD pairs (93.6% of flow served), 139704 legs
+2026-08-30 20:35:21,587 period pm_peak : 28007 paths, 20000 OD pairs
+2026-08-30 20:35:21,598 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:36:14,249 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:36:14,386 path set: 24124 paths over 17386/20000 OD pairs (86.6% of flow served), 118599 legs
+2026-08-30 20:36:14,436 period evening : 24124 paths, 20000 OD pairs
+2026-08-30 20:36:14,448 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:37:03,833 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:37:04,002 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111734 legs
+2026-08-30 20:37:04,053 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 20:37:04,053 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 20:38:40,778 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.1 exchanges=0
+2026-08-30 20:38:40,793 add_stop-010#22c4c35ac5b2                                  obj=2950538 unserved=9716.0 vh=2515.7 412s
+2026-08-30 20:38:40,805 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:38:40,816 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:38:40,825 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:38:40,834 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:38:40,843 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:38:41,104 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 20:38:41,114 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 20:38:41,230 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 20:38:41,241 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 20:38:41,298 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 20:38:41,312 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:03:24,867 slice deadline: 450 s from now, checked between states
+2026-08-30 21:03:24,876 experiment exp3_stage_a_20260830T210324Z
+2026-08-30 21:03:25,678 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.8s)
+2026-08-30 21:03:25,745 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:03:25,747 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:03:25,748 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:03:25,770 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:03:25,916 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:03:25,916 shard 1/2: 42 of 84 singles
+2026-08-30 21:03:25,928 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:25,939 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:25,950 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:25,960 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:25,971 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:25,983 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:03:26,322 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 21:03:26,330 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 21:03:26,454 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 21:03:26,463 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:03:26,529 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 21:03:26,542 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:04:16,246 rejected 93 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:04:16,444 path set: 24686 paths over 17388/20000 OD pairs (86.7% of flow served), 121466 legs
+2026-08-30 21:04:16,492 period early   : 24686 paths, 20000 OD pairs
+2026-08-30 21:04:16,503 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:05:12,132 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:05:12,362 path set: 28785 paths over 19278/20000 OD pairs (96.2% of flow served), 141756 legs
+2026-08-30 21:05:12,427 period am_peak : 28785 paths, 20000 OD pairs
+2026-08-30 21:05:12,439 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:06:02,523 rejected 71 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:06:02,707 path set: 24115 paths over 17389/20000 OD pairs (86.7% of flow served), 118797 legs
+2026-08-30 21:06:02,755 period midday  : 24115 paths, 20000 OD pairs
+2026-08-30 21:06:02,767 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:06:57,525 rejected 120 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:06:57,711 path set: 28007 paths over 18673/20000 OD pairs (93.6% of flow served), 139758 legs
+2026-08-30 21:06:57,773 period pm_peak : 28007 paths, 20000 OD pairs
+2026-08-30 21:06:57,785 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:07:52,446 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:07:52,536 path set: 24077 paths over 17386/20000 OD pairs (86.6% of flow served), 118369 legs
+2026-08-30 21:07:52,588 period evening : 24077 paths, 20000 OD pairs
+2026-08-30 21:07:52,600 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:08:41,635 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:08:41,720 path set: 22679 paths over 17006/20000 OD pairs (85.1% of flow served), 111780 legs
+2026-08-30 21:08:41,767 period owl     : 22679 paths, 20000 OD pairs
+2026-08-30 21:08:41,767 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 21:10:14,795 solve lambda=2.0: obj=2.95643e+06 vh=2512.3/2513.7 exchanges=0
+2026-08-30 21:10:14,809 change_terminal-101-EMO4THW#56a30c84c920                   obj=2956428 unserved=9747.9 vh=2512.3 409s
+2026-08-30 21:10:14,822 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,832 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,841 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,851 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,861 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,870 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,879 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,888 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,897 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,906 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,915 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,924 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,933 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:14,953 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:10:14,970 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:10:14,988 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:10:15,006 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:10:15,024 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:15,041 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:15,066 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:15,087 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:10:15,096 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,105 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,114 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,124 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,133 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,142 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,152 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,160 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,169 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,228 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:10:15,521 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 21:10:15,529 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 21:10:15,641 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 21:10:15,651 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:10:15,696 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 21:10:15,708 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:11:05,804 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:11:05,896 path set: 24663 paths over 17388/20000 OD pairs (86.7% of flow served), 121365 legs
+2026-08-30 21:11:05,944 period early   : 24663 paths, 20000 OD pairs
+2026-08-30 21:11:05,956 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:12:02,657 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:12:02,771 path set: 28734 paths over 19278/20000 OD pairs (96.2% of flow served), 141443 legs
+2026-08-30 21:12:02,834 period am_peak : 28734 paths, 20000 OD pairs
+2026-08-30 21:12:02,845 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:13:28,248 slice deadline: 470 s from now, checked between states
+2026-08-30 21:13:28,253 experiment exp3_stage_a_20260830T211328Z
+2026-08-30 21:13:28,624 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.4s)
+2026-08-30 21:13:28,677 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:13:28,678 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:13:28,679 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:13:28,699 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:13:28,851 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:13:28,851 shard 1/2: 42 of 84 singles
+2026-08-30 21:13:28,863 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,873 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,885 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,896 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,907 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,918 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,928 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,939 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:28,950 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,006 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,021 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,032 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,047 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,058 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,068 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,078 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,087 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,097 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,106 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,135 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:13:29,162 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:13:29,181 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:13:29,202 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:13:29,232 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,250 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,277 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,301 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:13:29,311 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,321 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,330 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,342 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,351 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,361 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,371 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,380 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,391 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,401 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:13:29,775 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 21:13:29,785 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 21:13:29,905 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 21:13:29,915 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:13:29,963 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 21:13:29,977 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:14:21,569 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:14:21,763 path set: 24663 paths over 17388/20000 OD pairs (86.7% of flow served), 121365 legs
+2026-08-30 21:14:21,815 period early   : 24663 paths, 20000 OD pairs
+2026-08-30 21:14:21,827 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:15:21,238 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:15:21,455 path set: 28734 paths over 19278/20000 OD pairs (96.2% of flow served), 141443 legs
+2026-08-30 21:15:21,515 period am_peak : 28734 paths, 20000 OD pairs
+2026-08-30 21:15:21,527 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:16:14,441 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:16:14,579 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118689 legs
+2026-08-30 21:16:14,633 period midday  : 24097 paths, 20000 OD pairs
+2026-08-30 21:16:14,645 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:17:11,585 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:17:11,739 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139691 legs
+2026-08-30 21:17:11,799 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-30 21:17:11,811 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:18:06,738 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:18:06,860 path set: 24066 paths over 17386/20000 OD pairs (86.6% of flow served), 118309 legs
+2026-08-30 21:18:06,910 period evening : 24066 paths, 20000 OD pairs
+2026-08-30 21:18:06,922 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:18:57,058 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:18:57,171 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-30 21:18:57,218 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 21:18:57,218 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 21:20:33,626 solve lambda=2.0: obj=2.95366e+06 vh=2506.0/2506.6 exchanges=0
+2026-08-30 21:20:33,639 truncate-035#7cdb09a45253                                  obj=2953663 unserved=9725.3 vh=2506.0 424s
+2026-08-30 21:20:33,640 slice ends here — not starting a state it cannot finish (45 s left, a state needs 430)
+2026-08-30 21:20:33,645 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 21:21:53,201 slice deadline: 470 s from now, checked between states
+2026-08-30 21:21:53,205 experiment exp3_stage_a_20260830T212153Z
+2026-08-30 21:21:53,370 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-30 21:21:53,407 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:21:53,407 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:21:53,408 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:21:53,419 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:21:53,564 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:21:53,564 shard 1/2: 42 of 84 singles
+2026-08-30 21:21:53,577 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,587 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,596 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,605 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,615 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,624 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,633 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,642 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,651 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,698 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,707 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,717 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,726 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,735 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,744 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,753 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,763 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,772 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,780 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,806 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:21:53,831 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:21:53,849 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:21:53,866 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:21:53,891 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,907 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,932 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,952 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:21:53,962 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:53,971 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:53,980 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:53,989 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:53,999 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,007 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,016 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,026 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,035 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,044 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:21:54,370 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 21:21:54,379 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 21:21:54,491 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 21:21:54,500 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:21:54,548 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 21:21:54,563 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:22:43,142 rejected 74 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:22:43,290 path set: 24215 paths over 17387/20000 OD pairs (86.7% of flow served), 119226 legs
+2026-08-30 21:22:43,341 period early   : 24215 paths, 20000 OD pairs
+2026-08-30 21:22:43,353 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:23:39,130 rejected 52 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:23:39,318 path set: 28753 paths over 19278/20000 OD pairs (96.2% of flow served), 142065 legs
+2026-08-30 21:23:39,378 period am_peak : 28753 paths, 20000 OD pairs
+2026-08-30 21:23:39,390 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:24:28,968 rejected 50 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:24:29,102 path set: 23912 paths over 17388/20000 OD pairs (86.7% of flow served), 117961 legs
+2026-08-30 21:24:29,150 period midday  : 23912 paths, 20000 OD pairs
+2026-08-30 21:24:29,161 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:25:22,974 rejected 60 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:25:23,154 path set: 27792 paths over 18653/20000 OD pairs (93.5% of flow served), 138697 legs
+2026-08-30 21:25:23,209 period pm_peak : 27792 paths, 20000 OD pairs
+2026-08-30 21:25:23,221 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:26:16,203 rejected 61 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:26:16,336 path set: 23737 paths over 17385/20000 OD pairs (86.6% of flow served), 116839 legs
+2026-08-30 21:26:16,388 period evening : 23737 paths, 20000 OD pairs
+2026-08-30 21:26:16,400 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:27:05,421 rejected 95 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:27:05,571 path set: 22652 paths over 17013/20000 OD pairs (85.1% of flow served), 111721 legs
+2026-08-30 21:27:05,619 period owl     : 22652 paths, 20000 OD pairs
+2026-08-30 21:27:05,619 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 21:28:41,465 solve lambda=2.0: obj=2.97005e+06 vh=2499.1/2500.5 exchanges=0
+2026-08-30 21:28:41,478 truncate-102#dcead1dfc1cc                                  obj=2970050 unserved=9871.0 vh=2499.1 407s
+2026-08-30 21:28:41,484 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 21:28:55,543 slice deadline: 470 s from now, checked between states
+2026-08-30 21:28:55,551 experiment exp3_stage_a_20260830T212855Z
+2026-08-30 21:28:55,692 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 21:28:55,737 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:28:55,737 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:28:55,738 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:28:55,757 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:28:55,895 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:28:55,895 shard 1/2: 42 of 84 singles
+2026-08-30 21:28:55,906 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,916 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,925 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,933 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,942 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,951 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,960 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,969 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:55,978 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,021 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,031 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,041 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,049 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,060 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,068 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,077 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,086 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,095 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,103 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,129 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:28:56,153 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:28:56,170 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:28:56,188 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:28:56,212 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,229 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,254 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,274 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:28:56,283 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,292 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,301 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,310 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,319 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,328 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,337 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,346 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,355 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,364 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:28:56,368 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 21:35:59,323 slice deadline: 520 s from now, checked between states
+2026-08-30 21:35:59,328 experiment exp3_stage_a_20260830T213559Z
+2026-08-30 21:35:59,458 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 21:35:59,495 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:35:59,495 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:35:59,496 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:35:59,507 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:35:59,642 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:35:59,642 shard 1/2: 42 of 84 singles
+2026-08-30 21:35:59,654 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,665 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,674 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,683 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,693 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,702 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,712 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,721 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,730 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,783 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,794 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,804 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,814 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,824 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,834 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,844 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,853 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,862 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,873 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,893 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:35:59,912 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:35:59,930 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:35:59,947 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:35:59,964 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:35:59,981 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:36:00,008 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:36:00,029 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:36:00,038 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,048 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,057 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,068 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,078 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,087 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,097 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,106 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,116 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,126 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:36:00,129 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 21:43:43,310 slice deadline: 520 s from now, checked between states
+2026-08-30 21:43:43,314 experiment exp3_stage_a_20260830T214343Z
+2026-08-30 21:43:43,434 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 21:43:43,468 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:43:43,469 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:43:43,470 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:43:43,480 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:43:43,609 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:43:43,609 shard 1/2: 42 of 84 singles
+2026-08-30 21:43:43,621 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,630 add_stop-033#273b2cd43dfd REFUSED: [state] 2522.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,639 add_stop-141#2fc0aa211ecb REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,648 change_terminal-003-PKWCTRS#e605a37bbb0f REFUSED: [state] 2517.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,657 change_terminal-005-GTCREFS#7a2a91c8eec7 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,666 change_terminal-023-EASHAMN#357bdf4fa511 REFUSED: [state] 2518.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,675 change_terminal-141-STAHIGW#b5ce9b1e03b5 REFUSED: [state] 1 stop(s) end up served by no route (['STAHIGW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2517.3 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,683 extend-006#d6deedd1d364 REFUSED: [state] 2545.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,692 extend-023#292a06c5a525 REFUSED: [state] 2527.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,740 extend-025#441ece050fe8 REFUSED: [state] 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,750 extend-032#228795f35539 REFUSED: [state] 2523.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,760 extend-101#a50d8435b367 REFUSED: [state] 2538.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,769 extend-141#c1d88042f92d REFUSED: [state] 2518.8 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,778 reroute-003#a310b19332b7 REFUSED: [state] 2519.6 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,787 reroute-006#dbfb2f9ee60d REFUSED: [state] 3 stop(s) end up served by no route (['SULAVOW', 'SULGLEW', 'SULMARTW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2520.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,797 reroute-009#8323c2fb0368 REFUSED: [state] 2517.5 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,806 reroute-011#50126f78cee2 REFUSED: [state] 1 stop(s) end up served by no route (['LONHAME1']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.9 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,815 reroute-023#1dc299b50907 REFUSED: [state] 3 stop(s) end up served by no route (['STECITGN', 'STEJOHTN', 'STEOLEN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2522.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,823 reroute-102#06e527b20649 REFUSED: [state] 2519.1 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,849 splice-002-011-HIGFITN#17e4d59ccc9a REFUSED: [state] network edit distance 22.1% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:43:43,874 splice-002-034-WESHIGW#e089c719c5f5 REFUSED: [state] network edit distance 18.5% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:43:43,891 splice-005-021-NMURBEAN#c2defbd41984 REFUSED: [state] network edit distance 21.0% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:43:43,908 splice-007-101-EMO4THW#e8a1e2291da0 REFUSED: [state] network edit distance 18.6% exceeds 15%. That is a real result about Experiment 4, not this one — the line is a single number precisely so it cannot be argued case by case.
+2026-08-30 21:43:43,932 splice-011-033-WESHIGW#573afb5ae3bf REFUSED: [state] 2517.4 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,949 splice-033-034-WESHIGW#b635228b90c4 REFUSED: [state] 2517.7 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,973 split-024-EASHAMN#572a1ac33bc2 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:43,993 split-035-NORTRA2#7a708a1900ac REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 21:43:44,002 straighten-002#716a0b294c2c REFUSED: [state] 5 stop(s) end up served by no route (['CARMAIS', 'GOLHILW', 'HANMAIN', 'MAIESTW', 'MAIOAKW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,011 straighten-007#830e388b3427 REFUSED: [state] 7 stop(s) end up served by no route (['324ALLE', '5THKRUW', '5THSTERW', '7THSTEE', 'ALLOPPE']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,021 straighten-021#110f4a755fe7 REFUSED: [state] 3 stop(s) end up served by no route (['GEOSULN', 'SULCOUE', 'SULINDE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,030 straighten-025#f0732765f122 REFUSED: [state] 5 stop(s) end up served by no route (['5677ALE', 'CHANCHAW', 'PACRALSN', 'PARCCHAN', 'SCAALSE']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,039 straighten-033#1bde1c99adc4 REFUSED: [state] 5 stop(s) end up served by no route (['209HIGE', 'BRO200W', 'BROMHIGE', 'BROMHIGW', 'HIGBROMS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,048 straighten-102#4dd646541565 REFUSED: [state] 3 stop(s) end up served by no route (['346HUTCH', '44HUTCH', 'HUTCHHC']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,057 truncate-007#e0327cd10f50 REFUSED: [state] 2 stop(s) end up served by no route (['INTSAWW', 'PORGRON']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,065 truncate-012#584263ee6bf8 REFUSED: [state] 3 stop(s) end up served by no route (['MCK1600W', 'MCKPARK', 'MCKTRAW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,074 truncate-025#d3209fe02367 REFUSED: [state] 14 stop(s) end up served by no route (['5275GENS', '6340PREN', 'BRISCAS', 'GENABBS', 'GENBRIS']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,083 truncate-032#00b89519f00f REFUSED: [state] 1 stop(s) end up served by no route (['EASTER6']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.
+2026-08-30 21:43:44,086 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 21:55:51,434 slice deadline: 520 s from now, checked between states
+2026-08-30 21:55:51,438 experiment exp3_stage_a_20260830T215551Z
+2026-08-30 21:55:51,560 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 21:55:51,602 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 21:55:51,603 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 21:55:51,603 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 21:55:51,623 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:55:51,760 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 21:55:51,760 shard 1/2: 42 of 84 singles
+2026-08-30 21:55:52,027 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 21:55:52,037 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 21:55:52,157 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 21:55:52,166 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 21:55:52,228 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 21:55:52,275 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:56:42,669 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:56:42,837 path set: 24674 paths over 17388/20000 OD pairs (86.7% of flow served), 121380 legs
+2026-08-30 21:56:42,885 period early   : 24674 paths, 20000 OD pairs
+2026-08-30 21:56:42,897 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:57:39,585 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:57:39,806 path set: 28749 paths over 19278/20000 OD pairs (96.2% of flow served), 141548 legs
+2026-08-30 21:57:39,867 period am_peak : 28749 paths, 20000 OD pairs
+2026-08-30 21:57:39,879 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:58:30,766 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:58:30,851 path set: 24078 paths over 17389/20000 OD pairs (86.7% of flow served), 118568 legs
+2026-08-30 21:58:30,900 period midday  : 24078 paths, 20000 OD pairs
+2026-08-30 21:58:30,911 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 21:59:25,620 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 21:59:25,721 path set: 27955 paths over 18673/20000 OD pairs (93.6% of flow served), 139435 legs
+2026-08-30 21:59:25,781 period pm_peak : 27955 paths, 20000 OD pairs
+2026-08-30 21:59:25,793 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:00:19,263 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:00:19,400 path set: 24047 paths over 17386/20000 OD pairs (86.6% of flow served), 118156 legs
+2026-08-30 22:00:19,450 period evening : 24047 paths, 20000 OD pairs
+2026-08-30 22:00:19,462 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:01:09,444 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:01:09,559 path set: 22648 paths over 17006/20000 OD pairs (85.1% of flow served), 111587 legs
+2026-08-30 22:01:09,619 period owl     : 22648 paths, 20000 OD pairs
+2026-08-30 22:01:09,619 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 22:02:45,191 solve lambda=2.0: obj=2.95561e+06 vh=2515.2/2517.2 exchanges=0
+2026-08-30 22:02:45,208 add_stop-004#27407b151153                                  obj=2955607 unserved=9744.4 vh=2515.2 413s
+2026-08-30 22:02:45,209 slice ends here — not starting a state it cannot finish (106 s left, a state needs 430)
+2026-08-30 22:02:45,214 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 22:02:58,375 slice deadline: 520 s from now, checked between states
+2026-08-30 22:02:58,379 experiment exp3_stage_a_20260830T220258Z
+2026-08-30 22:02:58,519 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 22:02:58,574 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 22:02:58,574 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 22:02:58,575 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 22:02:58,594 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:02:58,740 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 22:02:58,740 shard 1/2: 42 of 84 singles
+2026-08-30 22:02:59,030 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 22:02:59,039 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 22:02:59,184 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 22:02:59,193 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:02:59,269 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 22:02:59,329 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:03:49,838 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:03:49,925 path set: 24673 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-30 22:03:49,971 period early   : 24673 paths, 20000 OD pairs
+2026-08-30 22:03:49,982 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:04:48,641 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:04:48,751 path set: 28768 paths over 19278/20000 OD pairs (96.2% of flow served), 141653 legs
+2026-08-30 22:04:48,818 period am_peak : 28768 paths, 20000 OD pairs
+2026-08-30 22:04:48,830 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:05:40,442 rejected 71 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:05:40,548 path set: 24094 paths over 17389/20000 OD pairs (86.7% of flow served), 118671 legs
+2026-08-30 22:05:40,596 period midday  : 24094 paths, 20000 OD pairs
+2026-08-30 22:05:40,608 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:06:36,803 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:06:36,966 path set: 27982 paths over 18673/20000 OD pairs (93.6% of flow served), 139604 legs
+2026-08-30 22:06:37,023 period pm_peak : 27982 paths, 20000 OD pairs
+2026-08-30 22:06:37,035 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:07:32,175 rejected 81 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:07:32,312 path set: 24032 paths over 17386/20000 OD pairs (86.6% of flow served), 118131 legs
+2026-08-30 22:07:32,360 period evening : 24032 paths, 20000 OD pairs
+2026-08-30 22:07:32,371 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:08:22,055 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:08:22,180 path set: 22664 paths over 17006/20000 OD pairs (85.1% of flow served), 111698 legs
+2026-08-30 22:08:22,225 period owl     : 22664 paths, 20000 OD pairs
+2026-08-30 22:08:22,225 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 22:09:55,480 solve lambda=2.0: obj=2.95534e+06 vh=2511.6/2514.0 exchanges=0
+2026-08-30 22:09:55,496 add_stop-007#02161399a599                                  obj=2955344 unserved=9738.8 vh=2511.6 417s
+2026-08-30 22:09:55,497 slice ends here — not starting a state it cannot finish (103 s left, a state needs 430)
+2026-08-30 22:09:55,502 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 22:10:02,663 slice deadline: 520 s from now, checked between states
+2026-08-30 22:10:02,667 experiment exp3_stage_a_20260830T221002Z
+2026-08-30 22:10:02,804 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 22:10:02,850 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 22:10:02,850 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 22:10:02,851 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 22:10:02,871 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:10:03,013 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 22:10:03,013 shard 1/2: 42 of 84 singles
+2026-08-30 22:10:03,299 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 22:10:03,308 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 22:10:03,429 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 22:10:03,440 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:10:03,527 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 22:10:03,588 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:10:54,373 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:10:54,468 path set: 24641 paths over 17388/20000 OD pairs (86.7% of flow served), 121134 legs
+2026-08-30 22:10:54,515 period early   : 24641 paths, 20000 OD pairs
+2026-08-30 22:10:54,526 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:11:52,631 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:11:52,737 path set: 28822 paths over 19278/20000 OD pairs (96.2% of flow served), 141894 legs
+2026-08-30 22:11:52,797 period am_peak : 28822 paths, 20000 OD pairs
+2026-08-30 22:11:52,809 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:12:44,745 rejected 68 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:12:44,858 path set: 24118 paths over 17389/20000 OD pairs (86.7% of flow served), 118748 legs
+2026-08-30 22:12:44,910 period midday  : 24118 paths, 20000 OD pairs
+2026-08-30 22:12:44,922 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:13:40,615 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:13:40,713 path set: 28007 paths over 18673/20000 OD pairs (93.6% of flow served), 139704 legs
+2026-08-30 22:13:40,768 period pm_peak : 28007 paths, 20000 OD pairs
+2026-08-30 22:13:40,780 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:14:34,664 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:14:34,787 path set: 24124 paths over 17386/20000 OD pairs (86.6% of flow served), 118599 legs
+2026-08-30 22:14:34,839 period evening : 24124 paths, 20000 OD pairs
+2026-08-30 22:14:34,850 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:15:24,919 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:15:25,003 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111734 legs
+2026-08-30 22:15:25,051 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 22:15:25,051 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 22:16:55,106 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.1 exchanges=0
+2026-08-30 22:16:55,122 add_stop-010#22c4c35ac5b2                                  obj=2950538 unserved=9716.0 vh=2515.7 412s
+2026-08-30 22:16:55,123 slice ends here — not starting a state it cannot finish (108 s left, a state needs 430)
+2026-08-30 22:16:55,127 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 22:17:20,018 slice deadline: 520 s from now, checked between states
+2026-08-30 22:17:20,023 experiment exp3_stage_a_20260830T221720Z
+2026-08-30 22:17:20,137 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 22:17:20,190 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 22:17:20,191 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 22:17:20,191 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 22:17:20,219 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:17:20,361 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 22:17:20,361 shard 1/2: 42 of 84 singles
+2026-08-30 22:17:20,631 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 22:17:20,640 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 22:17:20,758 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 22:17:20,768 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 22:17:20,835 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 22:17:20,893 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:18:11,216 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:18:11,308 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121371 legs
+2026-08-30 22:18:11,353 period early   : 24668 paths, 20000 OD pairs
+2026-08-30 22:18:11,365 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:19:08,938 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:19:09,037 path set: 28770 paths over 19278/20000 OD pairs (96.2% of flow served), 141687 legs
+2026-08-30 22:19:09,092 period am_peak : 28770 paths, 20000 OD pairs
+2026-08-30 22:19:09,104 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:20:00,803 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:20:00,889 path set: 24092 paths over 17389/20000 OD pairs (86.7% of flow served), 118654 legs
+2026-08-30 22:20:00,937 period midday  : 24092 paths, 20000 OD pairs
+2026-08-30 22:20:00,948 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:20:55,998 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:20:56,143 path set: 28087 paths over 18691/20000 OD pairs (93.7% of flow served), 140176 legs
+2026-08-30 22:20:56,201 period pm_peak : 28087 paths, 20000 OD pairs
+2026-08-30 22:20:56,213 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:21:50,228 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:21:50,312 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118258 legs
+2026-08-30 22:21:50,359 period evening : 24058 paths, 20000 OD pairs
+2026-08-30 22:21:50,370 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 22:22:39,929 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 22:22:40,027 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111727 legs
+2026-08-30 22:22:40,075 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 22:22:40,075 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 22:24:08,638 solve lambda=2.0: obj=2.95415e+06 vh=2519.5/2522.2 exchanges=0
+2026-08-30 22:24:08,648 add_stop-033#273b2cd43dfd REFUSED: [state] the OPTIMIZED plan uses 2519.5 vehicle-hours, over the pinned budget of 2517.2
+2026-08-30 22:24:08,652 slice ends here — not starting a state it cannot finish (111 s left, a state needs 430)
+2026-08-30 22:24:08,657 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 23:20:19,315 slice deadline: 520 s from now, checked between states
+2026-08-30 23:20:19,320 experiment exp3_stage_a_20260830T232019Z
+2026-08-30 23:20:19,436 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 23:20:19,478 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 23:20:19,479 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 23:20:19,480 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 23:20:19,498 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:20:19,680 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 23:20:19,735 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:22:06,190 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:22:06,330 path set: 31858 paths over 17434/20000 OD pairs (86.9% of flow served), 162561 legs
+2026-08-30 23:22:06,401 period early   : 31858 paths, 20000 OD pairs
+2026-08-30 23:22:06,416 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:24:06,029 rejected 235 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:24:06,311 path set: 37995 paths over 19315/20000 OD pairs (96.5% of flow served), 194067 legs
+2026-08-30 23:24:06,408 period am_peak : 37995 paths, 20000 OD pairs
+2026-08-30 23:24:06,424 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:25:53,044 rejected 127 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:25:53,237 path set: 32893 paths over 17437/20000 OD pairs (86.9% of flow served), 167908 legs
+2026-08-30 23:25:53,309 period midday  : 32893 paths, 20000 OD pairs
+2026-08-30 23:25:53,324 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:27:50,109 rejected 288 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:27:50,352 path set: 37936 paths over 18725/20000 OD pairs (93.8% of flow served), 197645 legs
+2026-08-30 23:27:50,441 period pm_peak : 37936 paths, 20000 OD pairs
+2026-08-30 23:27:50,457 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:29:42,677 rejected 178 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:29:42,791 path set: 30786 paths over 17432/20000 OD pairs (86.9% of flow served), 156338 legs
+2026-08-30 23:29:42,860 period evening : 30786 paths, 20000 OD pairs
+2026-08-30 23:29:42,874 path enumeration: 20000 OD pairs, 636 origin zones, 6 scenarios, cap 6 paths/OD
+2026-08-30 23:30:56,528 slice deadline: 480 s from now, checked between states
+2026-08-30 23:30:56,532 experiment exp3_stage_a_20260830T233056Z
+2026-08-30 23:30:56,664 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 23:30:56,699 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 23:30:56,700 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 23:30:56,701 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 23:30:56,712 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:30:56,852 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 23:30:56,852 shard 1/2: 42 of 84 singles
+2026-08-30 23:30:57,120 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 23:30:57,130 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 23:30:57,240 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 23:30:57,249 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:30:57,302 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 23:30:57,366 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:31:46,645 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:31:46,740 path set: 24674 paths over 17388/20000 OD pairs (86.7% of flow served), 121380 legs
+2026-08-30 23:31:46,785 period early   : 24674 paths, 20000 OD pairs
+2026-08-30 23:31:46,797 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:32:43,739 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:32:43,847 path set: 28749 paths over 19278/20000 OD pairs (96.2% of flow served), 141548 legs
+2026-08-30 23:32:43,907 period am_peak : 28749 paths, 20000 OD pairs
+2026-08-30 23:32:43,919 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:33:33,671 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:33:33,805 path set: 24078 paths over 17389/20000 OD pairs (86.7% of flow served), 118568 legs
+2026-08-30 23:33:33,855 period midday  : 24078 paths, 20000 OD pairs
+2026-08-30 23:33:33,866 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:34:28,144 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:34:28,328 path set: 27955 paths over 18673/20000 OD pairs (93.6% of flow served), 139435 legs
+2026-08-30 23:34:28,383 period pm_peak : 27955 paths, 20000 OD pairs
+2026-08-30 23:34:28,393 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:35:20,777 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:35:20,900 path set: 24047 paths over 17386/20000 OD pairs (86.6% of flow served), 118156 legs
+2026-08-30 23:35:20,949 period evening : 24047 paths, 20000 OD pairs
+2026-08-30 23:35:20,960 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:36:09,864 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:36:09,983 path set: 22648 paths over 17006/20000 OD pairs (85.1% of flow served), 111587 legs
+2026-08-30 23:36:10,030 period owl     : 22648 paths, 20000 OD pairs
+2026-08-30 23:36:10,031 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 23:36:10,063      incumbent rescaled x1.0000
+2026-08-30 23:36:10,076 incumbent snapped to ladder, max drift 0.0052 min
+2026-08-30 23:36:10,084 incumbent plan is infeasible under this budget
+2026-08-30 23:37:41,880 solve lambda=2.0: obj=2.95561e+06 vh=2515.2/2517.2 exchanges=0
+2026-08-30 23:37:41,897 add_stop-004#27407b151153                                  obj=2955607 unserved=9744.4 vh=2515.2 405s
+2026-08-30 23:37:41,898 slice ends here — not starting a state it cannot finish (75 s left, a state needs 430)
+2026-08-30 23:37:41,902 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 23:38:21,756 slice deadline: 480 s from now, checked between states
+2026-08-30 23:38:21,761 experiment exp3_stage_a_20260830T233821Z
+2026-08-30 23:38:21,889 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 23:38:21,925 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 23:38:21,926 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 23:38:21,927 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 23:38:21,938 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:38:22,081 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 23:38:22,081 shard 1/2: 42 of 84 singles
+2026-08-30 23:38:22,357 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 23:38:22,365 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 23:38:22,475 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 23:38:22,485 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:38:22,546 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 23:38:22,604 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:39:11,515 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:39:11,603 path set: 24673 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-30 23:39:11,647 period early   : 24673 paths, 20000 OD pairs
+2026-08-30 23:39:11,658 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:40:08,852 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:40:08,959 path set: 28768 paths over 19278/20000 OD pairs (96.2% of flow served), 141653 legs
+2026-08-30 23:40:09,016 period am_peak : 28768 paths, 20000 OD pairs
+2026-08-30 23:40:09,028 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:40:59,752 rejected 71 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:40:59,860 path set: 24094 paths over 17389/20000 OD pairs (86.7% of flow served), 118671 legs
+2026-08-30 23:40:59,914 period midday  : 24094 paths, 20000 OD pairs
+2026-08-30 23:40:59,927 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:41:55,769 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:41:55,922 path set: 27982 paths over 18673/20000 OD pairs (93.6% of flow served), 139604 legs
+2026-08-30 23:41:55,978 period pm_peak : 27982 paths, 20000 OD pairs
+2026-08-30 23:41:55,991 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:42:49,887 rejected 81 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:42:50,000 path set: 24032 paths over 17386/20000 OD pairs (86.6% of flow served), 118131 legs
+2026-08-30 23:42:50,046 period evening : 24032 paths, 20000 OD pairs
+2026-08-30 23:42:50,057 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:43:39,146 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:43:39,242 path set: 22664 paths over 17006/20000 OD pairs (85.1% of flow served), 111698 legs
+2026-08-30 23:43:39,285 period owl     : 22664 paths, 20000 OD pairs
+2026-08-30 23:43:39,285 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 23:43:58,849 solve lambda=2.0: obj=2.96205e+06 vh=2503.1/2517.2 exchanges=158
+2026-08-30 23:43:58,864 add_stop-007#02161399a599                                  obj=2962048 unserved=9813.6 vh=2503.1 337s
+2026-08-30 23:43:58,865 slice ends here — not starting a state it cannot finish (143 s left, a state needs 430)
+2026-08-30 23:43:58,868 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 23:44:44,139 slice deadline: 480 s from now, checked between states
+2026-08-30 23:44:44,141 experiment exp3_stage_a_20260830T234444Z
+2026-08-30 23:44:44,272 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 23:44:44,307 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 23:44:44,307 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 23:44:44,308 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 23:44:44,319 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:44:44,454 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 23:44:44,454 shard 1/2: 42 of 84 singles
+2026-08-30 23:44:44,723 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 23:44:44,731 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 23:44:44,840 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 23:44:44,849 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:44:44,910 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 23:44:44,971 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:45:34,943 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:45:35,032 path set: 24641 paths over 17388/20000 OD pairs (86.7% of flow served), 121134 legs
+2026-08-30 23:45:35,083 period early   : 24641 paths, 20000 OD pairs
+2026-08-30 23:45:35,095 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:46:31,768 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:46:31,873 path set: 28822 paths over 19278/20000 OD pairs (96.2% of flow served), 141894 legs
+2026-08-30 23:46:31,935 period am_peak : 28822 paths, 20000 OD pairs
+2026-08-30 23:46:31,947 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:47:22,864 rejected 68 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:47:22,962 path set: 24118 paths over 17389/20000 OD pairs (86.7% of flow served), 118748 legs
+2026-08-30 23:47:23,017 period midday  : 24118 paths, 20000 OD pairs
+2026-08-30 23:47:23,029 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:48:18,164 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:48:18,265 path set: 28007 paths over 18673/20000 OD pairs (93.6% of flow served), 139704 legs
+2026-08-30 23:48:18,323 period pm_peak : 28007 paths, 20000 OD pairs
+2026-08-30 23:48:18,334 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:49:11,560 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:49:11,658 path set: 24124 paths over 17386/20000 OD pairs (86.6% of flow served), 118599 legs
+2026-08-30 23:49:11,709 period evening : 24124 paths, 20000 OD pairs
+2026-08-30 23:49:11,720 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:50:00,365 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:50:00,458 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111734 legs
+2026-08-30 23:50:00,509 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 23:50:00,513 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 23:50:00,558 incumbent plan is infeasible under this budget
+2026-08-30 23:51:34,696 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.2 exchanges=0
+2026-08-30 23:51:34,714 add_stop-010#22c4c35ac5b2                                  obj=2950538 unserved=9716.0 vh=2515.7 410s
+2026-08-30 23:51:34,715 slice ends here — not starting a state it cannot finish (69 s left, a state needs 430)
+2026-08-30 23:51:34,720 phase A1 shard done — stopping; merge the shards before A2
+2026-08-30 23:51:40,484 slice deadline: 480 s from now, checked between states
+2026-08-30 23:51:40,488 experiment exp3_stage_a_20260830T235140Z
+2026-08-30 23:51:40,621 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-30 23:51:40,657 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 23:51:40,657 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 23:51:40,658 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 23:51:40,677 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:51:40,812 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 23:51:40,812 shard 1/2: 42 of 84 singles
+2026-08-30 23:51:41,077 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 23:51:41,086 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 23:51:41,196 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 23:51:41,205 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 23:51:41,265 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 23:51:41,323 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:52:30,491 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:52:30,582 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121371 legs
+2026-08-30 23:52:30,628 period early   : 24668 paths, 20000 OD pairs
+2026-08-30 23:52:30,640 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:53:27,200 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:53:27,314 path set: 28770 paths over 19278/20000 OD pairs (96.2% of flow served), 141687 legs
+2026-08-30 23:53:27,371 period am_peak : 28770 paths, 20000 OD pairs
+2026-08-30 23:53:27,383 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:54:17,012 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:54:17,102 path set: 24092 paths over 17389/20000 OD pairs (86.7% of flow served), 118654 legs
+2026-08-30 23:54:17,153 period midday  : 24092 paths, 20000 OD pairs
+2026-08-30 23:54:17,164 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:55:10,604 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:55:10,699 path set: 28087 paths over 18691/20000 OD pairs (93.7% of flow served), 140176 legs
+2026-08-30 23:55:10,756 period pm_peak : 28087 paths, 20000 OD pairs
+2026-08-30 23:55:10,767 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:56:03,914 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:56:04,029 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118258 legs
+2026-08-30 23:56:04,082 period evening : 24058 paths, 20000 OD pairs
+2026-08-30 23:56:04,094 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 23:56:52,611 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 23:56:52,743 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111727 legs
+2026-08-30 23:56:52,790 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 23:56:52,790 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 23:56:52,822      incumbent rescaled x1.0020
+2026-08-30 23:56:52,833 incumbent snapped to ladder, max drift 0.4826 min
+2026-08-30 23:56:52,841 incumbent plan is infeasible under this budget
+2026-08-30 23:58:20,901 solve lambda=2.0: obj=2.95496e+06 vh=2514.7/2517.2 exchanges=0
+2026-08-30 23:58:20,916 add_stop-033#273b2cd43dfd                                  obj=2954961 unserved=9716.9 vh=2514.7 400s
+2026-08-30 23:58:20,917 slice ends here — not starting a state it cannot finish (80 s left, a state needs 430)
+2026-08-30 23:58:20,921 phase A1 shard done — stopping; merge the shards before A2
