@@ -377,6 +377,7 @@ def main() -> int:
             # the evaluator must be the model the run was asked for, not the
             # one a config default handed it
             got = setup.checks.get("common_lines")
+            exp.declare_evaluator(setup, expected=H.common_lines)
             if got != H.common_lines:
                 raise SystemExit(
                     f"evaluator pricing is {got!r} but the run asked for "

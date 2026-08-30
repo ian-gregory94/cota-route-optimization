@@ -43,6 +43,13 @@ class ExperimentRecord:
     config_snapshot: dict[str, Any] = field(default_factory=dict)
     metrics: dict[str, Any] = field(default_factory=dict)
     output_paths: list[str] = field(default_factory=list)
+    #: The waiting model the EVALUATOR used, taken from the setup that did the
+    #: scoring rather than from whatever the launcher was asked for. Those were
+    #: different for three days: run_exp2_eval.py set the harness to Model B,
+    #: logged "waiting model: same_route", and scored every plan under Model A,
+    #: and no artifact recorded it. `None` means the run never declared one and
+    #: its numbers cannot be attributed to a model at all.
+    evaluator: dict[str, Any] | None = None
     notes: str = ""
 
     def to_dict(self) -> dict:
@@ -82,7 +89,43 @@ class Experiment:
     def log_metrics(self, **metrics: Any) -> None:
         self.record.metrics.update(metrics)
 
+    def declare_evaluator(self, setup: Any, expected: str | None = None) -> None:
+        """Record what the evaluator actually is, from the evaluator itself.
+
+        ``setup`` is anything carrying a ``checks`` mapping — an Exp2Setup. The
+        value is read out of it rather than passed in, because the whole point
+        is that what a caller intended and what it got were not the same thing.
+
+        ``expected`` is what the run was launched to do. If it disagrees with
+        what the setup came back with, this raises: a run that cannot say which
+        model scored its plans should produce no artifact at all.
+        """
+        checks = dict(getattr(setup, "checks", {}) or {})
+        got = checks.get("common_lines")
+        if got is None:
+            raise ValueError(
+                "the setup does not report common_lines, so this run cannot "
+                "state which waiting model scored its plans")
+        if expected is not None and str(got) != str(expected):
+            raise ValueError(
+                f"evaluator pricing is {got!r} but the run asked for "
+                f"{expected!r}; refusing to write an artifact that would be "
+                f"labelled with a model it did not use")
+        self.record.evaluator = {
+            "common_lines": str(got),
+            "source": checks.get("common_lines_source", "unknown"),
+            "with_crowding": checks.get("with_crowding"),
+            "locked_route_periods": checks.get("locked_route_periods"),
+            "requested": expected,
+        }
+
     def save(self) -> Path:
+        if self.record.evaluator is None:
+            log.warning(
+                "experiment %s is being saved with NO evaluator declared. Its "
+                "numbers cannot be attributed to a waiting model. Call "
+                "declare_evaluator() from the run that does the scoring.",
+                self.experiment_id)
         p = self.dir / "experiment.json"
         p.write_text(json.dumps(self.record.to_dict(), indent=2, default=str))
         log.info("experiment saved: %s", p)

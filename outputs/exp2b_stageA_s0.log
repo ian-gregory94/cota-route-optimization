@@ -2128,3 +2128,23 @@
 2026-08-30 02:55:09,697 zones: 1397 (637 with transit access within 600 m), 3938 access links
 2026-08-30 02:55:09,714 route classes: {'all_day': 22, 'peak_express': 14}
 2026-08-30 02:55:09,797 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 02:56:06,340 rejected 114 malformed candidate paths that failed the re-pricing check
+2026-08-30 02:56:06,436 path set: 25126 paths over 17384/20000 OD pairs (86.6% of flow served), 123852 legs
+2026-08-30 02:56:06,487 period early   : 25126 paths, 20000 OD pairs
+2026-08-30 02:56:06,498 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 02:57:08,903 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-30 02:57:09,014 path set: 29055 paths over 19284/20000 OD pairs (96.3% of flow served), 143420 legs
+2026-08-30 02:57:09,112 period am_peak : 29055 paths, 20000 OD pairs
+2026-08-30 02:57:09,123 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 02:58:04,472 rejected 60 malformed candidate paths that failed the re-pricing check
+2026-08-30 02:58:04,561 path set: 24660 paths over 17385/20000 OD pairs (86.6% of flow served), 122341 legs
+2026-08-30 02:58:04,614 period midday  : 24660 paths, 20000 OD pairs
+2026-08-30 02:58:04,626 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 02:59:05,958 rejected 178 malformed candidate paths that failed the re-pricing check
+2026-08-30 02:59:06,074 path set: 28468 paths over 18732/20000 OD pairs (93.8% of flow served), 142884 legs
+2026-08-30 02:59:06,153 period pm_peak : 28468 paths, 20000 OD pairs
+2026-08-30 02:59:06,174 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:00:06,254 rejected 65 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:00:06,409 path set: 24676 paths over 17384/20000 OD pairs (86.6% of flow served), 121829 legs
+2026-08-30 03:00:06,526 period evening : 24676 paths, 20000 OD pairs
+2026-08-30 03:00:06,553 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

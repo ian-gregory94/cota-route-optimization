@@ -50,6 +50,7 @@ import json
 import logging
 import sys
 import time
+from types import SimpleNamespace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -356,6 +357,10 @@ def main() -> int:
 
     effort = f"{args.iterations}/{args.restarts}/{args.width}"
     rows: list[dict] = []
+    # Only the evaluator's `checks` are kept, not the evaluator: holding a
+    # judge alive would pin six periods of path sets past the gc that exists
+    # to release them.
+    last_checks: dict | None = None
     skipped: list[dict] = []
     t_start = time.time()
 
@@ -452,6 +457,7 @@ def main() -> int:
         # no frequency change, so an edit's own vehicle-hour cost is charged to
         # it rather than showing up as a free improvement
         base_fit = judge.model.evaluate(judge.baseline_plan)
+        last_checks = dict(judge.checks)
         inc, scale = fit_incumbent(judge, judge.budget.revenue_veh_hours, name)
 
         for m in lams:
@@ -555,6 +561,9 @@ def main() -> int:
             json.dumps(skipped, indent=2))
         log.error("GATE 2B-1 NOT MET: %d subset(s) were not evaluated; see "
                   "outputs/exp2b_%s_skipped.json", len(skipped), tag)
+    if last_checks is not None:
+        exp.declare_evaluator(SimpleNamespace(checks=last_checks),
+                              expected="same_route")
     exp.log_metrics(stage=args.stage, lambdas=lams, n_subsets=len(subsets),
                     n_skipped=len(skipped), skipped=skipped,
                     effort=effort, by_cardinality=by_size, rows=rows)

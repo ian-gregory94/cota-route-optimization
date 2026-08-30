@@ -41,6 +41,7 @@ import json
 import logging
 import sys
 import time
+from types import SimpleNamespace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -213,6 +214,10 @@ def main() -> int:
         jobs += [(k, [by_key[k]]) for k in members if k in by_key]
 
     rows = []
+    # Only the evaluator's `checks` are kept, not the evaluator: holding a
+    # judge alive would pin six periods of path sets past the gc that exists
+    # to release them.
+    last_checks: dict | None = None
     effort = f"{args.iterations}/{args.restarts}/{args.width}"
 
     def cells_for(label: str) -> list[str]:
@@ -284,6 +289,7 @@ def main() -> int:
                                  common_lines="same_route")
         rl = route_level_setup(b_ed, constraints=cons, weights=w)
         base_fit = judge.model.evaluate(judge.baseline_plan)
+        last_checks = dict(judge.checks)
 
         for treat, setup in (("route_level", rl), ("path_level", judge)):
             inc, scale = fit_incumbent(setup, setup.budget.revenue_veh_hours,
@@ -356,6 +362,9 @@ def main() -> int:
     piv = ctl.pivot_table(index="lambda", columns="treatment",
                           values=["unserved_vs_base_pct", "gc_vs_base_pct",
                                   "gc_per_trip_vs_base_pct"])
+    if last_checks is not None:
+        exp.declare_evaluator(SimpleNamespace(checks=last_checks),
+                              expected="same_route")
     exp.log_metrics(lambdas=lams, n_networks=len(jobs),
                     effort=f"{args.iterations}/{args.restarts}/{args.width}",
                     candidate_set=args.candidates, rows=rows)

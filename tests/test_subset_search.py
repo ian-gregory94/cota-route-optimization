@@ -425,3 +425,66 @@ def test_ladder_from_refuses_to_fall_back_silently():
     seg = src[i:i + 3000]
     assert "falling back to screen order" not in seg
     assert "Refusing to fall back to" in seg
+
+
+# --------------------------------------------------------------------------
+# evaluator provenance in the artifact, not the log
+# --------------------------------------------------------------------------
+
+from types import SimpleNamespace
+
+from cota_opt.experiment import Experiment
+
+
+def _exp(tmp_path):
+    return Experiment(name="t", seed=1, algorithm="a", root=tmp_path)
+
+
+def test_declaring_model_b_records_it(tmp_path):
+    e = _exp(tmp_path)
+    e.declare_evaluator(SimpleNamespace(checks={
+        "common_lines": "same_route", "common_lines_source": "explicit"}),
+        expected="same_route")
+    assert e.record.evaluator["common_lines"] == "same_route"
+    assert e.record.evaluator["source"] == "explicit"
+
+
+def test_declaring_model_b_against_a_model_a_setup_raises(tmp_path):
+    """The bug, as a test. A run asking for Model B and handed a Model A
+    evaluator must produce no artifact rather than a mislabelled one."""
+    e = _exp(tmp_path)
+    with pytest.raises(ValueError, match="asked for"):
+        e.declare_evaluator(SimpleNamespace(checks={
+            "common_lines": "pattern", "common_lines_source": "config default"}),
+            expected="same_route")
+
+
+def test_a_setup_that_cannot_say_raises(tmp_path):
+    e = _exp(tmp_path)
+    with pytest.raises(ValueError, match="does not report common_lines"):
+        e.declare_evaluator(SimpleNamespace(checks={}), expected="same_route")
+
+
+def test_the_saved_artifact_carries_the_evaluator(tmp_path):
+    e = _exp(tmp_path)
+    e.declare_evaluator(SimpleNamespace(checks={
+        "common_lines": "same_route", "common_lines_source": "explicit"}),
+        expected="same_route")
+    import json
+    d = json.loads(e.save().read_text())
+    assert d["evaluator"]["common_lines"] == "same_route"
+
+
+def test_saving_without_declaring_leaves_the_field_null_not_absent(tmp_path):
+    """An artifact that never declared must be distinguishable from one that
+    declared Model A — silence is not evidence of either."""
+    import json
+    d = json.loads(_exp(tmp_path).save().read_text())
+    assert "evaluator" in d and d["evaluator"] is None
+
+
+def test_every_scoring_script_declares_its_evaluator():
+    for name in ("run_exp2_eval.py", "exp2_treatments.py", "exp2b_subsets.py"):
+        src = (SCRIPTS / name).read_text()
+        assert "declare_evaluator(" in src, f"{name} writes artifacts without "
+        "recording which model scored them"
