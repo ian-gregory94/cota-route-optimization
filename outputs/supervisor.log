@@ -62,3 +62,7 @@
 2026-08-29T23:34:51Z supervisor: started exp2-ladder-B-fixed free=7017MB
 2026-08-30T00:05:27Z supervisor: exp2-ladder-B-fixed exited status=0
 2026-08-30T00:06:18Z supervisor: started exp2b-stageA-1 free=6993MB
+2026-08-30T03:01:16Z supervisor: already running as pid 16324, exiting
+2026-08-30T03:02:05Z supervisor: already running as pid 16348, exiting
+2026-08-30T03:03:09Z supervisor: already running as pid 16383, exiting
+2026-08-30T03:04:19Z supervisor: started exp2-promote free=6622MB

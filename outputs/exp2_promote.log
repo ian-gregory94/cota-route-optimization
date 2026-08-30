@@ -1,0 +1,21 @@
+2026-08-30 03:04:19,973 experiment exp2_geometry_eval_20260830T030419Z
+2026-08-30 03:04:19,974 result store: 59 cells already solved
+2026-08-30 03:04:20,522 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.5s)
+2026-08-30 03:04:20,557 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 03:04:20,558 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 03:04:20,559 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 03:04:20,570 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 03:04:21,242 cache hit  pathsets-c5f7d2bb11d2932d (81.9 MB, 0.7s)
+2026-08-30 03:04:21,242 waiting model: same_route
+2026-08-30 03:04:21,457 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:04:21,469 period early   : 33571 paths, 20000 OD pairs
+2026-08-30 03:04:21,486 period am_peak : 40050 paths, 20000 OD pairs
+2026-08-30 03:04:21,499 period midday  : 34003 paths, 20000 OD pairs
+2026-08-30 03:04:21,515 period pm_peak : 40231 paths, 20000 OD pairs
+2026-08-30 03:04:21,522 period evening : 34989 paths, 20000 OD pairs
+2026-08-30 03:04:21,529 period owl     : 34494 paths, 20000 OD pairs
+2026-08-30 03:04:21,530 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 03:04:21,562 envelope pinned: 2517.2 revenue veh-hours, peak {'early': 85.3, 'am_peak': 162.0, 'midday': 159.2, 'pm_peak': 176.5, 'evening': 140.2, 'owl': 35.6}
+2026-08-30 03:04:21,578 forced into the shortlist: splice|011|034|WESHIGW
+2026-08-30 03:04:21,578 forced into the shortlist: splice|033|034|WESHIGW
+2026-08-30 03:04:21,578 shortlist (2, primary=True): ['splice|011|034|WESHIGW', 'splice|033|034|WESHIGW']

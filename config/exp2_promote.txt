@@ -1,0 +1,20 @@
+# The promotion decision, at full effort, under Model B.
+#
+# The corrected evaluator makes splice|011|034|WESHIGW the better-scoring
+# single (-0.585% against splice|033|034|WESHIGW's -0.485%), but the gap is
+# 0.100 points against a 0.130-point floor measured at RANKING effort. A
+# difference smaller than the noise is not a difference, so the choice cannot
+# be made there.
+#
+# Both are therefore re-solved at gate 7's effort (400000/20/width 0) with
+# three zero-edit replicates in the SAME run, so the floor is measured where it
+# is applied. Ian's instruction: run the same full-effort confirmation the
+# incumbent got, then gate 9, then promote or document why not -- and do not
+# choose between them informally.
+#
+# 33+34 has already passed gate 9. 11+34 has now been inspected too, and is the
+# weaker proposal on cycle time, vehicle-hours and trip asymmetry. If the two
+# are inside each other's floor at full effort as well, the incumbent stays and
+# the record says a numerically better candidate failed the implementation gate.
+splice|011|034|WESHIGW
+splice|033|034|WESHIGW

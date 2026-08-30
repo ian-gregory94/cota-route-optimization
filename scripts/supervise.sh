@@ -22,21 +22,27 @@ cd "$(dirname "$0")/.."
 
 LOCK_TTL=90            # seconds a debounce lock may live before it is stale
 
-# One supervisor at a time. Restarting it without killing the old one leaves
-# two, and two supervisors 90 seconds out of phase both see a free slot and
-# both start the same job -- two copies of a solve writing the same cells to an
-# append-only store, on a two-core box. Killing the old one from the same shell
-# is how this kept being avoided: `pkill -f supervise.sh` matches the shell
-# running the pkill and kills it before the restart line executes. So the
-# supervisor refuses to start instead.
-_me=$$
-for _pid in $(pgrep -f "bash scripts/supervise.sh" 2>/dev/null); do
-  [ "$_pid" = "$_me" ] && continue
-  [ "$_pid" = "$PPID" ] && continue
-  echo "$(date -u +%FT%TZ) supervisor: already running as pid $_pid, exiting" \
-    >> outputs/supervisor.log
-  exit 0
-done
+# One supervisor at a time, enforced with a pidfile rather than by pattern.
+#
+# Restarting without killing the old one leaves two, and two supervisors 90
+# seconds out of phase both see a free slot and both start the same job. The
+# first version of this guard used `pgrep -f "bash scripts/supervise.sh"`,
+# which matched its OWN launcher -- `setsid nohup bash scripts/supervise.sh`
+# is a separate process from the script, so it is neither $$ nor $PPID -- and
+# every new supervisor refused to start because it had seen itself. A pidfile
+# cannot make that mistake: it holds one number, and either that process is
+# alive or it is not.
+PIDFILE=outputs/.supervisor.pid
+if [ -f "$PIDFILE" ]; then
+  _old=$(cat "$PIDFILE" 2>/dev/null)
+  if [ -n "$_old" ] && [ "$_old" != "$$" ] && kill -0 "$_old" 2>/dev/null; then
+    echo "$(date -u +%FT%TZ) supervisor: already running as pid $_old, exiting" \
+      >> outputs/supervisor.log
+    exit 0
+  fi
+fi
+echo $$ > "$PIDFILE"
+trap 'rm -f "$PIDFILE"' EXIT
 
 # label @@ exact command @@ log @@ nice
 # ('@@' rather than '|': Experiment 2 candidate keys contain
@@ -77,6 +83,11 @@ JOBS=(
   # the job exits immediately with an error rather than silently falling back
   # to screen order, and the supervisor retries it on the next pass.
   "exp2-ladder-B-fixed@@python scripts/run_exp2_eval.py --common-lines same_route --top 8 --include-file config/exp2_include.txt --ladder-from exp2_eval_order_modelB.csv --ladder 1,2,4@@outputs/exp2_ladder_measured_modelB.log@@0"
+  # The promotion decision: both leading candidates at gate 7's effort with
+  # three zero-edit replicates in the same run, so the floor is measured where
+  # it is applied. Blocks the Experiment 2 closeout, so it runs alongside the
+  # 2B shards rather than behind them.
+  "exp2-promote@@python scripts/run_exp2_eval.py --common-lines same_route --top 0 --include-file config/exp2_promote.txt --lambdas 2 --ladder 1 --iterations 400000 --restarts 20 --width 0 --noise-seeds 20260826,20260827@@outputs/exp2_promote.log@@0"
   # Stage A is 240 subsets at ~6 minutes each, so it is split across two
   # single-threaded workers on disjoint slices -- this box has two cores and
   # one worker would take a day. They write separate checkpoint files (a
@@ -139,7 +150,11 @@ log_usage() {
 # This box has two cores. Starting every pending job at once would put three
 # or four CPU-bound solves on them and slow all of them proportionally, so the
 # table is a QUEUE: jobs start in order, and only while a slot is free.
-MAX_RUNNING=2
+# Raised from 2 to 3 on 2026-08-30. Three CPU-bound jobs on two cores does not
+# change total throughput, only ordering -- and the promotion decision blocks
+# the Experiment 2 closeout while stage A does not block anything. Running them
+# together lands the decision in hours instead of after the sweep.
+MAX_RUNNING=3
 
 running() {
   local n=0 spec label cmd log nice_

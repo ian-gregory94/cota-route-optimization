@@ -2148,3 +2148,23 @@
 2026-08-30 03:00:06,409 path set: 24676 paths over 17384/20000 OD pairs (86.6% of flow served), 121829 legs
 2026-08-30 03:00:06,526 period evening : 24676 paths, 20000 OD pairs
 2026-08-30 03:00:06,553 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:01:00,318 rejected 80 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:01:00,404 path set: 23208 paths over 17379/20000 OD pairs (86.6% of flow served), 114804 legs
+2026-08-30 03:01:00,452 period owl     : 23208 paths, 20000 OD pairs
+2026-08-30 03:01:00,452 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 03:01:00,494 incumbent plan is infeasible under this budget
+2026-08-30 03:02:23,326 solve lambda=2.0: obj=2.98107e+06 vh=2512.6/2517.2 exchanges=0
+2026-08-30 03:02:23,333 [ 67/120] splice|005|021|NMURBEAN+splice|007|101|EMO4THW k=3 lam=2.0    83s  vs no-edit: unserved  +1.876%  gc  -0.211%  (elapsed 7.6h, ~6.0h left)
+2026-08-30 03:02:23,677 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:02:23,686 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:02:23,794 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:02:23,802 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:02:23,856 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:03:16,296 rejected 104 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:03:16,388 path set: 25437 paths over 17383/20000 OD pairs (86.6% of flow served), 125576 legs
+2026-08-30 03:03:16,444 period early   : 25437 paths, 20000 OD pairs
+2026-08-30 03:03:16,455 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:04:15,839 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:04:15,944 path set: 29629 paths over 19272/20000 OD pairs (96.2% of flow served), 145404 legs
+2026-08-30 03:04:16,002 period am_peak : 29629 paths, 20000 OD pairs
+2026-08-30 03:04:16,014 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
