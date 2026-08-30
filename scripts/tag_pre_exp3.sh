@@ -77,7 +77,7 @@ fi
 echo
 echo "--- required documents ---"
 for f in ACCEPTANCE.md EXPERIMENT3_CONTRACT.md DISCOVERIES.md HANDOFF.md \
-         README.md EXPERIMENT2_CLOSEOUT.md \
+         README.md EXPERIMENT2_CLOSEOUT.md EXPERIMENT3_PREFLIGHT.md \
          outputs/CANONICAL_RESULTS.json outputs/SUPERSEDED.md \
          outputs/canonical/exp1_final.json "$BASELINE" \
          outputs/exp2_promotion.json outputs/exp2b_certification.json \
@@ -121,6 +121,7 @@ a discovered error.
   baseline      $BASELINE
   gates         ACCEPTANCE.md
   Exp 3 rules   EXPERIMENT3_CONTRACT.md
+  Exp 3 preflight EXPERIMENT3_PREFLIGHT.md
   what matters  outputs/CANONICAL_RESULTS.json
   what does not outputs/SUPERSEDED.md
   reproducible  outputs/repro_check.json
