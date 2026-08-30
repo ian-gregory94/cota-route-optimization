@@ -129,16 +129,43 @@ reap_locks() {
   return 0
 }
 
+# A job that exits almost immediately is not dying, it is DECLINING -- stage B
+# refusing to promote from an incomplete stage A, stage C refusing to certify an
+# unranked set. Restarting it every 90 seconds for the five hours its
+# predecessor needs achieves nothing and buries the log. So a job that exits in
+# under FAST_EXIT_SEC is held off for BACKOFF_SEC before being offered again.
+FAST_EXIT_SEC=30
+BACKOFF_SEC=900
+
+backing_off() {   # label
+  local f="outputs/.backoff-$(echo "$1" | tr -c 'a-zA-Z0-9' '-')"
+  [ -f "$f" ] || return 1
+  local age=$(( $(date +%s) - $(stat -c %Y "$f" 2>/dev/null || echo 0) ))
+  [ "$age" -lt "$BACKOFF_SEC" ]
+}
+
 start() {   # label, command, log, nice
   local lock="outputs/.lock-$(echo "$1" | tr -c 'a-zA-Z0-9' '-')"
+  backing_off "$1" && return 0
   mkdir "$lock" 2>/dev/null || return 0
   local free; free=$(awk '/MemAvailable/{print int($2/1024)}' /proc/meminfo)
   # the wrapper outlives this loop iteration, so an exit status is recorded
   # even when the supervisor itself is restarted underneath it
+  local bo="outputs/.backoff-$(echo "$1" | tr -c 'a-zA-Z0-9' '-')"
   setsid nohup bash -c "
+      _t0=\$(date +%s)
       nice -n $4 $2 >> '$3' 2>&1 < /dev/null
-      echo \"\$(date -u +%FT%TZ) supervisor: $1 exited status=\$?\" \
-        >> outputs/supervisor.log
+      _st=\$?
+      _el=\$(( \$(date +%s) - _t0 ))
+      if [ \"\$_el\" -lt $FAST_EXIT_SEC ] && [ \"\$_st\" -ne 0 ]; then
+        touch '$bo'
+        echo \"\$(date -u +%FT%TZ) supervisor: $1 declined after \${_el}s (status=\$_st), holding off ${BACKOFF_SEC}s\" \
+          >> outputs/supervisor.log
+      else
+        rm -f '$bo'
+        echo \"\$(date -u +%FT%TZ) supervisor: $1 exited status=\$_st\" \
+          >> outputs/supervisor.log
+      fi
     " >/dev/null 2>&1 < /dev/null &
   echo "$(date -u +%FT%TZ) supervisor: started $1 free=${free}MB" \
     >> outputs/supervisor.log

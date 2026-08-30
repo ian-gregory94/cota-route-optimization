@@ -67,3 +67,12 @@
 2026-08-30T03:03:09Z supervisor: already running as pid 16383, exiting
 2026-08-30T03:04:19Z supervisor: started exp2-promote free=6622MB
 2026-08-30T03:45:42Z supervisor: exp2-promote exited status=0
+2026-08-30T04:16:21Z supervisor: started exp2b-stageB free=6557MB
+2026-08-30T04:16:22Z supervisor: exp2b-stageB exited status=0
+2026-08-30T04:16:26Z supervisor: started exp2b-stageC free=6557MB
+2026-08-30T04:16:27Z supervisor: exp2b-stageC exited status=0
+2026-08-30T04:18:19Z supervisor: already running as pid 22804, exiting
+2026-08-30T04:18:32Z supervisor: started exp2b-stageB free=6598MB
+2026-08-30T04:18:34Z supervisor: exp2b-stageB declined after 2s (status=1), holding off 900s
+2026-08-30T04:18:38Z supervisor: started exp2b-stageC free=6578MB
+2026-08-30T04:18:39Z supervisor: exp2b-stageC declined after 1s (status=1), holding off 900s
