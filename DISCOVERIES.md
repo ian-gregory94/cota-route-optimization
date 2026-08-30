@@ -876,18 +876,6 @@ and a screen that re-optimizes frequency is not a screen.
 
 ### D20 — Geometry edits do not compose: four individually good splices are jointly worse than none
 
-> **⚠ PROVISIONAL — scored under the wrong model, 2026-08-29.** The numbers in
-> this entry come from `run_exp2_eval.py`, which built its evaluator without
-> passing `common_lines` and therefore fell back to the config default
-> `pattern` — **Model A** — while the run was launched with
-> `--common-lines same_route` and its log reported Model B. Under the
-> methodology committed in ACCEPTANCE.md, Model B is the sole authoritative
-> evaluator, so nothing here may be quoted until it is re-measured. The
-> re-run is queued as `exp2-eval-B-fixed`. The entry is left standing rather
-> than deleted: it is the record of what was run, and the direction of these
-> findings is not what is in doubt — their model is.
-
-
 **Evidence.** The 0/1/2/4 ladder, recomposed from *measured* single-candidate
 performance rather than screen rank, each rung solved with frequency
 re-optimized inside the same 2,517-vehicle-hour envelope on the certified
@@ -899,6 +887,9 @@ Model B yardstick:
 | 1 | 033+034 WESHIGW | +0.137% | **−0.936%** |
 | 2 | + 005+006 NMURBEAN | +0.164% | **−0.485%** |
 | 4 | + 001+021 PICBETS, 008+035 BOASHAN | −0.192% | **+0.473%** |
+
+*(These are Model A numbers — see the Model B rebuild below, which reaches the
+same conclusion from different figures and a different set of edits.)*
 
 Every one of those four splices, evaluated **alone**, reduces unserved demand:
 −0.936%, −0.684%, −0.512%, −0.490%. Their individual effects sum to roughly
@@ -933,21 +924,38 @@ is not the best set of N. Any recommendation is a *set*, evaluated as a set,
 and this evidence supports exactly one: through-route 033 and 034 at WESHIGW,
 alone. Adding the next-best measured candidate to it costs half the benefit.
 
-**Provenance, 2026-08-29.** The four measured-order rungs are banked in
-`outputs/exp2_eval.jsonl` under `eval|<n> edits|m|60000/2/32`, and
-`outputs/exp2_ladder_measured.csv` puts them beside the screen-order rungs so
-the two ladders can be read against each other in one place:
+**Re-run under Model B, 2026-08-30; D20 survives and gets stronger.** The
+numbers in the table above were produced by the mislabelled evaluator (D23).
+Both ladders were rebuilt under Model B, at the same effort, with the measured
+order re-derived from the corrected single-candidate scores:
 
-| rung | measured order, unserved vs 0 | screen order, unserved vs 0 |
+| rung | measured order | screen order |
 |---|---|---|
-| 1 | **−0.936%** | +0.978% |
-| 2 | −0.485% | +1.720% |
-| 4 | +0.473% | +4.246% |
+| 1 | **−0.585%** | +1.483% |
+| 2 | −0.066% | +2.454% |
+| 4 | **+1.639%** | +4.201% |
 
-Ordering the ladder by measured performance rather than screen rank moves every
-rung by 1.9 to 3.8 points in the right direction and still cannot make
-composition pay. The screen made the ladder worse (D19); it is not what made it
-fail.
+Against Model B's 0.130-point floor: one edit helps, **two edits are
+indistinguishable from making no change at all**, and four are worse than doing
+nothing by 12.6 floors. The correction did not soften the finding — under Model
+A the four-edit rung was +0.473%, under Model B it is +1.639%.
+
+The interaction term, gate 2B-6's quantity, measured on these same rungs:
+
+| rung | members | measured | sum of their singles | interaction |
+|---|---|---|---|---|
+| 1 | 011+034 | −0.585% | −0.585% | 0.000 pts |
+| 2 | + 005+006 | −0.066% | −0.857% | **+0.791 pts** (6.1 × floor) |
+| 4 | + 007+101, 008+035 | +1.639% | −0.448% | **+2.086 pts** (16.0 × floor) |
+
+**And the ladder is now forced to compose harmful edits, which is itself the
+argument for searching sets.** Under Model B only four of the twelve candidates
+are beneficial, and the ladder must take edits on disjoint routes — so after
+011+034 and 005+006 it has no beneficial candidate left that avoids routes 011,
+034, 005 and 006, and reaches past them to 007+101 and 008+035, both harmful
+alone. A greedy ladder cannot decline to grow. That is not a flaw in this
+ladder; it is what "the top N is not the best set of N" means operationally,
+and it is why Experiment 2B enumerates subsets instead of extending this.
 
 **What would falsify it.** A joint optimization over subsets — rather than a
 greedy ladder over singles — finding a two- or four-edit set that beats the
