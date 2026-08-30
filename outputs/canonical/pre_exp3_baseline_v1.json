@@ -1,7 +1,7 @@
 {
   "id": "pre_exp3_baseline_v1",
   "status": "FROZEN",
-  "commit": "a9cf1630f3b6394d4fad1348bba4b912b2d7ca33-dirty",
+  "commit": "3fd7f154366dd2f68e04196a14345638e5cc1a01-dirty",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
   "blockers": [],
   "evaluator": {
@@ -155,9 +155,9 @@
     },
     "manifest": {
       "path": "outputs/CANONICAL_RESULTS.json",
-      "sha256": "4a16ca73db29d6c815c0b322a0ed92ac3d07db70075427cbe299dbdc0efae158",
+      "sha256": "b23718dd8eaab533cd9c27336db0d089ea7d25d3171fa01c93fff8e77d58e98e",
       "present": true,
-      "bytes": 4606
+      "bytes": 5592
     }
   },
   "generation_parameters": {

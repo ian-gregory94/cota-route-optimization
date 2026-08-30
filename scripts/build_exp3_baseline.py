@@ -47,13 +47,22 @@ def sha(p: Path) -> str | None:
     return h.hexdigest()
 
 
+#: Paths this script itself rewrites. A freeze record that calls the tree dirty
+#: because it is in the middle of writing itself is reporting on its own
+#: execution, not on the state of the repository, and it can never be made to
+#: say anything else -- committing the file changes it again on the next run.
+SELF_OUTPUTS = ("outputs/canonical/pre_exp3_baseline_v1.json",)
+
+
 def commit() -> str:
     try:
         r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
                            capture_output=True, text=True, timeout=30)
         d = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
                            capture_output=True, text=True, timeout=60)
-        return r.stdout.strip() + ("-dirty" if d.stdout.strip() else "")
+        other = [ln for ln in d.stdout.splitlines()
+                 if ln.strip() and not any(ln.endswith(s) for s in SELF_OUTPUTS)]
+        return r.stdout.strip() + ("-dirty" if other else "")
     except Exception:
         return "UNKNOWN"
 
