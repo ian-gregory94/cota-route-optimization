@@ -460,3 +460,21 @@ def test_split_shares_counts_patterns_that_never_reach_the_junction(net):
     from cota_opt.contract import split_shares
     head, tail = split_shares(net, "A", "S2")
     assert 0.0 < head < 1.0 and 0.0 < tail < 1.0
+
+
+def test_the_fleet_check_says_when_it_did_not_run(net, ts, model):
+    """A check comparing the wrong quantity is worse than one that abstains.
+
+    The frequency model's `peak_vehicles` is peak concurrency; gate 3-8's
+    budget is the block-derived proxy Experiment 1 validated against NTD's VOMS
+    of 198. On the unedited network those read 176 and 197. Comparing the first
+    to the second would pass every plan while appearing to check something.
+    """
+    lim = ContractLimits(peak_vehicle_budget=197.0)
+    out = apply_edits(net, ts, model, [])
+    chk = validate_applied(net, out.network, [], lim, peak_vehicles=None)
+    assert "NOT RUN" in chk.facts["peak_fleet_check"]
+    assert chk.ok, "abstaining is not a violation"
+
+    ran = validate_applied(net, out.network, [], lim, peak_vehicles=198.0)
+    assert any("peak vehicles exceeds" in v for v in ran.violations)

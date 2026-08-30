@@ -1,26 +1,61 @@
 {
+  "preregistered": "2026-08-30, before any Experiment 3 state was scored",
   "pool_version": "exp3-pool-v1",
   "pool_size": 84,
   "incompatible_pairs": 189,
   "lambda": 2.0,
-  "effort": "60000/2/32",
-  "seeds": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11
-  ],
-  "max_cardinality": 4,
-  "max_evaluations": 600,
-  "replicates": 3,
+  "effort": "2000/1/4",
+  "limit": "24.0 wall-clock hours or 3 unique network-state evaluations, whichever first",
+  "phase_A1_states": 85,
+  "phase_A2_budget": 0,
+  "policy": {
+    "lane_seeds": [
+      [
+        0
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        11,
+        12,
+        13,
+        14
+      ]
+    ],
+    "rotations": [
+      [
+        0
+      ],
+      [
+        7,
+        23,
+        47
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "random_start_sizes": [
+      2,
+      3
+    ],
+    "max_cardinality": 4,
+    "strategy": "first",
+    "lanes": [
+      "null-start, ordered by measured A1 singles",
+      "seeded rotations of that ordering",
+      "seeded random compatible k=2/k=3 starts"
+    ],
+    "quota_split": "one third each; unused quota from a terminated lane passes to the seeded-random lane",
+    "ordering_bias": "neighbours are visited drops-first (worst member first), then adds and swaps in measured-A1-singleton order. Nothing is discarded and every neighbour stays reachable \u2014 visit order only.",
+    "dedup": "one shared checkpoint across all lanes; a state scored in any lane is never re-scored"
+  },
   "checkpoint": "/home/claude/columbus-transit-opt/outputs/exp3/stageA_states.jsonl",
   "waiting_model": "same_route",
   "config_digest": "666920ecdd76b703",
@@ -29,5 +64,7 @@
     "tie_floors": 2.0,
     "diversity_per_kind": 2,
     "per_cardinality": 1
-  }
+  },
+  "measured_cost_per_state_sec": 413,
+  "caching": "exact-state only \u2014 the state digest is the permutation-invariant mutation set, so a cache hit means identical geometry and nothing weaker"
 }

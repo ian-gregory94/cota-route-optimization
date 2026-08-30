@@ -61,11 +61,15 @@ class SearchTrace:
     best_score: float = float("inf")
     restarts: int = 0
     resumed_from: int = 0
+    stopped_early: bool = False
+    local_optima: list[dict[str, Any]] = field(default_factory=list)
 
     def as_dict(self) -> dict[str, Any]:
         return {"evaluated": self.evaluated, "restarts": self.restarts,
                 "best": self.best_key, "best_score": self.best_score,
                 "resumed_from_cached": self.resumed_from,
+                "stopped_early": self.stopped_early,
+                "local_optima": self.local_optima,
                 "steps": self.steps}
 
 
@@ -152,6 +156,70 @@ def neighbours(state: State, pool: Sequence[str],
     return uniq
 
 
+def ordered_neighbours(state: State, pool: Sequence[str],
+                       incompatible: set[tuple[str, str]],
+                       max_cardinality: int | None,
+                       single_score: dict[str, float] | None = None,
+                       rotate: int = 0) -> list[State]:
+    """The move set in the order a first-improvement search will visit it.
+
+    Order is preregistered, not tuned after seeing results:
+
+    1. **drops**, worst member first — at most k of them, so undoing a bad
+       start costs almost nothing;
+    2. **adds**, best measured single first;
+    3. **swaps**, best introduced single first.
+
+    `single_score` is Phase A1's MEASURED single-mutation objective — frequency
+    re-optimized on each, not a fixed-frequency screen — so gate 3-2 is not in
+    play. It changes visit order only. Nothing is discarded and every neighbour
+    stays reachable, which is the difference between a search bias (declarable)
+    and a selection rule (forbidden by gate 3-6). The bias is reported.
+
+    `rotate` shifts the add and swap orderings by a fixed offset, so a restart
+    can explore the same neighbourhood from a different entry point without any
+    randomness.
+    """
+    sc = single_score or {}
+    cur = set(state.ids)
+    big = float("inf")
+
+    drops, adds, swaps = [], [], []
+    for m in sorted(cur):
+        drops.append((-sc.get(m, -big), State.of(cur - {m})))
+    for m in sorted(pool):
+        if m in cur:
+            continue
+        cand = sorted(cur | {m})
+        if max_cardinality and len(cand) > max_cardinality:
+            continue
+        if feasible(cand, incompatible):
+            adds.append((sc.get(m, big), State.of(cand)))
+    for out_m in sorted(cur):
+        rest = cur - {out_m}
+        for in_m in sorted(pool):
+            if in_m in cur:
+                continue
+            cand = sorted(rest | {in_m})
+            if feasible(cand, incompatible):
+                swaps.append((sc.get(in_m, big), State.of(cand)))
+
+    def _rank(group):
+        group.sort(key=lambda t: (t[0], t[1].key))
+        if rotate and group:
+            k = rotate % len(group)
+            group = group[k:] + group[:k]
+        return [s for _, s in group]
+
+    out = _rank(drops) + _rank(adds) + _rank(swaps)
+    seen, uniq = set(), []
+    for s in out:
+        if s.key not in seen and s.key != state.key:
+            seen.add(s.key)
+            uniq.append(s)
+    return uniq
+
+
 def search(pool: Sequence[str],
            score: Callable[[State], float],
            incompatible: set[tuple[str, str]] | None = None,
@@ -159,17 +227,38 @@ def search(pool: Sequence[str],
            max_cardinality: int | None = None,
            max_evaluations: int | None = None,
            checkpoint: Checkpoint | None = None,
-           trace: SearchTrace | None = None) -> tuple[State, float, SearchTrace]:
+           trace: SearchTrace | None = None,
+           strategy: str = "best",
+           single_score: dict[str, float] | None = None,
+           starts: Sequence[State] | None = None,
+           rotations: Sequence[int] | None = None,
+           deadline: float | None = None,
+           lane: str = "") -> tuple[State, float, SearchTrace]:
     """Neighbourhood search with restarts. Lower score wins.
 
-    Deterministic given (pool, seeds): the restart schedule is derived from the
-    seed by an explicit rule rather than by a global RNG, so a rerun reproduces
-    the path and not merely the answer. The benchmark demands that.
+    `strategy="best"` evaluates the whole neighbourhood each step and takes the
+    minimum. It is what the 2B benchmark first validated, and it is unaffordable
+    on the real pool: 84 mutations give neighbourhoods of 84 to 300 states at
+    ~7 minutes each, so a single step costs hours.
+
+    `strategy="first"` takes the FIRST neighbour that improves, visiting them in
+    the preregistered order above. Both are benchmarked on the exhaustive space
+    before either is trusted.
+
+    Deterministic given its inputs: starts, rotations and visit order are all
+    explicit rather than drawn from a global RNG, so a rerun reproduces the
+    trajectory and not merely the answer.
     """
+    import time as _time
     inc = set(incompatible or set())
     pool = list(pool)
     tr = trace or SearchTrace()
     cp = checkpoint or Checkpoint(None)
+
+    def out_of_budget() -> bool:
+        if max_evaluations and tr.evaluated >= max_evaluations:
+            return True
+        return bool(deadline and _time.time() >= deadline)
 
     def scored(s: State) -> float:
         hit = cp.get(s.key)
@@ -177,34 +266,63 @@ def search(pool: Sequence[str],
             tr.resumed_from += 1
             return hit
         v = float(score(s))
-        cp.put(s.key, v, {"cardinality": len(s)})
+        cp.put(s.key, v, {"cardinality": len(s), "lane": lane})
         tr.evaluated += 1
         return v
 
     # The null is evaluated first, always, and before any restart can consume
     # the evaluation budget.
     best, best_v = State.of([]), scored(State.of([]))
-    tr.steps.append({"restart": -1, "state": best.key, "score": best_v,
+    tr.steps.append({"restart": -1, "lane": lane, "state": best.key,
+                     "score": best_v,
                      "why": "the null state, evaluated before anything else"})
 
+    rots = list(rotations or [0] * len(seeds))
     for r, sd in enumerate(seeds):
+        if out_of_budget():
+            tr.stopped_early = True
+            break
         tr.restarts += 1
-        cur = _start_state(pool, inc, sd, max_cardinality)
+        cur = (starts[r] if starts is not None and r < len(starts)
+               else _start_state(pool, inc, sd, max_cardinality))
+        rot = rots[r] if r < len(rots) else 0
         cur_v = scored(cur)
+        tr.steps.append({"restart": r, "lane": lane, "seed": sd,
+                         "state": cur.key, "score": cur_v,
+                         "cardinality": len(cur), "why": "restart start"})
         while True:
-            if max_evaluations and tr.evaluated >= max_evaluations:
+            if out_of_budget():
+                tr.stopped_early = True
                 break
-            cands = neighbours(cur, pool, inc, max_cardinality)
+            cands = (ordered_neighbours(cur, pool, inc, max_cardinality,
+                                        single_score, rot)
+                     if strategy == "first"
+                     else neighbours(cur, pool, inc, max_cardinality))
             if not cands:
                 break
-            vals = [(scored(c), c.key, c) for c in cands]
-            vals.sort(key=lambda t: (t[0], t[1]))   # ties break on key: stable
-            v, _, nxt = vals[0]
-            if v >= cur_v - 1e-12:
-                break                       # local optimum
-            cur, cur_v = nxt, v
-            tr.steps.append({"restart": r, "seed": sd, "state": cur.key,
-                             "score": cur_v, "cardinality": len(cur)})
+            moved = False
+            if strategy == "first":
+                for c in cands:
+                    if out_of_budget():
+                        tr.stopped_early = True
+                        break
+                    v = scored(c)
+                    if v < cur_v - 1e-12:
+                        cur, cur_v, moved = c, v, True
+                        break
+            else:
+                vals = [(scored(c), c.key, c) for c in cands]
+                vals.sort(key=lambda t: (t[0], t[1]))
+                v, _, nxt = vals[0]
+                if v < cur_v - 1e-12:
+                    cur, cur_v, moved = nxt, v, True
+            if not moved:
+                tr.local_optima.append({"restart": r, "lane": lane,
+                                        "state": cur.key, "score": cur_v})
+                break
+            tr.steps.append({"restart": r, "lane": lane, "seed": sd,
+                             "state": cur.key, "score": cur_v,
+                             "cardinality": len(cur)})
         if cur_v < best_v - 1e-12 or (abs(cur_v - best_v) <= 1e-12
                                       and cur.key < best.key):
             best, best_v = cur, cur_v
@@ -315,3 +433,151 @@ def benchmark(pool: Sequence[str], table: dict[str, float],
                 "what the exhaustive table says is best; it says nothing about "
                 "whether that intervention is worth making.",
     }
+
+
+# ---------------------------------------------------------------------------
+# the Stage A search policy, preregistered
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class Policy:
+    """Exactly what Phase A2 will do, fixed before any A2 state is scored.
+
+    Held as one object for a specific reason: the benchmark has to replay the
+    **complete policy**, not an approximation of it. A benchmark that validates
+    a simpler search than the one that runs is a benchmark of something else,
+    and the failure it would hide — a policy that works on 12 mutations and not
+    on 84 — is precisely the one worth catching.
+
+    Three lanes, each taking a third of the evaluation quota:
+
+    1. **null-start, singles-ordered.** Begin at the empty state and visit
+       neighbours in measured-A1-singleton order.
+    2. **seeded rotations.** The same ordering, rotated by a fixed per-seed
+       offset, so restarts enter the same neighbourhood at different points
+       without randomness.
+    3. **seeded random k=2/k=3 starts.** Compatible multi-mutation states drawn
+       from a seeded generator, then first-improvement. This lane is the only
+       one that can begin inside a region the other two would have to climb to,
+       and 2B's non-nested cardinality winners are the reason it exists.
+
+    Unused quota from a lane that reaches a local optimum early passes to lane
+    3, because a lane that terminates has finished and a lane with random
+    starts always has somewhere else to go.
+    """
+
+    lane_seeds: tuple[tuple[int, ...], ...] = ((0,), (1, 2, 3), (11, 12, 13, 14))
+    rotations: tuple[tuple[int, ...], ...] = ((0,), (7, 23, 47), (0, 0, 0, 0))
+    random_start_sizes: tuple[int, ...] = (2, 3)
+    max_cardinality: int = 4
+    strategy: str = "first"
+
+    def as_dict(self) -> dict[str, Any]:
+        return {"lane_seeds": [list(x) for x in self.lane_seeds],
+                "rotations": [list(x) for x in self.rotations],
+                "random_start_sizes": list(self.random_start_sizes),
+                "max_cardinality": self.max_cardinality,
+                "strategy": self.strategy,
+                "lanes": ["null-start, ordered by measured A1 singles",
+                          "seeded rotations of that ordering",
+                          "seeded random compatible k=2/k=3 starts"],
+                "quota_split": "one third each; unused quota from a terminated "
+                               "lane passes to the seeded-random lane",
+                "ordering_bias": "neighbours are visited drops-first (worst "
+                                 "member first), then adds and swaps in "
+                                 "measured-A1-singleton order. Nothing is "
+                                 "discarded and every neighbour stays "
+                                 "reachable — visit order only.",
+                "dedup": "one shared checkpoint across all lanes; a state "
+                         "scored in any lane is never re-scored"}
+
+
+def random_start(pool: Sequence[str], incompatible: set[tuple[str, str]],
+                 size: int, seed: int, tries: int = 500) -> State:
+    """A compatible state of `size` mutations, from a seeded generator.
+
+    Deterministic given (pool, incompatible, size, seed): the generator is
+    constructed here rather than drawn from global randomness, so the starting
+    states are part of the preregistered policy and can be listed in the
+    artifact before the run.
+    """
+    import random as _random
+    rng = _random.Random(f"exp3-start|{size}|{seed}")
+    ordered = sorted(pool)
+    for _ in range(tries):
+        pick = rng.sample(ordered, min(size, len(ordered)))
+        if feasible(pick, incompatible):
+            return State.of(pick)
+    return State.of([])
+
+
+def run_policy(pool: Sequence[str], score: Callable[[State], float],
+               incompatible: set[tuple[str, str]],
+               single_score: dict[str, float],
+               budget: int,
+               policy: Policy | None = None,
+               checkpoint: Checkpoint | None = None,
+               deadline: float | None = None) -> dict[str, Any]:
+    """Run the three lanes under one shared budget and one shared checkpoint.
+
+    Returns the trajectory, not just the answer. Phase A2 is discovery: what it
+    can support is which states to look at in Stage B, and a reader can only
+    judge that from the starting states, the seeds, the ordering bias and the
+    path actually walked.
+    """
+    pol = policy or Policy()
+    cp = checkpoint or Checkpoint(None)
+    per_lane = max(1, budget // 3)
+    lanes: list[dict[str, Any]] = []
+    spent = 0
+    carry = 0
+
+    starts_by_lane: list[list[State]] = [
+        [State.of([])],
+        [State.of([]) for _ in pol.lane_seeds[1]],
+        [random_start(pool, incompatible,
+                      pol.random_start_sizes[i % len(pol.random_start_sizes)],
+                      sd)
+         for i, sd in enumerate(pol.lane_seeds[2])],
+    ]
+
+    for li in (0, 1, 2):
+        quota = per_lane + (carry if li == 2 else 0)
+        if li == 2:
+            quota = max(quota, budget - spent)
+        tr = SearchTrace()
+        best, val, tr = search(
+            pool, score, incompatible, seeds=pol.lane_seeds[li],
+            max_cardinality=pol.max_cardinality,
+            max_evaluations=quota, checkpoint=cp, trace=tr,
+            strategy=pol.strategy, single_score=single_score,
+            starts=starts_by_lane[li], rotations=pol.rotations[li],
+            deadline=deadline, lane=f"lane{li + 1}")
+        used = tr.evaluated
+        spent += used
+        if li < 2 and used < quota:
+            carry += quota - used
+        lanes.append({"lane": li + 1,
+                      "seeds": list(pol.lane_seeds[li]),
+                      "rotations": list(pol.rotations[li]),
+                      "starts": [s.key for s in starts_by_lane[li]],
+                      "quota": quota, "used": used,
+                      "best": best.key, "best_score": val,
+                      "trace": tr.as_dict()})
+        if deadline and __import__("time").time() >= deadline:
+            break
+
+    best_key, best_score = NULL, float("inf")
+    for k, v in cp.scores.items():
+        if v < best_score - 1e-12 or (abs(v - best_score) <= 1e-12
+                                      and k < best_key):
+            best_key, best_score = k, v
+
+    return {"policy": pol.as_dict(), "budget": budget, "spent": spent,
+            "carried_to_lane3": carry, "lanes": lanes,
+            "best": best_key, "best_score": best_score,
+            "unique_states_scored": len(cp.scores),
+            "caveat": "DISCOVERY ONLY. This is a bounded multi-start search "
+                      "over a space far too large to enumerate. It does not "
+                      "establish exhaustive coverage, a global optimum, or "
+                      "that every state was reachable."}

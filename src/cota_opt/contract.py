@@ -387,14 +387,27 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
         if veh_hours > limits.veh_hour_budget + 1e-6:
             bad.append(f"{veh_hours:.1f} vehicle-hours exceeds the pinned "
                        f"budget of {limits.veh_hour_budget:.1f}")
-    if peak_vehicles is not None and limits.peak_vehicle_budget is not None:
-        facts["peak_vehicles"] = peak_vehicles
-        if peak_vehicles > limits.peak_vehicle_budget + 1e-6:
-            bad.append(f"{peak_vehicles:.1f} peak vehicles exceeds the "
-                       f"{limits.peak_vehicle_budget:.1f} baseline. Hours are "
-                       f"not buses: a plan can respect the hour budget and "
-                       f"still need a bigger fleet, which is a different "
-                       f"experiment with a different cost.")
+    # The fleet half of gate 3-8 needs the BLOCK-DERIVED peak, the proxy
+    # Experiment 1 validated against NTD's VOMS of 198. The frequency model's
+    # own `peak_vehicles` is peak concurrency, a different and systematically
+    # smaller quantity -- on the unedited network it reads 176 against the
+    # block-derived 197. Comparing concurrency to a block-derived budget would
+    # pass every plan while appearing to check something, so the check records
+    # that it did NOT run rather than running wrong.
+    if limits.peak_vehicle_budget is not None:
+        if peak_vehicles is None:
+            facts["peak_fleet_check"] = (
+                "NOT RUN — needs the block-derived peak (blocks.py), not the "
+                "frequency model's peak concurrency. Deferred to Stage B/C, "
+                "where blocks are reconstructed.")
+        else:
+            facts["peak_vehicles_block_derived"] = peak_vehicles
+            if peak_vehicles > limits.peak_vehicle_budget + 1e-6:
+                bad.append(f"{peak_vehicles:.1f} peak vehicles exceeds the "
+                           f"{limits.peak_vehicle_budget:.1f} baseline. Hours "
+                           f"are not buses: a plan can respect the hour budget "
+                           f"and still need a bigger fleet, which is a "
+                           f"different experiment with a different cost.")
 
     return StateCheck(ok=not bad, rules_checked=checked, violations=bad,
                       facts=facts)

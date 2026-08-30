@@ -1,0 +1,414 @@
+{
+  "policy": {
+    "lane_seeds": [
+      [
+        0
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        11,
+        12,
+        13,
+        14
+      ]
+    ],
+    "rotations": [
+      [
+        0
+      ],
+      [
+        7,
+        23,
+        47
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "random_start_sizes": [
+      2,
+      3
+    ],
+    "max_cardinality": 4,
+    "strategy": "first",
+    "lanes": [
+      "null-start, ordered by measured A1 singles",
+      "seeded rotations of that ordering",
+      "seeded random compatible k=2/k=3 starts"
+    ],
+    "quota_split": "one third each; unused quota from a terminated lane passes to the seeded-random lane",
+    "ordering_bias": "neighbours are visited drops-first (worst member first), then adds and swaps in measured-A1-singleton order. Nothing is discarded and every neighbour stays reachable \u2014 visit order only.",
+    "dedup": "one shared checkpoint across all lanes; a state scored in any lane is never re-scored"
+  },
+  "budget": 120,
+  "spent": 36,
+  "carried_to_lane3": 60,
+  "lanes": [
+    {
+      "lane": 1,
+      "seeds": [
+        0
+      ],
+      "rotations": [
+        0
+      ],
+      "starts": [
+        "<none>"
+      ],
+      "quota": 40,
+      "used": 20,
+      "best": "splice|011|034|WESHIGW",
+      "best_score": -0.5845518890625012,
+      "trace": {
+        "evaluated": 20,
+        "restarts": 1,
+        "best": "splice|011|034|WESHIGW",
+        "best_score": -0.5845518890625012,
+        "resumed_from_cached": 2,
+        "stopped_early": false,
+        "local_optima": [
+          {
+            "restart": 0,
+            "lane": "lane1",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          }
+        ],
+        "steps": [
+          {
+            "restart": -1,
+            "lane": "lane1",
+            "state": "<none>",
+            "score": 0.0,
+            "why": "the null state, evaluated before anything else"
+          },
+          {
+            "restart": 0,
+            "lane": "lane1",
+            "seed": 0,
+            "state": "<none>",
+            "score": 0.0,
+            "cardinality": 0,
+            "why": "restart start"
+          },
+          {
+            "restart": 0,
+            "lane": "lane1",
+            "seed": 0,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          }
+        ]
+      }
+    },
+    {
+      "lane": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "rotations": [
+        7,
+        23,
+        47
+      ],
+      "starts": [
+        "<none>",
+        "<none>",
+        "<none>"
+      ],
+      "quota": 40,
+      "used": 0,
+      "best": "splice|011|034|WESHIGW",
+      "best_score": -0.5845518890625012,
+      "trace": {
+        "evaluated": 0,
+        "restarts": 3,
+        "best": "splice|011|034|WESHIGW",
+        "best_score": -0.5845518890625012,
+        "resumed_from_cached": 71,
+        "stopped_early": false,
+        "local_optima": [
+          {
+            "restart": 0,
+            "lane": "lane2",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          },
+          {
+            "restart": 1,
+            "lane": "lane2",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          },
+          {
+            "restart": 2,
+            "lane": "lane2",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          }
+        ],
+        "steps": [
+          {
+            "restart": -1,
+            "lane": "lane2",
+            "state": "<none>",
+            "score": 0.0,
+            "why": "the null state, evaluated before anything else"
+          },
+          {
+            "restart": 0,
+            "lane": "lane2",
+            "seed": 1,
+            "state": "<none>",
+            "score": 0.0,
+            "cardinality": 0,
+            "why": "restart start"
+          },
+          {
+            "restart": 0,
+            "lane": "lane2",
+            "seed": 1,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          },
+          {
+            "restart": 1,
+            "lane": "lane2",
+            "seed": 2,
+            "state": "<none>",
+            "score": 0.0,
+            "cardinality": 0,
+            "why": "restart start"
+          },
+          {
+            "restart": 1,
+            "lane": "lane2",
+            "seed": 2,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          },
+          {
+            "restart": 2,
+            "lane": "lane2",
+            "seed": 3,
+            "state": "<none>",
+            "score": 0.0,
+            "cardinality": 0,
+            "why": "restart start"
+          },
+          {
+            "restart": 2,
+            "lane": "lane2",
+            "seed": 3,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          }
+        ]
+      }
+    },
+    {
+      "lane": 3,
+      "seeds": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "rotations": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "starts": [
+        "splice|005|021|NMURBEAN+splice|033|034|WESHIGW",
+        "splice|006|021|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW",
+        "splice|005|006|NMURBEAN+splice|007|101|EMO4THW",
+        "splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN"
+      ],
+      "quota": 100,
+      "used": 16,
+      "best": "splice|011|034|WESHIGW",
+      "best_score": -0.5845518890625012,
+      "trace": {
+        "evaluated": 16,
+        "restarts": 4,
+        "best": "splice|011|034|WESHIGW",
+        "best_score": -0.5845518890625012,
+        "resumed_from_cached": 102,
+        "stopped_early": false,
+        "local_optima": [
+          {
+            "restart": 0,
+            "lane": "lane3",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          },
+          {
+            "restart": 1,
+            "lane": "lane3",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          },
+          {
+            "restart": 2,
+            "lane": "lane3",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          },
+          {
+            "restart": 3,
+            "lane": "lane3",
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012
+          }
+        ],
+        "steps": [
+          {
+            "restart": -1,
+            "lane": "lane3",
+            "state": "<none>",
+            "score": 0.0,
+            "why": "the null state, evaluated before anything else"
+          },
+          {
+            "restart": 0,
+            "lane": "lane3",
+            "seed": 11,
+            "state": "splice|005|021|NMURBEAN+splice|033|034|WESHIGW",
+            "score": 0.6717860870768089,
+            "cardinality": 2,
+            "why": "restart start"
+          },
+          {
+            "restart": 0,
+            "lane": "lane3",
+            "seed": 11,
+            "state": "splice|033|034|WESHIGW",
+            "score": -0.4847300017118972,
+            "cardinality": 1
+          },
+          {
+            "restart": 0,
+            "lane": "lane3",
+            "seed": 11,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          },
+          {
+            "restart": 1,
+            "lane": "lane3",
+            "seed": 12,
+            "state": "splice|006|021|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW",
+            "score": 0.8092773312171619,
+            "cardinality": 3,
+            "why": "restart start"
+          },
+          {
+            "restart": 1,
+            "lane": "lane3",
+            "seed": 12,
+            "state": "splice|006|021|NMURBEAN+splice|011|034|WESHIGW",
+            "score": 0.1718944854504078,
+            "cardinality": 2
+          },
+          {
+            "restart": 1,
+            "lane": "lane3",
+            "seed": 12,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          },
+          {
+            "restart": 2,
+            "lane": "lane3",
+            "seed": 13,
+            "state": "splice|005|006|NMURBEAN+splice|007|101|EMO4THW",
+            "score": 0.6419975871909678,
+            "cardinality": 2,
+            "why": "restart start"
+          },
+          {
+            "restart": 2,
+            "lane": "lane3",
+            "seed": 13,
+            "state": "splice|005|006|NMURBEAN",
+            "score": -0.2724138115293817,
+            "cardinality": 1
+          },
+          {
+            "restart": 2,
+            "lane": "lane3",
+            "seed": 13,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          },
+          {
+            "restart": 3,
+            "lane": "lane3",
+            "seed": 14,
+            "state": "splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN",
+            "score": 1.3714274332661258,
+            "cardinality": 3,
+            "why": "restart start"
+          },
+          {
+            "restart": 3,
+            "lane": "lane3",
+            "seed": 14,
+            "state": "splice|005|006|NMURBEAN+splice|007|101|EMO4THW",
+            "score": 0.6419975871909678,
+            "cardinality": 2
+          },
+          {
+            "restart": 3,
+            "lane": "lane3",
+            "seed": 14,
+            "state": "splice|005|006|NMURBEAN",
+            "score": -0.2724138115293817,
+            "cardinality": 1
+          },
+          {
+            "restart": 3,
+            "lane": "lane3",
+            "seed": 14,
+            "state": "splice|011|034|WESHIGW",
+            "score": -0.5845518890625012,
+            "cardinality": 1
+          }
+        ]
+      }
+    }
+  ],
+  "best": "splice|011|034|WESHIGW",
+  "best_score": -0.5845518890625012,
+  "unique_states_scored": 36,
+  "caveat": "DISCOVERY ONLY. This is a bounded multi-start search over a space far too large to enumerate. It does not establish exhaustive coverage, a global optimum, or that every state was reachable.",
+  "pass": true,
+  "expected": "splice|011|034|WESHIGW",
+  "exhaustive_optimum": "splice|011|034|WESHIGW",
+  "space_size": 240,
+  "objective_column": "unserved_vs_noedit_pct",
+  "resume": {
+    "same_answer": true,
+    "second_pass_spent": 0,
+    "no_new_states": true
+  },
+  "note": "The COMPLETE Phase A2 policy, replayed. The optimum recovered here certified as NULL at full effort (D22): this validates search recovery, not the intervention."
+}

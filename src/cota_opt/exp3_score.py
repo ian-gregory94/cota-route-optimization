@@ -58,11 +58,19 @@ class ScoredState:
         out["evidence_class"] = self.contract.get("facts", {}).get(
             "evidence_class", "unknown")
         out["modelled_share_pct"] = self.contract.get("facts", {}).get(
-            "modelled_share_pct", float("nan"))
+            "modelled_share_pct", None)
         out["network_edit_distance_pct"] = self.contract.get("facts", {}).get(
             "network_edit_distance_pct", float("nan"))
         out["waiting_model"] = self.evaluator.get("common_lines", "UNKNOWN")
-        return out
+        out["peak_fleet_check"] = self.contract.get("facts", {}).get(
+            "peak_fleet_check", "ran")
+        # `peak_vehicles` here is the frequency model's peak CONCURRENCY, not
+        # the block-derived fleet proxy Experiment 1 validated against NTD.
+        # Renamed so nobody reads 176 as a fleet count.
+        out["peak_concurrency"] = out.pop("peak_vehicles", None)
+        # NaN is not valid JSON and this row is written to JSONL.
+        return {k: (None if isinstance(v, float) and v != v else v)
+                for k, v in out.items()}
 
 
 def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
