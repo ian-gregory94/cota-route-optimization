@@ -586,6 +586,17 @@ from three seeds each, so the floor itself is noisy and a candidate clearing it
 by a hair clears nothing.
 
 
+## Experiment 3 treatment contract
+
+The rules for what Experiment 3 may mutate — legal operations, the terminal
+movement limit, the route removal cap, the stop rule, the novel-link rule, the
+15% network-edit-distance boundary between Experiment 3 and Experiment 4, how
+frequency optimization nests inside a mutation, the interaction-first search
+requirement and its tractable benchmark, the staged effort ladder, and gate
+3-10 on mutation identity stability — are committed in
+[`EXPERIMENT3_CONTRACT.md`](EXPERIMENT3_CONTRACT.md), written before any
+candidate was generated.
+
 ## Standing rules
 
 1. These gates are not revised after seeing results.
