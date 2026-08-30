@@ -24610,3 +24610,3308 @@ bash -n scripts/supervise.sh && echo "shell ok"; python3 scr
       echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
      
 2026-08-30T04:51:32Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:52:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:52:37Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:52:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:52:38Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:53:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:53:43Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:53:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:53:43Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:54:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:54:49Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:54:49Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:54:49Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:55:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:55:54Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:55:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:55:55Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:57:00Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:57:00Z pid=4215 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:57:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:57:00Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:58:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:58:06Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:58:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:58:06Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:59:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:59:12Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:59:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:59:12Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:00:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:00:17Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:00:17Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:00:17Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:01:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:01:23Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:01:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:01:23Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:02:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:02:29Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:02:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:02:29Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:03:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:03:34Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:03:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:03:34Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:04:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:04:40Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:04:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:04:40Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:05:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:05:46Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:05:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:05:46Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:06:51Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:06:51Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:06:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:06:51Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:07:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:07:57Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:07:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:07:57Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:09:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:09:03Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:09:03Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:09:03Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:10:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:10:08Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:10:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:10:08Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:11:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:11:14Z pid=4215 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:11:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:11:14Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:12:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:12:19Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:12:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:12:19Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:13:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:13:25Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:13:25Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:13:25Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:14:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:14:31Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:14:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:14:31Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:15:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:15:36Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:15:36Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:15:36Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:16:42Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:16:42Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:16:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:16:42Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:17:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:17:47Z pid=4215 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:17:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:17:48Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:18:53Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:18:53Z pid=4215 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:18:53Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:18:53Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:19:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:19:59Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:19:59Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:19:59Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:21:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:21:04Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:21:04Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:21:04Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:22:10Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:22:10Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:22:10Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:22:10Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:23:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:23:16Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:23:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:23:16Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:24:21Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:24:21Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:24:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:24:21Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:25:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:25:27Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:25:27Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:25:27Z pid=6090 rss=460MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:26:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:26:32Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:26:32Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:26:32Z pid=6090 rss=460MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:27:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:27:38Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:27:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:27:38Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:28:44Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:28:44Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:28:44Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:28:44Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:29:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:29:49Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:29:49Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:29:49Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:30:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:30:55Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:30:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:30:55Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:32:00Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:32:00Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:32:01Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:32:01Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:33:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:33:06Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:33:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:33:06Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:34:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:34:12Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:34:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:34:12Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:35:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:35:17Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:35:18Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:35:18Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:36:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:36:23Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:36:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:36:23Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:37:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:37:29Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:37:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:37:29Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:38:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:38:34Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:38:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:38:34Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:39:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:39:40Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:39:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:39:40Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:40:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:40:46Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:40:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:40:46Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:41:51Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:41:51Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:41:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:41:51Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:42:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:42:57Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:42:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:42:57Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:44:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:44:02Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:44:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:44:02Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:45:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:45:08Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:45:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:45:08Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:46:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:46:14Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:46:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:46:14Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:47:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:47:19Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:47:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:47:19Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:48:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:48:25Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:48:25Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:48:25Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:49:30Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:49:31Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:49:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:49:31Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:50:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:50:36Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:50:36Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:50:36Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:51:42Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:51:42Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:51:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:51:42Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:52:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:52:47Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:52:47Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:52:47Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:53:53Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:53:53Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:53:53Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:53:53Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:54:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:54:59Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:54:59Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:54:59Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:56:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:56:04Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:56:04Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:56:04Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:57:10Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:57:10Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:57:10Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:57:10Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:58:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:58:16Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:58:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:58:16Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T05:59:21Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T05:59:21Z pid=4215 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T05:59:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T05:59:21Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:00:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:00:27Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:00:27Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:00:27Z pid=6090 rss=458MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:01:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:01:33Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:01:33Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:01:33Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:02:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:02:38Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:02:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:02:38Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:03:44Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:03:44Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:03:44Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:03:44Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:04:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:04:50Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:04:50Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:04:50Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:05:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:05:55Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:05:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:05:55Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:07:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:07:01Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:07:01Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:07:01Z pid=6090 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:08:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:08:06Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:08:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:08:06Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:09:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:09:12Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:09:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:09:12Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:10:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:10:18Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:10:18Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:10:18Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:11:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:11:23Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:11:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:11:23Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:12:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:12:29Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:12:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:12:29Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:13:35Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:13:35Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:13:35Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:13:35Z pid=6090 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:14:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:14:40Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:14:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:14:40Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:15:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:15:46Z pid=4215 rss=460MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:15:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:15:46Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:16:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:16:52Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:16:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:16:52Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:17:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:17:57Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:17:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:17:57Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:19:03Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:19:03Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:19:03Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:19:03Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:20:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:20:09Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:20:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:20:09Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:21:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:21:14Z pid=4215 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:21:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:21:14Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:22:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:22:20Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:22:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:22:20Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:23:26Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:23:26Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:23:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:23:26Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:24:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:24:31Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:24:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:24:31Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:25:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:25:37Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:25:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:25:37Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:26:42Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:26:42Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:26:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:26:42Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:27:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:27:48Z pid=4215 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:27:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:27:48Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:28:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:28:54Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:28:54Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:28:54Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:29:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:29:59Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:29:59Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:29:59Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:31:05Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:31:05Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:31:05Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:31:05Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:32:10Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:32:10Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:32:10Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:32:10Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:33:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:33:16Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:33:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:33:16Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:34:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:34:22Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:34:22Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:34:22Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:35:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:35:27Z pid=4215 rss=440MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:35:27Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:35:27Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:36:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:36:33Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:36:33Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:36:33Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:37:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:37:39Z pid=4215 rss=460MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:37:39Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:37:39Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:38:44Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:38:44Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:38:45Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:38:45Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:39:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:39:50Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:39:50Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:39:50Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:40:56Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:40:56Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:40:56Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:40:56Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:42:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:42:02Z pid=4215 rss=440MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:42:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:42:02Z pid=6090 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:43:07Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:43:07Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:43:07Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:43:07Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:44:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:44:13Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:44:13Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:44:13Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:45:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:45:19Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:45:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:45:19Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:46:24Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:46:24Z pid=4215 rss=425MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:46:24Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:46:24Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:47:30Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:47:30Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:47:30Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:47:30Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:48:35Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:48:35Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:48:35Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:48:35Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:49:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:49:41Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:49:41Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:49:41Z pid=6090 rss=458MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:50:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:50:47Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:50:47Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:50:47Z pid=6090 rss=470MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:51:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:51:52Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:51:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:51:52Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:52:58Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:52:58Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:52:58Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:52:58Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:54:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:54:04Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:54:04Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:54:04Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:55:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:55:09Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:55:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:55:09Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:56:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:56:15Z pid=4215 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:56:15Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:56:15Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:57:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:57:20Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:57:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:57:21Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:58:26Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:58:26Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:58:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:58:26Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T06:59:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T06:59:32Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T06:59:32Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T06:59:32Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:00:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:00:37Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:00:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:00:37Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:01:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:01:43Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:01:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:01:43Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:02:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:02:49Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:02:49Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:02:49Z pid=6090 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:03:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:03:54Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:03:54Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:03:55Z pid=6090 rss=457MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:05:00Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:05:00Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:05:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:05:00Z pid=6090 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:06:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:06:06Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:06:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:06:06Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:07:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:07:12Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:07:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:07:12Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:08:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:08:17Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:08:17Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:08:17Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:09:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:09:23Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:09:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:09:23Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:10:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:10:29Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:10:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:10:29Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:11:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:11:34Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:11:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:11:34Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:12:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:12:40Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:12:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:12:40Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:13:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:13:46Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:13:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:13:46Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:14:51Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:14:51Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:14:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:14:51Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:15:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:15:57Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:15:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:15:57Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:17:03Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:17:03Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:17:03Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:17:03Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:18:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:18:08Z pid=4215 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:18:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:18:08Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:19:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:19:14Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:19:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:19:14Z pid=6090 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:20:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:20:20Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:20:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:20:20Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:21:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:21:25Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:21:25Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:21:25Z pid=6090 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:22:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:22:31Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:22:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:22:31Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:23:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:23:37Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:23:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:23:37Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:24:42Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:24:42Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:24:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:24:42Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:25:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:25:48Z pid=4215 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:25:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:25:48Z pid=6090 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:26:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:26:54Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:26:54Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:26:54Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:27:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:27:59Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:27:59Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:27:59Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:29:05Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:29:05Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:29:05Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:29:05Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:30:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:30:11Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:30:11Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:30:11Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:31:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:31:16Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:31:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:31:16Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:32:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:32:22Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:32:22Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:32:22Z pid=6090 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:33:28Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:33:28Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:33:28Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:33:28Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:34:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:34:33Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:34:33Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:34:33Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:35:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:35:39Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:35:39Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:35:39Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:36:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:36:45Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:36:45Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:36:45Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:37:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:37:50Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:37:50Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:37:50Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:38:56Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:38:56Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:38:56Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:38:56Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:40:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:40:02Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:40:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:40:02Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:41:07Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:41:07Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:41:07Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:41:07Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:42:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:42:13Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:42:13Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:42:13Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:43:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:43:18Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:43:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:43:19Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:44:24Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:44:24Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:44:24Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:44:24Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:45:30Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:45:30Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:45:30Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:45:30Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:46:35Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:46:36Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:46:36Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:46:36Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:47:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:47:41Z pid=4215 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:47:41Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:47:41Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:48:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:48:47Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:48:47Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:48:47Z pid=6090 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:49:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:49:52Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:49:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:49:53Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:50:58Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:50:58Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:50:58Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:50:58Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:52:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:52:04Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:52:04Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:52:04Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:53:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:53:09Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:53:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:53:09Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:54:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:54:15Z pid=4215 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:54:15Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:54:15Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:55:21Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:55:21Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:55:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:55:21Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:56:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:56:27Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:56:27Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:56:27Z pid=6090 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:57:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:57:32Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:57:32Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:57:32Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:58:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:58:38Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:58:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:58:38Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T07:59:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T07:59:43Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T07:59:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T07:59:44Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:00:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:00:49Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:00:49Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:00:49Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:01:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:01:55Z pid=4215 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:01:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:01:55Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:03:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:03:01Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:03:01Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:03:01Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:04:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:04:06Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:04:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:04:06Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:05:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:05:12Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:05:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:05:12Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:06:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:06:18Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:06:18Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:06:18Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:07:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:07:23Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:07:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:07:23Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:08:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:08:29Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:08:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:08:29Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:09:35Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:09:35Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:09:35Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:09:35Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:10:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:10:40Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:10:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:10:40Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:11:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:11:46Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:11:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:11:46Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:12:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:12:52Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:12:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:12:52Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:13:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:13:57Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:13:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:13:57Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:15:03Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:15:03Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:15:03Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:15:03Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:16:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:16:08Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:16:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:16:08Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:17:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:17:14Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:17:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:17:14Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:18:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:18:20Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:18:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:18:20Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:19:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:19:25Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:19:25Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:19:25Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:20:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:20:31Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:20:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:20:31Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:21:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:21:37Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:21:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:21:37Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:22:42Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:22:42Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:22:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:22:42Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:23:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:23:48Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:23:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:23:48Z pid=6090 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:24:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:24:54Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:24:54Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:24:54Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:25:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:26:00Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:26:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:26:00Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:27:05Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:27:05Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:27:05Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:27:05Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:28:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:28:11Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:28:11Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:28:11Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:29:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:29:17Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:29:17Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:29:17Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:30:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:30:22Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:30:22Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:30:22Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:31:28Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:31:28Z pid=4215 rss=441MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:31:28Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:31:28Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:32:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:32:34Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:32:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:32:34Z pid=6090 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:33:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:33:39Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:33:39Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:33:39Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:34:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:34:45Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:34:45Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:34:45Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:35:51Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:35:51Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:35:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:35:51Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:36:56Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:36:56Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:36:56Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:36:56Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:38:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:38:02Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:38:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:38:02Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:39:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:39:08Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:39:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:39:08Z pid=6090 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:40:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:40:13Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:40:13Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:40:13Z pid=6090 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:41:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:41:19Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:41:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:41:19Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:42:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:42:25Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:42:25Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:42:25Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:43:30Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:43:30Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:43:30Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:43:30Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:44:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:44:36Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:44:36Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:44:36Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:45:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:45:42Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:45:42Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:45:42Z pid=6090 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:46:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:46:47Z pid=4215 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:46:47Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:46:47Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:47:53Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:47:53Z pid=4215 rss=467MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:47:53Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:47:53Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:48:58Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:48:58Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:48:58Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:48:58Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:50:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:50:04Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:50:04Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:50:04Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:51:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:51:10Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:51:10Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:51:10Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:52:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:52:15Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:52:15Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:52:15Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:53:21Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:53:21Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:53:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:53:21Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:54:26Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:54:26Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:54:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:54:26Z pid=6090 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:55:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:55:32Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:55:32Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:55:32Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:56:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:56:38Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:56:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:56:38Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:57:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:57:43Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:57:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:57:43Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:58:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:58:49Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:58:49Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:58:49Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T08:59:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T08:59:55Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T08:59:55Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T08:59:55Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:01:00Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:01:00Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:01:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:01:00Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:02:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:02:06Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:02:06Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:02:06Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:03:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:03:12Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:03:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:03:12Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:04:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:04:17Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:04:17Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:04:17Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:05:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:05:23Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:05:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:05:23Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:06:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:06:29Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:06:29Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:06:29Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:07:35Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:07:35Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:07:35Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:07:35Z pid=6090 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:08:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:08:40Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:08:40Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:08:40Z pid=6090 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:09:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:09:46Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:09:46Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:09:46Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:10:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:10:52Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:10:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:10:52Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:11:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:11:57Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:11:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:11:57Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:13:03Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:13:03Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:13:03Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:13:03Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:14:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:14:09Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:14:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:14:09Z pid=6090 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:15:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:15:14Z pid=4215 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:15:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:15:14Z pid=6090 rss=460MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:16:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:16:20Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:16:20Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:16:20Z pid=6090 rss=469MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:17:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:17:25Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:17:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:17:26Z pid=6090 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:18:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:18:31Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:18:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:18:31Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:19:37Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:19:37Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:19:37Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:19:37Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:20:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:20:43Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:20:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:20:43Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:21:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:21:48Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:21:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:21:48Z pid=6090 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:22:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:22:54Z pid=4215 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:22:54Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:22:54Z pid=6090 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:24:00Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:24:00Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:24:00Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:24:00Z pid=6090 rss=468MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:25:05Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:25:05Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:25:05Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:25:05Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:26:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:26:11Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:26:11Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:26:11Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:27:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:27:17Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:27:17Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:27:17Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:28:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:28:22Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:28:22Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:28:22Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:29:28Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:29:28Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:29:28Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:29:28Z pid=6090 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:30:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:30:34Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:30:34Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:30:34Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:31:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:31:39Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:31:39Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:31:39Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:32:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:32:45Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:32:45Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:32:45Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:33:51Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:33:51Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:33:51Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:33:51Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:34:56Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:34:56Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:34:56Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:34:56Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:36:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:36:02Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:36:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:36:02Z pid=6090 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:37:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:37:08Z pid=4215 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:37:08Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:37:08Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:38:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:38:13Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:38:13Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T09:38:13Z pid=6090 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T09:39:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:39:19Z pid=4215 rss=464MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:40:24Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:40:24Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:41:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:41:29Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:42:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:42:34Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:43:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:43:40Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:44:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:44:45Z pid=4215 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:45:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:45:50Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:46:56Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:46:56Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:48:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:48:01Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:49:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:49:06Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:50:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:50:11Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:51:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:51:17Z pid=4215 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:52:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:52:22Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:53:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:53:27Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:54:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:54:33Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:55:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:55:38Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:56:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:56:43Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:57:49Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:57:49Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:58:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:58:54Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T09:59:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T09:59:59Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:01:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:01:04Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:02:10Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:02:10Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:03:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:03:15Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:04:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:04:20Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:05:26Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:05:26Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:06:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:06:31Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:07:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:07:36Z pid=4215 rss=468MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:08:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:08:41Z pid=4215 rss=468MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:09:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:09:47Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:10:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:10:52Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:11:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:11:57Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:13:03Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:13:03Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:14:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:14:08Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:15:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:15:13Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:16:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:16:18Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:17:24Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:17:24Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:18:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:18:29Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:19:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:19:34Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:20:40Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:20:40Z pid=4215 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:21:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:21:45Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:22:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:22:50Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:23:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:23:55Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:25:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:25:01Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:26:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:26:06Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:27:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:27:11Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:28:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:28:17Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:29:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:29:22Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:30:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:30:27Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:31:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:31:33Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:32:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:32:38Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:33:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:33:43Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:34:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:34:48Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:35:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:35:54Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:36:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:36:59Z pid=4215 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:38:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:38:04Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:39:10Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:39:10Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:40:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:40:15Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:41:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:41:20Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:42:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:42:25Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:43:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:43:31Z pid=4215 rss=451MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:44:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:44:36Z pid=4215 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:45:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:45:41Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:46:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:46:47Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:47:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:47:52Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:48:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:48:57Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:50:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:50:02Z pid=4215 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:51:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:51:08Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:52:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:52:13Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:53:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:53:18Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:54:24Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:54:24Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:55:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:55:29Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:56:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:56:34Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:57:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:57:39Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:58:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:58:45Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T10:59:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T10:59:50Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:00:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:00:55Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:02:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:02:01Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:03:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:03:06Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:04:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:04:11Z pid=4215 rss=431MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:05:17Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:05:17Z pid=4215 rss=443MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:06:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:06:22Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:07:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:07:27Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:08:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:08:32Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:09:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:09:38Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:10:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:10:43Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:11:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:11:48Z pid=4215 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:12:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:12:54Z pid=4215 rss=454MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:13:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:13:59Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:15:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:15:04Z pid=4215 rss=433MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:16:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:16:09Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:17:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:17:15Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:18:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:18:20Z pid=4215 rss=432MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:19:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:19:25Z pid=4215 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:20:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:20:31Z pid=4215 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:21:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:21:36Z pid=4215 rss=468MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:22:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:22:41Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:23:46Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:23:46Z pid=4215 rss=428MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:24:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:24:52Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:25:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:25:57Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:27:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:27:02Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:28:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:28:08Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:29:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:29:13Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:30:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:30:18Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:31:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:31:24Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:32:29Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:32:29Z pid=4215 rss=430MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:33:34Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:33:34Z pid=4215 rss=439MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:34:39Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:34:39Z pid=4215 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:35:45Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:35:45Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:36:50Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:36:50Z pid=4215 rss=470MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:37:55Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:37:55Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:39:01Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:39:01Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:40:06Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:40:06Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:41:11Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:41:11Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:42:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:42:16Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:43:22Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:43:22Z pid=4215 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:44:27Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:44:27Z pid=4215 rss=466MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:45:32Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:45:32Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:46:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:46:38Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:47:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:47:43Z pid=4215 rss=429MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:48:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:48:48Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:49:54Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:49:54Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:50:59Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:50:59Z pid=4215 rss=456MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:52:04Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:52:04Z pid=4215 rss=468MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:53:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:53:09Z pid=4215 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:54:15Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:54:15Z pid=4215 rss=435MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:55:20Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:55:20Z pid=4215 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:56:25Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:56:25Z pid=4215 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:57:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:57:31Z pid=4215 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:58:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:58:36Z pid=4215 rss=457MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T11:59:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T11:59:41Z pid=4215 rss=465MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:00:47Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:00:47Z pid=4215 rss=437MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:01:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:01:52Z pid=4215 rss=436MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:02:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:02:57Z pid=4215 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:04:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:04:02Z pid=4215 rss=438MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:05:08Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:05:08Z pid=4215 rss=449MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:06:13Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:06:13Z pid=4215 rss=457MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T12:07:18Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T12:07:18Z pid=4215 rss=469MB python scripts/exp2b_subsets.py --stage A --shard 1/2 

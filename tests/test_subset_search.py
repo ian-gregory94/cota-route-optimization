@@ -488,3 +488,26 @@ def test_every_scoring_script_declares_its_evaluator():
         src = (SCRIPTS / name).read_text()
         assert "declare_evaluator(" in src, f"{name} writes artifacts without "
         "recording which model scored them"
+
+
+def test_the_partition_does_not_depend_on_input_order():
+    """The shard slice is index %% n, so it depends on the enumeration order,
+    which depends on the candidate list's order — and that list is written
+    sorted by MEASURED EFFECT. Re-sorting it mid-sweep gave two workers two
+    different partitions: 37 subsets solved twice, 57 never solved, in a sweep
+    whose whole claim is exhaustiveness."""
+    inc = _pairs(CANDS)
+    a = feasible_subsets(sorted(CANDS), inc)
+    b = feasible_subsets(sorted(CANDS, reverse=True), inc)
+    for n in (2, 3):
+        for i in range(n):
+            sa = {set_key(c) for c in a[i::n]}
+            sb = {set_key(c) for c in b[i::n]}
+            assert sa == sb, (
+                "shard membership changed when the candidate list was "
+                "reordered; sort the list before enumerating")
+
+
+def test_the_script_sorts_its_candidate_list():
+    src = (SCRIPTS / "exp2b_subsets.py").read_text()
+    assert 'sorted(classes["rule"]["eligible_for_2B"])' in src

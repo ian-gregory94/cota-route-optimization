@@ -82,7 +82,18 @@ FLOOR = 0.130
 
 def feasible_subsets(cands: list[str],
                      incompatible: set[tuple[str, str]]) -> list[tuple[str, ...]]:
-    """Every subset no two of whose members share a route, smallest first."""
+    """Every subset no two of whose members share a route, smallest first.
+
+    The candidate list is sorted first, so the enumeration is a property of the
+    candidate SET and not of the order it arrived in. That matters because the
+    shard partition is `index % n`: when the classification file was
+    regenerated under the corrected evaluator it came back sorted by measured
+    effect instead of the old measured effect, and a worker started before that
+    point and one started after partitioned two different orderings — 37
+    subsets solved twice, 57 never solved, in a sweep whose entire claim is
+    that it is exhaustive.
+    """
+    cands = sorted(cands)
     out: list[tuple[str, ...]] = []
     for r in range(len(cands) + 1):
         for combo in itertools.combinations(cands, r):
@@ -336,7 +347,17 @@ def main() -> int:
             args.iterations, args.restarts, args.width = 400_000, 20, 0
 
     classes = json.loads((OUT / "exp2_candidate_classes.json").read_text())
-    cands = list(classes["rule"]["eligible_for_2B"])
+    # SORTED, always. The shard partition is `index % n`, so it depends on the
+    # enumeration order, which depends on this list's order -- and this list is
+    # written by exp2_classify.py sorted by MEASURED EFFECT. Regenerating the
+    # classification under the corrected evaluator re-sorted it, so a shard
+    # started before that point and a shard started after it partitioned two
+    # different orderings: 37 subsets solved twice and 57 never solved at all,
+    # in a sweep whose entire claim is that it is exhaustive.
+    #
+    # A canonical order costs nothing and makes the partition a property of the
+    # candidate SET rather than of when a worker happened to start.
+    cands = sorted(classes["rule"]["eligible_for_2B"])
     incompat = set()
     for pr in classes["incompatible_pairs"]:
         incompat.add((pr["a"], pr["b"]))
@@ -707,6 +728,26 @@ def main() -> int:
     tag = f"stage{args.stage}"
     df.to_csv(OUT / f"exp2b_{tag}.csv", index=False)
     df.to_csv(exp.artifact_path(f"{tag}.csv"), index=False)
+    # Gate 2B-1: a run that evaluates fewer than the full enumeration must name
+    # what it did not evaluate. Silence here is how a partial sweep passes for
+    # an exhaustive one.
+    if args.stage == "A" and not args.limit and not args.max_cardinality:
+        full = {set_key(c) for c in feasible_subsets(cands, incompat)}
+        got = set(df["set_key"]) if not df.empty else set()
+        gaps = sorted(full - got)
+        if gaps:
+            (OUT / f"exp2b_{tag}_gaps.json").write_text(json.dumps(
+                {"n_feasible": len(full), "n_solved": len(got),
+                 "n_missing": len(gaps), "missing": gaps}, indent=2))
+            log.error("GATE 2B-1 NOT MET: %d of %d feasible subsets have no "
+                      "cell; see outputs/exp2b_%s_gaps.json. This table is NOT "
+                      "an exhaustive sweep.", len(gaps), len(full), tag)
+        else:
+            (OUT / f"exp2b_{tag}_gaps.json").write_text(json.dumps(
+                {"n_feasible": len(full), "n_solved": len(got),
+                 "n_missing": 0, "missing": []}, indent=2))
+            log.info("gate 2B-1: all %d feasible subsets solved", len(full))
+
     if skipped:
         (OUT / f"exp2b_{tag}_skipped.json").write_text(
             json.dumps(skipped, indent=2))
