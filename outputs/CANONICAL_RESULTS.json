@@ -1,11 +1,11 @@
 {
-  "generated_commit": "c99c4d746242451843a9ec616016fa4ba8af3707-dirty",
-  "why_this_exists": "The Experiment 2 evaluator scored every plan under Model A for three days while reporting Model B, so an artifact can look entirely legitimate and contain the wrong model. Nothing here is deleted \u2014 superseded outputs are the record of what was run \u2014 but a reader must be able to tell which files are load-bearing without reconstructing the history.",
-  "how_to_check_an_artifact": "Open its experiment.json and read `evaluator`. `common_lines: same_route` with `source: explicit` is Model B, declared. `null` means the run predates provenance recording and the model must be established another way \u2014 for Experiment 2 that means checking whether the cell key carries |same_route|.",
+  "generated_commit": "f56f6ac2920a04202183ad2fb96a24d8132d8235",
+  "why_this_exists": "The Experiment 2 evaluator scored every plan under Model A for three days while reporting Model B, so an artifact can look entirely legitimate and contain the wrong model. Nothing here is deleted — superseded outputs are the record of what was run — but a reader must be able to tell which files are load-bearing without reconstructing the history.",
+  "how_to_check_an_artifact": "Open its experiment.json and read `evaluator`. `common_lines: same_route` with `source: explicit` is Model B, declared. `null` means the run predates provenance recording and the model must be established another way — for Experiment 2 that means checking whether the cell key carries |same_route|.",
   "experiments": {
     "exp1": {
       "title": "Frequency redistribution inside the existing geometry and envelope",
-      "status": "CLOSED, certified \u03bb\u22652",
+      "status": "CLOSED, certified λ≥2",
       "canonical": [
         "outputs/canonical/exp1_final.json",
         "outputs/exp1_baseline_modelB.json",
@@ -14,23 +14,23 @@
       ],
       "evaluator": "same_route (Model B), via harness.setup()",
       "certified": true,
-      "headline": "\u22126.65% \u00b1 0.06 unserved demand, +3.30% \u00b1 0.03 trips served, +0.88% \u00b1 0.04 generalized cost, \u22122.34% \u00b1 0.01 cost per trip served, at 2,516.5 of 2,517.2 vehicle-hours and 197.0 of 197.0 peak vehicles",
+      "headline": "−6.65% ± 0.06 unserved demand, +3.30% ± 0.03 trips served, +0.88% ± 0.04 generalized cost, −2.34% ± 0.01 cost per trip served, at 2,516.5 of 2,517.2 vehicle-hours and 197.0 of 197.0 peak vehicles",
       "superseded": [
         "outputs/model_A/*",
         "outputs/fixpoint_frontier.csv",
         "outputs/certify_frontier.csv",
         "outputs/seedcheck.json"
       ],
-      "superseded_why": "Model A \u2014 kept as the control and as the record of the pre-correction result",
+      "superseded_why": "Model A — kept as the control and as the record of the pre-correction result",
       "limitations": [
-        "\u03bb\u22641 uncertified on both models",
+        "λ≤1 uncertified on both models",
         "no individual route headway is identified",
         "commute-only LODES demand"
       ]
     },
     "exp2": {
-      "title": "Route geometry \u2014 twelve splice candidates, evaluated individually",
-      "status": "CLOSED pending the 2B subset search",
+      "title": "Route geometry — twelve splice candidates, evaluated individually",
+      "status": "CLOSED — see EXPERIMENT2_CLOSEOUT.md",
       "canonical": [
         "outputs/exp2_promotion.json",
         "outputs/exp2_candidate_classes.json",
@@ -39,16 +39,16 @@
         "outputs/exp2_modelA_vs_modelB_singles.csv",
         "outputs/exp2_summary.json"
       ],
-      "evaluator": "same_route (Model B) \u2014 cells carrying |same_route| in the key only",
+      "evaluator": "same_route (Model B) — cells carrying |same_route| in the key only",
       "certified": false,
-      "headline": "NO supportable geometry claim. At the effort Experiment 1 is certified at, six of twelve candidates do measurable harm and none does measurable good; the two leaders land inside the 0.287-point floor at +0.060% and +0.160%. The \u22120.5% through-routing claim was withdrawn 2026-08-30 (D24): the unedited network was the under-optimized one at ranking effort.",
+      "headline": "NO supportable geometry claim. At the effort Experiment 1 is certified at, six of twelve candidates do measurable harm and none does measurable good; the two leaders land inside the 0.287-point floor at +0.060% and +0.160%. The −0.5% through-routing claim was withdrawn 2026-08-30 (D24): the unedited network was the under-optimized one at ranking effort.",
       "superseded": [
         "every exp2_eval cell whose key has NO pricing segment",
         "outputs/exp2_eval_modelB.log",
         "outputs/exp2_recheck.log",
         "outputs/exp2_ladder.csv"
       ],
-      "superseded_why": "produced by the mislabelled evaluator \u2014 Model A numbers under a Model B label",
+      "superseded_why": "produced by the mislabelled evaluator — Model A numbers under a Model B label",
       "limitations": [
         "every 60,000/2/32 number is discovery-stage under gate 12 and orders candidates rather than concluding anything",
         "only splices were ever evaluated",
@@ -57,22 +57,29 @@
     },
     "exp2b": {
       "title": "Joint search over geometry edit subsets",
-      "status": "RUNNING \u2014 stage A, 240 feasible subsets",
+      "status": "CLOSED — certified NULL",
       "canonical": [
+        "outputs/exp2b_certification.json",
         "outputs/exp2b_stageA.csv",
+        "outputs/exp2b_stageB.csv",
+        "outputs/exp2b_stageA_gaps.json",
         "outputs/exp2b_subsets.shard*.jsonl"
       ],
-      "evaluator": "same_route (Model B), passed explicitly \u2014 verified by reading the call site in exp2b_subsets.py, and this is one of the two pipelines whose disagreement exposed the defect",
-      "certified": false,
-      "headline": "pending",
+      "evaluator": "same_route (Model B), passed explicitly — verified by reading the call site in exp2b_subsets.py and by the `evaluator` block in each stage's experiment.json, and this is one of the two pipelines whose disagreement exposed the defect",
+      "certified": true,
+      "headline": "NULL. All 240 structurally feasible subsets solved at 60,000/2/32; the leader `splice|011|034|WESHIGW` re-solved at 400,000/20 under three seeds scores +0.0065% unserved against a 0.287-point floor — 0.02 floors. Not one of the 227 multi-edit sets beats the best single, and at λ≥2 all 227 substitute. Best-set identity and cardinality monotonicity hold at λ ∈ {1, 2, 4}. Gate 12 fired on its own: the effect moved 0.591 points between discovery and certification effort.",
       "superseded": [],
       "limitations": [
-        "stage A ranks; stages B and C are not run yet"
+        "every 60,000/2/32 number is discovery-stage under gate 12 — it orders sets, it does not size effects",
+        "λ=1 and λ=4 ran one seed each, so no noise floor exists at those weights and no headline may be drawn from them",
+        "the universal-substitution claim is λ≥2; at λ=1 the sign inverts (D25)",
+        "only splices were ever in the candidate space",
+        "interaction terms at λ≠2 exist only for sets all of whose members were promoted"
       ]
     },
     "exp3": {
       "title": "Route mutation",
-      "status": "NOT STARTED \u2014 gates committed, contract pending",
+      "status": "NOT STARTED — gates committed, contract pending",
       "canonical": [],
       "evaluator": "same_route (Model B), required by gate 3-6",
       "certified": false,

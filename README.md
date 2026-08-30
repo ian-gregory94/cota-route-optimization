@@ -63,8 +63,18 @@ and apparent benefit does not, which is the right way round — and a useful
 heuristic: a benefit that shrinks with effort probably was never there.
 
 **Experiment 2B — the joint subset search** over all 240 structurally feasible
-combinations is running. Because edits do not compose, *it*, not the
-single-candidate ranking, answers "which combination should COTA make".
+combinations is **closed, and its answer is the null.** Because edits do not
+compose, *it*, not the single-candidate ranking, answers "which combination
+should COTA make" — and the answer is none of them. Not one of the 227
+multi-edit sets beats the best single, harm rises monotonically with every
+edit added, and at λ≥2 every combination *substitutes*: it delivers less than
+its members promised separately, with zero exceptions in the entire feasible
+space. The leader was then re-solved at certification effort under three seeds
+and scores +0.007% — two hundredths of a noise floor.
+
+The same leader wins at λ ∈ {1, 2, 4}, so this is a result about the network
+rather than about one point on the cost/coverage trade-off. Full account in
+`EXPERIMENT2_CLOSEOUT.md`.
 
 **Experiment 3 — route mutation** has not started. Its rules are committed in
 `EXPERIMENT3_CONTRACT.md` before any candidate exists.

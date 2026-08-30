@@ -554,3 +554,213 @@ stage B needs a complete stage A table: found 233 of 240 distinct sets in output
 2026-08-30 17:39:51,374 cache store edited-pathset-0843b941b6590e67 (9.2 MB, built in 0s)
 2026-08-30 17:39:51,378 period early   : 24678 paths, 20000 OD pairs
 2026-08-30 17:39:51,394 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:41:03,628 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:41:03,738 path set: 29544 paths over 19276/20000 OD pairs (96.2% of flow served), 146506 legs
+2026-08-30 17:41:03,866 cache store edited-pathset-2baf4b30f4eccba2 (10.9 MB, built in 0s)
+2026-08-30 17:41:03,871 period am_peak : 29544 paths, 20000 OD pairs
+2026-08-30 17:41:03,884 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:42:04,966 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:42:05,057 path set: 24929 paths over 17378/20000 OD pairs (86.6% of flow served), 124179 legs
+2026-08-30 17:42:05,153 cache store edited-pathset-291994fd1a0a2cfb (9.4 MB, built in 0s)
+2026-08-30 17:42:05,158 period midday  : 24929 paths, 20000 OD pairs
+2026-08-30 17:42:05,170 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:43:09,667 rejected 199 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:43:09,774 path set: 28686 paths over 18667/20000 OD pairs (93.6% of flow served), 144035 legs
+2026-08-30 17:43:09,893 cache store edited-pathset-42f63f1ddaffe4ce (10.8 MB, built in 0s)
+2026-08-30 17:43:09,898 period pm_peak : 28686 paths, 20000 OD pairs
+2026-08-30 17:43:09,911 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:44:17,772 rejected 123 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:44:17,869 path set: 24683 paths over 17377/20000 OD pairs (86.6% of flow served), 122799 legs
+2026-08-30 17:44:17,978 cache store edited-pathset-9ce1e85be1c6ce5d (9.3 MB, built in 0s)
+2026-08-30 17:44:17,983 period evening : 24683 paths, 20000 OD pairs
+2026-08-30 17:44:17,996 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:45:17,701 rejected 104 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:45:17,789 path set: 23339 paths over 17376/20000 OD pairs (86.6% of flow served), 114521 legs
+2026-08-30 17:45:17,879 cache store edited-pathset-d09d63fe9ab4f3f1 (8.7 MB, built in 0s)
+2026-08-30 17:45:17,883 period owl     : 23339 paths, 20000 OD pairs
+2026-08-30 17:45:17,884 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 17:45:17,926 incumbent plan is infeasible under this budget
+2026-08-30 17:46:31,254 solve lambda=1.0: obj=2.37246e+06 vh=2512.9/2517.2 exchanges=1
+2026-08-30 17:46:31,264 [ 15/ 16] splice|001|021|PICBETS+splice|005|006|NMURBEAN k=5 lam=1.0    73s  vs no-edit: unserved +16.795%  gc  -5.639%  (elapsed 1.4h, ~0.1h left)
+2026-08-30 17:46:31,281 incumbent plan is infeasible under this budget
+2026-08-30 17:47:47,218 solve lambda=4.0: obj=4.19698e+06 vh=2515.2/2517.2 exchanges=0
+2026-08-30 17:47:47,227 [ 15/ 16] splice|001|021|PICBETS+splice|005|006|NMURBEAN k=5 lam=4.0    76s  vs no-edit: unserved  +2.712%  gc  -0.214%  (elapsed 1.4h, ~0.1h left)
+2026-08-30 17:47:47,596 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 17:47:47,605 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 17:47:47,713 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 17:47:47,721 route classes: {'all_day': 19, 'peak_express': 14}
+2026-08-30 17:47:47,771 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 17:47:47,785 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:48:44,864 rejected 100 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:48:44,953 path set: 25198 paths over 17304/20000 OD pairs (86.3% of flow served), 123613 legs
+2026-08-30 17:48:45,049 cache store edited-pathset-653d443590001990 (9.4 MB, built in 0s)
+2026-08-30 17:48:45,053 period early   : 25198 paths, 20000 OD pairs
+2026-08-30 17:48:45,066 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:49:54,513 rejected 101 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:49:54,629 path set: 30215 paths over 19281/20000 OD pairs (96.2% of flow served), 150534 legs
+2026-08-30 17:49:54,750 cache store edited-pathset-acbd4b2852034da2 (11.2 MB, built in 0s)
+2026-08-30 17:49:54,755 period am_peak : 30215 paths, 20000 OD pairs
+2026-08-30 17:49:54,768 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:50:55,906 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:50:56,005 path set: 25549 paths over 17379/20000 OD pairs (86.6% of flow served), 127839 legs
+2026-08-30 17:50:56,114 cache store edited-pathset-6003a73f3e4f463f (9.6 MB, built in 0s)
+2026-08-30 17:50:56,120 period midday  : 25549 paths, 20000 OD pairs
+2026-08-30 17:50:56,136 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:52:01,584 rejected 169 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:52:01,699 path set: 29509 paths over 18672/20000 OD pairs (93.6% of flow served), 148764 legs
+2026-08-30 17:52:01,822 cache store edited-pathset-b4e33c31aad73328 (11.1 MB, built in 0s)
+2026-08-30 17:52:01,827 period pm_peak : 29509 paths, 20000 OD pairs
+2026-08-30 17:52:01,840 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:53:05,907 rejected 106 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:53:06,005 path set: 25302 paths over 17379/20000 OD pairs (86.6% of flow served), 126236 legs
+2026-08-30 17:53:06,108 cache store edited-pathset-d0e465fd46319a3f (9.5 MB, built in 0s)
+2026-08-30 17:53:06,113 period evening : 25302 paths, 20000 OD pairs
+2026-08-30 17:53:06,126 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 17:54:05,878 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 17:54:05,967 path set: 24582 paths over 17383/20000 OD pairs (86.6% of flow served), 121239 legs
+2026-08-30 17:54:06,066 cache store edited-pathset-0ef4b2c3e6fdb611 (9.2 MB, built in 0s)
+2026-08-30 17:54:06,072 period owl     : 24582 paths, 20000 OD pairs
+2026-08-30 17:54:06,072 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 17:54:06,116 incumbent plan is infeasible under this budget
+2026-08-30 17:55:10,380 solve lambda=1.0: obj=2.3794e+06 vh=2508.9/2517.2 exchanges=0
+2026-08-30 17:55:10,389 [ 16/ 16] splice|001|021|PICBETS+splice|002|034|WESHIGW+ k=6 lam=1.0    64s  vs no-edit: unserved +22.130%  gc  -7.108%  (elapsed 1.6h, ~0.0h left)
+2026-08-30 17:55:10,407 incumbent plan is infeasible under this budget
+2026-08-30 17:56:20,614 solve lambda=4.0: obj=4.21858e+06 vh=2513.4/2517.2 exchanges=0
+2026-08-30 17:56:20,622 [ 16/ 16] splice|001|021|PICBETS+splice|002|034|WESHIGW+ k=6 lam=4.0    70s  vs no-edit: unserved  +3.788%  gc  -0.418%  (elapsed 1.6h, ~0.0h left)
+2026-08-30 17:56:20,775 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2b_subsets_stageB_20260830T161956Z/experiment.json
+
+========================================================================================================
+EXPERIMENT 2B / D22 — joint geometry subset search, stage B
+16 structurally feasible subsets, effort 60000/2/32, frozen Model B evaluator
+========================================================================================================
+
+lambda=1.0: best 12 by measured unserved demand, against the UNEDITED network
+                                       set_key  cardinality  unserved_vs_noedit_pct  gc_vs_noedit_pct  gc_per_trip_vs_noedit_pct
+                                        <none>            0                  0.0000            0.0000                     0.0000
+                        splice|011|034|WESHIGW            1                  2.1552           -0.9136                     0.1513
+                        splice|011|033|WESHIGW            1                  3.2516           -1.5843                     0.0204
+                        splice|007|101|EMO4THW            1                  4.3882           -2.5534                    -0.3969
+ splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  4.3962           -2.4385                    -0.2754
+                        splice|033|034|WESHIGW            1                  4.8601           -2.0932                     0.3123
+                        splice|002|034|WESHIGW            1                  5.1156           -2.0825                     0.4529
+splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  5.5283           -2.3507                     0.3874
+                       splice|006|021|NMURBEAN            1                  5.7208           -2.4869                     0.3454
+                       splice|005|006|NMURBEAN            1                  7.2128           -2.3631                     1.2397
+splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  7.6339           -2.3846                     1.4360
+splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  9.7537           -3.2913                     1.5980
+
+lambda=1.0: interaction, measured effect minus the sum of member singles (floor 0.130 pts)
+interaction_class
+synergistic    5
+  most substituting:
+                                                              set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+                       splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  7.6339                       9.3680                   -1.7341
+                        splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  4.3962                       6.5434                   -2.1472
+                       splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  9.7537                      12.0730                   -2.3192
+                       splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  5.5283                       7.8760                   -2.3477
+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW            3                 11.1289                      13.7562                   -2.6273
+  most synergistic:
+                                                              set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW            3                 11.1289                      13.7562                   -2.6273
+                       splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  5.5283                       7.8760                   -2.3477
+                       splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  9.7537                      12.0730                   -2.3192
+                        splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  4.3962                       6.5434                   -2.1472
+                       splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  7.6339                       9.3680                   -1.7341
+
+lambda=1.0: best set at each cardinality (NOT required to be nested)
+ cardinality                                                                                                                                    set_key  unserved_vs_noedit_pct  gc_vs_noedit_pct
+           0                                                                                                                                     <none>                  0.0000            0.0000
+           1                                                                                                                     splice|011|034|WESHIGW                  2.1552           -0.9136
+           2                                                                                              splice|007|101|EMO4THW+splice|011|034|WESHIGW                  4.3962           -2.4385
+           3                                                                      splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW                 11.1289           -4.1928
+           4                                               splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                 15.2164           -5.2558
+           5                        splice|001|021|PICBETS+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                 16.7953           -5.6387
+           6 splice|001|021|PICBETS+splice|002|034|WESHIGW+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|033|WESHIGW                 22.1295           -7.1078
+
+lambda=2.0: best 12 by measured unserved demand, against the UNEDITED network
+                                       set_key  cardinality  unserved_vs_noedit_pct  gc_vs_noedit_pct  gc_per_trip_vs_noedit_pct
+                        splice|011|034|WESHIGW            1                 -0.5846            0.1020                    -0.1689
+                        splice|033|034|WESHIGW            1                 -0.4847            0.1177                    -0.1070
+                       splice|005|006|NMURBEAN            1                 -0.2724            0.2250                     0.0984
+                        splice|011|033|WESHIGW            1                 -0.2332           -0.0738                    -0.1818
+splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                 -0.0661            0.2102                     0.1794
+                                        <none>            0                  0.0000            0.0000                     0.0000
+                       splice|006|021|NMURBEAN            1                  0.0261           -0.0610                    -0.0489
+                        splice|002|034|WESHIGW            1                  0.0523           -0.0129                     0.0114
+splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  0.0695            0.1939                     0.2263
+                        splice|007|101|EMO4THW            1                  0.1526           -0.1438                    -0.0730
+splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  0.1719           -0.0550                     0.0248
+ splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  0.2472           -0.1146                     0.0001
+
+lambda=2.0: interaction, measured effect minus the sum of member singles (floor 0.130 pts)
+interaction_class
+substituting    227
+  most substituting:
+                                                                                                                                   set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+splice|001|021|PICBETS+splice|002|011|HIGFITN+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|033|034|WESHIGW            6                  4.1586                       0.3455                    3.8131
+splice|001|021|PICBETS+splice|002|033|WESHIGW+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW            6                  5.0306                       1.4070                    3.6236
+splice|001|021|PICBETS+splice|002|034|WESHIGW+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|033|WESHIGW            6                  3.9201                       0.3277                    3.5923
+                       splice|001|021|PICBETS+splice|002|011|HIGFITN+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|033|034|WESHIGW            5                  3.3106                       0.0887                    3.2220
+                       splice|001|021|PICBETS+splice|002|011|HIGFITN+splice|005|006|NMURBEAN+splice|008|035|BOASHAN+splice|033|034|WESHIGW            5                  3.3161                       0.1929                    3.1232
+  most synergistic:
+                                       set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+splice|005|021|NMURBEAN+splice|008|035|BOASHAN            2                  1.0767                       0.6519                    0.4248
+ splice|007|101|EMO4THW+splice|011|033|WESHIGW            2                  0.3814                      -0.0806                    0.4620
+ splice|002|034|WESHIGW+splice|011|033|WESHIGW            2                  0.3440                      -0.1809                    0.5250
+ splice|007|101|EMO4THW+splice|008|035|BOASHAN            2                  0.9793                       0.4094                    0.5699
+ splice|002|033|WESHIGW+splice|011|034|WESHIGW            2                  1.4716                       0.8983                    0.5733
+
+lambda=2.0: best set at each cardinality (NOT required to be nested)
+ cardinality                                                                                                                                    set_key  unserved_vs_noedit_pct  gc_vs_noedit_pct
+           1                                                                                                                     splice|011|034|WESHIGW                 -0.5846            0.1020
+           2                                                                                             splice|005|006|NMURBEAN+splice|011|034|WESHIGW                 -0.0661            0.2102
+           0                                                                                                                                     <none>                  0.0000            0.0000
+           3                                                                      splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW                  0.7278           -0.0167
+           4                                               splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                  1.6388           -0.0247
+           5                        splice|001|021|PICBETS+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                  2.6286           -0.1403
+           6 splice|001|021|PICBETS+splice|002|034|WESHIGW+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|033|WESHIGW                  3.9201           -0.5012
+
+lambda=4.0: best 12 by measured unserved demand, against the UNEDITED network
+                                       set_key  cardinality  unserved_vs_noedit_pct  gc_vs_noedit_pct  gc_per_trip_vs_noedit_pct
+                        splice|011|034|WESHIGW            1                 -0.5097            0.0584                    -0.1765
+                        splice|033|034|WESHIGW            1                 -0.3804            0.0581                    -0.1174
+                        splice|011|033|WESHIGW            1                 -0.2197           -0.0907                    -0.1920
+                       splice|005|006|NMURBEAN            1                 -0.1707            0.1537                     0.0749
+                        splice|007|101|EMO4THW            1                 -0.0097           -0.0665                    -0.0710
+                       splice|006|021|NMURBEAN            1                 -0.0018           -0.0577                    -0.0586
+                                        <none>            0                  0.0000            0.0000                     0.0000
+                        splice|002|034|WESHIGW            1                  0.0116            0.0077                     0.0131
+splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  0.0189            0.1617                     0.1705
+splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  0.1180            0.1688                     0.2234
+ splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  0.1530           -0.1049                    -0.0343
+splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  0.1743           -0.0558                     0.0248
+
+lambda=4.0: interaction, measured effect minus the sum of member singles (floor 0.130 pts)
+interaction_class
+substituting    5
+  most substituting:
+                                                              set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW            3                  0.6708                      -0.6901                    1.3610
+                       splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  0.0189                      -0.6804                    0.6993
+                       splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  0.1743                      -0.5115                    0.6858
+                        splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  0.1530                      -0.5194                    0.6725
+                       splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  0.1180                      -0.5511                    0.6692
+  most synergistic:
+                                                              set_key  cardinality  unserved_vs_noedit_pct  sum_of_singles_unserved_pct  interaction_unserved_pts
+                       splice|005|006|NMURBEAN+splice|033|034|WESHIGW            2                  0.1180                      -0.5511                    0.6692
+                        splice|007|101|EMO4THW+splice|011|034|WESHIGW            2                  0.1530                      -0.5194                    0.6725
+                       splice|006|021|NMURBEAN+splice|011|034|WESHIGW            2                  0.1743                      -0.5115                    0.6858
+                       splice|005|006|NMURBEAN+splice|011|034|WESHIGW            2                  0.0189                      -0.6804                    0.6993
+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW            3                  0.6708                      -0.6901                    1.3610
+
+lambda=4.0: best set at each cardinality (NOT required to be nested)
+ cardinality                                                                                                                                    set_key  unserved_vs_noedit_pct  gc_vs_noedit_pct
+           1                                                                                                                     splice|011|034|WESHIGW                 -0.5097            0.0584
+           0                                                                                                                                     <none>                  0.0000            0.0000
+           2                                                                                             splice|005|006|NMURBEAN+splice|011|034|WESHIGW                  0.0189            0.1617
+           3                                                                      splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|011|034|WESHIGW                  0.6708            0.0400
+           4                                               splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                  1.5497            0.0160
+           5                        splice|001|021|PICBETS+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|034|WESHIGW                  2.7116           -0.2141
+           6 splice|001|021|PICBETS+splice|002|034|WESHIGW+splice|005|006|NMURBEAN+splice|007|101|EMO4THW+splice|008|035|BOASHAN+splice|011|033|WESHIGW                  3.7879           -0.4182
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2b_subsets_stageB_20260830T161956Z

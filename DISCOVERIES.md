@@ -1377,6 +1377,68 @@ is the result it has to beat.
 
 ---
 
+### D25 — The geometry null survives the budget-weight sweep, and the substitution law does not
+
+**Stage B asked whether Experiment 2B's answer is a property of λ=2.** The whole
+2B enumeration was scored at one point on the cost/coverage trade-off. If the
+null were an artifact of that choice, a different λ would produce a different
+winner, and the recommendation "make no geometry change" would be a
+recommendation about a scalarization rather than about the network. So the 16
+promoted sets were re-solved at λ ∈ {1, 2, 4}.
+
+**The leader does not move.** `splice|011|034|WESHIGW` is the best set at every
+λ tested:
+
+| λ | best set | unserved vs no edit | best multi-edit set |
+|---|---|---|---|
+| 1 | `011+034 WESHIGW` | **+2.155%** | +4.396% |
+| 2 | `011+034 WESHIGW` | −0.585% | −0.066% |
+| 4 | `011+034 WESHIGW` | −0.510% | +0.019% |
+
+Three conclusions hold at all three weights: the same single edit leads, no
+multi-edit set beats the best single, and harm increases monotonically with
+cardinality. Stage C certified that leader as null (D22), and this says the
+certified thing was not a λ=2 accident.
+
+**At λ=1 every geometry set is harmful, and by a lot.** The best of the sixteen
+is +2.16% unserved; the worst is +22.1%. λ=1 prices unserved demand low enough
+that the optimizer sells coverage for generalized cost — gc runs 0.9 to 2.6%
+*better* than no edit while unserved blows out. That is the optimizer doing what
+it was asked, and it means the geometry candidates' only measurable effect at
+this weight is to make the coverage sacrifice cheaper to make.
+
+**And the substitution law is λ≥2, not universal.** D22's strongest claim was
+that all 227 multi-edit sets substitute — zero synergy in the entire feasible
+space. At λ=4 that holds (all five computable sets, +0.67 to +1.36 points). At
+λ=1 **the sign flips**: all five are synergistic, −1.73 to −2.63 points. The
+combination is less harmful than its members promised separately.
+
+The mechanism is the same constraint read from the other side. At λ≥2 the
+optimizer spends the envelope chasing coverage, so two edits contend for one
+budget and each gets less than it did alone. At λ=1 it is not chasing coverage
+at all, and what the edits deliver is coverage *loss* — which saturates, because
+the demand at the affected stops can only be abandoned once. Sub-additive harm,
+not synergy in any useful sense. Calling it "synergistic" is what the sign
+convention returns; the interpretation is saturation, and the honest statement
+of D22's law is: **under a budget the optimizer is actually spending, geometry
+edits substitute.**
+
+**Confidence.** Ordering: high — the leader is stable across a 4× range of λ,
+and cardinality monotonicity holds at every weight. Magnitudes at λ ∈ {1, 4}:
+discovery-stage and weaker than λ=2's. Those weights ran one seed each, so no
+replicate spread was measured and there is **no noise floor at λ=1 or λ=4** —
+gate 2B-4 therefore permits no headline claim from them, and none is made. They
+order; they do not conclude. The interaction terms at those weights are
+computable only for sets whose members were all promoted, which is why five of
+eight multi-edit rows carry one and three do not.
+
+**What it changes.** Nothing about the recommendation, which is the point of
+running it. It removes one of the two remaining ways the Experiment 2 null could
+have been an artifact — the scalarization — and leaves the other standing: the
+candidate space is splices only. That is Experiment 3's brief.
+
+---
+
 ## Not yet earned
 
 Geometry findings stay out of this log until they survive: frequency

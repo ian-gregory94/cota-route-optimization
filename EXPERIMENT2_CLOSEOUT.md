@@ -36,6 +36,12 @@ scored by one frozen Model B evaluator.
   the feasible space.
 * **The certified leader is null**: +0.007% at full effort under three seeds,
   two hundredths of a floor.
+* **The answer does not depend on the trade-off weight.** Re-solved at
+  λ ∈ {1, 2, 4}, the same single edit leads at every weight, no multi-edit
+  set beats it at any weight, and harm still rises monotonically with
+  cardinality. At λ=1 every promoted set is outright harmful (+2.16% at best).
+  One D22 claim does narrow: the universal substitution law holds at λ≥2 and
+  inverts at λ=1, where the harm saturates instead of adding — see D25.
 
 ## What that means for COTA
 
@@ -97,7 +103,8 @@ been:
 | six candidates measurably harmful | 400,000/20, 3 replicates | **yes** |
 | no candidate measurably beneficial | 400,000/20, 3 replicates | **yes** |
 | no multi-edit set beats the best single | 60,000/2/32, exhaustive | discovery-stage (gate 12) |
-| every multi-edit set substitutes | 60,000/2/32, exhaustive | discovery-stage (gate 12) |
+| every multi-edit set substitutes | 60,000/2/32, exhaustive | discovery-stage (gate 12); λ≥2 only |
+| the leader is the same at λ ∈ {1,2,4} | 60,000/2/32, 16 promoted sets | discovery-stage, single seed |
 | the leader is null at full effort | 400,000/20, 3 seeds | **yes** |
 
 The two exhaustive claims are discovery-stage by gate 12 and are quoted as
@@ -114,7 +121,7 @@ to establish that no *combination* rescues what the singles could not.
 | 2B-3 cardinality winners reported non-nested | **PASS** — and they are not nested |
 | 2B-4 headline clears the floor at its own effort | PASS — nothing cleared it, which is the result |
 | 2B-5 only the headline certified | PASS |
-| 2B-6 interaction measured for every set | PASS — 227 of 227 |
+| 2B-6 interaction measured for every set | PASS — 227 of 227 at λ=2, and for every computable multi-edit row at λ=1 and λ=4 |
 | 2B-7 the incumbent may win | **PASS** — it did, and the null was named as expected beforehand |
 | 2B-8 the sweep reproduces the ladder | **PASS** — 0.0004, 0.0001, 0.0002 points |
 | 9 legible as a transit proposal | PASS on both leading candidates; moot, there is no effect to implement |
@@ -127,6 +134,7 @@ Canonical, per `outputs/CANONICAL_RESULTS.json`:
 * `outputs/exp2_promotion.json` — the promotion decision, and why nothing was promoted
 * `outputs/exp2b_certification.json` — the stage C verdict
 * `outputs/exp2b_stageA.csv` — all 240 subsets
+* `outputs/exp2b_stageB.csv` — the 16 promoted sets at λ ∈ {1, 2, 4}
 * `outputs/exp2_candidate_classes.json` — the twelve, classified
 * `outputs/exp2_ladder_measured.csv` — both ladder orderings
 * `outputs/exp2_treatments.jsonl` — the thirteen-network representation frontier

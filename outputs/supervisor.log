@@ -273,3 +273,5 @@
 2026-08-30T16:19:55Z supervisor: started exp2b-stageB free=7299MB
 2026-08-30T16:20:00Z supervisor: started exp2b-stageC free=6967MB
 2026-08-30T17:23:14Z supervisor: exp2b-stageC exited status=0
+2026-08-30T17:56:21Z supervisor: exp2b-stageB exited status=0
+2026-08-30T17:56:38Z supervisor: all runs complete, exiting
