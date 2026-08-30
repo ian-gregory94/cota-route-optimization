@@ -65,6 +65,19 @@ class ContractLimits:
     #: Gate 3-1. The evaluator must be able to state its own waiting model.
     required_waiting_model: str = "same_route"
 
+    #: Gate 3-4's dividing line. Dropping a stop is a legitimate *straighten*
+    #: when the stop sat on a real deviation -- the bus then drives a different
+    #: street, and the running-time change is a genuine alignment change the
+    #: estimator can price. It is forbidden *stop-skipping* when the stop sat
+    #: essentially on the line between its neighbours, because then the bus
+    #: drives the same street and the only saving is the dwell this feed cannot
+    #: measure. Circuity is (d(a,x) + d(x,b)) / d(a,b): 1.0 is exactly on the
+    #: line. Anything at or below this ratio is skipping.
+    #:
+    #: 1.10 sits well below the 1.6 minimum the straighten generator proposes
+    #: at, so the two rules cannot both fire on one mutation.
+    min_deviation_circuity: float = 1.10
+
 
 @dataclass
 class StateCheck:
@@ -243,6 +256,7 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
                      edits: Sequence[GeometryEdit],
                      limits: ContractLimits,
                      sole_access_stops: Iterable[str] = (),
+                     coords: dict[str, tuple[float, float]] | None = None,
                      report: Any = None,
                      veh_hours: float | None = None,
                      peak_vehicles: float | None = None,
@@ -329,7 +343,8 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
 
     # gate 3-4 — no runtime credit for skipping stops on an unchanged alignment
     checked.append("no-skip-stop-runtime-credit")
-    offenders = _skip_stop_offenders(before, after, edits)
+    offenders = _skip_stop_offenders(before, after, edits, coords,
+                                     limits.min_deviation_circuity)
     facts["skip_stop_offenders"] = offenders
     if offenders:
         bad.append(
@@ -360,13 +375,24 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
 
 
 def _skip_stop_offenders(before: TransitNetwork, after: TransitNetwork,
-                         edits: Sequence[GeometryEdit]) -> list[str]:
-    """Routes that kept both ends and the same path, minus interior stops.
+                         edits: Sequence[GeometryEdit],
+                         coords: dict[str, tuple[float, float]] | None = None,
+                         min_circuity: float = 1.10) -> list[str]:
+    """Routes that kept their alignment and dropped stops off the middle of it.
 
-    This is gate 3-4 made structural. A `truncate` shortens a route and is
-    fine; what is forbidden is keeping the route's alignment and dropping stops
-    out of the middle of it, because the only benefit such a mutation can claim
-    is running time this feed cannot price.
+    Gate 3-4, made structural. The distinction that matters is not "were stops
+    removed" but **did the bus's path change**:
+
+    * a *straighten* removes stops that sat on a deviation, so the vehicle now
+      drives a different street. The running-time change is a real alignment
+      change and the estimator can price it. Permitted.
+    * *stop-skipping* removes stops that sat essentially on the line between
+      their neighbours. The vehicle drives the same street; the only saving is
+      dwell, which this feed cannot measure. Forbidden.
+
+    Circuity separates them. Without coordinates the geometry is unknowable, so
+    the conservative reading applies and any same-ends stop removal is flagged
+    — a check that cannot tell must not wave things through.
     """
     touched = {r for e in edits for r in e.routes_touched()}
     out: list[str] = []
@@ -388,7 +414,49 @@ def _skip_stop_offenders(before: TransitNetwork, after: TransitNetwork,
             same_ends = (pb.stops[0] == pa.stops[0]
                          and pb.stops[-1] == pa.stops[-1])
             is_subsequence = set(pb.stops) < set(pa.stops)
-            if same_ends and is_subsequence:
-                out.append(rid)
-                break
+            if not (same_ends and is_subsequence):
+                continue
+            if _was_a_real_deviation(pa.stops, pb.stops, coords, min_circuity):
+                continue
+            out.append(rid)
+            break
     return out
+
+
+def _was_a_real_deviation(old_stops: Sequence[str], new_stops: Sequence[str],
+                          coords: dict[str, tuple[float, float]] | None,
+                          min_circuity: float) -> bool:
+    """Did removing these stops actually change the path the bus drives?
+
+    For each maximal run of removed stops, compare the old path length through
+    them against the straight line between the surviving neighbours. A ratio
+    above `min_circuity` means the bus was detouring and now is not.
+    """
+    if not coords:
+        return False                      # cannot tell: assume the worst
+    kept = set(new_stops)
+    i = 0
+    saw_deviation = False
+    while i < len(old_stops):
+        if old_stops[i] in kept:
+            i += 1
+            continue
+        j = i
+        while j < len(old_stops) and old_stops[j] not in kept:
+            j += 1
+        a = old_stops[i - 1] if i > 0 else None
+        b = old_stops[j] if j < len(old_stops) else None
+        if a is None or b is None:
+            i = j + 1
+            continue
+        chain = [a, *old_stops[i:j], b]
+        through = sum(_dist_m(coords, chain[k], chain[k + 1])
+                      for k in range(len(chain) - 1))
+        direct = _dist_m(coords, a, b)
+        if not math.isfinite(through) or not math.isfinite(direct) or direct <= 0:
+            return False                  # cannot tell: assume the worst
+        if through / direct < min_circuity:
+            return False                  # this run was stops on the line
+        saw_deviation = True
+        i = j + 1
+    return saw_deviation

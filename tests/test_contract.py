@@ -364,3 +364,62 @@ def test_an_incomplete_change_terminal_cannot_be_constructed():
     with pytest.raises(ValueError, match="change_terminal needs"):
         GeometryEdit(kind="change_terminal", route_id="A", junction="S4",
                      description="move to where?")
+
+
+# -- gate 3-4, the line between straightening and stop-skipping -------------
+
+def test_dropping_a_stop_that_sat_on_the_line_is_stop_skipping(net, ts, model,
+                                                               coords):
+    """S1-S2-S3-S4 are collinear in the fixture, so dropping S2 skips a stop."""
+    e = GeometryEdit(kind="straighten", route_id="A", drop_stops=("S2",),
+                     description="drop a stop that was on the line")
+    out = apply_edits(net, ts, model, [e])
+    chk = validate_applied(net, out.network, [e], LIMITS, coords=coords)
+    assert any("alignment end to end" in v for v in chk.violations), \
+        chk.violations
+
+
+def test_dropping_a_stop_off_a_real_deviation_is_a_permitted_straighten(
+        net, ts, model, coords):
+    """Move S2 far off the S1-S3 line; removing it now changes the path driven.
+
+    This is the distinction gate 3-4 exists to draw. A bus that stops
+    detouring is doing something the running-time estimator can price; a bus
+    that drives the same street and skips a stop is claiming dwell savings this
+    feed cannot measure.
+    """
+    c = dict(coords)
+    x1, y1 = c["S1"]
+    x3, y3 = c["S3"]
+    c["S2"] = ((x1 + x3) / 2.0, (y1 + y3) / 2.0 + 4000.0)   # a big dogleg
+    e = GeometryEdit(kind="straighten", route_id="A", drop_stops=("S2",),
+                     description="drop a genuine deviation")
+    out = apply_edits(net, ts, model, [e])
+    chk = validate_applied(net, out.network, [e], LIMITS, coords=c)
+    assert not any("alignment end to end" in v for v in chk.violations), \
+        chk.violations
+
+
+def test_without_coordinates_the_check_assumes_the_worst(net, ts, model):
+    """A check that cannot tell must not wave things through."""
+    e = GeometryEdit(kind="straighten", route_id="A", drop_stops=("S2",),
+                     description="drop a stop, no geometry available")
+    out = apply_edits(net, ts, model, [e])
+    chk = validate_applied(net, out.network, [e], LIMITS, coords=None)
+    assert any("alignment end to end" in v for v in chk.violations)
+
+
+def test_the_two_straighten_rules_cannot_both_fire(net, coords):
+    """The generator proposes at circuity >= 1.6; gate 3-4 bites at <= 1.10.
+
+    A mutation cannot be simultaneously too straight to propose and too bent to
+    forbid, which is what a badly chosen pair of thresholds would produce.
+    """
+    from cota_opt.candidates import straighten_candidates
+    import inspect
+    sig = inspect.signature(straighten_candidates)
+    proposes_at = sig.parameters["min_circuity"].default
+    assert proposes_at > LIMITS.min_deviation_circuity, (
+        f"the generator proposes straightens at circuity >= {proposes_at} but "
+        f"gate 3-4 forbids them at <= {LIMITS.min_deviation_circuity}; the "
+        f"bands must not overlap")
