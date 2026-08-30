@@ -2185,3 +2185,10 @@
 2026-08-30 03:10:24,453 period owl     : 24826 paths, 20000 OD pairs
 2026-08-30 03:10:24,453 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-30 03:10:24,530 incumbent plan is infeasible under this budget
+2026-08-30 03:13:01,094 solve lambda=2.0: obj=2.97965e+06 vh=2514.1/2517.2 exchanges=0
+2026-08-30 03:13:01,107 [ 68/120] splice|002|034|WESHIGW+splice|006|021|NMURBEAN k=3 lam=2.0   157s  vs no-edit: unserved  +1.745%  gc  -0.204%  (elapsed 7.8h, ~6.0h left)
+2026-08-30 03:13:01,787 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:13:01,804 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:13:01,951 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:13:01,972 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:13:02,091 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

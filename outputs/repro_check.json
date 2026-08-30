@@ -1,0 +1,57 @@
+[
+  {
+    "check": "path-set cache key separates the waiting models",
+    "pass": true,
+    "detail": "pattern=pathsets-f0322ddda0b82271 same_route=pathsets-6200100b432d9c6f"
+  },
+  {
+    "check": "the harness puts common_lines in that key",
+    "pass": true,
+    "detail": "harness.py ps_params"
+  },
+  {
+    "check": "experiment records can carry an evaluator block",
+    "pass": true,
+    "detail": "0 of 36 existing records declare one; records written before 2026-08-30 predate the field and are resolved through the cell key instead"
+  },
+  {
+    "check": "every tracked path can exist on Windows",
+    "pass": true,
+    "detail": "603 tracked, 0 unusable"
+  },
+  {
+    "check": "frozen Experiment 1 inputs still hash as recorded",
+    "pass": true,
+    "detail": "8 inputs; drifted=none; missing=none"
+  },
+  {
+    "check": "every canonical artifact in the manifest exists",
+    "pass": true,
+    "detail": "missing: none"
+  },
+  {
+    "check": "resume determinism is under test",
+    "pass": true,
+    "detail": "tests/test_resume.py asserts equality, not similarity"
+  },
+  {
+    "check": "dependencies are declared for a clean install",
+    "pass": true,
+    "detail": "pyproject.toml declares them; install with pip install -e '.[dev]'"
+  },
+  {
+    "check": "the source/generated boundary is documented",
+    "pass": true,
+    "detail": "data/raw and data/cache are gitignored; config/sources.yaml carries URLs and hashes for every external input"
+  },
+  {
+    "check": "full test suite passes in place",
+    "pass": true,
+    "detail": "354 passed in 10.46s"
+  },
+  {
+    "check": "fresh clone runs its own test suite",
+    "pass": true,
+    "detail": "354 passed in 12.01s; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
+  }
+]
