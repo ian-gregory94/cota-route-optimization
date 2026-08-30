@@ -4,10 +4,10 @@
   "pool_size": 84,
   "incompatible_pairs": 189,
   "lambda": 2.0,
-  "effort": "2000/1/4",
-  "limit": "24.0 wall-clock hours or 3 unique network-state evaluations, whichever first",
-  "phase_A1_states": 85,
-  "phase_A2_budget": 0,
+  "effort": "60000/2/32",
+  "limit": "24.0 wall-clock hours or 420 unique network-state evaluations, whichever first",
+  "phase_A1_states": 87,
+  "phase_A2_budget": 333,
   "policy": {
     "lane_seeds": [
       [
