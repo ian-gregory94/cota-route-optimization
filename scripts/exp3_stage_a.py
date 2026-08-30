@@ -54,6 +54,7 @@ from cota_opt.contract import ContractLimits, ContractViolation  # noqa: E402
 from cota_opt.exp3_score import score_state                     # noqa: E402
 from cota_opt.experiment import Experiment                      # noqa: E402
 from cota_opt.geometry import GeometryEdit, SegmentTimeModel    # noqa: E402
+from exp2_treatments import pinned                          # noqa: E402
 from cota_opt.harness import build_harness                      # noqa: E402
 from cota_opt.mutate import edit_from_record                    # noqa: E402
 from cota_opt.statesearch import (Checkpoint, NULL, Policy,     # noqa: E402
@@ -193,6 +194,14 @@ def main() -> int:
     sg = geo.stops_gdf(H.baseline.feed, H.assumptions["crs"]["projected"])
     stm = SegmentTimeModel.fit(H.baseline.network, sg)
     budget_vh = float(H.baseline.tstats["runtime_min"].sum() / 60.0)
+    # Pinned ONCE, from the unedited network, and handed to every state. 2B
+    # does the same and for the same reason: the config's budget is the
+    # sentinel "baseline", which resolves against whatever network is being
+    # scored, so passing the raw config gives every state its own envelope.
+    _ctrl = H.setup(with_crowding=False, lock_classes=("peak_express",))
+    _peak = dict(_ctrl.model.evaluate(_ctrl.baseline_plan).peak_by_period)
+    CONS = pinned(budget_vh, _peak)
+    del _ctrl
     limits = ContractLimits(veh_hour_budget=budget_vh,
                             peak_vehicle_budget=197.0,
                             required_waiting_model=args.common_lines)
@@ -206,7 +215,8 @@ def main() -> int:
                             stops_gdf=sg, limits=limits, lam=args.lam,
                             seed=seed, iterations=args.iterations,
                             restarts=args.restarts, width=args.width,
-                            waiting_model=args.common_lines)
+                            waiting_model=args.common_lines,
+                            constraints=CONS)
         except ContractViolation as v:
             refused.append({"state": tag, "rule": v.rule, "detail": v.detail})
             log.warning("%s REFUSED: %s", tag, v)

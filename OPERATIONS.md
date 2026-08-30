@@ -101,3 +101,45 @@ bash scripts/exp3_slice.sh 470   # do the next slice, commit, exit
 
 `exp3_status.sh` answers the only question that matters after a gap: how far did
 it get, is anything running, and when did it last make progress.
+
+## The rule that would have caught most of today
+
+**15. Do not re-implement a validated pipeline. Call it, and prove equivalence
+against a number it already produced.**
+
+`exp3_score.score_state` was written as a fresh implementation of a fifteen-step
+chain Experiment 2B already had working. That single decision produced three
+separate load-bearing defects, none of which raised an error:
+
+* **The envelope was not pinned.** `config/constraints.yaml` holds the sentinel
+  `weekday_revenue_vehicle_hours: baseline`, resolved against whatever network
+  the setup is handed. Passing the raw config gave every state its *own*
+  envelope — a splice lengthens its routes, its "baseline" budget grows to
+  match, and the optimizer is handed more hours to spend. Every state was being
+  judged against a different budget, which is the one thing the whole method
+  depends on not happening. 2B pins it once from the unedited network and passes
+  that same object to every state.
+* **The incumbent was not refitted to the envelope**, so the optimizer discarded
+  it and fell back to a greedy build — `exchanges=0` on every solve, −5.03% on
+  unserved demand where Experiment 1 reaches −6.65%, and **byte-identical
+  results across three seeds**. That last part is the dangerous one: identical
+  replicates make the same-run noise floor exactly zero, and a zero floor
+  licenses every margin that is not precisely nil. 2B wrote the docstring
+  explaining this.
+* **A hand-rolled `SimpleNamespace` stood in for 2B's `_Baseline` proxy**,
+  copying the attributes I thought mattered instead of delegating all of them.
+
+The equivalence test is `scripts/exp3_score_invariant.py`: score two states 2B
+recorded and reproduce its numbers within one noise floor. The zero-edit state
+now matches 2B's to the digit — 9812.3 unserved, 1,785,263 generalized cost,
+2507.8 vehicle-hours. Before the fixes it read 9745.9.
+
+The same rule has a validator form, `scripts/exp3_validator_invariant.py`: the
+contract validator must accept all twelve candidates 2B applied, scored and
+reported. It refused seven of them once.
+
+**Neither test rests on my judgement about what the code should do.** They rest
+on numbers a previous experiment already produced and published. That is the
+only kind of check that catches a second implementation which merely looks
+right — which is how this project lost three days to an evaluator reporting the
+wrong waiting model.

@@ -43,6 +43,7 @@ class ScoredState:
     seed: int
     effort: str
     seconds: float
+    incumbent_scale: float = 1.0
     metrics: dict[str, float] = field(default_factory=dict)
     contract: dict[str, Any] = field(default_factory=dict)
     evaluator: dict[str, Any] = field(default_factory=dict)
@@ -53,7 +54,8 @@ class ScoredState:
                "cardinality": self.cardinality,
                "members": "|".join(self.members),
                "lambda": self.lam, "seed": self.seed, "effort": self.effort,
-               "seconds": round(self.seconds, 2)}
+               "seconds": round(self.seconds, 2),
+               "incumbent_scale": self.incumbent_scale}
         out.update(self.metrics)
         out["evidence_class"] = self.contract.get("facts", {}).get(
             "evidence_class", "unknown")
@@ -77,6 +79,7 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                 stops_gdf, limits: ContractLimits, lam: float, seed: int,
                 iterations: int, restarts: int, width: int,
                 sole_access_stops: Sequence[str] = (),
+                constraints: dict | None = None,
                 pathset_cache=None,
                 waiting_model: str = "same_route") -> ScoredState:
     """Apply, validate, rebuild, re-optimize, evaluate. Raises on a violation.
@@ -85,6 +88,10 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
     intentions are not outcomes: truncating one route can strand a stop the
     mutation never names.
     """
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parents[2] / "scripts"))
+    from exp2_treatments import _Baseline, fit_incumbent, pinned  # 2B's own
     from .configs import (load_constraints, load_cost_weights,
                           period_of_seconds, service_periods)
     from .cost import CostWeights
@@ -135,17 +142,37 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         lambda x: period_of_seconds(x, periods))
     rcls = classify_routes(tp.dropna(subset=["period"]), H.baseline.routes)
 
-    from types import SimpleNamespace
-    b_ed = SimpleNamespace(**{k: getattr(H.baseline, k)
-                              for k in dir(H.baseline)
-                              if not k.startswith("_")
-                              and not callable(getattr(H.baseline, k))})
-    b_ed.network, b_ed.tstats = net, ts
+    # 2B's own proxy, not a copy of the fields I thought mattered. It
+    # delegates every attribute to the real baseline and overrides only the
+    # network and trip stats, so nothing can be missed or snapshotted stale.
+    b_ed = _Baseline(H.baseline, net, ts)
+
+    # THE ENVELOPE IS PINNED ONCE, FROM THE UNEDITED BASELINE.
+    #
+    # `config/constraints.yaml` says `weekday_revenue_vehicle_hours: baseline`,
+    # a sentinel resolved against whatever network the setup is handed. Passing
+    # the raw config therefore gave every state its OWN envelope: a splice
+    # lengthens its routes, its "baseline" budget grows to match, and the
+    # optimizer is handed more hours to spend. Every state was being judged
+    # against a different budget, which is the one thing the whole method
+    # depends on not happening.
+    #
+    # `constraints` must be the pinned object, computed once by the caller from
+    # the unedited network. Refusing to run without it, rather than falling
+    # back to the config, because a silent fallback here is invisible in every
+    # artifact it produces -- which is exactly how Experiment 2 lost three days.
+    if constraints is None:
+        raise ValueError(
+            "score_state needs the PINNED envelope, computed once from the "
+            "unedited baseline with exp2_treatments.pinned(). Falling back to "
+            "config/constraints.yaml gives every state its own budget, because "
+            "the config's value is the sentinel 'baseline' and it resolves "
+            "against whichever network is being scored.")
 
     judge = path_level_setup(b_ed, rn, zs, H.od, seed=seed, route_classes=rcls,
                              with_crowding=False,
                              lock_classes=("peak_express",),
-                             constraints=load_constraints(),
+                             constraints=constraints,
                              n_random_scenarios=0, pathset_cache=pathset_cache,
                              common_lines=waiting_model)
 
@@ -158,9 +185,24 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
             f"An unasserted evaluator scored three days of Experiment 2 under "
             f"the wrong model while its log reported the right one.")
 
+    # The incumbent must be REFITTED to the envelope before the solve, and
+    # this is not a refinement -- it is the difference between optimizing and
+    # not. Experiment 2 wrote the reason down: "a splice lengthens a route, so
+    # the edited network's own schedule can cost more than the envelope allows
+    # -- by as little as 0.4 vehicle-hours, which is enough for the optimizer
+    # to discard the incumbent and fall back to a greedy build."
+    #
+    # Without it every solve here reported `exchanges=0`, reached -5.03% on
+    # unserved demand where Experiment 1 reaches -6.65%, and returned
+    # BYTE-IDENTICAL results for three different seeds. That last part is the
+    # dangerous one: identical replicates make the same-run noise floor exactly
+    # zero, and a zero floor licenses every margin that is not precisely nil.
+    incumbent, scale = fit_incumbent(judge, judge.budget.revenue_veh_hours)
+
     r = optimize_frequencies(
         judge.model, judge.budget, ladder=[], unserved_multiplier=lam,
         local_search_iterations=iterations, seed=seed, ladders=judge.ladders,
+        initial=incumbent,
         n_restarts=restarts, candidate_width=width, greedy_start=False)
     hw = dict(judge.baseline_plan.headways)
     for k, v in r.plan.headways.items():
@@ -187,6 +229,7 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         effort=f"{iterations}/{restarts}/{width}",
         seconds=time.time() - t0,
         metrics=exp3.metrics(fit, lam),
+        incumbent_scale=scale,
         contract={"ok": final.ok,
                   "rules_checked": sorted(set(check.rules_checked)
                                           | set(final.rules_checked)),
