@@ -312,8 +312,12 @@ def test_no_tracked_path_is_unusable_on_windows():
         pytest.skip("git not available")
     if out.returncode != 0:
         pytest.skip("not a git checkout")
+    # U+F07C is what Windows substitutes for a pipe when a file crosses from a
+    # Linux checkout: it looks like "|" and is not one, so a Windows clone
+    # committed 24 lookalike duplicates of files this repo already had.
     bad = [p for p in out.stdout.splitlines()
-           if any(c in Path(p).name for c in WINDOWS_FORBIDDEN)]
+           if any(c in Path(p).name for c in WINDOWS_FORBIDDEN)
+           or "\uf07c" in p]
     assert not bad, f"paths unusable on Windows: {bad[:5]}"
 
 

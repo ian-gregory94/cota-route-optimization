@@ -14,7 +14,8 @@ n=0
 while IFS= read -r f; do
   [ -n "$f" ] || continue
   d=$(dirname "$f"); b=$(basename "$f")
-  nb=$(printf '%s' "$b" | tr '<>:"|?*' '-------' | sed 's/^single_splice-/single-splice-/')
+  nb=$(printf '%s' "$b" | tr '<>:"|?*' '-------' \
+       | sed "s/$(printf '\uf07c')/-/g; s/^single_splice-/single-splice-/")
   [ "$b" = "$nb" ] && continue
   if [ -e "$d/$nb" ]; then
     echo "presweep: $d/$nb already exists; leaving $f for a human" >&2
@@ -27,5 +28,6 @@ while IFS= read -r f; do
   fi
   echo "presweep: $f -> $d/$nb"
   n=$((n + 1))
-done < <(find outputs config scripts src tests -type f -name '*[<>:"|?*]*' 2>/dev/null)
+done < <(find outputs config scripts src tests -type f \
+           \( -name '*[<>:"|?*]*' -o -name "*$(printf '\uf07c')*" \) 2>/dev/null)
 echo "presweep: $n renamed"
