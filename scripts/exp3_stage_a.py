@@ -256,11 +256,21 @@ def main() -> int:
                 if l.strip() and json.loads(l).get("role", "").startswith(NULL)]
     if len(rep_rows) >= 3:
         class F:
+            """A row read back as something exp3.noise_floor can measure.
+
+            The field names come from exp3.COMPONENTS rather than a second
+            hand-written list. They diverged once — `peak_vehicles` was renamed
+            to `peak_concurrency` in the row (it is peak concurrency, not a
+            fleet count) and this list was not updated, so a shard died with a
+            KeyError after scoring a state. The checkpoint meant the state
+            survived; the shard did not.
+            """
             def __init__(self, d):
-                for k in ("generalized_cost", "unserved_demand",
-                          "served_demand", "gc_per_served_trip",
-                          "revenue_veh_hours", "peak_vehicles"):
-                    setattr(self, k, float(d[k]))
+                for k in exp3.COMPONENTS:
+                    v = d.get(k)
+                    if v is None and k == "peak_vehicles":
+                        v = d.get("peak_concurrency")
+                    setattr(self, k, float(v if v is not None else 0.0))
         floor = exp3.noise_floor([F(d) for d in rep_rows[:3]], effort=effort,
                                  lam=args.lam)
         log.info("noise floor at %s — objective %.4f%%, unserved %.4f%%",

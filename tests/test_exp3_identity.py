@@ -187,3 +187,33 @@ def test_config_digest_is_content_addressed(tmp_path):
     (tmp_path / "cost_weights.yaml").write_text("w: 1\n")
     assert exp3.config_digest(tmp_path) == first, (
         "a config edited and reverted must produce the key it started with")
+
+
+def test_a_scored_row_carries_every_component_the_floor_needs():
+    """A rename in `row()` must not break the noise floor silently.
+
+    It did: `peak_vehicles` became `peak_concurrency` in the row and the
+    floor's field list was not updated, so a Stage A shard died with a
+    KeyError after scoring a state. The floor reads exp3.COMPONENTS, so this
+    asserts a row can satisfy exactly that list.
+    """
+    from cota_opt.exp3_score import ScoredState
+    s = ScoredState(state_key="x", state_digest="d", cardinality=0,
+                    members=[], lam=2.0, seed=1, effort="e", seconds=1.0,
+                    metrics=exp3.metrics(F(gc=1000.0, unserved=10.0)))
+    row = s.row()
+    for k in exp3.COMPONENTS:
+        assert k in row or (k == "peak_vehicles"
+                            and "peak_concurrency" in row), (
+            f"the floor needs {k} and the row does not carry it under any name")
+
+
+def test_the_row_is_json_serialisable():
+    """Rows go to JSONL. NaN is not valid JSON."""
+    import json
+    from cota_opt.exp3_score import ScoredState
+    s = ScoredState(state_key="x", state_digest="d", cardinality=0,
+                    members=[], lam=2.0, seed=1, effort="e", seconds=1.0,
+                    metrics=exp3.metrics(F(gc=1000.0, unserved=10.0)))
+    text = json.dumps(s.row())
+    assert "NaN" not in text and "Infinity" not in text
