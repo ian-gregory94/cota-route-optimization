@@ -180,14 +180,21 @@ def main() -> int:
     # The validator must be known-good before it decides what gets scored. It
     # refused 60 of 84 pool mutations once, on three separate defects, and the
     # run that discovered it had already spent an hour scoring the survivors.
-    inv = OUT / "validator_invariant.json"
-    if not (inv.exists() and json.loads(inv.read_text()).get("pass") is True):
-        log.error("the contract validator has not been checked against the "
-                  "twelve candidates Experiment 2B evaluated. Run "
-                  "scripts/exp3_validator_invariant.py first — a validator "
-                  "that silently refuses most of the pool turns Experiment 3 "
-                  "into a description of its own bugs.")
-        return 3
+    for name, script, why in (
+        ("validator_invariant.json", "exp3_validator_invariant.py",
+         "the contract validator has not been checked against the twelve "
+         "candidates Experiment 2B evaluated — a validator that silently "
+         "refuses most of the pool turns Experiment 3 into a description of "
+         "its own bugs"),
+        ("score_invariant.json", "exp3_score_invariant.py",
+         "the scoring chain has not been shown to reproduce a number "
+         "Experiment 2B recorded — an unpinned envelope, an unfitted "
+         "incumbent and a hand-rolled baseline proxy each produced "
+         "correct-looking output with no error anywhere")):
+        f = OUT / name
+        if not (f.exists() and json.loads(f.read_text()).get("pass") is True):
+            log.error("%s. Run scripts/%s first.", why, script)
+            return 3
 
     H = build_harness(seed=args.seed, common_lines=args.common_lines,
                       with_pathsets=False)

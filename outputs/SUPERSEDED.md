@@ -62,3 +62,26 @@ finding about COTA's network.
 `outputs/exp3/validator_invariant.json` is the check that now stands against
 this: the validator must accept all twelve candidates Experiment 2B applied,
 scored and reported. It does, and the pool passes 84/84.
+
+## Experiment 3 — Phase A1's second attempt, superseded 2026-08-30
+
+`outputs/exp3/superseded/unpinned_envelope/` — four singles and three
+zero-edit replicates, scored before the envelope was pinned.
+
+Unlike the first supersession, **these scores are wrong, not merely
+inconsistently annotated.** Each state resolved `constraints.yaml`'s
+`weekday_revenue_vehicle_hours: baseline` sentinel against its *own* edited
+network, so a mutation that lengthened its routes was handed a larger budget to
+spend. Every state was measured against a different envelope.
+
+Two further defects in the same scoring chain were found alongside it: the
+incumbent was not refitted to the envelope, so the optimizer fell back to a
+greedy build (`exchanges=0`, and three seeds returning byte-identical results —
+a zero noise floor); and a hand-rolled `SimpleNamespace` stood in for 2B's
+`_Baseline` proxy.
+
+`outputs/exp3/score_invariant.json` is the check that now stands against this.
+With all three fixed, the Experiment 3 chain reproduces 2B's recorded numbers
+exactly: the zero-edit state at 9812.3 unserved / 1,785,263 gc / 2507.8
+vehicle-hours, and `splice|011|034|WESHIGW` at **−0.5846%, against 2B's
+−0.5846% — a gap of 0.0000 points.**

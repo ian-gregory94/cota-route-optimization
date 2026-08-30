@@ -1,0 +1,15 @@
+========================================================================================
+SCORING-CHAIN INVARIANT — reproduce an Experiment 2B number
+========================================================================================
+  target        splice|011|034|WESHIGW
+  2B recorded   -0.5846% unserved vs no edit @ 60000/2/32
+  tolerance     0.13 points (one discovery-effort floor)
+
+  <none>                       unserved    9812.3  gc     1785263  vh  2507.8  scale x1.0000  332s
+incumbent plan is infeasible under this budget
+  splice|011|034|WESHIGW       unserved    9755.0  gc     1787084  vh  2514.4  scale x1.0000  408s
+
+  reproduced    -0.5846%   (2B: -0.5846%, gap 0.0000 points)
+  VERDICT: PASS
+
+artifacts: /home/claude/columbus-transit-opt/outputs/exp3/score_invariant.json

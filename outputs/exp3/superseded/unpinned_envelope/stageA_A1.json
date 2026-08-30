@@ -1,0 +1,39 @@
+{
+  "phase": "A1",
+  "singles_scored": 1,
+  "replicates": 3,
+  "noise_floor": {
+    "n_replicates": 3,
+    "effort": "60000/2/32",
+    "absolute_3sigma": {
+      "objective": 0.0,
+      "generalized_cost": 0.0,
+      "unserved_demand": 0.0,
+      "served_demand": 0.0,
+      "gc_per_served_trip": 0.0,
+      "revenue_veh_hours": 0.0,
+      "peak_vehicles": 0.0
+    },
+    "relative_3sigma_pct": {
+      "objective": 0.0,
+      "generalized_cost": 0.0,
+      "unserved_demand": 0.0,
+      "served_demand": 0.0,
+      "gc_per_served_trip": 0.0,
+      "revenue_veh_hours": 0.0,
+      "peak_vehicles": 0.0
+    },
+    "replicate_means": {
+      "objective": 2956120.5839554886,
+      "generalized_cost": 1786612.7109357275,
+      "unserved_demand": 9745.898941831343,
+      "served_demand": 21203.10105816866,
+      "gc_per_served_trip": 84.26185896272096,
+      "revenue_veh_hours": 2515.1316648835345,
+      "peak_vehicles": 176.19194675925925
+    },
+    "note": "3 sigma of the zero-edit replicate spread, measured in this run at this effort. Floors from other runs or other quantities do not transfer."
+  },
+  "best_single": "add_stop-001#dc6e768a1ae6",
+  "refused": []
+}
