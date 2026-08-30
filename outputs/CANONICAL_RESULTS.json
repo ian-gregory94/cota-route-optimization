@@ -1,5 +1,5 @@
 {
-  "generated_commit": "1a23c82a312b5019ac8a3dd60468097ebd53fd0c-dirty",
+  "generated_commit": "9cc077963cd4dbf646bdd1ff0a22bfcbb94e009f-dirty",
   "why_this_exists": "The Experiment 2 evaluator scored every plan under Model A for three days while reporting Model B, so an artifact can look entirely legitimate and contain the wrong model. Nothing here is deleted \u2014 superseded outputs are the record of what was run \u2014 but a reader must be able to tell which files are load-bearing without reconstructing the history.",
   "how_to_check_an_artifact": "Open its experiment.json and read `evaluator`. `common_lines: same_route` with `source: explicit` is Model B, declared. `null` means the run predates provenance recording and the model must be established another way \u2014 for Experiment 2 that means checking whether the cell key carries |same_route|.",
   "experiments": {

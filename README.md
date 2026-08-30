@@ -7,11 +7,11 @@ A research platform for one question:
 > allocation, transfer timing, stop structure, and eventually route topology?
 
 Everything here is built from public data, calibrated where public data allows,
-and explicit about the rest. It has retracted its own headline answer **three
-times** — once for a modelling error, once for an under-powered search, once
-because the evaluator was silently the wrong model. Those retractions are the
-most useful output so far, and all three are documented rather than quietly
-fixed.
+and explicit about the rest. It has retracted its own headline answer **four
+times** — for a modelling error, an under-powered search, an evaluator that was
+silently the wrong model, and a benefit that turned out to be the search rather
+than the intervention. Those retractions are the most useful output so far, and
+all four are documented rather than quietly fixed.
 
 ## What we currently believe
 
@@ -39,17 +39,28 @@ Two things travel with that number and may not be dropped:
 * **The certified frontier begins at λ = 2.** The cost-favouring λ ≤ 1 corner
   fails path-set adequacy on both models and is reported as uncertified.
 
-**Experiment 2 — route geometry, one supportable claim.**
+**Experiment 2 — route geometry, no supportable claim.**
 
-> Through-routing **33 Henderson** and **34 Morse** at Westview Turnaround
-> reduces unserved demand by about **0.5%** at roughly neutral generalized
-> cost, using only track COTA already operates — and adding further edits from
-> the same shortlist gives all of it back.
+> Twelve splice candidates. **Six do measurable harm. None does measurable
+> good.** The best available geometry intervention in this candidate set is no
+> geometry intervention.
 
-Of twelve splice candidates: **4 beneficial, 2 inside the noise floor, 6
-harmful.** A numerically better candidate exists (11 Bryden/Maize + 34 Morse,
-−0.585%) but leads by less than the measured noise floor and is the weaker
-proposal on cycle length, vehicle-hours and trip asymmetry.
+At the ranking effort used to order candidates, the two leaders looked worth
+about half a point each. Re-solved at the effort Experiment 1 is certified at —
+400,000 iterations, 20 restarts, with three zero-edit replicates in the same run
+— both land inside the 0.287-point noise floor. The replicates score 9749.1,
+9748.8 and 9765.1 unserved; the leading candidate scores 9764.8. Re-running the
+*baseline* with a different seed moves it further than the edit does.
+
+The unedited network was the under-optimized one: at low effort the baseline had
+not been solved as well as the edited networks had. Both sides ran at the same
+*nominal* effort, which is what the standing rule requires — the same effort was
+simply not equally sufficient for both. **Matched effort is necessary and not
+sufficient; what has to match is convergence.**
+
+The harmful candidates stay harmful at full effort. Harm survives more search
+and apparent benefit does not, which is the right way round — and a useful
+heuristic: a benefit that shrinks with effort probably was never there.
 
 **Experiment 2B — the joint subset search** over all 240 structurally feasible
 combinations is running. Because edits do not compose, *it*, not the

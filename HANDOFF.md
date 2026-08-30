@@ -160,30 +160,23 @@ the cap was never the binding constraint — scenario coverage was.
 
 ## 2. What is provisional
 
-### Experiment 2 — geometry, and the one claim it supports
+### Experiment 2 — geometry, and why it supports nothing
 
-The supportable claim is a single sentence:
+> Twelve splice candidates. **Six do measurable harm. None does measurable
+> good.** The best available geometry intervention in this candidate set is no
+> geometry intervention. See D24.
 
-> Through-routing **33 Henderson** and **34 Morse** at Westview Turnaround
-> reduces unserved demand by about **0.5%** at roughly neutral generalized cost,
-> using only track COTA already runs — and adding further edits from the same
-> shortlist gives all of it back.
+The claim was 0.9% under Model A, 0.5% under corrected Model B at ranking
+effort, and **0.0% under Model B at the effort the rest of the project reports
+at**. Both leading candidates land inside a 0.287-point floor when re-solved at
+400,000 iterations and 20 restarts against zero-edit replicates from the same
+run — 33+34 at +0.160%, 11+34 at +0.060%, while the replicates themselves span
+9749.1 to 9765.1 unserved and 33+34 scores 9764.8.
 
-**That number was 0.9% until 2026-08-30 and the change is not a refinement.**
-The evaluation script scored every plan under Model A while reporting Model B
-(ACCEPTANCE.md, *Defect: the Experiment 2 evaluator was Model A*). Re-run under
-the corrected evaluator, six of the twelve candidates change sign, the
-classification goes from 7 beneficial / 3 at the floor / 2 harmful to **4 / 2 /
-6**, and this edit's effect roughly halves. See D23.
-
-It is also no longer the best-scoring single: `splice|011|034|WESHIGW` measures
-−0.585% against its −0.485%. **The recommendation stays where it is anyway**,
-because the gap is 0.100 points against a 0.130-point noise floor — 0.77 of a
-floor, not a distinguishable difference — and on the criteria the model does not
-represent, 11+34 is the weaker proposal: a 91-minute cycle against 59, +1.0
-vehicle-hours where 33+34 releases 0.6, and a 1 : 4.1 trip asymmetry that leaves
-most of 34 Morse short-turning. That is a judgement about the proposal, and it
-is labelled as one.
+The unedited network was the under-optimized one. Both sides ran at the same
+nominal effort; the same effort was not equally sufficient for both. **Matched
+effort is necessary and not sufficient — what has to match is convergence, and
+nothing was checking it.**
 
 Four things had to be established to get here, and each is a warning to anyone
 tempted to shortcut the funnel.
