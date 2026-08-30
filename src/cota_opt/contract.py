@@ -128,6 +128,35 @@ def edit_distance(before: TransitNetwork, after: TransitNetwork) -> float:
     return moved / base
 
 
+def split_shares(net: TransitNetwork, route_id: str,
+                 junction: str) -> tuple[float, float]:
+    """Each half's share of a route's stop-visits, if it were cut at `junction`.
+
+    ONE implementation, used by both the generator that proposes splits and the
+    validator that accepts them. They previously computed this differently --
+    the generator measured on the route's longest pattern, the validator summed
+    over every pattern -- so the generator proposed at 30% by its own arithmetic
+    and the validator rejected all ten proposals at under 30% by its. The pool
+    ended up with zero splits, which is the "advertised operation the search
+    cannot reach" failure one level up from the code.
+
+    The validator's reading is the right one and is what this returns:
+    stop-visits over ALL of the route's patterns, because that is the unit the
+    removal cap and the demand model both work in. Patterns that never reach
+    the junction are counted in the denominator and in neither half -- they
+    survive the split intact, attached to whichever half contains them, so they
+    are part of the route's size but not evidence that either half is big.
+    """
+    pats = [p for p in net.patterns.values() if p.route_id == route_id]
+    total = sum(len(p.stops) for p in pats)
+    if not total:
+        return 0.0, 0.0
+    reach = [p for p in pats if junction in p.stops]
+    head = sum(p.stops.index(junction) + 1 for p in reach)
+    tail = sum(len(p.stops) - p.stops.index(junction) for p in reach)
+    return head / total, tail / total
+
+
 def _dist_m(coords: dict[str, tuple[float, float]], a: str, b: str) -> float:
     if a not in coords or b not in coords:
         return math.inf
@@ -186,8 +215,6 @@ def validate_mutation(e: GeometryEdit, net: TransitNetwork,
             raise ContractViolation(
                 "split-junction",
                 f"{e.key}: {e.junction} is on no pattern of {e.route_id}")
-        total = sum(len(p.stops) for p in net.patterns.values()
-                    if p.route_id == e.route_id)
         for p in pats:
             i = p.stops.index(e.junction)
             if i < 1 or i > len(p.stops) - 2:
@@ -195,17 +222,16 @@ def validate_mutation(e: GeometryEdit, net: TransitNetwork,
                     "split-junction",
                     f"{e.key}: {e.junction} is a terminal of pattern "
                     f"{p.pattern_id}, so one half would be a single stop")
-        head = sum(p.stops.index(e.junction) + 1 for p in pats)
-        tail = sum(len(p.stops) - p.stops.index(e.junction) for p in pats)
-        for name, n in (("first", head), ("second", tail)):
-            if total and n / total < limits.min_split_share:
+        head_f, tail_f = split_shares(net, e.route_id, e.junction)
+        for name, frac in (("first", head_f), ("second", tail_f)):
+            if frac < limits.min_split_share:
                 raise ContractViolation(
                     "split-share",
-                    f"{e.key}: the {name} half keeps {n}/{total} = "
-                    f"{100.0 * n / total:.1f}% of the route's stop-visits, "
-                    f"under the {100 * limits.min_split_share:.0f}% floor. "
-                    f"Below that it is not half a route, it is a truncation "
-                    f"with extra steps.")
+                    f"{e.key}: the {name} half keeps {100.0 * frac:.1f}% of "
+                    f"the route's stop-visits, under the "
+                    f"{100 * limits.min_split_share:.0f}% floor. Below that it "
+                    f"is not half a route, it is a truncation with extra "
+                    f"steps.")
 
 
 # ---------------------------------------------------------------------------

@@ -423,3 +423,40 @@ def test_the_two_straighten_rules_cannot_both_fire(net, coords):
         f"the generator proposes straightens at circuity >= {proposes_at} but "
         f"gate 3-4 forbids them at <= {LIMITS.min_deviation_circuity}; the "
         f"bands must not overlap")
+
+
+# -- one arithmetic, two callers -------------------------------------------
+
+def test_the_generator_and_the_validator_agree_on_split_shares(net, coords):
+    """They disagreed once, and the pool silently lost every split proposal.
+
+    The generator measured the share on the route's longest pattern; the
+    validator summed over every pattern. Ten splits were proposed at 30% by one
+    reading and rejected at under 30% by the other, so the one operation that
+    raises the route count was advertised and unreachable.
+    """
+    from cota_opt.contract import split_shares
+    from cota_opt.mutate import split_candidates
+    import cota_opt.candidates as cand
+
+    ctx = cand.stop_context.__wrapped__ if hasattr(cand.stop_context,
+                                                   "__wrapped__") else None
+    head, tail = split_shares(net, "A", "S2")
+    assert head + tail > 1.0 - 1e-9, (
+        "the junction is counted in both halves, so the shares overlap by one "
+        "stop-visit per reaching pattern")
+    lim = ContractLimits(min_split_share=min(head, tail))
+    e = GeometryEdit(kind="split", route_id="A", junction="S2",
+                     description="cut A at S2")
+    validate_mutation(e, net, coords, lim)      # exactly at the floor: passes
+
+    lim_tight = ContractLimits(min_split_share=min(head, tail) + 1e-9)
+    with pytest.raises(ContractViolation, match="split-share"):
+        validate_mutation(e, net, coords, lim_tight)
+
+
+def test_split_shares_counts_patterns_that_never_reach_the_junction(net):
+    """They survive the split but are evidence for neither half's size."""
+    from cota_opt.contract import split_shares
+    head, tail = split_shares(net, "A", "S2")
+    assert 0.0 < head < 1.0 and 0.0 < tail < 1.0

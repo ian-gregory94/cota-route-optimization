@@ -31,7 +31,8 @@ from typing import Any, Iterable, Sequence
 import numpy as np
 
 from . import candidates as cand
-from .contract import ContractLimits, ContractViolation, validate_mutation
+from .contract import (ContractLimits, ContractViolation,
+                       split_shares, validate_mutation)
 from .exp3 import POOL_VERSION, mutation_id
 from .geometry import GeometryEdit
 from .network import RoutePattern, TransitNetwork
@@ -64,6 +65,8 @@ class PoolAudit:
     rejected: list[dict[str, Any]] = field(default_factory=list)
     proposed: int = 0
     quotas: dict[str, int] = field(default_factory=dict)
+    unfilled: dict[str, Any] = field(default_factory=dict)
+    liveness: dict[str, Any] = field(default_factory=dict)
 
     def reject(self, e: GeometryEdit, rule: str, why: str) -> None:
         self.rejected.append({"id": mutation_id(e), "kind": e.kind,
@@ -80,6 +83,12 @@ class PoolAudit:
             "accepted_by_kind": dict(Counter(e.kind for e in self.accepted)),
             "rejected_by_rule": dict(Counter(r["rule"] for r in self.rejected)),
             "rejected_by_kind": dict(Counter(r["kind"] for r in self.rejected)),
+            "quotas_not_filled": self.unfilled,
+            "quotas_not_filled_note":
+                "The network does not contain this many legal proposals of "
+                "these kinds. Stated rather than left for a reader to infer "
+                "from a count that looks like a choice.",
+            "rule_liveness": self.liveness,
             "mutations": [{"id": mutation_id(e), "kind": e.kind,
                            "route_id": e.route_id, "with_route": e.with_route,
                            "junction": e.junction,
@@ -131,10 +140,13 @@ def split_candidates(net: TransitNetwork, ctx: cand.StopContext,
         for i, sid in enumerate(p.stops):
             if i < 1 or i > n - 2:
                 continue
-            head, tail = i + 1, n - i
-            share = min(head, tail) / n
+            # The validator's arithmetic, not a second copy of it. These two
+            # disagreed once and the pool silently lost every split.
+            head_f, tail_f = split_shares(net, rid, sid)
+            share = min(head_f, tail_f)
             if share < min_share:
                 continue
+            head, tail = i + 1, n - i
             others = len(net.stop_routes.get(sid, set()) - {rid})
             if others < 1:
                 continue
@@ -248,51 +260,66 @@ def add_stop_candidates(net: TransitNetwork, ctx: cand.StopContext,
 # the pool
 # ---------------------------------------------------------------------------
 
+#: Generators are asked for this multiple of each quota, and the surplus is
+#: trimmed afterwards. Two reasons, both about the audit being worth reading.
+#:
+#: Generating exactly the quota makes every rejection invisible: proposals die
+#: inside `_best` with no record, the audit reports zero rejections, and a
+#: broken filter is indistinguishable from a clean pool. Oversampling also puts
+#: the contract validator in front of proposals the generators' own heuristics
+#: would have hidden, which is how the split-share disagreement between the
+#: generator and the validator was found at all.
+OVERSAMPLE = 3
+
+
 def build_pool(net: TransitNetwork, ctx: cand.StopContext, zs,
                stop_ids: list[str], od_zone_flow: np.ndarray,
                trips_by_route: dict[str, int],
                limits: ContractLimits,
                exclude_routes: set[str] | None = None,
                quotas: dict[str, int] | None = None,
-               pool_version: str = POOL_VERSION) -> PoolAudit:
+               pool_version: str = POOL_VERSION,
+               oversample: int = OVERSAMPLE) -> PoolAudit:
     """Every generator, contract-validated, quota-capped, fully audited.
 
-    The order of operations is deliberate. Proposals are generated first and
-    *then* validated, so an illegal proposal appears in the audit with the rule
-    that removed it rather than never existing. A pool that silently declines to
-    propose something cannot be distinguished from a generator that cannot think
-    of it.
+    The order of operations is deliberate: generate wide, validate everything,
+    then trim to quota. An illegal proposal appears in the audit with the rule
+    that removed it rather than never existing, and the quota's effect is
+    visible rather than buried inside each generator's own shortlist. A pool
+    that silently declines to propose something cannot be told apart from a
+    generator that could not think of it.
     """
     q = dict(KIND_QUOTA if quotas is None else quotas)
     ex = set(exclude_routes or set())
     audit = PoolAudit(pool_version=pool_version, quotas=q)
+    n = lambda k: max(1, q.get(k, 10) * oversample)          # noqa: E731
 
     raw: list[GeometryEdit] = []
     raw += cand.truncation_candidates(net, ctx, exclude_routes=ex,
-                                      top_n=q.get("truncate", 12))
+                                      top_n=n("truncate"))
     raw += cand.straighten_candidates(net, ctx, exclude_routes=ex,
-                                      top_n=q.get("straighten", 12))
+                                      top_n=n("straighten"))
     raw += cand.extension_candidates(net, ctx, zs, stop_ids, od_zone_flow,
                                      trips_by_route, exclude_routes=ex,
-                                     top_n=q.get("extend", 12))
+                                     top_n=n("extend"))
     raw += cand.reroute_candidates(net, ctx, exclude_routes=ex,
-                                   top_n=q.get("reroute", 12))
+                                   top_n=n("reroute"))
     raw += cand.splice_candidates(net, ctx, exclude_routes=ex,
-                                  top_n=q.get("splice", 12))
-    raw += split_candidates(net, ctx, exclude_routes=ex,
-                            top_n=q.get("split", 10))
+                                  top_n=n("splice"))
+    raw += split_candidates(net, ctx, exclude_routes=ex, top_n=n("split"))
     raw += terminal_candidates(net, ctx, limits, exclude_routes=ex,
-                               top_n=q.get("change_terminal", 10))
+                               top_n=n("change_terminal"))
     raw += add_stop_candidates(net, ctx, exclude_routes=ex,
-                               top_n=q.get("add_stop", 10))
+                               top_n=n("add_stop"))
     audit.proposed = len(raw)
 
     seen: set[str] = set()
+    legal: list[GeometryEdit] = []
     for e in raw:
         mid = mutation_id(e)
         if mid in seen:
             audit.reject(e, "duplicate",
-                         "an identical mutation was already accepted")
+                         "an identical mutation was already proposed")
             continue
         try:
             validate_mutation(e, net, ctx.coords, limits)
@@ -300,17 +327,93 @@ def build_pool(net: TransitNetwork, ctx: cand.StopContext, zs,
             audit.reject(e, v.rule, v.detail)
             continue
         seen.add(mid)
+        legal.append(e)
+
+    # Trim to quota, keeping generator order (which is structural rank). What
+    # the quota cut is recorded, not discarded silently: a reader can see
+    # exactly what a wider pool would have contained.
+    kept_by_kind: dict[str, int] = {}
+    for e in legal:
+        cap = q.get(e.kind, 10)
+        if kept_by_kind.get(e.kind, 0) >= cap:
+            audit.reject(e, "quota",
+                         f"the {e.kind} quota of {cap} was already full; this "
+                         f"proposal was legal and ranked below the cut")
+            continue
+        kept_by_kind[e.kind] = kept_by_kind.get(e.kind, 0) + 1
         audit.accepted.append(e)
 
     # Deterministic final order: by id, so the pool is a set with a canonical
     # listing and a shard partition cannot depend on generation order. That is
     # not hypothetical -- Experiment 2B lost 57 of 240 subsets to exactly this.
     audit.accepted.sort(key=mutation_id)
+    got = Counter(e.kind for e in audit.accepted)
+    audit.unfilled = {k: {"quota": v, "accepted": got.get(k, 0)}
+                      for k, v in q.items() if got.get(k, 0) < v}
+    audit.liveness = probe_rules(net, ctx.coords, limits)
     log.info("mutation pool %s: %d proposed, %d accepted (%s), %d rejected",
              pool_version, audit.proposed, len(audit.accepted),
-             dict(Counter(e.kind for e in audit.accepted)),
-             len(audit.rejected))
+             dict(got), len(audit.rejected))
+    if audit.unfilled:
+        log.info("quotas NOT filled: %s — the network does not contain that "
+                 "many legal proposals of those kinds", audit.unfilled)
     return audit
+
+
+def probe_rules(net: TransitNetwork, coords: dict[str, tuple[float, float]],
+                limits: ContractLimits) -> dict[str, Any]:
+    """Confirm each contract rule actually fires, on mutations built to break it.
+
+    An audit reporting zero contract rejections is ambiguous: either the
+    generators respect every rule, or the checker is a no-op. This resolves it
+    by handing the validator deliberately illegal mutations and recording which
+    rule caught each. A probe that does NOT raise is the interesting result and
+    is recorded as a failure, because it means a rule the contract advertises is
+    not being enforced.
+    """
+    live = {p.route_id for p in net.patterns.values()}
+    any_route = sorted(live)[0] if live else "?"
+    probes: list[tuple[str, str, GeometryEdit]] = []
+    probes.append(("existing-stops-only", "a stop that does not exist",
+                   GeometryEdit(kind="add_stop", route_id=any_route,
+                                append_stops=("__NO_SUCH_STOP__",),
+                                description="probe")))
+    probes.append(("live-routes", "a route that does not exist",
+                   GeometryEdit(kind="truncate", route_id="__NO_SUCH_ROUTE__",
+                                drop_stops=(), description="probe")))
+    served = sorted({s for p in net.patterns.values() for s in p.stops})
+    if len(served) >= 2 and coords:
+        far = max(served[1:], key=lambda s: _probe_dist(coords, served[0], s))
+        probes.append(("terminal-move", "a terminal moved beyond the limit",
+                       GeometryEdit(kind="change_terminal", route_id=any_route,
+                                    junction=served[0], append_stops=(far,),
+                                    description="probe")))
+    out: dict[str, Any] = {"checked": [], "not_enforced": []}
+    for rule, what, e in probes:
+        try:
+            validate_mutation(e, net, coords, limits)
+        except ContractViolation as v:
+            out["checked"].append({"rule": rule, "probe": what,
+                                   "caught_by": v.rule})
+            continue
+        except Exception as exc:                      # noqa: BLE001
+            out["checked"].append({"rule": rule, "probe": what,
+                                   "caught_by": type(exc).__name__})
+            continue
+        out["not_enforced"].append({"rule": rule, "probe": what})
+    out["all_rules_fire"] = not out["not_enforced"]
+    out["note"] = ("Deliberately illegal mutations, one per rule, handed to the "
+                   "validator. This is what makes a zero-contract-rejection "
+                   "audit evidence about the GENERATORS rather than about the "
+                   "checker.")
+    return out
+
+
+def _probe_dist(coords: dict[str, tuple[float, float]], a: str, b: str) -> float:
+    if a not in coords or b not in coords:
+        return 0.0
+    (x1, y1), (x2, y2) = coords[a], coords[b]
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
 
 def incompatible_pairs(edits: Sequence[GeometryEdit]) -> list[tuple[str, str]]:

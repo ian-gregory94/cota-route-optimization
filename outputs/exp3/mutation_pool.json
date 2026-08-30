@@ -1,0 +1,2138 @@
+{
+  "pool_version": "exp3-pool-v1",
+  "proposed": 189,
+  "accepted": 84,
+  "rejected": 105,
+  "quotas": {
+    "truncate": 12,
+    "straighten": 12,
+    "extend": 12,
+    "reroute": 12,
+    "splice": 12,
+    "add_stop": 10,
+    "change_terminal": 10,
+    "split": 10
+  },
+  "accepted_by_kind": {
+    "add_stop": 10,
+    "change_terminal": 10,
+    "extend": 12,
+    "reroute": 12,
+    "splice": 12,
+    "split": 4,
+    "straighten": 12,
+    "truncate": 12
+  },
+  "rejected_by_rule": {
+    "quota": 105
+  },
+  "rejected_by_kind": {
+    "truncate": 24,
+    "straighten": 11,
+    "extend": 10,
+    "reroute": 12,
+    "splice": 13,
+    "change_terminal": 20,
+    "add_stop": 15
+  },
+  "quotas_not_filled": {
+    "split": {
+      "quota": 10,
+      "accepted": 4
+    }
+  },
+  "quotas_not_filled_note": "The network does not contain this many legal proposals of these kinds. Stated rather than left for a reader to infer from a count that looks like a choice.",
+  "rule_liveness": {
+    "checked": [
+      {
+        "rule": "existing-stops-only",
+        "probe": "a stop that does not exist",
+        "caught_by": "existing-stops-only"
+      },
+      {
+        "rule": "live-routes",
+        "probe": "a route that does not exist",
+        "caught_by": "live-routes"
+      },
+      {
+        "rule": "terminal-move",
+        "probe": "a terminal moved beyond the limit",
+        "caught_by": "terminal-move"
+      }
+    ],
+    "not_enforced": [],
+    "all_rules_fire": true,
+    "note": "Deliberately illegal mutations, one per rule, handed to the validator. This is what makes a zero-contract-rejection audit evidence about the GENERATORS rather than about the checker."
+  },
+  "mutations": [
+    {
+      "id": "add_stop-001#dc6e768a1ae6",
+      "kind": "add_stop",
+      "route_id": "001",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop LANNEIE to route 001: a 5 m detour reaching 4882 units of demand no other route serves",
+      "evidence": {
+        "stop": "LANNEIE",
+        "detour_m": 4.7959110403869545,
+        "exclusive_demand": 4882.125
+      }
+    },
+    {
+      "id": "add_stop-004#27407b151153",
+      "kind": "add_stop",
+      "route_id": "004",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop NORTER5 to route 004: a 1 m detour reaching 5724 units of demand no other route serves",
+      "evidence": {
+        "stop": "NORTER5",
+        "detour_m": 1.2325062306939003,
+        "exclusive_demand": 5723.875
+      }
+    },
+    {
+      "id": "add_stop-006#9aecfd5100eb",
+      "kind": "add_stop",
+      "route_id": "006",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop NORTER4 to route 006: a 2 m detour reaching 5724 units of demand no other route serves",
+      "evidence": {
+        "stop": "NORTER4",
+        "detour_m": 2.05637611417734,
+        "exclusive_demand": 5723.875
+      }
+    },
+    {
+      "id": "add_stop-007#02161399a599",
+      "kind": "add_stop",
+      "route_id": "007",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop NORTER5 to route 007: a 1 m detour reaching 5724 units of demand no other route serves",
+      "evidence": {
+        "stop": "NORTER5",
+        "detour_m": 1.2325062306939003,
+        "exclusive_demand": 5723.875
+      }
+    },
+    {
+      "id": "add_stop-008#f178c37040f5",
+      "kind": "add_stop",
+      "route_id": "008",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop SOUTER9 to route 008: a 0 m detour reaching 2936 units of demand no other route serves",
+      "evidence": {
+        "stop": "SOUTER9",
+        "detour_m": 0.05055773487862325,
+        "exclusive_demand": 2936.125
+      }
+    },
+    {
+      "id": "add_stop-010#22c4c35ac5b2",
+      "kind": "add_stop",
+      "route_id": "010",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop NORTER5 to route 010: a 0 m detour reaching 5724 units of demand no other route serves",
+      "evidence": {
+        "stop": "NORTER5",
+        "detour_m": 0.49377803040363233,
+        "exclusive_demand": 5723.875
+      }
+    },
+    {
+      "id": "add_stop-025#2bae7942d365",
+      "kind": "add_stop",
+      "route_id": "025",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop MORTAYNW to route 025: a 1 m detour reaching 869 units of demand no other route serves",
+      "evidence": {
+        "stop": "MORTAYNW",
+        "detour_m": 0.6196905877267227,
+        "exclusive_demand": 869.25
+      }
+    },
+    {
+      "id": "add_stop-033#273b2cd43dfd",
+      "kind": "add_stop",
+      "route_id": "033",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop 80WBRIW to route 033: a 2 m detour reaching 1623 units of demand no other route serves",
+      "evidence": {
+        "stop": "80WBRIW",
+        "detour_m": 2.059061479484683,
+        "exclusive_demand": 1623.375
+      }
+    },
+    {
+      "id": "add_stop-102#78da77548338",
+      "kind": "add_stop",
+      "route_id": "102",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop SOUTER8 to route 102: a 0 m detour reaching 2936 units of demand no other route serves",
+      "evidence": {
+        "stop": "SOUTER8",
+        "detour_m": 0.4764529345824826,
+        "exclusive_demand": 2936.125
+      }
+    },
+    {
+      "id": "add_stop-141#2fc0aa211ecb",
+      "kind": "add_stop",
+      "route_id": "141",
+      "with_route": null,
+      "junction": null,
+      "description": "add stop NORTER2 to route 141: a 0 m detour reaching 5724 units of demand no other route serves",
+      "evidence": {
+        "stop": "NORTER2",
+        "detour_m": 0.2940860107104868,
+        "exclusive_demand": 5723.875
+      }
+    },
+    {
+      "id": "change_terminal-002-MAIOAKE1#e3cb084310eb",
+      "kind": "change_terminal",
+      "route_id": "002",
+      "with_route": null,
+      "junction": "MAIOAKE1",
+      "description": "move route 002's terminal from MAIOAKE1 to MAIESTE, 397 m away, reaching 422 more units of demand no other route serves",
+      "evidence": {
+        "from": "MAIOAKE1",
+        "to": "MAIESTE",
+        "metres": 397.4252187775584,
+        "exclusive_demand_gain": 422.5
+      }
+    },
+    {
+      "id": "change_terminal-003-PKWCTRS#e605a37bbb0f",
+      "kind": "change_terminal",
+      "route_id": "003",
+      "with_route": null,
+      "junction": "PKWCTRS",
+      "description": "move route 003's terminal from PKWCTRS to STRRAXE, 1017 m away, reaching 1054 more units of demand no other route serves",
+      "evidence": {
+        "from": "PKWCTRS",
+        "to": "STRRAXE",
+        "metres": 1016.5440265537604,
+        "exclusive_demand_gain": 1053.5
+      }
+    },
+    {
+      "id": "change_terminal-004-BOASHAS#708035f204d1",
+      "kind": "change_terminal",
+      "route_id": "004",
+      "with_route": null,
+      "junction": "BOASHAS",
+      "description": "move route 004's terminal from BOASHAS to SINSHON, 929 m away, reaching 986 more units of demand no other route serves",
+      "evidence": {
+        "from": "BOASHAS",
+        "to": "SINSHON",
+        "metres": 929.1791130835958,
+        "exclusive_demand_gain": 985.5
+      }
+    },
+    {
+      "id": "change_terminal-005-GTCREFS#7a2a91c8eec7",
+      "kind": "change_terminal",
+      "route_id": "005",
+      "with_route": null,
+      "junction": "GTCREFS",
+      "description": "move route 005's terminal from GTCREFS to REFGENE, 156 m away, reaching 188 more units of demand no other route serves",
+      "evidence": {
+        "from": "GTCREFS",
+        "to": "REFGENE",
+        "metres": 155.9212627885362,
+        "exclusive_demand_gain": 187.53571428571428
+      }
+    },
+    {
+      "id": "change_terminal-007-EMO4THW#16606ceb331e",
+      "kind": "change_terminal",
+      "route_id": "007",
+      "with_route": null,
+      "junction": "EMO4THW",
+      "description": "move route 007's terminal from EMO4THW to SOUTER9, 415 m away, reaching 2890 more units of demand no other route serves",
+      "evidence": {
+        "from": "EMO4THW",
+        "to": "SOUTER9",
+        "metres": 414.79337173770466,
+        "exclusive_demand_gain": 2890.0
+      }
+    },
+    {
+      "id": "change_terminal-023-EASHAMN#357bdf4fa511",
+      "kind": "change_terminal",
+      "route_id": "023",
+      "with_route": null,
+      "junction": "EASHAMN",
+      "description": "move route 023's terminal from EASHAMN to REFTENE, 687 m away, reaching 847 more units of demand no other route serves",
+      "evidence": {
+        "from": "EASHAMN",
+        "to": "REFTENE",
+        "metres": 686.6192296059454,
+        "exclusive_demand_gain": 847.0
+      }
+    },
+    {
+      "id": "change_terminal-033-METS565S#591129a14c14",
+      "kind": "change_terminal",
+      "route_id": "033",
+      "with_route": null,
+      "junction": "METS565S",
+      "description": "move route 033's terminal from METS565S to BRISHAW, 1157 m away, reaching 1623 more units of demand no other route serves",
+      "evidence": {
+        "from": "METS565S",
+        "to": "BRISHAW",
+        "metres": 1157.1737726444483,
+        "exclusive_demand_gain": 1623.375
+      }
+    },
+    {
+      "id": "change_terminal-101-EMO4THW#56a30c84c920",
+      "kind": "change_terminal",
+      "route_id": "101",
+      "with_route": null,
+      "junction": "EMO4THW",
+      "description": "move route 101's terminal from EMO4THW to SOUTER9, 415 m away, reaching 2890 more units of demand no other route serves",
+      "evidence": {
+        "from": "EMO4THW",
+        "to": "SOUTER9",
+        "metres": 414.79337173770466,
+        "exclusive_demand_gain": 2890.0
+      }
+    },
+    {
+      "id": "change_terminal-102-MOU5THW1#abb1c550bb9c",
+      "kind": "change_terminal",
+      "route_id": "102",
+      "with_route": null,
+      "junction": "MOU5THW1",
+      "description": "move route 102's terminal from MOU5THW1 to SOUTER9, 548 m away, reaching 2673 more units of demand no other route serves",
+      "evidence": {
+        "from": "MOU5THW1",
+        "to": "SOUTER9",
+        "metres": 548.2446189934085,
+        "exclusive_demand_gain": 2673.3333333333335
+      }
+    },
+    {
+      "id": "change_terminal-141-STAHIGW#b5ce9b1e03b5",
+      "kind": "change_terminal",
+      "route_id": "141",
+      "with_route": null,
+      "junction": "STAHIGW",
+      "description": "move route 141's terminal from STAHIGW to NORTER5, 644 m away, reaching 5724 more units of demand no other route serves",
+      "evidence": {
+        "from": "STAHIGW",
+        "to": "NORTER5",
+        "metres": 643.7296054845237,
+        "exclusive_demand_gain": 5723.875
+      }
+    },
+    {
+      "id": "extend-002#8dff183f524f",
+      "kind": "extend",
+      "route_id": "002",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 002 past its end terminal along route 011's corridor for 10 stops, reaching 203 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 203.3048965483319
+      }
+    },
+    {
+      "id": "extend-006#d6deedd1d364",
+      "kind": "extend",
+      "route_id": "006",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 006 past its start terminal along route 011's corridor for 10 stops, reaching 658 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "start",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 657.9991287583518
+      }
+    },
+    {
+      "id": "extend-009#67ec2a76371d",
+      "kind": "extend",
+      "route_id": "009",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 009 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "032",
+        "donor_daily_trips": 40,
+        "zone_flow_reached": 1411.19514147981
+      }
+    },
+    {
+      "id": "extend-023#292a06c5a525",
+      "kind": "extend",
+      "route_id": "023",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 023 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "032",
+        "donor_daily_trips": 40,
+        "zone_flow_reached": 1411.19514147981
+      }
+    },
+    {
+      "id": "extend-024#26db14321a47",
+      "kind": "extend",
+      "route_id": "024",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 024 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "032",
+        "donor_daily_trips": 40,
+        "zone_flow_reached": 1411.19514147981
+      }
+    },
+    {
+      "id": "extend-025#441ece050fe8",
+      "kind": "extend",
+      "route_id": "025",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 025 past its start terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "evidence": {
+        "end": "start",
+        "n_stops": 10,
+        "donor_route": "032",
+        "donor_daily_trips": 40,
+        "zone_flow_reached": 1411.19514147981
+      }
+    },
+    {
+      "id": "extend-031#42a029968ad8",
+      "kind": "extend",
+      "route_id": "031",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 031 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "032",
+        "donor_daily_trips": 40,
+        "zone_flow_reached": 1411.19514147981
+      }
+    },
+    {
+      "id": "extend-032#228795f35539",
+      "kind": "extend",
+      "route_id": "032",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 032 past its end terminal along route 021's corridor for 10 stops, reaching 357 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "021",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 356.65720666080733
+      }
+    },
+    {
+      "id": "extend-034#daffb8603dc9",
+      "kind": "extend",
+      "route_id": "034",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 034 past its start terminal along route 011's corridor for 10 stops, reaching 207 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "start",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 207.32754750679237
+      }
+    },
+    {
+      "id": "extend-101#a50d8435b367",
+      "kind": "extend",
+      "route_id": "101",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 101 past its start terminal along route 011's corridor for 10 stops, reaching 317 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "start",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 317.42053632916685
+      }
+    },
+    {
+      "id": "extend-102#ad7767bba8a4",
+      "kind": "extend",
+      "route_id": "102",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 102 past its end terminal along route 011's corridor for 10 stops, reaching 618 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "end",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 617.5091267528892
+      }
+    },
+    {
+      "id": "extend-141#c1d88042f92d",
+      "kind": "extend",
+      "route_id": "141",
+      "with_route": null,
+      "junction": null,
+      "description": "extend route 141 past its start terminal along route 011's corridor for 10 stops, reaching 291 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "evidence": {
+        "end": "start",
+        "n_stops": 10,
+        "donor_route": "011",
+        "donor_daily_trips": 38,
+        "zone_flow_reached": 291.2176789214371
+      }
+    },
+    {
+      "id": "reroute-002#4515e77f1b64",
+      "kind": "reroute",
+      "route_id": "002",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 002 between MAICARW and HIGOHIN onto route 010's alignment, 11 stops reaching 5.9x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 1496.8916666666669,
+        "alternative_weight": 8833.5,
+        "direct_m": 2696.926134549782,
+        "n_replaced": 12,
+        "n_new": 11
+      }
+    },
+    {
+      "id": "reroute-003#a310b19332b7",
+      "kind": "reroute",
+      "route_id": "003",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 003 between RICGRUE and 4THATHN onto route 010's alignment, 9 stops reaching 80.7x the uniquely-served demand of the 6 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 73.70833333333333,
+        "alternative_weight": 5945.0,
+        "direct_m": 1903.8287385315496,
+        "n_replaced": 6,
+        "n_new": 9
+      }
+    },
+    {
+      "id": "reroute-004#b7682ec39690",
+      "kind": "reroute",
+      "route_id": "004",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 004 between INDWALS and SUM15TS onto route 002's alignment, 13 stops reaching 3.5x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "002",
+        "current_weight": 2422.458333333333,
+        "alternative_weight": 8513.17261904762,
+        "direct_m": 3360.3387416514615,
+        "n_replaced": 12,
+        "n_new": 13
+      }
+    },
+    {
+      "id": "reroute-006#dbfb2f9ee60d",
+      "kind": "reroute",
+      "route_id": "006",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 006 between 3RDTOWS and SULYALW onto route 010's alignment, 12 stops reaching 11.3x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 599.7291666666666,
+        "alternative_weight": 6776.0,
+        "direct_m": 2993.7656541404785,
+        "n_replaced": 12,
+        "n_new": 12
+      }
+    },
+    {
+      "id": "reroute-007#7e851ba70b92",
+      "kind": "reroute",
+      "route_id": "007",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 007 between GREELDW and SPR4THW onto route 010's alignment, 18 stops reaching 7.0x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 1334.25,
+        "alternative_weight": 9362.375,
+        "direct_m": 3469.472284085424,
+        "n_replaced": 12,
+        "n_new": 18
+      }
+    },
+    {
+      "id": "reroute-009#8323c2fb0368",
+      "kind": "reroute",
+      "route_id": "009",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 009 between RICGRUE and SAIBUCN onto route 010's alignment, 15 stops reaching 10.3x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 880.9652777777778,
+        "alternative_weight": 9054.625,
+        "direct_m": 3562.735753096039,
+        "n_replaced": 12,
+        "n_new": 15
+      }
+    },
+    {
+      "id": "reroute-010#b18fd7b39751",
+      "kind": "reroute",
+      "route_id": "010",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 010 between BROWHIE and HIGLONN2 onto route 006's alignment, 24 stops reaching 5.5x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "006",
+        "current_weight": 1315.6607142857142,
+        "alternative_weight": 7300.354166666666,
+        "direct_m": 4881.795898735754,
+        "n_replaced": 12,
+        "n_new": 24
+      }
+    },
+    {
+      "id": "reroute-011#50126f78cee2",
+      "kind": "reroute",
+      "route_id": "011",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 011 between FROMOUN and LONTALE onto route 010's alignment, 12 stops reaching 10.1x the uniquely-served demand of the 9 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 876.1944444444443,
+        "alternative_weight": 8833.5,
+        "direct_m": 2328.092756691492,
+        "n_replaced": 9,
+        "n_new": 12
+      }
+    },
+    {
+      "id": "reroute-012#fb24f651cbc5",
+      "kind": "reroute",
+      "route_id": "012",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 012 between MCKCENE and 4THLINN onto route 010's alignment, 7 stops reaching 6.4x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "010",
+        "current_weight": 1050.125,
+        "alternative_weight": 6703.375,
+        "direct_m": 3772.49366784492,
+        "n_replaced": 12,
+        "n_new": 7
+      }
+    },
+    {
+      "id": "reroute-023#1dc299b50907",
+      "kind": "reroute",
+      "route_id": "023",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 023 between STEOPPN and MOR342N onto route 007's alignment, 21 stops reaching 4.0x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "007",
+        "current_weight": 2760.133333333333,
+        "alternative_weight": 11037.2875,
+        "direct_m": 6285.249446421301,
+        "n_replaced": 12,
+        "n_new": 21
+      }
+    },
+    {
+      "id": "reroute-031#dfd049714f7d",
+      "kind": "reroute",
+      "route_id": "031",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 031 between MOCWOOE and STEMORN1 onto route 007's alignment, 26 stops reaching 58.2x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "007",
+        "current_weight": 226.25,
+        "alternative_weight": 13156.754166666668,
+        "direct_m": 6373.9121864822655,
+        "n_replaced": 12,
+        "n_new": 26
+      }
+    },
+    {
+      "id": "reroute-102#06e527b20649",
+      "kind": "reroute",
+      "route_id": "102",
+      "with_route": null,
+      "junction": null,
+      "description": "reroute route 102 between HIGCHAS and MAIHIGE onto route 001's alignment, 22 stops reaching 11.2x the uniquely-served demand of the 12 stops it replaces",
+      "evidence": {
+        "donor_route": "001",
+        "current_weight": 991.6082521645021,
+        "alternative_weight": 11076.264285714286,
+        "direct_m": 9695.117761102152,
+        "n_replaced": 12,
+        "n_new": 22
+      }
+    },
+    {
+      "id": "splice-001-021-PICBETS#e0f055d0f715",
+      "kind": "splice",
+      "route_id": "001",
+      "with_route": "021",
+      "junction": "PICBETS",
+      "description": "through-route 001 and 021 at PICBETS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 334.75,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-002-011-HIGFITN#17e4d59ccc9a",
+      "kind": "splice",
+      "route_id": "002",
+      "with_route": "011",
+      "junction": "HIGFITN",
+      "description": "through-route 002 and 011 at HIGFITN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 616.75,
+        "shared_terminal_stops": 3
+      }
+    },
+    {
+      "id": "splice-002-033-WESHIGW#e2acb3ef8921",
+      "kind": "splice",
+      "route_id": "002",
+      "with_route": "033",
+      "junction": "WESHIGW",
+      "description": "through-route 002 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 432.0,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-002-034-WESHIGW#e089c719c5f5",
+      "kind": "splice",
+      "route_id": "002",
+      "with_route": "034",
+      "junction": "WESHIGW",
+      "description": "through-route 002 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 432.0,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-005-006-NMURBEAN#134375538ebc",
+      "kind": "splice",
+      "route_id": "005",
+      "with_route": "006",
+      "junction": "NMURBEAN",
+      "description": "through-route 005 and 006 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 2039.55,
+        "shared_terminal_stops": 3
+      }
+    },
+    {
+      "id": "splice-005-021-NMURBEAN#c2defbd41984",
+      "kind": "splice",
+      "route_id": "005",
+      "with_route": "021",
+      "junction": "NMURBEAN",
+      "description": "through-route 005 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 2039.55,
+        "shared_terminal_stops": 3
+      }
+    },
+    {
+      "id": "splice-006-021-NMURBEAN#bd23c5b7c67c",
+      "kind": "splice",
+      "route_id": "006",
+      "with_route": "021",
+      "junction": "NMURBEAN",
+      "description": "through-route 006 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 2039.55,
+        "shared_terminal_stops": 3
+      }
+    },
+    {
+      "id": "splice-007-101-EMO4THW#e8a1e2291da0",
+      "kind": "splice",
+      "route_id": "007",
+      "with_route": "101",
+      "junction": "EMO4THW",
+      "description": "through-route 007 and 101 at EMO4THW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 230.625,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-008-035-BOASHAN#fc06f973aa23",
+      "kind": "splice",
+      "route_id": "008",
+      "with_route": "035",
+      "junction": "BOASHAN",
+      "description": "through-route 008 and 035 at BOASHAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 10794.0,
+        "shared_terminal_stops": 2
+      }
+    },
+    {
+      "id": "splice-011-033-WESHIGW#573afb5ae3bf",
+      "kind": "splice",
+      "route_id": "011",
+      "with_route": "033",
+      "junction": "WESHIGW",
+      "description": "through-route 011 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 432.0,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "kind": "splice",
+      "route_id": "011",
+      "with_route": "034",
+      "junction": "WESHIGW",
+      "description": "through-route 011 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 432.0,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "splice-033-034-WESHIGW#b635228b90c4",
+      "kind": "splice",
+      "route_id": "033",
+      "with_route": "034",
+      "junction": "WESHIGW",
+      "description": "through-route 033 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "evidence": {
+        "junction_demand_weight": 432.0,
+        "shared_terminal_stops": 1
+      }
+    },
+    {
+      "id": "split-005-EASHAMN#f16cc1038825",
+      "kind": "split",
+      "route_id": "005",
+      "with_route": null,
+      "junction": "EASHAMN",
+      "description": "split route 005 at EASHAMN into two independently scheduled routes of 18 and 95 stops (50% / 50%); 2 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "evidence": {
+        "junction": "EASHAMN",
+        "head_stops": 18,
+        "tail_stops": 95,
+        "min_share": 0.5023696682464455,
+        "other_routes_at_junction": 2
+      }
+    },
+    {
+      "id": "split-024-EASHAMN#572a1ac33bc2",
+      "kind": "split",
+      "route_id": "024",
+      "with_route": null,
+      "junction": "EASHAMN",
+      "description": "split route 024 at EASHAMN into two independently scheduled routes of 21 and 47 stops (50% / 50%); 2 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "evidence": {
+        "junction": "EASHAMN",
+        "head_stops": 21,
+        "tail_stops": 47,
+        "min_share": 0.4961832061068702,
+        "other_routes_at_junction": 2
+      }
+    },
+    {
+      "id": "split-034-STE418N#f2471e265dfb",
+      "kind": "split",
+      "route_id": "034",
+      "with_route": null,
+      "junction": "STE418N",
+      "description": "split route 034 at STE418N into two independently scheduled routes of 37 and 12 stops (49% / 51%); 9 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "evidence": {
+        "junction": "STE418N",
+        "head_stops": 37,
+        "tail_stops": 12,
+        "min_share": 0.4895833333333333,
+        "other_routes_at_junction": 9
+      }
+    },
+    {
+      "id": "split-035-NORTRA2#7a708a1900ac",
+      "kind": "split",
+      "route_id": "035",
+      "with_route": null,
+      "junction": "NORTRA2",
+      "description": "split route 035 at NORTRA2 into two independently scheduled routes of 9 and 23 stops (52% / 48%); 1 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "evidence": {
+        "junction": "NORTRA2",
+        "head_stops": 9,
+        "tail_stops": 23,
+        "min_share": 0.5161290322580645,
+        "other_routes_at_junction": 1
+      }
+    },
+    {
+      "id": "straighten-001#95a4287b6fa0",
+      "kind": "straighten",
+      "route_id": "001",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 001 between BETCOAW and PICBETS, removing a 4-stop deviation that runs 3.90x the direct distance for 1.7% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 3.897302933836451,
+        "n_stops": 4,
+        "exclusive_demand_share": 0.016815009850588508,
+        "seconds_removed": 288.0
+      }
+    },
+    {
+      "id": "straighten-002#716a0b294c2c",
+      "kind": "straighten",
+      "route_id": "002",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 002 between MAIOAKE1 and MAIWAGW, removing a 5-stop deviation that runs 3.01x the direct distance for 5.1% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 3.0056523493670593,
+        "n_stops": 5,
+        "exclusive_demand_share": 0.05093045479620948,
+        "seconds_removed": 340.0
+      }
+    },
+    {
+      "id": "straighten-004#600ca164ad60",
+      "kind": "straighten",
+      "route_id": "004",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 004 between FAIWATS and WEIWATN, removing a 5-stop deviation that runs 4.39x the direct distance for 4.2% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 4.394006923326242,
+        "n_stops": 5,
+        "exclusive_demand_share": 0.041944043643259855,
+        "seconds_removed": 263.0
+      }
+    },
+    {
+      "id": "straighten-007#830e388b3427",
+      "kind": "straighten",
+      "route_id": "007",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 007 between GOUALLN and 5THRARW, removing a 8-stop deviation that runs 5.76x the direct distance for 7.9% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 5.764245826923003,
+        "n_stops": 8,
+        "exclusive_demand_share": 0.07873391554572959,
+        "seconds_removed": 449.0
+      }
+    },
+    {
+      "id": "straighten-011#f2a996066a3d",
+      "kind": "straighten",
+      "route_id": "011",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 011 between GRATOWS and LONCLEE, removing a 10-stop deviation that runs 4.17x the direct distance for 8.8% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 4.170563067770235,
+        "n_stops": 10,
+        "exclusive_demand_share": 0.08759703377720765,
+        "seconds_removed": 727.0
+      }
+    },
+    {
+      "id": "straighten-021#110f4a755fe7",
+      "kind": "straighten",
+      "route_id": "021",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 021 between SULMURE and BROMURW, removing a 8-stop deviation that runs 3.09x the direct distance for 9.8% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 3.087682606157604,
+        "n_stops": 8,
+        "exclusive_demand_share": 0.0978505068513004,
+        "seconds_removed": 515.0
+      }
+    },
+    {
+      "id": "straighten-024#6a687792ef0b",
+      "kind": "straighten",
+      "route_id": "024",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 024 between HAMSTON and MORKOHW, removing a 4-stop deviation that runs 3.29x the direct distance for 5.8% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 3.2924620187851046,
+        "n_stops": 4,
+        "exclusive_demand_share": 0.05761193494261668,
+        "seconds_removed": 247.0
+      }
+    },
+    {
+      "id": "straighten-025#f0732765f122",
+      "kind": "straighten",
+      "route_id": "025",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 025 between CHANMEIW and BRISCAS, removing a 5-stop deviation that runs 5.10x the direct distance for 9.1% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 5.0961034701922765,
+        "n_stops": 5,
+        "exclusive_demand_share": 0.0908177609666944,
+        "seconds_removed": 254.0
+      }
+    },
+    {
+      "id": "straighten-031#d0ecad5fc231",
+      "kind": "straighten",
+      "route_id": "031",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 031 between GRAKINGN and KINKENE1, removing a 6-stop deviation that runs 3.59x the direct distance for 9.0% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 3.5910989027098563,
+        "n_stops": 6,
+        "exclusive_demand_share": 0.08960534673479251,
+        "seconds_removed": 445.0
+      }
+    },
+    {
+      "id": "straighten-033#1bde1c99adc4",
+      "kind": "straighten",
+      "route_id": "033",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 033 between HIGFITN and WESHIGW, removing a 8-stop deviation that runs 6.00x the direct distance for 6.7% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 6.003714367863028,
+        "n_stops": 8,
+        "exclusive_demand_share": 0.06712521715936516,
+        "seconds_removed": 425.0
+      }
+    },
+    {
+      "id": "straighten-034#8ff9a962368f",
+      "kind": "straighten",
+      "route_id": "034",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 034 between MORMORS and STELSAMS, removing a 10-stop deviation that runs 4.26x the direct distance for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 4.257995578441227,
+        "n_stops": 10,
+        "exclusive_demand_share": 0.0,
+        "seconds_removed": 690.0
+      }
+    },
+    {
+      "id": "straighten-102#4dd646541565",
+      "kind": "straighten",
+      "route_id": "102",
+      "with_route": null,
+      "junction": null,
+      "description": "straighten route 102 between HUNTPARK and CAMVANW, removing a 3-stop deviation that runs 2.89x the direct distance for 4.7% of the demand it uniquely reaches",
+      "evidence": {
+        "circuity": 2.887068233041018,
+        "n_stops": 3,
+        "exclusive_demand_share": 0.04653609635836621,
+        "seconds_removed": 243.0
+      }
+    },
+    {
+      "id": "truncate-007#a14f6e0894dd",
+      "kind": "truncate",
+      "route_id": "007",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 007 at its end terminal, dropping 5 stops: 19.4% of running time for 2.1% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 5,
+        "runtime_share": 0.1935483870967742,
+        "exclusive_demand_share": 0.020506188231374272,
+        "seconds_per_trip": 720.0
+      }
+    },
+    {
+      "id": "truncate-007#e0327cd10f50",
+      "kind": "truncate",
+      "route_id": "007",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 007 at its start terminal, dropping 3 stops: 15.9% of running time for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "start",
+        "n_stops": 3,
+        "runtime_share": 0.1586021505376344,
+        "exclusive_demand_share": 0.0,
+        "seconds_per_trip": 590.0
+      }
+    },
+    {
+      "id": "truncate-009#05fb3250f092",
+      "kind": "truncate",
+      "route_id": "009",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 009 at its end terminal, dropping 14 stops: 14.8% of running time for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 14,
+        "runtime_share": 0.14756944444444445,
+        "exclusive_demand_share": 0.0,
+        "seconds_per_trip": 850.0
+      }
+    },
+    {
+      "id": "truncate-012#584263ee6bf8",
+      "kind": "truncate",
+      "route_id": "012",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 012 at its start terminal, dropping 3 stops: 18.0% of running time for 4.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "start",
+        "n_stops": 3,
+        "runtime_share": 0.1798611111111111,
+        "exclusive_demand_share": 0.03961079290594162,
+        "seconds_per_trip": 259.0
+      }
+    },
+    {
+      "id": "truncate-023#3ef9178c6974",
+      "kind": "truncate",
+      "route_id": "023",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 023 at its end terminal, dropping 8 stops: 14.0% of running time for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 8,
+        "runtime_share": 0.14042553191489363,
+        "exclusive_demand_share": 0.0,
+        "seconds_per_trip": 396.0
+      }
+    },
+    {
+      "id": "truncate-025#d3209fe02367",
+      "kind": "truncate",
+      "route_id": "025",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 025 at its end terminal, dropping 15 stops: 29.0% of running time for 11.7% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 15,
+        "runtime_share": 0.28976377952755905,
+        "exclusive_demand_share": 0.1166030442165328,
+        "seconds_per_trip": 1104.0
+      }
+    },
+    {
+      "id": "truncate-031#efb75b9f5491",
+      "kind": "truncate",
+      "route_id": "031",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 031 at its end terminal, dropping 15 stops: 27.5% of running time for 1.5% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 15,
+        "runtime_share": 0.275,
+        "exclusive_demand_share": 0.015184503098022141,
+        "seconds_per_trip": 1056.0
+      }
+    },
+    {
+      "id": "truncate-032#00b89519f00f",
+      "kind": "truncate",
+      "route_id": "032",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 032 at its start terminal, dropping 7 stops: 12.9% of running time for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "start",
+        "n_stops": 7,
+        "runtime_share": 0.12903225806451613,
+        "exclusive_demand_share": 0.0,
+        "seconds_per_trip": 480.0
+      }
+    },
+    {
+      "id": "truncate-033#95d4116886cd",
+      "kind": "truncate",
+      "route_id": "033",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 033 at its end terminal, dropping 15 stops: 27.5% of running time for 9.6% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 15,
+        "runtime_share": 0.27472527472527475,
+        "exclusive_demand_share": 0.09643073325304541,
+        "seconds_per_trip": 750.0
+      }
+    },
+    {
+      "id": "truncate-035#7cdb09a45253",
+      "kind": "truncate",
+      "route_id": "035",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 035 at its end terminal, dropping 3 stops: 31.6% of running time for 0.0% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 3,
+        "runtime_share": 0.3162878787878788,
+        "exclusive_demand_share": 0.0,
+        "seconds_per_trip": 835.0
+      }
+    },
+    {
+      "id": "truncate-101#3d4f770cd393",
+      "kind": "truncate",
+      "route_id": "101",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 101 at its start terminal, dropping 11 stops: 31.0% of running time for 11.7% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "start",
+        "n_stops": 11,
+        "runtime_share": 0.3103448275862069,
+        "exclusive_demand_share": 0.11654204959635935,
+        "seconds_per_trip": 1080.0
+      }
+    },
+    {
+      "id": "truncate-102#dcead1dfc1cc",
+      "kind": "truncate",
+      "route_id": "102",
+      "with_route": null,
+      "junction": null,
+      "description": "truncate route 102 at its end terminal, dropping 15 stops: 34.7% of running time for 7.2% of the demand it uniquely reaches",
+      "evidence": {
+        "end": "end",
+        "n_stops": 15,
+        "runtime_share": 0.34662447257383966,
+        "exclusive_demand_share": 0.07160191925294997,
+        "seconds_per_trip": 1643.0
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "id": "truncate-012#b8a96111aab2",
+      "kind": "truncate",
+      "route_id": "012",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 012 at its end terminal, dropping 6 stops: 12.2% of running time for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-032#cdc85dfecae7",
+      "kind": "truncate",
+      "route_id": "032",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 032 at its end terminal, dropping 11 stops: 18.2% of running time for 6.6% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-003#703c56c18622",
+      "kind": "truncate",
+      "route_id": "003",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 003 at its start terminal, dropping 3 stops: 11.5% of running time for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-024#339d7b640f7a",
+      "kind": "truncate",
+      "route_id": "024",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 024 at its end terminal, dropping 10 stops: 14.3% of running time for 4.5% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-033#e015517f1cef",
+      "kind": "truncate",
+      "route_id": "033",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 033 at its start terminal, dropping 4 stops: 8.9% of running time for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-025#0d02076d822d",
+      "kind": "truncate",
+      "route_id": "025",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 025 at its start terminal, dropping 3 stops: 8.5% of running time for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-010#4b40ad7e50b9",
+      "kind": "truncate",
+      "route_id": "010",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 010 at its start terminal, dropping 8 stops: 14.1% of running time for 6.9% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-010#6749b5fdb90b",
+      "kind": "truncate",
+      "route_id": "010",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 010 at its end terminal, dropping 15 stops: 18.5% of running time for 11.9% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-021#53d8862c37e4",
+      "kind": "truncate",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 021 at its start terminal, dropping 5 stops: 10.2% of running time for 5.8% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-008#a0bfb3c0b815",
+      "kind": "truncate",
+      "route_id": "008",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 008 at its end terminal, dropping 6 stops: 5.5% of running time for 1.1% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-034#3eaf6b7a5d7a",
+      "kind": "truncate",
+      "route_id": "034",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 034 at its start terminal, dropping 5 stops: 10.2% of running time for 6.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-001#c44d4dba4a42",
+      "kind": "truncate",
+      "route_id": "001",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 001 at its end terminal, dropping 10 stops: 8.4% of running time for 4.3% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-002#37b4f1518876",
+      "kind": "truncate",
+      "route_id": "002",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 002 at its end terminal, dropping 12 stops: 8.6% of running time for 4.8% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-011#88545f286e3d",
+      "kind": "truncate",
+      "route_id": "011",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 011 at its end terminal, dropping 10 stops: 9.5% of running time for 5.9% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-022#099ce7e3cd4e",
+      "kind": "truncate",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 022 at its start terminal, dropping 5 stops: 6.7% of running time for 3.3% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-004#8f4592c293fd",
+      "kind": "truncate",
+      "route_id": "004",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 004 at its end terminal, dropping 15 stops: 12.6% of running time for 9.7% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-002#03df3fd55143",
+      "kind": "truncate",
+      "route_id": "002",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 002 at its start terminal, dropping 9 stops: 8.9% of running time for 6.7% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-023#fd60750363eb",
+      "kind": "truncate",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 023 at its start terminal, dropping 5 stops: 7.7% of running time for 5.6% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-005#d39263d5fa07",
+      "kind": "truncate",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 005 at its end terminal, dropping 6 stops: 5.8% of running time for 4.3% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-006#e2d5b3beea92",
+      "kind": "truncate",
+      "route_id": "006",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 006 at its end terminal, dropping 7 stops: 11.9% of running time for 11.5% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-009#c1098c8641a3",
+      "kind": "truncate",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 009 at its start terminal, dropping 7 stops: 5.8% of running time for 5.5% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-021#b37e3e6cc073",
+      "kind": "truncate",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 021 at its end terminal, dropping 7 stops: 10.4% of running time for 10.1% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-031#0836b09588b7",
+      "kind": "truncate",
+      "route_id": "031",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 031 at its start terminal, dropping 7 stops: 5.7% of running time for 5.7% of the demand it uniquely reaches"
+    },
+    {
+      "id": "truncate-005#912c76691436",
+      "kind": "truncate",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the truncate quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "truncate route 005 at its start terminal, dropping 7 stops: 6.8% of running time for 7.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-008#f2a17eea79ba",
+      "kind": "straighten",
+      "route_id": "008",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 008 between OBEBETAW and GRERIDE, removing a 5-stop deviation that runs 2.64x the direct distance for 1.1% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-005#59a4ccea09fb",
+      "kind": "straighten",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 005 between GTCREFS and REFSTIRW, removing a 3-stop deviation that runs 2.64x the direct distance for 4.2% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-003#ace9da548fbf",
+      "kind": "straighten",
+      "route_id": "003",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 003 between NORRIDN and NORKINS1, removing a 5-stop deviation that runs 2.42x the direct distance for 3.8% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-032#945e74af830e",
+      "kind": "straighten",
+      "route_id": "032",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 032 between MORHARS and MCCOAKW, removing a 4-stop deviation that runs 2.24x the direct distance for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-006#46bec6af4fa5",
+      "kind": "straighten",
+      "route_id": "006",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 006 between NORTER2 and RICLUCW, removing a 8-stop deviation that runs 2.03x the direct distance for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-009#13e07829586f",
+      "kind": "straighten",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 009 between NORCHES and GEO106N, removing a 12-stop deviation that runs 2.09x the direct distance for 7.5% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-022#1657754c0a75",
+      "kind": "straighten",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 022 between TOYALUE and MCAR1, removing a 7-stop deviation that runs 1.90x the direct distance for 0.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-101#89bbb24ada38",
+      "kind": "straighten",
+      "route_id": "101",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 101 between SCHCLEE and CLE340N, removing a 3-stop deviation that runs 2.03x the direct distance for 8.4% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-023#79dd8ae6f746",
+      "kind": "straighten",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 023 between KIMPETW and COURIVN, removing a 5-stop deviation that runs 1.83x the direct distance for 7.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-035#a4d0b32fc7ef",
+      "kind": "straighten",
+      "route_id": "035",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 035 between CLE161SF and FORNORN, removing a 3-stop deviation that runs 1.70x the direct distance for 1.4% of the demand it uniquely reaches"
+    },
+    {
+      "id": "straighten-012#55ea9ead998a",
+      "kind": "straighten",
+      "route_id": "012",
+      "rule": "quota",
+      "reason": "the straighten quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "straighten route 012 between MCKTRAW and MCKYALE, removing a 4-stop deviation that runs 1.76x the direct distance for 10.0% of the demand it uniquely reaches"
+    },
+    {
+      "id": "extend-033#fc89140afb7c",
+      "kind": "extend",
+      "route_id": "033",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 033 past its end terminal along route 011's corridor for 10 stops, reaching 203 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-007#3e93cb6b77fb",
+      "kind": "extend",
+      "route_id": "007",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 007 past its end terminal along route 011's corridor for 10 stops, reaching 194 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-009#9b9bd8df6330",
+      "kind": "extend",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 009 past its start terminal along route 021's corridor for 10 stops, reaching 192 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-010#bfcf2aa76d7c",
+      "kind": "extend",
+      "route_id": "010",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 010 past its start terminal along route 021's corridor for 10 stops, reaching 192 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-003#9e924a6c790b",
+      "kind": "extend",
+      "route_id": "003",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 003 past its end terminal along route 032's corridor for 10 stops, reaching 175 daily trips' worth of zone flow on a corridor with 40 trips a day today"
+    },
+    {
+      "id": "extend-005#0e116959e020",
+      "kind": "extend",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 005 past its end terminal along route 021's corridor for 10 stops, reaching 162 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-001#3da6024ca600",
+      "kind": "extend",
+      "route_id": "001",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 001 past its end terminal along route 021's corridor for 10 stops, reaching 124 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-032#2ec9fadfca89",
+      "kind": "extend",
+      "route_id": "032",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 032 past its start terminal along route 009's corridor for 10 stops, reaching 56 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-006#23b7f36c8ba4",
+      "kind": "extend",
+      "route_id": "006",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 006 past its end terminal along route 009's corridor for 3 stops, reaching 5 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "extend-021#80ce23305663",
+      "kind": "extend",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the extend quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "extend route 021 past its end terminal along route 009's corridor for 3 stops, reaching 5 daily trips' worth of zone flow on a corridor with 38 trips a day today"
+    },
+    {
+      "id": "reroute-008#29bf5bcc1967",
+      "kind": "reroute",
+      "route_id": "008",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 008 between FROLAFS and LIV4THE onto route 006's alignment, 2 stops reaching 42.7x the uniquely-served demand of the 6 stops it replaces"
+    },
+    {
+      "id": "reroute-001#368037270452",
+      "kind": "reroute",
+      "route_id": "001",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 001 between LIVMOHW and HIGNATN onto route 006's alignment, 6 stops reaching 9.7x the uniquely-served demand of the 6 stops it replaces"
+    },
+    {
+      "id": "reroute-005#ac7f474fc0a6",
+      "kind": "reroute",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 005 between HIGHOSN and HIGOHIN onto route 006's alignment, 7 stops reaching 9.7x the uniquely-served demand of the 6 stops it replaces"
+    },
+    {
+      "id": "reroute-101#6bae17324ed4",
+      "kind": "reroute",
+      "route_id": "101",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 101 between MOUHIGW1 and HIGNATN onto route 006's alignment, 7 stops reaching 9.7x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "reroute-141#12b3ef7e3a69",
+      "kind": "reroute",
+      "route_id": "141",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 141 between STAHIGW and SPRMARW onto route 006's alignment, 4 stops reaching 8.0x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "reroute-024#e7e8ba4cfee8",
+      "kind": "reroute",
+      "route_id": "024",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 024 between HAM5THN and HAMBEEN onto route 025's alignment, 17 stops reaching 1.7x the uniquely-served demand of the 9 stops it replaces"
+    },
+    {
+      "id": "reroute-032#4ddf425e23bd",
+      "kind": "reroute",
+      "route_id": "032",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 032 between MOR342S and STEESPS onto route 007's alignment, 5 stops reaching 2.0x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "reroute-022#406d1b4dae4b",
+      "kind": "reroute",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 022 between OHISTES and ALU1900S onto route 005's alignment, 16 stops reaching 4.3x the uniquely-served demand of the 9 stops it replaces"
+    },
+    {
+      "id": "reroute-021#972b3f882be6",
+      "kind": "reroute",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 021 between CEMOUTW and MAISCIS onto route 032's alignment, 5 stops reaching 2.7x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "reroute-034#972359a682ae",
+      "kind": "reroute",
+      "route_id": "034",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 034 between HIG521S and MORMAIE onto route 011's alignment, 12 stops reaching 1.6x the uniquely-served demand of the 9 stops it replaces"
+    },
+    {
+      "id": "reroute-033#32131b1748ff",
+      "kind": "reroute",
+      "route_id": "033",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 033 between RESSAWE and BETHEDE onto route 001's alignment, 5 stops reaching 2.2x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "reroute-035#d54314f7d647",
+      "kind": "reroute",
+      "route_id": "035",
+      "rule": "quota",
+      "reason": "the reroute quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "reroute route 035 between MORWESE and MORMORE1 onto route 034's alignment, 4 stops reaching 3.0x the uniquely-served demand of the 3 stops it replaces"
+    },
+    {
+      "id": "splice-009-010-WESRIDW#0aec60448a0b",
+      "kind": "splice",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 009 and 010 at WESRIDW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-009-023-STEMORN1#abd4e0ba92c6",
+      "kind": "splice",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 009 and 023 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-009-024-STEMORN1#41a63d087232",
+      "kind": "splice",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 009 and 024 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-009-031-STEMORN1#7c9dd8b8ce8a",
+      "kind": "splice",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 009 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-009-035-STE418N#b06a1b96903e",
+      "kind": "splice",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 009 and 035 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-022-031-RAIBALS#2f18d673d7a7",
+      "kind": "splice",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 022 and 031 at RAIBALS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-023-024-STEMORN1#4c4a326e5006",
+      "kind": "splice",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 023 and 024 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-023-031-STEMORN1#e6d72d75c413",
+      "kind": "splice",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 023 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-023-035-STE418N#b66f1e0ff4b3",
+      "kind": "splice",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 023 and 035 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-024-031-STEMORN1#fa8216c1958e",
+      "kind": "splice",
+      "route_id": "024",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 024 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-024-035-STE418N#9b86fa3815b9",
+      "kind": "splice",
+      "route_id": "024",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 024 and 035 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-025-032-STELSAMS#890bcb2a84fa",
+      "kind": "splice",
+      "route_id": "025",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 025 and 032 at STELSAMS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "splice-031-035-STE418N#d259fe70aeaa",
+      "kind": "splice",
+      "route_id": "031",
+      "rule": "quota",
+      "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
+      "description": "through-route 031 and 035 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+    },
+    {
+      "id": "change_terminal-022-RAIBALS#f2bb71957f6e",
+      "kind": "change_terminal",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 022's terminal from RAIBALS to NORGOOS, 465 m away, reaching 475 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-031-RAIBALS#9e5051ace46c",
+      "kind": "change_terminal",
+      "route_id": "031",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 031's terminal from RAIBALS to NORGOOS, 465 m away, reaching 475 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-009-WESRIDW#a2842e362f10",
+      "kind": "change_terminal",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 009's terminal from WESRIDW to BROSTUW, 968 m away, reaching 858 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-010-WESRIDW#87641eb86a63",
+      "kind": "change_terminal",
+      "route_id": "010",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 010's terminal from WESRIDW to BROSTUW, 968 m away, reaching 858 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-008-GRERIDE#583d5ccc2b43",
+      "kind": "change_terminal",
+      "route_id": "008",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 008's terminal from GRERIDE to OBESOUE, 387 m away, reaching 272 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-025-CANWIPR#1f9c3b803fe0",
+      "kind": "change_terminal",
+      "route_id": "025",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 025's terminal from CANWIPR to GENLEHN, 997 m away, reaching 566 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-102-MEIPOLN#ec966f595c69",
+      "kind": "change_terminal",
+      "route_id": "102",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 102's terminal from MEIPOLN to OHIAFRE, 1067 m away, reaching 576 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-012-1333FIES#ea848144304a",
+      "kind": "change_terminal",
+      "route_id": "012",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 012's terminal from 1333FIES to SUMCHIS, 1003 m away, reaching 508 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-001-REYRIDSW#585991b7f9e2",
+      "kind": "change_terminal",
+      "route_id": "001",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 001's terminal from REYRIDSW to BRICHAS, 278 m away, reaching 138 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-001-PICBETS#6a36aaefe8aa",
+      "kind": "change_terminal",
+      "route_id": "001",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 001's terminal from PICBETS to SAWBETS, 578 m away, reaching 282 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-021-PICBETS#f42af1f31576",
+      "kind": "change_terminal",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 021's terminal from PICBETS to SAWBETS, 578 m away, reaching 282 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-010-BROLTDE#f4de46c94aa8",
+      "kind": "change_terminal",
+      "route_id": "010",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 010's terminal from BROLTDE to EBROCEDW, 923 m away, reaching 432 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-002-WESHIGW#0cd55026f3a9",
+      "kind": "change_terminal",
+      "route_id": "002",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 002's terminal from WESHIGW to HIGSOUTS, 1152 m away, reaching 470 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-011-WESHIGW#6fa45b81ca71",
+      "kind": "change_terminal",
+      "route_id": "011",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 011's terminal from WESHIGW to HIGSOUTS, 1152 m away, reaching 470 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-033-WESHIGW#2684e65c498c",
+      "kind": "change_terminal",
+      "route_id": "033",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 033's terminal from WESHIGW to HIGSOUTS, 1152 m away, reaching 470 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-034-WESHIGW#1098d3a841ec",
+      "kind": "change_terminal",
+      "route_id": "034",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 034's terminal from WESHIGW to HIGSOUTS, 1152 m away, reaching 470 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-012-MCKTRAW#f856b7613bff",
+      "kind": "change_terminal",
+      "route_id": "012",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 012's terminal from MCKTRAW to BROYALW, 1050 m away, reaching 414 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-005-NMURBEAN#ed32feb36157",
+      "kind": "change_terminal",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 005's terminal from NMURBEAN to BROGLAE, 612 m away, reaching 178 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-006-NMURBEAN#ee8e5be35fa7",
+      "kind": "change_terminal",
+      "route_id": "006",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 006's terminal from NMURBEAN to BROGLAE, 612 m away, reaching 178 more units of demand no other route serves"
+    },
+    {
+      "id": "change_terminal-021-NMURBEAN#c4712cf31be6",
+      "kind": "change_terminal",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the change_terminal quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "move route 021's terminal from NMURBEAN to BROGLAE, 612 m away, reaching 178 more units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-032#99949e606765",
+      "kind": "add_stop",
+      "route_id": "032",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop FISSMIE to route 032: a 1 m detour reaching 745 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-002#4b0e710a924e",
+      "kind": "add_stop",
+      "route_id": "002",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop HIGLANS to route 002: a 2 m detour reaching 1691 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-031#b0f0ea5e492c",
+      "kind": "add_stop",
+      "route_id": "031",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop HIGLANS to route 031: a 2 m detour reaching 1691 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-101#e3bf61d0d730",
+      "kind": "add_stop",
+      "route_id": "101",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop COPSCHS to route 101: a 2 m detour reaching 1066 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-035#506e0f61a22a",
+      "kind": "add_stop",
+      "route_id": "035",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop WESVALN to route 035: a 2 m detour reaching 1176 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-003#b3847f4304e9",
+      "kind": "add_stop",
+      "route_id": "003",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop 3RDPARE1 to route 003: a 1 m detour reaching 613 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-021#62c9a8e920a0",
+      "kind": "add_stop",
+      "route_id": "021",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop SULEVGW to route 021: a 1 m detour reaching 454 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-024#99904d1e3f74",
+      "kind": "add_stop",
+      "route_id": "024",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop HAMSAWS to route 024: a 4 m detour reaching 1668 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-005#9ba574c0c0d3",
+      "kind": "add_stop",
+      "route_id": "005",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop WHIJAEE to route 005: a 1 m detour reaching 423 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-009#37bc22c9d0c6",
+      "kind": "add_stop",
+      "route_id": "009",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop BRIBINW to route 009: a 1 m detour reaching 475 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-023#7e63b99fb8bb",
+      "kind": "add_stop",
+      "route_id": "023",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop 7THSTEE to route 023: a 1 m detour reaching 292 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-022#2db74dc7eeb8",
+      "kind": "add_stop",
+      "route_id": "022",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop LONOHIW to route 022: a 0 m detour reaching 287 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-011#094f6464455f",
+      "kind": "add_stop",
+      "route_id": "011",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop MAIZEBS to route 011: a 2 m detour reaching 457 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-034#d96cda0a86ab",
+      "kind": "add_stop",
+      "route_id": "034",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop MORNORW to route 034: a 4 m detour reaching 737 units of demand no other route serves"
+    },
+    {
+      "id": "add_stop-012#00fb14a107d4",
+      "kind": "add_stop",
+      "route_id": "012",
+      "rule": "quota",
+      "reason": "the add_stop quota of 10 was already full; this proposal was legal and ranked below the cut",
+      "description": "add stop MCKMCKW to route 012: a 0 m detour reaching 72 units of demand no other route serves"
+    }
+  ],
+  "note": "Ranked by structural and demand rules only. No proposal was discarded on a fixed-frequency score (gate 3-2), and no proposal was discarded for scoring badly alone \u2014 Experiment 2B's whole finding is that a candidate that hurts alone can substitute for one that helps.",
+  "generated_at": "2026-08-30T19:00:07Z",
+  "seed": 20260825,
+  "waiting_model": "same_route",
+  "config_digest": "666920ecdd76b703",
+  "excluded_routes": [
+    "041",
+    "042",
+    "043",
+    "044",
+    "045",
+    "046",
+    "051",
+    "052",
+    "061",
+    "071",
+    "072",
+    "073",
+    "074",
+    "075"
+  ],
+  "excluded_why": "peak-express routes; Experiment 1 established their timetable is a design choice rather than neglect",
+  "limits": {
+    "terminal_move_m": 1200.0,
+    "max_route_stop_visit_loss": 0.4,
+    "max_network_edit_distance": 0.15,
+    "min_split_share": 0.3,
+    "modelled_share_primary_pct": 2.0,
+    "min_deviation_circuity": 1.1,
+    "veh_hour_budget": 2517.1833333333334,
+    "peak_vehicle_budget": 197.0
+  },
+  "incompatible_pairs": 189
+}
