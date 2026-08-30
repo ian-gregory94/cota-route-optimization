@@ -1,0 +1,192 @@
+{
+  "id": "pre_exp3_baseline_v2",
+  "version_note": "Corrects v1's pending language. Experiment 2B is closed and certified the null across all 240 feasible subsets, so the conservative incumbent is COTA's unchanged geometry as a settled finding rather than a default held open. Also carries the aligned Experiment 3 gates, the locked primary objective, and the executable treatment contract.",
+  "supersedes": [
+    "pre_exp3_baseline_v1"
+  ],
+  "status": "FROZEN",
+  "commit": "d74a60e1ae1d88dd2bb854625af8a756ac1ed71b-dirty",
+  "commit_note": "The commit this record was GENERATED FROM, which is the parent of the commit that carries the record -- inherent to a file that hashes its own repository. The 17 input hashes below are what freezes the baseline; the commit field is provenance and lags by one. '-dirty' here means some other part of the tree was uncommitted at generation, not this file itself.",
+  "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
+  "blockers": [],
+  "evaluator": {
+    "waiting_model": "same_route (Model B)",
+    "asserted_by": "Experiment.declare_evaluator, which reads the value out of the setup that scored the plans and raises if it disagrees with what the run asked for",
+    "cache_separation": "the path-set cache key includes common_lines, so a Model A enumeration cannot be served to a Model B request (scripts/repro_check.py)"
+  },
+  "reference_points": {
+    "raw_baseline": {
+      "what": "COTA's published network and schedule",
+      "weekday_revenue_veh_hours": 2517.2,
+      "peak_vehicles": 197.0,
+      "artifact": {
+        "path": "outputs/exp1_baseline_modelB.json",
+        "sha256": "e524896075987eebc5b84a36378f50499c271a93be0d414c32fac7fbfe215dbf",
+        "present": true,
+        "bytes": 39358
+      }
+    },
+    "exp1_certified": {
+      "what": "frequency redistribution, geometry unchanged, certified λ≥2",
+      "unserved_change_pct": -6.652,
+      "served_change_pct": 3.299,
+      "gc_change_pct": 0.878,
+      "gc_per_trip_change_pct": -2.344,
+      "weekday_revenue_veh_hours": 2516.5,
+      "peak_vehicles": 197.0,
+      "artifact": {
+        "path": "outputs/canonical/exp1_final.json",
+        "sha256": "fd7721e87a1866b48c8bf7215e01bf0e780797df1bf47489b3c499f978f97b5d",
+        "present": true,
+        "bytes": 10394
+      }
+    },
+    "conservative_incumbent": {
+      "what": "the best defensible performance available WITHOUT materially changing route structure — the number Experiment 3 must beat",
+      "geometry": "UNCHANGED, and now settled rather than pending. Experiment 2 promoted nothing: at the effort Experiment 1 is certified at, no candidate produces a measurable improvement and six produce measurable harm (D24, outputs/exp2_promotion.json). Experiment 2B then solved all 240 structurally feasible subsets and CERTIFIED THE NULL: the leader scores +0.0065% unserved at certification effort under three seeds, 0.02 of a noise floor, and not one of the 227 multi-edit sets beats the best single (outputs/exp2b_certification.json, D22, D25). The incumbent geometry is COTA's own — not because the question is open, but because it was asked exhaustively and answered no.",
+      "equals": "exp1_certified, on the published geometry",
+      "artifacts": [
+        {
+          "path": "outputs/exp2_promotion.json",
+          "sha256": "baaf951a9813423970f1bb4ed59f2d6d71645dfee590311244e89f43d9e7cef0",
+          "present": true,
+          "bytes": 3000
+        },
+        {
+          "path": "outputs/exp2b_certification.json",
+          "sha256": "cd6ee3d8cbb2c4b4e1790b67c4ab8fa997101f7bf7fe98cf86bacb825eb165ce",
+          "present": true,
+          "bytes": 539
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "assumptions": {
+      "path": "config/assumptions.yaml",
+      "sha256": "174b650e14a1948535304035518fcbd0183a2608b9cea847101a267f79f192de",
+      "present": true,
+      "bytes": 6370
+    },
+    "cost_weights": {
+      "path": "config/cost_weights.yaml",
+      "sha256": "8fbf78dbab7a880918dba004ff59f199d1f31ca4978009326745f78475a66181",
+      "present": true,
+      "bytes": 682
+    },
+    "constraints": {
+      "path": "config/constraints.yaml",
+      "sha256": "28ce90626132e0e1a60d17af852de783fd3d3422f0ae7f722bd77a59c47e3e2f",
+      "present": true,
+      "bytes": 798
+    },
+    "sources": {
+      "path": "config/sources.yaml",
+      "sha256": "ba5d2db228f24fdd822bd80800a797b3399bf6a1637424217f0db1be59a92581",
+      "present": true,
+      "bytes": 5937
+    },
+    "exp2_include": {
+      "path": "config/exp2_include.txt",
+      "sha256": "f7f179de10ef437f2d38fdd3ce670c965bd77bfce99ab1ac86fbfca6540f9b38",
+      "present": true,
+      "bytes": 942
+    },
+    "exp2_promote": {
+      "path": "config/exp2_promote.txt",
+      "sha256": "6fcaef8c3b07b36a3d0030b666543e98647fd327d580b30363c5abe92338a5fe",
+      "present": true,
+      "bytes": 1087
+    },
+    "exp2_recheck": {
+      "path": "config/exp2_recheck.txt",
+      "sha256": "0df671cc98fb2a22fce7df4955f5a8a868ea8694156d8fa3da537168943ae0f5",
+      "present": true,
+      "bytes": 951
+    },
+    "exp3_contract": {
+      "path": "EXPERIMENT3_CONTRACT.md",
+      "sha256": "04b1d90ed5119c79acbf899c489946d30153842d9d1d17fe18cbd0c4d4e1935f",
+      "present": true,
+      "bytes": 12718
+    },
+    "gates": {
+      "path": "ACCEPTANCE.md",
+      "sha256": "2797f641c2dac366fe340e95e353c1389eb3501523be86e645a432bfce3491c4",
+      "present": true,
+      "bytes": 44993
+    },
+    "exp1_frozen": {
+      "path": "outputs/canonical/exp1_final.json",
+      "sha256": "fd7721e87a1866b48c8bf7215e01bf0e780797df1bf47489b3c499f978f97b5d",
+      "present": true,
+      "bytes": 10394
+    },
+    "exp2_classes": {
+      "path": "outputs/exp2_candidate_classes.json",
+      "sha256": "fea8cdc8e490036086743502fd2b2f3aabbe06821caf244e7852394b09d8295c",
+      "present": true,
+      "bytes": 10058
+    },
+    "exp2_ladders": {
+      "path": "outputs/exp2_ladder_measured.csv",
+      "sha256": "f80e8a22c628f7dacee8e9d31b7f49fb07d95db05761a01037a124ae78bc6531",
+      "present": true,
+      "bytes": 2677
+    },
+    "exp2_treatments": {
+      "path": "outputs/exp2_treatments.jsonl",
+      "sha256": "76715c495ee340090d553897da872961e8018bab46d819135448b623ef62eb9d",
+      "present": true,
+      "bytes": 340314
+    },
+    "exp2b_stageA": {
+      "path": "outputs/exp2b_stageA.csv",
+      "sha256": "84f6a70dad4b7d8abf248b451d0c72e4d33ccf288f4b76b82736acf16916229c",
+      "present": true,
+      "bytes": 147190
+    },
+    "stop_price_diagnosis": {
+      "path": "outputs/exp3_stopprice_diagnosis.json",
+      "sha256": "2d27260b2be3c309418e714cbabee45d68a0fd2f5ee3c985c06a0981fd5597e3",
+      "present": true,
+      "bytes": 1666
+    },
+    "runtime_validation": {
+      "path": "outputs/runtime_validation.json",
+      "sha256": "ed43995962e756644aa42145ccdc37dffa6aba67e52e3aa34391c8738c2477cd",
+      "present": true,
+      "bytes": 625
+    },
+    "manifest": {
+      "path": "outputs/CANONICAL_RESULTS.json",
+      "sha256": "5e260ac449aa54dbf835d3893801fde5f392967f99783734d1e1e5563ef2bcee",
+      "present": true,
+      "bytes": 6633
+    }
+  },
+  "generation_parameters": {
+    "note": "the enumeration and search settings any Experiment 3 comparison must match; taken from the frozen Experiment 1 record rather than restated",
+    "from": "outputs/canonical/exp1_final.json -> search",
+    "lambda": 2.0,
+    "effort": {
+      "iterations": 400000,
+      "restarts": 20,
+      "width": 0
+    },
+    "seeds": [
+      20260825,
+      20260826,
+      20260827
+    ],
+    "n_paths": 243257,
+    "enumeration_tag": "sc-e99acaee75fb7745",
+    "candidate_set": "frozen"
+  },
+  "rules_that_travel_with_it": {
+    "quoting": "the certified frontier begins at λ=2; the cost-favouring λ≤1 corner is uncertified on both models",
+    "identification": "the claim is the aggregate effect, never an individual route headway — independent seeds disagree on 19% of route-periods while scoring within 0.064 points",
+    "stop_penalty": "no runtime saving may be credited for serving fewer stops on the same alignment; this feed cannot price a stop",
+    "contract": "EXPERIMENT3_CONTRACT.md"
+  }
+}

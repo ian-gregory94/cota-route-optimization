@@ -45,16 +45,54 @@ def sha(p: Path) -> str | None:
     return h.hexdigest()
 
 
+#: Paths this script itself rewrites. A record that calls the tree dirty because
+#: it is in the middle of writing itself reports on its own execution rather
+#: than on the repository, and can never be made to say anything else --
+#: committing the file changes it again on the next run.
+SELF_OUTPUTS = ("outputs/canonical/exp1_final.json",
+                "outputs/CANONICAL_RESULTS.json",
+                "outputs/SUPERSEDED.md")
+
+
 def commit() -> str:
     try:
         r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
                            capture_output=True, text=True, timeout=30)
         dirty = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
                                capture_output=True, text=True, timeout=60)
-        return (r.stdout.strip() +
-                ("-dirty" if dirty.stdout.strip() else ""))
+        other = [ln for ln in dirty.stdout.splitlines()
+                 if ln.strip() and not any(ln.endswith(s)
+                                           for s in SELF_OUTPUTS)]
+        return r.stdout.strip() + ("-dirty" if other else "")
     except Exception:
         return "UNKNOWN"
+
+
+def _exp2b_headline() -> str:
+    """Experiment 2B's headline, read from the certification artifact.
+
+    Written rather than typed, because a manifest whose headline is a string
+    literal drifts from the artifact it describes the moment either is
+    regenerated — and this manifest exists precisely because an artifact that
+    looks legitimate can contain a number nobody re-derived. If the
+    certification is missing the manifest says so instead of quoting a value it
+    cannot see.
+    """
+    p = OUT / "exp2b_certification.json"
+    if not p.exists():
+        return ("UNAVAILABLE — outputs/exp2b_certification.json is missing, so "
+                "no 2B headline can be stated")
+    c = json.loads(p.read_text())
+    return (
+        f"NULL. All 240 structurally feasible subsets solved at 60,000/2/32; "
+        f"the leader `{c['set']}` re-solved at {c['effort']} under "
+        f"{len(c['seeds'])} seeds scores {c['effect_pct']:+.4f}% unserved "
+        f"against a {c['floor_pts']}-point floor — {c['floors']} floors. Not "
+        f"one of the 227 multi-edit sets beats the best single, and at λ≥2 all "
+        f"227 substitute. Best-set identity and cardinality monotonicity hold "
+        f"at λ ∈ {{1, 2, 4}}. Gate 12 fired on its own: the effect moved "
+        f"{c['gate_12_shift_pts']} points between discovery and certification "
+        f"effort.")
 
 
 def hashes(paths: dict[str, str]) -> dict[str, dict]:
@@ -217,7 +255,7 @@ def manifest() -> dict:
             "exp2": {
                 "title": "Route geometry — twelve splice candidates, "
                          "evaluated individually",
-                "status": "CLOSED pending the 2B subset search",
+                "status": "CLOSED — no candidate promoted",
                 "canonical": ["outputs/exp2_promotion.json",
                               "outputs/exp2_candidate_classes.json",
                               "outputs/exp2_ladder_measured.csv",
@@ -248,32 +286,65 @@ def manifest() -> dict:
                                 "the representation-stability observation is "
                                 "exploratory and uncontaminated confirmation "
                                 "is still owed"],
+                "closeout": "EXPERIMENT2_CLOSEOUT.md",
             },
             "exp2b": {
-                "title": "Joint search over geometry edit subsets",
-                "status": "RUNNING — stage A, 240 feasible subsets",
-                "canonical": ["outputs/exp2b_stageA.csv",
+                "title": "Joint search over geometry edit subsets — all 240 "
+                         "structurally feasible combinations",
+                "status": "CLOSED — certified NULL",
+                "canonical": ["outputs/exp2b_certification.json",
+                              "outputs/exp2b_stageA.csv",
+                              "outputs/exp2b_stageB.csv",
+                              "outputs/exp2b_stageA_gaps.json",
                               "outputs/exp2b_subsets.shard*.jsonl"],
                 "evaluator": "same_route (Model B), passed explicitly — "
                              "verified by reading the call site in "
-                             "exp2b_subsets.py, and this is one of the two "
-                             "pipelines whose disagreement exposed the defect",
-                "certified": False,
-                "headline": "pending",
+                             "exp2b_subsets.py and by the `evaluator` block in "
+                             "each stage's experiment.json, and this is one of "
+                             "the two pipelines whose disagreement exposed the "
+                             "defect",
+                "certified": True,
+                "headline": _exp2b_headline(),
                 "superseded": [],
-                "limitations": ["stage A ranks; stages B and C are not run yet"],
+                "limitations": [
+                    "every 60,000/2/32 number is discovery-stage under gate 12 "
+                    "— it orders sets, it does not size effects",
+                    "λ=1 and λ=4 ran one seed each, so no noise floor exists "
+                    "at those weights and no headline may be drawn from them",
+                    "the universal-substitution claim is λ≥2; at λ=1 the sign "
+                    "inverts (D25)",
+                    "only splices were ever in the candidate space",
+                    "interaction terms at λ≠2 exist only for sets all of whose "
+                    "members were promoted"],
+                "closeout": "EXPERIMENT2_CLOSEOUT.md",
             },
             "exp3": {
-                "title": "Route mutation",
-                "status": "NOT STARTED — gates committed, contract pending",
+                "title": "Route mutation — search over network states under a "
+                         "committed treatment contract",
+                "status": "NOT STARTED — contract committed, gates committed",
                 "canonical": [],
-                "evaluator": "same_route (Model B), required by gate 3-6",
+                "evaluator": "same_route (Model B), required by gate 3-6 and "
+                             "asserted by the state validator rather than "
+                             "requested and hoped for",
                 "certified": False,
-                "headline": "n/a",
+                "headline": "n/a — nothing scored yet. The conservative "
+                            "incumbent Experiment 3 must beat is Experiment "
+                            "1's certified frequency plan on COTA's UNCHANGED "
+                            "geometry, because Experiment 2B certified the "
+                            "null and promoted no geometry edit.",
                 "superseded": [],
-                "limitations": ["the stop-service penalty is not measurable "
-                                "from this feed; see "
-                                "outputs/exp3_stopprice_diagnosis.json"],
+                "contract": "EXPERIMENT3_CONTRACT.md",
+                "limitations": [
+                    "the stop-service penalty is not measurable from this "
+                    "feed, so no mutation may claim a runtime benefit from "
+                    "serving fewer stops on the same alignment; see "
+                    "outputs/exp3_stopprice_diagnosis.json",
+                    "stop consolidation is a DEFERRED question, not this "
+                    "experiment — its gates are marked conditional in "
+                    "ACCEPTANCE.md",
+                    "the search is heuristic and must recover the known "
+                    "optimum on the exhaustively enumerated 2B space before "
+                    "it is trusted on the mutation space"],
             },
         },
     }

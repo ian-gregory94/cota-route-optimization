@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Build `pre_exp3_baseline_v1` — the object Experiment 3 must beat.
+"""Build a `pre_exp3_baseline` — the object Experiment 3 must beat.
+
+Versioned, not overwritten. `--version v2` writes
+`outputs/canonical/pre_exp3_baseline_v2.json` and leaves v1 exactly as it was,
+because v1 is what the `pre-exp3-v1` tag points at and a frozen record that can
+be silently rewritten in place is not frozen. A correction gets a new version
+and says what it corrects.
 
 Experiment 3 changes route structure. Every number it produces has to be
 reported against one immutable comparison object, chosen and hashed before the
@@ -11,18 +17,20 @@ The package carries two reference points, and Experiment 3's margin is over the
 second:
 
 * the **raw baseline** — COTA's published network and schedule;
-* the **conservative incumbent** — that network with Experiment 1's certified
-  frequency redistribution and Experiment 2/2B's promoted geometry, with
-  frequencies re-optimized on the edited network.
+* the **conservative incumbent** — COTA's UNCHANGED geometry with Experiment
+  1's certified frequency redistribution, frequencies re-optimized inside the
+  same envelope under the Model B evaluator. There is no geometry component:
+  Experiment 2 promoted nothing and Experiment 2B certified the null.
 
 Beating the raw baseline is not a result: Experiments 1 and 2 already do that.
 
-This refuses to write a v1 while any input is unsettled. A baseline assembled
-from a running experiment would be a baseline that changes, which is the one
-thing it must not be.
+This refuses to write a version while any input is unsettled. A baseline
+assembled from a running experiment would be a baseline that changes, which is
+the one thing it must not be.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import subprocess
@@ -34,7 +42,23 @@ sys.path.insert(0, str(ROOT / "src"))
 
 OUT = ROOT / "outputs"
 CANON = OUT / "canonical"
-BASELINE_ID = "pre_exp3_baseline_v1"
+DEFAULT_VERSION = "v2"
+#: What each version corrects, so a reader of v2 can see why v1 was not enough
+#: without diffing two JSON files. v1 is never rewritten -- `pre-exp3-v1` points
+#: at it.
+VERSION_NOTES = {
+    "v1": "First freeze, 2026-08-30. Written while Experiment 2B stage C was "
+          "still running, so it recorded the geometry incumbent as pending: "
+          "'Experiment 2B may still find a subset that clears the floor'. "
+          "Superseded by v2, and kept unchanged because pre-exp3-v1 points at "
+          "it.",
+    "v2": "Corrects v1's pending language. Experiment 2B is closed and "
+          "certified the null across all 240 feasible subsets, so the "
+          "conservative incumbent is COTA's unchanged geometry as a settled "
+          "finding rather than a default held open. Also carries the aligned "
+          "Experiment 3 gates, the locked primary objective, and the "
+          "executable treatment contract.",
+}
 
 
 def sha(p: Path) -> str | None:
@@ -51,7 +75,8 @@ def sha(p: Path) -> str | None:
 #: because it is in the middle of writing itself is reporting on its own
 #: execution, not on the state of the repository, and it can never be made to
 #: say anything else -- committing the file changes it again on the next run.
-SELF_OUTPUTS = ("outputs/canonical/pre_exp3_baseline_v1.json",)
+SELF_OUTPUTS = tuple(f"outputs/canonical/pre_exp3_baseline_{v}.json"
+                     for v in VERSION_NOTES)
 
 
 def commit() -> str:
@@ -106,12 +131,26 @@ def blockers() -> list[str]:
     return out
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", default=DEFAULT_VERSION,
+                    choices=sorted(VERSION_NOTES),
+                    help="which baseline version to write; earlier versions "
+                         "are never overwritten")
+    args = ap.parse_args(argv)
+    version = args.version
+    baseline_id = f"pre_exp3_baseline_{version}"
+    dest = CANON / f"{baseline_id}.json"
+
     stop = blockers()
     CANON.mkdir(parents=True, exist_ok=True)
 
     pkg = {
-        "id": BASELINE_ID,
+        "id": baseline_id,
+        "version_note": VERSION_NOTES[version],
+        "supersedes": ([f"pre_exp3_baseline_{v}"
+                        for v in sorted(VERSION_NOTES) if v < version]
+                       or None),
         "status": "DRAFT — not yet valid" if stop else "FROZEN",
         "commit": commit(),
         "commit_note":
@@ -160,14 +199,21 @@ def main() -> int:
                 "what": "the best defensible performance available WITHOUT "
                         "materially changing route structure — the number "
                         "Experiment 3 must beat",
-                "geometry": "UNCHANGED. Experiment 2 promoted nothing: at the "
-                            "effort Experiment 1 is certified at, no candidate "
+                "geometry": "UNCHANGED, and now settled rather than pending. "
+                            "Experiment 2 promoted nothing: at the effort "
+                            "Experiment 1 is certified at, no candidate "
                             "produces a measurable improvement and six produce "
-                            "measurable harm (D24, outputs/exp2_promotion.json). "
-                            "Experiment 2B may still find a subset that clears "
-                            "the floor where no single does — that would be a "
-                            "real interaction — and until stage C says so the "
-                            "incumbent geometry is COTA's own.",
+                            "measurable harm (D24, "
+                            "outputs/exp2_promotion.json). Experiment 2B then "
+                            "solved all 240 structurally feasible subsets and "
+                            "CERTIFIED THE NULL: the leader scores +0.0065% "
+                            "unserved at certification effort under three "
+                            "seeds, 0.02 of a noise floor, and not one of the "
+                            "227 multi-edit sets beats the best single "
+                            "(outputs/exp2b_certification.json, D22, D25). The "
+                            "incumbent geometry is COTA's own — not because "
+                            "the question is open, but because it was asked "
+                            "exhaustively and answered no.",
                 "equals": "exp1_certified, on the published geometry",
                 "artifacts": [hashed("outputs/exp2_promotion.json"),
                               hashed("outputs/exp2b_certification.json")],
@@ -216,11 +262,11 @@ def main() -> int:
     if e1:
         pkg["generation_parameters"].update(e1.get("search", {}))
 
-    path = CANON / f"{BASELINE_ID}.json"
-    path.write_text(json.dumps(pkg, indent=2))
+    path = dest
+    path.write_text(json.dumps(pkg, indent=2, ensure_ascii=False) + "\n")
 
     print("=" * 84)
-    print(f"{BASELINE_ID}: {pkg['status']}")
+    print(f"{baseline_id}: {pkg['status']}")
     print("=" * 84)
     missing = [k for k, v in pkg["inputs"].items() if not v["present"]]
     print(f"  {len(pkg['inputs'])} inputs hashed, {len(missing)} missing"
