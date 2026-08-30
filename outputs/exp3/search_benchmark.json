@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "space_size": 240,
+  "expected": "splice|011|034|WESHIGW",
+  "exhaustive_optimum": "splice|011|034|WESHIGW",
+  "exhaustive_optimum_score": -0.5845518890625012,
+  "combined": {
+    "found": "splice|011|034|WESHIGW",
+    "score": -0.5845518890625012,
+    "evaluated": 57
+  },
+  "per_seed": {
+    "0": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 20,
+      "recovered": true
+    },
+    "1": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 28,
+      "recovered": true
+    },
+    "2": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 27,
+      "recovered": true
+    },
+    "3": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 26,
+      "recovered": true
+    },
+    "4": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 27,
+      "recovered": true
+    },
+    "5": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 28,
+      "recovered": true
+    },
+    "6": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 27,
+      "recovered": true
+    },
+    "7": {
+      "found": "splice|011|034|WESHIGW",
+      "score": -0.5845518890625012,
+      "evaluated": 27,
+      "recovered": true
+    }
+  },
+  "resume": {
+    "checked": true,
+    "first_pass_evaluated": 57,
+    "second_pass_evaluated": 0,
+    "second_pass_reused": 312,
+    "same_answer": true,
+    "same_score": true,
+    "second_pass_did_no_work": true
+  },
+  "note": "The discovery-stage optimum recovered here later CERTIFIED AS NULL (D22). This benchmark validates that the heuristic finds what the exhaustive table says is best; it says nothing about whether that intervention is worth making.",
+  "objective_column": "unserved_vs_noedit_pct",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "pool_size": 12,
+  "incompatible_pairs": 17,
+  "benchmark_is_necessary_not_sufficient": "The 2B optimum is a SINGLE mutation adjacent to the null, so a greedy add-only search recovers it trivially. Passing here shows the plumbing works \u2014 state hashing, incompatibility, checkpointing, resume \u2014 and very little about the move set. tests/test_statesearch.py supplies what this cannot: spaces with non-nested optima that only a swap move reaches, a deceptive single that traps an add-only search, a table whose answer is the null, and a benchmark harness proven able to FAIL."
+}
