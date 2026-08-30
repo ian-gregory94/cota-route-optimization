@@ -511,80 +511,184 @@ artifact written by the thing that did the scoring, not by something adjacent
 to it.
 
 
-## Experiment 3 gates, committed 2026-08-30 before any Experiment 3 result exists
+## Experiment 3 gates, committed 2026-08-30, renumbered 2026-08-30 after the identity split
 
-Experiment 3 trades passenger walking against vehicle running time. The exchange
-rate is the time a bus loses by serving one more stop, and **this feed cannot
-measure it.** That is established, not assumed: the eleven natural experiments
-COTA's schedule offers rest on five stops, three of which are bays on one
-platform at Spring St Terminal **nine metres apart**, and the other two
-downtown intersection corners about sixty-four metres from the stop they are
-being distinguished from. COTA's median stop spacing is 331 m. Relaxing every
-threshold — dropping the period control, cutting the minimum segment from 120 s
-to 30 s, raising the skipped-stop cap from 12 to 40 — takes the comparison count
-from 11 to 15 and the *wayside* comparison count from **0 to 0**. The scarcity
-is in the feed, not the filter (`outputs/exp3_stopprice_diagnosis.json`).
+**What Experiment 3 is.** A search over **network states** produced by route
+mutation — shorten, extend, reroute, straighten, change terminal, change
+transfer point, splice, split — inside COTA's existing stop inventory and
+vehicle-hour envelope, with frequency re-optimized on every state.
 
-Everything below follows from that.
+**What Experiment 3 is not.** It is **not stop consolidation**, and it is not
+greenfield network design. The gates below were first written for the
+stop-consolidation question — walking traded against vehicle running time —
+because that was what Experiment 3 was going to be. It is not that any more.
+Those gates are preserved verbatim further down under the `SC-` prefix and
+marked **deferred**; they are not operative for this experiment. Leaving them in
+force would have meant an experiment governed by gates about a quantity it never
+measures, and — worse — a stop-consolidation search could have slipped in under
+Experiment 3's name because the gates still permitted it.
 
-**Gate 3-1 — no measured stop penalty may be claimed, ever.** Experiment 3
-reports a **break-even** penalty per candidate: the seconds per stop an edit
-must save to pay for the walking it imposes. Any sentence of the form "a stop
-costs N seconds" is out of scope for this project on this data. The
-`-157 s/stop` pooled estimate is a diagnostic that the natural experiment
-failed; it is not a number.
+The renumbering is a rename, not a relaxation. Every operative gate below is
+either one of the old gates that was always general (3-6, 3-7, 3-9), the
+surviving operative *prohibition* from the stop audit (old 3-1 and 3-5), or new
+and stricter.
 
-**Gate 3-2 — a recommendation must survive the whole plausible range, or it is
-not a recommendation.** A consolidation may be recommended only if its
-break-even threshold sits **outside** the range of dwell figures a reasonable
-planner might assume, so that the conclusion does not depend on which figure is
-chosen. The range must be stated, with its source, before the candidates are
-scored. Candidates whose break-even falls inside the range are reported as
-*decided by the assumption* and recommended to nobody — that is a finding about
-what this data can settle, and it is expected to be most of them.
+| old | new | what happened |
+|---|---|---|
+| 3-1 no measured stop penalty | **SC-1** + **3-4** | deferred as a claim rule; survives as an operative prohibition on crediting skipped stops |
+| 3-2 survive the plausible range | **SC-2** | deferred with the consolidation question |
+| 3-3 conservative break-even | **SC-3** | deferred with the consolidation question |
+| 3-4 schedule relationship not causal | **SC-4** | deferred as a regression rule; the underlying finding is quoted in 3-4 |
+| 3-5 sole-access stops excluded | **3-5** | operative, restated as a mutation constraint |
+| 3-6 Model B asserted | **3-1** | operative, unchanged in force |
+| 3-7 the screen does not select | **3-2** | operative, unchanged in force |
+| 3-8 sets not sums | **3-6** | operative, strengthened — 2B's evidence replaces D20's inference |
+| 3-9 noise floor in the same run | **3-3** | operative, strengthened — now on the scalarized objective too |
+| — | **3-7, 3-8, 3-9, 3-10** | new |
 
-**Gate 3-3 — the break-even stays conservative.** It counts only the in-vehicle
-time of riders passing the stop, and does not credit the vehicle-hours a removal
-frees. Crediting them would lower every threshold and make removal easier to
-justify; leaving them out errs in the direction that makes consolidation harder
-to argue for, which is the correct direction when the penalty is unmeasured. If
-this is ever relaxed, it is a new gate, not a refinement of this one.
+---
 
-**Gate 3-4 — the schedule relationship is not causal and is never presented as
-one.** Routes with more stops are scheduled slower *and* run on denser, slower
-corridors; the feed cannot separate those. No regression on scheduled running
-time against stop count enters a conclusion, in any direction, including the one
-that would support consolidation.
-
-**Gate 3-5 — a stop that is anyone's only access is not a candidate.** The
-audit already identifies 13 stops that are the sole transit access for their
-catchment, carrying 3,045 units of flow. They are excluded before scoring, not
-weighed against a threshold.
-
-**Gate 3-6 — Model B, and the pricing is asserted.** Every evaluator is built
+**Gate 3-1 — Model B, and the pricing is asserted.** Every evaluator is built
 with `common_lines` passed explicitly and the run asserts the setup came back
 with it. This is not boilerplate: an unasserted evaluator scored three days of
-Experiment 2 under the wrong model (see the defect note above).
+Experiment 2 under the wrong model (see the defect note above). In Experiment 3
+the assertion moves out of the run script and into the state validator, which
+refuses to score a state whose evaluator cannot state its own waiting model.
 
-**Gate 3-7 — the screen does not select what gets evaluated.** D19 found the
-screen's first-ranked candidate of sixty to be the worst of the twelve, and D23
-found the ranking to move again under a corrected model. Stop candidates are
-screened only to bound the pool; the shortlist that reaches evaluation is
-decided by measured effect, and the inspection tier is driven by measured effect
-too (`inspect_candidates.py --order-from`).
+**Gate 3-2 — the screen does not select what gets evaluated.** D19 found the
+screen's first-ranked candidate of sixty to be the worst of twelve on
+evaluation, and D23 found the ranking to move again under a corrected model. No
+mutation is discarded, and no state is ranked, on a fixed-frequency score.
+Frequency is re-optimized on every state that is scored at all.
 
-**Gate 3-8 — consolidations are evaluated as sets, not summed.** D20 holds that
-edits compete for one vehicle-hour envelope and do not compose; there is no
-reason stop removals would differ, and a stop removal frees *less* than a
-splice, so the interaction may be smaller and must still be measured rather than
-assumed away. Any multi-stop recommendation is scored as the set it is.
+**Gate 3-3 — the noise floor is measured in the same run, at the same effort,
+for the quantity actually being compared.** Three zero-edit replicates, 3σ.
+Experiment 3's primary quantity is the **scalarized objective**, not unserved
+demand, so it needs its own floor: the existing 0.130-point and 0.287-point
+figures are floors on *unserved demand* and may not be applied to a different
+quantity. A floor is measured for the objective **and** for every component
+metric reported alongside it. A candidate clearing a floor by a hair clears
+nothing — the floor itself is estimated from three seeds and is noisy.
 
-**Gate 3-9 — the noise floor is measured in the same run at the same effort.**
-Three zero-edit replicates, 3σ, as in Experiments 1 and 2. Model B's floor has
-been 0.130 points at ranking effort and 0.287 at full effort — two estimates
-from three seeds each, so the floor itself is noisy and a candidate clearing it
-by a hair clears nothing.
+**Gate 3-4 — no runtime credit for skipping stops on an unchanged alignment.**
+The exchange rate between passenger walking and vehicle running time is the time
+a bus loses serving one more stop, and **this feed cannot measure it** (the
+finding is preserved in full under SC-1 below). So a mutation may not be
+credited with a running-time saving that comes from serving fewer stops along
+the same path. Mutations that change the *alignment* are priced by the runtime
+model as usual; a mutation that keeps the alignment and drops stops from it
+gets no runtime benefit at all. The validator enforces this structurally rather
+than trusting the scorer, because this is the single most likely way for the
+deferred consolidation question to re-enter Experiment 3 wearing a disguise.
 
+**Gate 3-5 — a stop that is anyone's only access is protected.** The audit
+identifies 13 stops that are the sole transit access for their catchment,
+carrying 3,045 units of flow. No mutation may leave one of them unserved. This
+is checked on the resulting network state, not on the mutation's intent —
+truncating a route can strand a stop that the mutation never names.
+
+**Gate 3-6 — states are scored, not sums of edits.** Experiment 2B settled this
+with evidence rather than inference: across all 240 structurally feasible
+subsets, **every one of the 227 multi-edit sets delivers less than the sum of
+its members** at λ≥2, without a single exception. A search that ranks mutations
+individually and takes the top N is therefore forbidden as a *procedure*; it is
+permitted only as an explicit object of study whose expected failure is already
+on record. Interaction terms are measured and published for every promoted
+state.
+
+**Gate 3-7 — the margin is over the conservative incumbent, re-solved in the
+same run.** The comparison object is COTA's **unchanged** geometry with
+frequency re-optimized inside the same envelope under the same evaluator —
+there is no geometry component, because Experiment 2 promoted nothing and
+Experiment 2B certified the null. The frozen Experiment 1 record is the
+reference, but **every promoted comparison additionally re-solves the unchanged
+network at matched effort in the same run**, with replicates. Beating the raw
+published schedule is context and is reported as context; it is not an
+Experiment 3 result, because Experiments 1 and 2 already did it and reporting it
+again counts the same gain twice.
+
+**Gate 3-8 — the envelope binds, and both halves are checked.** Weekday revenue
+vehicle-hours must not exceed the pinned budget, and the block-derived peak
+vehicle count must not exceed the baseline's 197.0. Hours are not buses: a plan
+can respect the hour budget and still need more vehicles, and that would be a
+different experiment with a different cost.
+
+**Gate 3-9 — modelled-link exposure is recorded, and it sets the evidence
+class.** Every state records `modelled_share_pct`, the share of its segment
+running time priced by the estimator rather than observed in the feed. At or
+below **2.0%** a result is *primary* evidence. Above it the result is
+*secondary* and may not carry a headline unless its margin is large against the
+estimator's 20.5% median single-link error. The class is recorded with the
+score, not decided afterwards.
+
+**Gate 3-10 — mutation identity stability.** If independent seeds at matched
+effort produce structurally different networks that score within the noise floor
+of each other, the **structure is not identified** and must be reported that way
+— exactly as Experiment 1 reports its headways. Structural disagreement is
+measured and published alongside the effect, as gate 7 does for route-periods.
+No map is promoted because it came from seed 1, and no seed is chosen for
+producing the prettiest network.
+
+**Gate 12 applies to every Experiment 3 comparison.** Convergence must be
+matched, not merely nominal effort. See the gate 12 section below; D24 is why it
+exists.
+
+---
+
+### Deferred: the stop-consolidation gates (SC-1 … SC-4)
+
+**These are not operative for Experiment 3.** They govern a question this
+project has deferred: whether COTA should remove stops, trading passenger
+walking against vehicle running time. The code that supports it —
+`stopedits.py`, `stopevidence.py`, the break-even framework, the sole-access
+audit — remains in the repository and remains correct. It must not become the
+Experiment 3 search by default, which is why the gates are marked rather than
+deleted: a future experiment that takes up this question inherits them already
+written, and Experiment 3 cannot quietly satisfy them instead of its own.
+
+The finding underneath them is preserved in full, and is the reason gate 3-4
+exists:
+
+> **The exchange rate is not measurable from this feed.** The eleven natural
+> experiments COTA's schedule offers rest on five stops, three of which are bays
+> on one platform at Spring St Terminal **nine metres apart**, and the other two
+> downtown intersection corners about sixty-four metres from the stop they are
+> being distinguished from. COTA's median stop spacing is 331 m. Relaxing every
+> threshold — dropping the period control, cutting the minimum segment from
+> 120 s to 30 s, raising the skipped-stop cap from 12 to 40 — takes the
+> comparison count from 11 to 15 and the *wayside* comparison count from **0 to
+> 0**. The scarcity is in the feed, not the filter
+> (`outputs/exp3_stopprice_diagnosis.json`).
+
+**Gate SC-1 (deferred) — no measured stop penalty may be claimed, ever.** A
+consolidation experiment reports a **break-even** penalty per candidate: the
+seconds per stop an edit must save to pay for the walking it imposes. Any
+sentence of the form "a stop costs N seconds" is out of scope for this project
+on this data. The `-157 s/stop` pooled estimate is a diagnostic that the natural
+experiment failed; it is not a number.
+
+**Gate SC-2 (deferred) — a recommendation must survive the whole plausible
+range, or it is not a recommendation.** A consolidation may be recommended only
+if its break-even threshold sits **outside** the range of dwell figures a
+reasonable planner might assume, so the conclusion does not depend on which
+figure is chosen. The range must be stated, with its source, before candidates
+are scored. Candidates whose break-even falls inside the range are reported as
+*decided by the assumption* and recommended to nobody — a finding about what
+this data can settle, and expected to be most of them.
+
+**Gate SC-3 (deferred) — the break-even stays conservative.** It counts only the
+in-vehicle time of riders passing the stop, and does not credit the
+vehicle-hours a removal frees. Crediting them would lower every threshold and
+make removal easier to justify; leaving them out errs in the direction that
+makes consolidation harder to argue for, which is the correct direction when the
+penalty is unmeasured. If this is ever relaxed, it is a new gate, not a
+refinement of this one.
+
+**Gate SC-4 (deferred) — the schedule relationship is not causal and is never
+presented as one.** Routes with more stops are scheduled slower *and* run on
+denser, slower corridors; the feed cannot separate those. No regression on
+scheduled running time against stop count enters a conclusion, in any direction,
+including the one that would support consolidation.
 
 ## Experiment 3 treatment contract
 

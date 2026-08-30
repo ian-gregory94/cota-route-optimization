@@ -323,7 +323,7 @@ def manifest() -> dict:
                          "committed treatment contract",
                 "status": "NOT STARTED — contract committed, gates committed",
                 "canonical": [],
-                "evaluator": "same_route (Model B), required by gate 3-6 and "
+                "evaluator": "same_route (Model B), required by gate 3-1 and "
                              "asserted by the state validator rather than "
                              "requested and hoped for",
                 "certified": False,

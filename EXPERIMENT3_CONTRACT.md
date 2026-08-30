@@ -147,6 +147,65 @@ as a ranking, and no candidate is promoted or discarded on it alone.
 
 ---
 
+## 5a. What "beats the incumbent" means, fixed before any result exists
+
+**The primary criterion is the λ=2 path-level scalarized objective:**
+
+```
+objective(plan) = generalized_cost + λ · w_unserved · unserved_demand
+```
+
+with **λ = 2** and `w_unserved` read at runtime from
+`config/cost_weights.yaml` (`weights.unserved`, currently 60.0 minutes-
+equivalent per unserved trip). The weight is **read, never hardcoded** — a
+constant copied into the search would silently diverge the moment the config
+changed, and the objective would then be a different objective wearing the same
+name. `exp3.objective()` is the single implementation; nothing else computes it.
+
+This is one number, and one number is what a search can be run against. It is
+also not enough on its own to describe a plan, so **every result reports all six
+of these separately, always, at every stage**:
+
+| metric | why it is not optional |
+|---|---|
+| generalized cost | rises when a plan serves more people; the scalarized objective hides that |
+| unserved demand | Experiments 1 and 2's headline quantity, and the one every prior floor was measured on |
+| served demand | the direction the project actually cares about |
+| generalized cost per served trip | the only one of these that fell in Experiment 1 |
+| weekday revenue vehicle-hours | the binding constraint |
+| peak vehicles | hours are not buses; a plan can respect the budget and still need a bigger fleet |
+
+A table showing the objective without the components is not a result.
+
+**The comparison object.** The conservative incumbent is COTA's **unchanged**
+geometry with frequency re-optimized inside the same envelope under the same
+Model B evaluator. It has no geometry component, because Experiment 2 promoted
+nothing and Experiment 2B certified the null across all 240 feasible subsets.
+
+`outputs/canonical/exp1_final.json` is the **reference** result — the frozen
+number a reader can check against. It is *not* the thing a margin is computed
+from. **Every promoted comparison re-solves the unchanged network itself, at
+matched effort, in the same run, with replicates.** D24 is why: the frozen
+number was produced by a different run at a different effort, and the entire
+Experiment 2 geometry claim came from comparing a well-solved edited network
+against a badly-solved unedited one at nominally identical effort. Quoting a
+margin against a stored number reintroduces that failure with no way to detect
+it.
+
+Beating the **raw published schedule** is context, reported as context. It is
+not an Experiment 3 result: Experiments 1 and 2 already beat it, and reporting
+it again counts the same gain twice.
+
+**Noise floors are measured for the quantity being compared.** The 0.130-point
+and 0.287-point floors in this project are floors on *unserved demand* at two
+efforts. They may not be applied to the scalarized objective, which has
+different units and a different variance. Every stage that quotes a margin
+measures, in the same run and at the same effort, a floor for the objective
+**and** a floor for each of the six reported components — from zero-edit
+replicates, 3σ, as everywhere else.
+
+---
+
 ## 6. Search design: interactions are assumed from the start
 
 Experiment 2 gave direct evidence that geometry interventions are non-additive
@@ -185,12 +244,31 @@ inspecting first is how a pretty map acquires a score.
 
 ## 8. Gates
 
-Experiment 3 inherits gates 3-1 through 3-9 as committed in `ACCEPTANCE.md`
-(no measured stop penalty; recommendations must survive the whole plausible
-assumption range; conservative break-even; the schedule relationship is not
-causal; sole-access stops excluded; Model B asserted; the screen does not
-select; sets not sums; the noise floor measured in the same run at the same
-effort), and adds one that matters only here:
+Experiment 3 runs under gates **3-1 through 3-10** as committed in
+`ACCEPTANCE.md`, plus gate 12. Those gates were **renumbered on 2026-08-30**,
+and the renumbering matters: the gates that used to carry these numbers were
+written for stop consolidation — walking traded against vehicle running time —
+which is not what this experiment does. They are preserved under the `SC-`
+prefix and marked deferred. An Experiment 3 governed by gates about a quantity
+it never measures would have been an experiment governed by nothing, and worse,
+the deferred consolidation question could have re-entered under Experiment 3's
+name because the gates still permitted it.
+
+The operative ten, in one line each:
+
+| gate | what it forbids |
+|---|---|
+| 3-1 | scoring under an evaluator that cannot state its own waiting model |
+| 3-2 | letting a fixed-frequency screen decide what gets evaluated |
+| 3-3 | comparing against a floor measured for a different quantity or at a different effort |
+| 3-4 | crediting a runtime saving to skipping stops on an unchanged alignment |
+| 3-5 | leaving a sole-access stop unserved |
+| 3-6 | ranking mutations individually and taking the top N |
+| 3-7 | quoting a margin over anything but the incumbent re-solved in the same run |
+| 3-8 | exceeding the vehicle-hour budget or the 197.0 peak-vehicle baseline |
+| 3-9 | letting a high modelled-link exposure carry a headline |
+| 3-10 | promoting one map when the seeds disagree structurally inside the floor |
+| 12 | matching nominal effort and calling it matched convergence |
 
 **Gate 12 (convergence, not just effort) applies to every Experiment 3
 comparison.** A mutated network and the incumbent it is compared against must
@@ -200,13 +278,6 @@ an apparent half-point geometry gain was the unedited network being the harder
 of the two to solve well, at an effort that was nominally matched and materially
 was not.
 
-**Gate 3-10 — mutation identity stability.** If independent seeds at matched
-effort produce structurally different networks that score within the noise
-floor of each other, the **structure is not identified** and must be reported
-that way — exactly as Experiment 1 reports its headways. Structural
-disagreement is measured and published alongside the effect, as gate 7 does for
-route-periods. No map is promoted because it came from seed 1.
-
 ---
 
 ## 9. Definition of ready
@@ -214,8 +285,13 @@ route-periods. No map is promoted because it came from seed 1.
 Experiment 3 does not begin until each of these has an exact artifact reference:
 
 1. **The best defensible performance without changing route structure** —
-   `outputs/canonical/exp1_final.json` plus the Experiment 2/2B incumbent.
-2. **The object Experiment 3 must beat** — `pre_exp3_baseline_v1`.
+   `outputs/canonical/exp1_final.json`. There is no geometry component:
+   Experiment 2 promoted nothing and Experiment 2B certified the null, so the
+   incumbent is that frequency plan on COTA's unchanged geometry.
+2. **The object Experiment 3 must beat** — `pre_exp3_baseline_v2`
+   (`outputs/canonical/pre_exp3_baseline_v2.json`). v1 is preserved unchanged
+   under the `pre-exp3-v1` tag; it was written while 2B stage C was still
+   running and recorded the geometry incumbent as pending.
 3. **The assumptions and evaluator producing that score** — the `evaluator`
    block in each canonical artifact, and the config snapshots hashed inside it.
 4. **What Experiment 3 may mutate** — this file.
@@ -224,7 +300,8 @@ Experiment 3 does not begin until each of these has an exact artifact reference:
    these is true, however good the headline looks:
 
    * its margin over the conservative incumbent is inside the noise floor
-     measured in the same run at the same effort;
+     measured **in the same run, at the same effort, for the same quantity** —
+     the objective's own floor, not unserved demand's;
    * the margin shrinks when both sides are solved at a higher effort — D24's
      failure, and the reason gate 12 exists;
    * its advantage rests on serving fewer stops along the same alignment;
@@ -238,6 +315,10 @@ Experiment 3 does not begin until each of these has an exact artifact reference:
    * it was ranked by a fixed-frequency screen and never re-optimized;
    * it beats the raw baseline but not the conservative incumbent, which is
      Experiments 1 and 2's result being reported twice;
+   * the incumbent it beat was the frozen Experiment 1 record rather than the
+     unchanged network re-solved at matched effort in the same run;
+   * it needs more than 197.0 peak vehicles, however well it respects the
+     vehicle-hour budget;
    * the evaluator that produced it cannot state its own waiting model.
 
    The list is deliberately blunt. Every entry on it has already happened once
