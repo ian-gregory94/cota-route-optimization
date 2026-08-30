@@ -1,0 +1,155 @@
+{
+  "phase": "A1",
+  "singles_scored": 6,
+  "replicates": 3,
+  "noise_floor": {
+    "n_replicates": 3,
+    "effort": "60000/2/32",
+    "absolute_3sigma": {
+      "objective": 0.0,
+      "generalized_cost": 0.0,
+      "unserved_demand": 0.0,
+      "served_demand": 0.0,
+      "gc_per_served_trip": 0.0,
+      "revenue_veh_hours": 0.0,
+      "peak_vehicles": 0.0
+    },
+    "relative_3sigma_pct": {
+      "objective": 0.0,
+      "generalized_cost": 0.0,
+      "unserved_demand": 0.0,
+      "served_demand": 0.0,
+      "gc_per_served_trip": 0.0,
+      "revenue_veh_hours": 0.0,
+      "peak_vehicles": 0.0
+    },
+    "replicate_means": {
+      "objective": 2956120.5839554886,
+      "generalized_cost": 1786612.7109357275,
+      "unserved_demand": 9745.898941831343,
+      "served_demand": 21203.10105816866,
+      "gc_per_served_trip": 84.26185896272096,
+      "revenue_veh_hours": 2515.1316648835345,
+      "peak_vehicles": 176.19194675925925
+    },
+    "note": "3 sigma of the zero-edit replicate spread, measured in this run at this effort. Floors from other runs or other quantities do not transfer."
+  },
+  "best_single": "add_stop-008#f178c37040f5",
+  "refused": [
+    {
+      "state": "add_stop-001#dc6e768a1ae6",
+      "rule": "state",
+      "detail": "2517.9 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "add_stop-025#2bae7942d365",
+      "rule": "state",
+      "detail": "2517.2 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "add_stop-102#78da77548338",
+      "rule": "state",
+      "detail": "2517.4 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "change_terminal-002-MAIOAKE1#e3cb084310eb",
+      "rule": "state",
+      "detail": "2517.7 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "change_terminal-033-METS565S#591129a14c14",
+      "rule": "state",
+      "detail": "2517.9 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "change_terminal-102-MOU5THW1#abb1c550bb9c",
+      "rule": "state",
+      "detail": "2518.1 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-002#8dff183f524f",
+      "rule": "state",
+      "detail": "2535.6 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-009#67ec2a76371d",
+      "rule": "state",
+      "detail": "2521.4 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-024#26db14321a47",
+      "rule": "state",
+      "detail": "2526.9 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-031#42a029968ad8",
+      "rule": "state",
+      "detail": "2525.5 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-034#daffb8603dc9",
+      "rule": "state",
+      "detail": "2525.8 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "extend-102#ad7767bba8a4",
+      "rule": "state",
+      "detail": "2533.3 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "reroute-002#4515e77f1b64",
+      "rule": "state",
+      "detail": "3 stop(s) end up served by no route (['MAIMONW', 'MAIPARSW', 'MAIWASW']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question."
+    },
+    {
+      "state": "reroute-004#b7682ec39690",
+      "rule": "state",
+      "detail": "11 stop(s) end up served by no route (['INDARCS', 'INDCRES', 'INDMELS', 'INDMIDS', 'INDOLES']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2521.6 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "reroute-007#7e851ba70b92",
+      "rule": "state",
+      "detail": "7 stop(s) end up served by no route (['MARSTCW', 'MOU22NW', 'MOUCHAW', 'MOUGRAHW', 'MOUMIAW']...). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2527.9 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "reroute-010#b18fd7b39751",
+      "rule": "state",
+      "detail": "2518.8 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "reroute-012#fb24f651cbc5",
+      "rule": "state",
+      "detail": "5 stop(s) end up served by no route (['MCK133E', 'MCK851E', 'MCKCYPE', 'MCKYALE', 'SOUSCOS']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2518.3 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "reroute-031#dfd049714f7d",
+      "rule": "state",
+      "detail": "3 stop(s) end up served by no route (['MOC2315E', 'MOC250E', 'SUNSUNN']). A mutation may change which routes serve a stop; removing one from the network is the deferred stop-consolidation question.; 2519.7 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "splice-001-021-PICBETS#e0f055d0f715",
+      "rule": "state",
+      "detail": "network edit distance 18.8% exceeds 15%. That is a real result about Experiment 4, not this one \u2014 the line is a single number precisely so it cannot be argued case by case."
+    },
+    {
+      "state": "splice-002-033-WESHIGW#e2acb3ef8921",
+      "rule": "state",
+      "detail": "network edit distance 21.2% exceeds 15%. That is a real result about Experiment 4, not this one \u2014 the line is a single number precisely so it cannot be argued case by case.; 2517.6 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "splice-005-006-NMURBEAN#134375538ebc",
+      "rule": "state",
+      "detail": "network edit distance 20.0% exceeds 15%. That is a real result about Experiment 4, not this one \u2014 the line is a single number precisely so it cannot be argued case by case."
+    },
+    {
+      "state": "splice-006-021-NMURBEAN#bd23c5b7c67c",
+      "rule": "state",
+      "detail": "2517.7 vehicle-hours exceeds the pinned budget of 2517.2"
+    },
+    {
+      "state": "splice-008-035-BOASHAN#fc06f973aa23",
+      "rule": "state",
+      "detail": "network edit distance 18.2% exceeds 15%. That is a real result about Experiment 4, not this one \u2014 the line is a single number precisely so it cannot be argued case by case."
+    }
+  ]
+}

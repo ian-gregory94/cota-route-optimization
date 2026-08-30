@@ -115,17 +115,47 @@ def served_stops(net: TransitNetwork) -> set[str]:
     return {s for p in net.patterns.values() for s in p.stops}
 
 
+def visits_per_stop(net: TransitNetwork) -> dict[str, int]:
+    """How many pattern-visits each stop receives, across all routes."""
+    out: dict[str, int] = {}
+    for p in net.patterns.values():
+        for s in p.stops:
+            out[s] = out.get(s, 0) + 1
+    return out
+
+
 def edit_distance(before: TransitNetwork, after: TransitNetwork) -> float:
     """(stop-visits added + removed) / baseline stop-visits, as a fraction.
 
-    Summed over routes and matched by route id, so a consumed route counts its
-    whole length as removed and its replacement counts as added — which is
-    correct: a splice really does rewrite both lines.
+    Measured **per stop, not per route id**, and that distinction is the whole
+    correctness of the rule. Matching by route id makes a splice read as
+    deleting two routes and creating a third — maximal churn — even though
+    nearly every stop-visit survives the merge untouched. Under that reading
+    every splice in the pool scored 18-22% and was refused for exceeding 15%,
+    which made the contract contradict itself: it lists `splice` as permitted
+    and quotas twelve of them.
+
+    Route ids are bookkeeping. What the 15% line is for is how much of the
+    network's actual service pattern moved, so that is what this counts.
+    `route_churn` below keeps the route-identity view as a reported fact, since
+    it is interesting even though it is not the constraint.
+    """
+    a, b = visits_per_stop(before), visits_per_stop(after)
+    base = sum(a.values()) or 1
+    moved = sum(abs(b.get(s, 0) - a.get(s, 0)) for s in set(a) | set(b))
+    return moved / base
+
+
+def route_churn(before: TransitNetwork, after: TransitNetwork) -> float:
+    """The route-identity view: how much changed when matched by route id.
+
+    Reported, never enforced. A splice scores high here by construction and
+    that is a true statement about route identity, not about service.
     """
     a, b = stop_visits(before), stop_visits(after)
     base = sum(a.values()) or 1
-    moved = sum(abs(b.get(r, 0) - a.get(r, 0)) for r in set(a) | set(b))
-    return moved / base
+    return sum(abs(b.get(r, 0) - a.get(r, 0))
+               for r in set(a) | set(b)) / base
 
 
 def split_shares(net: TransitNetwork, route_id: str,
@@ -285,6 +315,7 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
                      coords: dict[str, tuple[float, float]] | None = None,
                      report: Any = None,
                      veh_hours: float | None = None,
+                     edited_baseline_veh_hours: float | None = None,
                      peak_vehicles: float | None = None,
                      waiting_model: str | None = None) -> StateCheck:
     """Check the network a state actually produced.
@@ -309,15 +340,29 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
                 f"evaluator scored three days of Experiment 2 under the wrong "
                 f"model.")
 
-    # section 3 — no stop leaves the network
-    checked.append("no-stop-removed")
+    # section 3 — no stop leaves the network INVENTORY
+    #
+    # Corrected 2026-08-30. This used to refuse any state where a stop ended up
+    # served by no route, and that is not what the contract says. The rule is
+    # that a mutation may not change which stops EXIST; a truncation
+    # legitimately ends service at the stops on the tail it removes -- that is
+    # what truncation is, it is explicitly permitted under a 40% cap, and the
+    # cost of it appears in the evaluation as unserved demand, priced by the
+    # model rather than forbidden by a gate.
+    #
+    # Conflating the two refused 11 mutations outright and would have silently
+    # narrowed Experiment 3 to the interventions that happen to strand nobody.
+    # Sole access is the real protection, and it is gate 3-5 below.
+    checked.append("no-stop-removed-from-inventory")
+    invented = sorted(set(after.stops) - set(before.stops))
+    vanished = sorted(set(before.stops) - set(after.stops))
     lost = sorted(served_stops(before) - served_stops(after))
     facts["stops_left_unserved"] = len(lost)
-    if lost:
-        bad.append(f"{len(lost)} stop(s) end up served by no route "
-                   f"({lost[:5]}{'...' if len(lost) > 5 else ''}). A mutation "
-                   f"may change which routes serve a stop; removing one from "
-                   f"the network is the deferred stop-consolidation question.")
+    facts["stops_left_unserved_sample"] = lost[:8]
+    if invented or vanished:
+        bad.append(f"the stop inventory changed: {len(invented)} created, "
+                   f"{len(vanished)} removed. A mutation may change which "
+                   f"routes serve a stop; it may not change which stops exist.")
 
     # gate 3-5 — sole access is protected
     checked.append("sole-access-protected")
@@ -350,6 +395,7 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
     checked.append("network-edit-distance")
     ed = edit_distance(before, after)
     facts["network_edit_distance_pct"] = round(100 * ed, 3)
+    facts["route_churn_pct"] = round(100 * route_churn(before, after), 3)
     if ed > limits.max_network_edit_distance:
         bad.append(
             f"network edit distance {100 * ed:.1f}% exceeds "
@@ -380,13 +426,28 @@ def validate_applied(before: TransitNetwork, after: TransitNetwork,
             f"mutation may not be credited with them — that is the deferred "
             f"consolidation question re-entering in disguise.")
 
-    # gate 3-8 — the envelope, both halves
+    # gate 3-8 — the envelope.
+    #
+    # Corrected 2026-08-30. This was being handed the EDITED BASELINE's
+    # vehicle-hours, before frequency was re-optimized, and it refused 42 of
+    # the 84 pool mutations for exceeding the budget by fractions of a percent.
+    # That is backwards: the method is mutate, then re-optimize frequency
+    # INSIDE the envelope, and the optimizer rescales headways to fit. A
+    # mutation that lengthens the network is not over budget; it is a mutation
+    # the optimizer has to pay for out of frequency, which is exactly the
+    # trade-off Experiment 3 exists to measure.
+    #
+    # `veh_hours` here must therefore be the OPTIMIZED plan's, and the edited
+    # baseline's is recorded as a fact rather than enforced.
     checked.append("envelope")
+    if edited_baseline_veh_hours is not None:
+        facts["edited_baseline_veh_hours"] = edited_baseline_veh_hours
     if veh_hours is not None and limits.veh_hour_budget is not None:
-        facts["veh_hours"] = veh_hours
+        facts["optimized_veh_hours"] = veh_hours
         if veh_hours > limits.veh_hour_budget + 1e-6:
-            bad.append(f"{veh_hours:.1f} vehicle-hours exceeds the pinned "
-                       f"budget of {limits.veh_hour_budget:.1f}")
+            bad.append(f"the OPTIMIZED plan uses {veh_hours:.1f} vehicle-hours, "
+                       f"over the pinned budget of "
+                       f"{limits.veh_hour_budget:.1f}")
     # The fleet half of gate 3-8 needs the BLOCK-DERIVED peak, the proxy
     # Experiment 1 validated against NTD's VOMS of 198. The frequency model's
     # own `peak_vehicles` is peak concurrency, a different and systematically

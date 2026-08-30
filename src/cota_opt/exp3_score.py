@@ -107,11 +107,16 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         ed = apply_edits(net, ts, seg_model, list(edits))
         net, ts, report = ed.network, ed.tstats, ed.report
 
-    veh_hours = float(ts["runtime_min"].sum() / 60.0)
+    # STRUCTURE first, cheaply, before any expensive work: a state that
+    # violates the contract structurally should not cost seven minutes to find
+    # out. The ENVELOPE is deliberately not checked here -- the edited
+    # baseline's vehicle-hours are not the constraint, the optimized plan's
+    # are, and checking the wrong one refused half the pool.
+    edited_vh = float(ts["runtime_min"].sum() / 60.0)
     check = validate_applied(before, net, list(edits), limits,
                              sole_access_stops=sole_access_stops,
                              coords=seg_model.coords, report=report,
-                             veh_hours=veh_hours,
+                             edited_baseline_veh_hours=edited_vh,
                              waiting_model=waiting_model)
     check.raise_if_bad()
 
@@ -163,6 +168,16 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
             hw[k] = float(v)
     fit = judge.model.evaluate_array(np.array([hw[k] for k in judge.model.keys]))
 
+    # ENVELOPE, on the plan that was actually produced. Re-run rather than
+    # folded into the structural check because only now does the number exist.
+    final = validate_applied(before, net, list(edits), limits,
+                             sole_access_stops=sole_access_stops,
+                             coords=seg_model.coords, report=report,
+                             veh_hours=fit.revenue_veh_hours,
+                             edited_baseline_veh_hours=edited_vh,
+                             waiting_model=got)
+    final.raise_if_bad()
+
     return ScoredState(
         state_key=exp3.state_key(edits),
         state_digest=exp3.state_digest(edits),
@@ -172,8 +187,10 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         effort=f"{iterations}/{restarts}/{width}",
         seconds=time.time() - t0,
         metrics=exp3.metrics(fit, lam),
-        contract={"ok": check.ok, "rules_checked": check.rules_checked,
-                  "facts": check.facts},
+        contract={"ok": final.ok,
+                  "rules_checked": sorted(set(check.rules_checked)
+                                          | set(final.rules_checked)),
+                  "facts": {**check.facts, **final.facts}},
         evaluator=dict(judge.checks),
         edit_report=(report.as_dict() if report is not None else {}),
     )

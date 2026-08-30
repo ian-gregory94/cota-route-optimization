@@ -208,16 +208,39 @@ def test_removing_a_stop_another_mutation_anchors_on_is_refused(net, coords):
 
 # -- outcome checks: only the resulting network knows -----------------------
 
-def test_a_state_that_strands_a_stop_is_refused(net, ts, model):
-    """C's only stop-visit at S6 removed leaves S6 served by nobody."""
+def test_ending_service_at_a_stop_is_recorded_but_not_refused(net, ts, model):
+    """A truncation legitimately ends service at the stops it removes.
+
+    This used to be a violation, and it was wrong: the contract forbids
+    changing which stops EXIST, not which are currently served. Refusing it
+    threw out 11 of the 84 pool mutations and would have narrowed Experiment 3
+    to whatever happens to strand nobody. The cost of losing service is priced
+    by the evaluator as unserved demand; sole access is protected separately by
+    gate 3-5.
+    """
     e = GeometryEdit(kind="truncate", route_id="C", drop_stops=("S6",),
-                     description="strand S6")
+                     description="end service at S6")
     out = apply_edits(net, ts, model, [e])
-    chk = validate_applied(net, out.network, [e], LIMITS)
-    assert not chk.ok
-    assert any("served by no route" in v for v in chk.violations)
-    with pytest.raises(ContractViolation):
-        chk.raise_if_bad()
+    # The fixture has 9 stop-visits in total, so dropping one is 11% and
+    # dropping two is 22%. The 15% network rule is meaningless at this scale,
+    # so it is relaxed here to test the rule under test and nothing else. The
+    # real-scale check lives in scripts/exp3_validator_invariant.py.
+    lim = ContractLimits(max_network_edit_distance=1.0)
+    chk = validate_applied(net, out.network, [e], lim)
+    assert chk.ok, chk.violations
+    assert chk.facts["stops_left_unserved"] == 1
+    assert "S6" in chk.facts["stops_left_unserved_sample"]
+
+
+def test_changing_the_stop_inventory_is_refused(net, ts, model):
+    """What the rule actually forbids: stops appearing or disappearing."""
+    out = apply_edits(net, ts, model, [])
+    shrunk = type(out.network)(
+        stops={k: v for k, v in net.stops.items() if k != "S6"},
+        patterns=out.network.patterns, stop_routes=out.network.stop_routes,
+        route_stops=out.network.route_stops)
+    chk = validate_applied(net, shrunk, [], LIMITS)
+    assert any("stop inventory changed" in v for v in chk.violations)
 
 
 def test_a_sole_access_stop_may_not_be_stranded(net, ts, model):
@@ -226,7 +249,8 @@ def test_a_sole_access_stop_may_not_be_stranded(net, ts, model):
     out = apply_edits(net, ts, model, [e])
     chk = validate_applied(net, out.network, [e], LIMITS,
                            sole_access_stops={"S6"})
-    assert any("sole-access" in v for v in chk.violations)
+    assert any("sole-access" in v for v in chk.violations), (
+        "losing service is permitted in general; losing SOLE access is not")
 
 
 def test_a_clean_state_passes_every_rule(net, ts, model):
@@ -235,8 +259,30 @@ def test_a_clean_state_passes_every_rule(net, ts, model):
     out = apply_edits(net, ts, model, [e])
     chk = validate_applied(net, out.network, [e], LIMITS)
     assert chk.ok, chk.violations
-    assert "no-stop-removed" in chk.rules_checked
+    assert "no-stop-removed-from-inventory" in chk.rules_checked
     assert "network-edit-distance" in chk.rules_checked
+
+
+def test_a_splice_is_not_maximal_edit_distance(net, ts, model):
+    """Route ids are bookkeeping; the 15% line is about service.
+
+    Matching by route id makes a splice read as deleting two routes and
+    creating a third, so every splice in the pool scored 18-22% and was
+    refused — which made the contract contradict itself, since it lists splice
+    as permitted and quotas twelve of them.
+    """
+    from cota_opt.contract import route_churn
+    e = GeometryEdit(kind="splice", route_id="A", with_route="C",
+                     junction="S2", description="through-route A and C")
+    out = apply_edits(net, ts, model, [e])
+    ed = edit_distance(net, out.network)
+    churn = route_churn(net, out.network)
+    # On this 9-stop-visit fixture every number is large; what must hold at any
+    # scale is that the route-identity view is strictly the more alarming one.
+    assert churn > ed, (
+        f"route churn {100*churn:.1f}% should exceed service change "
+        f"{100*ed:.1f}% — matching by route id is what made every splice look "
+        f"like a total rewrite")
 
 
 def test_edit_distance_is_zero_for_no_change(net, ts, model):
@@ -283,7 +329,24 @@ def test_vehicle_hours_over_budget_is_refused(net, ts, model):
     chk = validate_applied(net, out.network, [], lim, veh_hours=100.0)
     assert chk.ok
     chk = validate_applied(net, out.network, [], lim, veh_hours=100.001)
-    assert any("vehicle-hours exceeds" in v for v in chk.violations)
+    assert any("over the pinned budget" in v for v in chk.violations)
+
+
+def test_the_edited_baselines_hours_are_recorded_not_enforced(net, ts, model):
+    """The optimizer pays for a longer network out of frequency.
+
+    Enforcing the EDITED BASELINE's hours refused 42 of 84 pool mutations for
+    exceeding the budget by fractions of a percent — backwards, because the
+    method is mutate then re-optimize frequency inside the envelope.
+    """
+    lim = ContractLimits(veh_hour_budget=100.0)
+    out = apply_edits(net, ts, model, [])
+    chk = validate_applied(net, out.network, [], lim,
+                           edited_baseline_veh_hours=100000.0,
+                           veh_hours=99.0)
+    assert chk.ok, chk.violations
+    assert chk.facts["edited_baseline_veh_hours"] == 100000.0
+    assert chk.facts["optimized_veh_hours"] == 99.0
 
 
 def test_peak_vehicles_over_baseline_is_refused_even_within_the_hour_budget(

@@ -176,6 +176,18 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "stageA_plan.json").write_text(json.dumps(plan, indent=2) + "\n")
 
+    # The validator must be known-good before it decides what gets scored. It
+    # refused 60 of 84 pool mutations once, on three separate defects, and the
+    # run that discovered it had already spent an hour scoring the survivors.
+    inv = OUT / "validator_invariant.json"
+    if not (inv.exists() and json.loads(inv.read_text()).get("pass") is True):
+        log.error("the contract validator has not been checked against the "
+                  "twelve candidates Experiment 2B evaluated. Run "
+                  "scripts/exp3_validator_invariant.py first — a validator "
+                  "that silently refuses most of the pool turns Experiment 3 "
+                  "into a description of its own bugs.")
+        return 3
+
     H = build_harness(seed=args.seed, common_lines=args.common_lines,
                       with_pathsets=False)
     sg = geo.stops_gdf(H.baseline.feed, H.assumptions["crs"]["projected"])

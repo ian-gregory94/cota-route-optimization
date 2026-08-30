@@ -1,0 +1,14 @@
+{"state": "<none>|rep0", "score": 2956120.5839554886, "role": "zero_edit_replicate"}
+{"state": "<none>|rep1", "score": 2956120.5839554886, "role": "zero_edit_replicate"}
+{"state": "<none>|rep2", "score": 2956120.5839554886, "role": "zero_edit_replicate"}
+{"state": "add_stop-006#9aecfd5100eb", "score": 2955918.2801652187, "at": "2026-08-30T21:10:16Z", "role": "A1_single"}
+{"state": "add_stop-008#f178c37040f5", "score": 2955879.486053047, "at": "2026-08-30T21:20:20Z", "role": "A1_single"}
+{"state": "change_terminal-004-BOASHAS#708035f204d1", "score": 2958099.946773637, "at": "2026-08-30T21:28:48Z", "role": "A1_single"}
+{"state": "change_terminal-007-EMO4THW#16606ceb331e", "score": 2956213.424951334, "at": "2026-08-30T21:35:39Z", "role": "A1_single"}
+{"state": "splice-011-034-WESHIGW#2c53c24a4f24", "score": 2958423.9777780445, "at": "2026-08-30T21:42:52Z", "role": "A1_single"}
+{"state": "split-005-EASHAMN#f16cc1038825", "score": 2961174.8925227756, "at": "2026-08-30T21:50:41Z", "role": "A1_single"}
+{"state": "add_stop-007#02161399a599", "score": 2955344.0555114225, "role": "A1_single"}
+{"state": "add_stop-010#22c4c35ac5b2", "score": 2950538.0418019183, "role": "A1_single"}
+{"state": "change_terminal-101-EMO4THW#56a30c84c920", "score": 2956428.236690581, "at": "2026-08-30T21:10:14Z", "role": "A1_single"}
+{"state": "truncate-035#7cdb09a45253", "score": 2953662.7151973736, "at": "2026-08-30T21:20:33Z", "role": "A1_single"}
+{"state": "truncate-102#dcead1dfc1cc", "score": 2970050.488180385, "at": "2026-08-30T21:28:41Z", "role": "A1_single"}

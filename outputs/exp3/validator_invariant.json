@@ -1,0 +1,622 @@
+{
+  "pass": true,
+  "twelve_2b_candidates": [
+    {
+      "candidate": "splice|001|021|PICBETS",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.708,
+      "route_churn_pct": 18.823,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|002|011|HIGFITN",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 3.246,
+      "route_churn_pct": 22.086,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|002|033|WESHIGW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.338,
+      "route_churn_pct": 21.245,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|002|034|WESHIGW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.54,
+      "route_churn_pct": 18.52,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|005|006|NMURBEAN",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.557,
+      "route_churn_pct": 20.017,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|005|021|NMURBEAN",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.742,
+      "route_churn_pct": 21.009,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|006|021|NMURBEAN",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 1.632,
+      "route_churn_pct": 8.966,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|007|101|EMO4THW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 1.817,
+      "route_churn_pct": 18.604,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|008|035|BOASHAN",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.288,
+      "route_churn_pct": 18.167,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|011|033|WESHIGW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.288,
+      "route_churn_pct": 14.668,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|011|034|WESHIGW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 2.355,
+      "route_churn_pct": 11.808,
+      "stops_left_unserved": 0
+    },
+    {
+      "candidate": "splice|033|034|WESHIGW",
+      "accepted": true,
+      "violations": [],
+      "edit_distance_pct": 1.615,
+      "route_churn_pct": 11.001,
+      "stops_left_unserved": 0
+    }
+  ],
+  "accepted_of_12": 12,
+  "pool_accepted": 84,
+  "pool_size": 84,
+  "pool_accepted_by_kind": {
+    "add_stop": 10,
+    "change_terminal": 10,
+    "extend": 12,
+    "reroute": 12,
+    "splice": 12,
+    "split": 4,
+    "straighten": 12,
+    "truncate": 12
+  },
+  "pool_refused_by_kind": {},
+  "pool": [
+    {
+      "id": "add_stop-001#dc6e768a1ae6",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-004#27407b151153",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-006#9aecfd5100eb",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-007#02161399a599",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-008#f178c37040f5",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-010#22c4c35ac5b2",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-025#2bae7942d365",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-033#273b2cd43dfd",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-102#78da77548338",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "add_stop-141#2fc0aa211ecb",
+      "kind": "add_stop",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-002-MAIOAKE1#e3cb084310eb",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-003-PKWCTRS#e605a37bbb0f",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-004-BOASHAS#708035f204d1",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-005-GTCREFS#7a2a91c8eec7",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-007-EMO4THW#16606ceb331e",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-023-EASHAMN#357bdf4fa511",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-033-METS565S#591129a14c14",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-101-EMO4THW#56a30c84c920",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-102-MOU5THW1#abb1c550bb9c",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "change_terminal-141-STAHIGW#b5ce9b1e03b5",
+      "kind": "change_terminal",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-002#8dff183f524f",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-006#d6deedd1d364",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-009#67ec2a76371d",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-023#292a06c5a525",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-024#26db14321a47",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-025#441ece050fe8",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-031#42a029968ad8",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-032#228795f35539",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-034#daffb8603dc9",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-101#a50d8435b367",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-102#ad7767bba8a4",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "extend-141#c1d88042f92d",
+      "kind": "extend",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-002#4515e77f1b64",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-003#a310b19332b7",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-004#b7682ec39690",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-006#dbfb2f9ee60d",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-007#7e851ba70b92",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-009#8323c2fb0368",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-010#b18fd7b39751",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-011#50126f78cee2",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-012#fb24f651cbc5",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-023#1dc299b50907",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-031#dfd049714f7d",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "reroute-102#06e527b20649",
+      "kind": "reroute",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-001-021-PICBETS#e0f055d0f715",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-002-011-HIGFITN#17e4d59ccc9a",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-002-033-WESHIGW#e2acb3ef8921",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-002-034-WESHIGW#e089c719c5f5",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-005-006-NMURBEAN#134375538ebc",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-005-021-NMURBEAN#c2defbd41984",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-006-021-NMURBEAN#bd23c5b7c67c",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-007-101-EMO4THW#e8a1e2291da0",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-008-035-BOASHAN#fc06f973aa23",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-011-033-WESHIGW#573afb5ae3bf",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "splice-033-034-WESHIGW#b635228b90c4",
+      "kind": "splice",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "split-005-EASHAMN#f16cc1038825",
+      "kind": "split",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "split-024-EASHAMN#572a1ac33bc2",
+      "kind": "split",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "split-034-STE418N#f2471e265dfb",
+      "kind": "split",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "split-035-NORTRA2#7a708a1900ac",
+      "kind": "split",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-001#95a4287b6fa0",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-002#716a0b294c2c",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-004#600ca164ad60",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-007#830e388b3427",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-011#f2a996066a3d",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-021#110f4a755fe7",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-024#6a687792ef0b",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-025#f0732765f122",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-031#d0ecad5fc231",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-033#1bde1c99adc4",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-034#8ff9a962368f",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "straighten-102#4dd646541565",
+      "kind": "straighten",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-007#a14f6e0894dd",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-007#e0327cd10f50",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-009#05fb3250f092",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-012#584263ee6bf8",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-023#3ef9178c6974",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-025#d3209fe02367",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-031#efb75b9f5491",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-032#00b89519f00f",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-033#95d4116886cd",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-035#7cdb09a45253",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-101#3d4f770cd393",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    },
+    {
+      "id": "truncate-102#dcead1dfc1cc",
+      "kind": "truncate",
+      "accepted": true,
+      "violations": []
+    }
+  ],
+  "why_this_exists": "Experiment 2B applied these twelve to the real network, rebuilt path sets, re-optimized frequency and reported the results. If the Experiment 3 validator refuses one, the validator is wrong, not the candidate."
+}
