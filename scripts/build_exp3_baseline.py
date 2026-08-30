@@ -114,6 +114,14 @@ def main() -> int:
         "id": BASELINE_ID,
         "status": "DRAFT — not yet valid" if stop else "FROZEN",
         "commit": commit(),
+        "commit_note":
+            "The commit this record was GENERATED FROM, which is the "
+            "parent of the commit that carries the record -- inherent "
+            "to a file that hashes its own repository. The 17 input "
+            "hashes below are what freezes the baseline; the commit "
+            "field is provenance and lags by one. '-dirty' here means "
+            "some other part of the tree was uncommitted at generation, "
+            "not this file itself.",
         "what_this_is":
             "The immutable object Experiment 3 reports against. Experiment 3's "
             "margin is over the conservative incumbent, not over the raw "
