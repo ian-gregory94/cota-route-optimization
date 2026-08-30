@@ -5,7 +5,7 @@
     "pre_exp3_baseline_v1"
   ],
   "status": "FROZEN",
-  "commit": "d74a60e1ae1d88dd2bb854625af8a756ac1ed71b-dirty",
+  "commit": "397929fbac513602e8a2679c087dcda9734a27bb-dirty",
   "commit_note": "The commit this record was GENERATED FROM, which is the parent of the commit that carries the record -- inherent to a file that hashes its own repository. The 17 input hashes below are what freezes the baseline; the commit field is provenance and lags by one. '-dirty' here means some other part of the tree was uncommitted at generation, not this file itself.",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
   "blockers": [],
@@ -36,7 +36,7 @@
       "peak_vehicles": 197.0,
       "artifact": {
         "path": "outputs/canonical/exp1_final.json",
-        "sha256": "fd7721e87a1866b48c8bf7215e01bf0e780797df1bf47489b3c499f978f97b5d",
+        "sha256": "93baddd7316c88dd7525b0c774031c2d64be1ff3626aa6a7b6dd733726b94393",
         "present": true,
         "bytes": 10394
       }
@@ -106,19 +106,19 @@
     },
     "exp3_contract": {
       "path": "EXPERIMENT3_CONTRACT.md",
-      "sha256": "04b1d90ed5119c79acbf899c489946d30153842d9d1d17fe18cbd0c4d4e1935f",
+      "sha256": "3bef333fcb6ee67e1806fb3e7f7c2cd4f10e01efbae923211646881466b8be78",
       "present": true,
-      "bytes": 12718
+      "bytes": 24403
     },
     "gates": {
       "path": "ACCEPTANCE.md",
-      "sha256": "2797f641c2dac366fe340e95e353c1389eb3501523be86e645a432bfce3491c4",
+      "sha256": "37820da513095183dc5c1bd05f7e35fa8c3dec3cc1fbfb121900c2362555b8f7",
       "present": true,
-      "bytes": 44993
+      "bytes": 51513
     },
     "exp1_frozen": {
       "path": "outputs/canonical/exp1_final.json",
-      "sha256": "fd7721e87a1866b48c8bf7215e01bf0e780797df1bf47489b3c499f978f97b5d",
+      "sha256": "93baddd7316c88dd7525b0c774031c2d64be1ff3626aa6a7b6dd733726b94393",
       "present": true,
       "bytes": 10394
     },
@@ -160,7 +160,7 @@
     },
     "manifest": {
       "path": "outputs/CANONICAL_RESULTS.json",
-      "sha256": "5e260ac449aa54dbf835d3893801fde5f392967f99783734d1e1e5563ef2bcee",
+      "sha256": "e124b7627c80716539fdd67f508fd85c21c466aced8e3f5a2b546df47fb9fa89",
       "present": true,
       "bytes": 6633
     }

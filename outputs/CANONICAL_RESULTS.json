@@ -1,5 +1,5 @@
 {
-  "generated_commit": "d74a60e1ae1d88dd2bb854625af8a756ac1ed71b-dirty",
+  "generated_commit": "397929fbac513602e8a2679c087dcda9734a27bb-dirty",
   "why_this_exists": "The Experiment 2 evaluator scored every plan under Model A for three days while reporting Model B, so an artifact can look entirely legitimate and contain the wrong model. Nothing here is deleted \u2014 superseded outputs are the record of what was run \u2014 but a reader must be able to tell which files are load-bearing without reconstructing the history.",
   "how_to_check_an_artifact": "Open its experiment.json and read `evaluator`. `common_lines: same_route` with `source: explicit` is Model B, declared. `null` means the run predates provenance recording and the model must be established another way \u2014 for Experiment 2 that means checking whether the cell key carries |same_route|.",
   "experiments": {
@@ -83,7 +83,7 @@
       "title": "Route mutation \u2014 search over network states under a committed treatment contract",
       "status": "NOT STARTED \u2014 contract committed, gates committed",
       "canonical": [],
-      "evaluator": "same_route (Model B), required by gate 3-6 and asserted by the state validator rather than requested and hoped for",
+      "evaluator": "same_route (Model B), required by gate 3-1 and asserted by the state validator rather than requested and hoped for",
       "certified": false,
       "headline": "n/a \u2014 nothing scored yet. The conservative incumbent Experiment 3 must beat is Experiment 1's certified frequency plan on COTA's UNCHANGED geometry, because Experiment 2B certified the null and promoted no geometry edit.",
       "superseded": [],

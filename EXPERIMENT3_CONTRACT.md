@@ -239,12 +239,37 @@ therefore searches over **network states**, not over independent edit values.
 procedure. It is permitted only as an explicit object of study, stated as such,
 whose expected failure is already on record.
 
-Exhaustive enumeration will not be affordable here as it was in 2B, so a
-heuristic is expected — beam search, evolutionary search, MCTS, neighbourhood
-search. **Whichever is chosen must first be benchmarked on a subspace small
-enough to enumerate exhaustively**, and must recover the known optimum there
-before it is trusted anywhere larger. A search that cannot find the answer where
-the answer is known is not evidence about a space where it is not.
+Exhaustive enumeration is not affordable here as it was in 2B: 84 mutations
+admit far more feasible states than could ever be scored. **The heuristic must
+first be benchmarked on a subspace small enough to enumerate exhaustively**, and
+must recover the known optimum there before it is trusted anywhere larger. A
+search that cannot find the answer where the answer is known is not evidence
+about a space where it is not.
+
+**Chosen and benchmarked.** Neighbourhood search over states with restarts:
+each step adds one compatible mutation, drops one, or **swaps** one for another.
+Swap is not redundant with add-then-drop — 2B found cardinality winners are not
+nested, so the best 3-set is not the best 2-set plus one, and reaching the
+better state means passing through a worse one, which an add-only search will
+not do.
+
+**Benchmark result** (`outputs/exp3/search_benchmark.json`): on 2B's 240
+exhaustively enumerated states the search recovers `splice|011|034|WESHIGW` from
+all **eight** declared seeds independently, evaluating 57 states of 240, and a
+resumed run does zero work and returns the same answer.
+
+Two things about that result are stated rather than left implicit:
+
+* **It is necessary, not sufficient.** That optimum is a single mutation
+  adjacent to the null, so a greedy add-only search finds it trivially. Passing
+  shows the plumbing works — state hashing, incompatibility, checkpointing,
+  resume — and little about the move set. `tests/test_statesearch.py` supplies
+  what it cannot: a non-nested optimum only a swap reaches, a deceptive single
+  that traps add-only search, a space whose answer is the null, and a benchmark
+  harness proven able to fail.
+* **The recovered optimum later certified as NULL** (D22). The benchmark
+  validates search recovery, not the intervention. Conflating those is the exact
+  error gate 12 exists to prevent.
 
 ---
 
@@ -261,6 +286,79 @@ Every output records the stage that produced it. A discovery score and a
 certified score never appear in the same table without the column that
 distinguishes them. Stage D runs **after** the numbers exist, never before —
 inspecting first is how a pretty map acquires a score.
+
+### Stage A — discovery
+
+* Search many valid network states at **60,000/2/32**, the same discovery effort
+  2B ranked at, so the two are comparable.
+* **Path sets are rebuilt for every state.** A mutated network's competitive
+  paths are not the baseline's, and reusing them would score the mutation on a
+  candidate set chosen for a different network.
+* **Frequency is re-optimized on every state.** Never scored against one frozen
+  headway plan; §5 is the argument.
+* Scores are **discovery signals only**. Their magnitudes are not findings.
+* The noise floor is measured from zero-edit replicates **before the search
+  runs**, so no state can be promoted against a floor that does not exist yet.
+* **Checkpointing is below the network-state level** — append-only JSONL keyed
+  on the full cache key — and resume is exact: a run that dies loses the state
+  in flight and nothing else.
+* A state the contract refuses is recorded and priced out of the search, never
+  allowed to kill a sweep hundreds of states in. 2B had a worker die on one bad
+  subset and get restarted onto it forever.
+
+**Promotion is a band, not a top N.** At discovery effort every state within a
+floor of the leader is a tie, and taking the top N discards the true winner
+whenever the ranking is off by one floor — which in this project it has been
+(D24). Promoted:
+
+* everything within **2.0 floors** of the leader;
+* the best **2 states featuring each mutation kind**, so a kind cannot be
+  eliminated by the leader's neighbourhood rather than on its merits;
+* the best state at **each cardinality**, not required to be nested.
+
+### Stage B — promotion
+
+For every promoted state:
+
+* rebuild path sets and **check adequacy**;
+* solve the mutated network **and the unchanged incumbent** at matched effort,
+  in the same run;
+* use **at least two effort levels**, or a convergence trace, on both sides;
+* include **replicated unchanged-network controls in the same run** — not the
+  frozen Experiment 1 number, which was produced by a different run at a
+  different effort;
+* **reject an apparent benefit that shrinks materially as effort rises.** That
+  is D24 exactly, and gate 12 makes it automatic;
+* report the scalarized objective **and all six component metrics**.
+
+### Stage C — certification
+
+At least Experiment 1's certification effort: **400,000 iterations, 20 restarts,
+full width**, and three predeclared seeds — **20260825, 20260826, 20260827**,
+the same three Experiments 1 and 2B certified on. Required:
+
+* matched **convergence** on candidate and incumbent, not merely matched effort;
+* **same-run noise floors**, for the objective and every reported component;
+* path-set **adequacy**;
+* **vehicle-hour** compliance;
+* **peak-fleet** check against the 197.0 baseline;
+* **Model B provenance in the scoring artifact**, read from the setup that
+  scored rather than from what the run requested;
+* **robustness across the supported λ≥2 range**;
+* **mutation identity stability** (gate 3-10).
+
+If different seeds produce structurally different networks within the noise
+floor, the aggregate benefit is reported as identified and **the specific map as
+unidentified** — exactly as Experiment 1 reports its headways. The prettiest
+seed is not selected.
+
+### Stage D — planner inspection
+
+Maps, cycle times, route lengths, transfer logic, reliability exposure, trip
+asymmetry, layover plausibility, operator legibility — inspected **only after
+numerical certification**. A plausible-looking map does not rescue a failed
+numerical gate, and an ugly map is not discarded before it is measured. Gate 9
+caught `extend|102` on legibility where no metric did; the order still matters.
 
 ---
 
