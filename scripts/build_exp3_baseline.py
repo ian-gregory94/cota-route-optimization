@@ -90,6 +90,10 @@ def blockers() -> list[str]:
                    "full-effort confirmation and gate 9, and write the verdict")
     if not (CANON / "exp1_final.json").exists():
         out.append("Experiment 1 is not frozen")
+    if not (ROOT / "outputs" / "exp2b_certification.json").exists():
+        out.append("Experiment 2B stage C has not certified or nulled a "
+                   "subset — the geometry component of the incumbent is not "
+                   "settled")
     return out
 
 
@@ -136,11 +140,20 @@ def main() -> int:
                 "artifact": hashed("outputs/canonical/exp1_final.json"),
             },
             "conservative_incumbent": {
-                "what": "the Experiment 2/2B geometry incumbent with "
-                        "frequencies re-optimized on the edited network — the "
-                        "number Experiment 3 must beat",
-                "geometry": None if stop else "see exp2_promotion.json",
-                "artifact": hashed("outputs/exp2_promotion.json"),
+                "what": "the best defensible performance available WITHOUT "
+                        "materially changing route structure — the number "
+                        "Experiment 3 must beat",
+                "geometry": "UNCHANGED. Experiment 2 promoted nothing: at the "
+                            "effort Experiment 1 is certified at, no candidate "
+                            "produces a measurable improvement and six produce "
+                            "measurable harm (D24, outputs/exp2_promotion.json). "
+                            "Experiment 2B may still find a subset that clears "
+                            "the floor where no single does — that would be a "
+                            "real interaction — and until stage C says so the "
+                            "incumbent geometry is COTA's own.",
+                "equals": "exp1_certified, on the published geometry",
+                "artifacts": [hashed("outputs/exp2_promotion.json"),
+                              hashed("outputs/exp2b_certification.json")],
             },
         },
         "inputs": {k: hashed(v) for k, v in {

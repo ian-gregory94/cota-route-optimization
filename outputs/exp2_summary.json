@@ -240,9 +240,21 @@
         "unserved_vs_noedit_pct": 0.8018,
         "clears_full_effort_floor": true,
         "still_harmful": true
+      },
+      {
+        "candidate": "splice|011|034|WESHIGW",
+        "unserved_vs_noedit_pct": 0.0599,
+        "clears_full_effort_floor": false,
+        "still_harmful": false
+      },
+      {
+        "candidate": "splice|033|034|WESHIGW",
+        "unserved_vs_noedit_pct": 0.1603,
+        "clears_full_effort_floor": false,
+        "still_harmful": false
       }
     ],
-    "verdict": "D19 stands: both remain harmful at full effort"
+    "verdict": "D19 is qualified: at least one does not remain harmful at full effort"
   },
   "representation_frontier": {
     "status": "ok",
@@ -397,7 +409,7 @@
   },
   "subset_search_2B": {
     "status": "running",
-    "n_subsets_solved": 66,
+    "n_subsets_solved": 102,
     "n_subsets_expected": 240
   },
   "gate_2B8_cross_check": {

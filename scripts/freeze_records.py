@@ -218,7 +218,8 @@ def manifest() -> dict:
                 "title": "Route geometry — twelve splice candidates, "
                          "evaluated individually",
                 "status": "CLOSED pending the 2B subset search",
-                "canonical": ["outputs/exp2_candidate_classes.json",
+                "canonical": ["outputs/exp2_promotion.json",
+                              "outputs/exp2_candidate_classes.json",
                               "outputs/exp2_ladder_measured.csv",
                               "outputs/exp2_treatments.jsonl",
                               "outputs/exp2_modelA_vs_modelB_singles.csv",
@@ -226,16 +227,23 @@ def manifest() -> dict:
                 "evaluator": "same_route (Model B) — cells carrying "
                              "|same_route| in the key only",
                 "certified": False,
-                "headline": "4 beneficial, 2 at the noise floor, 6 harmful. "
-                            "Best implementable: through-route 33 Henderson "
-                            "and 34 Morse at Westview, −0.485% unserved.",
+                "headline": "NO supportable geometry claim. At the effort "
+                            "Experiment 1 is certified at, six of twelve "
+                            "candidates do measurable harm and none does "
+                            "measurable good; the two leaders land inside the "
+                            "0.287-point floor at +0.060% and +0.160%. The "
+                            "−0.5% through-routing claim was withdrawn "
+                            "2026-08-30 (D24): the unedited network was the "
+                            "under-optimized one at ranking effort.",
                 "superseded": ["every exp2_eval cell whose key has NO pricing "
                                "segment", "outputs/exp2_eval_modelB.log",
                                "outputs/exp2_recheck.log",
                                "outputs/exp2_ladder.csv"],
                 "superseded_why": "produced by the mislabelled evaluator — "
                                   "Model A numbers under a Model B label",
-                "limitations": ["ranks rather than sizes: 60,000/2/32, below L4",
+                "limitations": ["every 60,000/2/32 number is discovery-stage "
+                                "under gate 12 and orders candidates rather "
+                                "than concluding anything",
                                 "only splices were ever evaluated",
                                 "the representation-stability observation is "
                                 "exploratory and uncontaminated confirmation "

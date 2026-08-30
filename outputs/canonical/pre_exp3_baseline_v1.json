@@ -1,12 +1,12 @@
 {
   "id": "pre_exp3_baseline_v1",
   "status": "DRAFT \u2014 not yet valid",
-  "commit": "1a23c82a312b5019ac8a3dd60468097ebd53fd0c-dirty",
+  "commit": "c99c4d746242451843a9ec616016fa4ba8af3707-dirty",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
   "blockers": [
-    "Experiment 2B stage A is not complete (66/240 subsets) \u2014 the geometry incumbent is not decided",
+    "Experiment 2B stage A is not complete (102/240 subsets) \u2014 the geometry incumbent is not decided",
     "gate 2B-8 has not fully passed \u2014 the subset sweep has not yet reproduced all three ladder rungs it replaces",
-    "the promotion decision between splice|011|034|WESHIGW and splice|033|034|WESHIGW is not recorded \u2014 run the full-effort confirmation and gate 9, and write the verdict"
+    "Experiment 2B stage C has not certified or nulled a subset \u2014 the geometry component of the incumbent is not settled"
   ],
   "evaluator": {
     "waiting_model": "same_route (Model B)",
@@ -35,20 +35,29 @@
       "peak_vehicles": 197.0,
       "artifact": {
         "path": "outputs/canonical/exp1_final.json",
-        "sha256": "ee56ff9fba1c7a690dc994c272bf42e155070755502f7bd8896c7d3bbe60433c",
+        "sha256": "224966740e6f617194761301939411130f686b97866c5b5a73477b84e4a939ab",
         "present": true,
         "bytes": 10394
       }
     },
     "conservative_incumbent": {
-      "what": "the Experiment 2/2B geometry incumbent with frequencies re-optimized on the edited network \u2014 the number Experiment 3 must beat",
-      "geometry": null,
-      "artifact": {
-        "path": "outputs/exp2_promotion.json",
-        "sha256": null,
-        "present": false,
-        "bytes": null
-      }
+      "what": "the best defensible performance available WITHOUT materially changing route structure \u2014 the number Experiment 3 must beat",
+      "geometry": "UNCHANGED. Experiment 2 promoted nothing: at the effort Experiment 1 is certified at, no candidate produces a measurable improvement and six produce measurable harm (D24, outputs/exp2_promotion.json). Experiment 2B may still find a subset that clears the floor where no single does \u2014 that would be a real interaction \u2014 and until stage C says so the incumbent geometry is COTA's own.",
+      "equals": "exp1_certified, on the published geometry",
+      "artifacts": [
+        {
+          "path": "outputs/exp2_promotion.json",
+          "sha256": "baaf951a9813423970f1bb4ed59f2d6d71645dfee590311244e89f43d9e7cef0",
+          "present": true,
+          "bytes": 3000
+        },
+        {
+          "path": "outputs/exp2b_certification.json",
+          "sha256": null,
+          "present": false,
+          "bytes": null
+        }
+      ]
     }
   },
   "inputs": {
@@ -96,19 +105,19 @@
     },
     "exp3_contract": {
       "path": "EXPERIMENT3_CONTRACT.md",
-      "sha256": "b8780b956e28436315ef6b50984d6b086cb45635a7bd7765d16a9361e8c17c84",
+      "sha256": "90a0e06a317b1f001cb053d52cc2c4348b414ec29e65a825c6ed5ce68333f17f",
       "present": true,
-      "bytes": 10891
+      "bytes": 11371
     },
     "gates": {
       "path": "ACCEPTANCE.md",
-      "sha256": "7c61a17c1955f52dfe38f33b9de2cc7d5cd0a90201b646d02987a57090639222",
+      "sha256": "2797f641c2dac366fe340e95e353c1389eb3501523be86e645a432bfce3491c4",
       "present": true,
-      "bytes": 41988
+      "bytes": 44993
     },
     "exp1_frozen": {
       "path": "outputs/canonical/exp1_final.json",
-      "sha256": "ee56ff9fba1c7a690dc994c272bf42e155070755502f7bd8896c7d3bbe60433c",
+      "sha256": "224966740e6f617194761301939411130f686b97866c5b5a73477b84e4a939ab",
       "present": true,
       "bytes": 10394
     },
@@ -132,9 +141,9 @@
     },
     "exp2b_stageA": {
       "path": "outputs/exp2b_stageA.csv",
-      "sha256": "9753738e51a80bbe39245c603b6e5e5f1c8c0efcca9903c8b04657f673749424",
-      "present": true,
-      "bytes": 829
+      "sha256": null,
+      "present": false,
+      "bytes": null
     },
     "stop_price_diagnosis": {
       "path": "outputs/exp3_stopprice_diagnosis.json",
@@ -150,9 +159,9 @@
     },
     "manifest": {
       "path": "outputs/CANONICAL_RESULTS.json",
-      "sha256": "a23ff51b2a14e5d96e579f9726ca774e97bab0554f2bb1fed3484365221c7cfb",
+      "sha256": "4a16ca73db29d6c815c0b322a0ed92ac3d07db70075427cbe299dbdc0efae158",
       "present": true,
-      "bytes": 4284
+      "bytes": 4606
     }
   },
   "generation_parameters": {
