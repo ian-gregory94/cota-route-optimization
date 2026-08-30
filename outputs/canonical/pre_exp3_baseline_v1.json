@@ -1,7 +1,7 @@
 {
   "id": "pre_exp3_baseline_v1",
   "status": "DRAFT \u2014 not yet valid",
-  "commit": "c99c4d746242451843a9ec616016fa4ba8af3707-dirty",
+  "commit": "52d3eedcf35f1195d1dcdf5e1250242ef9f582b5-dirty",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
   "blockers": [
     "Experiment 2B stage A is not complete (102/240 subsets) \u2014 the geometry incumbent is not decided",

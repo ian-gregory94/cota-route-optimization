@@ -76,3 +76,11 @@
 2026-08-30T04:18:34Z supervisor: exp2b-stageB declined after 2s (status=1), holding off 900s
 2026-08-30T04:18:38Z supervisor: started exp2b-stageC free=6578MB
 2026-08-30T04:18:39Z supervisor: exp2b-stageC declined after 1s (status=1), holding off 900s
+2026-08-30T04:33:51Z supervisor: started exp2b-stageB free=6613MB
+2026-08-30T04:33:52Z supervisor: exp2b-stageB declined after 1s (status=1), holding off 900s
+2026-08-30T04:33:56Z supervisor: started exp2b-stageC free=6607MB
+2026-08-30T04:33:58Z supervisor: exp2b-stageC declined after 2s (status=1), holding off 900s
+2026-08-30T04:49:10Z supervisor: started exp2b-stageB free=6597MB
+2026-08-30T04:49:12Z supervisor: exp2b-stageB declined after 2s (status=1), holding off 900s
+2026-08-30T04:49:16Z supervisor: started exp2b-stageC free=6589MB
+2026-08-30T04:49:17Z supervisor: exp2b-stageC declined after 1s (status=1), holding off 900s

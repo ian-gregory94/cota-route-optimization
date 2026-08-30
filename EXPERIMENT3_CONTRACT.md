@@ -219,4 +219,26 @@ Experiment 3 does not begin until each of these has an exact artifact reference:
 3. **The assumptions and evaluator producing that score** — the `evaluator`
    block in each canonical artifact, and the config snapshots hashed inside it.
 4. **What Experiment 3 may mutate** — this file.
-5. **What would cause an exciting result to be rejected** — gates 3-1 to 3-10.
+5. **What would cause an exciting result to be rejected** — gates 3-1 to 3-10
+   and gate 12. Concretely, an Experiment 3 finding is rejected if **any** of
+   these is true, however good the headline looks:
+
+   * its margin over the conservative incumbent is inside the noise floor
+     measured in the same run at the same effort;
+   * the margin shrinks when both sides are solved at a higher effort — D24's
+     failure, and the reason gate 12 exists;
+   * its advantage rests on serving fewer stops along the same alignment;
+   * it exceeds 15% network edit distance, in which case it is a real result
+     about a different experiment;
+   * its `modelled_share_pct` exceeds 2.0% and the margin is not large against
+     the estimator's 20.5% median single-link error;
+   * independent seeds at matched effort produce structurally different
+     networks scoring within the floor of each other — the structure is then
+     not identified, and no single map may be shown as the answer;
+   * it was ranked by a fixed-frequency screen and never re-optimized;
+   * it beats the raw baseline but not the conservative incumbent, which is
+     Experiments 1 and 2's result being reported twice;
+   * the evaluator that produced it cannot state its own waiting model.
+
+   The list is deliberately blunt. Every entry on it has already happened once
+   in this project, except the last two, which were caught before they could.

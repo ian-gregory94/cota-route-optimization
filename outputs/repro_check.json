@@ -12,12 +12,12 @@
   {
     "check": "experiment records can carry an evaluator block",
     "pass": true,
-    "detail": "0 of 36 existing records declare one; records written before 2026-08-30 predate the field and are resolved through the cell key instead"
+    "detail": "1 of 37 existing records declare one; records written before 2026-08-30 predate the field and are resolved through the cell key instead"
   },
   {
     "check": "every tracked path can exist on Windows",
     "pass": true,
-    "detail": "603 tracked, 0 unusable"
+    "detail": "616 tracked, 0 unusable"
   },
   {
     "check": "frozen Experiment 1 inputs still hash as recorded",
@@ -26,8 +26,8 @@
   },
   {
     "check": "every canonical artifact in the manifest exists",
-    "pass": true,
-    "detail": "missing: none"
+    "pass": false,
+    "detail": "missing: ['exp2b:outputs/exp2b_stageA.csv']"
   },
   {
     "check": "resume determinism is under test",
@@ -47,11 +47,11 @@
   {
     "check": "full test suite passes in place",
     "pass": true,
-    "detail": "354 passed in 10.46s"
+    "detail": "354 passed in 7.24s"
   },
   {
     "check": "fresh clone runs its own test suite",
     "pass": true,
-    "detail": "354 passed in 12.01s; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
+    "detail": "354 passed in 8.07s; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
   }
 ]
