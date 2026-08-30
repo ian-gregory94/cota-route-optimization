@@ -165,12 +165,28 @@ the cap was never the binding constraint — scenario coverage was.
 The supportable claim is a single sentence:
 
 > Through-routing **33 Henderson** and **34 Morse** at Westview Turnaround
-> reduces unserved demand by about **0.9%** at roughly neutral generalized cost,
+> reduces unserved demand by about **0.5%** at roughly neutral generalized cost,
 > using only track COTA already runs — and adding further edits from the same
-> shortlist costs half that benefit or more.
+> shortlist gives all of it back.
 
-Three things had to be established to get there, and each is a warning to
-anyone tempted to shortcut the funnel.
+**That number was 0.9% until 2026-08-30 and the change is not a refinement.**
+The evaluation script scored every plan under Model A while reporting Model B
+(ACCEPTANCE.md, *Defect: the Experiment 2 evaluator was Model A*). Re-run under
+the corrected evaluator, six of the twelve candidates change sign, the
+classification goes from 7 beneficial / 3 at the floor / 2 harmful to **4 / 2 /
+6**, and this edit's effect roughly halves. See D23.
+
+It is also no longer the best-scoring single: `splice|011|034|WESHIGW` measures
+−0.585% against its −0.485%. **The recommendation stays where it is anyway**,
+because the gap is 0.100 points against a 0.130-point noise floor — 0.77 of a
+floor, not a distinguishable difference — and on the criteria the model does not
+represent, 11+34 is the weaker proposal: a 91-minute cycle against 59, +1.0
+vehicle-hours where 33+34 releases 0.6, and a 1 : 4.1 trip asymmetry that leaves
+most of 34 Morse short-turning. That is a judgement about the proposal, and it
+is labelled as one.
+
+Four things had to be established to get here, and each is a warning to anyone
+tempted to shortcut the funnel.
 
 **The screen ranks candidates and does not reliably rank them.** Its
 first-ranked candidate of 60, `splice|002|033|WESHIGW`, is second-worst of the
@@ -182,13 +198,22 @@ cost by serving fewer. The screen holds frequency fixed, so it cannot see the
 reallocation an edit triggers; it rewards edits that make the network cheaper,
 and the cheapest edits are the ones that quietly drop demand. See D19.
 
-**Edits do not compose.** Four splices that individually reduce unserved demand
-by 0.49–0.94% are, together, **worse than making no change at all** (+0.47%).
-The second edit already hurts. They compete for one vehicle-hour envelope, and
-through-routing consumes it — the merged line is longer, so hours that were
-buying frequency go into running it. "Which edits should COTA make" is therefore
-not answerable by taking the top N: the top N is not the best set of N. Any
-recommendation is a set, evaluated as a set. See D20.
+**Edits do not compose.** Composed best-first from measured performance, one
+edit gives −0.585%, two give −0.066% — inside the 0.130-point noise floor, so
+indistinguishable from making no change — and four give **+1.639%**, worse than
+doing nothing by 12.6 floors. They compete for one vehicle-hour envelope, and
+through-routing consumes it: the merged line is longer, so hours that were
+buying frequency go into running it. The interaction term — measured effect
+minus the sum of the members' own effects — is +0.791 points at two edits and
++2.086 at four. "Which edits should COTA make" is therefore not answerable by
+taking the top N: the top N is not the best set of N. Any recommendation is a
+set, evaluated as a set. See D20.
+
+Under Model B the greedy ladder is also *forced* to compose harmful edits. Only
+four candidates are beneficial, rungs must use disjoint routes, and after the
+first two there is no beneficial candidate left that avoids the routes already
+used — so it reaches past them. A greedy ladder cannot decline to grow, which
+is why Experiment 2B enumerates subsets instead.
 
 **Screen numbers were bracketed, not rescored.** Model B cannot be run in the
 screen — its multiplier depends on the boarding stop, the alighting stop and
@@ -201,17 +226,25 @@ strict lower bound on any Model B cost) instead. Aggregate Spearman 0.857 — bu
 {splices are the good kind} is robust; the ordering inside it is not, which is
 why all twelve were evaluated rather than the top eight. See D16.
 
+**And the waiting model does move the ranking, which D16's headline denied.**
+With all twelve evaluated under both models properly — same networks, same
+effort, same seed — Spearman is **0.657** and six of the twelve change sign.
+D16's aggregate 0.857 was measuring how easy truncations and extensions are to
+rank, not splices; its own amendment, at 0.336, was closer. Quote the amendment,
+not the headline. See D23.
+
 **Still provisional in Experiment 2:**
 
 * Magnitudes. Candidate path sets use the reduced scenario sweep and the solver
   runs below L4, so the evaluation ranks candidates against a measured noise
-  floor and does not size them. The two harmful candidates should be re-run at
-  full effort before D19 goes in a write-up.
+  floor and does not size them. *(The two harmful candidates have since been
+  re-run at full effort, twice, under both models. D19 may be quoted.)*
 * Everything that is not a splice. Extends, truncates, straightens and reroutes
   take no top-ten slot at either end of the bracket and were never evaluated.
 * A joint search over subsets. The ladder is greedy over singles; D20's
   non-additivity might be a property of greedy composition rather than of the
-  budget, and nothing here distinguishes them.
+  budget, and nothing here distinguishes them. **Experiment 2B is that search
+  and is running** — all 240 structurally feasible subsets, exhaustively.
 
 **Model A's headline.** Preserved as the control and never overwritten, but it
 carries the same-route waiting bias D10 identified. Quote Model B.
