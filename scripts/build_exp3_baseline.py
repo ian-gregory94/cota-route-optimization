@@ -71,25 +71,16 @@ def sha(p: Path) -> str | None:
     return h.hexdigest()
 
 
-#: Paths this script itself rewrites. A freeze record that calls the tree dirty
-#: because it is in the middle of writing itself is reporting on its own
-#: execution, not on the state of the repository, and it can never be made to
-#: say anything else -- committing the file changes it again on the next run.
-SELF_OUTPUTS = tuple(f"outputs/canonical/pre_exp3_baseline_{v}.json"
-                     for v in VERSION_NOTES)
+#: What this record describes. The provenance stamp is the last commit that
+#: touched one of these, NOT HEAD -- see experiment.provenance_commit for why
+#: HEAD cannot converge.
+PROVENANCE_PATHS = ("config/", "src/cota_opt/", "ACCEPTANCE.md",
+                    "EXPERIMENT3_CONTRACT.md")
 
 
 def commit() -> str:
-    try:
-        r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
-                           capture_output=True, text=True, timeout=30)
-        d = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
-                           capture_output=True, text=True, timeout=60)
-        other = [ln for ln in d.stdout.splitlines()
-                 if ln.strip() and not any(ln.endswith(s) for s in SELF_OUTPUTS)]
-        return r.stdout.strip() + ("-dirty" if other else "")
-    except Exception:
-        return "UNKNOWN"
+    from cota_opt.experiment import provenance_commit
+    return provenance_commit(ROOT, PROVENANCE_PATHS)
 
 
 def hashed(rel: str) -> dict:
@@ -154,13 +145,14 @@ def main(argv: list[str] | None = None) -> int:
         "status": "DRAFT — not yet valid" if stop else "FROZEN",
         "commit": commit(),
         "commit_note":
-            "The commit this record was GENERATED FROM, which is the "
-            "parent of the commit that carries the record -- inherent "
-            "to a file that hashes its own repository. The 17 input "
-            "hashes below are what freezes the baseline; the commit "
-            "field is provenance and lags by one. '-dirty' here means "
-            "some other part of the tree was uncommitted at generation, "
-            "not this file itself.",
+            "The last commit that changed a hashed input (config, source, "
+            "ACCEPTANCE.md, EXPERIMENT3_CONTRACT.md) -- NOT the commit this "
+            "record was written at. Stamping HEAD cannot converge: the record "
+            "is committed after the commit it names, so regenerating it writes "
+            "a different value, which dirties the tree, which changes the value "
+            "again. This one moves only when an input moves, so regenerating an "
+            "unchanged freeze is a byte-for-byte no-op. The 17 input hashes "
+            "below are what actually freeze the baseline.",
         "what_this_is":
             "The immutable object Experiment 3 reports against. Experiment 3's "
             "margin is over the conservative incumbent, not over the raw "

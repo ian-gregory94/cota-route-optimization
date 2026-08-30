@@ -17,7 +17,7 @@
   {
     "check": "every tracked path can exist on Windows",
     "pass": true,
-    "detail": "649 tracked, 0 unusable"
+    "detail": "653 tracked, 0 unusable"
   },
   {
     "check": "frozen Experiment 1 inputs still hash as recorded",
@@ -67,6 +67,6 @@
   {
     "check": "fresh clone runs its own test suite",
     "pass": true,
-    "detail": "447 passed; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache). SCOPE: this reuses the running interpreter's site-packages, so it proves the clone has every committed FILE it needs, not that a clean install resolves every dependency \u2014 that is what the declared-imports check covers."
+    "detail": "458 passed; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache). SCOPE: this reuses the running interpreter's site-packages, so it proves the clone has every committed FILE it needs, not that a clean install resolves every dependency \u2014 that is what the declared-imports check covers."
   }
 ]

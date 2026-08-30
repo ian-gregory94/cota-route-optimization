@@ -130,3 +130,48 @@ class Experiment:
         p.write_text(json.dumps(self.record.to_dict(), indent=2, default=str))
         log.info("experiment saved: %s", p)
         return p
+
+
+#: Every artifact the freeze scripts regenerate. Shared so that a script does
+#: not call the tree dirty because a SIBLING generator is mid-write -- they run
+#: together as one freeze, and each seeing the others' output as foreign made
+#: every record stamp itself "-dirty" forever.
+GENERATED_RECORDS = (
+    "outputs/canonical/exp1_final.json",
+    "outputs/canonical/pre_exp3_baseline_v1.json",
+    "outputs/canonical/pre_exp3_baseline_v2.json",
+    "outputs/CANONICAL_RESULTS.json",
+    "outputs/SUPERSEDED.md",
+    "outputs/repro_check.json",
+)
+
+
+def provenance_commit(root, paths) -> str:
+    """The last commit that changed any of `paths` — not HEAD.
+
+    HEAD cannot work here and the reason is structural, not cosmetic. A record
+    that stamps HEAD is committed *after* the commit it names, so regenerating
+    it writes a different value, which dirties the tree, which means the next
+    regeneration writes a different value again. It never converges, and a tag
+    script that requires its own checks to leave the tree clean can therefore
+    never pass.
+
+    The commit that last touched an input is stable: it moves only when an
+    input actually moves, so regenerating an unchanged freeze is a byte-for-byte
+    no-op. It is also the provenance a reader actually wants — "this record
+    describes the tree as of commit X" — rather than "the file happened to be
+    written while HEAD was here".
+    """
+    import subprocess
+    try:
+        r = subprocess.run(
+            ["git", "log", "-1", "--format=%H", "--", *paths],
+            cwd=root, capture_output=True, text=True, timeout=60)
+        commit = r.stdout.strip()
+        if not commit:
+            return "UNKNOWN"
+        d = subprocess.run(["git", "status", "--porcelain", "--", *paths],
+                           cwd=root, capture_output=True, text=True, timeout=60)
+        return commit + ("-dirty" if d.stdout.strip() else "")
+    except Exception:
+        return "UNKNOWN"

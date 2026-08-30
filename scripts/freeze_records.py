@@ -45,27 +45,16 @@ def sha(p: Path) -> str | None:
     return h.hexdigest()
 
 
-#: Paths this script itself rewrites. A record that calls the tree dirty because
-#: it is in the middle of writing itself reports on its own execution rather
-#: than on the repository, and can never be made to say anything else --
-#: committing the file changes it again on the next run.
-SELF_OUTPUTS = ("outputs/canonical/exp1_final.json",
-                "outputs/CANONICAL_RESULTS.json",
-                "outputs/SUPERSEDED.md")
+#: What these records describe. The provenance stamp is the last commit that
+#: touched one of these, NOT HEAD -- see experiment.provenance_commit for why
+#: HEAD cannot converge.
+PROVENANCE_PATHS = ("config/", "src/cota_opt/", "ACCEPTANCE.md",
+                    "DISCOVERIES.md", "EXPERIMENT2_CLOSEOUT.md")
 
 
 def commit() -> str:
-    try:
-        r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
-                           capture_output=True, text=True, timeout=30)
-        dirty = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
-                               capture_output=True, text=True, timeout=60)
-        other = [ln for ln in dirty.stdout.splitlines()
-                 if ln.strip() and not any(ln.endswith(s)
-                                           for s in SELF_OUTPUTS)]
-        return r.stdout.strip() + ("-dirty" if other else "")
-    except Exception:
-        return "UNKNOWN"
+    from cota_opt.experiment import provenance_commit
+    return provenance_commit(ROOT, PROVENANCE_PATHS)
 
 
 def _exp2b_headline() -> str:
