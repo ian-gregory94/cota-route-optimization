@@ -3,6 +3,7 @@
 # Both candidates below are classified harmful at 60000/2/32 (+0.978% and
 # +1.251% unserved against a 0.288-point floor), and both are near the top of
 # the screen's ranking -- which is D19's finding. D19 committed to the check
+# that would overturn it: "Re-running the two harmful candidates at full effort
 # and finding they clear the floor in the other direction would mean the
 # low-effort solve, not the screen, produced the inversion."
 #
