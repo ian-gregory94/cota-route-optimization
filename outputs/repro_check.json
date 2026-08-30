@@ -17,7 +17,7 @@
   {
     "check": "every tracked path can exist on Windows",
     "pass": true,
-    "detail": "653 tracked, 0 unusable"
+    "detail": "654 tracked, 0 unusable"
   },
   {
     "check": "frozen Experiment 1 inputs still hash as recorded",
