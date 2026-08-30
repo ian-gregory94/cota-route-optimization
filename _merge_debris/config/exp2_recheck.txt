@@ -1,0 +1,18 @@
+# D19's falsification test, at full effort.
+#
+# Both candidates below are classified harmful at 60000/2/32 (+0.978% and
+# +1.251% unserved against a 0.288-point floor), and both are near the top of
+# the screen's ranking -- which is D19's finding. D19 committed to the check
+# that would overturn it: "Re-running the two harmful candidates at full effort
+# and finding they clear the floor in the other direction would mean the
+# low-effort solve, not the screen, produced the inversion."
+#
+# Effort here matches gate 7's replicates exactly (400000/20/width 0) so the
+# comparison is against a floor measured at the same effort, not the cheap one.
+# The zero-edit replicates in the same run are what establish that floor.
+#
+# This does not gate Experiment 2B: 2B searches all twelve candidates whatever
+# this returns, because a candidate that hurts alone may still substitute for
+# one that helps (D20).
+splice|002|033|WESHIGW
+splice|007|101|EMO4THW
