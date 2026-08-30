@@ -383,11 +383,26 @@ taken for the incumbent to win has failed this gate.
 solved, independently, by `run_exp2_eval.py` at the same effort under the same
 evaluator:
 
+**Restated 2026-08-30.** The values first committed here were computed from the
+mislabelled Model A run (see the defect note above). They are kept below the
+line because a gate whose expectations quietly change is not a gate; the Model B
+values are what Stage A must now reproduce, and they were fixed before Stage A
+reached any of these three subsets.
+
 | set | members | measured unserved vs no edit | sum of member singles | interaction |
 |---|---|---|---|---|
-| k=1 | 033+034 WESHIGW | −0.9363% | −0.9363% | 0.000 pts |
-| k=2 | + 005+006 NMURBEAN | −0.4853% | −1.6200% | **+1.135 pts** (3.9× floor) |
-| k=4 | + 001+021 PICBETS, 008+035 BOASHAN | +0.4733% | −2.6225% | **+3.096 pts** (10.8× floor) |
+| k=1 | 011+034 WESHIGW | −0.585% | −0.585% | 0.000 pts |
+| k=2 | + 005+006 NMURBEAN | −0.066% | −0.857% | **+0.791 pts** (6.1× floor) |
+| k=4 | + 007+101 EMO4THW, 008+035 BOASHAN | +1.639% | −0.448% | **+2.086 pts** (16.0× floor) |
+
+Floor: **0.130** points, measured under Model B at this effort.
+
+> *Superseded — the Model A values this gate was first written with, kept for
+> the record:* k=1 `033+034` −0.9363% (interaction 0.000); k=2 `+005+006`
+> −0.4853% against a −1.6200% sum (**+1.135 pts**, 3.9× the then-floor of
+> 0.288); k=4 `+001+021, +008+035` +0.4733% against −2.6225% (**+3.096 pts**,
+> 10.8×). The measured-order ladder's membership changed under Model B because
+> the single-candidate ordering did, so these are not the same three subsets.
 
 Stage A re-derives all three through a different script and a different code
 path. **They must agree to within the 0.288-point noise floor.** If they do not,
@@ -395,8 +410,8 @@ the 2B pipeline is measuring something other than what the ladder measured, and
 the whole sweep is void regardless of how sensible its rankings look — that is
 the failure a 240-row table of plausible numbers would otherwise hide.
 
-The table also settles that the interaction term is measurable at all: at 3.9
-and 10.8 times the floor, it is not a quantity 2B has to strain to see. It
+The table also settles that the interaction term is measurable at all: at 6.1
+and 16.0 times the floor, it is not a quantity 2B has to strain to see. It
 predicts what Stage A should find, which is the point — a check is only a check
 if its expected value was written down first.
 
