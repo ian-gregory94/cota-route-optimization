@@ -2336,3 +2336,7 @@
 2026-08-30 03:57:19,700 path set: 29556 paths over 18671/20000 OD pairs (93.6% of flow served), 147800 legs
 2026-08-30 03:57:19,767 period pm_peak : 29556 paths, 20000 OD pairs
 2026-08-30 03:57:19,778 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:58:16,211 rejected 100 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:58:16,303 path set: 25520 paths over 17377/20000 OD pairs (86.6% of flow served), 126107 legs
+2026-08-30 03:58:16,357 period evening : 25520 paths, 20000 OD pairs
+2026-08-30 03:58:16,369 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

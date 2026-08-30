@@ -597,6 +597,59 @@ requirement and its tractable benchmark, the staged effort ladder, and gate
 [`EXPERIMENT3_CONTRACT.md`](EXPERIMENT3_CONTRACT.md), written before any
 candidate was generated.
 
+## Gate 12 — matched effort is not enough; convergence must be matched
+
+**Added 2026-08-30, after D24.** This is a standing gate on every comparison
+between two networks or two models from here on, including Experiments 2B and 3.
+
+The existing standing rule says *search effort is matched whenever two things
+are compared*. It was satisfied. Both the edited and unedited networks were
+solved at 60,000 iterations and 2 restarts, and the comparison was still wrong,
+because the same nominal effort was not equally sufficient for both. The
+unedited network was the harder of the two to solve well, so it arrived less
+converged, and the difference was booked as a geometry benefit worth half a
+point. At 400,000 iterations and 20 restarts the gap closes entirely.
+
+**The gate.** A comparison between two networks may be quoted only if it is
+accompanied by evidence that both sides are converged, in one of these forms:
+
+1. **Two effort levels.** The comparison is computed at the reporting effort and
+   at a materially higher one, and the difference between the two effects is
+   inside the noise floor. This is the cheapest sufficient check and is the
+   default.
+2. **Replicates on both sides.** Independent seeds on *each* network, not only
+   on the baseline, with the effect stable across them relative to the pooled
+   floor.
+3. **A convergence trace.** The objective's improvement per restart on both
+   networks, shown to have flattened before the run stopped.
+
+A comparison with none of these is a **discovery-stage** number. It may order
+candidates for further work and may not appear in a conclusion, a figure caption
+or a headline.
+
+**What this does not require.** Certifying everything at full effort — that is
+unaffordable and gate 2B-5 already forbids it. Two effort levels on the handful
+of candidates a claim actually rests on is enough, and would have cost about
+three hours here against the days the wrong answer would have propagated
+through.
+
+**Applied retrospectively.** Every Experiment 2 number measured at 60,000/2/32
+is now labelled discovery-stage, including the candidate classification, both
+ladders and the interaction terms. They order candidates. They are not
+conclusions. The two conclusions Experiment 2 does support — that six candidates
+do measurable harm, and that none does measurable good — rest on full-effort
+comparisons with same-run replicates and clear this gate.
+
+**One comparison to watch.** The thirteen-network representation result (D21)
+also ran at 60,000/2/32. Its two treatments are solved on the *same* network, so
+the asymmetry D24 found between networks does not apply directly — but the
+route-level model solves in about 3 seconds against the path-level model's 25,
+so route-level is plausibly the better-converged of the two at equal effort. If
+so, path-level's advantage is *understated*, and the direction of D21 is safe
+while its magnitude is not. D21's own falsification test (both treatments at L4)
+is now also a gate 12 obligation.
+
+
 ## Standing rules
 
 1. These gates are not revised after seeing results.

@@ -192,6 +192,14 @@ causal; sole-access stops excluded; Model B asserted; the screen does not
 select; sets not sums; the noise floor measured in the same run at the same
 effort), and adds one that matters only here:
 
+**Gate 12 (convergence, not just effort) applies to every Experiment 3
+comparison.** A mutated network and the incumbent it is compared against must
+both be shown converged — two effort levels, replicates on both sides, or a
+convergence trace — before any margin between them is quoted. D24 is the reason:
+an apparent half-point geometry gain was the unedited network being the harder
+of the two to solve well, at an effort that was nominally matched and materially
+was not.
+
 **Gate 3-10 — mutation identity stability.** If independent seeds at matched
 effort produce structurally different networks that score within the noise
 floor of each other, the **structure is not identified** and must be reported

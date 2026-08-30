@@ -23919,3 +23919,13 @@ sleep 40; tail -2 /home/claude/columbus-transit-opt/outputs/
       echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
      
 2026-08-30T03:57:45Z pid=6090 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T03:58:41Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T03:58:41Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T03:58:41Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T03:58:41Z pid=6090 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
