@@ -169,6 +169,49 @@ def subsets() -> dict:
             "n_subsets_solved": n, "n_subsets_expected": 240}
 
 
+#: Gate 2B-8, restated under Model B in ACCEPTANCE.md before stage A reached
+#: any of these three subsets. Stage A re-derives them through a different
+#: script and a different code path; they must agree to within the floor.
+GATE_2B8 = {
+    "k=1": ("splice|011|034|WESHIGW", -0.585),
+    "k=2": ("splice|005|006|NMURBEAN+splice|011|034|WESHIGW", -0.066),
+    "k=4": ("splice|005|006|NMURBEAN+splice|007|101|EMO4THW"
+            "+splice|008|035|BOASHAN+splice|011|034|WESHIGW", 1.639),
+}
+
+
+def gate_2b8(floor: float) -> dict:
+    """Does the subset sweep reproduce the ladder it replaces?
+
+    A 240-row table of plausible numbers is exactly the kind of output that
+    hides a pipeline measuring the wrong thing. These three rows are the same
+    sets the measured-order ladder solved, by another route.
+    """
+    c = _cells("exp2b_subsets*.jsonl")
+    want = {k: v for k, v in c.items() if RANK_EFFORT in k}
+    base = next((v for k, v in want.items() if "|<none>|" in k), None)
+    if base is None:
+        return {"status": "not started"}
+    out, pending = [], 0
+    for lab, (key, expect) in GATE_2B8.items():
+        hit = next((v for k, v in want.items()
+                    if k.startswith(f"b|{key}|lam2.0")), None)
+        if hit is None:
+            pending += 1
+            continue
+        got = (hit["modelB_unserved"] / base["modelB_unserved"] - 1) * 100
+        out.append({"rung": lab, "stage_a_pct": round(got, 4),
+                    "ladder_pct": expect, "abs_diff_pts": round(abs(got - expect), 4),
+                    "passes": bool(abs(got - expect) < floor)})
+    return {"status": "ok" if not pending and out else "running",
+            "floor_pts": floor, "n_pending": pending, "checks": out,
+            "verdict": ("all reproduced" if out and all(r["passes"] for r in out)
+                        and not pending else
+                        "DISAGREEMENT — the sweep is not measuring what the "
+                        "ladder measured" if any(not r["passes"] for r in out)
+                        else "incomplete")}
+
+
 def main() -> int:
     s = singles()
     floor = s.get("noise_floor_pts", 0.288)
@@ -179,7 +222,8 @@ def main() -> int:
            "ladders": ladders(),
            "recheck_D19": recheck(floor),
            "representation_frontier": frontier(),
-           "subset_search_2B": subsets()}
+           "subset_search_2B": subsets(),
+           "gate_2B8_cross_check": gate_2b8(floor)}
     missing = [k for k, v in out.items()
                if isinstance(v, dict) and v.get("status") not in (None, "ok")]
     out["incomplete"] = missing
@@ -210,6 +254,18 @@ def main() -> int:
         for t, v in f["spread_at_lambda2"].items():
             print(f"    {t:12s} {v['min']:+7.3f}% .. {v['max']:+7.3f}%  "
                   f"range {v['range_pts']:.3f} pts over {v['n_networks']} rows")
+    g = out["gate_2B8_cross_check"]
+    if g.get("checks"):
+        print(f"\n  gate 2B-8 — stage A must reproduce the ladder "
+              f"(floor {g['floor_pts']:.3f} pts):")
+        for r_ in g["checks"]:
+            print(f"    {r_['rung']:4s} stage A {r_['stage_a_pct']:+8.4f}%  "
+                  f"ladder {r_['ladder_pct']:+7.3f}%  |diff| "
+                  f"{r_['abs_diff_pts']:.4f}  "
+                  f"{'PASS' if r_['passes'] else 'FAIL'}")
+        if g.get("n_pending"):
+            print(f"    ({g['n_pending']} not solved yet)")
+
     r = out["recheck_D19"]
     if r.get("status") == "ok":
         print(f"\n  D19 recheck at {r['effort']}, floor "

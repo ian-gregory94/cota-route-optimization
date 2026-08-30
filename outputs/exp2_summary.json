@@ -181,20 +181,20 @@
       {
         "order": "measured",
         "n_edits": 1,
-        "unserved_vs_0edit_pct": -0.9363,
-        "gc_vs_0edit_pct": 0.1367
+        "unserved_vs_0edit_pct": -0.5846,
+        "gc_vs_0edit_pct": 0.102
       },
       {
         "order": "measured",
         "n_edits": 2,
-        "unserved_vs_0edit_pct": -0.4853,
-        "gc_vs_0edit_pct": 0.1637
+        "unserved_vs_0edit_pct": -0.0661,
+        "gc_vs_0edit_pct": 0.2102
       },
       {
         "order": "measured",
         "n_edits": 4,
-        "unserved_vs_0edit_pct": 0.4733,
-        "gc_vs_0edit_pct": -0.1924
+        "unserved_vs_0edit_pct": 1.6388,
+        "gc_vs_0edit_pct": -0.0247
       },
       {
         "order": "screen",
@@ -205,20 +205,20 @@
       {
         "order": "screen",
         "n_edits": 1,
-        "unserved_vs_0edit_pct": 0.978,
-        "gc_vs_0edit_pct": -0.8217
+        "unserved_vs_0edit_pct": 1.4829,
+        "gc_vs_0edit_pct": -0.5613
       },
       {
         "order": "screen",
         "n_edits": 2,
-        "unserved_vs_0edit_pct": 1.7202,
-        "gc_vs_0edit_pct": -0.9912
+        "unserved_vs_0edit_pct": 2.4537,
+        "gc_vs_0edit_pct": -0.6448
       },
       {
         "order": "screen",
         "n_edits": 4,
-        "unserved_vs_0edit_pct": 4.2462,
-        "gc_vs_0edit_pct": -2.0847
+        "unserved_vs_0edit_pct": 4.201,
+        "gc_vs_0edit_pct": -0.9529
       }
     ]
   },
@@ -397,10 +397,33 @@
   },
   "subset_search_2B": {
     "status": "running",
-    "n_subsets_solved": 39,
+    "n_subsets_solved": 66,
     "n_subsets_expected": 240
   },
+  "gate_2B8_cross_check": {
+    "status": "running",
+    "floor_pts": 0.12992553614453523,
+    "n_pending": 1,
+    "checks": [
+      {
+        "rung": "k=1",
+        "stage_a_pct": -0.5846,
+        "ladder_pct": -0.585,
+        "abs_diff_pts": 0.0004,
+        "passes": true
+      },
+      {
+        "rung": "k=2",
+        "stage_a_pct": -0.0661,
+        "ladder_pct": -0.066,
+        "abs_diff_pts": 0.0001,
+        "passes": true
+      }
+    ],
+    "verdict": "incomplete"
+  },
   "incomplete": [
-    "subset_search_2B"
+    "subset_search_2B",
+    "gate_2B8_cross_check"
   ]
 }
