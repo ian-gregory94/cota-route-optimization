@@ -75,6 +75,9 @@ from run_exp2_eval import wait_for_memory
 
 log = logging.getLogger("exp2b")
 OUT = ROOT / "outputs"
+#: Model B noise floor at the stage-A ranking effort, measured from three
+#: zero-edit replicates in the same run (outputs/exp2_candidate_classes.json).
+FLOOR = 0.130
 
 
 def feasible_subsets(cands: list[str],
@@ -260,6 +263,12 @@ def main() -> int:
                          "pipeline before committing the full enumeration")
     ap.add_argument("--max-cardinality", type=int, default=0,
                     help="0 = every feasible subset; otherwise stop at this size")
+    ap.add_argument("--tie-floors", type=float, default=2.0,
+                    help="promote every set within this many noise floors of "
+                         "the stage-A leader, on top of --promote and the "
+                         "cardinality winners. At discovery effort a set "
+                         "inside a floor of the leader is a tie, and D24 "
+                         "showed a ranking at this effort inverting outright.")
     ap.add_argument("--promote", type=int, default=12,
                     help="stage B: how many stage-A sets to carry forward, on "
                          "top of every cardinality winner")
@@ -294,15 +303,33 @@ def main() -> int:
 
     if args.stage == "B":
         sa = pd.read_csv(OUT / "exp2b_stageA.csv")
+        sa = sa[sa["lambda"] == 2.0] if "lambda" in sa else sa
         sa = sa.sort_values("unserved_vs_noedit_pct")
         keep = list(sa.head(args.promote)["set_key"])
+
+        # Stage A is a discovery-stage ranking (gate 12), and D24 showed a
+        # ranking at this effort inverting outright: two candidates that
+        # measured -0.5% became +0.1% when both sides were solved to
+        # convergence. So promotion cannot be "the top N" -- at discovery
+        # effort every set inside a floor of the leader is a tie, and taking
+        # the top N would discard the true winner whenever the ranking is off
+        # by one floor.
+        best = float(sa["unserved_vs_noedit_pct"].min())
+        tie = sa[sa["unserved_vs_noedit_pct"] <= best + args.tie_floors * FLOOR]
+        for k in tie["set_key"]:
+            if k not in keep:
+                keep.append(k)
+        log.info("promoted %d within %.1f floors (%.3f pts) of the leader "
+                 "%.3f%%", len(tie), args.tie_floors, args.tie_floors * FLOOR,
+                 best)
+
         for k, grp in sa.groupby("cardinality"):
-            best = grp.sort_values("unserved_vs_noedit_pct").iloc[0]["set_key"]
-            if best not in keep:
-                keep.append(best)
+            b = grp.sort_values("unserved_vs_noedit_pct").iloc[0]["set_key"]
+            if b not in keep:
+                keep.append(b)
         want = set(keep)
         subsets = [c for c in subsets if set_key(c) in want]
-        log.info("stage B on %d promoted sets: %s", len(subsets), keep)
+        log.info("stage B on %d promoted sets", len(subsets))
 
     if sn > 1:
         subsets = [c for j, c in enumerate(subsets) if j % sn == si]
