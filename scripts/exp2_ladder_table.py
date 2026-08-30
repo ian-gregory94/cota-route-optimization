@@ -116,7 +116,13 @@ def main() -> int:
     print("=" * 92)
     print(df[["order", "n_edits", "unserved_vs_0edit_pct",
               "gc_vs_0edit_pct"]].round(4).to_string(index=False))
-    if det:
+    if not det:
+        print("\ndeterminism check: not available — the measured-order run "
+              "resumed every single-candidate cell from the screen-order run "
+              "rather than re-deriving it (both tag singles 's'; only ladder "
+              "rungs take the 'm' tag), so there is no second solve to compare "
+              "against. Cheap, and no check.")
+    else:
         d = pd.DataFrame(det)
         worst = d["abs_diff"].max()
         print(f"\ndeterminism check: {len(d)} candidates solved twice at the "
