@@ -93,6 +93,17 @@ class PoolAudit:
                            "route_id": e.route_id, "with_route": e.with_route,
                            "junction": e.junction,
                            "description": e.description,
+                           # Every field GeometryEdit needs to be rebuilt. A
+                           # frozen pool that cannot be RELOADED is not frozen:
+                           # the next run would have to regenerate it, and a
+                           # regenerated pool is a different pool the moment
+                           # anything upstream moves.
+                           "raw": {"drop_stops": list(e.drop_stops),
+                                   "append_stops": list(e.append_stops),
+                                   "replace_between": (list(e.replace_between)
+                                                       if e.replace_between
+                                                       else None),
+                                   "replace_with": list(e.replace_with)},
                            "evidence": {k: v for k, v in e.evidence.items()
                                         if isinstance(v, (int, float, str,
                                                           bool, type(None)))}}
@@ -414,6 +425,26 @@ def _probe_dist(coords: dict[str, tuple[float, float]], a: str, b: str) -> float
         return 0.0
     (x1, y1), (x2, y2) = coords[a], coords[b]
     return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+
+
+def edit_from_record(m: dict[str, Any]) -> GeometryEdit:
+    """Rebuild a GeometryEdit from a frozen pool record, losslessly.
+
+    Paired with the `raw` block PoolAudit writes. `tests/test_mutate.py` round-
+    trips every accepted mutation through this and asserts the canonical id
+    comes back unchanged — because an id that shifts on reload would make the
+    pool version meaningless and every cached score unreachable.
+    """
+    raw = m.get("raw") or {}
+    return GeometryEdit(
+        kind=m["kind"], route_id=m["route_id"],
+        description=m.get("description", ""),
+        with_route=m.get("with_route"), junction=m.get("junction"),
+        drop_stops=tuple(raw.get("drop_stops") or ()),
+        append_stops=tuple(raw.get("append_stops") or ()),
+        replace_between=(tuple(raw["replace_between"])
+                         if raw.get("replace_between") else None),
+        replace_with=tuple(raw.get("replace_with") or ()))
 
 
 def incompatible_pairs(edits: Sequence[GeometryEdit]) -> list[tuple[str, str]]:

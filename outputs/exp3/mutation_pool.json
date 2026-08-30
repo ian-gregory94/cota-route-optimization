@@ -72,6 +72,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop LANNEIE to route 001: a 5 m detour reaching 4882 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "LANNEIE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "LANNEIE",
         "detour_m": 4.7959110403869545,
@@ -85,6 +93,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop NORTER5 to route 004: a 1 m detour reaching 5724 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER5"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "NORTER5",
         "detour_m": 1.2325062306939003,
@@ -98,6 +114,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop NORTER4 to route 006: a 2 m detour reaching 5724 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER4"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "NORTER4",
         "detour_m": 2.05637611417734,
@@ -111,6 +135,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop NORTER5 to route 007: a 1 m detour reaching 5724 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER5"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "NORTER5",
         "detour_m": 1.2325062306939003,
@@ -124,6 +156,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop SOUTER9 to route 008: a 0 m detour reaching 2936 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SOUTER9"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "SOUTER9",
         "detour_m": 0.05055773487862325,
@@ -137,6 +177,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop NORTER5 to route 010: a 0 m detour reaching 5724 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER5"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "NORTER5",
         "detour_m": 0.49377803040363233,
@@ -150,6 +198,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop MORTAYNW to route 025: a 1 m detour reaching 869 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "MORTAYNW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "MORTAYNW",
         "detour_m": 0.6196905877267227,
@@ -163,6 +219,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop 80WBRIW to route 033: a 2 m detour reaching 1623 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "80WBRIW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "80WBRIW",
         "detour_m": 2.059061479484683,
@@ -176,6 +240,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop SOUTER8 to route 102: a 0 m detour reaching 2936 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SOUTER8"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "SOUTER8",
         "detour_m": 0.4764529345824826,
@@ -189,6 +261,14 @@
       "with_route": null,
       "junction": null,
       "description": "add stop NORTER2 to route 141: a 0 m detour reaching 5724 units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER2"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "stop": "NORTER2",
         "detour_m": 0.2940860107104868,
@@ -202,6 +282,14 @@
       "with_route": null,
       "junction": "MAIOAKE1",
       "description": "move route 002's terminal from MAIOAKE1 to MAIESTE, 397 m away, reaching 422 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "MAIESTE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "MAIOAKE1",
         "to": "MAIESTE",
@@ -216,6 +304,14 @@
       "with_route": null,
       "junction": "PKWCTRS",
       "description": "move route 003's terminal from PKWCTRS to STRRAXE, 1017 m away, reaching 1054 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "STRRAXE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "PKWCTRS",
         "to": "STRRAXE",
@@ -230,6 +326,14 @@
       "with_route": null,
       "junction": "BOASHAS",
       "description": "move route 004's terminal from BOASHAS to SINSHON, 929 m away, reaching 986 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SINSHON"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "BOASHAS",
         "to": "SINSHON",
@@ -244,6 +348,14 @@
       "with_route": null,
       "junction": "GTCREFS",
       "description": "move route 005's terminal from GTCREFS to REFGENE, 156 m away, reaching 188 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "REFGENE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "GTCREFS",
         "to": "REFGENE",
@@ -258,6 +370,14 @@
       "with_route": null,
       "junction": "EMO4THW",
       "description": "move route 007's terminal from EMO4THW to SOUTER9, 415 m away, reaching 2890 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SOUTER9"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "EMO4THW",
         "to": "SOUTER9",
@@ -272,6 +392,14 @@
       "with_route": null,
       "junction": "EASHAMN",
       "description": "move route 023's terminal from EASHAMN to REFTENE, 687 m away, reaching 847 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "REFTENE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "EASHAMN",
         "to": "REFTENE",
@@ -286,6 +414,14 @@
       "with_route": null,
       "junction": "METS565S",
       "description": "move route 033's terminal from METS565S to BRISHAW, 1157 m away, reaching 1623 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "BRISHAW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "METS565S",
         "to": "BRISHAW",
@@ -300,6 +436,14 @@
       "with_route": null,
       "junction": "EMO4THW",
       "description": "move route 101's terminal from EMO4THW to SOUTER9, 415 m away, reaching 2890 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SOUTER9"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "EMO4THW",
         "to": "SOUTER9",
@@ -314,6 +458,14 @@
       "with_route": null,
       "junction": "MOU5THW1",
       "description": "move route 102's terminal from MOU5THW1 to SOUTER9, 548 m away, reaching 2673 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "SOUTER9"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "MOU5THW1",
         "to": "SOUTER9",
@@ -328,6 +480,14 @@
       "with_route": null,
       "junction": "STAHIGW",
       "description": "move route 141's terminal from STAHIGW to NORTER5, 644 m away, reaching 5724 more units of demand no other route serves",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "NORTER5"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "from": "STAHIGW",
         "to": "NORTER5",
@@ -342,6 +502,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 002 past its end terminal along route 011's corridor for 10 stops, reaching 203 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "MORBEECW",
+          "MORFOSW",
+          "MORELKW",
+          "MORBEEW",
+          "MORCOLW",
+          "MORINDW",
+          "MORSANW",
+          "MORKINW",
+          "MORMAIW",
+          "MAIMORN1"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -357,6 +534,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 006 past its start terminal along route 011's corridor for 10 stops, reaching 658 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "FROLONS",
+          "FROBROS",
+          "FROTOWS",
+          "MAIHIGE",
+          "4THTOWN",
+          "TOWGRAE",
+          "TOWWASE",
+          "TOWLESE",
+          "BRYPARE",
+          "BRYMONE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 10,
@@ -372,6 +566,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 009 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "EASTER6",
+          "STELSAMS",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW",
+          "MOREASS",
+          "MOR342S",
+          "MORHARS"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -387,6 +598,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 023 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "EASTER6",
+          "STELSAMS",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW",
+          "MOREASS",
+          "MOR342S",
+          "MORHARS"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -402,6 +630,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 024 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "EASTER6",
+          "STELSAMS",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW",
+          "MOREASS",
+          "MOR342S",
+          "MORHARS"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -417,6 +662,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 025 past its start terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "EASTER6",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW",
+          "MOREASS",
+          "MOR342S",
+          "MORHARS",
+          "MORSTEE"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 10,
@@ -432,6 +694,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 031 past its end terminal along route 032's corridor for 10 stops, reaching 1,411 daily trips' worth of zone flow on a corridor with 40 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "EASTER6",
+          "STELSAMS",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW",
+          "MOREASS",
+          "MOR342S",
+          "MORHARS"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -447,6 +726,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 032 past its end terminal along route 021's corridor for 10 stops, reaching 357 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "MAILUTS",
+          "HILTINS",
+          "HILHYDS",
+          "HILWHIS",
+          "HILROBS",
+          "HILCABS",
+          "HILNIKS",
+          "HILLTANS",
+          "178HILLS",
+          "HILWESS"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -462,6 +758,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 034 past its start terminal along route 011's corridor for 10 stops, reaching 207 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "HIG522N",
+          "HIGFITN",
+          "HIGMORN",
+          "MORBEECW",
+          "MORFOSW",
+          "MORELKW",
+          "MORBEEW",
+          "MORCOLW",
+          "MORINDW",
+          "MORSANW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 10,
@@ -477,6 +790,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 101 past its start terminal along route 011's corridor for 10 stops, reaching 317 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "3RDMAIS",
+          "RIC5THW",
+          "RICGRAW",
+          "GRATOWS",
+          "TOWWASW",
+          "TOWLESW",
+          "BRYPARW",
+          "BRYMONW",
+          "BRY19TW",
+          "BRYOHIW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 10,
@@ -492,6 +822,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 102 past its end terminal along route 011's corridor for 10 stops, reaching 618 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "4THTOWN",
+          "FROTOWS",
+          "FROBROS",
+          "FROLONS",
+          "SPRHIGW",
+          "SPR4THW",
+          "SPRNEIW",
+          "SPRGRAW",
+          "SPRCLEW",
+          "SPRMOUW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 10,
@@ -507,6 +854,23 @@
       "with_route": null,
       "junction": null,
       "description": "extend route 141 past its start terminal along route 011's corridor for 10 stops, reaching 291 daily trips' worth of zone flow on a corridor with 38 trips a day today",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [
+          "FROTOWN",
+          "FROMOUN",
+          "MOUHIGW3",
+          "3RDMAIS",
+          "RIC5THW",
+          "RICGRAW",
+          "GRATOWS",
+          "TOWWASW",
+          "TOWLESW",
+          "BRYPARW"
+        ],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 10,
@@ -522,6 +886,27 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 002 between MAICARW and HIGOHIN onto route 010's alignment, 11 stops reaching 5.9x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "MAICARW",
+          "HIGOHIN"
+        ],
+        "replace_with": [
+          "BROHOFE",
+          "BRODOUE",
+          "BROPARSE",
+          "BROJEFE",
+          "BROWASAE",
+          "BROGRAE",
+          "BRO5THE",
+          "BRO4THE",
+          "BRO3RDE",
+          "BROHIGE1",
+          "NORTER4"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 1496.8916666666669,
@@ -538,6 +923,25 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 003 between RICGRUE and 4THATHN onto route 010's alignment, 9 stops reaching 80.7x the uniquely-served demand of the 6 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "RICGRUE",
+          "4THATHN"
+        ],
+        "replace_with": [
+          "BROSKIE",
+          "BROMAYE",
+          "BROBELE",
+          "BROFROE",
+          "HIGLONN2",
+          "NORTER4",
+          "BROHIGE1",
+          "BRO3RDE",
+          "BRO4THE"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 73.70833333333333,
@@ -554,6 +958,29 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 004 between INDWALS and SUM15TS onto route 002's alignment, 13 stops reaching 3.5x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "INDWALS",
+          "SUM15TS"
+        ],
+        "replace_with": [
+          "HIGCOMN",
+          "HIGPACN",
+          "HIGWEBN",
+          "HIGKELN",
+          "HIGOLEN",
+          "HIGDODN",
+          "HIGHUDN",
+          "HIGBLAN",
+          "HIGPATN",
+          "HIGNORN",
+          "HIGLANN",
+          "HIGWOON",
+          "HIG15TN"
+        ]
+      },
       "evidence": {
         "donor_route": "002",
         "current_weight": 2422.458333333333,
@@ -570,6 +997,28 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 006 between 3RDTOWS and SULYALW onto route 010's alignment, 12 stops reaching 11.3x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "3RDTOWS",
+          "SULYALW"
+        ],
+        "replace_with": [
+          "BRO3RDE",
+          "BROHIGE1",
+          "NORTER4",
+          "HIGLONN2",
+          "BROFROE",
+          "BROBELE",
+          "BROMAYE",
+          "BROSKIE",
+          "BRODAVE",
+          "BROHAWE",
+          "BROGLEE",
+          "BROWESPE"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 599.7291666666666,
@@ -586,6 +1035,34 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 007 between GREELDW and SPR4THW onto route 010's alignment, 18 stops reaching 7.0x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "GREELDW",
+          "SPR4THW"
+        ],
+        "replace_with": [
+          "BROWOOE",
+          "BROFRA1E",
+          "BROLATE",
+          "BROWILAE",
+          "BROCHAE",
+          "BROOHIE",
+          "BROHOFE",
+          "BRODOUE",
+          "BROPARSE",
+          "BROJEFE",
+          "BROWASAE",
+          "BROGRAE",
+          "BRO5THE",
+          "BRO4THE",
+          "BRO3RDE",
+          "BROHIGE1",
+          "NORTER4",
+          "HIGLONN2"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 1334.25,
@@ -602,6 +1079,31 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 009 between RICGRUE and SAIBUCN onto route 010's alignment, 15 stops reaching 10.3x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "RICGRUE",
+          "SAIBUCN"
+        ],
+        "replace_with": [
+          "BROSKIE",
+          "BROMAYE",
+          "BROBELE",
+          "BROFROE",
+          "HIGLONN2",
+          "NORTER4",
+          "BROHIGE1",
+          "BRO3RDE",
+          "BRO4THE",
+          "BRO5THE",
+          "BROGRAE",
+          "BROWASAE",
+          "BROJEFE",
+          "BROPARSE",
+          "BRODOUE"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 880.9652777777778,
@@ -618,6 +1120,40 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 010 between BROWHIE and HIGLONN2 onto route 006's alignment, 24 stops reaching 5.5x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "BROWHIE",
+          "HIGLONN2"
+        ],
+        "replace_with": [
+          "SULBELE",
+          "SULHILE",
+          "SULCOLE",
+          "SULLARE",
+          "SULHELE",
+          "SULRYAE",
+          "SULGUIE",
+          "SULDANE",
+          "SULWESE",
+          "SULGLEE",
+          "SULHAWE",
+          "SULSOUE",
+          "DAVSULN",
+          "RICGREE",
+          "RICGRUE",
+          "RICMCDE",
+          "RICSTAE",
+          "MAILUDE",
+          "MAIHIGE",
+          "4THTOWN",
+          "4THCAPN",
+          "4THATHN",
+          "SPR4THW",
+          "NORTER2"
+        ]
+      },
       "evidence": {
         "donor_route": "006",
         "current_weight": 1315.6607142857142,
@@ -634,6 +1170,28 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 011 between FROMOUN and LONTALE onto route 010's alignment, 12 stops reaching 10.1x the uniquely-served demand of the 9 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "FROMOUN",
+          "LONTALE"
+        ],
+        "replace_with": [
+          "BROFROE",
+          "HIGLONN2",
+          "NORTER4",
+          "BROHIGE1",
+          "BRO3RDE",
+          "BRO4THE",
+          "BRO5THE",
+          "BROGRAE",
+          "BROWASAE",
+          "BROJEFE",
+          "BROPARSE",
+          "BRODOUE"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 876.1944444444443,
@@ -650,6 +1208,23 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 012 between MCKCENE and 4THLINN onto route 010's alignment, 7 stops reaching 6.4x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "MCKCENE",
+          "4THLINN"
+        ],
+        "replace_with": [
+          "BROCENE",
+          "BROWESPE",
+          "BROGLEE",
+          "BROHAWE",
+          "BROFROE",
+          "HIGLONN2",
+          "NORTER4"
+        ]
+      },
       "evidence": {
         "donor_route": "010",
         "current_weight": 1050.125,
@@ -666,6 +1241,37 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 023 between STEOPPN and MOR342N onto route 007's alignment, 21 stops reaching 4.0x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "STEOPPN",
+          "MOR342N"
+        ],
+        "replace_with": [
+          "CASDEMS",
+          "CAS150S",
+          "CAS1884S",
+          "CASHUDS",
+          "CASBAYS",
+          "CASCASS",
+          "CASAGLS",
+          "AGLENCAS",
+          "AGLEGATW",
+          "AGLCORW",
+          "AGL343W",
+          "AGLASPW",
+          "STELIFS",
+          "STEOPPS",
+          "STEGOVS",
+          "STEMCCS",
+          "STEESPS",
+          "STEMONS",
+          "MORSTEE",
+          "MORHARS",
+          "MOR342S"
+        ]
+      },
       "evidence": {
         "donor_route": "007",
         "current_weight": 2760.133333333333,
@@ -682,6 +1288,42 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 031 between MOCWOOE and STEMORN1 onto route 007's alignment, 26 stops reaching 58.2x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "MOCWOOE",
+          "STEMORN1"
+        ],
+        "replace_with": [
+          "CAS1884S",
+          "CASHUDS",
+          "CASBAYS",
+          "CASCASS",
+          "CASAGLS",
+          "AGLENCAS",
+          "AGLEGATW",
+          "AGLCORW",
+          "AGL343W",
+          "AGLASPW",
+          "STELIFS",
+          "STEOPPS",
+          "STEGOVS",
+          "STEMCCS",
+          "STEESPS",
+          "STEMONS",
+          "MORSTEE",
+          "MORHARS",
+          "MOR342S",
+          "MOREASS",
+          "EASEASPW",
+          "EASEASW",
+          "STEALSS",
+          "STEWORS",
+          "STEMORS1",
+          "STELSAMS"
+        ]
+      },
       "evidence": {
         "donor_route": "007",
         "current_weight": 226.25,
@@ -698,6 +1340,38 @@
       "with_route": null,
       "junction": null,
       "description": "reroute route 102 between HIGCHAS and MAIHIGE onto route 001's alignment, 22 stops reaching 11.2x the uniquely-served demand of the 12 stops it replaces",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": [
+          "HIGCHAS",
+          "MAIHIGE"
+        ],
+        "replace_with": [
+          "OLE3440S",
+          "OLEUNIS",
+          "OLERIVS1",
+          "OLEHARS2",
+          "OLE2825S",
+          "OLEACKS",
+          "OLEARGS",
+          "LANOLEE",
+          "LANTUTE",
+          "LANNEIE",
+          "HIGLANS",
+          "HIG15TS",
+          "HIG13TS",
+          "HIG10TS",
+          "NHIGMCMS",
+          "HIGCLAS",
+          "HIG4THS",
+          "NHIW2S",
+          "HIGHUBS",
+          "HIGRUSS",
+          "HIGOHIS",
+          "HIGMAIS2"
+        ]
+      },
       "evidence": {
         "donor_route": "001",
         "current_weight": 991.6082521645021,
@@ -714,6 +1388,12 @@
       "with_route": "021",
       "junction": "PICBETS",
       "description": "through-route 001 and 021 at PICBETS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 334.75,
         "shared_terminal_stops": 1
@@ -726,6 +1406,12 @@
       "with_route": "011",
       "junction": "HIGFITN",
       "description": "through-route 002 and 011 at HIGFITN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 616.75,
         "shared_terminal_stops": 3
@@ -738,6 +1424,12 @@
       "with_route": "033",
       "junction": "WESHIGW",
       "description": "through-route 002 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 432.0,
         "shared_terminal_stops": 1
@@ -750,6 +1442,12 @@
       "with_route": "034",
       "junction": "WESHIGW",
       "description": "through-route 002 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 432.0,
         "shared_terminal_stops": 1
@@ -762,6 +1460,12 @@
       "with_route": "006",
       "junction": "NMURBEAN",
       "description": "through-route 005 and 006 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 2039.55,
         "shared_terminal_stops": 3
@@ -774,6 +1478,12 @@
       "with_route": "021",
       "junction": "NMURBEAN",
       "description": "through-route 005 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 2039.55,
         "shared_terminal_stops": 3
@@ -786,6 +1496,12 @@
       "with_route": "021",
       "junction": "NMURBEAN",
       "description": "through-route 006 and 021 at NMURBEAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 2039.55,
         "shared_terminal_stops": 3
@@ -798,6 +1514,12 @@
       "with_route": "101",
       "junction": "EMO4THW",
       "description": "through-route 007 and 101 at EMO4THW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 230.625,
         "shared_terminal_stops": 1
@@ -810,6 +1532,12 @@
       "with_route": "035",
       "junction": "BOASHAN",
       "description": "through-route 008 and 035 at BOASHAN, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 10794.0,
         "shared_terminal_stops": 2
@@ -822,6 +1550,12 @@
       "with_route": "033",
       "junction": "WESHIGW",
       "description": "through-route 011 and 033 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 432.0,
         "shared_terminal_stops": 1
@@ -834,6 +1568,12 @@
       "with_route": "034",
       "junction": "WESHIGW",
       "description": "through-route 011 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 432.0,
         "shared_terminal_stops": 1
@@ -846,6 +1586,12 @@
       "with_route": "034",
       "junction": "WESHIGW",
       "description": "through-route 033 and 034 at WESHIGW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction_demand_weight": 432.0,
         "shared_terminal_stops": 1
@@ -858,6 +1604,12 @@
       "with_route": null,
       "junction": "EASHAMN",
       "description": "split route 005 at EASHAMN into two independently scheduled routes of 18 and 95 stops (50% / 50%); 2 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction": "EASHAMN",
         "head_stops": 18,
@@ -873,6 +1625,12 @@
       "with_route": null,
       "junction": "EASHAMN",
       "description": "split route 024 at EASHAMN into two independently scheduled routes of 21 and 47 stops (50% / 50%); 2 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction": "EASHAMN",
         "head_stops": 21,
@@ -888,6 +1646,12 @@
       "with_route": null,
       "junction": "STE418N",
       "description": "split route 034 at STE418N into two independently scheduled routes of 37 and 12 stops (49% / 51%); 9 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction": "STE418N",
         "head_stops": 37,
@@ -903,6 +1667,12 @@
       "with_route": null,
       "junction": "NORTRA2",
       "description": "split route 035 at NORTRA2 into two independently scheduled routes of 9 and 23 stops (52% / 48%); 1 other route(s) already serve the cut, so the transfer it creates has somewhere to go",
+      "raw": {
+        "drop_stops": [],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "junction": "NORTRA2",
         "head_stops": 9,
@@ -918,6 +1688,17 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 001 between BETCOAW and PICBETS, removing a 4-stop deviation that runs 3.90x the direct distance for 1.7% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "BETPICW",
+          "BETGRYSW",
+          "SAWBETN",
+          "RESSAWE"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 3.897302933836451,
         "n_stops": 4,
@@ -932,6 +1713,18 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 002 between MAIOAKE1 and MAIWAGW, removing a 5-stop deviation that runs 3.01x the direct distance for 5.1% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "HANMAIN",
+          "GOLHILW",
+          "CARMAIS",
+          "MAIOAKW",
+          "MAIESTW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 3.0056523493670593,
         "n_stops": 5,
@@ -946,6 +1739,18 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 004 between FAIWATS and WEIWATN, removing a 5-stop deviation that runs 4.39x the direct distance for 4.2% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "FAISOUS",
+          "VENFAIE",
+          "VENSOUE",
+          "FAIWEIN",
+          "WEIHOUN"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 4.394006923326242,
         "n_stops": 5,
@@ -960,6 +1765,21 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 007 between GOUALLN and 5THRARW, removing a 8-stop deviation that runs 5.76x the direct distance for 7.9% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "ALLOPPE",
+          "324ALLE",
+          "VACLINIC",
+          "STEJAMN",
+          "7THSTEE",
+          "OSB5THS",
+          "5THKRUW",
+          "5THSTERW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 5.764245826923003,
         "n_stops": 8,
@@ -974,6 +1794,23 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 011 between GRATOWS and LONCLEE, removing a 10-stop deviation that runs 4.17x the direct distance for 8.8% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "RICGRAW",
+          "RIC5THW",
+          "3RDMAIS",
+          "MOUHIGW3",
+          "FROMOUN",
+          "FROTOWN",
+          "FROGAYN",
+          "LONHIGE",
+          "LON4THE",
+          "LONNORE"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 4.170563067770235,
         "n_stops": 10,
@@ -988,6 +1825,21 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 021 between SULMURE and BROMURW, removing a 8-stop deviation that runs 3.09x the direct distance for 9.8% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "SULINDE",
+          "SULCOUE",
+          "GEOSULN",
+          "GEODELN",
+          "GEOCASN",
+          "BRO4158W",
+          "BRO425W",
+          "BROOLDW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 3.087682606157604,
         "n_stops": 8,
@@ -1002,6 +1854,17 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 024 between HAMSTON and MORKOHW, removing a 4-stop deviation that runs 3.29x the direct distance for 5.8% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "HAMCHEN",
+          "HAMMEIN",
+          "MEIHAM2S",
+          "HAMBROS1"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 3.2924620187851046,
         "n_stops": 4,
@@ -1016,6 +1879,18 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 025 between CHANMEIW and BRISCAS, removing a 5-stop deviation that runs 5.10x the direct distance for 9.1% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "CHANCHAW",
+          "PARCCHAN",
+          "PACRALSN",
+          "5677ALE",
+          "SCAALSE"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 5.0961034701922765,
         "n_stops": 5,
@@ -1030,6 +1905,19 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 031 between GRAKINGN and KINKENE1, removing a 6-stop deviation that runs 3.59x the direct distance for 9.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "KINSTAW",
+          "NORCHAN",
+          "NOSTARN",
+          "KIN1197E",
+          "KENKINS1",
+          "KENSTELS"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 3.5910989027098563,
         "n_stops": 6,
@@ -1044,6 +1932,21 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 033 between HIGFITN and WESHIGW, removing a 8-stop deviation that runs 6.00x the direct distance for 6.7% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "HIG522N",
+          "HIGKANN",
+          "BROMHIGW",
+          "BRO200W",
+          "HIGBROMS",
+          "209HIGE",
+          "BROMHIGE",
+          "HIGKANS"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 6.003714367863028,
         "n_stops": 8,
@@ -1058,6 +1961,23 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 034 between MORMORS and STELSAMS, removing a 10-stop deviation that runs 4.26x the direct distance for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "MOR415S",
+          "MORGRAS",
+          "EASMORE",
+          "EASEASPE",
+          "EASCHAE",
+          "STECOLN",
+          "STEWORN",
+          "STEMORN1",
+          "STE418N",
+          "EASTER2"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 4.257995578441227,
         "n_stops": 10,
@@ -1072,6 +1992,16 @@
       "with_route": null,
       "junction": null,
       "description": "straighten route 102 between HUNTPARK and CAMVANW, removing a 3-stop deviation that runs 2.89x the direct distance for 4.7% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "346HUTCH",
+          "HUTCHHC",
+          "44HUTCH"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "circuity": 2.887068233041018,
         "n_stops": 3,
@@ -1086,6 +2016,18 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 007 at its end terminal, dropping 5 stops: 19.4% of running time for 2.1% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "FROBROS",
+          "FROTOWS",
+          "MAIHIGE",
+          "MAI4THE",
+          "EMO4THW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 5,
@@ -1101,6 +2043,16 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 007 at its start terminal, dropping 3 stops: 15.9% of running time for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "INTSAWW",
+          "PORGRON",
+          "INTSAWW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 3,
@@ -1116,6 +2068,27 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 009 at its end terminal, dropping 14 stops: 14.8% of running time for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "AGLBRIE",
+          "AGLCLUE",
+          "SUNCASN",
+          "SUNMCUN",
+          "SUNPATN",
+          "EASSUNE",
+          "EASMORE",
+          "EASEASPE",
+          "EASCHAE",
+          "STECOLN",
+          "STEWORN",
+          "STEMORN1",
+          "STE418N",
+          "EASTER8"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 14,
@@ -1131,6 +2104,16 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 012 at its start terminal, dropping 3 stops: 18.0% of running time for 4.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "MCKTRAW",
+          "MCK1600W",
+          "MCKPARK"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 3,
@@ -1146,6 +2129,21 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 023 at its end terminal, dropping 8 stops: 14.0% of running time for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "EASMORE",
+          "EASEASPE",
+          "EASCHAE",
+          "STECOLN",
+          "STEWORN",
+          "STEMORN1",
+          "STE418N",
+          "EASTER1"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 8,
@@ -1161,6 +2159,28 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 025 at its end terminal, dropping 15 stops: 29.0% of running time for 11.7% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "SCAALSE",
+          "BRISCAS",
+          "GENBRIS",
+          "GENCENS",
+          "GENREFS",
+          "GENUPPS",
+          "GENABBS",
+          "GENSHAS",
+          "GENNOTS",
+          "GENGEOS",
+          "5275GENS",
+          "GENLEMS",
+          "GENWINS",
+          "6340PREN",
+          "CANWIPR"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 15,
@@ -1176,6 +2196,28 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 031 at its end terminal, dropping 15 stops: 27.5% of running time for 1.5% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "MOC2315E",
+          "MOC250E",
+          "SUNSUNN",
+          "SUNCASN",
+          "SUNMCUN",
+          "SUNPATN",
+          "EASSUNE",
+          "EASMORE",
+          "EASEASPE",
+          "EASCHAE",
+          "STECOLN",
+          "STEWORN",
+          "STEMORN1",
+          "STE418N",
+          "EASTER7"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 15,
@@ -1191,6 +2233,20 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 032 at its start terminal, dropping 7 stops: 12.9% of running time for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "EASTER6",
+          "STELSAMS",
+          "STEMORS1",
+          "STEWORS",
+          "STEALSS",
+          "EASEASW",
+          "EASEASPW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 7,
@@ -1206,6 +2262,28 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 033 at its end terminal, dropping 15 stops: 27.5% of running time for 9.6% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "HIGSCHN",
+          "HIGWEIN",
+          "HIGBEAN",
+          "HIGROYN1",
+          "HIGMORN",
+          "HIGFITN",
+          "HIG522N",
+          "HIGKANN",
+          "BROMHIGW",
+          "BRO200W",
+          "HIGBROMS",
+          "209HIGE",
+          "BROMHIGE",
+          "HIGKANS",
+          "WESHIGW"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 15,
@@ -1221,6 +2299,16 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 035 at its end terminal, dropping 3 stops: 31.6% of running time for 0.0% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "STE418N",
+          "EASTER5",
+          "FORFORE"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 3,
@@ -1236,6 +2324,24 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 101 at its start terminal, dropping 11 stops: 31.0% of running time for 11.7% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "EMO4THW",
+          "MOUHIGW1",
+          "HIGRICN",
+          "HIGBRONN",
+          "HIGLONN2",
+          "HIGNATN",
+          "NAG5THE1",
+          "CLEMOUN",
+          "CLEFORN",
+          "CLE2NDN",
+          "CLE4THN1"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "start",
         "n_stops": 11,
@@ -1251,6 +2357,28 @@
       "with_route": null,
       "junction": null,
       "description": "truncate route 102 at its end terminal, dropping 15 stops: 34.7% of running time for 7.2% of the demand it uniquely reaches",
+      "raw": {
+        "drop_stops": [
+          "HIGHUDS",
+          "HIG18TS",
+          "HIGCHIS",
+          "HIG5THS",
+          "HIGSWANS",
+          "HIGNATS",
+          "HIGLONS",
+          "HIGBROS",
+          "HIGSTAS",
+          "HIGTOWS",
+          "MAIHIGE",
+          "MAI4THE",
+          "MAI5THE",
+          "GRAMOUS",
+          "MOU5THW1"
+        ],
+        "append_stops": [],
+        "replace_between": null,
+        "replace_with": []
+      },
       "evidence": {
         "end": "end",
         "n_stops": 15,
@@ -1718,36 +2846,36 @@
       "description": "reroute route 035 between MORWESE and MORMORE1 onto route 034's alignment, 4 stops reaching 3.0x the uniquely-served demand of the 3 stops it replaces"
     },
     {
-      "id": "splice-009-010-WESRIDW#0aec60448a0b",
+      "id": "splice-009-010-BROWESWE#74d5d87001af",
       "kind": "splice",
       "route_id": "009",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 009 and 010 at WESRIDW, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 009 and 010 at BROWESWE, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-009-023-STEMORN1#abd4e0ba92c6",
+      "id": "splice-009-023-STE418N#c74b8774fd53",
       "kind": "splice",
       "route_id": "009",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 009 and 023 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 009 and 023 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-009-024-STEMORN1#41a63d087232",
+      "id": "splice-009-024-STE418N#0ba13bf0c250",
       "kind": "splice",
       "route_id": "009",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 009 and 024 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 009 and 024 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-009-031-STEMORN1#7c9dd8b8ce8a",
+      "id": "splice-009-031-STE418N#0075a3a283eb",
       "kind": "splice",
       "route_id": "009",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 009 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 009 and 031 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
       "id": "splice-009-035-STE418N#b06a1b96903e",
@@ -1766,20 +2894,20 @@
       "description": "through-route 022 and 031 at RAIBALS, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-023-024-STEMORN1#4c4a326e5006",
+      "id": "splice-023-024-STE418N#4744fb72a46f",
       "kind": "splice",
       "route_id": "023",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 023 and 024 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 023 and 024 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-023-031-STEMORN1#e6d72d75c413",
+      "id": "splice-023-031-STE418N#4fca838e8a43",
       "kind": "splice",
       "route_id": "023",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 023 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 023 and 031 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
       "id": "splice-023-035-STE418N#b66f1e0ff4b3",
@@ -1790,12 +2918,12 @@
       "description": "through-route 023 and 035 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
-      "id": "splice-024-031-STEMORN1#fa8216c1958e",
+      "id": "splice-024-031-STE418N#9122e6d17ed8",
       "kind": "splice",
       "route_id": "024",
       "rule": "quota",
       "reason": "the splice quota of 12 was already full; this proposal was legal and ranked below the cut",
-      "description": "through-route 024 and 031 at STEMORN1, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
+      "description": "through-route 024 and 031 at STE418N, a stop within 3 stops of both routes' terminals, removing a forced transfer for riders crossing it"
     },
     {
       "id": "splice-024-035-STE418N#9b86fa3815b9",
@@ -2103,7 +3231,7 @@
     }
   ],
   "note": "Ranked by structural and demand rules only. No proposal was discarded on a fixed-frequency score (gate 3-2), and no proposal was discarded for scoring badly alone \u2014 Experiment 2B's whole finding is that a candidate that hurts alone can substitute for one that helps.",
-  "generated_at": "2026-08-30T19:00:07Z",
+  "generated_at": "2026-08-30T19:03:39Z",
   "seed": 20260825,
   "waiting_model": "same_route",
   "config_digest": "666920ecdd76b703",
