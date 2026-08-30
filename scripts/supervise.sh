@@ -95,6 +95,14 @@ JOBS=(
   # and each reads both, so either can resume the other's boundary.
   "exp2b-stageA-0@@python scripts/exp2b_subsets.py --stage A --shard 0/2@@outputs/exp2b_stageA_s0.log@@0"
   "exp2b-stageA-1@@python scripts/exp2b_subsets.py --stage A --shard 1/2@@outputs/exp2b_stageA_s1.log@@0"
+  # Stage B: the promoted sets across all three lambdas, path sets reused from
+  # stage A's disk cache. Waits for exp2b_stageA.csv, exits with a reason until
+  # it exists, and the supervisor retries.
+  "exp2b-stageB@@python scripts/exp2b_subsets.py --stage B@@outputs/exp2b_stageB.log@@0"
+  # Stage C: the leader and the zero-edit set at gate 7's effort under three
+  # seeds, so the floor is measured where it is applied -- and gate 12's
+  # two-effort-level check falls out of it. D24 is why this cannot be cheaper.
+  "exp2b-stageC@@python scripts/exp2b_subsets.py --stage C@@outputs/exp2b_stageC.log@@0"
   # exp2-ladder retired 2026-08-29, not abandoned. Its deliverable is the
   # measured-order ladder, and all four rungs (0/1/2/4 edits, tag "m") are
   # banked in outputs/exp2_eval.jsonl; outputs/exp2_ladder_measured.csv is

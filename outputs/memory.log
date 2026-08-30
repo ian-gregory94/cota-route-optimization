@@ -23929,3 +23929,353 @@ sleep 40; tail -2 /home/claude/columbus-transit-opt/outputs/
       echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
      
 2026-08-30T03:58:41Z pid=6090 rss=455MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T03:59:36Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T03:59:36Z pid=4215 rss=448MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T03:59:36Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T03:59:36Z pid=6090 rss=467MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:00:31Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:00:31Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:00:31Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:00:31Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:01:26Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:01:26Z pid=4215 rss=459MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:01:26Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:01:26Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:02:21Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:02:21Z pid=4215 rss=424MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:02:21Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:02:21Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:03:16Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:03:16Z pid=4215 rss=423MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:03:16Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:03:17Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:04:12Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:04:12Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:04:12Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:04:12Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:05:07Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:05:07Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:05:07Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:05:07Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:06:02Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:06:02Z pid=4215 rss=442MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:06:02Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:06:02Z pid=6090 rss=452MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:06:57Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:06:57Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:06:57Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:06:57Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:07:52Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:07:52Z pid=4215 rss=461MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:07:52Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:07:52Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:08:48Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:08:48Z pid=4215 rss=434MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:08:48Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:08:48Z pid=6090 rss=445MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:09:43Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:09:43Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:09:43Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:09:43Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:10:38Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:10:38Z pid=4215 rss=426MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:10:38Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:10:38Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:10:38Z pid=22072 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+import pathlib
+p = pathlib.Path("scripts/exp2b_subsets.py"); s = p.read_tex
+# stage C verdict: effect against a floor measured from the 
+# plus gate 12'"'"'s two-effort-level comparison
+old = '"'"''"'"''"'"'    tag = f"stage{args.stage}"'"'"''"'"
+new = '"'"''"'"''"'"'    if args.stage == "C":
+        import statistics as _st
+        z = df[df["set_key"] == "<none>"]["modelB_unserved"]
+        w = df[df["set_key"] != "<none>"]
+        if len(z) >= 2 and not w.empty:
+            base = float(_st.mean(z))
+            sd_pct = float(_st.stdev(z)) / base * 100
+            floor_c = 3 * sd_pct
+            eff = (float(w["modelB_unserved"].mean()) / base
+            # gate 12: the same comparison at the discovery 
+            disc = None
+            try:
+                sa = pd.read_csv(OUT / "exp2b_stageA.csv")
+                row = sa[sa["set_key"] == w.iloc[0]["set_key
+                if not row.empty:
+                    disc = float(row["unserved_vs_noedit_pct
+            except Exception:
+                pass
+            cert = {
+                "set": str(w.iloc[0]["set_key"]),
+                "effort": effort, "seeds": seeds,
+                "zero_edit_unserved": [round(v, 1) for v in 
+                "floor_pts": round(floor_c, 4),
+                "effect_pct": round(eff, 4),
+                "floors": round(abs(eff) / floor_c, 2) if fl
+                "measurable": bool(abs(eff) >= floor_c),
+                "discovery_effort_pct": disc,
+                "gate_12_shift_pts": (round(abs(eff - disc),
+                                      if disc is not None el
+                "gate_12_stable": (bool(abs(eff - disc) < fl
+                                   if disc is not None else 
+                "verdict": (
+                    "CERTIFIED — the set clears the floor 
+                    "effort" if abs(eff) >= floor_c and eff 
+                    "HARMFUL — clears the floor in the wro
+                    if abs(eff) >= floor_c else
+                    "NULL — inside the floor. No multi-edi
+                    "nothing, which gate 2B-7 names as a per
+                    "expected outcome, not a failure."),
+            }
+            (OUT / "exp2b_certification.json").write_text(
+                json.dumps(cert, indent=2))
+            log.info("stage C: %s  effect %+.4f%% against a 
+                     "(%.2f floors) -> %s", cert["set"], eff
+                     cert["floors"] or 0, cert["verdict"].sp
+            if disc is not None and not cert["gate_12_stable
+                log.warning("GATE 12: the effect moved %.4f 
+                            "discovery and certification eff
+                            "%.4f-pt floor. The discovery ra
+                            "trustworthy for this set.",
+                            abs(eff - disc), floor_c)
+
+    tag = f"stage{args.stage}"'"'"''"'"''"'"'
+assert old in s
+s = s.replace(old, new, 1); p.write_text(s); print("ok")
+PY
+python3 -c "import ast;ast.parse(open('"'"'scripts/exp2b_sub
+python3 - <<'"'"'PY'"'"'
+import pathlib
+p = pathlib.Path("scripts/supervise.sh"); s = p.read_text()
+old = '"'"''"'"''"'"'  # exp2-ladder retired 2026-08-29'"'"'
+new = '"'"''"'"''"'"'  # Stage B: the promoted sets across a
+  # stage A'"'"'s disk cache. Waits for exp2b_stageA.csv, ex
+  # it exists, and the supervisor retries.
+  "exp2b-stageB@@python scripts/exp2b_subsets.py --stage B@@
+  # Stage C: the leader and the zero-edit set at gate 7'"'"'
+  # seeds, so the floor is measured where it is applied -- a
+  # two-effort-level check falls out of it. D24 is why this 
+  "exp2b-stageC@@python scripts/exp2b_subsets.py --stage C@@
+  # exp2-ladder retired 2026-08-29'"'"''"'"''"'"'
+assert old in s
+s = s.replace(old, new, 1); p.write_text(s); print("queued")
+PY
+bash -n scripts/supervise.sh && echo "shell ok"; python3 scr
+2026-08-30T04:11:33Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:11:33Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:11:33Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:11:33Z pid=6090 rss=446MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:11:33Z pid=22072 rss=6MB /bin/bash -c source /root/.claude/shell-snapshots/snapshot-b
+import pathlib
+p = pathlib.Path("scripts/exp2b_subsets.py"); s = p.read_tex
+# stage C verdict: effect against a floor measured from the 
+# plus gate 12'"'"'s two-effort-level comparison
+old = '"'"''"'"''"'"'    tag = f"stage{args.stage}"'"'"''"'"
+new = '"'"''"'"''"'"'    if args.stage == "C":
+        import statistics as _st
+        z = df[df["set_key"] == "<none>"]["modelB_unserved"]
+        w = df[df["set_key"] != "<none>"]
+        if len(z) >= 2 and not w.empty:
+            base = float(_st.mean(z))
+            sd_pct = float(_st.stdev(z)) / base * 100
+            floor_c = 3 * sd_pct
+            eff = (float(w["modelB_unserved"].mean()) / base
+            # gate 12: the same comparison at the discovery 
+            disc = None
+            try:
+                sa = pd.read_csv(OUT / "exp2b_stageA.csv")
+                row = sa[sa["set_key"] == w.iloc[0]["set_key
+                if not row.empty:
+                    disc = float(row["unserved_vs_noedit_pct
+            except Exception:
+                pass
+            cert = {
+                "set": str(w.iloc[0]["set_key"]),
+                "effort": effort, "seeds": seeds,
+                "zero_edit_unserved": [round(v, 1) for v in 
+                "floor_pts": round(floor_c, 4),
+                "effect_pct": round(eff, 4),
+                "floors": round(abs(eff) / floor_c, 2) if fl
+                "measurable": bool(abs(eff) >= floor_c),
+                "discovery_effort_pct": disc,
+                "gate_12_shift_pts": (round(abs(eff - disc),
+                                      if disc is not None el
+                "gate_12_stable": (bool(abs(eff - disc) < fl
+                                   if disc is not None else 
+                "verdict": (
+                    "CERTIFIED — the set clears the floor 
+                    "effort" if abs(eff) >= floor_c and eff 
+                    "HARMFUL — clears the floor in the wro
+                    if abs(eff) >= floor_c else
+                    "NULL — inside the floor. No multi-edi
+                    "nothing, which gate 2B-7 names as a per
+                    "expected outcome, not a failure."),
+            }
+            (OUT / "exp2b_certification.json").write_text(
+                json.dumps(cert, indent=2))
+            log.info("stage C: %s  effect %+.4f%% against a 
+                     "(%.2f floors) -> %s", cert["set"], eff
+                     cert["floors"] or 0, cert["verdict"].sp
+            if disc is not None and not cert["gate_12_stable
+                log.warning("GATE 12: the effect moved %.4f 
+                            "discovery and certification eff
+                            "%.4f-pt floor. The discovery ra
+                            "trustworthy for this set.",
+                            abs(eff - disc), floor_c)
+
+    tag = f"stage{args.stage}"'"'"''"'"''"'"'
+assert old in s
+s = s.replace(old, new, 1); p.write_text(s); print("ok")
+PY
+python3 -c "import ast;ast.parse(open('"'"'scripts/exp2b_sub
+python3 - <<'"'"'PY'"'"'
+import pathlib
+p = pathlib.Path("scripts/supervise.sh"); s = p.read_text()
+old = '"'"''"'"''"'"'  # exp2-ladder retired 2026-08-29'"'"'
+new = '"'"''"'"''"'"'  # Stage B: the promoted sets across a
+  # stage A'"'"'s disk cache. Waits for exp2b_stageA.csv, ex
+  # it exists, and the supervisor retries.
+  "exp2b-stageB@@python scripts/exp2b_subsets.py --stage B@@
+  # Stage C: the leader and the zero-edit set at gate 7'"'"'
+  # seeds, so the floor is measured where it is applied -- a
+  # two-effort-level check falls out of it. D24 is why this 
+  "exp2b-stageC@@python scripts/exp2b_subsets.py --stage C@@
+  # exp2-ladder retired 2026-08-29'"'"''"'"''"'"'
+assert old in s
+s = s.replace(old, new, 1); p.write_text(s); print("queued")
+PY
+bash -n scripts/supervise.sh && echo "shell ok"; python3 scr
+2026-08-30T04:12:28Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:12:28Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:12:28Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:12:28Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:13:23Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:13:23Z pid=4215 rss=427MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:13:23Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:13:23Z pid=6090 rss=447MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:14:19Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:14:19Z pid=4215 rss=440MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:14:19Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:14:19Z pid=6090 rss=453MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:15:14Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:15:14Z pid=4215 rss=450MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:15:14Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:15:14Z pid=6090 rss=463MB python scripts/exp2b_subsets.py --stage A --shard 0/2 
+2026-08-30T04:16:09Z pid=4213 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-1 ex
+     
+2026-08-30T04:16:09Z pid=4215 rss=462MB python scripts/exp2b_subsets.py --stage A --shard 1/2 
+2026-08-30T04:16:09Z pid=6088 rss=3MB bash -c 
+      nice -n 0 python scripts/exp2b_subsets.py --stage A --
+      echo "$(date -u +%FT%TZ) supervisor: exp2b-stageA-0 ex
+     
+2026-08-30T04:16:09Z pid=6090 rss=444MB python scripts/exp2b_subsets.py --stage A --shard 0/2 

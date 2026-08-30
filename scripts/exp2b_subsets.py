@@ -248,7 +248,11 @@ def noise_floor(default: float = 0.288) -> float:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stage", choices=["A", "B"], default="A")
+    ap.add_argument("--stage", choices=["A", "B", "C"], default="A")
+    ap.add_argument("--seeds", type=str, default="20260825,20260826,20260827",
+                    help="stage C: replicate seeds. The zero-edit set is "
+                         "solved under all of them in the same run, so the "
+                         "floor is measured where it is applied.")
     ap.add_argument("--lambdas", type=str, default="")
     ap.add_argument("--iterations", type=int, default=60_000)
     ap.add_argument("--restarts", type=int, default=2)
@@ -284,9 +288,52 @@ def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
     lams = ([float(x) for x in args.lambdas.split(",")] if args.lambdas
-            else ([2.0] if args.stage == "A" else [1.0, 2.0, 4.0]))
-    if args.stage == "B":
+            else ([2.0] if args.stage in ("A", "C") else [1.0, 2.0, 4.0]))
+    if args.stage in ("B", "C"):
         args.cache_pathsets = True
+    seeds = [int(x) for x in args.seeds.split(",") if x.strip()]
+    # Prerequisite files are checked before the harness build, not after it: a
+    # missing input should cost a second, not the two minutes it takes to load
+    # a baseline the run is about to throw away. It also lets the supervisor
+    # retry a queued stage cheaply until its predecessor finishes.
+    def _complete(name: str, need: int) -> int:
+        """How many distinct sets a stage table actually holds.
+
+        Existence is not enough. A one-row `exp2b_stageA.csv` left behind by a
+        `--limit 1` smoke test is a file, and stage B would have promoted from
+        it — picking a "leader" out of a table with one entry and reporting it
+        as the outcome of a 240-subset sweep.
+        """
+        p = OUT / name
+        if not p.exists():
+            return 0
+        try:
+            return int(pd.read_csv(p)["set_key"].nunique())
+        except Exception:
+            return 0
+
+    if args.stage == "B":
+        n = _complete("exp2b_stageA.csv", 240)
+        if n < 240:
+            raise SystemExit(
+                f"stage B needs a complete stage A table: found {n} of 240 "
+                f"distinct sets in outputs/exp2b_stageA.csv. Promoting from a "
+                f"partial sweep would pick a leader that has not been "
+                f"compared against everything.")
+    if args.stage == "C":
+        nb, na = _complete("exp2b_stageB.csv", 0), _complete("exp2b_stageA.csv", 240)
+        if nb == 0 and na < 240:
+            raise SystemExit(
+                f"stage C needs stage B's table, or a complete stage A "
+                f"({na} of 240). Certifying an unranked set is not "
+                f"certification.")
+    if args.stage == "C":
+        # Certification effort is gate 7's, the effort Experiment 1's headline
+        # is certified at and the effort D24 used to withdraw the geometry
+        # claim. Anything cheaper cannot settle a question that a cheaper run
+        # has already been shown to get wrong.
+        if args.iterations < 400_000:
+            args.iterations, args.restarts, args.width = 400_000, 20, 0
 
     classes = json.loads((OUT / "exp2_candidate_classes.json").read_text())
     cands = list(classes["rule"]["eligible_for_2B"])
@@ -330,6 +377,26 @@ def main() -> int:
         want = set(keep)
         subsets = [c for c in subsets if set_key(c) in want]
         log.info("stage B on %d promoted sets", len(subsets))
+
+    if args.stage == "C":
+        src = OUT / ("exp2b_stageB.csv" if (OUT / "exp2b_stageB.csv").exists()
+                     else "exp2b_stageA.csv")
+        if not src.exists():
+            raise SystemExit(f"stage C needs {src.name}; run the earlier stage "
+                             "first rather than certifying an unranked set")
+        sc = pd.read_csv(src)
+        sc = sc[sc["lambda"] == 2.0] if "lambda" in sc else sc
+        sc = sc.sort_values("unserved_vs_noedit_pct")
+        winner = str(sc.iloc[0]["set_key"])
+        log.info("stage C certifies the leader from %s: %s (%+.4f%% at "
+                 "discovery effort)", src.name, winner,
+                 float(sc.iloc[0]["unserved_vs_noedit_pct"]))
+        want = {"<none>", winner}
+        subsets = [c for c in subsets if set_key(c) in want]
+        if len(subsets) != len(want):
+            raise SystemExit(
+                f"stage C needs both the zero-edit set and {winner}; the "
+                f"enumeration produced {[set_key(c) for c in subsets]}")
 
     if sn > 1:
         subsets = [c for j, c in enumerate(subsets) if j % sn == si]
@@ -413,7 +480,10 @@ def main() -> int:
 
     for i, combo in enumerate(subsets, 1):
         name = set_key(combo)
-        want = [f"b|{name}|lam{m}|{effort}" for m in lams]
+        want = ([f"b|{name}|lam{m}|{effort}" for m in lams]
+                if args.stage != "C" else
+                [f"b|{name}|lam{m}|seed{sd_}|{effort}"
+                 for m in lams for sd_ in seeds])
         if all(store.has(c) for c in want):
             for c in want:
                 rows.append({k: v for k, v in store.get(c).items()
@@ -487,8 +557,10 @@ def main() -> int:
         last_checks = dict(judge.checks)
         inc, scale = fit_incumbent(judge, judge.budget.revenue_veh_hours, name)
 
-        for m in lams:
-            cell = f"b|{name}|lam{m}|{effort}"
+        for m, sd_ in ((m, sd_) for m in lams
+                       for sd_ in (seeds if args.stage == "C" else [args.seed])):
+            cell = (f"b|{name}|lam{m}|{effort}" if args.stage != "C"
+                    else f"b|{name}|lam{m}|seed{sd_}|{effort}")
             if store.has(cell):
                 rows.append({k: v for k, v in store.get(cell).items()
                              if k not in ("cell", "plan")})
@@ -496,7 +568,7 @@ def main() -> int:
             t0 = time.time()
             r = optimize_frequencies(
                 judge.model, judge.budget, ladder=[], unserved_multiplier=m,
-                local_search_iterations=args.iterations, seed=args.seed,
+                local_search_iterations=args.iterations, seed=sd_,
                 ladders=judge.ladders, initial=inc,
                 n_restarts=args.restarts, candidate_width=args.width,
                 greedy_start=False)
@@ -507,7 +579,7 @@ def main() -> int:
             f = judge.model.evaluate_array(
                 np.array([hw[k] for k in judge.model.keys]))
             rec = {
-                "set_key": name, "cardinality": len(combo),
+                "set_key": name, "cardinality": len(combo), "seed": sd_,
                 "members": list(sorted(combo)), "lambda": m,
                 "seconds": time.time() - t0, "incumbent_scale": scale,
                 "edited_baseline_vh": float(ts["runtime_min"].sum() / 60.0),
@@ -580,6 +652,58 @@ def main() -> int:
                if str(r.get("cell", "")).startswith("b|")
                and f"|{effort}" in str(r.get("cell", ""))]
     df = analyse(pd.DataFrame(allrows or rows), floor := noise_floor())
+    if args.stage == "C":
+        import statistics as _st
+        z = df[df["set_key"] == "<none>"]["modelB_unserved"].tolist()
+        w = df[df["set_key"] != "<none>"]
+        if len(z) >= 2 and not w.empty:
+            base = float(_st.mean(z))
+            sd_pct = float(_st.stdev(z)) / base * 100
+            floor_c = 3 * sd_pct
+            eff = (float(w["modelB_unserved"].mean()) / base - 1) * 100
+            # gate 12: the same comparison at the discovery effort
+            disc = None
+            try:
+                sa = pd.read_csv(OUT / "exp2b_stageA.csv")
+                row = sa[sa["set_key"] == w.iloc[0]["set_key"]]
+                if not row.empty:
+                    disc = float(row["unserved_vs_noedit_pct"].iloc[0])
+            except Exception:
+                pass
+            cert = {
+                "set": str(w.iloc[0]["set_key"]),
+                "effort": effort, "seeds": seeds,
+                "zero_edit_unserved": [round(v, 1) for v in z],
+                "floor_pts": round(floor_c, 4),
+                "effect_pct": round(eff, 4),
+                "floors": round(abs(eff) / floor_c, 2) if floor_c else None,
+                "measurable": bool(abs(eff) >= floor_c),
+                "discovery_effort_pct": disc,
+                "gate_12_shift_pts": (round(abs(eff - disc), 4)
+                                      if disc is not None else None),
+                "gate_12_stable": (bool(abs(eff - disc) < floor_c)
+                                   if disc is not None else None),
+                "verdict": (
+                    "CERTIFIED — the set clears the floor measured at this "
+                    "effort" if abs(eff) >= floor_c and eff < 0 else
+                    "HARMFUL — clears the floor in the wrong direction"
+                    if abs(eff) >= floor_c else
+                    "NULL — inside the floor. No multi-edit set beats doing "
+                    "nothing, which gate 2B-7 names as a permitted and "
+                    "expected outcome, not a failure."),
+            }
+            (OUT / "exp2b_certification.json").write_text(
+                json.dumps(cert, indent=2))
+            log.info("stage C: %s  effect %+.4f%% against a %.4f-pt floor "
+                     "(%.2f floors) -> %s", cert["set"], eff, floor_c,
+                     cert["floors"] or 0, cert["verdict"].split(" —")[0])
+            if disc is not None and not cert["gate_12_stable"]:
+                log.warning("GATE 12: the effect moved %.4f pts between "
+                            "discovery and certification effort, more than the "
+                            "%.4f-pt floor. The discovery ranking is not "
+                            "trustworthy for this set.",
+                            abs(eff - disc), floor_c)
+
     tag = f"stage{args.stage}"
     df.to_csv(OUT / f"exp2b_{tag}.csv", index=False)
     df.to_csv(exp.artifact_path(f"{tag}.csv"), index=False)
