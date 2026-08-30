@@ -18,7 +18,20 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
+# The realtime collector is an optional feature: `cota-opt rt-collect` is the
+# only caller, it imports lazily, and no result in this repository depends on
+# it (the known-limitations table still records "scheduled != actual" as
+# unquantified). It is declared here so the dependency is NAMED rather than
+# ambient -- a clean install without it silently skipped 8 tests while the
+# reproducibility record claimed 356 passed. `dev` pulls it in so the suite a
+# contributor runs is the whole suite.
+realtime = ["gtfs-realtime-bindings>=1.0"]
+# ntd.parse_profile reads the FTA annual agency profile PDF. Nothing imports
+# it at runtime, but the VOMS = 198 that validates the fleet proxy came out of
+# it, so a reader reproducing that number needs the parser -- and it was
+# undeclared, found by the same check that found the realtime gap.
+ntd = ["pdfplumber>=0.10"]
+dev = ["pytest>=7.0", "gtfs-realtime-bindings>=1.0", "pdfplumber>=0.10"]
 
 [build-system]
 requires = ["setuptools>=68"]

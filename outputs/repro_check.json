@@ -40,6 +40,16 @@
     "detail": "pyproject.toml declares them; install with pip install -e '.[dev]'"
   },
   {
+    "check": "every imported third-party module is a declared dependency",
+    "pass": true,
+    "detail": "11 third-party modules imported, all declared"
+  },
+  {
+    "check": "optional features are declared, and dev installs all of them",
+    "pass": true,
+    "detail": "optional extras: ntd, realtime; dev installs every one, so the suite is complete and any skip is a failure"
+  },
+  {
     "check": "the source/generated boundary is documented",
     "pass": true,
     "detail": "data/raw and data/cache are gitignored; config/sources.yaml carries URLs and hashes for every external input"
@@ -47,11 +57,16 @@
   {
     "check": "full test suite passes in place",
     "pass": true,
-    "detail": "356 passed"
+    "detail": "360 passed"
+  },
+  {
+    "check": "no tests were skipped",
+    "pass": true,
+    "detail": "0 skipped \u2014 the suite that ran is the suite the record reports"
   },
   {
     "check": "fresh clone runs its own test suite",
     "pass": true,
-    "detail": "356 passed; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
+    "detail": "356 passed; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache). SCOPE: this reuses the running interpreter's site-packages, so it proves the clone has every committed FILE it needs, not that a clean install resolves every dependency \u2014 that is what the declared-imports check covers."
   }
 ]
