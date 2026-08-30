@@ -408,14 +408,14 @@
     }
   },
   "subset_search_2B": {
-    "status": "running",
-    "n_subsets_solved": 102,
+    "status": "ok",
+    "n_subsets_solved": 240,
     "n_subsets_expected": 240
   },
   "gate_2B8_cross_check": {
-    "status": "running",
+    "status": "ok",
     "floor_pts": 0.12992553614453523,
-    "n_pending": 1,
+    "n_pending": 0,
     "checks": [
       {
         "rung": "k=1",
@@ -430,12 +430,16 @@
         "ladder_pct": -0.066,
         "abs_diff_pts": 0.0001,
         "passes": true
+      },
+      {
+        "rung": "k=4",
+        "stage_a_pct": 1.6388,
+        "ladder_pct": 1.639,
+        "abs_diff_pts": 0.0002,
+        "passes": true
       }
     ],
-    "verdict": "incomplete"
+    "verdict": "all reproduced"
   },
-  "incomplete": [
-    "subset_search_2B",
-    "gate_2B8_cross_check"
-  ]
+  "incomplete": []
 }

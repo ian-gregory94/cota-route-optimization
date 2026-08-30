@@ -1280,6 +1280,82 @@ floor, or either candidate clearing it on an independent candidate set at this
 effort. Not a re-run at ranking effort: that is the measurement this entry
 disqualifies.
 
+
+### D22 — All 240 feasible geometry subsets: nothing composes, and nothing beats one edit
+
+**The exhaustive answer to "which combination of these edits should COTA make?"**
+Not a heuristic, not a sample: every structurally feasible subset of the frozen
+twelve-candidate set, 240 of them, each with frequency re-optimized inside the
+same 2,517-vehicle-hour envelope and scored by the frozen Model B evaluator.
+
+**Evidence.** Best set at each cardinality, against no edit at all:
+
+| edits | best set | unserved vs no edit |
+|---|---|---|
+| 0 | — | 0.000% |
+| 1 | `011+034 WESHIGW` | **−0.585%** |
+| 2 | + `005+006 NMURBEAN` | −0.066% |
+| 3 | + `007+101 EMO4THW` | +0.728% |
+| 4 | + `008+035 BOASHAN` | +1.639% |
+| 5 | + `001+021 PICBETS` | +2.629% |
+| 6 | + `002+034 WESHIGW` | +3.920% |
+
+Monotone in cardinality across the whole feasible space. Each additional edit
+costs roughly a point of unserved demand.
+
+* **Not one of the 227 multi-edit sets beats the best single.** Not by the
+  0.130-point floor — *at all*. The best single is −0.585% and no set of two or
+  more reaches it.
+* **All 227 have a positive interaction term above the floor.** Every one is
+  *substituting*: the set delivers less than its members promised separately.
+  There is not a single synergistic combination in the entire feasible space.
+* **Only 4 of 240 sets beat doing nothing by more than the floor**, and all four
+  are singles.
+* The cardinality winners are **not nested**: the best 3-set is not the best
+  2-set plus one. Gate 2B-3 permitted that and it is what happened, which is why
+  a greedy ladder could not have found these.
+
+**Gate 2B-8 passes.** Three of the 240 subsets are the rungs of D20's
+measured-order ladder, solved earlier by a different script through a different
+code path. Stage A reproduces them to **0.0004, 0.0001 and 0.0002 points**
+against a 0.130-point floor. Their expected values were committed to
+ACCEPTANCE.md before Stage A reached any of them.
+
+**Confidence.** High on the ordering and on the universality of substitution —
+this is a complete enumeration, not a search, so there is no candidate ordering
+to defend and no possibility that the answer is an artifact of where the search
+started. Discovery-stage on the magnitudes: 60,000/2/32, which gate 12 labels as
+ordering candidates rather than concluding anything about sizes.
+
+**Interpretation.** The mechanism is one shared vehicle-hour envelope. Evaluated
+alone, a splice gets the whole budget reallocated to exploit it. Two splices
+cannot each have the whole budget, and through-routing also *consumes* it — the
+merged line is longer, so hours that were buying frequency go into running it.
+The remarkable part is not that this happens but that it happens **every time**:
+227 sets, zero exceptions. Non-additivity here is not a property of particular
+unlucky combinations. It is a property of the constraint.
+
+**And the null is the answer.** Gate 2B-7 named it before any subset was solved:
+*no multi-edit set beating the best single is a permitted and publishable
+outcome, and D20 makes it the prior.* It is what happened. Combined with D24 —
+where the best single itself lands inside the noise floor once both sides are
+solved to convergence — Experiment 2's complete answer is:
+
+> **Within this candidate space, no geometry intervention measurably helps, and
+> every combination is worse than its best member.**
+
+That is a real result and it is worth having. It says COTA's route structure, at
+least along the through-routing dimension this candidate generator explores, is
+not leaving passenger benefit on the table that a vehicle-hour-neutral
+recombination could pick up. The budget is the binding constraint, not the
+topology.
+
+**What would falsify it.** A candidate generator that proposes something other
+than splices — the extends, truncates, straightens and reroutes that never took
+a top-ten slot and were never evaluated — or a mutation space large enough to
+change route structure rather than recombine it. That is Experiment 3, and this
+is the result it has to beat.
+
 ---
 
 ## Not yet earned
