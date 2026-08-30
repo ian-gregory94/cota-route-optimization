@@ -198,8 +198,8 @@ def exp2_ladder_orders() -> None:
         title="Geometry edits do not compose, in either ordering",
         ylabel="change in unserved demand vs no edit, %",
         subtitle="best-first ordering helps every rung and still cannot make "
-                 "composition pay: one edit beats two, two beat four, four are "
-                 "worse than none"))
+                 "composition pay: one edit helps, two land inside the noise "
+                 "floor, four are worse than making no change at all"))
 
 
 def exp2_vs_exp1(final: pd.DataFrame) -> None:
