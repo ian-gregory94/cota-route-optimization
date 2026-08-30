@@ -26,7 +26,11 @@ while true; do
       continue
     fi
     echo "$(date -u +%FT%TZ) keeper: restarting shard $i" >> "$LOG"
-    nohup python scripts/exp3_stage_a.py --shard "$i/2" \
+    # setsid, not bare nohup. A child that stays in this shell's process
+    # group dies with it, and that is exactly how the first launch of Phase A1
+    # was lost -- three states in, silently, with no traceback. supervise.sh
+    # has used setsid since Experiment 2 for the same reason.
+    setsid nohup python scripts/exp3_stage_a.py --shard "$i/2" \
       >> "outputs/exp3/stageA_shard$i.log" 2>&1 < /dev/null &
     sleep 60
   done

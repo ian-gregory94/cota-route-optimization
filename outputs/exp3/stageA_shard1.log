@@ -49,3 +49,46 @@
 2026-08-30 20:16:29,214 path set: 24641 paths over 17388/20000 OD pairs (86.7% of flow served), 121134 legs
 2026-08-30 20:16:29,264 period early   : 24641 paths, 20000 OD pairs
 2026-08-30 20:16:29,275 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:17:27,721 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:17:27,838 path set: 28822 paths over 19278/20000 OD pairs (96.2% of flow served), 141894 legs
+2026-08-30 20:17:27,896 period am_peak : 28822 paths, 20000 OD pairs
+2026-08-30 20:17:27,907 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:18:19,721 rejected 68 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:18:19,809 path set: 24118 paths over 17389/20000 OD pairs (86.7% of flow served), 118748 legs
+2026-08-30 20:18:19,864 period midday  : 24118 paths, 20000 OD pairs
+2026-08-30 20:18:19,875 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:19:16,301 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:19:16,448 path set: 28007 paths over 18673/20000 OD pairs (93.6% of flow served), 139704 legs
+2026-08-30 20:19:16,518 period pm_peak : 28007 paths, 20000 OD pairs
+2026-08-30 20:19:16,530 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:20:11,274 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:20:11,426 path set: 24124 paths over 17386/20000 OD pairs (86.6% of flow served), 118599 legs
+2026-08-30 20:20:11,478 period evening : 24124 paths, 20000 OD pairs
+2026-08-30 20:20:11,490 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:21:01,413 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:21:01,517 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111734 legs
+2026-08-30 20:21:01,564 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 20:21:01,565 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 20:31:47,561 experiment exp3_stage_a_20260830T203147Z
+2026-08-30 20:31:48,343 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.8s)
+2026-08-30 20:31:48,421 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-30 20:31:48,422 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-30 20:31:48,424 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-30 20:31:48,445 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 20:31:48,590 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-30 20:31:48,591 shard 1/2: 42 of 84 singles
+2026-08-30 20:31:48,603 add_stop-004#27407b151153 REFUSED: [state] 2517.2 vehicle-hours exceeds the pinned budget of 2517.2
+2026-08-30 20:31:48,884 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 20:31:48,892 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 20:31:49,001 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 20:31:49,011 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 20:31:49,077 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 20:31:49,136 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:32:39,229 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:32:39,423 path set: 24641 paths over 17388/20000 OD pairs (86.7% of flow served), 121134 legs
+2026-08-30 20:32:39,469 period early   : 24641 paths, 20000 OD pairs
+2026-08-30 20:32:39,480 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 20:33:36,078 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-30 20:33:36,254 path set: 28822 paths over 19278/20000 OD pairs (96.2% of flow served), 141894 legs
+2026-08-30 20:33:36,311 period am_peak : 28822 paths, 20000 OD pairs
+2026-08-30 20:33:36,322 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
