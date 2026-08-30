@@ -1,0 +1,42 @@
+{
+  "id": "exp2_promotion_v1",
+  "question": "Which geometry candidate, if any, is promoted as Experiment 2's recommendation?",
+  "decided": "2026-08-30",
+  "verdict": "NEITHER. At matched full effort both candidates are inside the measured noise floor, so there is no benefit to promote. Experiment 2 has no supportable claim of a geometry improvement.",
+  "effort": "400000/20/width 0 \u2014 gate 7's effort, the same the Experiment 1 headline is certified at",
+  "evaluator": "same_route (Model B), declared explicitly",
+  "noise_floor": {
+    "n_replicates": 3,
+    "sd_pct": 0.0957,
+    "three_sigma_pts": 0.2871,
+    "replicate_unserved": [
+      9749.1,
+      9748.8,
+      9765.1
+    ],
+    "measured_in": "the same run, at the same effort, as required by the gates"
+  },
+  "candidates": {
+    "splice|011|034|WESHIGW": {
+      "unserved_vs_noedit_pct": 0.0599,
+      "floors": 0.21,
+      "measurable": false,
+      "n_paths": 150046,
+      "modelled_share_pct": 0.0,
+      "ranking_effort_pct": -0.5846
+    },
+    "splice|033|034|WESHIGW": {
+      "unserved_vs_noedit_pct": 0.1603,
+      "floors": 0.56,
+      "measurable": false,
+      "n_paths": 154189,
+      "modelled_share_pct": 0.0,
+      "ranking_effort_pct": -0.4847
+    }
+  },
+  "why_the_ranking_effort_disagreed": "At 60,000 iterations / 2 restarts the UNEDITED network is the under-optimized one. Both edits looked worth about half a point because the baseline they were measured against had not been solved as well as they had. Give the optimizer 6.7x the iterations and 10x the restarts and the unedited network closes the whole gap. The effect was never the geometry's; it was the search's.",
+  "what_survives": "The harmful candidates stay harmful at full effort \u2014 splice|002|033 at +2.119% (7.4 floors) and splice|007|101 at +0.802% (2.8 floors). Harm survives more search and apparent benefit does not, which is what should happen: an edit that removes served demand keeps removing it however well frequency is optimized around it, while an apparent gain can be the optimizer finding one network's optimum more easily than another's.",
+  "gate_9": "Both candidates were inspected. splice|033|034|WESHIGW passed; splice|011|034|WESHIGW is the weaker proposal \u2014 a 91-minute cycle against 59, +1.0 vehicle-hours where 33+34 releases 0.6, and a 1:4.1 trip asymmetry. The inspection is moot: neither has a measurable effect to implement.",
+  "consequence_for_2B": "Stage A ranks subsets at 60,000/2/32 \u2014 the effort this result shows to be unreliable for singles. That does not invalidate the sweep: gate 2B-5 already requires the headline to be certified at full effort, and gate 2B-7 already names the null result as a permitted outcome. It sets the prior for stage C, and the prior is now 'no measurable effect'.",
+  "consequence_for_exp3": "The conservative incumbent Experiment 3 must beat is Experiment 1's certified frequency result on the UNCHANGED geometry. There is no geometry component to add to it."
+}

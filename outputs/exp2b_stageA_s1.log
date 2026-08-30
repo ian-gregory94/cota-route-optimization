@@ -1013,3 +1013,118 @@
 2026-08-30 03:23:20,847 period owl     : 22394 paths, 20000 OD pairs
 2026-08-30 03:23:20,848 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-30 03:23:20,901 incumbent plan is infeasible under this budget
+2026-08-30 03:25:41,422 solve lambda=2.0: obj=2.97605e+06 vh=2514.0/2517.2 exchanges=0
+2026-08-30 03:25:41,432 [ 49/120] splice|001|021|PICBETS+splice|005|006|NMURBEAN k=3 lam=2.0   141s  vs no-edit: unserved  +1.552%  gc  -0.278%  (elapsed 3.3h, ~4.8h left)
+2026-08-30 03:25:42,067 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:25:42,084 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:25:42,237 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:25:42,245 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:25:42,306 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:25:42,331 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:27:09,466 rejected 86 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:27:09,601 path set: 25388 paths over 17383/20000 OD pairs (86.6% of flow served), 125316 legs
+2026-08-30 03:27:09,658 period early   : 25388 paths, 20000 OD pairs
+2026-08-30 03:27:09,686 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:28:48,214 rejected 76 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:28:48,374 path set: 29884 paths over 19275/20000 OD pairs (96.2% of flow served), 147334 legs
+2026-08-30 03:28:48,435 period am_peak : 29884 paths, 20000 OD pairs
+2026-08-30 03:28:48,447 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:30:17,908 rejected 61 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:30:18,084 path set: 25152 paths over 17382/20000 OD pairs (86.6% of flow served), 124173 legs
+2026-08-30 03:30:18,140 period midday  : 25152 paths, 20000 OD pairs
+2026-08-30 03:30:18,152 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:31:55,373 rejected 131 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:31:55,566 path set: 29124 paths over 18673/20000 OD pairs (93.6% of flow served), 145661 legs
+2026-08-30 03:31:55,696 period pm_peak : 29124 paths, 20000 OD pairs
+2026-08-30 03:31:55,708 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:33:32,700 rejected 79 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:33:32,852 path set: 25037 paths over 17381/20000 OD pairs (86.6% of flow served), 123181 legs
+2026-08-30 03:33:32,959 period evening : 25037 paths, 20000 OD pairs
+2026-08-30 03:33:32,983 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:35:01,284 rejected 95 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:35:01,428 path set: 24866 paths over 17387/20000 OD pairs (86.7% of flow served), 122206 legs
+2026-08-30 03:35:01,496 period owl     : 24866 paths, 20000 OD pairs
+2026-08-30 03:35:01,497 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 03:35:01,584 incumbent plan is infeasible under this budget
+2026-08-30 03:37:12,265 solve lambda=2.0: obj=2.98159e+06 vh=2513.2/2517.2 exchanges=0
+2026-08-30 03:37:12,283 [ 50/120] splice|002|034|WESHIGW+splice|005|006|NMURBEAN k=3 lam=2.0   131s  vs no-edit: unserved  +1.655%  gc  -0.036%  (elapsed 3.5h, ~4.9h left)
+2026-08-30 03:37:12,790 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:37:12,799 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:37:12,987 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:37:12,996 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:37:13,036 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:37:13,049 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:38:37,293 rejected 103 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:38:37,442 path set: 25178 paths over 17385/20000 OD pairs (86.6% of flow served), 124093 legs
+2026-08-30 03:38:37,523 period early   : 25178 paths, 20000 OD pairs
+2026-08-30 03:38:37,547 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:40:17,656 rejected 87 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:40:17,806 path set: 29442 paths over 19278/20000 OD pairs (96.2% of flow served), 145499 legs
+2026-08-30 03:40:17,930 period am_peak : 29442 paths, 20000 OD pairs
+2026-08-30 03:40:17,955 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:41:46,377 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:41:46,557 path set: 24874 paths over 17385/20000 OD pairs (86.6% of flow served), 123480 legs
+2026-08-30 03:41:46,650 period midday  : 24874 paths, 20000 OD pairs
+2026-08-30 03:41:46,661 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:43:22,809 rejected 189 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:43:23,017 path set: 28544 paths over 18668/20000 OD pairs (93.6% of flow served), 143108 legs
+2026-08-30 03:43:23,089 period pm_peak : 28544 paths, 20000 OD pairs
+2026-08-30 03:43:23,114 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:44:58,651 rejected 98 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:44:58,831 path set: 24819 paths over 17383/20000 OD pairs (86.6% of flow served), 122779 legs
+2026-08-30 03:44:58,905 period evening : 24819 paths, 20000 OD pairs
+2026-08-30 03:44:58,917 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:46:07,908 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:46:08,000 path set: 23208 paths over 17379/20000 OD pairs (86.6% of flow served), 114308 legs
+2026-08-30 03:46:08,049 period owl     : 23208 paths, 20000 OD pairs
+2026-08-30 03:46:08,049 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 03:46:08,091 incumbent plan is infeasible under this budget
+2026-08-30 03:47:28,253 solve lambda=2.0: obj=2.97944e+06 vh=2514.9/2517.2 exchanges=0
+2026-08-30 03:47:28,259 [ 51/120] splice|005|006|NMURBEAN+splice|007|101|EMO4THW k=3 lam=2.0    80s  vs no-edit: unserved  +1.371%  gc  +0.031%  (elapsed 3.7h, ~5.0h left)
+2026-08-30 03:47:28,577 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:47:28,585 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:47:28,691 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:47:28,700 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:47:28,738 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:47:28,751 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:48:20,768 rejected 102 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:48:20,855 path set: 25126 paths over 17385/20000 OD pairs (86.6% of flow served), 123545 legs
+2026-08-30 03:48:20,905 period early   : 25126 paths, 20000 OD pairs
+2026-08-30 03:48:20,917 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:49:22,534 rejected 101 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:49:22,647 path set: 29882 paths over 19283/20000 OD pairs (96.3% of flow served), 147984 legs
+2026-08-30 03:49:22,716 period am_peak : 29882 paths, 20000 OD pairs
+2026-08-30 03:49:22,728 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:50:17,125 rejected 95 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:50:17,214 path set: 25171 paths over 17387/20000 OD pairs (86.7% of flow served), 125031 legs
+2026-08-30 03:50:17,265 period midday  : 25171 paths, 20000 OD pairs
+2026-08-30 03:50:17,276 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:51:15,845 rejected 199 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:51:15,955 path set: 29036 paths over 18668/20000 OD pairs (93.6% of flow served), 145166 legs
+2026-08-30 03:51:16,017 period pm_peak : 29036 paths, 20000 OD pairs
+2026-08-30 03:51:16,029 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:52:14,020 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:52:14,115 path set: 24912 paths over 17384/20000 OD pairs (86.6% of flow served), 123768 legs
+2026-08-30 03:52:14,168 period evening : 24912 paths, 20000 OD pairs
+2026-08-30 03:52:14,179 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:53:06,430 rejected 154 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:53:06,520 path set: 22880 paths over 17003/20000 OD pairs (85.1% of flow served), 112640 legs
+2026-08-30 03:53:06,563 period owl     : 22880 paths, 20000 OD pairs
+2026-08-30 03:53:06,563 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 03:53:06,606 incumbent plan is infeasible under this budget
+2026-08-30 03:54:25,763 solve lambda=2.0: obj=2.9792e+06 vh=2513.5/2517.2 exchanges=0
+2026-08-30 03:54:25,776 [ 52/120] splice|001|021|PICBETS+splice|005|006|NMURBEAN k=3 lam=2.0    79s  vs no-edit: unserved  +1.760%  gc  -0.239%  (elapsed 3.8h, ~4.9h left)
+2026-08-30 03:54:26,109 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:54:26,118 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:54:26,225 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:54:26,235 route classes: {'all_day': 22, 'peak_express': 14}
+2026-08-30 03:54:26,276 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:54:26,289 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:55:19,470 rejected 106 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:55:19,561 path set: 23933 paths over 17381/20000 OD pairs (86.6% of flow served), 118292 legs
+2026-08-30 03:55:19,620 period early   : 23933 paths, 20000 OD pairs
+2026-08-30 03:55:19,632 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 03:56:22,951 rejected 117 malformed candidate paths that failed the re-pricing check
+2026-08-30 03:56:23,063 path set: 28790 paths over 19273/20000 OD pairs (96.2% of flow served), 143357 legs
+2026-08-30 03:56:23,143 period am_peak : 28790 paths, 20000 OD pairs
+2026-08-30 03:56:23,154 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

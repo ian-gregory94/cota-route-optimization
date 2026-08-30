@@ -1204,6 +1204,82 @@ the gap between them inside the 0.130-point floor would mean the reordering at
 the top is real but the *leader* is not identified — which would leave the
 correction standing and the recommendation still open.
 
+
+### D24 — At full effort no geometry edit does anything, and the half-point benefit was the search
+
+**This retracts Experiment 2's only supportable claim.**
+
+**Evidence.** The two leading candidates re-solved at gate 7's effort — 400,000
+iterations, 20 restarts — with three zero-edit replicates *in the same run*, so
+the floor is measured where it is applied.
+
+| | ranking effort (60,000/2/32) | **full effort (400,000/20)** | floors |
+|---|---|---|---|
+| `splice\|011\|034\|WESHIGW` | −0.585% | **+0.060%** | 0.21 |
+| `splice\|033\|034\|WESHIGW` | −0.485% | **+0.160%** | 0.56 |
+
+Floor: **0.287 points**, from zero-edit replicates scoring 9749.1, 9748.8 and
+9765.1 unserved. `splice|033|034|WESHIGW` scores **9764.8**. Re-running the
+*baseline* with a different seed moves it further than the edit does.
+
+Both candidates are inside the noise floor. Neither is beneficial. Neither is
+harmful. **At full effort these edits do nothing measurable.**
+
+**Confidence.** High. Matched effort on both networks, one evaluator, one
+envelope, the floor measured in the same run at the same effort, and both
+results sit inside the replicate spread rather than near its edge. This is the
+comparison the project's own standing rule demands — *search effort is matched
+whenever two things are compared; an effort gap is a confound, and this project
+has already been burned by one* — applied to the geometry claim itself.
+
+**Interpretation. The unedited network was the under-optimized one.** At 60,000
+iterations and 2 restarts the baseline had not been solved as well as the edited
+networks had, so the edits appeared to be worth about half a point. Give the
+optimizer 6.7× the iterations and 10× the restarts and the baseline closes the
+entire gap. The effect was never the geometry's. It was the search's, and it was
+pointing the wrong way.
+
+That is a nastier failure mode than an under-powered search producing a weak
+result. Here the *comparison* was under-powered asymmetrically: both sides ran
+at the same nominal effort, and the same effort was not equally sufficient for
+both. Matched effort is necessary and it is not sufficient — what has to match
+is convergence, and nothing was checking that.
+
+**The asymmetry is the tell, and it is the right way round.** The harmful
+candidates stay harmful at full effort — `splice|002|033|WESHIGW` at +2.119%
+(7.4 floors) and `splice|007|101|EMO4THW` at +0.802% (2.8 floors). Harm survives
+more search; apparent benefit does not. An edit that removes served demand keeps
+removing it however well frequency is re-optimized around it, while an apparent
+gain can be nothing more than one network's optimum being easier to find than
+another's. Any future geometry claim should be checked against this pattern: a
+benefit that shrinks with effort was probably never there.
+
+**What Experiment 2 now says.** Twelve splice candidates, evaluated properly:
+**six do measurable harm, and none does measurable good.** The best available
+geometry intervention in this candidate set is *no geometry intervention*. The
+claim "through-routing 33 Henderson and 34 Morse reduces unserved demand by
+about 0.5%" is withdrawn — it was 0.9% under Model A, 0.5% under Model B at
+ranking effort, and **0.0% under Model B at the effort the rest of the project
+reports at**.
+
+**What this does not touch.** Experiment 1. Its headline is certified at exactly
+this effort with exactly this replicate design, and its −6.65% is 104σ against
+its own floor. The frequency result never depended on the geometry result.
+
+**What it means for Experiment 2B.** Stage A ranks 240 subsets at the effort
+this entry shows to be unreliable for singles. That does not void the sweep —
+gate 2B-5 already requires the headline to be certified at full effort, and gate
+2B-7 already names the null result as permitted and expected. It sets the prior
+for Stage C, and the prior is now *no measurable effect*. If a subset does clear
+the floor at full effort when no single does, that is a real interaction and a
+genuinely interesting result; if none does, Experiment 2 closes with a clean
+negative.
+
+**What would falsify it.** A subset in Experiment 2B clearing the full-effort
+floor, or either candidate clearing it on an independent candidate set at this
+effort. Not a re-run at ranking effort: that is the measurement this entry
+disqualifies.
+
 ---
 
 ## Not yet earned
