@@ -2,7 +2,7 @@
   "id": "exp1_final_v1",
   "status": "CLOSED \u2014 immutable. Reopen only for a falsification result, not for tuning.",
   "question": "Holding route geometry fixed, how should COTA redistribute service frequency inside its existing resource envelope?",
-  "commit": "397929fbac513602e8a2679c087dcda9734a27bb-dirty",
+  "commit": "f1a05645575567727f9dd3796b0ffdadc2283b35",
   "evaluator": {
     "waiting_model": "same_route (Model B)",
     "why": "Model A prices a ride leg at the chosen pattern's own headway and so undervalues frequent trunk service; Model B prices it on the combined frequency of every same-route pattern that can carry the movement. Model A is the one-pattern special case.",

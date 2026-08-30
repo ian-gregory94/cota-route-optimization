@@ -5,7 +5,7 @@
     "pre_exp3_baseline_v1"
   ],
   "status": "FROZEN",
-  "commit": "15edc2e7e58b7e8dfe91f1abc7c58dc09000143b-dirty",
+  "commit": "f1a05645575567727f9dd3796b0ffdadc2283b35",
   "commit_note": "The last commit that changed a hashed input (config, source, ACCEPTANCE.md, EXPERIMENT3_CONTRACT.md) -- NOT the commit this record was written at. Stamping HEAD cannot converge: the record is committed after the commit it names, so regenerating it writes a different value, which dirties the tree, which changes the value again. This one moves only when an input moves, so regenerating an unchanged freeze is a byte-for-byte no-op. The 17 input hashes below are what actually freeze the baseline.",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
   "blockers": [],
@@ -36,9 +36,9 @@
       "peak_vehicles": 197.0,
       "artifact": {
         "path": "outputs/canonical/exp1_final.json",
-        "sha256": "93baddd7316c88dd7525b0c774031c2d64be1ff3626aa6a7b6dd733726b94393",
+        "sha256": "1f4624ad1e36e1b17e9802366a6f8c82c0058aee87b6b751ffa553a7aeabc68b",
         "present": true,
-        "bytes": 10394
+        "bytes": 10388
       }
     },
     "conservative_incumbent": {
@@ -118,9 +118,9 @@
     },
     "exp1_frozen": {
       "path": "outputs/canonical/exp1_final.json",
-      "sha256": "93baddd7316c88dd7525b0c774031c2d64be1ff3626aa6a7b6dd733726b94393",
+      "sha256": "1f4624ad1e36e1b17e9802366a6f8c82c0058aee87b6b751ffa553a7aeabc68b",
       "present": true,
-      "bytes": 10394
+      "bytes": 10388
     },
     "exp2_classes": {
       "path": "outputs/exp2_candidate_classes.json",
@@ -160,9 +160,9 @@
     },
     "manifest": {
       "path": "outputs/CANONICAL_RESULTS.json",
-      "sha256": "e124b7627c80716539fdd67f508fd85c21c466aced8e3f5a2b546df47fb9fa89",
+      "sha256": "283c53444052ae445db5c5dfa707ddff018b2f90493db51b6ba5ccdbd5d5bf3e",
       "present": true,
-      "bytes": 6633
+      "bytes": 6627
     }
   },
   "generation_parameters": {
