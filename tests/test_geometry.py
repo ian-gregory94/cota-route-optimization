@@ -178,18 +178,42 @@ def test_editing_a_consumed_route_is_an_error_not_a_silent_no_op(net, ts, model)
                       junction="S2", description="through-route A and C")
     e2 = GeometryEdit(kind="truncate", route_id="A", drop_stops=("S4",),
                       description="truncate a route that no longer exists")
+    # Both rules would reject this pair. Disabling the route-disjointness check
+    # is what makes the "consumed route" branch reachable, and that branch is
+    # the one under test.
     with pytest.raises(ValueError, match="no longer exist"):
+        apply_edits(net, ts, model, [e1, e2], require_disjoint_routes=False)
+
+
+def test_two_edits_on_one_route_are_refused_by_default(net, ts, model):
+    """The contract's incompatibility rule, enforced rather than claimed.
+
+    EXPERIMENT3_CONTRACT.md said `apply_edits` already rejected this. It did
+    not — only splices consumed their routes. The gap is why a network state
+    could not have an order-free digest.
+    """
+    e1 = GeometryEdit(kind="truncate", route_id="A", drop_stops=("S4",),
+                      description="drop S4")
+    e2 = GeometryEdit(kind="truncate", route_id="A", drop_stops=("S3",),
+                      description="drop S3")
+    with pytest.raises(ValueError, match="structurally incompatible"):
         apply_edits(net, ts, model, [e1, e2])
 
 
 # -- composition and bookkeeping -------------------------------------------
 
 def test_edits_compose_in_order(net, ts, model):
+    """The historical complexity-ladder behaviour, kept under an explicit flag.
+
+    Experiment 2's ladder composed edits on shared routes before the
+    disjointness rule existed, so the behaviour has to stay reachable for those
+    runs to remain reproducible. Nothing in Experiment 3 may use it.
+    """
     e1 = GeometryEdit(kind="truncate", route_id="A", drop_stops=("S4",),
                       description="drop S4")
     e2 = GeometryEdit(kind="truncate", route_id="A", drop_stops=("S3",),
                       description="drop S3")
-    out = apply_edits(net, ts, model, [e1, e2])
+    out = apply_edits(net, ts, model, [e1, e2], require_disjoint_routes=False)
     assert out.network.patterns["PA"].stops == ["S1", "S2"]
     assert vh(ts) - vh(out.tstats) == pytest.approx(2 * 10 * 600 / 3600, rel=1e-12)
 

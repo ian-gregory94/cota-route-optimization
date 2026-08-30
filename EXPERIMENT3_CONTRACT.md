@@ -32,25 +32,35 @@ Only the margin over the conservative incumbent is Experiment 3's.
 
 ## 2. Legal mutations
 
-| operation | permitted | limit |
-|---|---|---|
-| **shorten** (truncate a route at an existing stop) | yes | §3 removal cap |
-| **extend** (continue a route along stops another route already serves) | yes | §3 link rule |
-| **reroute** (replace a mid-route segment with another) | yes | §3 link rule, removal cap |
-| **straighten** (drop a deviation, keeping both ends) | yes | §3 removal cap |
-| **change terminal** | yes | §3 terminal rule |
-| **change transfer point** | yes | must be an existing stop served by both routes |
-| **splice / through-route** (merge two routes end to end) | yes | inherently two routes |
-| **split** (cut one route into two independently scheduled routes) | yes | each half must retain ≥ 30% of the original stop-visits |
-| **create a crosstown or radial connection** | yes, as a splice or reroute over existing links | §3 link rule |
-| **constrained overlay** (a limited variant on an existing corridor) | **no** | §4 |
-| **add a stop to a route** | yes, existing stops only | §3 stop rule |
-| **create a new stop** | **no** | §3 stop rule |
-| **remove a stop from the network** | **no** | §4 — that is the stop-consolidation question, and its exchange rate is unmeasurable from this feed |
-| **express / limited-stop variant** | **no** | §4 |
-| **change frequency** | not a mutation | §5 — frequency is re-optimized for every network, never chosen as an edit |
+Every permitted operation below is a value of `geometry.EDIT_KINDS` that the
+code can actually construct, and `tests/test_geometry_order.py::
+test_every_declared_kind_is_constructible` builds one of each and applies it.
+That test exists because this table previously advertised four operations the
+code could not build. **A searchable operation that does not exist is worse
+than one that is absent**, because a reader budgets freedom the search never
+had.
 
-Anything not listed is not permitted.
+| operation | `kind` | permitted | limit |
+|---|---|---|---|
+| **shorten** (truncate a route at an existing stop) | `truncate` | yes | §3 removal cap |
+| **straighten** (drop a deviation, keeping both ends) | `straighten` | yes | §3 removal cap |
+| **extend** (continue a route to further existing stops) | `extend` | yes | §3 link rule |
+| **reroute** (replace a mid-route segment with another) | `reroute` | yes | §3 link rule, removal cap |
+| **splice / through-route** (merge two routes end to end) | `splice` | yes | inherently two routes; consumes both |
+| **split** (cut one route into two independently scheduled routes) | `split` | yes | each half ≥ 30% of the original stop-visits; the cut may not be a terminal; both halves keep the junction stop; consumes the route |
+| **add a stop to a route** | `add_stop` | yes, existing stops only | §3 stop rule; inserted at the least-detour position, deterministically |
+| **change terminal** | `change_terminal` | yes | §3 terminal rule — ≤ 1,200 m, to a stop some route already serves |
+| **create a crosstown or radial connection** | — | yes, expressed as `splice` or `reroute` | §3 link rule |
+| **change transfer point** | — | yes, expressed as a `reroute` on one of the two routes | **narrowed 2026-08-30.** It had no operator and no distinct semantics; giving it one would let the same mutation carry two canonical identities, which breaks state identity |
+| **merge two routes into one alignment** (not end-to-end) | — | **no** | not implemented, and no longer advertised |
+| **constrained overlay** (a limited variant on an existing corridor) | — | **no** | §4 |
+| **express / limited-stop variant** | — | **no** | §4, and gate 3-4: it is a runtime claim from skipping stops on an unchanged alignment |
+| **create a new stop** | — | **no** | §3 stop rule |
+| **remove a stop from the network** | — | **no** | §4 — the stop-consolidation question, whose exchange rate this feed cannot measure |
+| **change frequency** | — | not a mutation | §5 — frequency is re-optimized for every network, never chosen as an edit |
+
+Anything not listed is not permitted, and anything listed without a `kind` is
+not a distinct operator — it is a way of describing one of the eight.
 
 ---
 
@@ -97,11 +107,23 @@ number precisely so that it cannot be argued with case by case.
 **One atomic mutation touches one route**, except splice, split and merge,
 which inherently touch two and count as one mutation.
 
-**Two mutations are structurally incompatible if** they name a common route
-(the rule `geometry.apply_edits` already enforces — a splice consumes both its
-routes), or if one removes a stop the other uses as a terminal or transfer
-point. Incompatible pairs are never generated, and the check is on structure,
-never on measured performance.
+**Two mutations are structurally incompatible if** they name a common route, or
+if one removes a stop the other uses as a terminal or transfer point.
+Incompatible pairs are never generated, and the check is on structure, never on
+measured performance.
+
+**Corrected 2026-08-30.** This clause used to say the rule was "the one
+`geometry.apply_edits` already enforces". It was not. Only splices consumed
+their routes; two truncations of the same line composed in application order and
+`apply_edits` accepted them. The gap mattered more than it looks: **a state
+whose meaning depends on the order its mutations were applied has no
+permutation-invariant digest**, so two searches reaching the same set of
+mutations by different paths would cache, compare and de-duplicate as different
+states. `apply_edits` now enforces one mutation per route by default, and
+`tests/test_geometry_order.py` applies a state's mutations in every order and
+demands the same network back. The historical complexity-ladder behaviour stays
+reachable behind `require_disjoint_routes=False` so Experiment 2's runs remain
+reproducible; nothing in Experiment 3 may use it.
 
 ---
 

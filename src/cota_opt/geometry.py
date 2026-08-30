@@ -45,7 +45,22 @@ from .network import PatternSegment, RoutePattern, TransitNetwork
 
 log = logging.getLogger(__name__)
 
-EDIT_KINDS = ("truncate", "straighten", "extend", "reroute", "splice")
+#: Every operation the search may construct. The contract's legal-operation
+#: table and this tuple are checked against each other by
+#: tests/test_contract.py -- an operation advertised as searchable that the code
+#: cannot build is worse than one that is simply absent, because a reader
+#: budgets search freedom that does not exist.
+#:
+#: `change_transfer_point` is deliberately NOT here: moving where two routes
+#: meet is a reroute on one of them, and giving it a second name would let the
+#: same mutation carry two canonical identities.
+EDIT_KINDS = ("truncate", "straighten", "extend", "reroute", "splice",
+              "add_stop", "change_terminal", "split")
+
+#: Operations that consume their route(s) and replace them with new ids. These
+#: are the only kinds where a later edit naming the old route is an error
+#: rather than a composition.
+CONSUMING_KINDS = ("splice", "split")
 
 
 # ---------------------------------------------------------------------------
@@ -172,6 +187,14 @@ class GeometryEdit:
             raise ValueError("splice needs with_route and junction")
         if self.kind == "reroute" and not self.replace_between:
             raise ValueError("reroute needs replace_between")
+        if self.kind == "split" and not self.junction:
+            raise ValueError("split needs a junction to cut at")
+        if self.kind == "add_stop" and not self.append_stops:
+            raise ValueError("add_stop needs the stop(s) to insert")
+        if self.kind == "change_terminal" and not (self.junction
+                                                   and self.append_stops):
+            raise ValueError("change_terminal needs the old terminal "
+                             "(junction) and the new one (append_stops)")
 
     @property
     def key(self) -> str:
@@ -239,13 +262,26 @@ class EditedNetwork:
 
 def apply_edits(net: TransitNetwork, tstats: pd.DataFrame,
                 model: SegmentTimeModel,
-                edits: Sequence[GeometryEdit]) -> EditedNetwork:
+                edits: Sequence[GeometryEdit],
+                require_disjoint_routes: bool = True) -> EditedNetwork:
     """Apply edits in order, returning a new network and matching trip stats.
 
-    Edits compose: each sees the network the previous one produced. Two edits
-    touching the same route is allowed and is how the complexity ladder builds
-    up, but a splice consumes both its routes, so a later edit naming a
-    consumed route raises rather than silently doing nothing.
+    **At most one edit per route**, enforced here rather than assumed. The
+    treatment contract declares two mutations naming a common route
+    structurally incompatible and used to claim this function already enforced
+    it; it did not — only splices consumed their routes, and two truncations of
+    the same line composed in application order. That gap matters more than it
+    looks: a state whose meaning depends on the order its edits were applied
+    has no permutation-invariant content digest, so two searches reaching the
+    same set of mutations by different routes would cache and compare as
+    different states. Requiring route-disjointness makes a state a genuine SET
+    and the digest genuinely order-free — which
+    ``tests/test_geometry_order.py`` asserts by applying a state's edits in
+    every order and demanding the same network back.
+
+    ``require_disjoint_routes=False`` is available for the historical
+    complexity-ladder runs, which deliberately composed edits on shared routes
+    before this rule existed; nothing in Experiment 3 may use it.
     """
     patterns = {pid: _clone(p) for pid, p in net.patterns.items()}
     ts = tstats.copy()
@@ -253,6 +289,20 @@ def apply_edits(net: TransitNetwork, tstats: pd.DataFrame,
     kept = modelled = dropped = added = 0
     vh_before = float(ts["runtime_min"].sum() / 60.0)
     alive = {p.route_id for p in patterns.values()}
+
+    if require_disjoint_routes:
+        seen: dict[str, str] = {}
+        for e in edits:
+            for r in sorted(e.routes_touched()):
+                if r in seen:
+                    raise ValueError(
+                        f"edits {seen[r]} and {e.key} both name route {r}. Two "
+                        f"mutations on one route are structurally incompatible "
+                        f"(EXPERIMENT3_CONTRACT.md section 3): their combined "
+                        f"effect would depend on application order, and a "
+                        f"state whose meaning depends on order has no "
+                        f"order-free digest.")
+                seen[r] = e.key
 
     for e in edits:
         missing = e.routes_touched() - alive
@@ -265,6 +315,11 @@ def apply_edits(net: TransitNetwork, tstats: pd.DataFrame,
             notes.append(note)
             alive -= {e.route_id, e.with_route}
             alive.add(_splice_id(e))
+        elif e.kind == "split":
+            k, m, d, a, note = _apply_split(patterns, ts, model, e)
+            notes.append(note)
+            alive.discard(e.route_id)
+            alive |= set(_split_ids(e))
         else:
             k, m, d, a = _apply_pattern_edit(patterns, model, e)
         kept += k
@@ -352,6 +407,39 @@ def _edit_stop_list(stops: list[str], e: GeometryEdit,
             mid = list(e.replace_with)
         mid = [s for s in mid if model.has(s)]
         return stops[:i + 1] + mid + stops[j:]
+
+    if e.kind == "add_stop":
+        # Insert each stop where it costs the least detour. Deterministic: ties
+        # break to the earliest position, so the same request on the same
+        # pattern always produces the same stop list -- which is what lets a
+        # network state have a stable digest.
+        out = list(stops)
+        for sid in e.append_stops:
+            if sid in out or not model.has(sid):
+                continue
+            best, best_cost = None, None
+            for i in range(len(out) - 1):
+                a, b = out[i], out[i + 1]
+                cost = (_dist(model.coords, a, sid)
+                        + _dist(model.coords, sid, b)
+                        - _dist(model.coords, a, b))
+                if best_cost is None or cost < best_cost - 1e-9:
+                    best, best_cost = i + 1, cost
+            if best is not None:
+                out.insert(best, sid)
+        return out
+
+    if e.kind == "change_terminal":
+        old_t, new_t = e.junction, e.append_stops[0]
+        if not model.has(new_t) or new_t in stops:
+            return stops
+        if stops and stops[-1] == old_t:
+            return stops[:-1] + [new_t]
+        if stops and stops[0] == old_t:
+            # the reverse-direction pattern of the same route: same edit, other
+            # end. Both are rewritten, so the route stays a route.
+            return [new_t] + stops[1:]
+        return stops                      # this variant never reached it
 
     raise ValueError(f"{e.kind} is not a per-pattern edit")
 
@@ -486,6 +574,115 @@ def _apply_splice(patterns: dict[str, RoutePattern], ts: pd.DataFrame,
             f"patterns become {len(take)} through trips of {thru_rt:.0f} min, "
             f"holding {moved_vh:.1f} baseline vehicle-hours; "
             f"{len(variants)} short-turn variant(s) kept")
+    return kept, modelled, dropped, added, note
+
+
+def _split_ids(e: GeometryEdit) -> tuple[str, str]:
+    return f"{e.route_id}a", f"{e.route_id}b"
+
+
+def _apply_split(patterns: dict[str, RoutePattern], ts: pd.DataFrame,
+                 model: SegmentTimeModel,
+                 e: GeometryEdit) -> tuple[int, int, int, int, str]:
+    """Cut one route in two at a shared stop, vehicle-hour neutral at baseline.
+
+    The mirror of `_apply_splice`, and the only operation that raises the route
+    count -- which is the point of having it. Everything else in this vocabulary
+    recombines what COTA already runs; splitting is the one way the search can
+    propose that a long route is two shorter ones badly joined.
+
+    Both halves keep the junction stop, so nobody loses access there and a rider
+    who used to stay aboard now transfers. Trip counts are held rather than
+    doubled in vehicle-hours: each original trip becomes one trip on each half,
+    and each half's runtime is its own share of the original, so the two halves
+    together cost what the whole cost. That is the honest baseline -- a split
+    that only paid for itself by cutting service would be measuring the cut.
+    """
+    rid, jx = e.route_id, e.junction
+    a_id, b_id = _split_ids(e)
+    mine = [p for p in patterns.values() if p.route_id == rid]
+    if not mine:
+        raise ValueError(f"split {rid}: route not present")
+    reach = [p for p in mine if jx in p.stops]
+    if not reach:
+        raise ValueError(f"split {rid}: junction {jx} is on no pattern of it")
+    for p in reach:
+        i = p.stops.index(jx)
+        if i < 1 or i > len(p.stops) - 2:
+            raise ValueError(
+                f"split {rid} at {jx}: the junction is a terminal of pattern "
+                f"{p.pattern_id}, so one half would be a single stop")
+
+    kept = modelled = dropped = added = 0
+    built: dict[str, RoutePattern] = {}
+    share: dict[str, dict[str, float]] = {}
+    for p in mine:
+        if jx not in p.stops:
+            # A short-turn variant that never reaches the cut keeps running,
+            # assigned to whichever half contains it.
+            half = a_id if any(s in p.stops for s in
+                               reach[0].stops[:reach[0].stops.index(jx) + 1]) \
+                else b_id
+            np_ = RoutePattern(half, p.direction_id, f"{half}_{p.pattern_id}",
+                               list(p.stops), list(p.segments), p.n_trips)
+            for i, sg in enumerate(np_.segments):
+                np_.segments[i] = PatternSegment(
+                    half, sg.direction_id, np_.pattern_id, sg.from_stop,
+                    sg.to_stop, sg.seq, sg.run_time_sec)
+            built[np_.pattern_id] = np_
+            share[p.pattern_id] = {np_.pattern_id: 1.0}
+            continue
+        i = p.stops.index(jx)
+        halves = ((a_id, p.stops[:i + 1]), (b_id, p.stops[i:]))
+        tot = 0.0
+        parts: dict[str, float] = {}
+        for half, chain in halves:
+            pid = f"{half}_{p.pattern_id}"
+            segs, k, m = _retime(p, list(chain), model)
+            built[pid] = RoutePattern(half, p.direction_id, pid, list(chain),
+                                      segs, 0)
+            kept += k
+            modelled += m
+            t = sum(x.run_time_sec for x in segs)
+            parts[pid] = t
+            tot += t
+        share[p.pattern_id] = ({k2: v / tot for k2, v in parts.items()} if tot
+                               else {k2: 0.5 for k2 in parts})
+
+    old_stops = {s for p in mine for s in p.stops}
+    new_stops = {s for p in built.values() for s in p.stops}
+    dropped += len(old_stops - new_stops)
+    added += len(new_stops - old_stops)
+
+    moved = ts["pattern_id"].isin({p.pattern_id for p in mine})
+    src = ts.loc[moved]
+    rows = []
+    for _, row in src.iterrows():
+        for pid, frac in share.get(row["pattern_id"], {}).items():
+            r = row.copy()
+            r["route_id"] = built[pid].route_id
+            r["pattern_id"] = pid
+            r["direction_id"] = built[pid].direction_id
+            r["trip_id"] = f"{pid}_{row['trip_id']}"
+            r["runtime_min"] = float(row["runtime_min"]) * frac
+            rows.append(r)
+    take = (pd.DataFrame(rows).reset_index(drop=True) if rows
+            else src.iloc[0:0].copy())
+
+    for p in mine:
+        patterns.pop(p.pattern_id, None)
+    for pid, p in built.items():
+        patterns[pid] = p
+        p.n_trips = int((take["pattern_id"] == pid).sum()) if len(take) else 0
+
+    merged = pd.concat([ts.loc[~moved], take], ignore_index=True)
+    ts.drop(ts.index, inplace=True)
+    for c in merged.columns:
+        ts[c] = merged[c].values
+
+    note = (f"split {rid} at {jx}: {len(src)} trips become {len(take)} on "
+            f"{a_id} and {b_id}, each half carrying its own share of the "
+            f"original running time, so the pair costs what the whole cost")
     return kept, modelled, dropped, added, note
 
 
