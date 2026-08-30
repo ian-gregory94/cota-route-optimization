@@ -1,13 +1,9 @@
 {
   "id": "pre_exp3_baseline_v1",
-  "status": "DRAFT \u2014 not yet valid",
-  "commit": "52d3eedcf35f1195d1dcdf5e1250242ef9f582b5-dirty",
+  "status": "FROZEN",
+  "commit": "a9cf1630f3b6394d4fad1348bba4b912b2d7ca33-dirty",
   "what_this_is": "The immutable object Experiment 3 reports against. Experiment 3's margin is over the conservative incumbent, not over the raw baseline: Experiments 1 and 2 already beat the raw baseline, and re-reporting that as an Experiment 3 result would be counting the same gain twice.",
-  "blockers": [
-    "Experiment 2B stage A is not complete (102/240 subsets) \u2014 the geometry incumbent is not decided",
-    "gate 2B-8 has not fully passed \u2014 the subset sweep has not yet reproduced all three ladder rungs it replaces",
-    "Experiment 2B stage C has not certified or nulled a subset \u2014 the geometry component of the incumbent is not settled"
-  ],
+  "blockers": [],
   "evaluator": {
     "waiting_model": "same_route (Model B)",
     "asserted_by": "Experiment.declare_evaluator, which reads the value out of the setup that scored the plans and raises if it disagrees with what the run asked for",
@@ -53,9 +49,9 @@
         },
         {
           "path": "outputs/exp2b_certification.json",
-          "sha256": null,
-          "present": false,
-          "bytes": null
+          "sha256": "cd6ee3d8cbb2c4b4e1790b67c4ab8fa997101f7bf7fe98cf86bacb825eb165ce",
+          "present": true,
+          "bytes": 539
         }
       ]
     }
@@ -105,9 +101,9 @@
     },
     "exp3_contract": {
       "path": "EXPERIMENT3_CONTRACT.md",
-      "sha256": "90a0e06a317b1f001cb053d52cc2c4348b414ec29e65a825c6ed5ce68333f17f",
+      "sha256": "04b1d90ed5119c79acbf899c489946d30153842d9d1d17fe18cbd0c4d4e1935f",
       "present": true,
-      "bytes": 11371
+      "bytes": 12718
     },
     "gates": {
       "path": "ACCEPTANCE.md",
@@ -141,9 +137,9 @@
     },
     "exp2b_stageA": {
       "path": "outputs/exp2b_stageA.csv",
-      "sha256": null,
-      "present": false,
-      "bytes": null
+      "sha256": "84f6a70dad4b7d8abf248b451d0c72e4d33ccf288f4b76b82736acf16916229c",
+      "present": true,
+      "bytes": 147190
     },
     "stop_price_diagnosis": {
       "path": "outputs/exp3_stopprice_diagnosis.json",

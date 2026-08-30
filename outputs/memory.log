@@ -33362,3 +33362,1991 @@ bash -n scripts/supervise.sh && echo "shell ok"; python3 scr
       fi
      
 2026-08-30T16:20:05Z pid=8989 rss=311MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:21:00Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:21:00Z pid=8943 rss=330MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:21:00Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:21:00Z pid=8989 rss=314MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:21:56Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:21:56Z pid=8943 rss=385MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:21:56Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:21:56Z pid=8989 rss=385MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:22:51Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:22:51Z pid=8943 rss=417MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:22:51Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:22:51Z pid=8989 rss=391MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:23:46Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:23:46Z pid=8943 rss=425MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:23:46Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:23:46Z pid=8989 rss=425MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:24:41Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:24:41Z pid=8943 rss=445MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:24:41Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:24:41Z pid=8989 rss=444MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:25:36Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:25:37Z pid=8943 rss=451MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:25:37Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:25:37Z pid=8989 rss=451MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:26:32Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:26:32Z pid=8943 rss=460MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:26:32Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:26:32Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:27:27Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:27:27Z pid=8943 rss=441MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:27:27Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:27:27Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:28:22Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:28:22Z pid=8943 rss=441MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:28:22Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:28:22Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:29:17Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:29:17Z pid=8943 rss=441MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:29:17Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:29:17Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:30:13Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:30:13Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:30:13Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:30:13Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:31:08Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:31:08Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:31:08Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:31:08Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:32:03Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:32:03Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:32:03Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:32:03Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:32:58Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:32:58Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:32:58Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:32:58Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:33:53Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:33:53Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:33:53Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:33:53Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:34:49Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:34:49Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:34:49Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:34:49Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:35:44Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:35:44Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:35:44Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:35:44Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:36:39Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:36:39Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:36:39Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:36:39Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:37:34Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:37:34Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:37:34Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:37:34Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:38:29Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:38:29Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:38:29Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:38:30Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:39:25Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:39:25Z pid=8943 rss=437MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:39:25Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:39:25Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:40:20Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:40:20Z pid=8943 rss=437MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:40:20Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:40:20Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:41:15Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:41:15Z pid=8943 rss=437MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:41:15Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:41:15Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:42:10Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:42:10Z pid=8943 rss=440MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:42:10Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:42:10Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:43:06Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:43:06Z pid=8943 rss=440MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:43:06Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:43:06Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:44:01Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:44:01Z pid=8943 rss=440MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:44:01Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:44:01Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:44:56Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:44:56Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:44:56Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:44:56Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:45:51Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:45:51Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:45:51Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:45:51Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:46:46Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:46:46Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:46:46Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:46:46Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:47:42Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:47:42Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:47:42Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:47:42Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:48:37Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:48:37Z pid=8943 rss=424MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:48:37Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:48:37Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:49:32Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:49:32Z pid=8943 rss=437MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:49:32Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:49:32Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:50:27Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:50:27Z pid=8943 rss=440MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:50:27Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:50:27Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:51:22Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:51:22Z pid=8943 rss=440MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:51:22Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:51:22Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:52:18Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:52:18Z pid=8943 rss=445MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:52:18Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:52:18Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:53:13Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:53:13Z pid=8943 rss=457MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:53:13Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:53:13Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:54:08Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:54:08Z pid=8943 rss=468MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:54:08Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:54:08Z pid=8989 rss=459MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:55:03Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:55:03Z pid=8943 rss=468MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:55:03Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:55:03Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:55:58Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:55:58Z pid=8943 rss=468MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:55:58Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:55:58Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:56:54Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:56:54Z pid=8943 rss=421MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:56:54Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:56:54Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:57:49Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:57:49Z pid=8943 rss=432MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:57:49Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:57:49Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:58:44Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:58:44Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:58:44Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:58:44Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T16:59:39Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T16:59:39Z pid=8943 rss=438MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T16:59:39Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T16:59:39Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:00:34Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:00:35Z pid=8943 rss=449MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:00:35Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:00:35Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:01:30Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:01:30Z pid=8943 rss=461MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:01:30Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:01:30Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:02:25Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:02:25Z pid=8943 rss=468MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:02:25Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:02:25Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:03:20Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:03:20Z pid=8943 rss=468MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:03:20Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:03:20Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:04:15Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:04:15Z pid=8943 rss=471MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:04:15Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:04:15Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:05:10Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:05:10Z pid=8943 rss=425MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:05:10Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:05:11Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:06:06Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:06:06Z pid=8943 rss=433MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:06:06Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:06:06Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:07:01Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:07:01Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:07:01Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:07:01Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:07:56Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:07:56Z pid=8943 rss=439MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:07:56Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:07:56Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:08:51Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:08:51Z pid=8943 rss=447MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:08:51Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:08:51Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:09:46Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:09:47Z pid=8943 rss=461MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:09:47Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:09:47Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:10:42Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:10:42Z pid=8943 rss=466MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:10:42Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:10:42Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:11:37Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:11:37Z pid=8943 rss=466MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:11:37Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:11:37Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:12:32Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:12:32Z pid=8943 rss=466MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:12:32Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:12:32Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:13:27Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:13:27Z pid=8943 rss=430MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:13:27Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:13:27Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:14:23Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:14:23Z pid=8943 rss=429MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:14:23Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:14:23Z pid=8989 rss=435MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:15:18Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:15:18Z pid=8943 rss=431MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:15:18Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:15:18Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:16:13Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:16:13Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:16:13Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:16:13Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:17:08Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:17:08Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:17:08Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:17:08Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:18:03Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:18:03Z pid=8943 rss=449MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:18:03Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:18:03Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:18:59Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:18:59Z pid=8943 rss=472MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:18:59Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:18:59Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:19:54Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:19:54Z pid=8943 rss=472MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:19:54Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:19:54Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:20:49Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:20:49Z pid=8943 rss=472MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:20:49Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:20:49Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:21:44Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:21:44Z pid=8943 rss=472MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:21:44Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:21:44Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:22:39Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:22:39Z pid=8943 rss=430MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:22:39Z pid=8985 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage C >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageC-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageC ex
+      fi
+     
+2026-08-30T17:22:39Z pid=8989 rss=438MB python scripts/exp2b_subsets.py --stage C 
+2026-08-30T17:23:34Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:23:34Z pid=8943 rss=433MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:24:30Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:24:30Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:25:25Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:25:25Z pid=8943 rss=442MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:26:20Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:26:20Z pid=8943 rss=457MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:27:15Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:27:15Z pid=8943 rss=464MB python scripts/exp2b_subsets.py --stage B 
+2026-08-30T17:28:10Z pid=8939 rss=3MB bash -c 
+      _t0=$(date +%s)
+      nice -n 0 python scripts/exp2b_subsets.py --stage B >>
+      _st=$?
+      _el=$(( $(date +%s) - _t0 ))
+      if [ "$_el" -lt 30 ] && [ "$_st" -ne 0 ]; then
+        touch 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB de
+      else
+        rm -f 'outputs/.backoff-exp2b-stageB-'
+        echo "$(date -u +%FT%TZ) supervisor: exp2b-stageB ex
+      fi
+     
+2026-08-30T17:28:10Z pid=8943 rss=470MB python scripts/exp2b_subsets.py --stage B 

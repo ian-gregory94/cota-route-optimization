@@ -1350,6 +1350,25 @@ not leaving passenger benefit on the table that a vehicle-hour-neutral
 recombination could pick up. The budget is the binding constraint, not the
 topology.
 
+**Certified, and the certification is itself the point.** Stage C re-solved the
+leader `splice|011|034|WESHIGW` and the zero-edit set at gate 7's effort —
+400,000 iterations, 20 restarts — under three seeds each:
+
+| | discovery effort | **certification effort** |
+|---|---|---|
+| effect vs no edit | −0.585% | **+0.007%** |
+| floors | 4.5 | **0.02** |
+
+Floor 0.287 points, from zero-edit replicates at 9749.1, 9748.8 and 9765.1.
+**Verdict: NULL — inside the floor**, at two hundredths of it.
+
+And gate 12 fired on its own: the effect moved **0.591 points** between discovery
+and certification effort, more than twice the floor, so the run recorded
+`gate_12_stable: false` and warned that the discovery ranking is not trustworthy
+for this set. That check was written the day before, after D24 exposed the same
+failure by hand. It caught it automatically this time, which is the difference
+between a lesson and a control.
+
 **What would falsify it.** A candidate generator that proposes something other
 than splices — the extends, truncates, straightens and reroutes that never took
 a top-ten slot and were never evaluated — or a mutation space large enough to

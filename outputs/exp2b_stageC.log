@@ -66,3 +66,99 @@ stage C needs stage B's table, or a complete stage A (233 of 240). Certifying an
 2026-08-30 16:20:02,014 period owl     : 34494 paths, 20000 OD pairs
 2026-08-30 16:20:02,014 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-30 16:20:02,047 envelope pinned: 2517.2 veh-hours; waiting model same_route
+2026-08-30 16:21:02,211 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-30 16:21:02,568 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 16:21:02,578 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 16:21:02,696 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 16:21:02,707 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-30 16:21:02,768 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 16:21:02,782 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:21:53,885 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:21:53,977 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-30 16:21:54,029 cache hit  edited-pathset-6b876a255e55056e (9.2 MB, 0.0s)
+2026-08-30 16:21:54,033 period early   : 24668 paths, 20000 OD pairs
+2026-08-30 16:21:54,045 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:22:51,403 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:22:51,523 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-30 16:22:51,592 cache hit  edited-pathset-52711e42cd4d83f7 (10.6 MB, 0.0s)
+2026-08-30 16:22:51,597 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-30 16:22:51,609 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:23:42,411 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:23:42,501 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-30 16:23:42,558 cache hit  edited-pathset-e9d2229f29c5cf21 (9.0 MB, 0.0s)
+2026-08-30 16:23:42,562 period midday  : 24097 paths, 20000 OD pairs
+2026-08-30 16:23:42,574 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:24:38,254 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:24:38,352 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-30 16:24:38,415 cache hit  edited-pathset-304acd868fff224c (10.5 MB, 0.0s)
+2026-08-30 16:24:38,420 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-30 16:24:38,436 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:25:31,392 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:25:31,481 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-30 16:25:31,535 cache hit  edited-pathset-f63451c9ace6de24 (9.0 MB, 0.0s)
+2026-08-30 16:25:31,539 period evening : 24058 paths, 20000 OD pairs
+2026-08-30 16:25:31,551 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-30 16:26:20,996 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-30 16:26:21,073 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-30 16:26:21,121 cache hit  edited-pathset-d1a000025e932a95 (8.5 MB, 0.0s)
+2026-08-30 16:26:21,125 period owl     : 22669 paths, 20000 OD pairs
+2026-08-30 16:26:21,125 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 16:35:39,041 solve lambda=2.0: obj=2.95636e+06 vh=2516.1/2517.2 exchanges=71
+2026-08-30 16:35:39,049 [  1/  2] <none>                                         k=0 lam=2.0   558s  vs no-edit: unserved  +0.000%  gc  +0.000%  (elapsed 0.2h, ~0.2h left)
+2026-08-30 16:44:49,634 solve lambda=2.0: obj=2.9561e+06 vh=2517.0/2517.2 exchanges=57
+2026-08-30 16:44:49,635 [  1/  2] <none>                                         k=0 lam=2.0   551s  vs no-edit: unserved  -0.004%  gc  -0.012%  (elapsed 0.4h, ~0.4h left)
+2026-08-30 16:54:14,333 solve lambda=2.0: obj=2.95723e+06 vh=2516.1/2517.2 exchanges=63
+2026-08-30 16:54:14,335 [  1/  2] <none>                                         k=0 lam=2.0   565s  vs no-edit: unserved  +0.164%  gc  -0.059%  (elapsed 0.6h, ~0.6h left)
+2026-08-30 16:54:14,651 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 16:54:14,659 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 16:54:14,766 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 16:54:14,775 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-30 16:54:14,833 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 16:54:14,843 cache hit  edited-pathset-5f00a6aeab5ad62f (9.1 MB, 0.0s)
+2026-08-30 16:54:14,848 period early   : 24214 paths, 20000 OD pairs
+2026-08-30 16:54:14,855 cache hit  edited-pathset-c609e6549096a5ed (10.5 MB, 0.0s)
+2026-08-30 16:54:14,860 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-30 16:54:14,865 cache hit  edited-pathset-be81f9cb01100b98 (8.9 MB, 0.0s)
+2026-08-30 16:54:14,869 period midday  : 23623 paths, 20000 OD pairs
+2026-08-30 16:54:14,878 cache hit  edited-pathset-190c5bfd8b6a141e (10.3 MB, 0.0s)
+2026-08-30 16:54:14,883 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-30 16:54:14,893 cache hit  edited-pathset-bfd0357a34069598 (8.9 MB, 0.0s)
+2026-08-30 16:54:14,897 period evening : 23618 paths, 20000 OD pairs
+2026-08-30 16:54:14,906 cache hit  edited-pathset-f1a5dece707f2382 (8.5 MB, 0.0s)
+2026-08-30 16:54:14,910 period owl     : 22678 paths, 20000 OD pairs
+2026-08-30 16:54:14,910 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-30 16:54:14,950 incumbent plan is infeasible under this budget
+2026-08-30 17:03:38,260 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-30 17:03:38,268 [  2/  2] splice|011|034|WESHIGW                         k=1 lam=2.0   563s  vs no-edit: unserved  +0.060%  gc  +0.034%  (elapsed 0.7h, ~0.0h left)
+2026-08-30 17:03:38,285 incumbent plan is infeasible under this budget
+2026-08-30 17:13:31,895 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-30 17:13:31,901 [  2/  2] splice|011|034|WESHIGW                         k=1 lam=2.0   594s  vs no-edit: unserved  +0.060%  gc  +0.034%  (elapsed 0.9h, ~0.0h left)
+2026-08-30 17:13:31,918 incumbent plan is infeasible under this budget
+2026-08-30 17:23:14,490 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-30 17:23:14,498 [  2/  2] splice|011|034|WESHIGW                         k=1 lam=2.0   583s  vs no-edit: unserved  +0.060%  gc  +0.034%  (elapsed 1.0h, ~0.0h left)
+2026-08-30 17:23:14,591 stage C: splice|011|034|WESHIGW  effect +0.0065% against a 0.2870-pt floor (0.02 floors) -> NULL
+2026-08-30 17:23:14,592 GATE 12: the effect moved 0.5910 pts between discovery and certification effort, more than the 0.2870-pt floor. The discovery ranking is not trustworthy for this set.
+2026-08-30 17:23:14,595 experiment saved: /home/claude/columbus-transit-opt/outputs/experiments/exp2b_subsets_stageC_20260830T162001Z/experiment.json
+
+========================================================================================================
+EXPERIMENT 2B / D22 — joint geometry subset search, stage C
+2 structurally feasible subsets, effort 400000/20/0, frozen Model B evaluator
+========================================================================================================
+
+lambda=2.0: best 12 by measured unserved demand, against the UNEDITED network
+               set_key  cardinality  unserved_vs_noedit_pct  gc_vs_noedit_pct  gc_per_trip_vs_noedit_pct
+                <none>            0                 -0.0037           -0.0123                    -0.0140
+                <none>            0                  0.0000            0.0000                     0.0000
+splice|011|034|WESHIGW            1                  0.0599            0.0345                     0.0620
+splice|011|034|WESHIGW            1                  0.0599            0.0345                     0.0620
+splice|011|034|WESHIGW            1                  0.0599            0.0345                     0.0620
+                <none>            0                  0.1639           -0.0588                     0.0166
+
+lambda=2.0: interaction, measured effect minus the sum of member singles (floor 0.130 pts)
+
+lambda=2.0: best set at each cardinality (NOT required to be nested)
+ cardinality                set_key  unserved_vs_noedit_pct  gc_vs_noedit_pct
+           0                 <none>                 -0.0037           -0.0123
+           1 splice|011|034|WESHIGW                  0.0599            0.0345
+
+artifacts: /home/claude/columbus-transit-opt/outputs/experiments/exp2b_subsets_stageC_20260830T162001Z

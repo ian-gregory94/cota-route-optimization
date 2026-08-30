@@ -1,0 +1,22 @@
+{
+  "set": "splice|011|034|WESHIGW",
+  "effort": "400000/20/0",
+  "seeds": [
+    20260825,
+    20260826,
+    20260827
+  ],
+  "zero_edit_unserved": [
+    9749.1,
+    9748.8,
+    9765.1
+  ],
+  "floor_pts": 0.287,
+  "effect_pct": 0.0065,
+  "floors": 0.02,
+  "measurable": false,
+  "discovery_effort_pct": -0.5845518890625012,
+  "gate_12_shift_pts": 0.591,
+  "gate_12_stable": false,
+  "verdict": "NULL \u2014 inside the floor. No multi-edit set beats doing nothing, which gate 2B-7 names as a permitted and expected outcome, not a failure."
+}
