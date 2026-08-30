@@ -47,11 +47,11 @@
   {
     "check": "full test suite passes in place",
     "pass": true,
-    "detail": "356 passed in 4.66s"
+    "detail": "356 passed"
   },
   {
     "check": "fresh clone runs its own test suite",
     "pass": true,
-    "detail": "356 passed in 5.16s; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
+    "detail": "356 passed; cache present in clone: False (it must not be \u2014 the suite may not depend on this machine's cache)"
   }
 ]

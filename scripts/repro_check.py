@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -116,9 +117,18 @@ def c_manifest_points_at_real_files() -> None:
 
 
 def _pytest_summary(stdout: str) -> str:
+    """pytest's summary line, with the stopwatch removed.
+
+    The line ends "356 passed in 4.66s", and that trailing wall-clock time made
+    this file differ on every run -- which meant the tag script's own
+    precondition check dirtied the tree it was checking, and a reproducibility
+    record could never be compared byte-for-byte against a rerun. How long the
+    suite took is a property of the machine, not of the repository.
+    """
     for l in reversed(stdout.splitlines()):
         if " passed" in l or " failed" in l or " error" in l:
-            return l.strip().strip("=").strip()
+            return re.sub(r"\s+in\s+[\d.]+s$", "",
+                          l.strip().strip("=").strip())
     return "no summary line"
 
 
