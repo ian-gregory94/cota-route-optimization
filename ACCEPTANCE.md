@@ -496,6 +496,81 @@ artifact written by the thing that did the scoring, not by something adjacent
 to it.
 
 
+## Experiment 3 gates, committed 2026-08-30 before any Experiment 3 result exists
+
+Experiment 3 trades passenger walking against vehicle running time. The exchange
+rate is the time a bus loses by serving one more stop, and **this feed cannot
+measure it.** That is established, not assumed: the eleven natural experiments
+COTA's schedule offers rest on five stops, three of which are bays on one
+platform at Spring St Terminal **nine metres apart**, and the other two
+downtown intersection corners about sixty-four metres from the stop they are
+being distinguished from. COTA's median stop spacing is 331 m. Relaxing every
+threshold — dropping the period control, cutting the minimum segment from 120 s
+to 30 s, raising the skipped-stop cap from 12 to 40 — takes the comparison count
+from 11 to 15 and the *wayside* comparison count from **0 to 0**. The scarcity
+is in the feed, not the filter (`outputs/exp3_stopprice_diagnosis.json`).
+
+Everything below follows from that.
+
+**Gate 3-1 — no measured stop penalty may be claimed, ever.** Experiment 3
+reports a **break-even** penalty per candidate: the seconds per stop an edit
+must save to pay for the walking it imposes. Any sentence of the form "a stop
+costs N seconds" is out of scope for this project on this data. The
+`-157 s/stop` pooled estimate is a diagnostic that the natural experiment
+failed; it is not a number.
+
+**Gate 3-2 — a recommendation must survive the whole plausible range, or it is
+not a recommendation.** A consolidation may be recommended only if its
+break-even threshold sits **outside** the range of dwell figures a reasonable
+planner might assume, so that the conclusion does not depend on which figure is
+chosen. The range must be stated, with its source, before the candidates are
+scored. Candidates whose break-even falls inside the range are reported as
+*decided by the assumption* and recommended to nobody — that is a finding about
+what this data can settle, and it is expected to be most of them.
+
+**Gate 3-3 — the break-even stays conservative.** It counts only the in-vehicle
+time of riders passing the stop, and does not credit the vehicle-hours a removal
+frees. Crediting them would lower every threshold and make removal easier to
+justify; leaving them out errs in the direction that makes consolidation harder
+to argue for, which is the correct direction when the penalty is unmeasured. If
+this is ever relaxed, it is a new gate, not a refinement of this one.
+
+**Gate 3-4 — the schedule relationship is not causal and is never presented as
+one.** Routes with more stops are scheduled slower *and* run on denser, slower
+corridors; the feed cannot separate those. No regression on scheduled running
+time against stop count enters a conclusion, in any direction, including the one
+that would support consolidation.
+
+**Gate 3-5 — a stop that is anyone's only access is not a candidate.** The
+audit already identifies 13 stops that are the sole transit access for their
+catchment, carrying 3,045 units of flow. They are excluded before scoring, not
+weighed against a threshold.
+
+**Gate 3-6 — Model B, and the pricing is asserted.** Every evaluator is built
+with `common_lines` passed explicitly and the run asserts the setup came back
+with it. This is not boilerplate: an unasserted evaluator scored three days of
+Experiment 2 under the wrong model (see the defect note above).
+
+**Gate 3-7 — the screen does not select what gets evaluated.** D19 found the
+screen's first-ranked candidate of sixty to be the worst of the twelve, and D23
+found the ranking to move again under a corrected model. Stop candidates are
+screened only to bound the pool; the shortlist that reaches evaluation is
+decided by measured effect, and the inspection tier is driven by measured effect
+too (`inspect_candidates.py --order-from`).
+
+**Gate 3-8 — consolidations are evaluated as sets, not summed.** D20 holds that
+edits compete for one vehicle-hour envelope and do not compose; there is no
+reason stop removals would differ, and a stop removal frees *less* than a
+splice, so the interaction may be smaller and must still be measured rather than
+assumed away. Any multi-stop recommendation is scored as the set it is.
+
+**Gate 3-9 — the noise floor is measured in the same run at the same effort.**
+Three zero-edit replicates, 3σ, as in Experiments 1 and 2. Model B's floor has
+been 0.130 points at ranking effort and 0.287 at full effort — two estimates
+from three seeds each, so the floor itself is noisy and a candidate clearing it
+by a hair clears nothing.
+
+
 ## Standing rules
 
 1. These gates are not revised after seeing results.
