@@ -19,3 +19,12 @@
 2026-08-30 03:04:21,578 forced into the shortlist: splice|011|034|WESHIGW
 2026-08-30 03:04:21,578 forced into the shortlist: splice|033|034|WESHIGW
 2026-08-30 03:04:21,578 shortlist (2, primary=True): ['splice|011|034|WESHIGW', 'splice|033|034|WESHIGW']
+2026-08-30 03:05:42,844 generated 60 candidate edits: {'truncate': 12, 'straighten': 12, 'extend': 12, 'splice': 12, 'reroute': 12}
+2026-08-30 03:05:42,844 0 edits                                resumed from checkpoint
+2026-08-30 03:05:42,844 1 edits                                resumed from checkpoint
+2026-08-30 03:05:43,303 footpaths: 15573 links (9 from transfers.txt)
+2026-08-30 03:05:43,329 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-30 03:05:43,475 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-30 03:05:43,484 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-30 03:05:43,527 evaluator pricing: common_lines=same_route (explicit)
+2026-08-30 03:05:43,548 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

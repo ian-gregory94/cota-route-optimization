@@ -1,0 +1,266 @@
+{
+  "id": "exp1_final_v1",
+  "status": "CLOSED \u2014 immutable. Reopen only for a falsification result, not for tuning.",
+  "question": "Holding route geometry fixed, how should COTA redistribute service frequency inside its existing resource envelope?",
+  "commit": "e160a0967eba292f5c60d5fe1760bf9a5dfe7bb4-dirty",
+  "evaluator": {
+    "waiting_model": "same_route (Model B)",
+    "why": "Model A prices a ride leg at the chosen pattern's own headway and so undervalues frequent trunk service; Model B prices it on the combined frequency of every same-route pattern that can carry the movement. Model A is the one-pattern special case.",
+    "verified": "harness.setup() passes common_lines explicitly; this path is not the one that was mislabelled in Experiment 2."
+  },
+  "search": {
+    "lambda": 2.0,
+    "effort": {
+      "iterations": 400000,
+      "restarts": 20,
+      "width": 0
+    },
+    "seeds": [
+      20260825,
+      20260826,
+      20260827
+    ],
+    "n_paths": 243257,
+    "enumeration_tag": "sc-e99acaee75fb7745",
+    "candidate_set": "frozen"
+  },
+  "resources": {
+    "weekday_revenue_veh_hours_baseline": 2517.2,
+    "weekday_revenue_veh_hours_optimized": 2516.5,
+    "peak_vehicles_baseline": 197.0,
+    "peak_vehicles_optimized": 197.0,
+    "fleet_proxy_note": "block-derived; reconstructing COTA's blocks from the feed gives 197 peak vehicles against NTD's independently reported VOMS of 198, so the proxy is not tuned to the answer."
+  },
+  "headline": {
+    "unserved_demand": {
+      "mean_pct": -6.651987701966629,
+      "sd_pct": 0.06371566215254956,
+      "sigmas": 104.40113901728402
+    },
+    "trips_served": {
+      "mean_pct": 3.2990585674576987,
+      "sd_pct": 0.03159983309101819,
+      "sigmas": 104.40113901726305
+    },
+    "generalized_cost": {
+      "mean_pct": 0.8782387750192836,
+      "sd_pct": 0.040871590863842004,
+      "sigmas": 21.487756078421643
+    },
+    "cost_per_trip_served": {
+      "mean_pct": -2.3435080421012393,
+      "sd_pct": 0.01092071654499858,
+      "sigmas": 214.59288247660896
+    }
+  },
+  "the_claim": "The AGGREGATE effect, not any one headway plan. Independent seeds at top effort on one shared candidate set produce plans differing on 19.1% of route-periods by a mean of 6.9 minutes while scoring within 0.064 points of each other: the optimum is flat and no individual route headway is identified (gate 7, D17).",
+  "boundary_condition": "The certified frontier begins at \u03bb=2. The cost-favouring \u03bb\u22641 portion fails adequacy on both models and is reported as uncertified (gate 4, D15).",
+  "plan_disagreement": {
+    "pairs": [
+      {
+        "seed_a": 20260825,
+        "seed_b": 20260826,
+        "n_changed": 34,
+        "share_changed_pct": 19.653179190751445,
+        "mean_abs_change_min": 7.347058823529412,
+        "max_abs_change_min": 15.0
+      },
+      {
+        "seed_a": 20260825,
+        "seed_b": 20260827,
+        "n_changed": 32,
+        "share_changed_pct": 18.497109826589593,
+        "mean_abs_change_min": 6.71875,
+        "max_abs_change_min": 15.0
+      },
+      {
+        "seed_a": 20260826,
+        "seed_b": 20260827,
+        "n_changed": 33,
+        "share_changed_pct": 19.07514450867052,
+        "mean_abs_change_min": 6.690909090909091,
+        "max_abs_change_min": 15.0
+      }
+    ],
+    "n_route_periods": 173,
+    "mean_share_changed_pct": 19.07514450867052,
+    "worst_share_changed_pct": 19.653179190751445,
+    "mean_abs_change_min": 6.918905971479501
+  },
+  "gates": {
+    "1 fixpoint converges": "PASS on both models, on the tolerance test rather than the iteration cap",
+    "4 adequacy of L4 plans": "PARTIAL \u2014 \u03bb\u22652 certified on both models, \u03bb\u22641 uncertified on both",
+    "7 seed stability": "effect PASS (104\u03c3 Model B, 55\u03c3 Model A); plan FAIL (19.7% / 26.0% route-period disagreement against a 10% line)",
+    "9 legible as a transit proposal": "PASS on the promoted geometry candidate (Experiment 2)",
+    "10 same-route valuation": "PASS \u2014 residual 4.301% \u2192 \u22123.0e-18%",
+    "11 Model B discovery adequacy": "PASS \u2014 Case C closed by a route-level search scenario",
+    "11 follow-up does it change the answer": "PASS \u2014 max gap 0.057% gc against a 0.25% line",
+    "fleet": "197.0 vs 197.0 peak vehicles, no additional buses"
+  },
+  "inputs": {
+    "assumptions": {
+      "path": "config/assumptions.yaml",
+      "sha256": "174b650e14a1948535304035518fcbd0183a2608b9cea847101a267f79f192de",
+      "bytes": 6370,
+      "present": true
+    },
+    "cost_weights": {
+      "path": "config/cost_weights.yaml",
+      "sha256": "8fbf78dbab7a880918dba004ff59f199d1f31ca4978009326745f78475a66181",
+      "bytes": 682,
+      "present": true
+    },
+    "constraints": {
+      "path": "config/constraints.yaml",
+      "sha256": "28ce90626132e0e1a60d17af852de783fd3d3422f0ae7f722bd77a59c47e3e2f",
+      "bytes": 798,
+      "present": true
+    },
+    "sources": {
+      "path": "config/sources.yaml",
+      "sha256": "ba5d2db228f24fdd822bd80800a797b3399bf6a1637424217f0db1be59a92581",
+      "bytes": 5937,
+      "present": true
+    },
+    "frozen_baseline": {
+      "path": "outputs/exp1_baseline_modelB.json",
+      "sha256": "e524896075987eebc5b84a36378f50499c271a93be0d414c32fac7fbfe215dbf",
+      "bytes": 39358,
+      "present": true
+    },
+    "seed_check": {
+      "path": "outputs/seedcheck_modelB.json",
+      "sha256": "c303a9554882702417fe369bd7a235f2f945a3da3d90a59179be999da4b9d402",
+      "bytes": 2475,
+      "present": true
+    },
+    "certified_frontier": {
+      "path": "outputs/certify_frontier_modelB.csv",
+      "sha256": "df0dc9535efca3c8b204208d9a65b5205dff7072a437043f56669a4011d1e3d9",
+      "bytes": 1917,
+      "present": true
+    },
+    "fixpoint_frontier": {
+      "path": "outputs/fixpoint_frontier_modelB.csv",
+      "sha256": "97edb5516f4c1f7f16e494c8810820259f1147869d7f05fecf51b0ea1f1e457c",
+      "bytes": 2054,
+      "present": true
+    }
+  },
+  "frontier": [
+    {
+      "lambda": 0.25,
+      "n_paths": 243257,
+      "seconds": 988.2879145145416,
+      "gc": 1691338.0599744169,
+      "unserved": 11831.681868436857,
+      "served": 19117.318131563145,
+      "gc_change_pct": -4.593952867458551,
+      "unserved_change_pct": 15.313082807868916,
+      "served_change_pct": -7.594535542594838,
+      "gc_per_trip_change_pct": 3.247191811388417,
+      "revenue_veh_hours": 2510.130736307013,
+      "vh_vs_budget_pct": -0.2801781234178513,
+      "improvable_flow_pct": 1.3712485092907825,
+      "certified": false
+    },
+    {
+      "lambda": 0.5,
+      "n_paths": 243257,
+      "seconds": 1578.3692536354065,
+      "gc": 1711868.1926013504,
+      "unserved": 10962.896632944772,
+      "served": 19986.10336705523,
+      "gc_change_pct": -3.435876402797089,
+      "unserved_change_pct": 6.8457909286131935,
+      "served_change_pct": -3.395175431155495,
+      "gc_per_trip_change_pct": -0.042131406814560624,
+      "revenue_veh_hours": 2511.018646886266,
+      "vh_vs_budget_pct": -0.24490415002484944,
+      "improvable_flow_pct": 0.9256295238789798,
+      "certified": false
+    },
+    {
+      "lambda": 1.0,
+      "n_paths": 243257,
+      "seconds": 2650.0388243198395,
+      "gc": 1748138.3555592766,
+      "unserved": 10114.334916686457,
+      "served": 20834.665083313546,
+      "gc_change_pct": -1.3899265370906355,
+      "unserved_change_pct": -1.4243999489420678,
+      "served_change_pct": 0.706432282437075,
+      "gc_per_trip_change_pct": -2.0816533482671096,
+      "revenue_veh_hours": 2515.4270662948056,
+      "vh_vs_budget_pct": -0.06977112136691277,
+      "improvable_flow_pct": 0.788627168685738,
+      "certified": false
+    },
+    {
+      "lambda": 2.0,
+      "n_paths": 243257,
+      "seconds": 3603.806045770645,
+      "gc": 1787699.0007893941,
+      "unserved": 9583.05587379403,
+      "served": 21365.94412620597,
+      "gc_change_pct": 0.8416348950901265,
+      "unserved_change_pct": -6.602313363819379,
+      "served_change_pct": 3.274422540124222,
+      "gc_per_trip_change_pct": -2.355653592823448,
+      "revenue_veh_hours": 2516.645363241569,
+      "vh_vs_budget_pct": -0.021371907426859238,
+      "improvable_flow_pct": 0.5076246769376845,
+      "certified": true
+    },
+    {
+      "lambda": 4.0,
+      "n_paths": 243257,
+      "seconds": 347.3762893676758,
+      "gc": 1794690.2039433056,
+      "unserved": 9529.460859451287,
+      "served": 21419.539140548717,
+      "gc_change_pct": 1.2359990221679107,
+      "unserved_change_pct": -7.124657219554765,
+      "served_change_pct": 3.5334793889385097,
+      "gc_per_trip_change_pct": -2.219069986182698,
+      "revenue_veh_hours": 2516.353031286757,
+      "vh_vs_budget_pct": -0.03298536247167139,
+      "improvable_flow_pct": 0.5299244511079205,
+      "certified": true
+    },
+    {
+      "lambda": 8.0,
+      "n_paths": 243257,
+      "seconds": 2521.4450404644012,
+      "gc": 1798656.790936178,
+      "unserved": 9516.94896699088,
+      "served": 21432.05103300912,
+      "gc_change_pct": 1.4597487233973805,
+      "unserved_change_pct": -7.246599721678559,
+      "served_change_pct": 3.5939568694139723,
+      "gc_per_trip_change_pct": -2.0601666453448297,
+      "revenue_veh_hours": 2516.3728342309214,
+      "vh_vs_budget_pct": -0.0321986520282036,
+      "improvable_flow_pct": 0.5216550514353359,
+      "certified": true
+    },
+    {
+      "lambda": 16.0,
+      "n_paths": 243257,
+      "seconds": 2584.1321218013763,
+      "gc": 1799095.9147567633,
+      "unserved": 9513.971320574205,
+      "served": 21435.0286794258,
+      "gc_change_pct": 1.4845190924414053,
+      "unserved_change_pct": -7.275620244004688,
+      "served_change_pct": 3.6083496204384335,
+      "gc_per_trip_change_pct": -2.0498642587952753,
+      "revenue_veh_hours": 2515.902922784798,
+      "vh_vs_budget_pct": -0.05086679748668166,
+      "improvable_flow_pct": 0.5585160452086317,
+      "certified": true
+    }
+  ],
+  "quoting_rule": "quote from lambda = 2 upward. Gate 4 certified lambda >= 2 on both models and failed lambda <= 1 on both, at different thresholds and on candidate sets 4% apart -- see D15. The uncertified corner is kept here so the frontier's edge is visible, not so it can be quoted.",
+  "identification_rule": "the aggregate is measured; the plan is not. Independent seeds disagree on 19.7% of route-periods while scoring within 0.06 points -- see D17. Quote totals, never a route headway."
+}
