@@ -157,3 +157,51 @@ def test_reconstructed_routes_are_inside_the_search_bounds():
     assert r["outside_search_bounds"] == [], (
         f"the search bounds exclude routes COTA runs today: "
         f"{r['outside_search_bounds']}")
+
+
+# -- structural distance ---------------------------------------------------
+
+def test_a_network_is_identical_to_itself():
+    from cota_opt.synthetic import structural_distance
+    a = _net([R(["A", "B", "C"], ["Cw", "Bw", "Aw"])])
+    d = structural_distance(a, a)
+    assert d["edge_jaccard"] == 1.0
+    assert d["service_weighted_cosine"] == pytest.approx(1.0)
+    assert d["one_seat_jaccard"] == 1.0
+    assert d["distance"] == 0.0
+
+
+def test_disjoint_networks_are_maximally_distant():
+    from cota_opt.synthetic import structural_distance
+    a = _net([R(["A", "B"], ["Bw", "Aw"])])
+    b = _net([R(["X", "Y"], ["Yw", "Xw"])])
+    d = structural_distance(a, b)
+    assert d["edge_jaccard"] == 0.0
+    assert d["distance"] == 1.0
+
+
+def test_same_streets_different_service_is_not_called_identical():
+    """Unweighted overlap would miss the difference that matters most."""
+    from cota_opt.synthetic import structural_distance
+    r = R(["A", "B", "C"], ["Cw", "Bw", "Aw"])
+    often = SyntheticNetwork((r,), {r.rid: {"am_peak": 5.0}})
+    rarely = SyntheticNetwork((r,), {r.rid: {"am_peak": 60.0}})
+    d = structural_distance(often, rarely)
+    assert d["edge_jaccard"] == 1.0, "the same streets are driven"
+    assert d["service_weighted_cosine"] == pytest.approx(1.0), (
+        "cosine is scale-free, so it agrees they are the same shape")
+    ea = __import__("cota_opt.synthetic", fromlist=["service_edges"]).service_edges
+    assert sum(ea(often.routes, often.activation).values()) > \
+        sum(ea(rarely.routes, rarely.activation).values())
+
+
+def test_one_seat_overlap_catches_a_split_that_edges_do_not():
+    """Two networks can drive the same streets and join different journeys."""
+    from cota_opt.synthetic import structural_distance
+    through = _net([R(["A", "B", "C"], ["Cw", "Bw", "Aw"])])
+    cut = _net([R(["A", "B"], ["Bw", "Aw"]), R(["B", "C"], ["Cw", "Bw"])])
+    d = structural_distance(through, cut)
+    assert d["edge_jaccard"] == 1.0, "identical streets driven"
+    assert d["one_seat_jaccard"] < 1.0, (
+        "but A->C is a one-seat ride in one network and a transfer in the "
+        "other, which is the difference Experiments 6-7 care about")

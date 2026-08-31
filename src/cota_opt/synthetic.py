@@ -305,3 +305,90 @@ def reconstruct_current(g: LinkGraph, net: TransitNetwork,
                 "runs'.",
     }
     return built, report
+
+
+# ---------------------------------------------------------------------------
+# structural distance — definition-of-ready item 14
+# ---------------------------------------------------------------------------
+
+def service_edges(routes: Iterable[SyntheticRoute],
+                  activation: dict[str, dict[str, float | None]] | None = None,
+                  ) -> dict[tuple[str, str], float]:
+    """Directed stop-to-stop edges a network runs, weighted by service.
+
+    Weight is trips per hour summed over periods — 60/headway, and zero for
+    OFF. Unweighted overlap would call a network that runs a corridor every
+    five minutes identical to one that runs it hourly, which is most of what
+    distinguishes two designs.
+    """
+    out: dict[tuple[str, str], float] = {}
+    for r in routes:
+        per = (activation or {}).get(r.rid)
+        w = 1.0 if per is None else sum(
+            60.0 / h for h in per.values() if h)
+        if w <= 0:
+            continue
+        for chain in (r.outbound, r.inbound):
+            for i in range(len(chain) - 1):
+                k = (chain[i], chain[i + 1])
+                out[k] = out.get(k, 0.0) + w
+    return out
+
+
+def structural_distance(a: "SyntheticNetwork", b: "SyntheticNetwork"
+                        ) -> dict[str, float]:
+    """How different are two networks, as service geometry?
+
+    Experiment 4's route ids are synthetic, so route-id disagreement means
+    nothing — two searches can build the same corridor under different ids.
+    Distance is therefore measured on what the networks actually do.
+
+    Four views, because no single one is enough. Edge Jaccard says whether the
+    same streets are driven; the service-weighted cosine says whether they are
+    driven *as much*; stop-incidence says whether the same places are served;
+    and one-seat overlap says whether the same journeys avoid a transfer. A
+    pair of networks can score identically on the first and differ sharply on
+    the last, and that difference is the interesting one for Experiments 6-7.
+
+    The question this answers: among independently optimized networks scoring
+    within the certification floor, how different are the maps? If seeds find
+    wildly different maps with identical outcomes, then the VALUE of greenfield
+    redesign is identified and the exact network is not — the direct analogue
+    of Experiment 1's flat headway optimum.
+    """
+    import math
+    ea = service_edges(a.routes, a.activation)
+    eb = service_edges(b.routes, b.activation)
+    ka, kb = set(ea), set(eb)
+    inter, union = ka & kb, ka | kb
+
+    dot = sum(ea[k] * eb[k] for k in inter)
+    na = math.sqrt(sum(v * v for v in ea.values()))
+    nb = math.sqrt(sum(v * v for v in eb.values()))
+
+    sa = {s for k in ka for s in k}
+    sb = {s for k in kb for s in k}
+
+    def seats(n: "SyntheticNetwork") -> set[tuple[str, str]]:
+        """Ordered stop pairs joined by a one-seat ride."""
+        out: set[tuple[str, str]] = set()
+        act = set(n.active_rids())
+        for r in n.routes:
+            if r.rid not in act:
+                continue
+            for chain in (r.outbound, r.inbound):
+                for i in range(len(chain)):
+                    for j in range(i + 1, len(chain)):
+                        out.add((chain[i], chain[j]))
+        return out
+
+    oa, ob_ = seats(a), seats(b)
+    return {
+        "edge_jaccard": len(inter) / len(union) if union else 1.0,
+        "service_weighted_cosine": (dot / (na * nb)) if na and nb else 1.0,
+        "stop_jaccard": (len(sa & sb) / len(sa | sb)) if (sa | sb) else 1.0,
+        "one_seat_jaccard": (len(oa & ob_) / len(oa | ob_)) if (oa | ob_) else 1.0,
+        "edges_only_in_a": len(ka - kb),
+        "edges_only_in_b": len(kb - ka),
+        "distance": 1.0 - (len(inter) / len(union) if union else 1.0),
+    }
