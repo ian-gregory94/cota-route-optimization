@@ -172,7 +172,6 @@ def test_an_operationally_neutral_event_does_not_block_comparison():
     ("restarts_completed", 1),
     ("termination", StopRule.DEADLINE),
     ("converged", False),
-    ("repair_occurred", True),
     ("resumed", True),
 ])
 def test_any_undeclared_mismatch_refuses(field, value):
@@ -242,7 +241,8 @@ def test_certification_requires_both_arms_converged():
         evaluator=CONTRACT.evaluator, envelope=CONTRACT.envelope,
         pathset_policy=CONTRACT.pathset_policy, pool_version=CONTRACT.pool_version,
         solver=CERTIFICATION,
-        allowed_treatment_differences=CONTRACT.allowed_treatment_differences)
+        allowed_treatment_differences=CONTRACT.allowed_treatment_differences,
+        justifications=CONTRACT.justifications)
     c = receipt(cert, restarts_requested=20, restarts_completed=20,
                 converged=False, termination=StopRule.DEADLINE,
                 spec_=spec(cert))
@@ -531,3 +531,43 @@ def test_a_pre_firewall_row_cannot_pass_as_completed_work():
     assert not v
     assert any("contract" in r for r in v.reasons)
     assert any("methodology" in r for r in v.reasons)
+
+
+
+def test_a_declared_difference_needs_a_written_reason():
+    """A whitelist without reasons is a place to put anything inconvenient."""
+    with pytest.raises(ContractError):
+        ExperimentContract(
+            experiment="x", version="1", stage="discovery", objective="o",
+            objective_version="1", evaluator="e", envelope="v",
+            pathset_policy="p", pool_version="q",
+            allowed_treatment_differences=frozenset({"restarts_completed"}))
+    ok = ExperimentContract(
+        experiment="x", version="1", stage="discovery", objective="o",
+        objective_version="1", evaluator="e", envelope="v",
+        pathset_policy="p", pool_version="q",
+        allowed_treatment_differences=frozenset({"restarts_completed"}),
+        justifications={"restarts_completed": "measured not to matter here"})
+    assert ok.digest
+
+
+def test_declaring_one_event_type_does_not_waive_the_others():
+    """The repair waiver must not buy an exemption for a model fallback."""
+    assert CONTRACT.allows("opportunity_events.INCUMBENT_REPAIRED")
+    assert not CONTRACT.allows("opportunity_events.MODEL_FALLBACK")
+    assert not CONTRACT.allows("opportunity_events.START_FALLBACK")
+
+    repaired = treated(repair_occurred=True, repair_steps=10,
+                       events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED,
+                                              "walked into the envelope",
+                                              "frequency"),))
+    assert isinstance(compare(receipt(), repaired, CONTRACT), ComparisonResult)
+
+    also_fell_back = treated(
+        repair_occurred=True, repair_steps=10,
+        events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED, "x", "frequency"),
+                ExecutionEvent(EventType.MODEL_FALLBACK, "y", "eval")))
+    out = compare(receipt(), also_fell_back, CONTRACT)
+    assert isinstance(out, InadmissibleComparison)
+    assert any(d.dimension == "opportunity_events.MODEL_FALLBACK"
+               for d in out.undeclared)

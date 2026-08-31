@@ -146,11 +146,19 @@ def compare(control, treatment, contract: ExperimentContract
 
     # An event that changed one arm's opportunity and not the other's is a
     # difference even when every field happens to agree.
+    #
+    # PER TYPE, not as one set. Declaring "opportunity_events" wholesale would
+    # waive every event at once -- a single inconvenient event type would buy
+    # a blanket exemption for model fallbacks, early termination and anything
+    # invented later. Each type is its own dimension, so a contract can accept
+    # one and still be refused by the next.
     ce = {e.type.value for e in c.receipt.opportunity_changing}
     te = {e.type.value for e in t.receipt.opportunity_changing}
-    if ce != te and not contract.allows("opportunity_events"):
-        undeclared.append(Difference("opportunity_events", sorted(ce),
-                                     sorted(te), "events"))
+    for kind in sorted(ce ^ te):
+        dim = f"opportunity_events.{kind}"
+        if contract.allows(dim):
+            continue
+        undeclared.append(Difference(dim, kind in ce, kind in te, "events"))
 
     if contract.certification_requires_matched_convergence and \
             contract.solver.require_convergence:

@@ -142,12 +142,11 @@ REPAIR_DIFFERENCES = {
         "same two starts; only the work needed to construct one of them "
         "differs, and that work does not reach the result.",
     "repair_steps": "Ladder steps taken by the repair above. Same reason.",
-    "opportunity_events":
-        "INCUMBENT_REPAIRED appears in whichever arm needed the projection. It "
-        "records how a start was built, not a different search; see "
-        "repair_occurred. Any OTHER opportunity-changing event still refuses "
-        "the comparison, because this declaration names the field, and the "
-        "check compares the whole event set.",
+    "opportunity_events.INCUMBENT_REPAIRED":
+        "The event for the repair above, declared BY TYPE. Every other "
+        "opportunity-changing event -- START_FALLBACK, MODEL_FALLBACK, "
+        "EARLY_TERMINATION, and anything added later -- is its own dimension "
+        "and still refuses the comparison.",
 }
 
 EXP3_STAGE_A = ExperimentContract(
