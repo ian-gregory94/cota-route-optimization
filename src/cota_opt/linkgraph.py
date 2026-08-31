@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 import numpy as np
 import pandas as pd
@@ -48,6 +48,64 @@ class ObservedLink:
 
 
 @dataclass
+class TransitionEvidence:
+    """How much of a proposed line's geometry COTA has actually operated.
+
+    ``modelled share = 0%`` says every directed link is observed. It does not
+    say the route is observed: a line stitched from two corridors meets at a
+    junction, and the turn it makes there may be one no bus has ever made.
+    That distinction is reported, not hidden, and not automatically rejected --
+    an unobserved turn between two observed corridors is weaker evidence, not
+    proof of impossibility.
+    """
+
+    n_links: int
+    n_links_observed: int
+    n_transitions: int
+    n_transitions_observed: int
+    unsupported: tuple[tuple[str, str, str], ...]
+    link_support: tuple[int, ...]
+    transition_support: tuple[int, ...]
+    is_legacy_sequence: bool = False
+
+    @property
+    def observed_link_share(self) -> float:
+        return self.n_links_observed / self.n_links if self.n_links else 1.0
+
+    @property
+    def observed_transition_share(self) -> float:
+        return (self.n_transitions_observed / self.n_transitions
+                if self.n_transitions else 1.0)
+
+    @property
+    def evidence_class(self) -> int:
+        """0 legacy sequence · 1 observed turns · 2 observed edges · 3 modelled."""
+        if self.n_links_observed < self.n_links:
+            return 3
+        if self.is_legacy_sequence:
+            return 0
+        return 1 if self.n_transitions_observed == self.n_transitions else 2
+
+    @property
+    def class_name(self) -> str:
+        return {0: "legacy_sequence", 1: "observed_turn_synthesis",
+                2: "observed_edge_synthesis", 3: "modelled_geometry"}[
+                    self.evidence_class]
+
+    def as_dict(self) -> dict:
+        return {"evidence_class": self.evidence_class,
+                "class_name": self.class_name,
+                "observed_link_share": round(self.observed_link_share, 4),
+                "observed_transition_share": round(
+                    self.observed_transition_share, 4),
+                "n_links": self.n_links, "n_transitions": self.n_transitions,
+                "unsupported_transitions": len(self.unsupported),
+                "min_link_support": min(self.link_support, default=0),
+                "min_transition_support": min(self.transition_support, default=0),
+                "unsupported": [list(t) for t in self.unsupported[:20]]}
+
+
+@dataclass
 class LinkGraph:
     """The directed graph of everything COTA is observed to drive.
 
@@ -60,6 +118,9 @@ class LinkGraph:
     links: dict[tuple[str, str], ObservedLink]
     out: dict[str, list[str]]
     stops: tuple[str, ...]
+    #: (a, b, c) -> routes that operate that consecutive movement
+    transitions: dict[tuple[str, str, str], tuple[str, ...]] = field(
+        default_factory=dict)
 
     def time(self, a: str, b: str) -> float | None:
         ln = self.links.get((a, b))
@@ -74,6 +135,27 @@ class LinkGraph:
                 return None
             t += v
         return t
+
+    def transition_observed(self, a: str, b: str, c: str) -> bool:
+        return (a, b, c) in self.transitions
+
+    def evidence(self, stops: Sequence[str],
+                 legacy: frozenset[tuple[str, ...]] = frozenset()
+                 ) -> "TransitionEvidence":
+        """Link-level AND turn-level support for one proposed stop sequence."""
+        stops = list(stops)
+        edges = list(zip(stops, stops[1:]))
+        turns = list(zip(stops, stops[1:], stops[2:]))
+        obs_e = [e for e in edges if e in self.links]
+        obs_t = [t for t in turns if t in self.transitions]
+        bad = tuple(t for t in turns if t not in self.transitions)
+        return TransitionEvidence(
+            n_links=len(edges), n_links_observed=len(obs_e),
+            n_transitions=len(turns), n_transitions_observed=len(obs_t),
+            unsupported=bad,
+            link_support=tuple(self.links[e].n_observations for e in obs_e),
+            transition_support=tuple(len(self.transitions[t]) for t in obs_t),
+            is_legacy_sequence=tuple(stops) in legacy)
 
     def is_serviceable(self, stops: Iterable[str]) -> bool:
         s = list(stops)
@@ -148,10 +230,28 @@ def build_link_graph(net: TransitNetwork, tstats: pd.DataFrame | None = None,
     for a in out:
         out[a] = sorted(out[a])
 
+    # Consecutive edge PAIRS, not just edges. A synthetic line can be built
+    # entirely from observed links and still ask a bus to make a turn at B that
+    # COTA has never operated: A->B and B->C both observed does not make
+    # A->B->C observed. Tracking the turn is the difference between "every link
+    # is real" and "this route is real".
+    trans: dict[tuple[str, str, str], set[str]] = {}
+    for p in net.patterns.values():
+        if p.route_id in skip:
+            continue
+        segs = list(p.segments)
+        for u, v in zip(segs, segs[1:]):
+            if u.to_stop != v.from_stop:
+                continue
+            trans.setdefault((u.from_stop, u.to_stop, v.to_stop),
+                             set()).add(p.route_id)
+
     stops = tuple(sorted({s for k in links for s in k}))
-    g = LinkGraph(links=links, out=out, stops=stops)
-    log.info("observed-link graph: %d stops, %d directed links, %d excluded "
-             "routes", len(stops), len(links), len(skip))
+    g = LinkGraph(links=links, out=out, stops=stops,
+                  transitions={k: tuple(sorted(v)) for k, v in trans.items()})
+    log.info("observed-link graph: %d stops, %d directed links, "
+             "%d observed turns, %d excluded routes",
+             len(stops), len(links), len(trans), len(skip))
     return g
 
 

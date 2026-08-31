@@ -416,3 +416,38 @@ Item 4 is the one to build first and the one most likely to fail quietly. It is
 the Experiment 4 form of the rule that caught three defects in Experiment 3:
 **do not trust a new representation until it reproduces a number the old one
 already produced.**
+
+---
+
+## Amendment — transition-level evidence (2026-08-31)
+
+Corrective plan section 27. `modelled_share_pct` measures **links**. It does
+not measure **turns**, and the pool's `modelled_share = 0.0` was being read as
+though it did.
+
+Every proposed line now carries, per direction:
+
+* observed-link share;
+* observed-**transition** share;
+* count of unsupported transitions;
+* support counts (how many legacy routes operate each link and each turn).
+
+Evidence classes, assigned as the **worst** of the line's two directions:
+
+| class | meaning |
+|---|---|
+| 0 | legacy sequence — the sequence itself is operated today |
+| 1 | observed-turn synthesis — new line, every link *and* every turn observed |
+| 2 | observed-edge synthesis — every link observed, one or more novel turns |
+| 3 | modelled geometry — one or more links not directly observed |
+
+Measured on the frozen pool: **41 class 0, 15 class 1, 150 class 2, 0 class 3**
+(D29). Crosstown lines are 40/40 class 2.
+
+**Class 2 is not rejected.** No gate is added in response to these numbers; the
+existing fifteen gates and seventeen rejection conditions stand unchanged. The
+metric enters route provenance and the Experiment 4 receipt as
+evidence-strength information, and any threshold on it must be declared before
+the search runs, not after.
+
+`scripts/exp4_transition_audit.py` regenerates `outputs/exp4/transition_audit.json`.
