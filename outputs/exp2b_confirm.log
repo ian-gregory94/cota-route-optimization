@@ -51,3 +51,25 @@
 2026-08-31 14:41:57,272 stopping cleanly: 750s needed, 150s left
 
 Not every seed produced an admissible comparison yet.
+2026-08-31 14:41:59,214 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 14:41:59,250 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 14:41:59,251 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 14:41:59,252 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 14:41:59,263 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:41:59,780 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:41:59,789 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:41:59,895 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:41:59,905 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:41:59,949 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:41:59,956 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 14:41:59,962 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 14:41:59,967 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 14:41:59,973 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 14:41:59,979 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 14:41:59,983 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 14:41:59,984 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:52:19,468 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 14:52:19,488 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 14:52:19,489 stopping cleanly: 1150s needed, 780s left
+
+Not every seed produced an admissible comparison yet.
