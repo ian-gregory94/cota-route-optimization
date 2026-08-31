@@ -16,3 +16,7 @@ slice: 4 -> 2 cells remaining
 committed: 303dc65 chore: fallback greedy-vs-both validation — 2 cells done, 2 remaining
 2026-08-31T13:57:14Z remaining=2
 slice: 2 -> 0 cells remaining
+committed: 922a66e chore: fallback greedy-vs-both validation — 2 cells done, 0 remaining
+2026-08-31T14:06:22Z remaining=0
+0
+slice: 0 -> 0 cells remaining
