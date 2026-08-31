@@ -157,9 +157,83 @@
         "spec": "d794f69eac4d594f",
         "contract": "7157ce1de9373420"
       }
+    },
+    {
+      "seed": 20260827,
+      "admissible": true,
+      "comparison_id": "cmp-a944ed919a46b752",
+      "contract": "7157ce1de9373420",
+      "methodology_generation": "gen1",
+      "control_receipt": "c11fe6845b839664",
+      "treatment_receipt": "faf7c906b74efd0a",
+      "control_state": "<none>",
+      "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "effect": 1671.9618287594058,
+      "effect_pct": 0.056561468371781526,
+      "components": {
+        "gc_per_served_trip": [
+          84.32016477290007,
+          84.2551420244199
+        ],
+        "generalized_cost": [
+          1787084.1295641689,
+          1786398.7187819881
+        ],
+        "lambda": [
+          2.0,
+          2.0
+        ],
+        "objective": [
+          2957680.4900542153,
+          2956008.528225456
+        ],
+        "peak_vehicles": [
+          176.29287268510072,
+          176.45735185185183
+        ],
+        "revenue_veh_hours": [
+          2514.3822760235607,
+          2515.8546263530684
+        ],
+        "served_demand": [
+          21194.030329249614,
+          21202.25158797111
+        ],
+        "unserved_demand": [
+          9754.969670750388,
+          9746.748412028897
+        ]
+      },
+      "declared_differences": [
+        "repair_occurred",
+        "repair_steps",
+        "spec.cardinality",
+        "spec.members",
+        "spec.state_digest",
+        "spec.state_key"
+      ],
+      "above_noise_floor": false,
+      "control_signatures": {
+        "treatment": "97a55e7650c854e3",
+        "nuisance": "06b0a39246e27d91",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "c246ebe119576b07",
+        "receipt": "c11fe6845b839664",
+        "spec": "74a3067e9eba4233",
+        "contract": "7157ce1de9373420"
+      },
+      "treatment_signatures": {
+        "treatment": "5f087ba2a2c96d3e",
+        "nuisance": "df69dd2e7f5bab7d",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "fa576fbbaf3504fa",
+        "receipt": "faf7c906b74efd0a",
+        "spec": "9655bea752f95119",
+        "contract": "7157ce1de9373420"
+      }
     }
   ],
-  "mean_effect_pct": 0.05276868972101983,
+  "mean_effect_pct": 0.05403294927127372,
   "floor_pct": 0.28700000000000003,
   "measurable": false,
   "recorded_2b_effect_pct": 0.0065,
