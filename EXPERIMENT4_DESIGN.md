@@ -53,13 +53,80 @@ event type — must match, or the comparison is refused. In particular
 declared: the D27 class of failure must remain fatal in a search where it is far
 more likely.
 
-**Open question for the contract, not to be settled by whoever hits it first.**
-Networks with different route counts have different numbers of frequency
-decisions, so `evaluations_performed` and `restarts_completed` will differ
-structurally. Experiment 3 handled this with a declared relative tolerance. For
-Experiment 4 the honest instrument is a tolerance **normalised by decision
-count** — search per dimension, not search in total — and that has to be written
-into the contract before the first network is scored.
+**Settled 2026-08-31: search opportunity per decision dimension.** Networks
+with different route counts have different numbers of frequency decisions, so a
+network with 38 active lines consumes fewer evaluations than one with 41
+*mechanically*. Requiring realised counts to match would refuse every honest
+comparison; a plain relative tolerance would wave through a genuine difference
+in entitlement. Both are the wrong instrument, because both measure the wrong
+thing.
+
+**The invariant is allocated search opportunity, not realised evaluations.**
+
+After geometry construction and eligibility checks, and **before optimization
+begins**:
+
+```
+d_N       eligible frequency decision dimensions of network N
+k         preregistered evaluations per decision dimension
+budget_N  min(max(k · d_N, minimum_budget), absolute_ceiling)
+```
+
+Every adjustment — rounding, minimum, ceiling — is deterministic and declared
+before any Experiment 4 result is observed. The same stopping rules, recovery
+rules, solver configuration, start policy, fallback policy and search logic
+apply to every network.
+
+`evaluations_performed` is **diagnostic only** and is never compared. It differs
+whenever the same stopping contract produces different outcomes — a search
+converges, exhausts its neighbourhood, or is refused — which is what an outcome
+is. It is therefore reclassified from an opportunity field to an outcome field,
+and it is **not** whitelisted as a permitted difference: those are different
+things, and whitelisting it would permit a genuine difference in entitlement to
+pass as a mechanical one.
+
+What the firewall verifies instead:
+
+* `d_N` was computed by the same rule in both arms;
+* both arms received the same `k`;
+* each arm's budget is exactly what the declared function allocates from its own
+  `d_N` — which is what makes a **post-hoc budget increase detectable**, since a
+  receipt can claim any number but cannot claim one the function would not have
+  produced;
+* the stopping, recovery and search contracts are identical;
+* neither arm was given more search because its results looked promising or
+  disappointing.
+
+**The allocation must precede the search.** Normalising realised evaluations
+afterwards would let convergence behaviour and network-specific failures
+determine effective effort — an outcome-dependent confound, and the same shape
+as D27 wearing different clothes. The budget is a function of network structure
+alone, computed before any objective value exists.
+
+**The ceiling is honest about itself.** Without one, a very large reconstructed
+network buys unbounded compute. When it binds, the evaluation is marked
+`budget_limited` and is **not** treated as having received equivalent normalised
+opportunity; a comparison with either arm budget-limited is refused unless the
+contract explicitly defines and justifies that case. Equally starved is not the
+same as equally fed, so two budget-limited arms still need the declaration.
+
+Implemented and tested in `scripts/exp4_staging/search_allowance.py` and
+`tests/test_exp4_search_allowance.py` (16 tests). Staged outside
+`src/cota_opt` because that path is frozen while the Experiment 3 re-score runs
+(OPERATIONS 24); it moves into `firewall/` when the batch completes. **Until
+then Experiment 4 is not ready to run**, and the draft contract keeps its plain
+relative tolerance marked provisional and not in force.
+
+| Ian's required case | test |
+|---|---|
+| equal decision counts → equal budgets | `test_equal_decision_counts_get_equal_budgets` |
+| different counts → budgets scale by the function | `test_budgets_scale_by_the_declared_function` |
+| identical `k` required | `test_identical_k_is_required` |
+| post-hoc budget increases rejected | `test_a_post_hoc_budget_increase_is_rejected` |
+| different realised counts allowed under identical stopping | `test_different_realised_evaluation_counts_are_allowed` |
+| different stopping rules rejected | `test_experiment_4_does_not_inherit_experiment_3_waivers[termination-...]` |
+| ceiling-bound marked `budget_limited` | `test_the_ceiling_binds_and_is_marked` |
+| ceiling-bound ≠ equivalent opportunity unless declared | `test_a_ceiling_bound_comparison_is_refused_by_default`, `test_a_ceiling_bound_comparison_needs_a_written_justification`, `test_both_arms_ceiling_bound_still_needs_the_declaration` |
 
 ## 2. Recovery behaviours must be enumerated before the search, not discovered during it
 
@@ -214,3 +281,7 @@ The contract's 15 items stand. Six are added:
 20. Transition-level evidence is attached to every pool line and to the receipt,
     with class-2 handling declared before any result is seen.
 21. Gen1 is frozen and the Gen1→Gen2 bridge suite has run.
+22. The search-opportunity-per-decision-dimension contract is merged into
+    `firewall/` and in force, with `k`, the ceiling, the minimum and the
+    rounding rule all preregistered, and `evaluations_performed` reclassified
+    to an outcome field.
