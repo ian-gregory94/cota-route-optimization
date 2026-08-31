@@ -14,6 +14,13 @@ Only states ACCEPTED on the incumbent start need this. A state that fell back
 already ran the greedy build, and `starts="both"` keeps the best of the two, so
 its number cannot move.
 
+Every cell runs through ``exp3_cell.run_cell`` under ``EXP3_STAGE_A``, so it
+produces an ``ExecutionReceipt`` as well as a score, and the receipt goes into
+the ``ObservationStore``. That is the point: the corrected census has to be
+admissible evidence, not merely better numbers. ``exp3_promote.py`` builds its
+frontier from comparisons against the re-scored control, and refuses any state
+whose receipt is missing or whose comparison the firewall will not admit.
+
 Idempotent and slice-bounded, per OPERATIONS 1-3: it never starts a state the
 slice cannot finish, appends with an fsync, and can be re-run until the list is
 empty. Path sets are cached to disk per state, so a state interrupted after its
@@ -39,7 +46,9 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from cota_opt import exp3, geo                                    # noqa: E402
 from cota_opt.cache import cache_dir, key_of                      # noqa: E402
 from cota_opt.contract import ContractLimits, ContractViolation   # noqa: E402
-from cota_opt.exp3_score import score_state                       # noqa: E402
+from cota_opt.exp3_cell import run_cell                           # noqa: E402
+from cota_opt.firewall import (EXP3_STAGE_A, ObservationStore,     # noqa: E402
+                               admit)
 from cota_opt.geometry import SegmentTimeModel                    # noqa: E402
 from cota_opt.harness import build_harness                        # noqa: E402
 from cota_opt.mutate import edit_from_record                      # noqa: E402
@@ -49,7 +58,9 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger("rescore")
 OUT = ROOT / "outputs" / "exp3"
 ROWS = OUT / "stageA_rescored.jsonl"
-STARTS = "both"
+CONTRACT = EXP3_STAGE_A
+STORE = ObservationStore(OUT / "observations")
+STARTS = CONTRACT.solver.start_policy.value
 
 
 def wanted() -> list[str]:
@@ -148,14 +159,18 @@ def main() -> int:
 
         t0 = time.time()
         try:
-            s = score_state(list(edits), harness=H, seg_model=stm, stops_gdf=sg,
-                            limits=limits, lam=args.lam, seed=seed,
-                            iterations=args.iterations, restarts=args.restarts,
-                            width=args.width, waiting_model=args.common_lines,
-                            constraints=CONS, pathset_cache=psc, starts=STARTS)
+            s, rec = run_cell(CONTRACT, list(edits), harness=H, seg_model=stm,
+                              stops_gdf=sg, limits=limits, constraints=CONS,
+                              pathset_cache=psc, cache_hit=bool(warm), seed=seed)
         except ContractViolation as v:
             log.warning("%s REFUSED: %s", role, v)
             continue
+        STORE.put(rec)
+        verdict = admit(rec, CONTRACT)
+        if not verdict:
+            # A cell that does not satisfy its own contract is not evidence.
+            # Recorded, reported, and barred from the census.
+            log.error("%s produced an INADMISSIBLE observation:\n%s", role, verdict)
 
         if fresh and psc:
             try:
@@ -164,7 +179,10 @@ def main() -> int:
                 log.warning("could not cache path sets for %s: %s", role, e)
 
         row = {**s.row(), "role": role, "starts": STARTS,
-               "repair": s.evaluator.get("incumbent_repair", {})}
+               "repair": s.evaluator.get("incumbent_repair", {}),
+               "receipt_digest": rec.digest, "spec_digest": rec.spec.digest,
+               "contract": CONTRACT.digest,
+               "admissible": bool(admit(rec, CONTRACT))}
         with ROWS.open("a") as f:
             f.write(json.dumps(row) + "\n")
             f.flush()
