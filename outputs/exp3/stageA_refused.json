@@ -1,0 +1,526 @@
+[
+  {
+    "state": "add_stop-001#dc6e768a1ae6",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-006#9aecfd5100eb",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-008#f178c37040f5",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-025#2bae7942d365",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-102#78da77548338",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-002-MAIOAKE1#e3cb084310eb",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-004-BOASHAS#708035f204d1",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-007-EMO4THW#16606ceb331e",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-033-METS565S#591129a14c14",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-102-MOU5THW1#abb1c550bb9c",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-002#8dff183f524f",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-009#67ec2a76371d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-024#26db14321a47",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-031#42a029968ad8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-034#daffb8603dc9",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-102#ad7767bba8a4",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-002#4515e77f1b64",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-004#b7682ec39690",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-007#7e851ba70b92",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-010#b18fd7b39751",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-012#fb24f651cbc5",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-001-021-PICBETS#e0f055d0f715",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-002-033-WESHIGW#e2acb3ef8921",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-005-006-NMURBEAN#134375538ebc",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-006-021-NMURBEAN#bd23c5b7c67c",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-008-035-BOASHAN#fc06f973aa23",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-011-034-WESHIGW#2c53c24a4f24",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "split-005-EASHAMN#f16cc1038825",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "split-034-STE418N#f2471e265dfb",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-001#95a4287b6fa0",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-004#600ca164ad60",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-011#f2a996066a3d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-024#6a687792ef0b",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-031#d0ecad5fc231",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-034#8ff9a962368f",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-007#a14f6e0894dd",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-009#05fb3250f092",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-023#3ef9178c6974",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-031#efb75b9f5491",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-033#95d4116886cd",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-101#3d4f770cd393",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-004#27407b151153",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-007#02161399a599",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-141#2fc0aa211ecb",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-003-PKWCTRS#e605a37bbb0f",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-005-GTCREFS#7a2a91c8eec7",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-023-EASHAMN#357bdf4fa511",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-101-EMO4THW#56a30c84c920",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "change_terminal-141-STAHIGW#b5ce9b1e03b5",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-006#d6deedd1d364",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-023#292a06c5a525",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-032#228795f35539",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-101#a50d8435b367",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-141#c1d88042f92d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-003#a310b19332b7",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-006#dbfb2f9ee60d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-009#8323c2fb0368",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-011#50126f78cee2",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-023#1dc299b50907",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "reroute-102#06e527b20649",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-002-011-HIGFITN#17e4d59ccc9a",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-002-034-WESHIGW#e089c719c5f5",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-005-021-NMURBEAN#c2defbd41984",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-007-101-EMO4THW#e8a1e2291da0",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-011-033-WESHIGW#573afb5ae3bf",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "splice-033-034-WESHIGW#b635228b90c4",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "split-024-EASHAMN#572a1ac33bc2",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "split-035-NORTRA2#7a708a1900ac",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-002#716a0b294c2c",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-007#830e388b3427",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-021#110f4a755fe7",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-025#f0732765f122",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-033#1bde1c99adc4",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "straighten-102#4dd646541565",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-007#e0327cd10f50",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-012#584263ee6bf8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-025#d3209fe02367",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-032#00b89519f00f",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-035#7cdb09a45253",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "truncate-102#dcead1dfc1cc",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "<none>",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-024#26db14321a47+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-024#26db14321a47+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-032#228795f35539+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-004#27407b151153+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-023#1dc299b50907",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-012#fb24f651cbc5",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+extend-025#441ece050fe8",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-102#78da77548338+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-009#8323c2fb0368",
+    "why": "no control receipt to compare against"
+  },
+  {
+    "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-009#8323c2fb0368+reroute-031#dfd049714f7d",
+    "why": "no control receipt to compare against"
+  }
+]

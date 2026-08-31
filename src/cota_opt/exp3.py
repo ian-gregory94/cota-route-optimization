@@ -157,6 +157,14 @@ def margins(candidate, incumbent, lam: float = PRIMARY_LAMBDA,
             base=None) -> dict[str, float]:
     """Percent change of every reported quantity, candidate vs incumbent.
 
+    NON-AUTHORITATIVE. This subtracts two numbers. It does not know whether the
+    two evaluations that produced them received the same evaluator, envelope,
+    objective or search opportunity, and for four experiments they did not
+    (D27). Use it for a diagnostic or a quick look; anything that reaches a
+    promotion, a certification, a canonical table, a figure or a finding must
+    come from ``firewall.compare()``, which compares the execution receipts and
+    refuses when they differ in a way the contract did not permit.
+
     Sign convention throughout the project: negative is better for costs and
     for unserved demand, positive is better for served demand. Reported raw so
     a reader applies the convention themselves rather than trusting that this
