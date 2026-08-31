@@ -1,5 +1,35 @@
 # Experiment 3, Phase A1 — the singles census
 
+> ## ⚠ SUPERSEDED FOR QUANTITATIVE INTERPRETATION
+>
+> **Every number below was produced under `starts="incumbent"`, where the
+> optimizer's start set was decided by the treatment (D27).** Route-lengthening
+> edits had their incumbent rejected after the ladder snap and silently ran a
+> greedy build; route-shortening edits and the zero-edit control never did. The
+> two optimizers differ by 0.224% at this effort — **5.7× the 0.039% floor
+> quoted below, and larger than the mean measured effect of every kind in the
+> table.**
+>
+> The correlation between a kind's fallback rate and its mean objective is
+> **r = −0.711** over the eight kinds. The two kinds that never fell back,
+> `truncate` and `straighten`, are the only two that were already being compared
+> like-for-like — and they are the two that show no effect.
+>
+> Replayed through the semantic comparison firewall, **130 of 130 of these
+> comparisons are inadmissible** (`outputs/exp3/history_audit.json`).
+>
+> **What is still usable:** the mutation definitions, the geometry, the contract
+> checks, the path-set construction, the fact that the pool produced 84 valid
+> single-mutation states, and the observation that `splice` ranks near-worst
+> *despite* receiving the better optimizer.
+>
+> **What is not:** every magnitude, every ranking, the per-kind means, the
+> floors as stated, and the promoted frontier derived from them.
+>
+> Corrected census: re-scored under `starts="both"` with execution receipts,
+> `outputs/exp3/stageA_rescored.jsonl`. Preserved here for provenance and
+> debugging. Not evidence.
+
 **84 single mutations and 3 zero-edit replicates, at 60,000/2/32 — the same
 discovery effort Experiment 2B ranked at.** Every state got its own rebuilt path
 sets, its own frequency re-optimization inside the pinned envelope, and its own
