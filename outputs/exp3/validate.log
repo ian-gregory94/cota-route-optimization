@@ -103,3 +103,26 @@
 2026-08-31 13:06:57,632 k=2             [greedy] obj=2946056 won=greedy    plan=501626115695190f 436s
 2026-08-31 13:06:57,632 stopping cleanly: 120s needed, 34s left
 2026-08-31 13:06:57,634 slice ran 1 cells; 13 remain
+2026-08-31 13:07:03,977 13 of 16 (state, start set) cells still to run
+2026-08-31 13:07:04,115 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 13:07:04,153 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 13:07:04,154 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 13:07:04,155 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 13:07:04,175 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:07:04,735 footpaths: 15543 links (9 from transfers.txt)
+2026-08-31 13:07:04,744 raptor network: 2946 stops, 111 patterns, 15543 footpaths
+2026-08-31 13:07:04,854 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-31 13:07:04,864 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:07:04,933 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:07:04,940 period early   : 24635 paths, 20000 OD pairs
+2026-08-31 13:07:04,946 period am_peak : 28827 paths, 20000 OD pairs
+2026-08-31 13:07:04,951 period midday  : 24142 paths, 20000 OD pairs
+2026-08-31 13:07:04,957 period pm_peak : 27999 paths, 20000 OD pairs
+2026-08-31 13:07:04,962 period evening : 24145 paths, 20000 OD pairs
+2026-08-31 13:07:04,967 period owl     : 22698 paths, 20000 OD pairs
+2026-08-31 13:07:04,967 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 13:07:04,998      incumbent rescaled x1.0010
+2026-08-31 13:08:49,759 solve lambda=2.0: obj=2.94606e+06 vh=2512.8/2517.2 exchanges=0
+2026-08-31 13:08:49,774 k=2             [both  ] obj=2946056 won=greedy    plan=501626115695190f 105s
+2026-08-31 13:08:49,775 stopping cleanly: 440s needed, 364s left
+2026-08-31 13:08:49,775 slice ran 1 cells; 12 remain
