@@ -13,6 +13,7 @@
     {
       "seed": 20260825,
       "admissible": true,
+      "unserved_effect_pct": 0.09307226530034718,
       "comparison_id": "cmp-75d6e5dc3cdf4437",
       "contract": "7157ce1de9373420",
       "methodology_generation": "gen1",
@@ -87,6 +88,7 @@
     {
       "seed": 20260826,
       "admissible": true,
+      "unserved_effect_pct": 0.09307226530034718,
       "comparison_id": "cmp-9290a8158f783bff",
       "contract": "7157ce1de9373420",
       "methodology_generation": "gen1",
@@ -161,6 +163,7 @@
     {
       "seed": 20260827,
       "admissible": true,
+      "unserved_effect_pct": 0.08434873225356458,
       "comparison_id": "cmp-ce9d49193966f1fc",
       "contract": "7157ce1de9373420",
       "methodology_generation": "gen1",
@@ -234,6 +237,8 @@
     }
   ],
   "mean_effect_pct": 0.05403294927127372,
+  "mean_unserved_effect_pct": 0.09016442095141965,
+  "judged_on": "unserved_demand \u2014 the quantity 2B's effect_pct and floor_pts are measured on",
   "floor_pct": 0.28700000000000003,
   "measurable": false,
   "recorded_2b_effect_pct": 0.0065,
