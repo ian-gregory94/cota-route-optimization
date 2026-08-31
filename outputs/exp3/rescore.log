@@ -1818,3 +1818,11 @@ NameError: name 'warm' is not defined
 2026-08-31 17:22:01,665 period evening : 24058 paths, 20000 OD pairs
 2026-08-31 17:22:01,674 period owl     : 22669 paths, 20000 OD pairs
 2026-08-31 17:22:01,674 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:24:39,757 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:24:39,794 <none>|rep2                                          obj=2956121 unserved=9745.9 vh=2515.1 159s
+2026-08-31 17:24:40,291 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:24:40,301 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:24:40,480 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:24:40,498 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:24:40,582 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:24:40,596 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
