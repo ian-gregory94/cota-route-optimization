@@ -104,3 +104,18 @@
 2026-08-31 12:45:43,213 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
 2026-08-31 12:45:43,275 period am_peak : 28763 paths, 20000 OD pairs
 2026-08-31 12:45:43,287 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:02:07,746 40 of 40 states still to re-score
+2026-08-31 17:02:07,857 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:07,910 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:07,911 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:07,912 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:07,944 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:08,233 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
