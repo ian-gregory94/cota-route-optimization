@@ -18,5 +18,23 @@
   "discovery_effort_pct": -0.5845518890625012,
   "gate_12_shift_pts": 0.591,
   "gate_12_stable": false,
-  "verdict": "NULL \u2014 inside the floor. No multi-edit set beats doing nothing, which gate 2B-7 names as a permitted and expected outcome, not a failure."
+  "verdict": "NULL \u2014 inside the floor. No multi-edit set beats doing nothing, which gate 2B-7 names as a permitted and expected outcome, not a failure.",
+  "_confirmation": {
+    "status": "CONFIRMED under matched starts, 2026-08-31",
+    "why_retested": "The original certification used starts='incumbent'. Whether the optimizer accepted that start was decided by the treatment (D27): the control kept its incumbent, the splice's was rejected after the ladder snap and it ran a greedy build instead.",
+    "retest": "control and candidate, all three original seeds, original 400000/20/0 effort, starts='both' for every cell, through the semantic comparison firewall",
+    "recorded_unserved_effect_pct": 0.0065,
+    "matched_start_unserved_effect_pct": 0.09016442095141965,
+    "matched_start_objective_effect_pct": 0.05403294927127372,
+    "floor_pct": 0.28700000000000003,
+    "floors": 0.31416174547532977,
+    "measurable": false,
+    "verdict": "NULL stands. The effect is larger under matched starts (+0.0065% -> +0.0902% unserved) and still 0.31 of one floor. Its SIGN is unchanged and positive at every seed: the candidate is worse than doing nothing.",
+    "artifacts": [
+      "outputs/exp2b_confirmation.json",
+      "outputs/exp3/observations_cert/"
+    ],
+    "superseded_original": "exp2b_certification.superseded.json",
+    "methodology_generation": "gen1"
+  }
 }
