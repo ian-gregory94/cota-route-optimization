@@ -388,3 +388,35 @@
 2026-08-31 13:50:56,421 path set: 24120 paths over 17390/20000 OD pairs (86.7% of flow served), 118211 legs
 2026-08-31 13:50:56,475 period midday  : 24120 paths, 20000 OD pairs
 2026-08-31 13:50:56,487 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:51:54,574 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:51:54,687 path set: 27977 paths over 18674/20000 OD pairs (93.6% of flow served), 138951 legs
+2026-08-31 13:51:54,749 period pm_peak : 27977 paths, 20000 OD pairs
+2026-08-31 13:51:54,761 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:52:49,835 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:52:49,930 path set: 24079 paths over 17387/20000 OD pairs (86.7% of flow served), 117800 legs
+2026-08-31 13:52:49,988 period evening : 24079 paths, 20000 OD pairs
+2026-08-31 13:52:50,001 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:53:43,030 rejected 127 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:53:43,120 path set: 22698 paths over 17007/20000 OD pairs (85.1% of flow served), 111280 legs
+2026-08-31 13:53:43,170 period owl     : 22698 paths, 20000 OD pairs
+2026-08-31 13:53:43,170 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 13:53:43,204      incumbent rescaled x1.0010
+2026-08-31 13:55:17,893 solve lambda=2.0: obj=2.95141e+06 vh=2512.4/2517.2 exchanges=0
+2026-08-31 13:55:18,314 single reroute  [greedy] obj=2951409 won=greedy    plan=72fa20c714f01554 428s
+2026-08-31 13:55:18,654 footpaths: 15543 links (9 from transfers.txt)
+2026-08-31 13:55:18,668 raptor network: 2946 stops, 111 patterns, 15543 footpaths
+2026-08-31 13:55:18,795 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-31 13:55:18,805 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:55:18,876 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:55:18,882 period early   : 24660 paths, 20000 OD pairs
+2026-08-31 13:55:18,888 period am_peak : 28767 paths, 20000 OD pairs
+2026-08-31 13:55:18,893 period midday  : 24120 paths, 20000 OD pairs
+2026-08-31 13:55:18,899 period pm_peak : 27977 paths, 20000 OD pairs
+2026-08-31 13:55:18,904 period evening : 24079 paths, 20000 OD pairs
+2026-08-31 13:55:18,909 period owl     : 22698 paths, 20000 OD pairs
+2026-08-31 13:55:18,909 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 13:55:18,942      incumbent rescaled x1.0010
+2026-08-31 13:57:13,045 solve lambda=2.0: obj=2.95141e+06 vh=2512.4/2517.2 exchanges=0
+2026-08-31 13:57:13,061 single reroute  [both  ] obj=2951409 won=greedy    plan=72fa20c714f01554 115s
+2026-08-31 13:57:13,061 stopping cleanly: 440s needed, 297s left
+2026-08-31 13:57:13,063 slice ran 2 cells; 2 remain
