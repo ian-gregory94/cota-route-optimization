@@ -13,11 +13,11 @@
     {
       "seed": 20260825,
       "admissible": true,
-      "comparison_id": "cmp-2b92058d128b7af9",
+      "comparison_id": "cmp-75d6e5dc3cdf4437",
       "contract": "7157ce1de9373420",
       "methodology_generation": "gen1",
       "control_receipt": "1b9b5ea93de12c10",
-      "treatment_receipt": "8cf4996fc80fa723",
+      "treatment_receipt": "812c474b05efd5d5",
       "control_state": "<none>",
       "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
       "effect": 1559.9060987266712,
@@ -79,7 +79,7 @@
         "nuisance": "40c2ab72032ad813",
         "evidence": "ab0009a68ebd135e",
         "execution": "47f5756d3699c6f0",
-        "receipt": "8cf4996fc80fa723",
+        "receipt": "812c474b05efd5d5",
         "spec": "1c49c60252745c7a",
         "contract": "7157ce1de9373420"
       }

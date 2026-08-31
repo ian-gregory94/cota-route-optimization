@@ -1048,3 +1048,62 @@ this retest, matched starts   : +0.0528% (0.18 floors, NULL)
 PASS — 2B's certified NULL survives matched starts.
 
 wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:12:23,583 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:12:23,643 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:12:23,644 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:12:23,645 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:12:23,671 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:24,390 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:12:24,400 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:12:24,533 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:12:24,543 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:24,594 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:12:24,601 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:12:24,607 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:12:24,612 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:12:24,619 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:12:24,624 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:12:24,629 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:12:24,629 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:12:31,621 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:12:31,647 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:12:32,034 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:12:32,045 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:12:32,181 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:12:32,192 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:32,246 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:12:32,253 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:12:32,260 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:12:32,265 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:12:32,271 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:12:32,277 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:12:32,282 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:12:32,282 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:22:46,636 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:22:46,656 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:22:47,070 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:22:47,081 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:22:47,197 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:22:47,209 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:22:47,278 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:22:47,284 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:22:47,291 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:22:47,296 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:22:47,302 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:22:47,307 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:22:47,313 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:22:47,313 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:22:55,937 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:22:55,953 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:22:55,955 stopping cleanly: 750s needed, 154s left
+
+        seed     effect %
+    20260825      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
