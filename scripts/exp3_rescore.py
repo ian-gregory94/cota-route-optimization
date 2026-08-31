@@ -130,14 +130,10 @@ def main() -> int:
 
     n = 0
     for role in todo:
-        # Cost depends on whether this state's path sets are already built, so
-        # the guard has to know which. Charging every state the cold price
-        # wastes most of a slice; charging every state the warm price kills one
-        # mid-build.
-        # (the cache probe happens below; this is the conservative bound)
-        if time.time() + args.state_seconds > deadline:
-            log.info("stopping cleanly: not enough slice left for another state")
-            break
+        # The deadline guard lives BELOW, after the path-set cache probe:
+        # cost depends on whether this state's path sets are already built, and
+        # a conservative pre-check here would charge every warm state the cold
+        # price and throw away most of every slice.
         # Replicates carry their own seed: Phase A1 scored `<none>|repN` at
         # `seed + N`, and that spread IS the noise floor. Re-scoring all three
         # at one seed would return three identical numbers and a floor of zero,

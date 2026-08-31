@@ -161,3 +161,17 @@ side: rule 12 was about a check that always finds itself alive, this is a kill
 that always finds itself dead. Match on a bracketed pattern (`[e]xp3_...`), a
 pidfile, or a recorded pid; never on a literal string you have just typed into
 the same command.
+
+**18. A loop that cannot progress must stop, not spin.** A `NameError` in the
+re-score slice made every iteration fail in under a second — and the slice
+committed as it went, so the loop produced empty commits at machine speed while
+reporting "40 of 40 remaining" each time. Every batch loop now compares the
+work remaining before and after a slice and exits after two consecutive
+no-progress iterations. A stalled loop that says so is recoverable; one that
+looks busy is not.
+
+**19. Smoke-test the changed path, not the one you remember.** Rule 10 says to
+smoke-test the exact invocation, and this was a forty-state, multi-hour loop
+launched over a code path edited twenty minutes earlier and never run. The
+crash was in the first line of the first state. One foreground state before the
+loop costs three minutes and is the whole cost of finding out.
