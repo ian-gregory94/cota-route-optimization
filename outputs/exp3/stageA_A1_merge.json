@@ -1,14 +1,12 @@
 {
-  "singles_scored": 23,
+  "singles_scored": 25,
   "pool_size": 84,
   "replicates": 3,
-  "unique_states": 26,
+  "unique_states": 28,
   "missing": [
-    "extend-002#8dff183f524f",
     "extend-009#67ec2a76371d",
     "extend-024#26db14321a47",
     "extend-031#42a029968ad8",
-    "extend-032#228795f35539",
     "extend-034#daffb8603dc9",
     "extend-101#a50d8435b367",
     "extend-102#ad7767bba8a4",
