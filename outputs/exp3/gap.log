@@ -314,3 +314,52 @@ AttributeError: 'Exp2Setup' object has no attribute 'baseline'
 2026-08-31 18:34:36,309 path set: 22674 paths over 17005/20000 OD pairs (85.1% of flow served), 111817 legs
 2026-08-31 18:34:36,356 period owl     : 22674 paths, 20000 OD pairs
 2026-08-31 18:34:36,356 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 18:35:17,527 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 18:35:17,564 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 18:35:17,565 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 18:35:17,565 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 18:35:17,576 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 18:35:17,993 footpaths: 15565 links (9 from transfers.txt)
+2026-08-31 18:35:18,002 raptor network: 2948 stops, 111 patterns, 15565 footpaths
+2026-08-31 18:35:18,110 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 18:35:18,120 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 18:35:18,266 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 18:35:18,273 period early   : 24655 paths, 20000 OD pairs
+2026-08-31 18:35:18,279 period am_peak : 28762 paths, 20000 OD pairs
+2026-08-31 18:35:18,285 period midday  : 24087 paths, 20000 OD pairs
+2026-08-31 18:35:18,290 period pm_peak : 27962 paths, 20000 OD pairs
+2026-08-31 18:35:18,295 period evening : 24044 paths, 20000 OD pairs
+2026-08-31 18:35:18,300 period owl     : 22674 paths, 20000 OD pairs
+2026-08-31 18:35:18,300 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 18:37:00,106 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:00,114 shorten_straighten: Gen1 full-problem solution 2955914.812786
+2026-08-31 18:37:01,253 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:01,255 shorten_straighten:peak:6      exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  729 combos in 1s
+2026-08-31 18:37:04,788 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:04,789 shorten_straighten:peak:8      exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  6561 combos in 3s
+2026-08-31 18:37:35,570 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:35,619 shorten_straighten:peak:10     exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  59049 combos in 31s
+2026-08-31 18:37:36,734 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:36,737 shorten_straighten:offpeak:6   exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  729 combos in 1s
+2026-08-31 18:37:45,249 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:37:45,251 shorten_straighten:offpeak:8   exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  6561 combos in 8s
+2026-08-31 18:38:59,325 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=0
+2026-08-31 18:38:59,328 shorten_straighten:offpeak:10  exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  59049 combos in 74s
+2026-08-31 18:38:59,378 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=3
+2026-08-31 18:38:59,379 shorten_straighten:common_lines:6 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  729 combos in 0s
+2026-08-31 18:38:59,590 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=4
+2026-08-31 18:38:59,591 shorten_straighten:common_lines:8 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  6561 combos in 0s
+2026-08-31 18:39:01,376 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=6
+2026-08-31 18:39:01,377 shorten_straighten:common_lines:10 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  59049 combos in 2s
+2026-08-31 18:39:01,422 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=5
+2026-08-31 18:39:01,423 shorten_straighten:weak_interaction:6 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  729 combos in 0s
+2026-08-31 18:39:01,640 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=7
+2026-08-31 18:39:01,641 shorten_straighten:weak_interaction:8 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  6561 combos in 0s
+2026-08-31 18:39:03,460 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=9
+2026-08-31 18:39:03,461 shorten_straighten:weak_interaction:10 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  59049 combos in 2s
+2026-08-31 18:39:03,976 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=4
+2026-08-31 18:39:03,977 shorten_straighten:seeded_random:6 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  729 combos in 0s
+2026-08-31 18:39:04,573 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=2
+2026-08-31 18:39:04,574 shorten_straighten:seeded_random:8 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  6561 combos in 1s
+2026-08-31 18:39:10,292 solve lambda=2.0: obj=2.95591e+06 vh=2514.3/2517.2 exchanges=5
+2026-08-31 18:39:10,293 shorten_straighten:seeded_random:10 exact 2955914.8128  delivered 2955914.8128  gap +0.0000 (+0.00000%)  59049 combos in 6s
