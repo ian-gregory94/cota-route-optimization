@@ -1,0 +1,84 @@
+{
+  "n_states": 8,
+  "n_cells": 16,
+  "max_abs_delta": 0.0,
+  "n_improved_under_both": 0,
+  "identical_plan_hash": 8,
+  "both_selected_greedy": 8,
+  "max_reproduction_gap": 0.0,
+  "conclusion": "Fallback states were already scored in the winning discovery basin. `both` cannot improve them, so the remediation set is exactly the states ACCEPTED on the incumbent start.",
+  "per_state": [
+    {
+      "label": "A2 leader",
+      "cardinality": 4,
+      "greedy": 2943013.330684786,
+      "both": 2943013.330684786,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "k=2",
+      "cardinality": 2,
+      "greedy": 2946056.460633146,
+      "both": 2946056.460633146,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "k=3",
+      "cardinality": 3,
+      "greedy": 2943490.755785079,
+      "both": 2943490.755785079,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "k=4",
+      "cardinality": 4,
+      "greedy": 2943287.3456353843,
+      "both": 2943287.3456353843,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "single add_stop",
+      "cardinality": 1,
+      "greedy": 2950538.0418019183,
+      "both": 2950538.0418019183,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "single extend",
+      "cardinality": 1,
+      "greedy": 2954048.7671424765,
+      "both": 2954048.7671424765,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "single reroute",
+      "cardinality": 1,
+      "greedy": 2951408.5161883654,
+      "both": 2951408.5161883654,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    },
+    {
+      "label": "single splice",
+      "cardinality": 1,
+      "greedy": 2957680.4900542153,
+      "both": 2957680.4900542153,
+      "delta": 0.0,
+      "same_plan": true,
+      "both_chose": "greedy"
+    }
+  ]
+}
