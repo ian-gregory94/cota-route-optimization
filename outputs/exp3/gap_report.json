@@ -1,0 +1,92 @@
+{
+  "n_cells": 75,
+  "networks": [
+    "control",
+    "lengthen_add_stop",
+    "lengthen_extend",
+    "shorten_straighten",
+    "shorten_truncate"
+  ],
+  "strata": [
+    "common_lines",
+    "offpeak",
+    "peak",
+    "seeded_random",
+    "weak_interaction"
+  ],
+  "q1_median_gap_pct": 0.0,
+  "q1_mean_gap_pct": 0.00014924354968608633,
+  "q1_max_gap_pct": 0.0018369837849496464,
+  "q1_cells_with_gap": 9,
+  "q2_by_stratum": {
+    "common_lines": {
+      "mean": 8.222627861770375e-05,
+      "max": 0.0006166970896327781
+    },
+    "offpeak": {
+      "mean": 8.577432419084385e-06,
+      "max": 0.00012866148628626578
+    },
+    "peak": {
+      "mean": 0.0006554140373936435,
+      "max": 0.0018369837849496464
+    },
+    "seeded_random": {
+      "mean": 0.0,
+      "max": 0.0
+    },
+    "weak_interaction": {
+      "mean": 0.0,
+      "max": 0.0
+    }
+  },
+  "q3_by_network": {
+    "control": {
+      "mean": 0.00036739675698992927,
+      "max": 0.0018369837849496464,
+      "nonzero": 3
+    },
+    "lengthen_add_stop": {
+      "mean": 0.0,
+      "max": 0.0,
+      "nonzero": 0
+    },
+    "lengthen_extend": {
+      "mean": 0.0002880172804037142,
+      "max": 0.001440086402018571,
+      "nonzero": 3
+    },
+    "shorten_straighten": {
+      "mean": 0.0,
+      "max": 0.0,
+      "nonzero": 0
+    },
+    "shorten_truncate": {
+      "mean": 9.080371103678814e-05,
+      "max": 0.0006166970896327781,
+      "nonzero": 3
+    }
+  },
+  "q3_paired_differences": {
+    "lengthen_add_stop": {
+      "mean": -0.00036739675698992927,
+      "max_abs": 0.0018369837849496464
+    },
+    "lengthen_extend": {
+      "mean": -7.93794765862151e-05,
+      "max_abs": 0.0003968973829310755
+    },
+    "shorten_truncate": {
+      "mean": -0.00027659304595314114,
+      "max_abs": 0.0018369837849496464
+    },
+    "shorten_straighten": {
+      "mean": -0.00036739675698992927,
+      "max_abs": 0.0018369837849496464
+    }
+  },
+  "q4_max_paired_differential_pct": 0.0018369837849496464,
+  "q4_interpretation": "A LOCAL optimality check, not a distance from the global optimum. Each cell varies at most N route-periods across three ladder rungs centred on the delivered plan, so it establishes local optimality within that neighbourhood under the production objective, exactly. A plan can be optimal in every neighbourhood sampled here and still sit far from the best plan reachable by moving many route-periods at once. Use the figure as a LOWER bound on the differential-error bound: the full-problem differential can only be larger. A census margin below it is not distinguishable from treatment-correlated solver error; a margin above it is not thereby established, only not excluded by this measurement.",
+  "q4_is_not": "the heuristic's distance from the global optimum",
+  "methodology_generation": "gen1"
+}

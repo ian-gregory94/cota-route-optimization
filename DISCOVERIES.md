@@ -1853,3 +1853,91 @@ that benchmark is the next piece of work rather than a later one.
 The floor quoted in the superseded A1 census (0.039%) was itself measured on the
 contaminated path, where the seed reached the answer only because the incumbent
 start did. It should not be carried forward either.
+
+
+## D33 — the Gen1 frequency heuristic is locally optimal almost everywhere, and its error is not treatment-correlated
+
+*Measured 2026-08-31. 75 cells: 5 networks × 5 strata × 3 neighbourhood sizes.*
+
+The corrected census has no materiality threshold because replicate spread
+measures solver *variance* and the corrected pipeline is deterministic (D32).
+This measures solver *error* instead.
+
+**Method.** All but *N* route-periods of 173 are pinned to a one-rung ladder;
+the free ones keep three rungs centred on the plan Gen1 actually delivered on
+the full problem. Every one of the 3^N combinations is priced with the real
+evaluator, so the benchmark objective and the production objective are
+*identical* — the reduction is in the decision space, not the objective. That
+matters: the Gen1 objective does not separate, because a path's waiting cost
+depends on the combined frequency of every same-route pattern serving its
+boarding stop then its alighting stop, so a MILP would have to linearize or drop
+that coupling and would then be benchmarking something else.
+
+### Q1/Q2 — the gap and its distribution
+
+| | |
+|---|---|
+| cells with any gap at all | **9 of 75** |
+| median | +0.000000% |
+| mean | +0.000149% |
+| 95th percentile | +0.001440% |
+| maximum | **+0.001837%** |
+
+By stratum, and the pattern is structural rather than random:
+
+| stratum | mean | max | cells with a gap |
+|---|---|---|---|
+| `peak` | +0.000655% | +0.001837% | **6 of 15** |
+| `common_lines` | +0.000082% | +0.000617% | 2 of 15 |
+| `offpeak` | +0.000009% | +0.000129% | 1 of 15 |
+| `weak_interaction` | 0 | 0 | 0 of 15 |
+| `seeded_random` | 0 | 0 | 0 of 15 |
+
+The heuristic's suboptimality sits almost entirely in the **peak** route-periods
+and secondarily in the **common-lines** ones — exactly where demand is heaviest
+and where Model B's waiting term couples route-periods together. Where the
+problem separates, the heuristic is exactly optimal in every cell tested.
+
+### Q3 — does the error move with the treatment?
+
+| network | mean gap | max | cells with a gap |
+|---|---|---|---|
+| control | +0.000367% | +0.001837% | 3 |
+| `lengthen_add_stop` | 0 | 0 | 0 |
+| `lengthen_extend` | +0.000288% | +0.001440% | 3 |
+| `shorten_truncate` | +0.000091% | +0.000617% | 3 |
+| `shorten_straighten` | 0 | 0 | 0 |
+
+Paired on identical subproblem shape (same stratum, same size), the largest
+control-minus-treatment difference is **0.001837 percentage points**. There is
+no sign of the lengthening/shortening split that D27 found in the *start
+policy*: two of the four treatments show no gap at all, and the two that do
+straddle the control rather than sitting to one side of it.
+
+### Q4 — what this licenses, and what it does not
+
+**0.0018 percentage points** is the largest differential error observed.
+Measured effects in the corrected census run two to three orders of magnitude
+larger.
+
+**What this is.** A local optimality check. Each cell varies at most 10
+route-periods of 173, across three ladder rungs centred on the delivered plan,
+and establishes exactly — under the production objective — whether the delivered
+answer is optimal within that neighbourhood.
+
+**What this is not.** It is not the heuristic's distance from the global
+optimum, and the figure must never be quoted as though it were. A plan can be
+optimal in every neighbourhood sampled here and still sit far from the best plan
+reachable by moving twenty route-periods at once, or any of them more than one
+rung. **Local optimality is necessary for global optimality and nowhere near
+sufficient.** Notice also that N=6, N=8 and N=10 find almost the same thing:
+widening the neighbourhood barely helped, which is consistent with a genuinely
+local optimum and equally consistent with the enumeration being too narrow to
+reach whatever else is out there.
+
+**How to use it.** As a *lower* bound on the differential-error bound; the
+full-problem differential can only be larger. A census margin below 0.0018
+points is not distinguishable from treatment-correlated solver error. A margin
+above it is **not** thereby established — it is only not excluded by this
+measurement, which is a much weaker statement and must be written as such
+wherever the census is reported.
