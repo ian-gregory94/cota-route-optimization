@@ -1,10 +1,10 @@
 ==============================================================================
 PHASE A1 MERGE
 ==============================================================================
-  singles scored     5 of 84
+  singles scored     7 of 84
   zero-edit reps     3
-  unique states      8
-  rows               8
-  MISSING            79: ['add_stop-006#9aecfd5100eb', 'add_stop-008#f178c37040f5', 'add_stop-025#2bae7942d365', 'add_stop-102#78da77548338', 'add_stop-141#2fc0aa211ecb']...
+  unique states      10
+  rows               10
+  MISSING            77: ['add_stop-008#f178c37040f5', 'add_stop-025#2bae7942d365', 'add_stop-102#78da77548338', 'change_terminal-002-MAIOAKE1#e3cb084310eb', 'change_terminal-003-PKWCTRS#e605a37bbb0f']...
 
 artifacts: /home/claude/columbus-transit-opt/outputs/exp3/stageA_states.jsonl
