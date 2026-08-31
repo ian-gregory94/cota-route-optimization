@@ -250,3 +250,7 @@
 2026-08-31 13:27:33,735 period owl     : 22697 paths, 20000 OD pairs
 2026-08-31 13:27:33,736 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-31 13:27:33,768      incumbent rescaled x1.0032
+2026-08-31 13:29:27,780 solve lambda=2.0: obj=2.94349e+06 vh=2512.9/2517.2 exchanges=0
+2026-08-31 13:29:27,798 k=3             [both  ] obj=2943491 won=greedy    plan=3969f901ef830732 115s
+2026-08-31 13:29:27,799 stopping cleanly: 440s needed, 286s left
+2026-08-31 13:29:27,800 slice ran 2 cells; 8 remain
