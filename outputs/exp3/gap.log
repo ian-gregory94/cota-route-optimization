@@ -68,3 +68,33 @@ Traceback (most recent call last):
     net = judge.baseline.network
           ^^^^^^^^^^^^^^
 AttributeError: 'Exp2Setup' object has no attribute 'baseline'
+2026-08-31 17:52:55,442 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:52:55,478 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:52:55,479 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:52:55,480 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:52:55,491 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:52:55,885 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:52:55,894 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:52:56,009 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:52:56,018 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:52:56,142 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:52:56,150 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 17:52:56,156 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 17:52:56,161 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 17:52:56,167 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 17:52:56,172 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 17:52:56,177 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:52:56,177 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:54:34,470 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:54:34,478 control: Gen1 full-problem solution 2956120.583955
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 432, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 389, in main
+    free = choose_free(judge, stratum, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 199, in choose_free
+    net = judge.baseline.network
+          ^^^^^^^^^^^^^^
+AttributeError: 'Exp2Setup' object has no attribute 'baseline'

@@ -114,6 +114,7 @@ def resolve(spec: str | None, idx: dict):
 
 
 def build_judge(edits, H, sg, stm, CONS):
+    """Returns (judge, incumbent, network) — the network for the strata."""
     """The same setup `score_state` builds, with disk-cached path sets."""
     from exp2_treatments import _Baseline, fit_incumbent
     from cota_opt.configs import period_of_seconds, service_periods
@@ -166,10 +167,10 @@ def build_judge(edits, H, sg, stm, CONS):
         except Exception as e:
             log.warning("could not cache path sets: %s", e)
     incumbent, _ = fit_incumbent(judge, judge.budget.revenue_veh_hours)
-    return judge, incumbent
+    return judge, incumbent, net
 
 
-def choose_free(judge, stratum: str, n: int) -> list:
+def choose_free(judge, stratum: str, n: int, net=None) -> list:
     """Which route-periods the subproblem may move. Rule stated per stratum.
 
     Frozen route-periods are not removed from the model -- removing them would
@@ -196,7 +197,14 @@ def choose_free(judge, stratum: str, n: int) -> list:
         # How many other routes share a stop with this one: the coupling that
         # makes Model B's waiting term non-separable, and therefore the axis
         # the heuristic is most likely to mishandle.
-        net = judge.baseline.network
+        #
+        # Exp2Setup carries no network -- it is model, plan, budget, ladders,
+        # path sets and checks -- so the network is passed in by the caller
+        # that built it, rather than reached for through an attribute that
+        # does not exist.
+        if net is None:
+            raise ValueError("the common-lines strata need the network the "
+                             "judge was built from")
         stops = {}
         for p in net.patterns.values():
             stops.setdefault(p.route_id, set()).update(
@@ -378,15 +386,16 @@ def main() -> int:
             log.info("stopping cleanly before %s", cell)
             break
         if net_name not in judges:
-            j, inc = build_judge(resolve(nets[net_name], idx), H, sg, stm, CONS)
+            j, inc, jnet = build_judge(resolve(nets[net_name], idx),
+                                       H, sg, stm, CONS)
             if args.anchor == "solution":
                 plan, obj = full_solution(j, inc)
                 log.info("%s: Gen1 full-problem solution %.6f", net_name, obj)
             else:
                 plan, obj = dict(j.baseline_plan.headways), None
-            judges[net_name] = (j, inc, plan, obj)
-        judge, incumbent, anchor, anchor_obj = judges[net_name]
-        free = choose_free(judge, stratum, n)
+            judges[net_name] = (j, inc, plan, obj, jnet)
+        judge, incumbent, anchor, anchor_obj, jnet = judges[net_name]
+        free = choose_free(judge, stratum, n, net=jnet)
         lads = restricted_ladders(judge, free, K_RUNGS, anchor)
 
         t0 = time.time()
