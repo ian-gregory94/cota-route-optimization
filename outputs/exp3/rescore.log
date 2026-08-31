@@ -1799,3 +1799,22 @@ Traceback (most recent call last):
     pathset_cache=psc, cache_hit=bool(warm), seed=seed)
                                       ^^^^
 NameError: name 'warm' is not defined
+2026-08-31 17:22:00,451 37 of 40 states still to re-score
+2026-08-31 17:22:00,612 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:22:00,649 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:22:00,650 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:22:00,650 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:22:00,674 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:22:00,976 path sets from cache for <none>|rep2
+2026-08-31 17:22:01,391 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:22:01,400 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:22:01,554 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:22:01,564 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:22:01,610 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:22:01,617 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 17:22:01,632 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 17:22:01,641 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 17:22:01,656 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 17:22:01,665 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 17:22:01,674 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:22:01,674 locking 28 route-periods across 14 routes in classes ('peak_express',)
