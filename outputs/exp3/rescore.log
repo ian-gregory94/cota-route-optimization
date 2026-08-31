@@ -1851,3 +1851,4 @@ NameError: name 'warm' is not defined
 2026-08-31 17:32:53,596 period owl     : 22669 paths, 20000 OD pairs
 2026-08-31 17:32:53,596 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-31 17:32:53,632      incumbent rescaled x1.0003
+2026-08-31 17:35:24,928 solve lambda=2.0: obj=2.95623e+06 vh=2515.6/2517.2 exchanges=0
