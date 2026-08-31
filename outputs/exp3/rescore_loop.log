@@ -254,3 +254,5 @@ fatal: cannot lock ref 'HEAD': is at a3f39281703382580cd452b3b359dd7b38ace053 bu
 committed: a3f3928 chore: Experiment 2B matched-start confirmation cell
 2026-08-31T17:09:34Z remaining=40
 slice: 40 -> 40 states remaining
+committed: 4f9be63 chore: Experiment 3 A1 re-score slice — 0 done, 40 of 40 remaining
+2026-08-31T17:09:40Z remaining=40
