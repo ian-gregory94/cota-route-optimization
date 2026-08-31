@@ -127,16 +127,18 @@ def test_execution_difference_alone_refuses_when_both_arms_are_admissible():
     the policy requires -- yet one of them had to repair its way there. Equal
     entitlement, unequal execution, and the comparison is still refused.
     """
-    control = receipt()
-    treatment = treated(repair_occurred=True, repair_steps=7,
-                        events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED,
-                                               "walked back into the envelope",
+    control = receipt(restarts_completed=2, evaluations_performed=4000)
+    treatment = treated(restarts_completed=2, evaluations_performed=4000,
+                        resumed=True,
+                        events=(ExecutionEvent(EventType.CHECKPOINT_RESUMED,
+                                               "rejoined at restart 1",
                                                "frequency"),))
     assert admit(control, CONTRACT) and admit(treatment, CONTRACT)
     out = compare(control, treatment, CONTRACT)
     assert isinstance(out, InadmissibleComparison)
     dims = {d.dimension for d in out.undeclared}
-    assert {"repair_occurred", "repair_steps"} <= dims
+    assert "resumed" in dims
+    assert "opportunity_events.CHECKPOINT_RESUMED" in dims
     assert "REFUSED" in str(out) and "No treatment effect" in str(out)
 
 
