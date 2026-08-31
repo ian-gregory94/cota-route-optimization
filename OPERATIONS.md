@@ -218,3 +218,14 @@ both times the safeguard was a rule to be remembered rather than a check that
 could fail. A running batch now writes `outputs/exp3/EVAL_PATH_FROZEN` with the
 digest it started under, and `test_repro_guards.py` goes red the moment the
 evaluation path diverges from it. Delete the marker when the batch is done.
+
+**25. The bracket trick fails when your own command repeats the name.**
+`ps | awk '/[e]xp3_rescore/'` is supposed to exclude the searching process,
+because the pattern `[e]xp3_rescore` does not literally appear in it. But the
+same command also contained a heredoc that used the plain string `exp3_rescore`
+a dozen times — so the pattern matched the tool call's own shell, the kill
+landed on itself, and the heredoc never wrote its file. Rule 17 was already
+about a kill that finds itself; this is the same failure surviving the fix
+meant to prevent it. **Use a pidfile.** Every batch worker now writes
+`outputs/exp3/<name>.pid` and is stopped by reading that file, which has no
+pattern to get wrong.
