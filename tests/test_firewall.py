@@ -147,7 +147,8 @@ def test_a_fallback_in_only_one_arm_is_refused_even_with_matching_fields():
                                                "evaluator degraded", "eval"),))
     out = compare(control, treatment, CONTRACT)
     assert isinstance(out, InadmissibleComparison)
-    assert any(d.dimension == "opportunity_events" for d in out.undeclared)
+    assert any(d.dimension == "opportunity_events.MODEL_FALLBACK"
+               for d in out.undeclared)
 
 
 def test_an_operationally_neutral_event_does_not_block_comparison():
@@ -272,7 +273,9 @@ def test_a_treatment_dependent_start_policy_is_allowed_if_declared():
         objective_version="1", evaluator="e", envelope="v", pathset_policy="p",
         pool_version="q",
         solver=SolverPolicy(start_policy=StartPolicy.INCUMBENT_ONLY),
-        allowed_treatment_differences=frozenset({"starts_attempted"}))
+        allowed_treatment_differences=frozenset({"starts_attempted"}),
+        justifications={"starts_attempted":
+                        "this experiment IS about the start set"})
     assert c.digest
 
 
