@@ -308,3 +308,15 @@
 2026-08-31 13:38:47,875 single add_stop [both  ] obj=2950538 won=greedy    plan=715a555cc1380400 114s
 2026-08-31 13:38:47,876 stopping cleanly: 440s needed, 283s left
 2026-08-31 13:38:47,877 slice ran 2 cells; 6 remain
+2026-08-31 13:38:51,089 6 of 16 (state, start set) cells still to run
+2026-08-31 13:38:51,231 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 13:38:51,276 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 13:38:51,277 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 13:38:51,278 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 13:38:51,298 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:38:51,724 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 13:38:51,737 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 13:38:51,885 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 13:38:51,897 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:38:51,968 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:38:52,039 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD

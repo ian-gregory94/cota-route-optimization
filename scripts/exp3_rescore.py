@@ -69,6 +69,13 @@ def wanted() -> list[str]:
 
 
 def done() -> set[str]:
+    """States already re-scored WITH a receipt.
+
+    A row written before the firewall existed carries no receipt, so the state
+    it names has a corrected number and no evidence. Treating it as done would
+    leave it permanently unpromotable while looking finished, so it is not
+    done: it is re-run under a contract.
+    """
     out = set()
     if ROWS.exists():
         for line in ROWS.open():
@@ -76,9 +83,11 @@ def done() -> set[str]:
             if not line:
                 continue
             try:
-                out.add(json.loads(line)["role"])
-            except Exception:          # a torn final line is expected, not fatal
-                pass
+                r = json.loads(line)
+            except Exception:       # a torn final line is expected, not fatal
+                continue
+            if r.get("receipt_digest") and r.get("contract") == CONTRACT.digest:
+                out.add(r["role"])
     return out
 
 
