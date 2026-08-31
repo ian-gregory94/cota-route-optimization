@@ -205,3 +205,77 @@ def test_one_seat_overlap_catches_a_split_that_edges_do_not():
     assert d["one_seat_jaccard"] < 1.0, (
         "but A->C is a one-seat ride in one network and a transfer in the "
         "other, which is the difference Experiments 6-7 care about")
+
+
+# -- the frozen route pool -------------------------------------------------
+
+POOL = (Path(__file__).resolve().parents[1] / "outputs" / "exp4"
+        / "route_pool.json")
+
+
+def _pool():
+    if not POOL.exists():
+        pytest.skip("route pool has not been generated in this working copy")
+    return json.loads(POOL.read_text())
+
+
+def test_the_pool_contains_the_current_network():
+    """Gate 4-4. Without it a null result is indistinguishable from a bug.
+
+    If the pool cannot express what COTA runs today, then 'greenfield is not
+    better' and 'the generator failed to propose the incumbent' produce the
+    same output.
+    """
+    p = _pool()
+    assert p["legacy_inclusion_complete"], (
+        f"only {p['legacy_in_pool']} of {p['legacy_lines']} legacy lines are "
+        f"in the pool")
+
+
+def test_the_pool_can_reach_every_stop():
+    p = _pool()
+    assert p["stops_reachable_by_pool"] == p["stops_in_network"]
+
+
+def test_more_than_one_generator_contributes():
+    """A pool defined by one heuristic is that heuristic's answer.
+
+    Experiment 2's candidate set was splices only, and its conclusion read as a
+    statement about geometry while being a statement about splices.
+    """
+    p = _pool()
+    by = p["accepted_by_generator"]
+    assert len(by) >= 4, by
+    assert all(n > 0 for n in by.values()), by
+
+
+def test_the_pool_is_entirely_primary_evidence_class():
+    """Gate 4-1: observed links only, so no route is priced by the estimator."""
+    p = _pool()
+    assert p["modelled_share_max"] == 0.0
+
+
+def test_routes_on_the_length_bound_are_counted():
+    """Gate 4-6 needs this number to decide whether the bound is active."""
+    p = _pool()
+    assert "on_length_bound" in p
+    assert p["on_length_bound"] < 0.05 * p["accepted"], (
+        f"{p['on_length_bound']} of {p['accepted']} routes sit on the "
+        f"10-120 minute bound; the bound may be shaping the pool")
+
+
+def test_the_pool_listing_is_canonically_ordered():
+    """Enumeration order must be a property of the pool, not of generation.
+
+    Experiment 2B lost 57 of 240 subsets to a partition over a list that was
+    re-sorted mid-sweep.
+    """
+    p = _pool()
+    rids = [r["rid"] for r in p["routes"]]
+    assert rids == sorted(rids)
+
+
+def test_pool_route_ids_are_unique():
+    p = _pool()
+    rids = [r["rid"] for r in p["routes"]]
+    assert len(rids) == len(set(rids))
