@@ -208,3 +208,13 @@ was the log growing. Forty substantive commits became 2,646, and the history
 stopped being readable at exactly the moment its readability mattered most.
 Commit the artifacts a loop produces — rows, receipts, results — and leave logs
 to the working tree. If a log is worth keeping, commit it once at the end.
+
+**24. A batch in flight freezes the code that can change its numbers.** The
+evaluation path's content digest is an identity field, so two cells produced
+either side of an edit to `src/cota_opt` are refused for comparison — correctly.
+Editing during a batch therefore splits it into two incomparable halves. This
+cost a whole certification batch once and five census states the next day, and
+both times the safeguard was a rule to be remembered rather than a check that
+could fail. A running batch now writes `outputs/exp3/EVAL_PATH_FROZEN` with the
+digest it started under, and `test_repro_guards.py` goes red the moment the
+evaluation path diverges from it. Delete the marker when the batch is done.

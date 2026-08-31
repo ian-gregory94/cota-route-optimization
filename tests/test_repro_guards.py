@@ -57,3 +57,35 @@ def test_no_shadowed_module_level_names():
                                f"{node.name!r} (first at line {seen[node.name]})")
                 seen[node.name] = node.lineno
     assert not bad, "shadowed definitions:\n  " + "\n  ".join(bad)
+
+
+def test_the_evaluation_path_is_not_edited_while_a_batch_is_running():
+    """A batch in progress freezes the code that can change its numbers.
+
+    `code_version` is an identity field: two cells produced under different
+    source revisions are refused for comparison, correctly. So editing
+    `src/cota_opt` while a scoring batch runs splits that batch into two
+    incomparable halves — which happened twice, cost a certification batch and
+    then five census states, and was both times a rule I was supposed to
+    remember rather than a check that could fail.
+
+    A running batch writes `outputs/exp3/EVAL_PATH_FROZEN` with the digest it
+    started under. While that file exists, this test goes red the moment the
+    evaluation path diverges from it. Delete the file when the batch is done.
+    """
+    import pathlib
+    import sys
+    root = pathlib.Path(__file__).resolve().parents[1]
+    marker = root / "outputs" / "exp3" / "EVAL_PATH_FROZEN"
+    if not marker.exists():
+        return                              # no batch in flight
+    sys.path.insert(0, str(root / "src"))
+    from cota_opt.exp3_cell import code_version
+    frozen = marker.read_text().strip()
+    now = code_version()
+    assert now == frozen, (
+        f"a scoring batch is running under {frozen} and the evaluation path is "
+        f"now {now}. Cells scored either side of this edit cannot be compared. "
+        f"Either revert the change until the batch finishes, or stop the batch "
+        f"and re-score what it produced. Delete {marker.name} when the batch "
+        f"is complete.")
