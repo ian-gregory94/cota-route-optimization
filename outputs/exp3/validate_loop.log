@@ -1,3 +1,5 @@
 loop start 2026-08-31T13:11:00Z pid=9001
 2026-08-31T13:11:01Z remaining=12
 slice: 12 -> 10 cells remaining
+committed: e566ace chore: fallback greedy-vs-both validation — 2 cells done, 10 remaining
+2026-08-31T13:20:11Z remaining=10

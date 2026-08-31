@@ -456,6 +456,8 @@ def optimize_frequencies(
             "headway is infeasible under this envelope")
 
     starts: list[np.ndarray] = []
+    start_names: list[str] = []
+    initial_rejection: str | None = None
     if initial is not None:
         init_idx = np.array(
             [int(np.nanargmin(np.abs(L[i] - initial.headways[k]))) for i, k in
@@ -467,15 +469,25 @@ def optimize_frequencies(
             log.warning("incumbent snapped to ladder, max drift %.4f min", drift)
         if feasible(model.evaluate_array(init_h)):
             starts.append(init_idx)
+            start_names.append("incumbent")
         else:
+            # Structured, not just logged. This branch silently substituted a
+            # different optimizer for four experiments because the only trace
+            # it left was prose (D27).
+            initial_rejection = (
+                f"ladder-snapped incumbent exceeds the envelope "
+                f"(drift {drift:.4f} min)")
             log.warning("incumbent plan is infeasible under this budget")
     # The greedy build from minimum service costs O(n) evaluations per ladder
     # step and, as Experiment 1 showed, converges to a worse optimum than the
     # incumbent start. It is only needed when the caller gave no feasible plan.
+    forced_greedy = not starts and not greedy_start
     if greedy_start or not starts:
         starts.append(_greedy_build(model, budget, L, L_len, idx0.copy(),
                                     obj, feasible))
+        start_names.append("greedy")
 
+    stats: dict = {}
     width = candidate_width if candidate_width > 0 else n
     best_idx, best_fit, best_obj, moves = None, None, float("inf"), 0
     best_start = -1        # which start produced the incumbent best
@@ -495,7 +507,7 @@ def optimize_frequencies(
         for si, st in enumerate(starts):
             idx, fit, o, n_moves = _exchange_search(
                 model, budget, L, L_len, st.copy(), obj, feasible,
-                local_search_iterations, width, rng,
+                local_search_iterations, width, rng, stats=stats,
                 on_pass=(None if on_pass is None
                          else lambda *a, _p=f"start{si}": on_pass(_p, *a)))
             if o < best_obj:
@@ -528,7 +540,7 @@ def optimize_frequencies(
                 continue
         idx, fit, o, n_moves = _exchange_search(
             model, budget, L, L_len, cand, obj, feasible,
-            local_search_iterations, width, rng,
+            local_search_iterations, width, rng, stats=stats,
             on_pass=(None if on_pass is None
                      else lambda *a, _p=f"restart{restart}": on_pass(_p, *a)))
         if o < best_obj - 1e-9:
@@ -547,7 +559,20 @@ def optimize_frequencies(
         label=f"lambda={unserved_multiplier}",
         meta={"exchanges": moves, "unserved_multiplier": unserved_multiplier,
               "seed": seed, "n_starts": len(starts), "n_restarts": n_restarts,
-              "candidate_width": width, "best_start": best_start})
+              "candidate_width": width, "best_start": best_start,
+              # What the solve ACTUALLY got, for the execution receipt.
+              "start_names": tuple(start_names),
+              "winning_start": (start_names[best_start]
+                                if 0 <= best_start < len(start_names) else
+                                ("resumed" if best_start < 0 else "?")),
+              "initial_offered": initial is not None,
+              "initial_rejection": initial_rejection,
+              "forced_greedy_fallback": forced_greedy,
+              "restarts_completed": max(0, n_restarts) - first_restart
+                                    + first_restart,
+              "evaluations": stats.get("evals", 0),
+              "searches": stats.get("searches", 0),
+              "termination": stats.get("stopped", "no_improving_move")})
 
 
 def _greedy_build(model, budget, L, L_len, idx, obj, feasible) -> np.ndarray:
@@ -583,7 +608,7 @@ def _greedy_build(model, budget, L, L_len, idx, obj, feasible) -> np.ndarray:
 
 
 def _exchange_search(model, budget, L, L_len, idx, obj, feasible,
-                     max_evaluations, width, rng, on_pass=None):
+                     max_evaluations, width, rng, on_pass=None, stats=None):
     """Move service hours from where they buy least to where they buy most.
 
     Each pass prices one ladder step in each direction for every route-period
@@ -675,7 +700,17 @@ def _exchange_search(model, budget, L, L_len, idx, obj, feasible,
             # could not tell were alive.
             on_pass(evals, max_evaluations, moves, cur)
         if applied_this_pass == 0:
+            if stats is not None:
+                stats["stopped"] = "no_improving_move"
             break
+    else:
+        if stats is not None:
+            stats["stopped"] = "evaluation_budget"
+    if stats is not None:
+        # Accumulated, not assigned: a solve runs one of these per start and
+        # one per restart, and the receipt reports the whole solve.
+        stats["evals"] = stats.get("evals", 0) + evals
+        stats["searches"] = stats.get("searches", 0) + 1
     return idx, fit, cur, moves
 
 
