@@ -183,3 +183,51 @@ is not a claim — and refuses to build one from no comparisons at all. A
 `FindingLog` can name every live claim that depended on a given observation, so
 superseding evidence supersedes the slides that used it instead of leaving them
 looking current.
+
+---
+
+## Amendment — two things the first real batch caught (2026-08-31)
+
+The Experiment 2B confirmation was the firewall's first use on a live batch. It
+refused every comparison, for two reasons, and both were right.
+
+**1. `code_version` identified the wrong thing.** It was the repo HEAD. HEAD
+moves when a shell script or a markdown file changes, and the batch's control
+cells and treatment cells were separated by exactly such a commit — so two
+cells that could not possibly have differed were refused for differing. A
+markdown edit is not a different evaluator.
+
+`code_version` is now a content digest of `src/cota_opt/**/*.py` plus the two
+scripts the scoring chain imports: the code that can actually change a number.
+The commit is kept separately as `repo_revision`, provenance only, never an
+identity field.
+
+The operational rule that follows: **do not commit into the evaluation path
+while a comparison batch is running.** With the narrower digest that is now a
+real constraint rather than an accidental one.
+
+**2. A declared difference now needs a written reason.** The other refusal was
+`repair_occurred` / `repair_steps` / `INCUMBENT_REPAIRED`: under
+`starts="both"` the treatment's incumbent still lands outside the envelope
+after the ladder snap, so it needs repair and the control does not. That is
+treatment-dependent by construction.
+
+The temptation is to add it to the whitelist and move on — which is how a
+whitelist becomes a place to put anything inconvenient. So
+`allowed_treatment_differences` is now paired with `justifications`, and a
+dimension declared without a written reason is **refused at contract
+construction**. The reasons hash into the contract digest, so a waiver cannot
+be added quietly.
+
+The repair waiver's reason is evidence, not assertion: D30 measured the
+repaired incumbent losing to greedy on 8 of 8 stratified states across four
+cardinalities, with bit-identical objectives and identical plan hashes. It is
+falsifiable and says so — if a repaired incumbent ever wins a cell, the
+justification is void and the declaration comes out.
+
+**And the waiver had to be narrowed.** Declaring `opportunity_events`
+wholesale would have waived *every* event type at once, buying a blanket
+exemption for model fallbacks and early termination on the strength of one
+benign repair. The test suite caught it. Events are now compared **per type** —
+`opportunity_events.INCUMBENT_REPAIRED` is declared;
+`opportunity_events.MODEL_FALLBACK` and everything invented later still refuse.
