@@ -15,7 +15,7 @@ echo "slice: $before -> $after states remaining"
 
 git add -A >/dev/null 2>&1
 if ! git diff --cached --quiet; then
-  git commit -q -m "chore: Experiment 3 A1 re-score slice — $after of $(python scripts/exp3_rescore.py --list </dev/null | wc -l) states remaining
+  git commit -q -m "chore: Experiment 3 A1 re-score slice — $((before-after)) done, $after of 40 remaining
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_011QusixhUPcncmLPpuZWqFS"

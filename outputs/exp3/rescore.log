@@ -21,3 +21,26 @@
 2026-08-31 12:31:53,540 <none>                                               obj=2956121 unserved=9745.9 vh=2515.1 104s
 2026-08-31 12:31:53,540 stopping cleanly: not enough slice left for another state
 2026-08-31 12:31:53,542 slice re-scored 1 states; 39 remain
+2026-08-31 12:32:18,892 39 of 40 states still to re-score
+2026-08-31 12:32:19,035 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 12:32:19,075 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 12:32:19,076 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 12:32:19,077 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 12:32:19,102 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:32:19,339 path sets from cache for <none>|rep0
+2026-08-31 12:32:19,624 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 12:32:19,634 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 12:32:19,753 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 12:32:19,763 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:32:19,810 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 12:32:19,816 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 12:32:19,823 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 12:32:19,828 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 12:32:19,835 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 12:32:19,839 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 12:32:19,844 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 12:32:19,845 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 12:34:08,667 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 12:34:08,682 <none>|rep0                                          obj=2956121 unserved=9745.9 vh=2515.1 109s
+2026-08-31 12:34:08,682 stopping cleanly: not enough slice left for another state
+2026-08-31 12:34:08,684 slice re-scored 1 states; 38 remain
