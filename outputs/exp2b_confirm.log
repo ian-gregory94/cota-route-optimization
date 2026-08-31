@@ -641,3 +641,20 @@ Traceback (most recent call last):
   File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
     raise ContractError(
 cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
