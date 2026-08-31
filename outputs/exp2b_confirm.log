@@ -46,3 +46,8 @@
 2026-08-31 14:31:51,067 period evening : 23618 paths, 20000 OD pairs
 2026-08-31 14:31:51,072 period owl     : 22678 paths, 20000 OD pairs
 2026-08-31 14:31:51,072 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:41:57,252 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 14:41:57,272 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 14:41:57,272 stopping cleanly: 750s needed, 150s left
+
+Not every seed produced an admissible comparison yet.
