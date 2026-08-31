@@ -1,0 +1,382 @@
+{
+  "n_states": 46,
+  "old_control_objective": 2962742.7176865116,
+  "corrected_control_objective": 2956120.5839554886,
+  "offset_percentage_points": 0.22401433036815033,
+  "states_beating_old_control": 46,
+  "states_beating_corrected_control": 46,
+  "sign_flips": 0,
+  "admissibility": "NOT firewall-admissible. These states carry no ExecutionReceipt -- they predate the firewall -- so compare() refuses them, and nothing may be promoted or certified from these numbers. Giving them receipts means re-scoring 91 states, roughly eleven hours.",
+  "why_not_rescored": "D30 measured that a previously-fallback state returns a bit-identical objective under starts='both' (8/8 stratified states, identical plan hashes, both choosing greedy every time), and every A2 state fell back. The numerators are already in the basin the corrected pipeline selects; only the comparison point was wrong.",
+  "search_disclosure": "Phase A2 was terminated after the discovery of an optimizer-initialization asymmetry, at roughly 131 of a preregistered 420 evaluations, with all search states still in lane 1 of 3. It is NOT a completed multi-start search: it establishes no exhaustive coverage, no global optimum, and not that every state was reachable. Existing states were retained because they were sufficient for the interaction question; further discovery search was judged lower value than matched-start certification.",
+  "states": [
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2942243.11733895,
+      "effect_pct_old_control": -0.6919129435433762,
+      "effect_pct_corrected_control": -0.4694485973224351,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2942688.862030945,
+      "effect_pct_old_control": -0.6768679418517329,
+      "effect_pct_corrected_control": -0.4543698926709985,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2942986.9275703994,
+      "effect_pct_old_control": -0.6668074820731895,
+      "effect_pct_corrected_control": -0.4442868960208502,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943013.330684786,
+      "effect_pct_old_control": -0.665916310719389,
+      "effect_pct_corrected_control": -0.443393728315509,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943215.705983307,
+      "effect_pct_old_control": -0.6590856366513065,
+      "effect_pct_corrected_control": -0.4365477525586532,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943287.3456353843,
+      "effect_pct_old_control": -0.6566676186557023,
+      "effect_pct_corrected_control": -0.4341243178562281,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943298.328857796,
+      "effect_pct_old_control": -0.6562969073433123,
+      "effect_pct_corrected_control": -0.4337527760973739,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-102#78da77548338+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943372.8252457734,
+      "effect_pct_old_control": -0.6537824673437502,
+      "effect_pct_corrected_control": -0.4312327033918844,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 3,
+      "objective": 2943490.755785079,
+      "effect_pct_old_control": -0.6498020157641452,
+      "effect_pct_corrected_control": -0.42724333503032763,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943718.2054101387,
+      "effect_pct_old_control": -0.6421250202659635,
+      "effect_pct_corrected_control": -0.4195491419620884,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2943733.862730968,
+      "effect_pct_old_control": -0.6415965464050495,
+      "effect_pct_corrected_control": -0.4190194842439936,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-032#228795f35539+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944044.2147060605,
+      "effect_pct_old_control": -0.631121388598063,
+      "effect_pct_corrected_control": -0.40852086058239073,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944100.537527905,
+      "effect_pct_old_control": -0.6292203520514825,
+      "effect_pct_corrected_control": -0.4066155654415205,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-024#26db14321a47+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944531.0644443776,
+      "effect_pct_old_control": -0.6146889884638644,
+      "effect_pct_corrected_control": -0.39205164951706817,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944558.004376009,
+      "effect_pct_old_control": -0.6137796981812241,
+      "effect_pct_corrected_control": -0.3911403222938902,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944624.3387223943,
+      "effect_pct_old_control": -0.6115407475632979,
+      "effect_pct_corrected_control": -0.3888963561057299,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944716.3404262997,
+      "effect_pct_old_control": -0.6084354592317736,
+      "effect_pct_corrected_control": -0.3857841114833437,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944778.773798836,
+      "effect_pct_old_control": -0.6063281762684739,
+      "effect_pct_corrected_control": -0.38367210790422485,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2944814.208255113,
+      "effect_pct_old_control": -0.6051321744669795,
+      "effect_pct_corrected_control": -0.3824734268873037,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-031#dfd049714f7d",
+      "cardinality": 3,
+      "objective": 2944919.812648153,
+      "effect_pct_old_control": -0.6015677612491389,
+      "effect_pct_corrected_control": -0.37890102887306154,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-009#8323c2fb0368+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2945080.6848581685,
+      "effect_pct_old_control": -0.5961379205459556,
+      "effect_pct_corrected_control": -0.37345902454858687,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2945338.294913127,
+      "effect_pct_old_control": -0.587442934868638,
+      "effect_pct_corrected_control": -0.36474456085732865,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+reroute-031#dfd049714f7d",
+      "cardinality": 2,
+      "objective": 2946056.460633146,
+      "effect_pct_old_control": -0.563203039999204,
+      "effect_pct_corrected_control": -0.3404503651497209,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8",
+      "cardinality": 4,
+      "objective": 2946606.5828313567,
+      "effect_pct_old_control": -0.5446350355981964,
+      "effect_pct_corrected_control": -0.32184076575799164,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-023#1dc299b50907",
+      "cardinality": 4,
+      "objective": 2946956.192235157,
+      "effect_pct_old_control": -0.5328348410786663,
+      "effect_pct_corrected_control": -0.31001413711172654,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947073.8411127506,
+      "effect_pct_old_control": -0.5288638962885106,
+      "effect_pct_corrected_control": -0.30603429683618993,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947175.4810210876,
+      "effect_pct_old_control": -0.5254332943759558,
+      "effect_pct_corrected_control": -0.30259600988373303,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8",
+      "cardinality": 4,
+      "objective": 2947192.727060985,
+      "effect_pct_old_control": -0.5248511972605279,
+      "effect_pct_corrected_control": -0.3020126087873499,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947196.503597658,
+      "effect_pct_old_control": -0.5247237296727835,
+      "effect_pct_corrected_control": -0.3018848556539424,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947219.2369217966,
+      "effect_pct_old_control": -0.5239564229470682,
+      "effect_pct_corrected_control": -0.3011158300512037,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539",
+      "cardinality": 4,
+      "objective": 2947239.6002132148,
+      "effect_pct_old_control": -0.5232691107718793,
+      "effect_pct_corrected_control": -0.30042697819824804,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8",
+      "cardinality": 4,
+      "objective": 2947251.193176534,
+      "effect_pct_old_control": -0.5228778191740614,
+      "effect_pct_corrected_control": -0.3000348100511774,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+extend-025#441ece050fe8",
+      "cardinality": 4,
+      "objective": 2947273.7558462755,
+      "effect_pct_old_control": -0.5221162724624024,
+      "effect_pct_corrected_control": -0.29927155736575195,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8",
+      "cardinality": 3,
+      "objective": 2947398.787639602,
+      "effect_pct_old_control": -0.5178961357431319,
+      "effect_pct_corrected_control": -0.295041966935469,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d",
+      "cardinality": 4,
+      "objective": 2947441.898775843,
+      "effect_pct_old_control": -0.5164410267327029,
+      "effect_pct_corrected_control": -0.2935835982723342,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947512.835059423,
+      "effect_pct_old_control": -0.5140467491885691,
+      "effect_pct_corrected_control": -0.29118395720339274,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-009#8323c2fb0368",
+      "cardinality": 4,
+      "objective": 2947596.202996279,
+      "effect_pct_old_control": -0.5112328721563706,
+      "effect_pct_corrected_control": -0.28836377668340324,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-012#fb24f651cbc5",
+      "cardinality": 4,
+      "objective": 2947604.03602054,
+      "effect_pct_old_control": -0.5109684879351457,
+      "effect_pct_corrected_control": -0.28809880020363554,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+add_stop-102#78da77548338+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947670.3897009464,
+      "effect_pct_old_control": -0.5087288847455024,
+      "effect_pct_corrected_control": -0.28585417998190404,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-024#26db14321a47+extend-025#441ece050fe8",
+      "cardinality": 4,
+      "objective": 2947672.73089265,
+      "effect_pct_old_control": -0.5086498636516532,
+      "effect_pct_corrected_control": -0.2857749818694806,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 3,
+      "objective": 2947702.7359478,
+      "effect_pct_old_control": -0.5076371177601218,
+      "effect_pct_corrected_control": -0.2847599672820219,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947803.2146324553,
+      "effect_pct_old_control": -0.5042457100602371,
+      "effect_pct_corrected_control": -0.2813609623428884,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-012#fb24f651cbc5+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2947837.244941354,
+      "effect_pct_old_control": -0.5030971017556621,
+      "effect_pct_corrected_control": -0.2802097809911113,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+      "cardinality": 4,
+      "objective": 2948243.371397559,
+      "effect_pct_old_control": -0.4893893149208203,
+      "effect_pct_corrected_control": -0.2664712867493831,
+      "sign_flipped": false
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8",
+      "cardinality": 2,
+      "objective": 2948421.98926287,
+      "effect_pct_old_control": -0.48336051382902456,
+      "effect_pct_corrected_control": -0.26042898027919237,
+      "sign_flipped": false
+    },
+    {
+      "state": "extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "cardinality": 2,
+      "objective": 2948578.090146468,
+      "effect_pct_old_control": -0.4780917173633002,
+      "effect_pct_corrected_control": -0.25514838095434683,
+      "sign_flipped": false
+    }
+  ]
+}
