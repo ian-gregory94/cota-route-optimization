@@ -1,10 +1,10 @@
 ==============================================================================
 PHASE A1 MERGE
 ==============================================================================
-  singles scored     55 of 84
+  singles scored     57 of 84
   zero-edit reps     3
-  unique states      58
-  rows               58
-  MISSING            29: ['splice-008-035-BOASHAN#fc06f973aa23', 'splice-011-034-WESHIGW#2c53c24a4f24', 'split-005-EASHAMN#f16cc1038825', 'split-034-STE418N#f2471e265dfb', 'split-035-NORTRA2#7a708a1900ac']...
+  unique states      60
+  rows               60
+  MISSING            27: ['splice-011-034-WESHIGW#2c53c24a4f24', 'split-005-EASHAMN#f16cc1038825', 'split-034-STE418N#f2471e265dfb', 'straighten-001#95a4287b6fa0', 'straighten-002#716a0b294c2c']...
 
 artifacts: /home/claude/columbus-transit-opt/outputs/exp3/stageA_states.jsonl
