@@ -1,10 +1,10 @@
 ==============================================================================
 PHASE A1 MERGE
 ==============================================================================
-  singles scored     61 of 84
+  singles scored     63 of 84
   zero-edit reps     3
-  unique states      64
-  rows               64
-  MISSING            23: ['split-034-STE418N#f2471e265dfb', 'straighten-001#95a4287b6fa0', 'straighten-004#600ca164ad60', 'straighten-011#f2a996066a3d', 'straighten-021#110f4a755fe7']...
+  unique states      66
+  rows               66
+  MISSING            21: ['straighten-001#95a4287b6fa0', 'straighten-004#600ca164ad60', 'straighten-011#f2a996066a3d', 'straighten-024#6a687792ef0b', 'straighten-025#f0732765f122']...
 
 artifacts: /home/claude/columbus-transit-opt/outputs/exp3/stageA_states.jsonl
