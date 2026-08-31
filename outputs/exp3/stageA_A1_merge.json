@@ -1,14 +1,12 @@
 {
-  "singles_scored": 13,
+  "singles_scored": 15,
   "pool_size": 84,
   "replicates": 3,
-  "unique_states": 16,
+  "unique_states": 18,
   "missing": [
-    "change_terminal-002-MAIOAKE1#e3cb084310eb",
     "change_terminal-004-BOASHAS#708035f204d1",
     "change_terminal-007-EMO4THW#16606ceb331e",
     "change_terminal-033-METS565S#591129a14c14",
-    "change_terminal-101-EMO4THW#56a30c84c920",
     "change_terminal-102-MOU5THW1#abb1c550bb9c",
     "change_terminal-141-STAHIGW#b5ce9b1e03b5",
     "extend-002#8dff183f524f",
