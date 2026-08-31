@@ -179,7 +179,9 @@ def test_treatment_and_nuisance_signatures_split_cleanly():
 
 def test_an_undeclared_execution_change_moves_the_nuisance_signature():
     a = _receipt()
-    b = _receipt(restarts_completed=1)     # undeclared; repair now is declared
+    # Undeclared, but still individually admissible -- so this isolates the
+    # signature split rather than the admission check.
+    b = _receipt(resumed=True)
     assert admit(a, C).nuisance_signature != admit(b, C).nuisance_signature
 
 
