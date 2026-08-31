@@ -4662,3 +4662,16 @@ this retest, matched starts   : +0.0540% (0.19 floors, NULL)
 PASS — 2B's certified NULL survives matched starts.
 
 wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
