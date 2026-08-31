@@ -696,3 +696,108 @@ def integer_fleet(model: FrequencyModel, plan: FrequencyPlan) -> dict[str, int]:
         cycle = 2.0 * svc.runtime_min * (1.0 + model.layover)
         out[svc.period] += int(math.ceil(cycle / h))
     return out
+
+
+def snap_to_ladder(ladders: dict[tuple[str, str], list[float]],
+                   plan: "FrequencyPlan") -> "FrequencyPlan":
+    """Snap a plan onto the per-route-period ladder, nearest rung.
+
+    This is exactly what :func:`optimize_frequencies` does internally to an
+    ``initial`` plan. Exposed so a caller can see the plan the optimizer will
+    actually start from, rather than the one it passed in.
+    """
+    out = {}
+    for k, h in plan.headways.items():
+        lad = ladders.get(k)
+        out[k] = float(h) if not lad else float(
+            min(lad, key=lambda v: (abs(v - float(h)), v)))
+    return FrequencyPlan(out)
+
+
+def repair_to_ladder(model: FrequencyModel, budget: ResourceBudget,
+                     ladders: dict[tuple[str, str], list[float]],
+                     plan: "FrequencyPlan",
+                     ) -> tuple["FrequencyPlan | None", dict]:
+    """Return a ladder-valued plan that fits the envelope, or ``None``.
+
+    Why this exists
+    ---------------
+    ``fit_incumbent`` scales a network's own schedule until it fits the budget
+    in CONTINUOUS headway space. ``optimize_frequencies`` then snaps that plan
+    to the nearest ladder rung -- and nearest-rung snapping moves roughly half
+    the route-periods to a *shorter* headway, which costs vehicle-hours. The
+    rescaled-then-snapped plan therefore lands back outside the envelope, the
+    optimizer logs ``incumbent plan is infeasible under this budget``, discards
+    the incumbent, and falls back to ``_greedy_build`` -- the very build the
+    caller disabled with ``greedy_start=False``, and the one Experiment 1
+    measured as converging to a worse optimum.
+
+    That fallback is not evenly distributed. Edits that lengthen routes push
+    the incumbent over the envelope; edits that shorten them do not, and the
+    unedited control never does. So the control is optimized from the
+    incumbent and the treatments are optimized by greedy build -- a handicap
+    correlated with the treatment.
+
+    The repair walks headways UP (longer headway, less service, fewer
+    vehicle-hours) one rung at a time, each time choosing the route-period
+    whose step sheds the most vehicle-hours per unit of objective damage, until
+    the plan fits. The result is on-ladder, so the optimizer's own snap is a
+    no-op and the incumbent branch is taken.
+
+    Returns ``(plan_or_None, audit)``. ``None`` means even minimum service on
+    every route-period does not fit, which is a broken envelope, not a
+    startable plan.
+    """
+    keys = list(model.keys)
+    lads = {k: sorted(ladders[k]) for k in keys}
+    idx = {}
+    snapped = snap_to_ladder(ladders, plan)
+    for k in keys:
+        lad = lads[k]
+        h = float(snapped.headways[k])
+        idx[k] = min(range(len(lad)), key=lambda i: (abs(lad[i] - h), lad[i]))
+
+    def arr(ix):
+        return np.array([lads[k][ix[k]] for k in keys])
+
+    w_uns = model.w.unserved
+    fit = model.evaluate_array(arr(idx))
+    audit = {"steps": 0, "snapped_feasible": _feasible(model, fit, budget),
+             "snap_drift_min": float(max(
+                 abs(float(snapped.headways[k]) - float(plan.headways[k]))
+                 for k in keys)),
+             "vh_before": float(fit.revenue_veh_hours),
+             "vh_cap": float(budget.vh_cap())}
+    if audit["snapped_feasible"]:
+        audit["vh_after"] = audit["vh_before"]
+        return snapped, audit
+
+    steps = 0
+    limit = sum(len(lads[k]) for k in keys)
+    while not _feasible(model, fit, budget) and steps < limit:
+        cur_obj = fit.scalarized(w_uns, 2.0)
+        best = None
+        for k in keys:
+            if idx[k] >= len(lads[k]) - 1:
+                continue
+            idx[k] += 1
+            f2 = model.evaluate_array(arr(idx))
+            idx[k] -= 1
+            shed = fit.revenue_veh_hours - f2.revenue_veh_hours
+            harm = max(f2.scalarized(w_uns, 2.0) - cur_obj, 1e-9)
+            if shed <= 0:
+                continue
+            score = shed / harm
+            if best is None or score > best[0]:
+                best = (score, k, f2)
+        if best is None:
+            return None, audit
+        idx[best[1]] += 1
+        fit = best[2]
+        steps += 1
+
+    audit["steps"] = steps
+    audit["vh_after"] = float(fit.revenue_veh_hours)
+    if not _feasible(model, fit, budget):
+        return None, audit
+    return FrequencyPlan({k: float(lads[k][idx[k]]) for k in keys}), audit

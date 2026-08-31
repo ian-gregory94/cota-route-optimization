@@ -143,3 +143,12 @@ on numbers a previous experiment already produced and published. That is the
 only kind of check that catches a second implementation which merely looks
 right — which is how this project lost three days to an evaluator reporting the
 wrong waiting model.
+
+**16. Count your warnings.** A `log.warning` that fires on two thirds of runs
+is not a warning, it is an unhandled code path with a polite name. `incumbent
+plan is infeasible under this budget` printed in every log of Experiments 1, 2,
+2B and 3 and was read as noise; it was silently selecting a different optimizer
+for treated networks than for the control (D27). Before trusting a batch of
+results, aggregate the log lines it produced and look at the counts — not the
+lines. Any warning firing on more than a few percent of runs gets explained or
+promoted to an error.
