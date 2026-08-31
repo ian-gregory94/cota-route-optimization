@@ -1259,3 +1259,5 @@ Traceback (most recent call last):
     pathset_cache=psc, cache_hit=bool(warm), seed=seed)
                                       ^^^^
 NameError: name 'warm' is not defined
+2026-08-31 17:09:18,980 40 of 40 states still to re-score
+2026-08-31 17:09:19,115 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
