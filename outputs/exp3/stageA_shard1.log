@@ -2655,3 +2655,13 @@
 2026-08-31 05:05:54,902 PHASE A1 — 84 single mutations + 3 zero-edit replicates
 2026-08-31 05:05:54,902 shard 1/2: 42 of 84 singles
 2026-08-31 05:05:54,908 phase A1 shard done — stopping; merge the shards before A2
+2026-08-31 05:11:38,609 slice deadline: 480 s from now, checked between states
+2026-08-31 05:11:38,613 experiment exp3_stage_a_20260831T051138Z
+2026-08-31 05:11:38,736 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 05:11:38,771 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 05:11:38,771 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 05:11:38,772 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 05:11:38,790 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 05:11:38,933 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-31 05:11:38,933 shard 1/2: 42 of 84 singles
+2026-08-31 05:11:38,938 phase A1 shard done — stopping; merge the shards before A2
