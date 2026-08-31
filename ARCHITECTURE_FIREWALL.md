@@ -146,3 +146,40 @@ Not "Experiment 3 now uses both starts."
 `tests/test_firewall.py::test_the_exp3_start_asymmetry_is_caught_generically`
 reconstructs D27 and asserts only that no `ComparisonResult` can be produced.
 Nothing in the firewall knows what a start set is.
+
+---
+
+## The required-test checklist
+
+| # | requirement | test |
+|---|---|---|
+| 1 | control incumbent-only vs treatment greedy-only cannot produce an effect | `test_the_exp3_start_asymmetry_is_caught_generically` |
+| 2 | a hidden fallback in only one arm cannot produce an effect | `test_a_fallback_in_only_one_arm_is_refused_even_with_matching_fields` |
+| 3 | same requested policy, different actual opportunity | `test_execution_difference_alone_refuses_when_both_arms_are_admissible`, `test_same_nominal_effort_but_different_completed_search_refuses` |
+| 4 | mismatched evaluator | `test_any_undeclared_mismatch_refuses[evaluator_used]` |
+| 5 | mismatched budget | `test_any_undeclared_mismatch_refuses[envelope_used_vh]` |
+| 6 | mismatched path-set policy | `test_mismatched_pathset_policy_refuses` |
+| 7 | stale cache from an incompatible contract | `test_a_stale_cache_entry_from_another_contract_refuses`, `test_the_store_refuses_an_entry_from_an_incompatible_contract` |
+| 8 | resume vs uninterrupted comparable when semantically identical | `test_resume_is_comparable_only_when_declared_equivalent`, `test_two_paths_declared_equivalent_must_agree` |
+| 9 | identical states compare to null | `test_identical_states_compare_to_null`, `test_identical_state_through_admissible_routes_compares_to_null` |
+| 10 | allowed treatment geometry differences remain comparable | `test_a_matched_comparison_is_admitted` |
+| 11 | promotion refuses raw scores without valid comparison receipts | `test_promotion_refuses_states_without_comparison_receipts` |
+| 12 | canonical result generation refuses inadmissible comparisons | `test_a_finding_cannot_rest_on_a_refused_comparison` |
+| 13 | execution-event imbalance surfaced automatically | `test_balance_audit_surfaces_treatment_correlated_execution`, `test_health_report_fails_closed_on_imbalance` |
+| 14 | the Experiment 3 asymmetry caught with no bespoke guard | `test_the_exp3_start_asymmetry_is_caught_generically` |
+| 15 | existing valid matched comparisons remain possible | `test_a_matched_comparison_is_admitted`, `test_a_declared_no_op_mutation_compares_as_null` |
+
+Plus metamorphic properties in `tests/test_firewall_metamorphic.py`: identity,
+serialization round-trip, digest insertion-order insensitivity, comparison and
+evaluation order invariance, cache on/off equivalence, shard-freedom of
+identity, neutral-recovery signature preservation, and the split between the
+treatment, nuisance, evidence and execution signatures.
+
+## Findings know what they rest on
+
+`finding(claim, comparisons)` refuses to build a claim from a refused
+comparison — a claim whose evidence was inadmissible is not a weaker claim, it
+is not a claim — and refuses to build one from no comparisons at all. A
+`FindingLog` can name every live claim that depended on a given observation, so
+superseding evidence supersedes the slides that used it instead of leaving them
+looking current.
