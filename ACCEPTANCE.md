@@ -893,6 +893,46 @@ unedited network was the harder of the two to solve well, so it arrived less
 converged, and the difference was booked as a geometry benefit worth half a
 point. At 400,000 iterations and 20 restarts the gap closes entirely.
 
+### Amended 2026-08-31, after D27 and D28 — what "effort" actually means
+
+**The iteration ceiling is not the lever.** D28 measured every certification
+restart terminating after roughly **4,000 of its 400,000 permitted
+evaluations**: the exchange search runs out of improving moves long before it
+runs out of budget. A run described as "400000/20/0" is not doing 6.7× the
+search of a "60000/20/0" run — it is doing the same search. What separates
+discovery from certification here is **restart diversity**, 2 against 20.
+
+So gate 12 is restated in terms of what is actually received, not what was
+requested:
+
+> **Gate 12 — optimization convergence.** Treatment and control must receive
+> **treatment-independent start sets** and enough **restart diversity** that
+> residual variation attributable to the allowed start strategy is below the
+> applicable noise floor. Nominal effort settings are recorded for
+> reproducibility; they do not establish convergence and may not be cited as
+> if they did.
+
+Three obligations follow, all mechanised in the semantic comparison firewall
+(`ARCHITECTURE_FIREWALL.md`) rather than left to a reviewer:
+
+1. **Start sets must not depend on the treatment.** D27: whether the optimizer
+   accepted the incumbent start was decided by the edit applied to the network,
+   so the control was optimized by one method and the treatments by another. A
+   contract whose start policy can vary with the state is now refused at
+   construction.
+2. **Completed search is compared, not requested search.** Restarts completed,
+   evaluations performed, termination reason and convergence status live in the
+   `ExecutionReceipt` and are compared between arms; an undeclared difference
+   refuses the comparison. Two arms with identical configuration and different
+   realised search are not comparable.
+3. **Certification must assert convergence.** A certification contract whose
+   solver policy does not require convergence is refused at construction, and a
+   comparison in which either arm did not converge is inadmissible.
+
+Effort should be quoted as restarts and measured convergence. Quoting an
+iteration ceiling as evidence of search depth describes something that did not
+happen.
+
 **The gate.** A comparison between two networks may be quoted only if it is
 accompanied by evidence that both sides are converged, in one of these forms:
 
