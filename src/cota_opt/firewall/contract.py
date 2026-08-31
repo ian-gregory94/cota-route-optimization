@@ -43,6 +43,13 @@ class ExperimentContract:
     #: names as they appear in the flattened spec/receipt maps.
     allowed_treatment_differences: frozenset[str] = frozenset()
 
+    #: Why each declared difference does not confound the comparison. A
+    #: whitelist without reasons is a place to put anything inconvenient; with
+    #: them, every waiver is written down, hashed into the contract digest, and
+    #: readable by whoever inherits the result. Dimensions declared without a
+    #: justification are refused at construction.
+    justifications: dict[str, str] = field(default_factory=dict)
+
     #: Opportunity fields that are permitted to differ by a relative amount,
     #: e.g. {"evaluations_performed": 0.5}. Absent means EXACT match required,
     #: which is deliberate: a cell that quietly did half the search of its
@@ -62,6 +69,13 @@ class ExperimentContract:
     certification_requires_matched_convergence: bool = True
 
     def __post_init__(self) -> None:
+        missing = sorted(d for d in self.allowed_treatment_differences
+                         if not self.justifications.get(d, "").strip())
+        if missing:
+            raise ContractError(
+                "every declared treatment difference needs a written reason it "
+                "does not confound the comparison; missing for: "
+                + ", ".join(missing))
         if self.stage == "certification" and not self.solver.require_convergence:
             raise ContractError(
                 "a certification contract whose solver policy does not require "
