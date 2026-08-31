@@ -211,3 +211,13 @@ slice: 40 -> 40 states remaining
 fatal: cannot lock ref 'HEAD': is at f528b28fe21a62a3cb0d478599583dc514745f87 but expected 6ee97cb8eff62128ea9600a7ebef1e7056f76710
 committed: f528b28 chore: Experiment 2B matched-start confirmation cell
 2026-08-31T17:08:31Z remaining=40
+slice: 40 -> 40 states remaining
+fatal: Unable to create '/home/claude/columbus-transit-opt/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+committed: e443b8b chore: Experiment 2B matched-start confirmation cell
+2026-08-31T17:08:36Z remaining=40
