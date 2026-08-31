@@ -47,6 +47,8 @@ from cota_opt.contract import ContractLimits, ContractViolation   # noqa: E402
 from cota_opt.exp3_cell import run_cell                           # noqa: E402
 from cota_opt.firewall import (CERTIFICATION, ExperimentContract,  # noqa: E402
                                ObservationStore, admit, compare)
+from cota_opt.firewall.contract import (GEOMETRY_DIFFERENCES,     # noqa: E402
+                                        REPAIR_DIFFERENCES)
 from cota_opt.geometry import SegmentTimeModel                    # noqa: E402
 from cota_opt.harness import build_harness                        # noqa: E402
 from cota_opt.mutate import edit_from_record                      # noqa: E402
@@ -66,9 +68,9 @@ EXP2B_CONFIRM = ExperimentContract(
     evaluator="same_route", envelope="pinned_unedited_baseline",
     pathset_policy="rebuilt_per_state", pool_version="exp3-pool-v1",
     methodology_generation="gen1", solver=CERTIFICATION,
-    allowed_treatment_differences=frozenset({
-        "state_digest", "state_key", "cardinality", "members",
-        "pathset_digest"}),
+    allowed_treatment_differences=frozenset(
+        set(GEOMETRY_DIFFERENCES) | set(REPAIR_DIFFERENCES)),
+    justifications={**GEOMETRY_DIFFERENCES, **REPAIR_DIFFERENCES},
     opportunity_tolerances={"evaluations_performed": 1.0},
     noise_floor=0.00287,        # 2B's own certification floor, 0.287 points
 )

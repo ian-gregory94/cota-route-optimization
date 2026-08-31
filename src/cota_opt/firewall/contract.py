@@ -111,16 +111,54 @@ class ExperimentContract:
 
 
 #: Experiment 3 Stage A: geometry is the treatment and nothing else is.
+GEOMETRY_DIFFERENCES = {
+    "state_digest": "The geometry itself. This IS the treatment.",
+    "state_key": "The geometry's name. Follows from state_digest.",
+    "cardinality": "How many edits the state applies. Part of the treatment.",
+    "members": "Which edits the state applies. Part of the treatment.",
+    "pathset_digest":
+        "A different network has a different set of shortest paths; requiring "
+        "identical path sets would only ever admit a comparison of a network "
+        "with itself. What must match is the path-set POLICY, which is an "
+        "identity field of its own and is not declared here.",
+}
+
+#: Repair is treatment-dependent by construction -- a route-lengthening edit
+#: pushes its incumbent further outside the envelope, so it needs more steps to
+#: get back in. Declaring it is only defensible because D30 measured what it
+#: is worth: over eight stratified states at four cardinalities, the repaired
+#: incumbent NEVER won. Greedy won 8/8, the objectives were bit-identical and
+#: the frequency plans hashed the same. The repair changes how the start set is
+#: assembled and demonstrably not what the search returns.
+#:
+#: This waiver is falsifiable and should be re-checked whenever the repair or
+#: the start policy changes: if a repaired incumbent ever wins a cell, the
+#: justification is void and the declaration must come out.
+REPAIR_DIFFERENCES = {
+    "repair_occurred":
+        "D30: across eight stratified previously-fallback states the repaired "
+        "incumbent never won -- greedy won 8/8, bit-identical objectives, "
+        "identical plan hashes. Under starts=BOTH each arm is entitled to the "
+        "same two starts; only the work needed to construct one of them "
+        "differs, and that work does not reach the result.",
+    "repair_steps": "Ladder steps taken by the repair above. Same reason.",
+    "opportunity_events":
+        "INCUMBENT_REPAIRED appears in whichever arm needed the projection. It "
+        "records how a start was built, not a different search; see "
+        "repair_occurred. Any OTHER opportunity-changing event still refuses "
+        "the comparison, because this declaration names the field, and the "
+        "check compares the whole event set.",
+}
+
 EXP3_STAGE_A = ExperimentContract(
     experiment="exp3", version="3.1", stage="discovery",
     objective="lambda_scalarized_path_level", objective_version="lambda=2.0",
     evaluator="same_route", envelope="pinned_unedited_baseline",
     pathset_policy="rebuilt_per_state", pool_version="exp3-pool-v1",
     solver=DISCOVERY,
-    allowed_treatment_differences=frozenset({
-        "state_digest", "state_key", "cardinality", "members",
-        "pathset_digest",      # a different network HAS a different path set
-    }),
+    allowed_treatment_differences=frozenset(
+        set(GEOMETRY_DIFFERENCES) | set(REPAIR_DIFFERENCES)),
+    justifications={**GEOMETRY_DIFFERENCES, **REPAIR_DIFFERENCES},
     # Two states legitimately need different amounts of search to converge;
     # what may not differ is the OPPORTUNITY to search, which is the fields
     # above this one. Declared rather than assumed.
