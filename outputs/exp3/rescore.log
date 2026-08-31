@@ -1875,3 +1875,16 @@ NameError: name 'warm' is not defined
 2026-08-31 17:40:58,457 path set: 27955 paths over 18673/20000 OD pairs (93.6% of flow served), 139435 legs
 2026-08-31 17:40:58,516 period pm_peak : 27955 paths, 20000 OD pairs
 2026-08-31 17:40:58,528 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:42:17,056 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:42:17,146 path set: 24047 paths over 17386/20000 OD pairs (86.6% of flow served), 118156 legs
+2026-08-31 17:42:17,195 period evening : 24047 paths, 20000 OD pairs
+2026-08-31 17:42:17,207 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:43:07,652 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:43:07,733 path set: 22648 paths over 17006/20000 OD pairs (85.1% of flow served), 111587 legs
+2026-08-31 17:43:07,778 period owl     : 22648 paths, 20000 OD pairs
+2026-08-31 17:43:07,778 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:43:07,816      incumbent rescaled x1.0000
+2026-08-31 17:44:56,351 solve lambda=2.0: obj=2.95561e+06 vh=2515.2/2517.2 exchanges=0
+2026-08-31 17:44:56,759 add_stop-004#27407b151153                            obj=2955607 unserved=9744.4 vh=2515.2 571s
+2026-08-31 17:44:56,763 stopping cleanly: 460s needed for add_stop-006#9aecfd5100eb, 24s left
+2026-08-31 17:44:56,780 slice re-scored 3 states; 34 remain
