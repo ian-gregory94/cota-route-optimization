@@ -823,3 +823,49 @@
 2026-08-31 07:33:41,982 incumbent plan is infeasible under this budget
 2026-08-31 07:35:15,274 solve lambda=2.0: obj=2.94744e+06 vh=2514.5/2517.2 exchanges=0
 2026-08-31 07:35:15,291 add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend obj=2947442 unserved=9679.4 vh=2514.5 420s
+2026-08-31 07:35:22,445 slice deadline: 470 s from now, checked between states
+2026-08-31 07:35:22,448 experiment exp3_stage_a_20260831T073522Z
+2026-08-31 07:35:22,578 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 07:35:22,616 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 07:35:22,617 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 07:35:22,618 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 07:35:22,638 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 07:35:22,777 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-31 07:35:22,781 noise floor at 60000/2/32 — objective 0.0391%, unserved 0.1300%
+2026-08-31 07:35:22,789 policy benchmark PASSED — phase A2 may run
+2026-08-31 07:35:22,789 PHASE A2 — budget 315 unique states, 0.1 h remaining
+2026-08-31 07:35:23,055 footpaths: 15487 links (9 from transfers.txt)
+2026-08-31 07:35:23,063 raptor network: 2943 stops, 111 patterns, 15487 footpaths
+2026-08-31 07:35:23,186 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-31 07:35:23,197 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 07:35:23,244 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 07:35:23,307 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:36:13,682 rejected 85 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:36:13,773 path set: 24716 paths over 17389/20000 OD pairs (86.7% of flow served), 120904 legs
+2026-08-31 07:36:13,821 period early   : 24716 paths, 20000 OD pairs
+2026-08-31 07:36:13,833 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:37:11,957 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:37:12,067 path set: 28771 paths over 19279/20000 OD pairs (96.2% of flow served), 141058 legs
+2026-08-31 07:37:12,130 period am_peak : 28771 paths, 20000 OD pairs
+2026-08-31 07:37:12,142 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:38:04,177 rejected 69 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:38:04,261 path set: 24152 paths over 17390/20000 OD pairs (86.7% of flow served), 118290 legs
+2026-08-31 07:38:04,309 period midday  : 24152 paths, 20000 OD pairs
+2026-08-31 07:38:04,319 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:39:00,655 rejected 118 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:39:00,765 path set: 28119 paths over 18692/20000 OD pairs (93.7% of flow served), 139686 legs
+2026-08-31 07:39:00,831 period pm_peak : 28119 paths, 20000 OD pairs
+2026-08-31 07:39:00,843 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:39:55,331 rejected 77 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:39:55,421 path set: 24112 paths over 17387/20000 OD pairs (86.7% of flow served), 117978 legs
+2026-08-31 07:39:55,470 period evening : 24112 paths, 20000 OD pairs
+2026-08-31 07:39:55,482 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 07:40:45,942 rejected 119 malformed candidate paths that failed the re-pricing check
+2026-08-31 07:40:46,022 path set: 22627 paths over 17007/20000 OD pairs (85.1% of flow served), 110835 legs
+2026-08-31 07:40:46,068 period owl     : 22627 paths, 20000 OD pairs
+2026-08-31 07:40:46,069 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 07:40:46,102      incumbent rescaled x1.0043
+2026-08-31 07:40:46,112 incumbent snapped to ladder, max drift 1.0224 min
+2026-08-31 07:40:46,120 incumbent plan is infeasible under this budget
+2026-08-31 07:42:14,936 solve lambda=2.0: obj=2.94462e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 07:42:14,951 add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+rerout obj=2944624 unserved=9652.8 vh=2515.1 412s
