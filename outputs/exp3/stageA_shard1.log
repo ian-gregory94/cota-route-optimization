@@ -2635,3 +2635,13 @@
 2026-08-31 04:59:56,985 solve lambda=2.0: obj=2.97761e+06 vh=2502.8/2517.2 exchanges=142
 2026-08-31 04:59:57,001 truncate-102#dcead1dfc1cc                                  obj=2977609 unserved=9934.7 vh=2502.8 333s
 2026-08-31 04:59:57,009 phase A1 shard done — stopping; merge the shards before A2
+2026-08-31 05:00:10,719 slice deadline: 480 s from now, checked between states
+2026-08-31 05:00:10,724 experiment exp3_stage_a_20260831T050010Z
+2026-08-31 05:00:10,850 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 05:00:10,887 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 05:00:10,887 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 05:00:10,888 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 05:00:10,899 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 05:00:11,037 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-31 05:00:11,037 shard 1/2: 42 of 84 singles
+2026-08-31 05:00:11,043 phase A1 shard done — stopping; merge the shards before A2
