@@ -1377,6 +1377,71 @@ is the result it has to beat.
 
 ---
 
+### D26 — Substitution is universal but its STRENGTH scales with what an edit costs
+
+**Experiment 2B's law survives; its consequence does not.** Across all 240
+feasible subsets there, every one of the 227 multi-edit sets delivered less than
+the sum of its members — and, more strikingly, **not one beat the best single**.
+The combination was worse than its own best member, every time.
+
+Experiment 3's Phase A2 reproduces the first half and inverts the second.
+
+**Evidence.** Every multi-mutation state scored so far, against the same-run
+null, at 2B's discovery effort:
+
+| k | measured | sum of members | interaction | beats best single? |
+|---|---|---|---|---|
+| 4 | −0.684% | −1.318% | **+0.634** | yes |
+| 4 | −0.658% | −1.306% | **+0.648** | yes |
+| 3 | −0.642% | −1.063% | **+0.422** | yes |
+| 3 | −0.593% | −1.032% | **+0.439** | yes |
+| 2 | −0.555% | −0.778% | **+0.223** | yes |
+| 2 | −0.470% | −0.660% | **+0.190** | yes |
+
+**11 of 11 substitute. 11 of 11 beat the best single (−0.404%).** In 2B that
+second column was 0 of 227.
+
+**The mechanism is the envelope, read more carefully than D22 read it.** D22
+attributed non-composition to one shared vehicle-hour budget: two splices cannot
+each have the whole envelope reallocated to exploit them. That is right, and it
+is incomplete. What matters is *how much of the envelope an edit consumes*.
+
+A splice is expensive. Through-routing lengthens the merged line, so the edit
+spends budget merely to exist, and a second splice competes for what is left
+before it can deliver anything. Substitution is then near-total: the pair
+delivers less than either alone.
+
+`add_stop` and `extend` are cheap. A stop inserted at a 400 m detour, or a route
+continued a few stops further, costs a small slice of running time. Two of them
+fit inside the budget with room to contribute, so they substitute *partially* —
+each gets less than it would alone, but the pair still beats either.
+
+> **Substitution is universal. Its strength is a property of the edit's cost,
+> not of geometry editing as such.** 2B measured the expensive corner of that
+> spectrum and generalized from it.
+
+**Why this matters beyond bookkeeping.** D20 and D22 were the reason Experiment
+3's contract forbids ranking mutations and taking the top N, and that reasoning
+is untouched — everything here still substitutes, so summing member effects
+still overstates, by 0.19 to 0.69 points. What changes is the expectation of
+what a search should find. In 2B the correct answer was one edit or none. Here
+the correct answer is plausibly a *set*, and a search that stopped at the best
+single would leave roughly 40% of the available effect unclaimed.
+
+**Confidence.** The qualitative pattern is consistent across all 11 multi-states
+scored and across cardinalities 2, 3 and 4, with interaction growing
+monotonically in k. The magnitudes are **discovery-stage** and gate 12 applies
+with full force — D24 is precisely the case where a discovery-effort leader
+evaporated at certification, and 2B's own −0.585% leader certified as +0.007%.
+Nothing here is promoted on these numbers.
+
+**What would falsify it.** Certification at 400,000/20 showing the multi-state
+margins collapsing into the floor while the singles hold, which would mean the
+apparent composition was search noise rather than mechanism. Or a cheap-edit
+pair that substitutes totally, which would break the cost-scaling story.
+
+---
+
 ### D25 — The geometry null survives the budget-weight sweep, and the substitution law does not
 
 **Stage B asked whether Experiment 2B's answer is a property of λ=2.** The whole
