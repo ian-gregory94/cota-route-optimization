@@ -1,0 +1,66 @@
+[
+  {
+    "label": "A2 leader",
+    "state_key": "add_stop-010#22c4c35ac5b2+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "cardinality": 4,
+    "recorded_objective": 2943013.330684786,
+    "recorded_unserved": 9678.607940052065,
+    "recorded_veh_hours": 2513.9300655506504
+  },
+  {
+    "label": "k=2",
+    "state_key": "add_stop-010#22c4c35ac5b2+reroute-031#dfd049714f7d",
+    "cardinality": 2,
+    "recorded_objective": 2946056.460633146,
+    "recorded_unserved": 9685.794374985551,
+    "recorded_veh_hours": 2512.7999914260636
+  },
+  {
+    "label": "k=4",
+    "state_key": "add_stop-010#22c4c35ac5b2+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "cardinality": 4,
+    "recorded_objective": 2943287.3456353843,
+    "recorded_unserved": 9670.239105114513,
+    "recorded_veh_hours": 2513.056699770745
+  },
+  {
+    "label": "k=3",
+    "state_key": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+    "cardinality": 3,
+    "recorded_objective": 2943490.755785079,
+    "recorded_unserved": 9671.801422223041,
+    "recorded_veh_hours": 2512.928262111296
+  },
+  {
+    "label": "single add_stop",
+    "state_key": "add_stop-010#22c4c35ac5b2",
+    "cardinality": 1,
+    "recorded_objective": 2950538.0418019183,
+    "recorded_unserved": 9716.001154545502,
+    "recorded_veh_hours": 2515.6695578552644
+  },
+  {
+    "label": "single extend",
+    "state_key": "extend-025#441ece050fe8",
+    "cardinality": 1,
+    "recorded_objective": 2954048.7671424765,
+    "recorded_unserved": 9740.016047485338,
+    "recorded_veh_hours": 2513.3967429651175
+  },
+  {
+    "label": "single reroute",
+    "state_key": "reroute-031#dfd049714f7d",
+    "cardinality": 1,
+    "recorded_objective": 2951408.5161883654,
+    "recorded_unserved": 9714.15176118965,
+    "recorded_veh_hours": 2512.3976085168906
+  },
+  {
+    "label": "single splice",
+    "state_key": "splice-011-034-WESHIGW#2c53c24a4f24",
+    "cardinality": 1,
+    "recorded_objective": 2957680.4900542153,
+    "recorded_unserved": 9754.969670750388,
+    "recorded_veh_hours": 2514.3822760235607
+  }
+]
