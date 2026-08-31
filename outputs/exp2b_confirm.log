@@ -113,3 +113,43 @@ Not every seed produced an admissible comparison yet.
 2026-08-31 15:08:48,872 stopping cleanly: 1150s needed, 413s left
 
 Not every seed produced an admissible comparison yet.
+2026-08-31 15:08:50,810 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 15:08:50,846 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:08:50,847 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:08:50,848 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:08:50,859 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:08:51,264 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:08:51,273 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:08:51,393 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:08:51,404 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:08:51,455 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:08:51,524 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:09:44,391 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:09:44,491 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-31 15:09:44,542 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:09:44,554 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:10:46,013 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:10:46,126 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-31 15:10:46,191 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:10:46,203 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:11:42,787 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:11:42,881 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-31 15:11:42,936 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:11:42,949 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:12:40,006 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:12:40,116 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-31 15:12:40,176 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:12:40,188 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:13:37,813 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:13:37,916 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-31 15:13:37,967 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:13:37,979 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:14:29,906 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:14:29,992 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-31 15:14:30,043 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:14:30,043 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:25:44,225 solve lambda=2.0: obj=2.95601e+06 vh=2515.9/2517.2 exchanges=36
+2026-08-31 15:25:44,602 null                       seed 20260827 obj=2956009 unserved=9746.7 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 15:25:44,604 stopping cleanly: 1150s needed, 386s left
+
+Not every seed produced an admissible comparison yet.
