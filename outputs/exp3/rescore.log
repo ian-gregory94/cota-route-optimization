@@ -1842,3 +1842,7 @@ NameError: name 'warm' is not defined
 2026-08-31 17:30:14,070 path set: 27984 paths over 18673/20000 OD pairs (93.6% of flow served), 139631 legs
 2026-08-31 17:30:14,131 period pm_peak : 27984 paths, 20000 OD pairs
 2026-08-31 17:30:14,143 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:31:39,856 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:31:40,015 path set: 24051 paths over 17386/20000 OD pairs (86.6% of flow served), 118237 legs
+2026-08-31 17:31:40,109 period evening : 24051 paths, 20000 OD pairs
+2026-08-31 17:31:40,131 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
