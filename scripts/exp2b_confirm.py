@@ -158,8 +158,10 @@ def report(have: dict) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--deadline-seconds", type=float, default=540.0)
-    ap.add_argument("--cell-seconds", type=float, default=520.0)
+    ap.add_argument("--deadline-seconds", type=float, default=1400.0)
+    ap.add_argument("--cell-seconds", type=float, default=750.0,
+                    help="a certification cell is ~20 restarts at ~25s plus "
+                         "its initial search; never start one inside this")
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--list", action="store_true")
     args = ap.parse_args()
@@ -191,7 +193,7 @@ def main() -> int:
                         exp3.pathset_cache_params(edits, seed, "same_route"))
         ps_path = cache_dir() / f"{ps_key}.pkl"
         warm = ps_path.exists()
-        need = args.cell_seconds if warm else args.cell_seconds + 340
+        need = args.cell_seconds if warm else args.cell_seconds + 400
         if time.time() + need > deadline:
             log.info("stopping cleanly: %.0fs needed, %.0fs left",
                      need, deadline - time.time())

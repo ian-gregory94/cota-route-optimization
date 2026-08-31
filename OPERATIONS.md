@@ -152,3 +152,12 @@ for treated networks than for the control (D27). Before trusting a batch of
 results, aggregate the log lines it produced and look at the counts — not the
 lines. Any warning firing on more than a few percent of runs gets explained or
 promoted to an error.
+
+**17. A pattern that matches your own command line kills you.** `pkill -f
+exp3_validate_loop`, run from a tool call whose command string contained that
+text, matched its own shell and terminated the call before anything ran. This
+is rule 12 — never let a liveness check match itself — reappearing on the other
+side: rule 12 was about a check that always finds itself alive, this is a kill
+that always finds itself dead. Match on a bracketed pattern (`[e]xp3_...`), a
+pidfile, or a recorded pid; never on a literal string you have just typed into
+the same command.
