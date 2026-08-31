@@ -13,7 +13,8 @@ python scripts/exp3_rescore.py --deadline-seconds "$SECS" >> "$OUT/rescore.log" 
 after=$(remaining)
 echo "slice: $before -> $after states remaining"
 
-git add -A >/dev/null 2>&1
+git add outputs/exp3/stageA_rescored.jsonl outputs/exp3/rescore.log \
+        outputs/exp3/observations data/cache >/dev/null 2>&1
 if ! git diff --cached --quiet; then
   git commit -q -m "chore: Experiment 3 A1 re-score slice — $((before-after)) done, $after of 40 remaining
 

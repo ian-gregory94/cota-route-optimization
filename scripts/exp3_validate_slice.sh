@@ -9,7 +9,8 @@ before=$(remaining)
 python scripts/exp3_validate_fallback.py --deadline-seconds "$SECS" >> "$OUT/validate.log" 2>&1
 after=$(remaining)
 echo "slice: $before -> $after cells remaining"
-git add -A >/dev/null 2>&1
+git add outputs/exp3/validation_fallback.jsonl outputs/exp3/validate.log \
+        outputs/exp3/validation_plans data/cache >/dev/null 2>&1
 if ! git diff --cached --quiet; then
   git commit -q -m "chore: fallback greedy-vs-both validation — $((before-after)) cells done, $after remaining
 

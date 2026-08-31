@@ -175,3 +175,12 @@ smoke-test the exact invocation, and this was a forty-state, multi-hour loop
 launched over a code path edited twenty minutes earlier and never run. The
 crash was in the first line of the first state. One foreground state before the
 loop costs three minutes and is the whole cost of finding out.
+
+**20. A background loop commits its own outputs, never `git add -A`.** The 2B
+confirmation loop committed every fifteen minutes with `git add -A`, and twice
+it swept up source edits being made in the foreground — so a `NameError` fix and
+two new operations rules landed in history under "chore: Experiment 2B
+matched-start confirmation cell". Nothing was lost and the tree was correct, but
+the audit trail said a routine cell had changed the scoring path, which is worse
+than useless in a project whose whole defence is its provenance. Every batch
+loop now names the paths it owns.
