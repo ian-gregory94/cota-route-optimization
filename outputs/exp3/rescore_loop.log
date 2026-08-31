@@ -246,3 +246,6 @@ slice: 40 -> 40 states remaining
 committed: 46fd212 chore: Experiment 3 A1 re-score slice — 0 done, 40 of 40 remaining
 2026-08-31T17:09:22Z remaining=40
 slice: 40 -> 40 states remaining
+fatal: cannot lock ref 'HEAD': is at f8b043ac94d8fae63a43be55abe84d815e5b42ae but expected fd104ba262e990eca950895c41e17b83008ba47a
+committed: f8b043a chore: Experiment 2B matched-start confirmation cell
+2026-08-31T17:09:27Z remaining=40
