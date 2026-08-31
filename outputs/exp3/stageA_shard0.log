@@ -1102,3 +1102,47 @@ KeyError: 'peak_vehicles'
 2026-08-31 00:46:42,560 slice ends here — not starting a state it cannot finish (59 s left, a state needs 430)
 2026-08-31 00:46:42,563 noise floor at 60000/2/32 — objective 0.0391%, unserved 0.1300%
 2026-08-31 00:46:42,567 phase A1 shard done — stopping; merge the shards before A2
+2026-08-31 00:46:48,828 slice deadline: 480 s from now, checked between states
+2026-08-31 00:46:48,832 experiment exp3_stage_a_20260831T004648Z
+2026-08-31 00:46:48,963 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 00:46:48,999 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 00:46:49,000 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 00:46:49,000 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 00:46:49,012 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 00:46:49,143 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-31 00:46:49,143 shard 0/2: 42 of 84 singles
+2026-08-31 00:46:49,412 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 00:46:49,421 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 00:46:49,534 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 00:46:49,543 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 00:46:49,614 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 00:46:49,676 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:47:39,329 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:47:39,418 path set: 24646 paths over 17388/20000 OD pairs (86.7% of flow served), 121182 legs
+2026-08-31 00:47:39,466 period early   : 24646 paths, 20000 OD pairs
+2026-08-31 00:47:39,478 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:48:35,995 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:48:36,101 path set: 28768 paths over 19278/20000 OD pairs (96.2% of flow served), 141615 legs
+2026-08-31 00:48:36,159 period am_peak : 28768 paths, 20000 OD pairs
+2026-08-31 00:48:36,171 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:49:26,992 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:49:27,082 path set: 24080 paths over 17389/20000 OD pairs (86.7% of flow served), 118542 legs
+2026-08-31 00:49:27,133 period midday  : 24080 paths, 20000 OD pairs
+2026-08-31 00:49:27,146 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:50:23,162 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:50:23,268 path set: 28005 paths over 18673/20000 OD pairs (93.6% of flow served), 139707 legs
+2026-08-31 00:50:23,339 period pm_peak : 28005 paths, 20000 OD pairs
+2026-08-31 00:50:23,351 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:51:16,364 rejected 84 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:51:16,453 path set: 24027 paths over 17386/20000 OD pairs (86.6% of flow served), 118026 legs
+2026-08-31 00:51:16,501 period evening : 24027 paths, 20000 OD pairs
+2026-08-31 00:51:16,513 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 00:52:05,618 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 00:52:05,696 path set: 22660 paths over 17006/20000 OD pairs (85.1% of flow served), 111581 legs
+2026-08-31 00:52:05,742 period owl     : 22660 paths, 20000 OD pairs
+2026-08-31 00:52:05,742 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 00:52:26,145 solve lambda=2.0: obj=2.96622e+06 vh=2509.7/2517.2 exchanges=143
+2026-08-31 00:52:26,159 change_terminal-004-BOASHAS#708035f204d1                   obj=2966220 unserved=9840.2 vh=2509.7 337s
+2026-08-31 00:52:26,161 slice ends here — not starting a state it cannot finish (143 s left, a state needs 430)
+2026-08-31 00:52:26,163 noise floor at 60000/2/32 — objective 0.0391%, unserved 0.1300%
+2026-08-31 00:52:26,167 phase A1 shard done — stopping; merge the shards before A2
