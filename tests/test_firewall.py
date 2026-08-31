@@ -320,3 +320,77 @@ def test_health_report_fails_closed_on_imbalance():
     assert not rep.healthy
     assert rep.imbalances
     assert "TREATMENT-CORRELATED" in rep.text()
+
+
+# --------------------------------------------------------------------------
+# the observation store: cache identity is the whole spec, not the state name
+# --------------------------------------------------------------------------
+
+def test_the_cache_key_moves_when_any_semantic_field_moves(tmp_path):
+    """A state name is not an identity. Everything that changes the meaning
+    of an evaluation must change where its answer is filed."""
+    import dataclasses as dc
+    base = spec()
+    seen = {base.cache_key}
+    for field, value in (("evaluator", "pattern_level"),
+                         ("objective", "unweighted"),
+                         ("objective_version", "lambda=4.0"),
+                         ("envelope_digest", "other"),
+                         ("pathset_policy", "shared_master"),
+                         ("pool_version", "v2"),
+                         ("config_digest", "cfg-2"),
+                         ("data_digest", "data-2"),
+                         ("code_version", "def456"),
+                         ("seed", 999),
+                         ("state_digest", "s9")):
+        k = dc.replace(base, **{field: value}).cache_key
+        assert k not in seen, f"{field} does not change the cache key"
+        seen.add(k)
+
+
+def test_the_store_refuses_an_entry_from_an_incompatible_contract(tmp_path):
+    from cota_opt.firewall import ObservationStore
+    store = ObservationStore(tmp_path)
+    store.put(receipt())
+    other = dataclasses.replace(CONTRACT, version="3.0")
+    got = store.get(spec(), other)
+    assert not got
+    assert "contract" in got.reason        # written under one, asked under another
+
+
+def test_the_store_refuses_an_entry_that_no_longer_satisfies_its_contract(tmp_path):
+    """The entry was written under this contract and is still wrong for it."""
+    from cota_opt.firewall import ObservationStore
+    store = ObservationStore(tmp_path)
+    store.put(receipt(starts_attempted=("greedy",), restarts_completed=0))
+    got = store.get(spec(), CONTRACT)
+    assert not got and "inadmissible" in got.reason
+    assert got.event is not None and got.event.type is EventType.CACHE_INVALIDATED
+
+
+def test_a_valid_entry_round_trips(tmp_path):
+    from cota_opt.firewall import ObservationStore
+    store = ObservationStore(tmp_path)
+    store.put(receipt())
+    got = store.get(spec(), CONTRACT)
+    assert isinstance(got, ExecutionReceipt)
+    assert got.spec.digest == spec().digest
+
+
+def test_only_the_store_names_files_in_the_observation_store():
+    """A runner that builds its own path there has its own cache identity.
+
+    Section 13 asks for one canonical key-generation path and a test that fails
+    if a runner bypasses it. The store owns its filename prefix; nothing else
+    may write it.
+    """
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parents[1]
+    offenders = []
+    for p in list((root / "src").rglob("*.py")) + list((root / "scripts").rglob("*.py")):
+        if p.parent.name == "firewall":     # the key generator and its store
+            continue
+        text = p.read_text()
+        if '"cell-' in text or "'cell-" in text:
+            offenders.append(str(p.relative_to(root)))
+    assert not offenders, f"bypassing the observation store's identity: {offenders}"
