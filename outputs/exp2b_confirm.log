@@ -1293,3 +1293,18 @@ this retest, matched starts   : +0.0540% (0.19 floors, NULL)
 PASS — 2B's certified NULL survives matched starts.
 
 wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:56:24,915 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:56:24,936 splice-011-034-WESHIGW     seed 20260827 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json

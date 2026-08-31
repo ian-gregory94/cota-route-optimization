@@ -161,11 +161,11 @@
     {
       "seed": 20260827,
       "admissible": true,
-      "comparison_id": "cmp-a944ed919a46b752",
+      "comparison_id": "cmp-ce9d49193966f1fc",
       "contract": "7157ce1de9373420",
       "methodology_generation": "gen1",
       "control_receipt": "c11fe6845b839664",
-      "treatment_receipt": "faf7c906b74efd0a",
+      "treatment_receipt": "9ad29d1e89ec6985",
       "control_state": "<none>",
       "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
       "effect": 1671.9618287594058,
@@ -227,7 +227,7 @@
         "nuisance": "df69dd2e7f5bab7d",
         "evidence": "ab0009a68ebd135e",
         "execution": "fa576fbbaf3504fa",
-        "receipt": "faf7c906b74efd0a",
+        "receipt": "9ad29d1e89ec6985",
         "spec": "9655bea752f95119",
         "contract": "7157ce1de9373420"
       }
