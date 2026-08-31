@@ -1760,3 +1760,12 @@ NameError: name 'warm' is not defined
 2026-08-31 17:12:38,798 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
 2026-08-31 17:12:38,799 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
 2026-08-31 17:12:38,814 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:39,077 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
