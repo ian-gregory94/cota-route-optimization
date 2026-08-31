@@ -1846,3 +1846,8 @@ NameError: name 'warm' is not defined
 2026-08-31 17:31:40,015 path set: 24051 paths over 17386/20000 OD pairs (86.6% of flow served), 118237 legs
 2026-08-31 17:31:40,109 period evening : 24051 paths, 20000 OD pairs
 2026-08-31 17:31:40,131 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:32:53,460 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:32:53,547 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111740 legs
+2026-08-31 17:32:53,596 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:32:53,596 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:32:53,632      incumbent rescaled x1.0003
