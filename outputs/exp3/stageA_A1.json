@@ -1,8 +1,39 @@
 {
   "phase": "A1",
-  "singles_scored": 17,
-  "replicates": 0,
-  "noise_floor": null,
-  "best_single": "add_stop-010#22c4c35ac5b2",
+  "singles_scored": 15,
+  "replicates": 3,
+  "noise_floor": {
+    "n_replicates": 3,
+    "effort": "60000/2/32",
+    "absolute_3sigma": {
+      "objective": 1159.7762193268945,
+      "generalized_cost": 657.4916923090784,
+      "unserved_demand": 12.748719526281437,
+      "served_demand": 12.748719526282681,
+      "gc_per_served_trip": 0.03623382091759527,
+      "revenue_veh_hours": 7.393864659054852,
+      "peak_vehicles": 0.7284575942221212
+    },
+    "relative_3sigma_pct": {
+      "objective": 0.03914966019881576,
+      "generalized_cost": 0.03683074701901396,
+      "unserved_demand": 0.12995124303962818,
+      "served_demand": 0.06031010347945774,
+      "gc_per_served_trip": 0.04290529355966305,
+      "revenue_veh_hours": 0.2950998039441876,
+      "peak_vehicles": 0.41343977780424723
+    },
+    "replicate_means": {
+      "objective": 2962417.0770247877,
+      "generalized_cost": 1785170.6672407344,
+      "unserved_demand": 9810.386748200444,
+      "served_demand": 21138.613251799557,
+      "gc_per_served_trip": 84.45070039483453,
+      "revenue_veh_hours": 2505.5471268470437,
+      "peak_vehicles": 176.19436574074075
+    },
+    "note": "3 sigma of the zero-edit replicate spread, measured in this run at this effort. Floors from other runs or other quantities do not transfer."
+  },
+  "best_single": "extend-024#26db14321a47",
   "refused": []
 }
