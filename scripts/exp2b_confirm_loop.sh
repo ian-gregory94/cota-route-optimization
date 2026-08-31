@@ -19,8 +19,7 @@ while true; do
   [ "$n" -eq 0 ] && break
   timeout 1500 python scripts/exp2b_confirm.py --deadline-seconds 1400 \
       >> "$OUT/exp2b_confirm.log" 2>&1
-  git add outputs/exp2b_confirm.log outputs/exp2b_confirmation.json \
-        outputs/exp3/observations_cert data/cache >/dev/null 2>&1
+  git add outputs/exp2b_confirmation.json outputs/exp3/observations_cert >/dev/null 2>&1
   git diff --cached --quiet || git commit -q -m "chore: Experiment 2B matched-start confirmation cell
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

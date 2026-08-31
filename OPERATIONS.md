@@ -201,3 +201,10 @@ under a confirmation-cell message. Only one process should commit a given path.
 When a loop is running, stage explicit paths, expect the lock to be contended,
 and retry — and never assume your own `git add` will still be staged when your
 `git commit` runs.
+
+**23. A loop must not commit its own log.** Every batch loop was committing the
+log file it was appending to, so each slice produced a commit whose only change
+was the log growing. Forty substantive commits became 2,646, and the history
+stopped being readable at exactly the moment its readability mattered most.
+Commit the artifacts a loop produces — rows, receipts, results — and leave logs
+to the working tree. If a log is worth keeping, commit it once at the end.
