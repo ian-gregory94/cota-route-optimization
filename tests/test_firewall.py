@@ -465,3 +465,30 @@ def test_superseding_an_observation_names_the_findings_that_depended_on_it():
     assert not log.findings[0].live
     assert log.findings[0].superseded.startswith("D27")
     assert log.dependents([c.treatment.receipt.digest]) == []
+
+
+# --------------------------------------------------------------------------
+# methodology generation: Gen2 is a different generation's answer, not a fix
+# --------------------------------------------------------------------------
+
+def test_the_generation_is_part_of_the_cache_identity():
+    import dataclasses as dc
+    assert spec().cache_key != dc.replace(
+        spec(), methodology_generation="gen2").cache_key
+
+
+def test_a_cell_from_another_generation_is_not_this_experiments_evidence():
+    gen2 = dataclasses.replace(CONTRACT, methodology_generation="gen2")
+    g2 = ExecutionReceipt(
+        spec=spec(gen2), evaluator_used=CONTRACT.evaluator,
+        objective_used=CONTRACT.objective,
+        start_policy_requested=CONTRACT.solver.start_policy,
+        starts_attempted=("repaired", "greedy"), restarts_completed=2,
+        converged=True, objective=9e5)
+    assert not admit(g2, CONTRACT)
+    assert isinstance(compare(receipt(), g2, CONTRACT), InadmissibleComparison)
+
+
+def test_a_comparison_records_the_generation_that_produced_it():
+    r = compare(receipt(), treated(), CONTRACT)
+    assert r.as_dict()["methodology_generation"] == "gen1"

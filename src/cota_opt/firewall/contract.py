@@ -30,6 +30,13 @@ class ExperimentContract:
     envelope: str
     pathset_policy: str
     pool_version: str
+    #: Which methodological generation produced this. Gen1 is the frozen
+    #: definitions of path construction, assignment, Model B waiting, the
+    #: objective, the envelope, the headway ladder, the frequency optimizer,
+    #: the mutation representation, the search strategy and the certification
+    #: policy. A Gen2 artifact is not a correction of a Gen1 artifact: it is a
+    #: different generation's answer, and both are kept.
+    methodology_generation: str = "gen1"
     solver: SolverPolicy = field(default_factory=lambda: DISCOVERY)
 
     #: The ONLY dimensions on which control and treatment may differ. Dotted

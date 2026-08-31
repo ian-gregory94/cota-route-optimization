@@ -86,6 +86,7 @@ class ComparisonResult:
 
     def as_dict(self) -> dict:
         return {"comparison_id": self.id, "contract": self.contract.digest,
+                "methodology_generation": self.contract.methodology_generation,
                 "control_receipt": self.control.receipt.digest,
                 "treatment_receipt": self.treatment.receipt.digest,
                 "control_state": self.control.receipt.spec.state_key,

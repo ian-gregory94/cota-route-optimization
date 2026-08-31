@@ -27,6 +27,7 @@ class Finding:
     observation_digests: tuple[str, ...]
     code_version: str = ""
     schema_version: str = SCHEMA_VERSION
+    methodology_generation: str = "gen1"
     superseded: str = ""
 
     @property
@@ -41,6 +42,7 @@ class Finding:
                 "observations": list(self.observation_digests),
                 "code_version": self.code_version,
                 "schema_version": self.schema_version,
+                "methodology_generation": self.methodology_generation,
                 "superseded": self.superseded}
 
 
@@ -66,7 +68,8 @@ def finding(claim: str, comparisons, *, experiment: str, stage: str,
                    experiment=experiment, stage=stage,
                    contract_digest=comps[0].contract.digest,
                    comparison_ids=cids, observation_digests=obs,
-                   code_version=code_version)
+                   code_version=code_version,
+                   methodology_generation=comps[0].contract.methodology_generation)
 
 
 @dataclass
@@ -84,6 +87,8 @@ class FindingLog:
                         observation_digests=tuple(d["observations"]),
                         code_version=d.get("code_version", ""),
                         schema_version=d.get("schema_version", SCHEMA_VERSION),
+                        methodology_generation=d.get("methodology_generation",
+                                                     "gen1"),
                         superseded=d.get("superseded", ""))
                 for d in json.loads(self.path.read_text())]
         return self
