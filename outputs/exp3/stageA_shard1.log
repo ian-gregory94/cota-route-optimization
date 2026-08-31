@@ -2249,3 +2249,46 @@
 2026-08-31 04:06:30,797 straighten-021#110f4a755fe7                                obj=2963961 unserved=9825.3 vh=2509.3 331s
 2026-08-31 04:06:30,798 slice ends here — not starting a state it cannot finish (148 s left, a state needs 430)
 2026-08-31 04:06:30,804 phase A1 shard done — stopping; merge the shards before A2
+2026-08-31 04:08:04,145 slice deadline: 480 s from now, checked between states
+2026-08-31 04:08:04,152 experiment exp3_stage_a_20260831T040804Z
+2026-08-31 04:08:04,280 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 04:08:04,315 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 04:08:04,316 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 04:08:04,317 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 04:08:04,328 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 04:08:04,475 PHASE A1 — 84 single mutations + 3 zero-edit replicates
+2026-08-31 04:08:04,476 shard 1/2: 42 of 84 singles
+2026-08-31 04:08:04,748 footpaths: 15565 links (9 from transfers.txt)
+2026-08-31 04:08:04,757 raptor network: 2944 stops, 111 patterns, 15565 footpaths
+2026-08-31 04:08:04,881 zones: 1397 (636 with transit access within 600 m), 3931 access links
+2026-08-31 04:08:04,891 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 04:08:04,945 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 04:08:05,001 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:08:55,258 rejected 96 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:08:55,348 path set: 24564 paths over 17342/20000 OD pairs (86.4% of flow served), 120860 legs
+2026-08-31 04:08:55,397 period early   : 24564 paths, 20000 OD pairs
+2026-08-31 04:08:55,409 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:09:53,643 rejected 75 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:09:53,747 path set: 28696 paths over 19231/20000 OD pairs (96.0% of flow served), 141334 legs
+2026-08-31 04:09:53,805 period am_peak : 28696 paths, 20000 OD pairs
+2026-08-31 04:09:53,816 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:10:45,360 rejected 74 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:10:45,447 path set: 24050 paths over 17343/20000 OD pairs (86.4% of flow served), 118490 legs
+2026-08-31 04:10:45,497 period midday  : 24050 paths, 20000 OD pairs
+2026-08-31 04:10:45,508 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:11:42,128 rejected 123 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:11:42,230 path set: 27930 paths over 18626/20000 OD pairs (93.3% of flow served), 139357 legs
+2026-08-31 04:11:42,290 period pm_peak : 27930 paths, 20000 OD pairs
+2026-08-31 04:11:42,302 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:12:36,245 rejected 81 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:12:36,333 path set: 24015 paths over 17340/20000 OD pairs (86.4% of flow served), 118062 legs
+2026-08-31 04:12:36,385 period evening : 24015 paths, 20000 OD pairs
+2026-08-31 04:12:36,397 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 04:13:25,741 rejected 130 malformed candidate paths that failed the re-pricing check
+2026-08-31 04:13:25,821 path set: 22567 paths over 16959/20000 OD pairs (84.9% of flow served), 111224 legs
+2026-08-31 04:13:25,866 period owl     : 22567 paths, 20000 OD pairs
+2026-08-31 04:13:25,867 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 04:13:51,418 solve lambda=2.0: obj=2.96316e+06 vh=2504.2/2517.2 exchanges=154
+2026-08-31 04:13:51,433 straighten-025#f0732765f122                                obj=2963156 unserved=9863.5 vh=2504.2 347s
+2026-08-31 04:13:51,434 slice ends here — not starting a state it cannot finish (133 s left, a state needs 430)
+2026-08-31 04:13:51,440 phase A1 shard done — stopping; merge the shards before A2
