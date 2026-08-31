@@ -830,3 +830,5 @@ Traceback (most recent call last):
 cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
 
 Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
