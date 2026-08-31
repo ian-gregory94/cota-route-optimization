@@ -1139,3 +1139,35 @@ this retest, matched starts   : +0.0528% (0.18 floors, NULL)
 PASS — 2B's certified NULL survives matched starts.
 
 wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:33:53,653 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:33:53,697 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:33:53,697 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:33:53,698 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:33:53,724 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:33:54,223 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:33:54,233 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:33:54,344 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:33:54,353 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:33:54,399 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:33:54,405 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:33:54,412 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:33:54,417 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:33:54,423 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:33:54,429 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:33:54,434 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:33:54,434 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:34:02,399 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:34:02,417 splice-011-034-WESHIGW     seed 20260826 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:34:02,417 stopping cleanly: 750s needed, 736s left
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
