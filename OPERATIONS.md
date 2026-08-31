@@ -184,3 +184,20 @@ matched-start confirmation cell". Nothing was lost and the tree was correct, but
 the audit trail said a routine cell had changed the scoring path, which is worse
 than useless in a project whose whole defence is its provenance. Every batch
 loop now names the paths it owns.
+
+**21. `grep -c` prints a count AND exits non-zero when it finds nothing.** So
+`n=$(... | grep -c pattern || echo 0)` emits *two* lines — `0` from grep and `0`
+from the fallback — and `n` becomes `$'0\n0'`. `[ "$n" -eq 0 ]` then fails as a
+syntax error rather than matching, the loop never reaches its exit condition,
+and it spins after its work is done: the 2B confirmation loop ran for twenty
+minutes past completion, committing as it went. Use `n=$(...); n=${n:-0}`, and
+assert the count is actually a number before branching on it — every loop here
+now refuses to continue on a non-numeric count.
+
+**22. Two writers, one git index.** Foreground commits raced the background
+loop's, and `git commit` failed with "cannot lock ref 'HEAD'". Worse, the loop's
+`git add` (before rule 20) swept up foreground edits, filing a census builder
+under a confirmation-cell message. Only one process should commit a given path.
+When a loop is running, stage explicit paths, expect the lock to be contended,
+and retry — and never assume your own `git add` will still be staged when your
+`git commit` runs.
