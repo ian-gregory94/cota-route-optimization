@@ -1017,3 +1017,34 @@ Not every seed produced an admissible comparison yet.
 2026-08-31 16:02:08,340 stopping cleanly: 750s needed, 724s left
 
 Not every seed produced an admissible comparison yet.
+2026-08-31 16:02:10,461 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:02:10,499 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:02:10,500 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:02:10,501 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:02:10,513 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:02:11,068 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:02:11,079 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:02:11,200 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:02:11,210 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:02:11,281 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:02:11,287 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:02:11,294 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:02:11,299 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:02:11,305 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:02:11,310 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:02:11,315 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:02:11,316 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:12:21,562 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:12:21,581 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:12:21,581 stopping cleanly: 750s needed, 112s left
+
+        seed     effect %
+    20260825      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json

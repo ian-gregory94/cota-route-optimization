@@ -1,0 +1,94 @@
+{
+  "contract": "7157ce1de9373420",
+  "methodology_generation": "gen1",
+  "candidate": "splice-011-034-WESHIGW",
+  "effort": "400000/20/0",
+  "seeds": [
+    20260825,
+    20260826,
+    20260827
+  ],
+  "start_policy": "both",
+  "per_seed": [
+    {
+      "seed": 20260825,
+      "admissible": true,
+      "comparison_id": "cmp-2b92058d128b7af9",
+      "contract": "7157ce1de9373420",
+      "methodology_generation": "gen1",
+      "control_receipt": "1b9b5ea93de12c10",
+      "treatment_receipt": "8cf4996fc80fa723",
+      "control_state": "<none>",
+      "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "effect": 1559.9060987266712,
+      "effect_pct": 0.05276868972101983,
+      "components": {
+        "gc_per_served_trip": [
+          84.32016477290007,
+          84.26185896272096
+        ],
+        "generalized_cost": [
+          1787084.1295641689,
+          1786612.7109357275
+        ],
+        "lambda": [
+          2.0,
+          2.0
+        ],
+        "objective": [
+          2957680.4900542153,
+          2956120.5839554886
+        ],
+        "peak_vehicles": [
+          176.29287268510072,
+          176.19194675925925
+        ],
+        "revenue_veh_hours": [
+          2514.3822760235607,
+          2515.1316648835345
+        ],
+        "served_demand": [
+          21194.030329249614,
+          21203.10105816866
+        ],
+        "unserved_demand": [
+          9754.969670750388,
+          9745.898941831343
+        ]
+      },
+      "declared_differences": [
+        "repair_occurred",
+        "repair_steps",
+        "spec.cardinality",
+        "spec.members",
+        "spec.state_digest",
+        "spec.state_key"
+      ],
+      "above_noise_floor": false,
+      "control_signatures": {
+        "treatment": "97a55e7650c854e3",
+        "nuisance": "687d27d6776a4fc2",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "33398cdfcbe0bbca",
+        "receipt": "1b9b5ea93de12c10",
+        "spec": "77321193b74a2ca4",
+        "contract": "7157ce1de9373420"
+      },
+      "treatment_signatures": {
+        "treatment": "5f087ba2a2c96d3e",
+        "nuisance": "40c2ab72032ad813",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "47f5756d3699c6f0",
+        "receipt": "8cf4996fc80fa723",
+        "spec": "1c49c60252745c7a",
+        "contract": "7157ce1de9373420"
+      }
+    }
+  ],
+  "mean_effect_pct": 0.05276868972101983,
+  "floor_pct": 0.28700000000000003,
+  "measurable": false,
+  "recorded_2b_effect_pct": 0.0065,
+  "recorded_2b_discovery_pct": -0.5845518890625012,
+  "verdict": "NULL \u2014 2B's conclusion survives matched starts"
+}
