@@ -964,3 +964,56 @@ Not every seed produced an admissible comparison yet.
 Not every seed produced an admissible comparison yet.
 
 Not every seed produced an admissible comparison yet.
+2026-08-31 15:50:52,326 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 15:50:52,370 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:50:52,370 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:50:52,372 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:50:52,391 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:52,896 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:50:52,906 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:50:53,025 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:50:53,035 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:53,084 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:50:53,092 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:50:53,098 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:50:53,103 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:50:53,116 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:50:53,121 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:50:53,126 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:50:53,126 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:50:54,323 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.4s)
+2026-08-31 15:50:54,359 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:50:54,360 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:50:54,361 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:50:54,372 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:55,149 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:50:55,158 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:50:55,277 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:50:55,287 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:55,333 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:50:55,340 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:50:55,347 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:50:55,352 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:50:55,357 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:50:55,362 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:50:55,367 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:50:55,367 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:01:33,290 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:01:33,310 null                       seed 20260825 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:01:33,657 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:01:33,666 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:01:33,773 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:01:33,782 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:01:33,847 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:01:33,860 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:01:33,867 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:01:33,874 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:01:33,880 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:01:33,886 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:01:33,892 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:01:33,892 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:02:08,317 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:02:08,339 null                       seed 20260825 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:02:08,340 stopping cleanly: 750s needed, 724s left
+
+Not every seed produced an admissible comparison yet.
