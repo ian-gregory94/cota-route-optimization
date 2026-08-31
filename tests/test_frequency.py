@@ -202,10 +202,10 @@ def _ladders(m, ladder=LADDER):
 
 
 def test_snap_to_ladder_returns_ladder_values():
-    from cota_opt.frequency import snap_to_ladder
+    from cota_opt.frequency import snap_plan_to_ladder
     m = _model({"R1": 1000.0, "R2": 500.0})
     lads = _ladders(m)
-    snapped = snap_to_ladder(lads, FrequencyPlan({k: 11.3 for k in m.keys}))
+    snapped = snap_plan_to_ladder(lads, FrequencyPlan({k: 11.3 for k in m.keys}))
     for k in m.keys:
         assert snapped.headways[k] in lads[k]
         assert snapped.headways[k] == 12          # nearest rung to 11.3
@@ -213,13 +213,13 @@ def test_snap_to_ladder_returns_ladder_values():
 
 def test_snapping_can_push_a_fitting_plan_out_of_the_envelope():
     """The defect itself, in miniature: fits before the snap, not after."""
-    from cota_opt.frequency import _feasible, snap_to_ladder
+    from cota_opt.frequency import _feasible, snap_plan_to_ladder
     m = _model({"R1": 1000.0, "R2": 1000.0})
     lads = _ladders(m)
     plan = FrequencyPlan({k: 11.0 for k in m.keys})          # between rungs
     budget = ResourceBudget(m.evaluate(plan).revenue_veh_hours, {})
     assert _feasible(m, m.evaluate(plan), budget)             # fits as given
-    snapped = snap_to_ladder(lads, plan)                      # 11.0 -> 10
+    snapped = snap_plan_to_ladder(lads, plan)                      # 11.0 -> 10
     assert not _feasible(m, m.evaluate(snapped), budget)      # no longer fits
 
 
