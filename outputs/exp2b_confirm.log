@@ -16230,3 +16230,20 @@ sign is unchanged: the candidate is WORSE than doing nothing, on both quantities
 PASS — 2B's certified NULL survives matched starts.
 
 wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
