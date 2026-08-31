@@ -165,10 +165,7 @@ def main() -> int:
 
     # Path sets are the expensive, solve-independent half. Cache them on the
     # state's own digest so slice two onward starts solving immediately.
-    ps_params = {"state": exp3.state_digest(edits), "seed": args.seed,
-                 "common_lines": args.common_lines,
-                 "config": exp3.config_digest(),
-                 "pool": getattr(exp3, "POOL_VERSION", "?")}
+    ps_params = exp3.pathset_cache_params(edits, args.seed, args.common_lines)
 
     def build_pathsets():
         c: dict = {}
