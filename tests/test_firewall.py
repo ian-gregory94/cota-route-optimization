@@ -1,0 +1,322 @@
+"""Adversarial tests for the semantic comparison firewall.
+
+Each test constructs a comparison that MUST be refused, and passes only if no
+`ComparisonResult` can be produced. They test the firewall, not the strings in
+its implementation: none of them greps for a message, and the D27 regression
+(`test_the_exp3_start_asymmetry_is_caught_generically`) contains no check
+named for Experiment 3, for greedy, or for start sets at all.
+"""
+from __future__ import annotations
+
+import dataclasses
+
+import pytest
+
+from cota_opt.firewall import (CERTIFICATION, DISCOVERY, EXP3_STAGE_A,
+                               ComparisonResult, ContractError, EventType,
+                               ExecutionEvent, ExecutionReceipt,
+                               ExperimentContract, InadmissibleComparison,
+                               Severity, SolverPolicy, StartPolicy, StopRule,
+                               admit, balance_audit, build_spec, compare,
+                               health_report, neutral)
+
+CONTRACT = EXP3_STAGE_A
+
+
+def spec(contract=CONTRACT, **kw):
+    base = dict(state_digest="s0", state_key="<none>", cardinality=0,
+                members=(), envelope_digest="env-1", config_digest="cfg-1",
+                data_digest="data-1", code_version="abc123")
+    base.update(kw)
+    return build_spec(contract, **base)
+
+
+def receipt(contract=CONTRACT, *, obj=1_000_000.0, **kw):
+    """A well-formed receipt that satisfies the default contract."""
+    sp = kw.pop("spec_", None) or spec(contract, **{
+        k: kw.pop(k) for k in ("state_digest", "state_key", "cardinality",
+                               "members", "envelope_digest", "config_digest")
+        if k in kw})
+    base = dict(
+        evaluator_used=contract.evaluator, objective_used=contract.objective,
+        envelope_used_vh=2517.18, pathset_digest="ps-1", code_version="abc123",
+        start_policy_requested=contract.solver.start_policy,
+        starts_attempted=("repaired", "greedy"), winning_start="greedy",
+        restarts_requested=contract.solver.restarts,
+        restarts_completed=contract.solver.restarts,
+        evaluations_performed=4000, termination=StopRule.NO_IMPROVING_MOVE,
+        converged=True, objective=obj, metrics={"unserved_demand": 9800.0},
+        plan_digest="plan-1", feasible=True)
+    base.update(kw)
+    return ExecutionReceipt(spec=sp, **base)
+
+
+def treated(**kw):
+    """A treatment arm differing ONLY on declared dimensions."""
+    kw.setdefault("obj", 995_000.0)
+    kw.setdefault("state_digest", "s1")
+    kw.setdefault("state_key", "add_stop-010")
+    kw.setdefault("cardinality", 1)
+    kw.setdefault("members", ("add_stop-010",))
+    kw.setdefault("pathset_digest", "ps-2")
+    kw.setdefault("plan_digest", "plan-2")
+    if "members" in kw and kw["state_key"] != "add_stop-010":
+        kw["members"] = (kw["state_key"],)
+    return receipt(**kw)
+
+
+# --------------------------------------------------------------------------
+# the baseline: a legitimate comparison must still work
+# --------------------------------------------------------------------------
+
+def test_a_matched_comparison_is_admitted():
+    r = compare(receipt(), treated(), CONTRACT)
+    assert isinstance(r, ComparisonResult), str(r)
+    assert r.effect == pytest.approx(-5000.0)
+    assert r.effect_pct == pytest.approx(-0.5)
+    assert r.above_noise_floor is True
+    assert "spec.state_digest" in r.declared_differences
+
+
+def test_identical_states_compare_to_null():
+    r = compare(receipt(), receipt(), CONTRACT)
+    assert isinstance(r, ComparisonResult)
+    assert r.effect == 0.0
+    assert r.above_noise_floor is False
+
+
+def test_a_declared_no_op_mutation_compares_as_null():
+    """Same geometry reached by a mutation that changes nothing."""
+    noop = receipt(state_key="noop-001", state_digest="s0",
+                   cardinality=1, members=("noop-001",))
+    r = compare(receipt(), noop, CONTRACT)
+    assert isinstance(r, ComparisonResult)
+    assert r.effect == 0.0
+
+
+# --------------------------------------------------------------------------
+# THE D27 REGRESSION — no mention of Experiment 3, greedy, or start sets
+# --------------------------------------------------------------------------
+
+def test_the_exp3_start_asymmetry_is_caught_generically():
+    """Two arms, identical requested policy, different realised execution.
+
+    This is D27 exactly: nothing in the CONFIGURATION differs. The control kept
+    its incumbent; the treatment's incumbent was rejected after the ladder snap
+    and it silently ran a different search. The criterion is Ian's: no
+    ``ComparisonResult`` may be produced. Nothing in the harness knows what a
+    start set is -- the refusal comes from the generic rule that undeclared
+    execution differences are not comparable.
+    """
+    control = receipt()
+    treatment = treated(starts_attempted=("greedy",), starts_rejected=("repaired",),
+                        rejection_reasons=("snapped incumbent left the envelope",),
+                        fallback_occurred=True,
+                        events=(ExecutionEvent(EventType.START_FALLBACK,
+                                               "incumbent infeasible after snap",
+                                               "frequency"),))
+    out = compare(control, treatment, CONTRACT)
+    assert not isinstance(out, ComparisonResult), "the D27 confound got through"
+    assert not out                      # falsy, so `if compare(...)` fails closed
+
+
+def test_execution_difference_alone_refuses_when_both_arms_are_admissible():
+    """Isolates the comparison layer from the observation layer.
+
+    Both arms individually satisfy the contract -- each attempted every start
+    the policy requires -- yet one of them had to repair its way there. Equal
+    entitlement, unequal execution, and the comparison is still refused.
+    """
+    control = receipt()
+    treatment = treated(repair_occurred=True, repair_steps=7,
+                        events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED,
+                                               "walked back into the envelope",
+                                               "frequency"),))
+    assert admit(control, CONTRACT) and admit(treatment, CONTRACT)
+    out = compare(control, treatment, CONTRACT)
+    assert isinstance(out, InadmissibleComparison)
+    dims = {d.dimension for d in out.undeclared}
+    assert {"repair_occurred", "repair_steps"} <= dims
+    assert "REFUSED" in str(out) and "No treatment effect" in str(out)
+
+
+def test_a_fallback_in_only_one_arm_is_refused_even_with_matching_fields():
+    """Fields agree; only the event differs. Still not comparable."""
+    control = receipt()
+    treatment = treated(events=(ExecutionEvent(EventType.MODEL_FALLBACK,
+                                               "evaluator degraded", "eval"),))
+    out = compare(control, treatment, CONTRACT)
+    assert isinstance(out, InadmissibleComparison)
+    assert any(d.dimension == "opportunity_events" for d in out.undeclared)
+
+
+def test_an_operationally_neutral_event_does_not_block_comparison():
+    """A recovery provably equivalent to not happening is not a difference."""
+    control = receipt()
+    treatment = treated(events=(neutral(EventType.CHECKPOINT_RESUMED,
+                                        "identical recomputation", "runner"),))
+    assert isinstance(compare(control, treatment, CONTRACT), ComparisonResult)
+
+
+# --------------------------------------------------------------------------
+# each of the mismatches the corrective plan enumerates
+# --------------------------------------------------------------------------
+
+@pytest.mark.parametrize("field,value", [
+    ("evaluator_used", "pattern_level"),
+    ("objective_used", "unweighted_gc"),
+    ("envelope_used_vh", 2600.0),
+    ("code_version", "def456"),
+    ("start_policy_requested", StartPolicy.GREEDY_ONLY),
+    ("starts_attempted", ("greedy",)),
+    ("restarts_completed", 1),
+    ("termination", StopRule.DEADLINE),
+    ("converged", False),
+    ("repair_occurred", True),
+    ("resumed", True),
+])
+def test_any_undeclared_mismatch_refuses(field, value):
+    out = compare(receipt(), treated(**{field: value}), CONTRACT)
+    assert isinstance(out, InadmissibleComparison), f"{field} slipped through"
+
+
+def test_mismatched_pathset_policy_refuses():
+    other = dataclasses.replace(CONTRACT, pathset_policy="shared_master")
+    t = ExecutionReceipt(spec=spec(other, state_digest="s1", state_key="m",
+                                   cardinality=1, members=("m",)),
+                         evaluator_used=CONTRACT.evaluator,
+                         objective_used=CONTRACT.objective,
+                         starts_attempted=("repaired", "greedy"),
+                         restarts_completed=2, converged=True, objective=9e5)
+    assert isinstance(compare(receipt(), t, CONTRACT), InadmissibleComparison)
+
+
+def test_a_stale_cache_entry_from_another_contract_refuses():
+    """A receipt built under a different contract cannot be admitted here."""
+    other = dataclasses.replace(CONTRACT, version="3.0")
+    stale = ExecutionReceipt(
+        spec=spec(other, state_digest="s1", state_key="m", cardinality=1,
+                  members=("m",)),
+        evaluator_used=CONTRACT.evaluator, objective_used=CONTRACT.objective,
+        starts_attempted=("repaired", "greedy"), restarts_completed=2,
+        converged=True, objective=9e5, cache_hit=True)
+    assert not admit(stale, CONTRACT)
+    assert isinstance(compare(receipt(), stale, CONTRACT), InadmissibleComparison)
+
+
+def test_same_nominal_effort_but_different_completed_search_refuses():
+    """Both asked for 2 restarts; one got 2, one got 1."""
+    out = compare(receipt(restarts_completed=2),
+                  treated(restarts_completed=1), CONTRACT)
+    assert isinstance(out, InadmissibleComparison)
+
+
+def test_evaluations_within_the_declared_tolerance_are_allowed():
+    """Two states legitimately need different amounts of search."""
+    r = compare(receipt(evaluations_performed=4000),
+                treated(evaluations_performed=5200), CONTRACT)
+    assert isinstance(r, ComparisonResult)
+
+
+def test_evaluations_beyond_the_declared_tolerance_refuse():
+    r = compare(receipt(evaluations_performed=4000),
+                treated(evaluations_performed=400_000), CONTRACT)
+    assert isinstance(r, InadmissibleComparison)
+
+
+def test_a_severe_event_makes_an_observation_inadmissible():
+    t = treated(events=(ExecutionEvent(EventType.CONVERGENCE_FAILURE, "diverged",
+                                       "frequency", severity=Severity.SEVERE),))
+    assert not admit(t, CONTRACT)
+    assert isinstance(compare(receipt(), t, CONTRACT), InadmissibleComparison)
+
+
+def test_an_infeasible_solution_is_inadmissible():
+    assert not admit(treated(feasible=False), CONTRACT)
+
+
+def test_certification_requires_both_arms_converged():
+    cert = ExperimentContract(
+        experiment="exp3", version="3.1", stage="certification",
+        objective=CONTRACT.objective, objective_version=CONTRACT.objective_version,
+        evaluator=CONTRACT.evaluator, envelope=CONTRACT.envelope,
+        pathset_policy=CONTRACT.pathset_policy, pool_version=CONTRACT.pool_version,
+        solver=CERTIFICATION,
+        allowed_treatment_differences=CONTRACT.allowed_treatment_differences)
+    c = receipt(cert, restarts_requested=20, restarts_completed=20,
+                converged=False, termination=StopRule.DEADLINE,
+                spec_=spec(cert))
+    t = receipt(cert, obj=9e5, restarts_requested=20, restarts_completed=20,
+                converged=False, termination=StopRule.DEADLINE,
+                spec_=spec(cert, state_digest="s1", state_key="m",
+                           cardinality=1, members=("m",)))
+    assert isinstance(compare(c, t, cert), InadmissibleComparison)
+
+
+# --------------------------------------------------------------------------
+# the contract itself refuses to describe an incomparable experiment
+# --------------------------------------------------------------------------
+
+def test_a_treatment_dependent_start_policy_is_refused_at_contract_time():
+    with pytest.raises(ContractError):
+        ExperimentContract(
+            experiment="x", version="1", stage="discovery", objective="o",
+            objective_version="1", evaluator="e", envelope="v",
+            pathset_policy="p", pool_version="q",
+            solver=SolverPolicy(start_policy=StartPolicy.INCUMBENT_ONLY))
+
+
+def test_a_treatment_dependent_start_policy_is_allowed_if_declared():
+    c = ExperimentContract(
+        experiment="x", version="1", stage="discovery", objective="o",
+        objective_version="1", evaluator="e", envelope="v", pathset_policy="p",
+        pool_version="q",
+        solver=SolverPolicy(start_policy=StartPolicy.INCUMBENT_ONLY),
+        allowed_treatment_differences=frozenset({"starts_attempted"}))
+    assert c.digest
+
+
+def test_certification_contract_must_require_convergence():
+    with pytest.raises(ContractError):
+        ExperimentContract(
+            experiment="x", version="1", stage="certification", objective="o",
+            objective_version="1", evaluator="e", envelope="v",
+            pathset_policy="p", pool_version="q", solver=DISCOVERY,
+            allowed_treatment_differences=frozenset())
+
+
+# --------------------------------------------------------------------------
+# the balance audit: the sweep that would have caught D27 on day one
+# --------------------------------------------------------------------------
+
+def test_balance_audit_surfaces_treatment_correlated_execution():
+    rs = []
+    for i in range(10):                       # controls: never fall back
+        rs.append(receipt(state_key="<none>"))
+    for i in range(10):                       # lengthening edits: always do
+        rs.append(treated(state_key=f"extend-{i:03d}",
+                          starts_attempted=("greedy",), fallback_occurred=True,
+                          events=(ExecutionEvent(EventType.START_FALLBACK,
+                                                 "x", "frequency"),)))
+    kind = lambda r: r.spec.state_key.split("-")[0]
+    found = balance_audit(rs, kind)
+    dims = {i.dimension for i in found}
+    assert "START_FALLBACK" in dims
+    assert "fallback_occurred" in dims
+    assert "starts_attempted" in dims
+
+
+def test_balance_audit_is_quiet_when_execution_is_balanced():
+    rs = [receipt(state_key="<none>") for _ in range(6)] + \
+         [treated(state_key=f"extend-{i}") for i in range(6)]
+    assert balance_audit(rs, lambda r: r.spec.state_key.split("-")[0]) == []
+
+
+def test_health_report_fails_closed_on_imbalance():
+    rs = [receipt(state_key="<none>") for _ in range(5)] + \
+         [treated(state_key="extend-1", starts_attempted=("greedy",),
+                  fallback_occurred=True) for _ in range(5)]
+    rep = health_report(rs, CONTRACT, lambda r: r.spec.state_key.split("-")[0])
+    assert not rep.healthy
+    assert rep.imbalances
+    assert "TREATMENT-CORRELATED" in rep.text()
