@@ -66,11 +66,66 @@ def say(label: str, ok: bool, detail: str = "") -> bool:
     return ok
 
 
+def verify() -> int:
+    """Check the frozen record against the tree, without trusting git.
+
+    This is what makes the history collapse safe to do rather than safe to
+    hope about: the manifest holds content hashes and receipt digests, none of
+    which a rebase, squash or filter can touch. If every artifact still hashes
+    the same and every receipt is still present, the rewrite changed ids and
+    nothing else.
+    """
+    man = OUT / "FREEZE_MANIFEST.json"
+    if not man.exists():
+        print(f"no manifest at {man}")
+        return 1
+    m = json.loads(man.read_text())
+    print("=" * 78)
+    print(f"VERIFY THE FROZEN RECORD  (frozen {m['frozen_at']})")
+    print("=" * 78)
+    ok = True
+
+    now = code_version()
+    ok &= say("source digest unchanged", now == m["source_digest"],
+              f"{now}" if now != m["source_digest"] else "")
+    ok &= say("contract digest unchanged",
+              EXP3_STAGE_A.digest == m["contract_digest"])
+
+    bad = []
+    for path, want in sorted(m["artifact_sha256"].items()):
+        f = ROOT / path
+        if not f.exists():
+            bad.append(f"{path}: missing")
+        elif sha256(f) != want:
+            bad.append(f"{path}: content changed")
+    ok &= say(f"all {len(m['artifact_sha256'])} artifacts hash the same",
+              not bad, f"{len(bad)} differ" if bad else "")
+    for b in bad[:6]:
+        print(f"      {b}")
+
+    store = ObservationStore(OUT / "observations")
+    have = {r.digest for r in store.all()}
+    missing = sorted(set(m["receipt_digests"]) - have)
+    ok &= say(f"all {len(m['receipt_digests'])} receipts still present",
+              not missing, f"{len(missing)} missing" if missing else "")
+
+    print()
+    print("VERIFIED — ids may have changed, content did not."
+          if ok else "FAILED — the frozen record does not match the tree.")
+    return 0 if ok else 1
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--verify", action="store_true",
+                    help="re-check the recorded manifest against the tree. Run "
+                         "this AFTER a history rewrite: every commit id will "
+                         "have changed and no content may have.")
     ap.add_argument("--tag", default="exp3-frozen-v1")
     args = ap.parse_args()
+    if args.verify:
+        return verify()
     ok = True
     print("=" * 78)
     print("FREEZE EXPERIMENT 3")
