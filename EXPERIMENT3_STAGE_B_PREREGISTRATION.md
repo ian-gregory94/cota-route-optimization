@@ -112,25 +112,42 @@ rather than a suspect one.
 points, not the 0.00657% measured on the control in an earlier probe. σ is
 estimated **from this run's own 200 cells**.
 
-Two same-run estimators are preregistered, and a candidate must satisfy
-**both**:
+### The criterion
 
-* **σ_paired(c)** — the standard deviation of that candidate's own five paired
-  effects. The direct estimate of the variability of the quantity under test.
-* **σ_control** — the standard deviation of the control's five objectives, the
-  clean estimate of solver variance with no treatment in it, scaled to the
-  paired difference.
+For candidate *c*, over the five paired effects Δ_s(c):
 
-A candidate is **certified** when `|mean effect| > 3σ` under both, with the
-mean negative.
+```
+certified  ⟺  |mean Δ(c)| > 3 · SD(Δ_s(c))   with mean Δ(c) < 0
+```
 
-Requiring both is deliberate. σ_paired is the right statistic and is noisy at
-n=5; σ_control is stable and, because pairing cancels shared variation,
-conservative. Where they disagree the result is **ambiguous**, not certified —
-and ambiguity escalates (§6).
+**σ is the standard deviation of the candidate's own five paired differences,
+and nothing else.**
 
-*This is the one point where Ian's specification left a choice, and it is
-recorded as a choice rather than presented as the only reading.*
+The reason is the estimand. What Stage B is measuring is the **treatment
+contrast**, not the absolute control objective. Pairing on the seed preserves
+the covariance between the candidate's and the control's solver behaviour —
+when a seed sends both arms to a slightly worse basin, the difference between
+them is unaffected. A control-only σ discards exactly that covariance and can
+be either too permissive or too conservative depending on how the absolute
+control objective happens to wander between seeds. It would answer a different
+question than the one being asked, and could reject a perfectly stable
+treatment effect because the control moved underneath it.
+
+### The control spread is a diagnostic, not a gate
+
+SD of the control's five objectives is recorded, reported, and used as an
+**experiment-level solver-stability measure**. No candidate has to clear it.
+
+It has one operational role: if the control's spread is anomalously large
+**relative to prior certification runs**, that triggers investigation and
+possible escalation of the **whole run** rather than of any candidate. The
+reference point is the 2B matched-start confirmation, whose control gave
+3σ = 0.00657% over three seeds. A Stage B control spread more than 3× that is
+flagged for investigation.
+
+That reference is a **diagnostic trigger about solver stability**. It is not a
+materiality threshold, is never compared against a candidate's effect, and
+nothing certifies or fails to certify because of it.
 
 ## 5. Pairwise comparison among certified candidates
 
@@ -141,20 +158,34 @@ using the same 200 observations — no new runs. For certified *a* and *b*:
 effect(a, b, s) = objective(a, s) − objective(b, s)
 ```
 
-with the identical 3σ rule. This is what separates outcome (1) from outcome
+and the identical rule applies: `|mean Δ(a,b)| > 3·SD(Δ_s(a,b))`, σ taken from
+those five paired differences. This is what separates outcome (1) from outcome
 (2): a single leader requires the leader to be distinguishable *from the other
 certified candidates*, not merely from the control.
 
 ## 6. Escalation
 
-Any **final control verdict** or **leader relationship** that remains ambiguous
-escalates to **40 restarts × the same 5 seeds**. Same seeds, doubled restarts,
-nothing else changed. Escalation is per-cell and its results replace the
-20-restart results for the states escalated, which are then reported as such.
+Escalation is driven by **ambiguity in the paired contrast** — never by
+disagreement between competing definitions of σ, because there is only one.
 
-Ambiguity means: the two σ estimators disagree; or `|mean effect|` falls within
-3σ of one and outside the other; or a pairwise relationship among certified
-candidates cannot be resolved.
+A candidate escalates to **40 restarts × the same 5 seeds** when either:
+
+* it **fails the paired criterion** at 20 restarts — `|mean Δ| ≤ 3·SD(Δ)`. A
+  candidate is not declared uncertified on an underpowered run; it gets the
+  deeper search first.
+* its **paired spread is unstable** — `SD(Δ_s(c))` exceeds **3× the median
+  SD(Δ)** across the 39 candidates. A same-run comparison, no inherited
+  constant.
+
+A **pairwise relationship** between two certified candidates that cannot be
+resolved escalates both.
+
+Escalation changes the restart count and nothing else: same five seeds, same
+contract, same start policy, same everything. Escalated results replace the
+20-restart results for those states and are reported as escalated.
+
+Run-level escalation is separate: an anomalous control spread (§4) triggers
+investigation of the whole run, not of a candidate.
 
 ## 7. D33 is a veto, never a threshold
 
