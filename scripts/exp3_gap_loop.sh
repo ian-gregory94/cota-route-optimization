@@ -24,7 +24,7 @@ while true; do
   else
     stall=0
   fi
-  git add outputs/exp3/gap_benchmark.jsonl outputs/exp3/gap.log data/cache >/dev/null 2>&1
+  git add outputs/exp3/gap_benchmark.jsonl >/dev/null 2>&1
   git diff --cached --quiet || git commit -q -m "chore: optimization-gap benchmark cells
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

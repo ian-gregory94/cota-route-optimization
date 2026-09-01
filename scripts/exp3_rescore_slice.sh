@@ -13,8 +13,9 @@ python scripts/exp3_rescore.py --deadline-seconds "$SECS" >> "$OUT/rescore.log" 
 after=$(remaining)
 echo "slice: $before -> $after states remaining"
 
-git add outputs/exp3/stageA_rescored.jsonl outputs/exp3/rescore.log \
-        outputs/exp3/observations data/cache >/dev/null 2>&1
+# The log is not an artifact: committing it every slice turned 40
+# substantive commits into 2,646 (OPERATIONS 23).
+git add outputs/exp3/stageA_rescored.jsonl outputs/exp3/observations >/dev/null 2>&1
 if ! git diff --cached --quiet; then
   git commit -q -m "chore: Experiment 3 A1 re-score slice — $((before-after)) done, $after of 40 remaining
 
