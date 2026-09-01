@@ -543,7 +543,7 @@ and stricter.
 | 3-6 Model B asserted | **3-1** | operative, unchanged in force |
 | 3-7 the screen does not select | **3-2** | operative, unchanged in force |
 | 3-8 sets not sums | **3-6** | operative, strengthened — 2B's evidence replaces D20's inference |
-| 3-9 noise floor in the same run | **3-3** | operative, strengthened — now on the scalarized objective too |
+| 3-9 noise floor in the same run | **3-3** | **WITHDRAWN 2026-08-31** as a materiality test (D32); replaced by 3-11 |
 | — | **3-7, 3-8, 3-9, 3-10** | new |
 
 ---
@@ -561,14 +561,49 @@ evaluation, and D23 found the ranking to move again under a corrected model. No
 mutation is discarded, and no state is ranked, on a fixed-frequency score.
 Frequency is re-optimized on every state that is scored at all.
 
-**Gate 3-3 — the noise floor is measured in the same run, at the same effort,
-for the quantity actually being compared.** Three zero-edit replicates, 3σ.
-Experiment 3's primary quantity is the **scalarized objective**, not unserved
-demand, so it needs its own floor: the existing 0.130-point and 0.287-point
-figures are floors on *unserved demand* and may not be applied to a different
-quantity. A floor is measured for the objective **and** for every component
-metric reported alongside it. A candidate clearing a floor by a hair clears
-nothing — the floor itself is estimated from three seeds and is noisy.
+**Gate 3-3 — WITHDRAWN as a materiality test, 2026-08-31. See D32 and
+`decisions/2026-08-31-replicate-spread-is-not-a-materiality-floor.md`.**
+
+*As originally written:* the noise floor is measured in the same run, at the
+same effort, for the quantity actually being compared — three zero-edit
+replicates, 3σ, on the scalarized objective as well as every component reported
+beside it, since the existing 0.130-point and 0.287-point figures are floors on
+*unserved demand* and may not be applied to a different quantity.
+
+*Why it is withdrawn.* Same-run replicate spread measures how far the answer
+moves when the seed moves. That is solver **variance**. Materiality asks how
+large a difference can be attributed to the treatment rather than to the
+optimizer being imperfect — solver **error** — and variance has never bounded
+it. The two are normally confused because they normally correlate.
+
+Under the corrected start policy they came apart completely. `_greedy_build`
+takes no RNG; `starts="both"` selects greedy on every state measured; and at
+two restarts the perturbation never escapes greedy's basin, so the seed never
+reaches the answer. Three replicates at three seeds return **bit-identical**
+objectives and 3σ of that is exactly `0.00000%` — which would mark every
+nonzero difference as material.
+
+*What holds instead.* The discovery same-run floor is recorded as **undefined
+for materiality purposes**, never as 0%, and the observed zero spread is kept
+and labelled solver variance only. No floor is borrowed from certification
+effort. The corrected census is **descriptive**: signed effects, magnitudes and
+rankings, with no clears-floor column. A materiality threshold comes from a
+measurement of optimization *error* — see gate 3-11 — and classifications are
+applied retrospectively to a derived artifact, leaving the descriptive one
+intact.
+
+**Gate 3-11 — a materiality threshold must bound differential solver error,
+not solver variance.** *Added 2026-08-31 with D33.* Before any margin is called
+material, the optimization gap of the delivered plan is measured against exact
+enumeration of a reduced neighbourhood, under the production objective, and
+must answer four questions in order: the absolute gap; its distribution across
+geometries; **whether it moves systematically between control and treatment**;
+and therefore the effect distinguishable from treatment-correlated solver
+error. A generic mean or maximum gap is not an effect floor — what matters is
+the error in the *difference*, since two arms equally far from optimum in the
+same direction still compare cleanly. The resulting figure is a **lower** bound:
+a margin below it is not distinguishable from solver error, and a margin above
+it is not thereby established, only not excluded.
 
 **Gate 3-4 — no runtime credit for skipping stops on an unchanged alignment.**
 The exchange rate between passenger walking and vehicle running time is the time
