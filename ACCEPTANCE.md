@@ -701,6 +701,185 @@ requirement and its tractable benchmark, the staged effort ladder, and gate
 [`EXPERIMENT3_CONTRACT.md`](EXPERIMENT3_CONTRACT.md), written before any
 candidate was generated.
 
+## Experiment 4 gates, committed 2026-08-31 before any synthetic route was scored
+
+**What Experiment 4 is.** A search over networks built from scratch on COTA's
+existing stop universe and observed-link graph, inside today's resource
+envelope. Route identity, route count, termini, transfer architecture and
+network edit distance are all released. See
+[`EXPERIMENT4_CONTRACT.md`](EXPERIMENT4_CONTRACT.md).
+
+**Gates 3-1, 3-2, 3-3, 3-4, 3-6, 3-8, 3-9, 3-10 and 12 carry over unchanged.**
+The evaluator still asserts its own waiting model, a fixed-frequency screen
+still may not select, floors are still measured in the same run for the quantity
+compared, no runtime credit for skipping stops on an unchanged alignment, states
+are scored rather than sums of routes, the envelope still binds on both halves,
+modelled exposure still sets the evidence class, structure must still be
+identified before a map is shown, and convergence must still be matched.
+
+**Gate 3-5 does NOT carry over**, and its removal is deliberate. Experiment 3
+protects the 13 sole-access stops because it asks for a recognizable
+modification of COTA. Forcing the unconstrained greenfield optimum to preserve
+every current catchment would destroy the very baseline Experiment 6 is meant to
+measure against. Lost coverage is **reported, not forbidden** — gate 4-8.
+
+**Gate 4-1 — the primary evidence class is the observed-link graph.** A headline
+Experiment 4 claim rests only on networks whose every segment is a stop-to-stop
+movement some COTA route already operates, at that movement's observed running
+time. Networks using genuinely novel links are **secondary and exploratory**. A
+high-modelled-share network may not displace the observed-link winner as the
+headline without a new runtime-validation argument. The estimator's median
+absolute error on a single link is 20.5%; a network that is half modelled is
+mostly a statement about the estimator.
+
+**Gate 4-2 — the peak-express layer is frozen and is not redesigned.**
+Experiment 1 established that treating those 14 routes as frequency service
+manufactured 1.5–3 percentage points of fake improvement, because the optimizer
+stretched a designed timetable as though it were random-arrival service. Being
+"more greenfield" is not a licence to reintroduce a known modeling error. Their
+links are excluded from the graph as well, so a generated local route cannot
+borrow a freeway hop as a cheap teleport.
+
+**Gate 4-3 — the stop universe is fixed.** No stop is created, none is moved. A
+generated route serves the nodes it traverses; the generator may not traverse an
+observed chain and declare intermediate stops skipped to manufacture speed.
+
+**Gate 4-4 — the frozen pool must contain the current network.** Every supported
+current local route, and Experiment 3's promoted result where representable,
+must be inside the search space, demonstrated by reconstruction rather than
+asserted. Without it, a poor Experiment 4 result cannot be distinguished from a
+generator that failed to propose what COTA already runs.
+*Status: PASSES — 41 synthetic lines from 25 legacy routes, all 2,763 stops
+covered, zero canonical-id collisions (`outputs/exp4/reconstruction.json`).*
+
+**Gate 4-5 — service activation is a real decision.** A synthetic route-period
+may be OFF, consuming no vehicle-hours and no peak vehicles and contributing no
+frequency. No synthetic route is given a copied "baseline headway": a route that
+did not exist yesterday has no baseline, and inventing one invents a service
+commitment nobody made.
+
+**Gate 4-6 — search bounds must be proved inactive.** One-way running time is
+bounded to 10–120 minutes and route count to a generous cap. Both are
+computational bounds, not claims. **If the winning network's routes sit on a
+bound, the result is censored** and the bound must be raised or the finding
+reported as bounded. Today's local routes run 23.7–99.9 minutes one way, all
+inside the bound, which is the sanity check that the bound is not already
+binding on the incumbent.
+
+**Gate 4-7 — the discovery approximation is benchmarked, and buys no
+conclusions.** Discovery may score networks against a frozen supernetwork master
+path set rather than rebuilding paths per state — 311 of every 413 seconds is
+the rebuild, and a greenfield search needs thousands of evaluations. It may
+**not** reuse the incumbent's paths. On a preregistered sample the approximation
+is compared against exact rebuilds for objective gap, unserved gap, ranking
+stability, omitted and improvable flow, and whether the promoted set changes; if
+it cannot identify the exact leader within the promotion band, it is widened or
+abandoned. **Every promoted network is rebuilt exactly.**
+
+**Gate 4-8 — what the optimizer abandons is reported.** Stops losing service,
+demand losing access, neighborhoods affected, one-seat rides lost, transfer
+burden created. These are not constraints on the primary objective. They are the
+handoff to Experiments 6 and 7, and suppressing them would hide the price of the
+freedom being measured.
+
+**Gate 4-9 — path-model adequacy is re-established, not inherited.** Every
+assumption below was measured on today's map and does not transfer to a network
+the optimizer designed:
+
+* **transfer depth** — promoted networks are rerun with a deeper limit than two;
+  if `max_rounds` materially moves the winner or its score, the path model is
+  inadequate for this network;
+* **paths per OD** — the 4→6 candidate-cap result was measured on the existing
+  network; the sensitivity is redone;
+* **OD truncation** — the top 20,000 pairs are about 65% of transit-accessible
+  commute flow, and certification evaluates promoted networks on a materially
+  wider set. The optimizer does not get to redesign Columbus around the
+  computationally convenient top of the OD table.
+
+**Gate 4-10 — common-lines exposure is re-measured.** Model B's remaining
+approximation is overlapping *different* routes, about 0.516% of generalized
+cost today. A generated trunk network may create far more. Every promoted
+network reruns the diagnostic; if exposure balloons, either the general waiting
+model is implemented or the result is classified model-dependent and may not
+headline a margin of comparable size.
+
+**Gate 4-11 — crowding is re-checked.** It did not bind on the existing network.
+A greenfield optimizer may concentrate passengers onto a few strong trunks.
+Promoted networks get segment load profiles, peak load factors and overloaded
+segments, with a crowding-enabled sensitivity if exposure becomes meaningful.
+*"Crowding didn't matter in Experiment 1"* is not evidence about a different
+network.
+
+**Gate 4-12 — demand robustness is preregistered.** The demand model is this
+project's largest external-validity limitation, and structural freedom gives the
+optimizer many more ways to exploit artifacts in the LODES proxy. Claims are
+written before the winner is known, and tested against altered period shares,
+demand scaling, the implemented noncommute stress direction, blends, and a wider
+or held-out OD universe. The admissible claim is *"substantial benefit survives
+materially different demand shapes"* or *"the apparent gain disappears when
+commute geometry is perturbed"* — **not** a decimal-place margin on one demand
+model.
+
+**Gate 4-13 — structural identity uses geometry, not route ids.** Exp 4 route
+ids are synthetic, so id disagreement is meaningless. Distance is measured on
+service geometry — directed edge overlap, service-weighted overlap, stop
+incidence, one-seat connectivity. If independently optimized networks score
+within the certification floor of each other while their maps differ, the
+conclusion is that **the value of greenfield redesign is identified and the
+exact network is not** — the analogue of Experiment 1's flat headway optimum.
+
+**Gate 4-14 — the search is benchmarked on a space that can defeat it.** As in
+Experiment 3, but harder: a tractable route pool, every feasible network in a
+small envelope enumerated, and recovery of the true optimum demanded from
+incumbent, random and deliberately deceptive starts. The benchmark must include
+a case where the optimum requires **dropping a locally good route**, one where
+the optimum is **not nested**, one where a **swap is required**, and one where
+the **incumbent is actually optimal**. Passing the 2B benchmark is explicitly
+insufficient — its winner is a singleton adjacent to the null.
+
+**Gate 4-15 — what Experiment 4 may conclude.** At most: *holding COTA's current
+operating-resource envelope fixed, releasing legacy route structure produces
+approximately X additional benefit beyond the best constrained redesign.* Not
+"COTA should implement this map", and not "COTA planners failed to find this
+map" — this project has not represented the constraints they solve. **The null
+is precommitted as a fine result**: that a greenfield redesign buys little once
+frequencies and constrained mutations are optimized would be a strong statement
+in favour of COTA's existing topology, and it is not a failed experiment.
+
+### Rejection conditions
+
+An Experiment 4 finding is rejected if **any** of these holds, however good the
+headline:
+
+* its margin over the Experiment 3 incumbent is inside the noise floor measured
+  in the same run, at the same effort, for the same quantity;
+* the margin shrinks when both sides are solved at higher effort (gate 12);
+* the incumbent it beat was a stored score rather than the Exp 3 network
+  re-solved at matched effort in the same run;
+* Experiment 3 certified a tied set and only one arbitrary member was used as
+  the incumbent;
+* its winning routes sit on the length or route-count search bound;
+* it rests on modelled links beyond the primary class without a new
+  runtime-validation argument;
+* it was scored by the discovery approximation and never rebuilt exactly;
+* the discovery approximation was never benchmarked against exact rebuilds;
+* it redesigned the peak-express layer;
+* it invented or moved a stop, or claimed runtime for skipping stops on an
+  unchanged alignment;
+* the frozen pool did not contain the current network;
+* transfer depth, path cap or OD cap materially move the result and were not
+  re-established;
+* common-lines exposure ballooned and the margin is of comparable size;
+* crowding became material and was not re-checked;
+* the demand-robustness claims were written after the winner was known;
+* independent seeds produce structurally different networks inside the floor and
+  a single map is nonetheless presented as the answer;
+* the evaluator that produced it cannot state its own waiting model.
+
+Every entry on that list is either something that has already happened in this
+project or something the contract identifies as newly possible once route
+structure is released.
+
 ## Gate 12 — matched effort is not enough; convergence must be matched
 
 **Added 2026-08-30, after D24.** This is a standing gate on every comparison
