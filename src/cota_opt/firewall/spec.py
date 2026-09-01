@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .contract import ExperimentContract
-from .core import Sem, digest, semfield
+from .core import CELL_PREFIX, Sem, digest, semfield
 from .policy import SolverPolicy
 
 
@@ -49,7 +49,7 @@ class EvaluationSpec:
         Keying on the state alone is what lets an entry built under one
         evaluator, envelope or objective satisfy a request made under another.
         """
-        return f"cell-{self.digest}"
+        return f"{CELL_PREFIX}{self.digest}"
 
 
 def build_spec(contract: ExperimentContract, *, state_digest: str,

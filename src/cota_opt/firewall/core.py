@@ -12,6 +12,9 @@ from enum import Enum
 from typing import Any
 
 SCHEMA_VERSION = "firewall/1"
+#: Filename prefix of the observation store. Defined once so the
+#: key generator and the store cannot drift into two conventions.
+CELL_PREFIX = "cell-"
 
 
 class Sem(str, Enum):

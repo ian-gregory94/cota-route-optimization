@@ -20,6 +20,7 @@ from .policy import (CERTIFICATION, DISCOVERY, SolverPolicy, StartPolicy,
                      StopRule)
 from .receipt import ExecutionReceipt
 from .spec import EvaluationSpec, build_spec
+from .store import CacheMiss, ObservationStore
 
 __all__ = [
     "SCHEMA_VERSION", "Sem", "canonical_json", "digest", "semfield",
@@ -30,4 +31,5 @@ __all__ = [
     "ComparableObservation", "Inadmissible", "admit",
     "compare", "ComparisonResult", "InadmissibleComparison", "Difference",
     "health_report", "HealthReport", "balance_audit", "Imbalance",
+    "ObservationStore", "CacheMiss",
 ]
