@@ -1653,3 +1653,56 @@ Two consequences:
 * A certification solve is ~25s per restart here, not the hour its iteration
   count suggests. Certification is cheaper than budgeted, which is worth
   knowing before Stage B is scheduled.
+
+
+## D29 — an observed link is not an observed turn
+
+*Measured 2026-08-31 on the frozen Experiment 4 route pool.*
+
+The Experiment 4 pool reports **`modelled_share = 0.0` for all 206 lines**:
+every directed link in every proposed line is one COTA already drives. That
+number is correct and it was over-read. It says nothing about the *turns*.
+
+A line stitched from two observed corridors meets at a junction. `A→B` observed
+and `B→C` observed does not make `A→B→C` observed — the movement through B may
+be one no bus has ever made. Checking both directions of each line against the
+2,952 observed links and the consecutive edge-pairs behind them:
+
+| evidence class | lines | share |
+|---|---|---|
+| 0 — legacy sequence (operated today) | 41 | 19.9% |
+| 1 — observed-turn synthesis (new line, every link *and* turn observed) | 15 | 7.3% |
+| 2 — observed-edge synthesis (every link observed, ≥1 novel turn) | **150** | **72.8%** |
+| 3 — modelled geometry (≥1 unobserved link) | 0 | 0.0% |
+
+**150 of 206 lines ask for at least one turn COTA has never operated**, and the
+generator breakdown is exactly where it would be expected:
+
+| generator | lines | with novel turns |
+|---|---|---|
+| crosstown | 40 | **40 (100%)** |
+| od | 60 | 59 |
+| terminal | 40 | 30 |
+| trunk | 25 | 21 |
+| legacy | 41 | 0 |
+
+Crosstown generation is the whole point of recombination and it is also, by
+construction, the operation that invents turns: joining two radial corridors at
+a junction is a novel movement through that junction unless some route already
+makes it.
+
+Within a line the novel turns are a minority — the worst offenders sit at
+82–96% observed turns — so this is not "these routes are fictional". It is that
+the evidence is *weaker than the modelled share implies*, and the difference
+was invisible because nothing measured it.
+
+**Class 2 is reported, not rejected.** An unobserved turn between two observed
+corridors is weaker evidence, not proof of impossibility; a bus that can drive
+`A→B` and `B→C` can usually drive `A→B→C`, and where it cannot, the reason is a
+banned left or a physical island that a turn-level flag is the right way to
+surface. A gate invented after seeing these numbers would not be a gate.
+
+**The wording this replaces.** "Every route is priced entirely on links COTA
+already drives" becomes: *every route uses directed links observed in current
+COTA service; transition-level support is tracked separately, because novel
+combinations of observed links may still imply unobserved turns.*
