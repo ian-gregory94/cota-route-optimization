@@ -1,6 +1,6 @@
 {
   "phase": "A1",
-  "singles_scored": 1,
+  "singles_scored": 42,
   "replicates": 3,
   "noise_floor": {
     "n_replicates": 3,
@@ -34,6 +34,6 @@
     },
     "note": "3 sigma of the zero-edit replicate spread, measured in this run at this effort. Floors from other runs or other quantities do not transfer."
   },
-  "best_single": "add_stop-001#dc6e768a1ae6",
+  "best_single": "reroute-031#dfd049714f7d",
   "refused": []
 }
