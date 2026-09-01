@@ -478,6 +478,7 @@ def optimize_frequencies(
 
     width = candidate_width if candidate_width > 0 else n
     best_idx, best_fit, best_obj, moves = None, None, float("inf"), 0
+    best_start = -1        # which start produced the incumbent best
     first_restart = 0
     if resume and resume.get("best_idx") is not None:
         # rejoin at a recorded restart: re-evaluate the saved plan rather than
@@ -499,6 +500,7 @@ def optimize_frequencies(
                          else lambda *a, _p=f"start{si}": on_pass(_p, *a)))
             if o < best_obj:
                 best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
+                best_start = si
         if progress is not None:
             progress(0, best_idx, best_obj, moves)
 
@@ -545,7 +547,7 @@ def optimize_frequencies(
         label=f"lambda={unserved_multiplier}",
         meta={"exchanges": moves, "unserved_multiplier": unserved_multiplier,
               "seed": seed, "n_starts": len(starts), "n_restarts": n_restarts,
-              "candidate_width": width})
+              "candidate_width": width, "best_start": best_start})
 
 
 def _greedy_build(model, budget, L, L_len, idx, obj, feasible) -> np.ndarray:

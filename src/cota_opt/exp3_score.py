@@ -47,6 +47,7 @@ class ScoredState:
     metrics: dict[str, float] = field(default_factory=dict)
     contract: dict[str, Any] = field(default_factory=dict)
     evaluator: dict[str, Any] = field(default_factory=dict)
+    plan: dict[str, float] = field(default_factory=dict)
     edit_report: dict[str, Any] = field(default_factory=dict)
 
     def row(self) -> dict[str, Any]:
@@ -251,6 +252,16 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         n_restarts=restarts, candidate_width=width, greedy_start=use_greedy)
     repair_audit["exchanges"] = r.meta.get("exchanges")
     repair_audit["n_starts"] = r.meta.get("n_starts")
+    # WHICH start won, not just how many there were. `optimize_frequencies`
+    # builds its start list as [initial (if feasible)] + [greedy (if asked or
+    # if nothing else)], so the index maps back to a name here.
+    names = ([] if initial is None else [starts if starts != "both" else "repaired"])
+    if use_greedy:
+        names.append("greedy")
+    bs = r.meta.get("best_start", -1)
+    repair_audit["best_start"] = (names[bs] if 0 <= bs < len(names) else
+                                  ("resumed" if bs < 0 else f"#{bs}"))
+    repair_audit["start_names"] = names
     hw = dict(judge.baseline_plan.headways)
     for k, v in r.plan.headways.items():
         if k in hw:
@@ -283,4 +294,5 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                   "facts": {**check.facts, **final.facts}},
         evaluator={**dict(judge.checks), "incumbent_repair": repair_audit},
         edit_report=(report.as_dict() if report is not None else {}),
+        plan={f"{k[0]}|{k[1]}": float(v) for k, v in r.plan.headways.items()},
     )
