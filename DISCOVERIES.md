@@ -1758,3 +1758,52 @@ this pool. It is not a general claim that a repaired incumbent never beats
 greedy — D27 measured the reverse relationship at certification effort, where
 the incumbent start climbs to meet greedy. The claim is bounded to the states
 being re-scored and the effort they are re-scored at.
+
+
+## D31 — Experiment 2B's certified NULL survives matched starts
+
+*Retested 2026-08-31, corrective plan section 5.*
+
+2B certified `splice|011|034|WESHIGW` as NULL at 400000/20/0 over three seeds —
+with `starts="incumbent"`, under which the control kept its incumbent start and
+the candidate silently ran a greedy build instead (D27). The verdict had to be
+re-established with a start policy the treatment does not choose.
+
+Control and candidate, the same three seeds, the same effort, `starts="both"`
+for every cell, through the comparison firewall:
+
+| seed | objective | unserved |
+|---|---|---|
+| 20260825 | +0.0528% | +0.0931% |
+| 20260826 | +0.0528% | +0.0931% |
+| 20260827 | +0.0566% | +0.0843% |
+| **mean** | **+0.0540%** | **+0.0902%** |
+
+Against 2B's own 0.287-point unserved floor that is **0.31 of one floor**.
+
+| | unserved effect | floors | verdict |
+|---|---|---|---|
+| 2B as recorded, mixed starts | +0.0065% | 0.02 | NULL |
+| this retest, matched starts | +0.0902% | 0.31 | **NULL** |
+
+**The conclusion holds, and its sign never wavers.** The effect is roughly
+fourteen times larger under matched starts and still less than a third of the
+floor — and it is *positive at every seed on both quantities*, meaning the
+through-routing is worse than doing nothing, not better. The direction is the
+same one 2B reported; only the magnitude moved, and it moved further from the
+claim rather than towards it.
+
+Two things worth keeping from this:
+
+* **Discovery said −0.5846%. Certification with matched starts says +0.0902%.**
+  The discovery number was wrong in sign as well as size, and both errors —
+  the optimizer asymmetry and the effort shortfall — pushed the same way.
+* **2B had already seen the effect vanish.** Its own record carries
+  `discovery_effort_pct −0.5846` against `effect_pct +0.0065` and
+  `gate_12_stable false`. It attributed that to effort and was half right; D27
+  supplies the other half. The record and the mechanism now agree.
+
+The original certification artifact is preserved as
+`outputs/exp2b_certification.superseded.json`, stamped SUPERSEDED FOR
+QUANTITATIVE INTERPRETATION. The verdict itself is marked confirmed, not
+replaced.
