@@ -1,0 +1,17 @@
+2026-08-31 14:10:16,276 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 14:10:16,315 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 14:10:16,315 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 14:10:16,316 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 14:10:16,329 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:10:16,831 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:10:16,840 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:10:16,966 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:10:16,976 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:10:17,027 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:10:17,035 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 14:10:17,041 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 14:10:17,046 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 14:10:17,052 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 14:10:17,058 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 14:10:17,062 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 14:10:17,063 locking 28 route-periods across 14 routes in classes ('peak_express',)
