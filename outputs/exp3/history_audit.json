@@ -1,0 +1,176 @@
+{
+  "stage": "discovery",
+  "contract": "ba0f2753a051e3eb",
+  "raw": 131,
+  "admissible": 0,
+  "inadmissible": 131,
+  "inadmissible_reasons": {
+    "start policy 'incumbent_only' != contract 'both'": 131,
+    "contract requires a greedy start": 32,
+    "contract requires an incumbent start": 99
+  },
+  "comparisons": 0,
+  "refused": 130,
+  "refusal_dimensions": {},
+  "events": {
+    "START_REJECTED": 99,
+    "START_FALLBACK": 99
+  },
+  "event_rates": {
+    "START_FALLBACK": {
+      "add_stop": 70.0,
+      "change_terminal": 70.0,
+      "control": 0.0,
+      "extend": 100.0,
+      "k=2": 100.0,
+      "k=3": 100.0,
+      "k=4": 100.0,
+      "reroute": 91.7,
+      "splice": 100.0,
+      "split": 100.0,
+      "straighten": 0.0,
+      "truncate": 0.0
+    },
+    "START_REJECTED": {
+      "add_stop": 70.0,
+      "change_terminal": 70.0,
+      "control": 0.0,
+      "extend": 100.0,
+      "k=2": 100.0,
+      "k=3": 100.0,
+      "k=4": 100.0,
+      "reroute": 91.7,
+      "splice": 100.0,
+      "split": 100.0,
+      "straighten": 0.0,
+      "truncate": 0.0
+    }
+  },
+  "imbalances": [
+    {
+      "dimension": "START_FALLBACK",
+      "kind": "event",
+      "by_class": {
+        "add_stop": "70%",
+        "change_terminal": "70%",
+        "control": "0%",
+        "extend": "100%",
+        "k=2": "100%",
+        "k=3": "100%",
+        "k=4": "100%",
+        "reroute": "92%",
+        "splice": "100%",
+        "split": "100%",
+        "straighten": "0%",
+        "truncate": "0%"
+      },
+      "spread": 1.0
+    },
+    {
+      "dimension": "START_REJECTED",
+      "kind": "event",
+      "by_class": {
+        "add_stop": "70%",
+        "change_terminal": "70%",
+        "control": "0%",
+        "extend": "100%",
+        "k=2": "100%",
+        "k=3": "100%",
+        "k=4": "100%",
+        "reroute": "92%",
+        "splice": "100%",
+        "split": "100%",
+        "straighten": "0%",
+        "truncate": "0%"
+      },
+      "spread": 1.0
+    },
+    {
+      "dimension": "fallback_occurred",
+      "kind": "opportunity",
+      "by_class": {
+        "add_stop": "True",
+        "change_terminal": "True",
+        "control": "False",
+        "extend": "True",
+        "k=2": "True",
+        "k=3": "True",
+        "k=4": "True",
+        "reroute": "True",
+        "splice": "True",
+        "split": "True",
+        "straighten": "False",
+        "truncate": "False"
+      },
+      "spread": 1.0
+    },
+    {
+      "dimension": "rejection_reasons",
+      "kind": "opportunity",
+      "by_class": {
+        "add_stop": "['ladder-snapped incumbent exceeds the envelope']",
+        "change_terminal": "['ladder-snapped incumbent exceeds the envelope']",
+        "control": "[]",
+        "extend": "['ladder-snapped incumbent exceeds the envelope']",
+        "k=2": "['ladder-snapped incumbent exceeds the envelope']",
+        "k=3": "['ladder-snapped incumbent exceeds the envelope']",
+        "k=4": "['ladder-snapped incumbent exceeds the envelope']",
+        "reroute": "['ladder-snapped incumbent exceeds the envelope']",
+        "splice": "['ladder-snapped incumbent exceeds the envelope']",
+        "split": "['ladder-snapped incumbent exceeds the envelope']",
+        "straighten": "[]",
+        "truncate": "[]"
+      },
+      "spread": 1.0
+    },
+    {
+      "dimension": "starts_attempted",
+      "kind": "opportunity",
+      "by_class": {
+        "add_stop": "['greedy']",
+        "change_terminal": "['greedy']",
+        "control": "['incumbent']",
+        "extend": "['greedy']",
+        "k=2": "['greedy']",
+        "k=3": "['greedy']",
+        "k=4": "['greedy']",
+        "reroute": "['greedy']",
+        "splice": "['greedy']",
+        "split": "['greedy']",
+        "straighten": "['incumbent']",
+        "truncate": "['incumbent']"
+      },
+      "spread": 1.0
+    },
+    {
+      "dimension": "starts_rejected",
+      "kind": "opportunity",
+      "by_class": {
+        "add_stop": "['incumbent']",
+        "change_terminal": "['incumbent']",
+        "control": "[]",
+        "extend": "['incumbent']",
+        "k=2": "['incumbent']",
+        "k=3": "['incumbent']",
+        "k=4": "['incumbent']",
+        "reroute": "['incumbent']",
+        "splice": "['incumbent']",
+        "split": "['incumbent']",
+        "straighten": "[]",
+        "truncate": "[]"
+      },
+      "spread": 1.0
+    }
+  ],
+  "cache_hits": 0,
+  "resumed": 0,
+  "converged": 131,
+  "seeds": {
+    "20260825": 131
+  },
+  "schema_versions": {
+    "firewall/1-reconstructed": 131
+  },
+  "comparisons_attempted": 130,
+  "comparisons_admitted": 0
+}

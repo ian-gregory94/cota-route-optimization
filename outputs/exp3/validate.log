@@ -198,3 +198,19 @@
 2026-08-31 13:20:09,866 k=4             [both  ] obj=2943287 won=greedy    plan=3969f901ef830732 112s
 2026-08-31 13:20:09,867 stopping cleanly: 440s needed, 293s left
 2026-08-31 13:20:09,868 slice ran 2 cells; 10 remain
+2026-08-31 13:20:13,393 10 of 16 (state, start set) cells still to run
+2026-08-31 13:20:13,535 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 13:20:13,583 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 13:20:13,584 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 13:20:13,585 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 13:20:13,605 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:20:14,034 footpaths: 15543 links (9 from transfers.txt)
+2026-08-31 13:20:14,044 raptor network: 2946 stops, 111 patterns, 15543 footpaths
+2026-08-31 13:20:14,161 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-31 13:20:14,171 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:20:14,236 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:20:14,302 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:21:06,898 rejected 85 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:21:06,989 path set: 24623 paths over 17389/20000 OD pairs (86.7% of flow served), 120149 legs
+2026-08-31 13:21:07,042 period early   : 24623 paths, 20000 OD pairs
+2026-08-31 13:21:07,054 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
