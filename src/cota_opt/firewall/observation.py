@@ -104,6 +104,9 @@ def admit(receipt: ExecutionReceipt, contract: ExperimentContract
                    f"{contract.pathset_policy!r}")
     if s.pool_version != contract.pool_version:
         bad.append(f"pool {s.pool_version!r} != contract {contract.pool_version!r}")
+    if s.methodology_generation != contract.methodology_generation:
+        bad.append(f"methodology {s.methodology_generation!r} != contract "
+                   f"{contract.methodology_generation!r}")
 
     pol = contract.solver
     got = receipt.start_policy_requested

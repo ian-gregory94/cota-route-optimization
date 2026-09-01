@@ -32,6 +32,7 @@ class EvaluationSpec:
     envelope_digest: str = semfield(Sem.IDENTITY, default="")
     pathset_policy: str = semfield(Sem.IDENTITY, default="")
     pool_version: str = semfield(Sem.IDENTITY, default="")
+    methodology_generation: str = semfield(Sem.IDENTITY, default="gen1")
     config_digest: str = semfield(Sem.IDENTITY, default="")
     data_digest: str = semfield(Sem.IDENTITY, default="")
     code_version: str = semfield(Sem.IDENTITY, default="")
@@ -67,6 +68,8 @@ def build_spec(contract: ExperimentContract, *, state_digest: str,
         objective_version=contract.objective_version,
         envelope_digest=envelope_digest,
         pathset_policy=contract.pathset_policy,
-        pool_version=contract.pool_version, config_digest=config_digest,
+        pool_version=contract.pool_version,
+        methodology_generation=contract.methodology_generation,
+        config_digest=config_digest,
         data_digest=data_digest, code_version=code_version, solver=sp,
         seed=int(sp.seeds[0] if seed is None else seed))
