@@ -1,0 +1,51 @@
+{
+  "n_stops": 2763,
+  "n_directed_links": 2952,
+  "n_links_served_by_more_than_one_route": 389,
+  "mean_out_degree": 1.068,
+  "max_out_degree": 9,
+  "stops_with_no_outgoing_link": 0,
+  "run_time_sec": {
+    "min": 9.0,
+    "median": 47.5,
+    "p95": 126.4,
+    "max": 1200.0
+  },
+  "observations_per_link": {
+    "median": 1,
+    "p05": 1,
+    "singletons": 1646
+  },
+  "patterns_checked": 77,
+  "patterns_not_serviceable": 0,
+  "not_serviceable_examples": [],
+  "every_pattern_is_a_path": true,
+  "strongly_connected_components": 1,
+  "largest_component_stops": 2763,
+  "is_strongly_connected": true,
+  "branch_points": 166,
+  "branch_point_share": 0.0601,
+  "merge_points": 161,
+  "true_junctions": 62,
+  "links_with_one_observation": 1646,
+  "single_observation_share": 0.5576,
+  "excluded_routes": [
+    "041",
+    "042",
+    "043",
+    "044",
+    "045",
+    "046",
+    "051",
+    "052",
+    "061",
+    "071",
+    "072",
+    "073",
+    "074",
+    "075"
+  ],
+  "note": "Every directed edge is a consecutive stop-to-stop movement some COTA route operates, with that movement's observed median scheduled running time. A synthetic route is a path through this graph, so its topology is free while its running times are all observed.",
+  "design_freedom_note": "The graph is strongly connected, so any stop can reach any other. But only the branch points offer a CHOICE: everywhere else a route has exactly one continuation. Experiment 4's primary evidence class is therefore not 'any network over 2,763 stops' \u2014 it is 're-cut and re-splice COTA's existing corridors at the places they already meet'. That is a real and statable limit on what the primary class can answer, and the honest framing of the result.",
+  "runtime_confidence_note": "Links with a single observation take their running time from one trip's schedule. Better than the estimator's 20.5% median single-link error, but not equivalent to a link many trips agree on \u2014 and a synthetic route is free to lean on the thin ones, which the existing route that produced them does not do more than once."
+}
