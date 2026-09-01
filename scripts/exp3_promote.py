@@ -44,16 +44,10 @@ PER_CARDINALITY = 1
 
 
 def load_receipts() -> dict:
-    """Execution receipts by state key, if any have been written yet."""
-    from cota_opt.firewall.receipt import ExecutionReceipt   # noqa: F401
-    import pickle
-    path = OUT / "stageA_receipts.pkl"
-    if not path.exists():
-        return {}
-    try:
-        return pickle.loads(path.read_bytes())
-    except Exception:
-        return {}
+    """Execution receipts by state key, from the observation store."""
+    from cota_opt.firewall import ObservationStore
+    store = ObservationStore(OUT / "observations")
+    return {r.spec.state_key: r for r in store.all()}
 
 
 def load() -> tuple[dict, dict, float, float]:

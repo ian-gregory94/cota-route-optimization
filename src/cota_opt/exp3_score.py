@@ -250,17 +250,28 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
         local_search_iterations=iterations, seed=seed, ladders=judge.ladders,
         initial=initial,
         n_restarts=restarts, candidate_width=width, greedy_start=use_greedy)
-    repair_audit["exchanges"] = r.meta.get("exchanges")
-    repair_audit["n_starts"] = r.meta.get("n_starts")
+    # Carry the solve's own account of itself through verbatim. Anything the
+    # execution receipt needs must come from here, never from a log: that
+    # dependency is what let a treatment-correlated fallback run for four
+    # experiments (D27).
+    for k in ("exchanges", "n_starts", "evaluations", "searches",
+              "termination", "restarts_completed", "initial_offered",
+              "initial_rejection", "forced_greedy_fallback"):
+        repair_audit[k] = r.meta.get(k)
+
     # WHICH start won, not just how many there were. `optimize_frequencies`
     # builds its start list as [initial (if feasible)] + [greedy (if asked or
-    # if nothing else)], so the index maps back to a name here.
+    # if nothing else)], so the index maps back to a name here. The names used
+    # are this layer's, because only this layer knows the incumbent it handed
+    # over had been repaired.
     names = ([] if initial is None else [starts if starts != "both" else "repaired"])
     if use_greedy:
         names.append("greedy")
     bs = r.meta.get("best_start", -1)
-    repair_audit["best_start"] = (names[bs] if 0 <= bs < len(names) else
-                                  ("resumed" if bs < 0 else f"#{bs}"))
+    won = (names[bs] if 0 <= bs < len(names) else
+           ("resumed" if bs < 0 else f"#{bs}"))
+    repair_audit["best_start"] = won
+    repair_audit["winning_start"] = won
     repair_audit["start_names"] = names
     hw = dict(judge.baseline_plan.headways)
     for k, v in r.plan.headways.items():
