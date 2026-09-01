@@ -1510,3 +1510,90 @@ Geometry findings stay out of this log until they survive: frequency
 re-optimization, the frozen yardstick, matched effort, a seed check, and a hand
 inspection against the network. Screening evidence is for choosing what to
 evaluate, not for concluding.
+
+## D27 — the optimizer was chosen by the treatment
+
+*Found 2026-08-31, mid Experiment 3 Phase A2, by aggregating a `log.warning`
+that had been printing since Experiment 1 and had never been counted.*
+
+`optimize_frequencies` accepts an `initial` plan only if that plan, **once
+snapped to the headway ladder**, still fits the envelope. `fit_incumbent`
+fits in continuous headway space; the snap that follows moves roughly half the
+route-periods to a *shorter* headway, which costs vehicle-hours. The
+rescaled-then-snapped incumbent therefore lands back outside the envelope, the
+optimizer logs `incumbent plan is infeasible under this budget`, discards it,
+and runs `_greedy_build` — the build the caller disabled with
+`greedy_start=False`.
+
+**The fallback is decided by the treatment.** Over 156 Stage A solves:
+
+| kind | fell back | | kind | fell back |
+|---|---|---|---|---|
+| extend | 40/40 (100%) | | truncate | 0/14 (0%) |
+| reroute | 21/22 (96%) | | straighten | 0/12 (0%) |
+| splice | 12/13 (92%) | | zero-edit control | 0/3 (0%) |
+| add_stop | 52/63 (83%) | | every k=2, k=3 state | 46/46 (100%) |
+
+Route-*lengthening* edits push the incumbent over the envelope; route-*shortening*
+edits and the unedited control never do. Experiments 2 and 2B are the same:
+`exp2_treatments_full` 72/72 solves, `exp2b_stageA_s0` 32/32, `exp2b_stageA_s1`
+25/25, `exp2b_stageB` 30/32.
+
+**And the two optimizers do not agree.** Same state, same seed, same
+60000/2/32 effort, only the start set changed:
+
+| state | incumbent start | greedy | both, best kept |
+|---|---|---|---|
+| zero-edit control | 2,962,743 | **2,956,121** | 2,956,121 |
+| splice-011-034-WESHIGW | (fell back) 2,957,680 | 2,957,680 | 2,957,680 |
+
+Greedy is **better**, by 0.224% of objective on the control — 5.7× the 0.0391%
+noise floor, and larger than the mean measured effect of *any* mutation kind.
+The direction is the opposite of the code comment claiming greedy "converges to
+a worse optimum than the incumbent start": greedy spends the budget to 2515.1
+of 2517.2 vehicle-hours, while the repaired incumbent start reaches only 2504.5
+and the exchange search cannot spend the remainder back.
+
+So the control was optimized by the weaker method and the treatments by the
+stronger one — a handicap on the control, correlated with the treatment.
+
+**What it does to the published numbers.** For 2B's own candidate:
+
+| comparison | objective | unserved |
+|---|---|---|
+| published, mixed start sets | −0.1709% | **−0.5846%** |
+| like for like, both states on `both` | **+0.0528%** | **+0.0931%** |
+
+The sign flips. The −0.5846% unserved reduction — the number
+`exp3_score_invariant.py` was built to reproduce, and reproduces exactly —
+becomes a +0.0931% *increase*, inside the 0.130% unserved floor.
+
+Across the A1 census the correlation between a kind's greedy-fallback rate and
+its mean objective is **r = −0.711** (n = 8 kinds): the kinds that fell back
+score better. The two kinds that never fell back, `truncate` and `straighten`,
+are the two that were already being compared like-for-like against the control
+— and they are the two that show no effect (+0.047%, −0.002%).
+
+**What survives.** Experiment 2B certified NULL at certification effort
+(400000/20/0, 3 seeds), not at discovery effort, and a finding of *no
+difference* is not manufactured by handicapping the control. Nothing here says
+2B's certification is wrong; it says 2B's *discovery* ranking, and all of
+Experiment 3 Phase A1 and A2 so far, ranked states partly by which optimizer
+each one happened to receive. `splice` also ranks near-worst *despite* getting
+the better optimizer, so geometry effects are real — it is the magnitudes and
+the ordering among the leaders that are not trustworthy.
+
+**Open, and the next thing to test:** whether the gap closes at certification
+effort. If 400000/20/0 converges both start sets to the same optimum, only
+discovery is affected and the Stage B/C gates are sound as written.
+
+**The fix.** `starts="both"` — repaired incumbent *and* greedy, best kept: the
+only start set whose composition does not depend on the treatment, and never
+worse than either alone. `repair_to_ladder` walks a snapped plan back onto the
+ladder inside the envelope so the incumbent branch is genuinely available.
+Default remains `"incumbent"` so no recorded number silently changes meaning.
+
+**The lesson, which is rule 16.** A `log.warning` that fires on two thirds of
+runs is not a warning, it is a code path. This one ran for three experiments.
+Nothing checked how often it fired, because nothing was *counting* — the line
+was visible in every log and invisible in every summary.

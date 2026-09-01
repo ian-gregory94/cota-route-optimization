@@ -81,7 +81,8 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                 sole_access_stops: Sequence[str] = (),
                 constraints: dict | None = None,
                 pathset_cache=None,
-                waiting_model: str = "same_route") -> ScoredState:
+                waiting_model: str = "same_route",
+                starts: str = "incumbent") -> ScoredState:
     """Apply, validate, rebuild, re-optimize, evaluate. Raises on a violation.
 
     The contract check runs on the RESULT, after the network exists, because
@@ -199,11 +200,57 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
     # zero, and a zero floor licenses every margin that is not precisely nil.
     incumbent, scale = fit_incumbent(judge, judge.budget.revenue_veh_hours)
 
+    # ...and even then the optimizer may still refuse it. `fit_incumbent`
+    # scales in CONTINUOUS headway space; `optimize_frequencies` snaps the
+    # plan it is handed to the nearest ladder rung, which moves about half the
+    # route-periods to a SHORTER headway and costs vehicle-hours. The
+    # rescaled-then-snapped plan lands back outside the envelope, and the
+    # optimizer falls back to the greedy build this call disabled.
+    #
+    # That fallback is correlated with the treatment: lengthening edits push
+    # the incumbent over the envelope, shortening edits and the unedited
+    # control do not. So which optimizer a state gets is decided by the
+    # treatment applied to it, which is the one thing a controlled comparison
+    # may not allow.
+    #
+    # `starts` selects the start set explicitly instead of letting an
+    # unhandled infeasibility decide it:
+    #   "incumbent" -- what Experiments 2, 2B and 3-A1 were scored with:
+    #                  the incumbent if the ladder snap leaves it feasible,
+    #                  and SILENTLY the greedy build if it does not.
+    #   "repaired"  -- the incumbent walked back onto the ladder inside the
+    #                  envelope, so the incumbent branch is always taken.
+    #   "greedy"    -- the greedy build alone.
+    #   "both"      -- repaired incumbent AND greedy, best kept. The only
+    #                  start set whose composition does not depend on the
+    #                  treatment.
+    # Default is "incumbent" so nothing already recorded changes meaning.
+    if starts not in ("incumbent", "repaired", "greedy", "both"):
+        raise ValueError(f"unknown starts={starts!r}")
+    repair_audit: dict[str, Any] = {"starts": starts}
+    initial = incumbent
+    use_greedy = False
+    if starts in ("repaired", "both"):
+        from .frequency import repair_to_ladder
+        fixed, repair_audit = repair_to_ladder(
+            judge.model, judge.budget, judge.ladders, incumbent)
+        repair_audit["starts"] = starts
+        repair_audit["repaired"] = fixed is not None
+        if fixed is not None:
+            initial = fixed
+    if starts == "greedy":
+        initial = None            # no initial => greedy build is the only start
+        use_greedy = True
+    if starts == "both":
+        use_greedy = True         # greedy IS added alongside; best-of is kept
+
     r = optimize_frequencies(
         judge.model, judge.budget, ladder=[], unserved_multiplier=lam,
         local_search_iterations=iterations, seed=seed, ladders=judge.ladders,
-        initial=incumbent,
-        n_restarts=restarts, candidate_width=width, greedy_start=False)
+        initial=initial,
+        n_restarts=restarts, candidate_width=width, greedy_start=use_greedy)
+    repair_audit["exchanges"] = r.meta.get("exchanges")
+    repair_audit["n_starts"] = r.meta.get("n_starts")
     hw = dict(judge.baseline_plan.headways)
     for k, v in r.plan.headways.items():
         if k in hw:
@@ -234,6 +281,6 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                   "rules_checked": sorted(set(check.rules_checked)
                                           | set(final.rules_checked)),
                   "facts": {**check.facts, **final.facts}},
-        evaluator=dict(judge.checks),
+        evaluator={**dict(judge.checks), "incumbent_repair": repair_audit},
         edit_report=(report.as_dict() if report is not None else {}),
     )

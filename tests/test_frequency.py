@@ -184,3 +184,80 @@ def test_transfer_coupling_rewards_frequent_connections():
     slow = m.evaluate(FrequencyPlan({("A", "all"): 20.0, ("B", "all"): 60.0}))
     fast = m.evaluate(FrequencyPlan({("A", "all"): 20.0, ("B", "all"): 10.0}))
     assert fast.generalized_cost < slow.generalized_cost
+
+
+# --- the ladder snap that silently discarded the incumbent -------------------
+#
+# `optimize_frequencies` accepts an `initial` plan only if that plan, once
+# snapped to the ladder, still fits the envelope. Nearest-rung snapping moves
+# roughly half the route-periods to a SHORTER headway, which costs
+# vehicle-hours, so a plan fitted to the envelope in continuous space lands
+# back outside it and the optimizer falls back to the greedy build the caller
+# disabled. In Stage A that fallback fired on 99 of 156 solves, and on 46 of 46
+# multi-edit states, while never firing on the unedited control -- an optimizer
+# chosen by the treatment.
+
+def _ladders(m, ladder=LADDER):
+    return {k: sorted(float(h) for h in ladder) for k in m.keys}
+
+
+def test_snap_to_ladder_returns_ladder_values():
+    from cota_opt.frequency import snap_to_ladder
+    m = _model({"R1": 1000.0, "R2": 500.0})
+    lads = _ladders(m)
+    snapped = snap_to_ladder(lads, FrequencyPlan({k: 11.3 for k in m.keys}))
+    for k in m.keys:
+        assert snapped.headways[k] in lads[k]
+        assert snapped.headways[k] == 12          # nearest rung to 11.3
+
+
+def test_snapping_can_push_a_fitting_plan_out_of_the_envelope():
+    """The defect itself, in miniature: fits before the snap, not after."""
+    from cota_opt.frequency import _feasible, snap_to_ladder
+    m = _model({"R1": 1000.0, "R2": 1000.0})
+    lads = _ladders(m)
+    plan = FrequencyPlan({k: 11.0 for k in m.keys})          # between rungs
+    budget = ResourceBudget(m.evaluate(plan).revenue_veh_hours, {})
+    assert _feasible(m, m.evaluate(plan), budget)             # fits as given
+    snapped = snap_to_ladder(lads, plan)                      # 11.0 -> 10
+    assert not _feasible(m, m.evaluate(snapped), budget)      # no longer fits
+
+
+def test_repair_returns_a_feasible_on_ladder_plan():
+    from cota_opt.frequency import _feasible, repair_to_ladder
+    m = _model({"R1": 1000.0, "R2": 1000.0})
+    lads = _ladders(m)
+    plan = FrequencyPlan({k: 11.0 for k in m.keys})
+    budget = ResourceBudget(m.evaluate(plan).revenue_veh_hours, {})
+    fixed, audit = repair_to_ladder(m, budget, lads, plan)
+    assert fixed is not None
+    assert audit["snapped_feasible"] is False and audit["steps"] >= 1
+    for k in m.keys:
+        assert fixed.headways[k] in lads[k]
+    assert _feasible(m, m.evaluate(fixed), budget)
+
+
+def test_repair_is_a_no_op_when_the_snapped_plan_already_fits():
+    from cota_opt.frequency import repair_to_ladder
+    m = _model({"R1": 1000.0, "R2": 1000.0})
+    lads = _ladders(m)
+    plan = FrequencyPlan({k: 12.0 for k in m.keys})           # already a rung
+    budget = ResourceBudget(m.evaluate(plan).revenue_veh_hours, {})
+    fixed, audit = repair_to_ladder(m, budget, lads, plan)
+    assert audit["snapped_feasible"] is True and audit["steps"] == 0
+    assert fixed is not None
+    assert all(fixed.headways[k] == 12.0 for k in m.keys)
+
+
+def test_repaired_incumbent_is_actually_taken_as_a_start():
+    """With the repair the optimizer uses the incumbent branch, not greedy."""
+    from cota_opt.frequency import repair_to_ladder
+    m = _model({"R1": 1000.0, "R2": 1000.0})
+    lads = _ladders(m)
+    plan = FrequencyPlan({k: 11.0 for k in m.keys})
+    budget = ResourceBudget(m.evaluate(plan).revenue_veh_hours, {})
+    fixed, _ = repair_to_ladder(m, budget, lads, plan)
+    r = optimize_frequencies(m, budget, ladder=[], ladders=lads, initial=fixed,
+                             local_search_iterations=200, n_restarts=0,
+                             seed=1, greedy_start=False)
+    assert r.meta["n_starts"] == 1          # the incumbent, not a greedy fallback
