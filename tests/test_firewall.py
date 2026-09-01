@@ -492,3 +492,42 @@ def test_a_cell_from_another_generation_is_not_this_experiments_evidence():
 def test_a_comparison_records_the_generation_that_produced_it():
     r = compare(receipt(), treated(), CONTRACT)
     assert r.as_dict()["methodology_generation"] == "gen1"
+
+
+def test_observation_identity_is_never_state_key_alone(tmp_path):
+    """Two cells for the same state at different seeds are two observations.
+
+    The zero-edit replicates share the control's state key and differ only in
+    seed. An identity that ignores the seed collapses them, and whichever
+    landed last silently becomes the control every treatment is measured
+    against.
+    """
+    import dataclasses as dc
+    from cota_opt.firewall import ObservationStore
+    store = ObservationStore(tmp_path)
+    a = receipt()
+    b = ExecutionReceipt(**{**{f.name: getattr(a, f.name)
+                               for f in dataclasses.fields(a)},
+                            "spec": dc.replace(a.spec, seed=a.spec.seed + 1),
+                            "objective": a.objective + 1000.0})
+    store.put(a)
+    store.put(b)
+    assert len(store.all()) == 2, "a seed change must not overwrite an entry"
+    assert a.spec.cache_key != b.spec.cache_key
+    got = store.get(a.spec, CONTRACT)
+    assert isinstance(got, ExecutionReceipt)
+    assert got.objective == a.objective       # not b's
+
+
+def test_a_pre_firewall_row_cannot_pass_as_completed_work():
+    """A receipt without this contract's identity is not admissible evidence."""
+    stale = ExecutionReceipt(
+        spec=dataclasses.replace(spec(), contract_digest="pre-firewall",
+                                 methodology_generation="gen0"),
+        evaluator_used=CONTRACT.evaluator, objective_used=CONTRACT.objective,
+        starts_attempted=("repaired", "greedy"), restarts_completed=2,
+        converged=True, objective=9e5, schema_version="firewall/1-reconstructed")
+    v = admit(stale, CONTRACT)
+    assert not v
+    assert any("contract" in r for r in v.reasons)
+    assert any("methodology" in r for r in v.reasons)
