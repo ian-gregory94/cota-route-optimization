@@ -1706,3 +1706,55 @@ surface. A gate invented after seeing these numbers would not be a gate.
 already drives" becomes: *every route uses directed links observed in current
 COTA service; transition-level support is tracked separately, because novel
 combinations of observed links may still imply unobserved turns.*
+
+
+## D30 — the fallback states were already in the winning basin
+
+*Measured 2026-08-31, before the Experiment 3 remediation ran, because the
+40-state remediation set was an inference and not yet a demonstrated
+invariant.*
+
+A state whose incumbent was rejected ran `_greedy_build` alone. Under
+`starts="both"` it gets greedy **and** a repaired incumbent, best kept — so
+`both` cannot make such a state worse. Nothing showed it could not make one
+*better*, and if it could, the 40-state list was incomplete.
+
+Eight previously-fallback states, stratified across cardinality and mutation
+kind, each run at the original discovery effort under `starts="greedy"` and
+`starts="both"` with everything else identical:
+
+| state | k | greedy | both | Δ |
+|---|---|---|---|---|
+| A2 leader | 4 | 2,943,013.3307 | 2,943,013.3307 | 0 |
+| k=2 | 2 | 2,946,056.4606 | 2,946,056.4606 | 0 |
+| k=3 | 3 | 2,943,490.7558 | 2,943,490.7558 | 0 |
+| k=4 | 4 | 2,943,287.3456 | 2,943,287.3456 | 0 |
+| add_stop single | 1 | 2,950,538.0418 | 2,950,538.0418 | 0 |
+| extend single | 1 | 2,954,048.7671 | 2,954,048.7671 | 0 |
+| reroute single | 1 | 2,951,408.5162 | 2,951,408.5162 | 0 |
+| splice single | 1 | 2,957,680.4901 | 2,957,680.4901 | 0 |
+
+**Maximum |Δ| across all eight: 0.000000000.** Not "within tolerance" —
+bit-identical, with **identical frequency-plan hashes 8/8**, and `both`
+selecting the greedy arm **8/8**. The repaired incumbent never won, on any
+state, at any cardinality.
+
+Each `greedy` arm also reproduced its recorded Phase A1/A2 objective to
+**0.000000000**, so a difference under `both` could not have been blamed on
+drift somewhere else in the chain.
+
+**Therefore the remediation set is exactly the states *accepted* on the
+incumbent start** — 40 of 115, all cardinality 1, in
+`outputs/exp3/rescore_needed.txt`. The 75 fallback states, and every one of
+A2's k≥2 states, were already scored in the basin `both` selects, and
+re-scoring them would return the same numbers at a cost of about nine hours.
+
+This is what the invariant is worth: it converts "we think only 40 need
+redoing" into "we measured that the other 75 cannot move", and it cost eight
+states of compute to buy.
+
+*Scope note.* The measurement covers this remediation, at discovery effort, on
+this pool. It is not a general claim that a repaired incumbent never beats
+greedy — D27 measured the reverse relationship at certification effort, where
+the incumbent start climbs to meet greedy. The claim is bounded to the states
+being re-scored and the effort they are re-scored at.
