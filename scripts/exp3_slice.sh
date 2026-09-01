@@ -63,7 +63,7 @@ echo "slice: $before -> $after states"
 
 # git is the only store that outlives the container. Commit every slice.
 bash scripts/presweep.sh > /dev/null 2>&1
-git add -A
+git add outputs/exp3 data/cache
 git diff --cached --quiet || git commit -q -m "chore: Experiment 3 stage A slice — $after states checkpointed
 
 Committed at the slice boundary because the container is recycled on idle and
