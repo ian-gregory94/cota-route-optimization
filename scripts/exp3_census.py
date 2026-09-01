@@ -65,8 +65,34 @@ def main() -> int:
 
     base = EXP3_STAGE_A.solver.seeds[0]
     store = ObservationStore(OUT / args.store)
-    all_receipts = store.all()
-    at_base = {r.spec.state_key: r for r in all_receipts if r.spec.seed == base}
+
+    # Filter to ONE contract and ONE source revision before anything else.
+    # The store holds receipts from every revision this census was scored
+    # under, and two receipts for the same state differ in spec digest, so they
+    # are separate objects. Selecting by state key alone would pick whichever
+    # the filesystem happened to yield last -- a nondeterministic census, which
+    # is worse than a refused one.
+    frozen_f = OUT / "EVAL_PATH_FROZEN"
+    frozen = frozen_f.read_text().strip() if frozen_f.exists() else None
+    all_receipts = [r for r in store.all()
+                    if r.spec.contract_digest == EXP3_STAGE_A.digest
+                    and (frozen is None or r.code_version == frozen)]
+    dropped = len(store.all()) - len(all_receipts)
+    if dropped:
+        print(f"  ({dropped} receipts from another contract or source revision "
+              f"excluded; frozen at {frozen})")
+    at_base = {}
+    for r in all_receipts:
+        if r.spec.seed != base:
+            continue
+        prev = at_base.get(r.spec.state_key)
+        if prev is not None and prev.digest != r.digest:
+            raise SystemExit(
+                f"two different receipts for {r.spec.state_key!r} at the same "
+                f"seed, contract and source revision ({prev.digest} and "
+                f"{r.digest}). That should be impossible and the census will "
+                f"not guess which one is the evidence.")
+        at_base[r.spec.state_key] = r
     control = at_base.get(NULL)
     if control is None:
         print("no zero-edit control receipt at the base seed; nothing to build")
@@ -74,7 +100,7 @@ def main() -> int:
 
     # Replicates: preserved as an OBSERVATION about the solver, not a threshold.
     reps = sorted((r for r in all_receipts if r.spec.state_key == NULL),
-                  key=lambda r: r.spec.seed)
+                  key=lambda r: r.spec.seed)   # already contract/revision filtered
     rep_objs = [r.objective for r in reps]
     spread = (max(rep_objs) - min(rep_objs)) if len(rep_objs) > 1 else None
     variance_note = {
@@ -127,6 +153,8 @@ def main() -> int:
                   f"{EXP3_STAGE_A.solver.restarts}/"
                   f"{EXP3_STAGE_A.solver.candidate_width}",
         "start_policy": EXP3_STAGE_A.solver.start_policy.value,
+        "source_revision": frozen,
+        "receipts_excluded_other_revision": dropped,
         "control_objective": control.objective,
         "control_receipt": control.digest,
         "interpretation": "DESCRIPTIVE ONLY. Signed effects and rankings, no "
