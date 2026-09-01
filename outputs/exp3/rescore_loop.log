@@ -359,3 +359,27 @@ slice: 40 -> 40 states remaining
 committed: 4b5ca74 chore: Experiment 3 A1 re-score slice — 0 done, 40 of 40 remaining
 loop start 2026-08-31T17:21:56Z pid=26390
 2026-08-31T17:21:58Z remaining=37
+slice: 37 -> 34 states remaining
+committed: 04520074 chore: Experiment 3 A1 re-score slice — 3 done, 34 of 40 remaining
+2026-08-31T17:44:59Z remaining=34
+slice: 34 -> 31 states remaining
+committed: f564b8ea chore: Experiment 3 A1 re-score slice — 3 done, 31 of 40 remaining
+2026-08-31T18:06:15Z remaining=31
+slice: 31 -> 28 states remaining
+committed: 5ae4eb9a chore: Experiment 3 A1 re-score slice — 3 done, 28 of 40 remaining
+2026-08-31T18:22:26Z remaining=28
+slice: 28 -> 25 states remaining
+committed: 9a0519df chore: Experiment 3 A1 re-score slice — 3 done, 25 of 40 remaining
+2026-08-31T18:38:46Z remaining=25
+slice: 25 -> 22 states remaining
+committed: 4a1ac46a chore: Experiment 3 A1 re-score slice — 3 done, 22 of 40 remaining
+2026-08-31T18:54:53Z remaining=22
+slice: 22 -> 19 states remaining
+committed: 4653e355 chore: Experiment 3 A1 re-score slice — 3 done, 19 of 40 remaining
+2026-08-31T19:15:47Z remaining=19
+slice: 19 -> 82 states remaining
+committed: 43f93e5b chore: Experiment 3 A1 re-score slice — -63 done, 82 of 40 remaining
+2026-08-31T19:36:58Z remaining=82
+slice: 82 -> 72 states remaining
+committed: e25dcb0c chore: Experiment 3 A1 re-score slice — 10 done, 72 of 40 remaining
+2026-08-31T19:53:43Z remaining=72
