@@ -239,3 +239,15 @@ cell can move between them mid-run. Partition the COMPLETE list once, so a cell
 belongs to exactly one shard from start to finish, and subtract the finished
 ones afterwards. The symptom that exposed it was a shard whose remaining count
 did not drop after it completed a cell.
+
+**27. A keeper you never checked is not a keeper.** The hourly trigger that
+exists to revive the batch after a container recycle had been *failing at
+startup on every firing* — ten seconds, then `FAILED` — while reporting
+`enabled: true` and a healthy `next_run_at`. Nine hours of certification time
+were lost to a watchdog that was itself dead, and nothing surfaced it, because
+"the keeper is scheduled" was mistaken for "the keeper is working." This is the
+same failure class as rule 18 and as the `done()` check that read rows instead
+of receipts: a mechanism that *looks* like it is running is not evidence that it
+ran. `list_triggers` reports `last_run.status` and `finished_at`; read them.
+A keeper whose last run failed is an outage, and a keeper whose runs are
+suspiciously short is a startup failure, not a quiet success.

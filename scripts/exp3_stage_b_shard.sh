@@ -10,6 +10,17 @@ EXTRA="${*:-}"
 I="${SHARD%%/*}"
 TAG="stageB${EXTRA:+_esc}$I"
 OUT=outputs/exp3
+# Refuse to start when a live worker already owns this shard. After a container
+# recycle two keepers can fire close together; without this the second one
+# doubles the workers and oversubscribes both cores (OPERATIONS 25).
+if [ -f "$OUT/$TAG.pid" ]; then
+  old=$(cat "$OUT/$TAG.pid" 2>/dev/null || echo)
+  case "${old:-}" in (''|*[!0-9]*) old=;; esac
+  if [ -n "$old" ] && kill -0 "$old" 2>/dev/null; then
+    echo "$TAG already running as pid $old; not starting a second" >&2
+    exit 0
+  fi
+fi
 guard() { case "$1" in (''|*[!0-9]*) echo "FATAL: count not a number: $(printf %q "$1")" >&2; exit 4;; esac; }
 stall=0
 echo "$TAG start $(date -u +%FT%TZ) pid=$$" >> "$OUT/$TAG.log"
