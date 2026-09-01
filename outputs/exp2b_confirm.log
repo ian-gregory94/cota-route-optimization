@@ -32,3 +32,17 @@
 2026-08-31 14:21:08,010 period evening : 24058 paths, 20000 OD pairs
 2026-08-31 14:21:08,015 period owl     : 22669 paths, 20000 OD pairs
 2026-08-31 14:21:08,015 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:31:50,495 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 14:31:50,513 null                       seed 20260825 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 14:31:50,863 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:31:50,872 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:31:50,983 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:31:50,993 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 14:31:51,038 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:31:51,044 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 14:31:51,050 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 14:31:51,056 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 14:31:51,062 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 14:31:51,067 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 14:31:51,072 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 14:31:51,072 locking 28 route-periods across 14 routes in classes ('peak_express',)

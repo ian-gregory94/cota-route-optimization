@@ -93,9 +93,12 @@ def done() -> set[str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--deadline-seconds", type=float, default=470.0)
-    ap.add_argument("--state-seconds", type=float, default=440.0,
-                    help="assumed cost of one state; never start one inside this")
+    ap.add_argument("--deadline-seconds", type=float, default=1400.0)
+    ap.add_argument("--state-seconds", type=float, default=460.0,
+                    help="assumed cost of one state with COLD path sets; a warm "
+                         "one is about a quarter of that. Never start a state "
+                         "inside this -- a state killed mid-solve is a state "
+                         "thrown away, and the loop would retry it forever.")
     ap.add_argument("--lam", type=float, default=exp3.PRIMARY_LAMBDA)
     ap.add_argument("--seed", type=int, default=20260825)
     ap.add_argument("--iterations", type=int, default=60_000)
@@ -127,6 +130,11 @@ def main() -> int:
 
     n = 0
     for role in todo:
+        # Cost depends on whether this state's path sets are already built, so
+        # the guard has to know which. Charging every state the cold price
+        # wastes most of a slice; charging every state the warm price kills one
+        # mid-build.
+        # (the cache probe happens below; this is the conservative bound)
         if time.time() + args.state_seconds > deadline:
             log.info("stopping cleanly: not enough slice left for another state")
             break
