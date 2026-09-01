@@ -1,12 +1,12 @@
 {
   "stage": "A \u2014 DISCOVERY. These magnitudes are not findings; the promoted set is a selection of what to look at in Stage B.",
-  "states_scored": 114,
+  "states_scored": 120,
   "replicates": 3,
   "objective_floor_pct": 0.0391,
   "tie_band_pct": 0.0783,
   "leader": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
   "leader_pct": -0.681,
-  "n_promoted": 23,
+  "n_promoted": 24,
   "promotion_rule": {
     "tie_floors": 2.0,
     "per_kind": 2,
@@ -51,6 +51,20 @@
       "why_promoted": "within 2.0 floors of the leader"
     },
     {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6457,
+      "floors": 16.49,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6454,
+      "floors": 16.48,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
       "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
       "objective_pct_vs_null": -0.6389,
       "floors": 16.32,
@@ -86,6 +100,13 @@
       "why_promoted": "within 2.0 floors of the leader"
     },
     {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6029,
+      "floors": 15.4,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
       "state": "add_stop-010#22c4c35ac5b2+reroute-031#dfd049714f7d",
       "objective_pct_vs_null": -0.5523,
       "floors": 14.11,
@@ -93,25 +114,11 @@
       "why_promoted": "best at cardinality 2"
     },
     {
-      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8",
-      "objective_pct_vs_null": -0.5139,
-      "floors": 13.13,
-      "cardinality": 4,
-      "why_promoted": "best 2 featuring kind change_terminal"
-    },
-    {
       "state": "add_stop-010#22c4c35ac5b2",
       "objective_pct_vs_null": -0.401,
       "floors": 10.24,
       "cardinality": 1,
       "why_promoted": "best at cardinality 1"
-    },
-    {
-      "state": "change_terminal-141-STAHIGW#b5ce9b1e03b5",
-      "objective_pct_vs_null": -0.2251,
-      "floors": 5.75,
-      "cardinality": 1,
-      "why_promoted": "best 2 featuring kind change_terminal"
     },
     {
       "state": "split-034-STE418N#f2471e265dfb",
