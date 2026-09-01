@@ -57,7 +57,7 @@ from exp3_pin_envelope import load as pin_load                    # noqa: E402
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger("rescore")
 OUT = ROOT / "outputs" / "exp3"
-ROWS = OUT / "stageA_rescored.jsonl"
+ROWS = OUT / "stageA_rescored.jsonl"          # shard 0 / unsharded
 CONTRACT = EXP3_STAGE_A
 STORE = ObservationStore(OUT / "observations")
 STARTS = CONTRACT.solver.start_policy.value
@@ -128,11 +128,22 @@ def main() -> int:
     ap.add_argument("--width", type=int, default=32)
     ap.add_argument("--common-lines", default="same_route")
     ap.add_argument("--list", action="store_true")
+    ap.add_argument("--shard", default="",
+                    help="i/n — take every nth state of a CANONICALLY SORTED "
+                         "list. Sorting first is what makes the shards a "
+                         "partition rather than an overlap (OPERATIONS 12); "
+                         "the union is checked by the freeze, which refuses "
+                         "unless all 84 singles have receipts.")
     args = ap.parse_args()
     deadline = time.time() + args.deadline_seconds
 
-    todo = [s for s in wanted() if s not in done()]
-    log.info("%d of %d states still to re-score", len(todo), len(wanted()))
+    todo = [s for s in sorted(wanted()) if s not in done()]
+    total = len(todo)
+    if args.shard:
+        i, n = (int(x) for x in args.shard.split("/"))
+        todo = [s for j, s in enumerate(todo) if j % n == i]
+        log.info("shard %d/%d: %d of %d remaining states", i, n, len(todo), total)
+    log.info("%d of %d states still to re-score", total, len(wanted()))
     if args.list or not todo:
         for s in todo:
             print(s)
@@ -150,6 +161,8 @@ def main() -> int:
     pool = json.loads((OUT / "mutation_pool.json").read_text())
     idx = {m["id"]: m for m in pool["mutations"]}
 
+    rows_path = (OUT / f"stageA_rescored.shard{args.shard.split('/')[0]}.jsonl"
+                 if args.shard else ROWS)
     n = 0
     for role in todo:
         # The deadline guard lives BELOW, after the path-set cache probe:
@@ -230,7 +243,7 @@ def main() -> int:
                "receipt_digest": rec.digest, "spec_digest": rec.spec.digest,
                "contract": CONTRACT.digest, "code_version": rec.code_version,
                "admissible": bool(admit(rec, CONTRACT))}
-        with ROWS.open("a") as f:
+        with rows_path.open("a") as f:
             f.write(json.dumps(row) + "\n")
             f.flush()
             os.fsync(f.fileno())
