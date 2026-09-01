@@ -104,3 +104,1717 @@
 2026-08-31 12:45:43,213 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
 2026-08-31 12:45:43,275 period am_peak : 28763 paths, 20000 OD pairs
 2026-08-31 12:45:43,287 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:02:07,746 40 of 40 states still to re-score
+2026-08-31 17:02:07,857 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:07,910 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:07,911 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:07,912 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:07,944 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:08,233 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:12,685 40 of 40 states still to re-score
+2026-08-31 17:02:12,781 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:12,817 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:12,817 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:12,818 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:12,830 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:13,122 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:18,343 40 of 40 states still to re-score
+2026-08-31 17:02:18,504 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:02:18,541 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:18,542 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:18,543 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:18,555 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:18,862 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:24,259 40 of 40 states still to re-score
+2026-08-31 17:02:24,359 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:24,424 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:24,425 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:24,426 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:24,459 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:24,704 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:29,957 40 of 40 states still to re-score
+2026-08-31 17:02:30,045 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:30,080 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:30,081 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:30,082 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:30,094 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:30,302 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:35,564 40 of 40 states still to re-score
+2026-08-31 17:02:35,711 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:35,785 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:35,786 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:35,787 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:35,806 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:36,058 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:41,608 40 of 40 states still to re-score
+2026-08-31 17:02:41,714 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:41,768 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:41,769 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:41,770 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:41,792 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:42,108 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:47,171 40 of 40 states still to re-score
+2026-08-31 17:02:47,298 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:47,370 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:47,375 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:47,375 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:47,403 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:47,692 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:53,264 40 of 40 states still to re-score
+2026-08-31 17:02:53,412 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:02:53,446 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:53,447 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:53,448 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:53,458 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:53,699 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:02:58,612 40 of 40 states still to re-score
+2026-08-31 17:02:58,788 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:02:58,862 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:02:58,867 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:02:58,868 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:02:58,883 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:02:59,161 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:04,080 40 of 40 states still to re-score
+2026-08-31 17:03:04,237 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:03:04,287 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:04,288 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:04,289 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:04,316 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:04,645 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:09,521 40 of 40 states still to re-score
+2026-08-31 17:03:09,679 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:03:09,767 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:09,768 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:09,769 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:09,792 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:10,168 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:15,036 40 of 40 states still to re-score
+2026-08-31 17:03:15,119 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:15,155 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:15,155 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:15,156 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:15,167 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:15,532 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:20,413 40 of 40 states still to re-score
+2026-08-31 17:03:20,522 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:20,564 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:20,564 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:20,565 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:20,584 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:20,866 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:26,061 40 of 40 states still to re-score
+2026-08-31 17:03:26,168 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:26,212 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:26,213 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:26,213 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:26,240 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:26,526 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:31,517 40 of 40 states still to re-score
+2026-08-31 17:03:31,627 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:31,702 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:31,707 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:31,708 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:31,735 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:32,054 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:36,652 40 of 40 states still to re-score
+2026-08-31 17:03:36,780 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:36,838 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:36,839 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:36,840 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:36,859 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:37,148 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:41,927 40 of 40 states still to re-score
+2026-08-31 17:03:42,053 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:42,094 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:42,095 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:42,096 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:42,117 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:42,481 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:47,264 40 of 40 states still to re-score
+2026-08-31 17:03:47,407 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:47,482 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:47,487 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:47,487 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:47,511 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:47,818 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:52,835 40 of 40 states still to re-score
+2026-08-31 17:03:52,976 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:53,030 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:53,030 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:53,031 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:53,060 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:53,384 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:03:58,453 40 of 40 states still to re-score
+2026-08-31 17:03:58,565 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:03:58,601 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:03:58,601 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:03:58,602 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:03:58,614 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:03:58,868 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:03,592 40 of 40 states still to re-score
+2026-08-31 17:04:03,688 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:03,737 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:03,737 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:03,738 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:03,757 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:04,060 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:09,007 40 of 40 states still to re-score
+2026-08-31 17:04:09,127 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:09,184 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:09,184 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:09,185 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:09,204 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:09,533 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:14,507 40 of 40 states still to re-score
+2026-08-31 17:04:14,620 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:14,707 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:14,708 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:14,708 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:14,734 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:14,985 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:20,051 40 of 40 states still to re-score
+2026-08-31 17:04:20,170 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:20,204 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:20,205 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:20,206 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:20,216 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:20,461 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:25,211 40 of 40 states still to re-score
+2026-08-31 17:04:25,367 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:04:25,404 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:25,404 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:25,405 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:25,416 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:25,669 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:30,471 40 of 40 states still to re-score
+2026-08-31 17:04:30,602 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:30,658 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:30,659 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:30,660 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:30,699 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:30,977 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:36,017 40 of 40 states still to re-score
+2026-08-31 17:04:36,187 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:04:36,247 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:36,248 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:36,248 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:36,268 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:36,550 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:41,557 40 of 40 states still to re-score
+2026-08-31 17:04:41,649 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:41,685 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:41,686 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:41,686 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:41,697 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:41,903 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:48,745 40 of 40 states still to re-score
+2026-08-31 17:04:48,932 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:04:49,006 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:49,011 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:49,012 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:49,038 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:49,358 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:04:55,947 40 of 40 states still to re-score
+2026-08-31 17:04:56,036 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:04:56,078 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:04:56,081 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:04:56,081 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:04:56,105 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:04:56,403 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:01,746 40 of 40 states still to re-score
+2026-08-31 17:05:01,865 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:01,901 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:01,902 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:01,903 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:01,919 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:02,195 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:07,003 40 of 40 states still to re-score
+2026-08-31 17:05:07,116 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:07,153 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:07,154 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:07,155 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:07,166 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:07,410 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:12,876 40 of 40 states still to re-score
+2026-08-31 17:05:12,976 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:13,010 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:13,011 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:13,012 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:13,033 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:13,390 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:18,526 40 of 40 states still to re-score
+2026-08-31 17:05:18,687 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:05:18,756 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:18,757 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:18,757 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:18,773 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:19,030 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:24,224 40 of 40 states still to re-score
+2026-08-31 17:05:24,307 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:24,378 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:24,379 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:24,380 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:24,419 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:24,709 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:29,208 40 of 40 states still to re-score
+2026-08-31 17:05:29,300 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:29,363 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:29,364 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:29,365 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:29,384 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:29,792 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:34,517 40 of 40 states still to re-score
+2026-08-31 17:05:34,609 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:34,644 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:34,644 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:34,645 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:34,656 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:35,057 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:40,039 40 of 40 states still to re-score
+2026-08-31 17:05:40,210 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:05:40,259 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:40,259 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:40,260 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:40,283 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:40,631 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:46,227 40 of 40 states still to re-score
+2026-08-31 17:05:46,328 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:46,381 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:46,382 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:46,383 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:46,404 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:46,638 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:52,045 40 of 40 states still to re-score
+2026-08-31 17:05:52,131 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:52,171 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:52,172 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:52,173 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:52,185 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:52,478 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:05:57,442 40 of 40 states still to re-score
+2026-08-31 17:05:57,546 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:05:57,596 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:05:57,597 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:05:57,598 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:05:57,613 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:05:57,898 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:02,830 40 of 40 states still to re-score
+2026-08-31 17:06:02,972 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:03,045 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:03,046 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:03,051 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:03,067 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:03,361 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:08,085 40 of 40 states still to re-score
+2026-08-31 17:06:08,166 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:08,230 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:08,235 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:08,236 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:08,257 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:08,560 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:13,521 40 of 40 states still to re-score
+2026-08-31 17:06:13,651 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:13,703 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:13,703 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:13,704 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:13,715 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:13,987 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:18,738 40 of 40 states still to re-score
+2026-08-31 17:06:18,896 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:06:18,986 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:18,990 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:18,991 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:19,011 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:19,238 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:24,229 40 of 40 states still to re-score
+2026-08-31 17:06:24,324 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:24,385 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:24,386 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:24,391 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:24,415 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:24,876 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:29,896 40 of 40 states still to re-score
+2026-08-31 17:06:30,026 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:30,061 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:30,062 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:30,062 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:30,073 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:30,414 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:35,588 40 of 40 states still to re-score
+2026-08-31 17:06:35,674 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:35,708 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:35,709 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:35,710 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:35,736 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:36,087 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:41,047 40 of 40 states still to re-score
+2026-08-31 17:06:41,146 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:41,184 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:41,184 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:41,185 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:41,197 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:41,467 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:46,665 40 of 40 states still to re-score
+2026-08-31 17:06:46,819 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:06:46,856 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:46,856 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:46,857 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:46,871 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:47,100 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:52,221 40 of 40 states still to re-score
+2026-08-31 17:06:52,333 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:52,388 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:52,388 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:52,389 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:52,409 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:52,752 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:06:57,765 40 of 40 states still to re-score
+2026-08-31 17:06:57,855 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:06:57,890 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:06:57,891 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:06:57,892 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:06:57,903 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:06:58,172 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:03,341 40 of 40 states still to re-score
+2026-08-31 17:07:03,472 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:03,550 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:03,551 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:03,552 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:03,572 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:03,837 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:09,118 40 of 40 states still to re-score
+2026-08-31 17:07:09,262 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:09,316 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:09,317 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:09,318 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:09,338 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:09,596 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:15,350 40 of 40 states still to re-score
+2026-08-31 17:07:15,445 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:15,482 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:15,482 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:15,483 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:15,506 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:15,897 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:21,011 40 of 40 states still to re-score
+2026-08-31 17:07:21,161 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:21,229 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:21,229 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:21,230 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:21,241 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:21,559 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:26,343 40 of 40 states still to re-score
+2026-08-31 17:07:26,469 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:26,528 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:26,528 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:26,529 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:26,544 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:26,816 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:32,026 40 of 40 states still to re-score
+2026-08-31 17:07:32,159 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:32,211 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:32,212 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:32,213 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:32,232 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:32,447 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:37,527 40 of 40 states still to re-score
+2026-08-31 17:07:37,659 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:37,713 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:37,714 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:37,719 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:37,739 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:38,061 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:43,486 40 of 40 states still to re-score
+2026-08-31 17:07:43,593 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:43,629 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:43,630 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:43,631 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:43,670 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:43,970 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:49,300 40 of 40 states still to re-score
+2026-08-31 17:07:49,410 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:49,460 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:49,461 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:49,462 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:49,485 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:49,826 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:07:54,904 40 of 40 states still to re-score
+2026-08-31 17:07:55,012 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:07:55,080 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:07:55,081 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:07:55,082 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:07:55,115 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:07:55,502 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:00,505 40 of 40 states still to re-score
+2026-08-31 17:08:00,636 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:00,698 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:00,698 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:00,703 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:00,719 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:00,996 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:06,155 40 of 40 states still to re-score
+2026-08-31 17:08:06,256 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:06,303 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:06,304 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:06,305 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:06,329 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:06,627 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:11,503 40 of 40 states still to re-score
+2026-08-31 17:08:11,591 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:11,630 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:11,631 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:11,632 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:11,644 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:11,932 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:16,928 40 of 40 states still to re-score
+2026-08-31 17:08:17,052 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:17,094 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:17,095 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:17,096 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:17,107 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:17,352 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:22,833 40 of 40 states still to re-score
+2026-08-31 17:08:22,916 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:22,979 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:22,980 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:22,981 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:23,012 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:23,329 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:28,392 40 of 40 states still to re-score
+2026-08-31 17:08:28,490 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:28,527 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:28,527 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:28,528 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:28,539 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:28,957 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:33,550 40 of 40 states still to re-score
+2026-08-31 17:08:33,640 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:33,684 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:33,685 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:33,685 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:33,741 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:34,038 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:38,693 40 of 40 states still to re-score
+2026-08-31 17:08:38,814 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:38,856 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:38,857 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:38,858 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:38,871 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:39,125 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:44,192 40 of 40 states still to re-score
+2026-08-31 17:08:44,293 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:44,335 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:44,335 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:44,336 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:44,380 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:44,719 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:49,762 40 of 40 states still to re-score
+2026-08-31 17:08:49,853 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:08:49,898 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:49,898 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:49,903 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:49,926 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:50,200 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:08:55,777 40 of 40 states still to re-score
+2026-08-31 17:08:55,945 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:08:56,010 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:08:56,013 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:08:56,014 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:08:56,035 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:08:56,368 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:01,907 40 of 40 states still to re-score
+2026-08-31 17:09:02,041 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:02,088 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:02,089 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:02,089 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:02,104 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:02,365 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:07,641 40 of 40 states still to re-score
+2026-08-31 17:09:07,765 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:07,803 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:07,804 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:07,805 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:07,816 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:08,071 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:13,233 40 of 40 states still to re-score
+2026-08-31 17:09:13,403 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:09:13,477 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:13,478 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:13,483 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:13,513 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:13,812 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:18,980 40 of 40 states still to re-score
+2026-08-31 17:09:19,115 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:19,174 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:19,174 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:19,175 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:19,201 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:19,493 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:24,455 40 of 40 states still to re-score
+2026-08-31 17:09:24,545 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:24,582 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:24,583 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:24,584 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:24,595 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:24,885 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:30,314 40 of 40 states still to re-score
+2026-08-31 17:09:30,476 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:09:30,564 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:30,565 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:30,566 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:30,595 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:30,900 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:36,562 40 of 40 states still to re-score
+2026-08-31 17:09:36,667 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:36,736 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:36,736 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:36,737 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:36,758 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:37,078 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:43,181 40 of 40 states still to re-score
+2026-08-31 17:09:43,282 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:43,372 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:43,373 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:43,374 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:43,404 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:43,716 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:49,571 40 of 40 states still to re-score
+2026-08-31 17:09:49,729 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:09:49,795 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:49,796 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:49,796 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:49,816 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:50,229 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:09:54,982 40 of 40 states still to re-score
+2026-08-31 17:09:55,106 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:09:55,183 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:09:55,184 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:09:55,185 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:09:55,220 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:09:55,506 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:00,713 40 of 40 states still to re-score
+2026-08-31 17:10:00,884 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:10:00,953 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:00,954 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:00,955 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:00,970 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:01,254 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:06,622 40 of 40 states still to re-score
+2026-08-31 17:10:06,726 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:06,809 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:06,810 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:06,811 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:06,830 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:07,175 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:12,671 40 of 40 states still to re-score
+2026-08-31 17:10:12,762 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:12,801 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:12,802 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:12,803 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:12,816 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:13,167 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:18,781 40 of 40 states still to re-score
+2026-08-31 17:10:18,897 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:18,933 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:18,933 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:18,934 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:18,953 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:19,240 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:25,148 40 of 40 states still to re-score
+2026-08-31 17:10:25,244 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:25,344 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:25,345 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:25,346 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:25,393 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:25,693 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:30,851 40 of 40 states still to re-score
+2026-08-31 17:10:31,023 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:10:31,090 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:31,091 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:31,092 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:31,117 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:31,576 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:36,781 40 of 40 states still to re-score
+2026-08-31 17:10:36,891 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:36,970 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:36,975 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:36,976 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:37,002 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:37,351 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:42,483 40 of 40 states still to re-score
+2026-08-31 17:10:42,596 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:42,670 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:42,671 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:42,672 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:42,704 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:42,992 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:48,348 40 of 40 states still to re-score
+2026-08-31 17:10:48,518 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:10:48,571 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:48,572 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:48,573 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:48,593 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:48,818 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:10:54,385 40 of 40 states still to re-score
+2026-08-31 17:10:54,478 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:10:54,518 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:10:54,519 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:10:54,520 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:10:54,533 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:10:54,835 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:00,730 40 of 40 states still to re-score
+2026-08-31 17:11:00,825 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:00,873 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:00,873 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:00,874 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:00,893 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:01,171 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:06,338 40 of 40 states still to re-score
+2026-08-31 17:11:06,470 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:06,551 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:06,552 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:06,553 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:06,564 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:06,798 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:12,512 40 of 40 states still to re-score
+2026-08-31 17:11:12,679 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:11:12,748 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:12,749 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:12,750 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:12,770 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:13,168 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:18,643 40 of 40 states still to re-score
+2026-08-31 17:11:18,833 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:11:18,914 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:18,915 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:18,915 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:18,936 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:19,342 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:24,669 40 of 40 states still to re-score
+2026-08-31 17:11:24,779 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:24,872 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:24,873 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:24,874 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:24,906 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:25,348 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:30,746 40 of 40 states still to re-score
+2026-08-31 17:11:30,936 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:11:31,013 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:31,013 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:31,014 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:31,027 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:31,310 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:37,227 40 of 40 states still to re-score
+2026-08-31 17:11:37,329 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:37,367 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:37,368 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:37,368 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:37,380 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:37,785 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:43,244 40 of 40 states still to re-score
+2026-08-31 17:11:43,346 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:43,386 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:43,387 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:43,388 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:43,403 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:43,665 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:49,756 40 of 40 states still to re-score
+2026-08-31 17:11:49,871 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:49,921 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:49,922 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:49,923 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:49,934 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:50,196 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:11:55,921 40 of 40 states still to re-score
+2026-08-31 17:11:56,050 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:11:56,097 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:11:56,097 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:11:56,098 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:11:56,120 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:11:56,409 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:01,660 40 of 40 states still to re-score
+2026-08-31 17:12:01,785 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:01,829 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:01,830 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:01,831 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:01,851 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:02,172 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:07,678 40 of 40 states still to re-score
+2026-08-31 17:12:07,771 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:07,840 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:07,840 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:07,841 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:07,881 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:08,223 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:14,083 40 of 40 states still to re-score
+2026-08-31 17:12:14,261 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:12:14,323 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:14,324 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:14,325 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:14,344 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:14,605 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:20,288 40 of 40 states still to re-score
+2026-08-31 17:12:20,445 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:12:20,521 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:20,522 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:20,527 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:20,565 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:20,853 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:26,387 40 of 40 states still to re-score
+2026-08-31 17:12:26,527 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:26,563 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:26,564 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:26,565 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:26,576 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:26,905 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:32,388 40 of 40 states still to re-score
+2026-08-31 17:12:32,504 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:32,542 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:32,543 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:32,544 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:32,556 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:32,849 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:38,652 40 of 40 states still to re-score
+2026-08-31 17:12:38,757 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:38,798 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:38,798 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:38,799 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:38,814 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:39,077 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:44,565 40 of 40 states still to re-score
+2026-08-31 17:12:44,666 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:12:44,717 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:44,718 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:44,719 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:44,733 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:45,100 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:12:51,317 40 of 40 states still to re-score
+2026-08-31 17:12:51,500 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:12:51,583 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:12:51,584 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:12:51,585 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:12:51,615 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:12:51,883 path sets from cache for <none>
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_rescore.py", line 181, in main
+    pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                                      ^^^^
+NameError: name 'warm' is not defined
+2026-08-31 17:22:00,451 37 of 40 states still to re-score
+2026-08-31 17:22:00,612 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 17:22:00,649 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:22:00,650 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:22:00,650 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:22:00,674 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:22:00,976 path sets from cache for <none>|rep2
+2026-08-31 17:22:01,391 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:22:01,400 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:22:01,554 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:22:01,564 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:22:01,610 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:22:01,617 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 17:22:01,632 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 17:22:01,641 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 17:22:01,656 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 17:22:01,665 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 17:22:01,674 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:22:01,674 locking 28 route-periods across 14 routes in classes ('peak_express',)

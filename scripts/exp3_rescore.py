@@ -130,14 +130,10 @@ def main() -> int:
 
     n = 0
     for role in todo:
-        # Cost depends on whether this state's path sets are already built, so
-        # the guard has to know which. Charging every state the cold price
-        # wastes most of a slice; charging every state the warm price kills one
-        # mid-build.
-        # (the cache probe happens below; this is the conservative bound)
-        if time.time() + args.state_seconds > deadline:
-            log.info("stopping cleanly: not enough slice left for another state")
-            break
+        # The deadline guard lives BELOW, after the path-set cache probe:
+        # cost depends on whether this state's path sets are already built, and
+        # a conservative pre-check here would charge every warm state the cold
+        # price and throw away most of every slice.
         # Replicates carry their own seed: Phase A1 scored `<none>|repN` at
         # `seed + N`, and that spread IS the noise floor. Re-scoring all three
         # at one seed would return three identical numbers and a floor of zero,
@@ -164,8 +160,9 @@ def main() -> int:
                         exp3.pathset_cache_params(edits, seed,
                                                   args.common_lines))
         ps_path = cache_dir() / f"{ps_key}.pkl"
+        warm = ps_path.exists()
         psc: dict = {}
-        if ps_path.exists():
+        if warm:
             try:
                 psc = pickle.loads(ps_path.read_bytes())
                 log.info("path sets from cache for %s", role)
@@ -173,12 +170,23 @@ def main() -> int:
                 log.warning("cache %s unreadable (%s), rebuilding", ps_key, e)
                 psc = {}
         fresh = not psc
+        warm = bool(psc)          # "exists" is not "loaded": a corrupt entry
+                                  # is a cold start, and saying otherwise puts
+                                  # a false cache_hit in the receipt.
+
+        # A state with warm path sets costs about a quarter of a cold one.
+        # Guarding both at the cold price throws away most of every slice.
+        need = 150.0 if warm else args.state_seconds
+        if time.time() + need > deadline:
+            log.info("stopping cleanly: %.0fs needed for %s, %.0fs left",
+                     need, role, deadline - time.time())
+            break
 
         t0 = time.time()
         try:
             s, rec = run_cell(CONTRACT, list(edits), harness=H, seg_model=stm,
                               stops_gdf=sg, limits=limits, constraints=CONS,
-                              pathset_cache=psc, cache_hit=bool(warm), seed=seed)
+                              pathset_cache=psc, cache_hit=warm, seed=seed)
         except ContractViolation as v:
             log.warning("%s REFUSED: %s", role, v)
             continue
