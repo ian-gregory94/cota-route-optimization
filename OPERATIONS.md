@@ -277,6 +277,15 @@ a self-bound wake — `send_later`, which delivers an ordinary user turn back he
 — re-armed by each wake so the chain continues. The foreground alternative is to
 keep making tool calls, which is cheaper per beat but ends when the turn ends.
 
+**The checkable signal is `persist_session`.** A trigger listing shows
+`persist_session: true` with a `persistent_session_id` when the firing is bound
+to an existing session, and shows neither when the firing spawns a fresh one
+somewhere else. `send_later` sets it; a plain `create_trigger` does not. Read
+that field before believing any watchdog is pointed at the work — it is the one
+piece of evidence available *without* running the probe, and this project's
+earlier A2 reminders had it set correctly before the Stage B keepers were built
+without it. The regression was invisible because both kinds report `SUCCEEDED`.
+
 Estimate the interval from the observed reclaim window and leave margin; do not
 tune it to the edge, because the cost of one missed beat is hours and the cost
 of an extra beat is seconds.
