@@ -294,3 +294,115 @@ def strongly_connected(g: LinkGraph) -> list[list[str]]:
                     st.append(t)
         comps.append(comp)
     return comps
+
+
+# ---------------------------------------------------------------------------
+# path finding, for route generation
+# ---------------------------------------------------------------------------
+
+def shortest_path(g: LinkGraph, src: str, dst: str,
+                  max_sec: float = 1e9) -> list[str] | None:
+    """Least-running-time path through observed links, or None."""
+    import heapq
+    if src == dst:
+        return [src]
+    dist = {src: 0.0}
+    prev: dict[str, str] = {}
+    pq = [(0.0, src)]
+    while pq:
+        d, u = heapq.heappop(pq)
+        if u == dst:
+            break
+        if d > dist.get(u, float("inf")) or d > max_sec:
+            continue
+        for v in g.out.get(u, ()):
+            nd = d + g.links[(u, v)].run_time_sec
+            if nd < dist.get(v, float("inf")) and nd <= max_sec:
+                dist[v] = nd
+                prev[v] = u
+                heapq.heappush(pq, (nd, v))
+    if dst not in dist:
+        return None
+    path, cur = [dst], dst
+    while cur != src:
+        cur = prev[cur]
+        path.append(cur)
+    return list(reversed(path))
+
+
+def k_shortest_paths(g: LinkGraph, src: str, dst: str, k: int = 3,
+                     max_sec: float = 1e9) -> list[list[str]]:
+    """Up to `k` distinct near-shortest paths, by penalising reuse.
+
+    Not Yen's algorithm: repeatedly finding the shortest path and inflating the
+    edges it used, which is cheaper and produces genuinely different corridors
+    rather than Yen's near-identical detours. The contract asks for several
+    paths per endpoint pair precisely so a single shortest-path rule does not
+    silently define the design space.
+    """
+    found: list[list[str]] = []
+    seen: set[tuple[str, ...]] = set()
+    penalty: dict[tuple[str, str], float] = {}
+
+    import heapq
+    for _ in range(k * 4):
+        if len(found) >= k:
+            break
+        dist = {src: 0.0}
+        prev: dict[str, str] = {}
+        pq = [(0.0, src)]
+        while pq:
+            d, u = heapq.heappop(pq)
+            if u == dst:
+                break
+            if d > dist.get(u, float("inf")):
+                continue
+            for v in g.out.get(u, ()):
+                w = (g.links[(u, v)].run_time_sec
+                     * (1.0 + penalty.get((u, v), 0.0)))
+                nd = d + w
+                if nd < dist.get(v, float("inf")):
+                    dist[v] = nd
+                    prev[v] = u
+                    heapq.heappush(pq, (nd, v))
+        if dst not in dist:
+            break
+        path, cur = [dst], dst
+        while cur != src:
+            cur = prev[cur]
+            path.append(cur)
+        path.reverse()
+        t = g.path_time(path)
+        key = tuple(path)
+        if key not in seen and t is not None and t <= max_sec:
+            seen.add(key)
+            found.append(path)
+        for i in range(len(path) - 1):
+            e = (path[i], path[i + 1])
+            penalty[e] = penalty.get(e, 0.0) + 0.6
+    return found
+
+
+def opposite_side(g: LinkGraph, coords: dict[str, tuple[float, float]],
+                  stop: str, max_m: float = 120.0) -> list[str]:
+    """Stops across the street from `stop`, nearest first.
+
+    Needed because COTA's stops are directional: the return trip through a
+    corridor runs on different stop ids, so a generated line's inbound path
+    starts near — not at — its outbound terminal. Without this a generator can
+    only ever propose one-way lines.
+
+    Returns candidates rather than one answer, since the nearest stop may have
+    no outgoing link in the direction wanted.
+    """
+    if stop not in coords:
+        return []
+    x, y = coords[stop]
+    near = []
+    for s, (u, v) in coords.items():
+        if s == stop or s not in g.out:
+            continue
+        d = ((u - x) ** 2 + (v - y) ** 2) ** 0.5
+        if d <= max_m:
+            near.append((d, s))
+    return [s for _, s in sorted(near)]
