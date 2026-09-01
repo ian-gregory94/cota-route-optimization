@@ -394,3 +394,74 @@ def test_only_the_store_names_files_in_the_observation_store():
         if '"cell-' in text or "'cell-" in text:
             offenders.append(str(p.relative_to(root)))
     assert not offenders, f"bypassing the observation store's identity: {offenders}"
+
+
+# --------------------------------------------------------------------------
+# promotion and canonical results refuse to run on raw scores (sections 11-12)
+# --------------------------------------------------------------------------
+
+def test_promotion_refuses_states_without_comparison_receipts(tmp_path, monkeypatch):
+    """A score is not a reason to promote. It never was."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parents[1]
+    spec_ = importlib.util.spec_from_file_location(
+        "exp3_promote", root / "scripts" / "exp3_promote.py")
+    mod = importlib.util.module_from_spec(spec_)
+    spec_.loader.exec_module(mod)
+
+    monkeypatch.setattr(mod, "load_receipts", lambda: {})
+    states = {"add_stop-001": {"score": 9.0}, "extend-002": {"score": 8.0}}
+    admitted, refused = mod.admissible_states(states)
+    assert admitted == {}
+    assert len(refused) == 2
+    assert all("receipt" in r["why"] or "comparison" in r["why"] for r in refused)
+
+
+def test_promotion_admits_only_states_whose_comparison_passes(tmp_path, monkeypatch):
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parents[1]
+    spec_ = importlib.util.spec_from_file_location(
+        "exp3_promote2", root / "scripts" / "exp3_promote.py")
+    mod = importlib.util.module_from_spec(spec_)
+    spec_.loader.exec_module(mod)
+
+    good = treated(state_key="add_stop-001", members=("add_stop-001",))
+    bad = treated(state_key="extend-002", members=("extend-002",),
+                  starts_attempted=("greedy",), fallback_occurred=True)
+    monkeypatch.setattr(mod, "load_receipts",
+                        lambda: {"<none>": receipt(),
+                                 "add_stop-001": good, "extend-002": bad})
+    admitted, refused = mod.admissible_states(
+        {"add_stop-001": {"score": 9.0}, "extend-002": {"score": 8.0}})
+    assert set(admitted) == {"add_stop-001"}
+    assert [r["state"] for r in refused] == ["extend-002"]
+
+
+def test_a_finding_cannot_rest_on_a_refused_comparison():
+    from cota_opt.firewall import finding
+    good = compare(receipt(), treated(), CONTRACT)
+    bad = compare(receipt(), treated(starts_attempted=("greedy",)), CONTRACT)
+    assert finding("a real effect", [good], experiment="exp3", stage="discovery")
+    with pytest.raises(ValueError):
+        finding("a claim on refused evidence", [good, bad],
+                experiment="exp3", stage="discovery")
+    with pytest.raises(ValueError):
+        finding("an opinion", [], experiment="exp3", stage="discovery")
+
+
+def test_superseding_an_observation_names_the_findings_that_depended_on_it():
+    from cota_opt.firewall import FindingLog, finding
+    import pathlib
+    c = compare(receipt(), treated(), CONTRACT)
+    f = finding("add_stop-010 beats the null", [c], experiment="exp3",
+                stage="discovery")
+    log = FindingLog(pathlib.Path("/tmp/findings.json"))
+    log.add(f)
+    assert log.dependents([c.treatment.receipt.digest]) == [f]
+    hit = log.supersede([c.treatment.receipt.digest], "D27: start asymmetry")
+    assert len(hit) == 1
+    assert not log.findings[0].live
+    assert log.findings[0].superseded.startswith("D27")
+    assert log.dependents([c.treatment.receipt.digest]) == []

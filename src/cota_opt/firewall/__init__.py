@@ -14,6 +14,7 @@ from .compare import (ComparisonResult, Difference, InadmissibleComparison,
 from .contract import EXP3_STAGE_A, ContractError, ExperimentContract
 from .core import SCHEMA_VERSION, Sem, canonical_json, digest, semfield
 from .events import EventType, ExecutionEvent, Severity, event_rates, neutral
+from .findings import Finding, FindingLog, finding
 from .health import HealthReport, Imbalance, balance_audit, health_report
 from .observation import ComparableObservation, Inadmissible, admit
 from .policy import (CERTIFICATION, DISCOVERY, SolverPolicy, StartPolicy,
@@ -32,4 +33,5 @@ __all__ = [
     "compare", "ComparisonResult", "InadmissibleComparison", "Difference",
     "health_report", "HealthReport", "balance_audit", "Imbalance",
     "ObservationStore", "CacheMiss",
+    "Finding", "FindingLog", "finding",
 ]
