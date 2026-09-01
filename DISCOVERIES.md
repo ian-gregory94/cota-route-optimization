@@ -1807,3 +1807,49 @@ The original certification artifact is preserved as
 `outputs/exp2b_certification.superseded.json`, stamped SUPERSEDED FOR
 QUANTITATIVE INTERPRETATION. The verdict itself is marked confirmed, not
 replaced.
+
+
+## D32 — fixing the start policy collapsed the noise floor to zero
+
+*Found 2026-08-31, in the first four cells of the corrected re-score.*
+
+The corrected zero-edit control and its three replicates returned **bit-identical
+objectives**: 2,956,120.583955 at every seed. 3σ of that spread is exactly
+**0.00000%**.
+
+This project has been here before, by a different route. The note in
+`exp3_score_invariant.py` reads: *"Without refitting the incumbent, every solve
+reported `exchanges=0` and three seeds returned BYTE-IDENTICAL results — a zero
+noise floor, which licenses every margin that is not precisely nil."* Fixing
+D27 reproduced the symptom the D27 fix was partly written to cure.
+
+**Mechanism.** `_greedy_build` takes no RNG; it is fully deterministic. The
+perturbation restarts *are* seeded, but at two restarts they never escape
+greedy's basin, so the seed never reaches the answer. Since `starts="both"`
+selects greedy on every state measured — 8 of 8 in D30, 4 of 4 here — the whole
+discovery pipeline is deterministic.
+
+At certification effort it is not, because twenty restarts occasionally escapes:
+
+| effort | starts | seed spread | 3σ as % of mean |
+|---|---|---|---|
+| discovery 60000/2/32 | both | 0 | **0.00000%** |
+| certification 400000/20/0 | both | 112.06 | 0.00657% |
+| discovery 60000/2/32 | incumbent *(the contaminated census)* | — | 0.039% |
+
+**Why this is not cosmetic.** Determinism is not accuracy. A deterministic
+heuristic sitting 0.5% from optimum on one geometry and 0.1% on another produces
+a 0.4% "effect" that is pure solver artifact and reproduces perfectly every
+time. Replicate spread bounds solver *variance*; it never bounded solver
+*error*, and with the variance at zero there is nothing left for it to bound.
+
+**Consequence.** The corrected A1 census can rank states and report magnitudes.
+It cannot carry a "clears the floor" column, because under the corrected
+pipeline that column would mark every nonzero difference as material. The
+materiality threshold has to come from a measurement of optimization *error* —
+which is what an exact or bounded frequency benchmark measures, and the reason
+that benchmark is the next piece of work rather than a later one.
+
+The floor quoted in the superseded A1 census (0.039%) was itself measured on the
+contaminated path, where the seed reached the answer only because the incumbent
+start did. It should not be carried forward either.
