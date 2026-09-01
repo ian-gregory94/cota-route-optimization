@@ -72,8 +72,16 @@ def main() -> int:
     # are separate objects. Selecting by state key alone would pick whichever
     # the filesystem happened to yield last -- a nondeterministic census, which
     # is worse than a refused one.
-    frozen_f = OUT / "EVAL_PATH_FROZEN"
-    frozen = frozen_f.read_text().strip() if frozen_f.exists() else None
+    # Pinned to what the FREEZE MANIFEST recorded, not to a live marker file.
+    # The marker moves when a later stage freezes its own evaluation path; the
+    # manifest is the record of what Stage A was frozen at, and Stage A's census
+    # has to keep reproducing after Stage B changes the code.
+    man = OUT / "FREEZE_MANIFEST.json"
+    if man.exists():
+        frozen = json.loads(man.read_text())["source_digest"]
+    else:
+        f = OUT / "EVAL_PATH_FROZEN"
+        frozen = f.read_text().strip() if f.exists() else None
     all_receipts = [r for r in store.all()
                     if r.spec.contract_digest == EXP3_STAGE_A.digest
                     and (frozen is None or r.code_version == frozen)]

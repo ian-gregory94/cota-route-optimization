@@ -11,7 +11,9 @@
 """
 from .compare import (ComparisonResult, Difference, InadmissibleComparison,
                       compare)
-from .contract import EXP3_STAGE_A, ContractError, ExperimentContract
+from .contract import (EXP3_STAGE_A, EXP3_STAGE_B,
+                       EXP3_STAGE_B_ESCALATED, ContractError,
+                       ExperimentContract)
 from .core import SCHEMA_VERSION, Sem, canonical_json, digest, semfield
 from .events import EventType, ExecutionEvent, Severity, event_rates, neutral
 from .findings import Finding, FindingLog, finding
@@ -28,6 +30,7 @@ __all__ = [
     "EventType", "ExecutionEvent", "Severity", "event_rates", "neutral",
     "StartPolicy", "StopRule", "SolverPolicy", "DISCOVERY", "CERTIFICATION",
     "ExperimentContract", "ContractError", "EXP3_STAGE_A",
+    "EXP3_STAGE_B", "EXP3_STAGE_B_ESCALATED",
     "EvaluationSpec", "build_spec", "ExecutionReceipt",
     "ComparableObservation", "Inadmissible", "admit",
     "compare", "ComparisonResult", "InadmissibleComparison", "Difference",

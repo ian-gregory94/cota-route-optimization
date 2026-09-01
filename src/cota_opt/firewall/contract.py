@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .core import Sem, digest, semfield
-from .policy import DISCOVERY, SolverPolicy
+from .policy import DISCOVERY, SolverPolicy, StartPolicy
 
 
 class ContractError(ValueError):
@@ -163,4 +163,48 @@ EXP3_STAGE_A = ExperimentContract(
     # above this one. Declared rather than assumed.
     opportunity_tolerances={"evaluations_performed": 1.0},
     noise_floor=0.000391,
+)
+
+
+#: Experiment 3 Stage B — certification of the 39 corrected-negative singles.
+#: Preregistered in EXPERIMENT3_STAGE_B_PREREGISTRATION.md before any cell ran.
+#: Same treatment dimensions as Stage A, same justifications: geometry is the
+#: treatment, the repair is declared on D30's evidence. What changes is the
+#: solver policy -- 20 restarts over five seeds, convergence required -- and
+#: the stage.
+EXP3_STAGE_B = ExperimentContract(
+    experiment="exp3", version="3.1-stageB", stage="certification",
+    objective="lambda_scalarized_path_level", objective_version="lambda=2.0",
+    evaluator="same_route", envelope="pinned_unedited_baseline",
+    pathset_policy="rebuilt_per_state_and_seed", pool_version="exp3-pool-v1",
+    solver=SolverPolicy(
+        name="exp3_stage_b", start_policy=StartPolicy.BOTH, restarts=20,
+        evaluation_ceiling=400_000, candidate_width=0,
+        require_convergence=True,
+        seeds=(20260825, 20260826, 20260827, 20260828, 20260829)),
+    allowed_treatment_differences=frozenset(
+        set(GEOMETRY_DIFFERENCES) | set(REPAIR_DIFFERENCES)),
+    justifications={**GEOMETRY_DIFFERENCES, **REPAIR_DIFFERENCES},
+    opportunity_tolerances={"evaluations_performed": 1.0},
+    # No floor. Sigma is the paired-difference SD, estimated from this run's own
+    # cells; nothing is inherited and nothing is declared here.
+    noise_floor=None,
+)
+
+#: Escalation: identical in every respect but the restart count.
+EXP3_STAGE_B_ESCALATED = ExperimentContract(
+    experiment="exp3", version="3.1-stageB-esc", stage="certification",
+    objective="lambda_scalarized_path_level", objective_version="lambda=2.0",
+    evaluator="same_route", envelope="pinned_unedited_baseline",
+    pathset_policy="rebuilt_per_state_and_seed", pool_version="exp3-pool-v1",
+    solver=SolverPolicy(
+        name="exp3_stage_b_escalated", start_policy=StartPolicy.BOTH,
+        restarts=40, evaluation_ceiling=400_000, candidate_width=0,
+        require_convergence=True,
+        seeds=(20260825, 20260826, 20260827, 20260828, 20260829)),
+    allowed_treatment_differences=frozenset(
+        set(GEOMETRY_DIFFERENCES) | set(REPAIR_DIFFERENCES)),
+    justifications={**GEOMETRY_DIFFERENCES, **REPAIR_DIFFERENCES},
+    opportunity_tolerances={"evaluations_performed": 1.0},
+    noise_floor=None,
 )
