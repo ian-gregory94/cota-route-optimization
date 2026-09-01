@@ -229,3 +229,13 @@ about a kill that finds itself; this is the same failure surviving the fix
 meant to prevent it. **Use a pidfile.** Every batch worker now writes
 `outputs/exp3/<name>.pid` and is stopped by reading that file, which has no
 pattern to get wrong.
+
+**26. Shard the whole list, not the remaining one.** Rule 12 says to shard a
+canonically sorted list; it did not say *which* list, and the Stage B runner
+partitioned the **residual** — the cells not yet done. That makes a cell's shard
+change as other cells finish: remove one element and every later element shifts
+across the modulo boundary. Two workers then converge on the same cell, and a
+cell can move between them mid-run. Partition the COMPLETE list once, so a cell
+belongs to exactly one shard from start to finish, and subtract the finished
+ones afterwards. The symptom that exposed it was a shard whose remaining count
+did not drop after it completed a cell.

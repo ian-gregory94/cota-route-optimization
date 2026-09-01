@@ -121,11 +121,19 @@ def main() -> int:
     only = [s for s in args.only.split(",") if s.strip()] or None
     c = contract(args.escalated)
     have = done(args.escalated)
-    todo = [x for x in sorted(cells(args.escalated, only)) if x not in have]
-    total = len(todo)
+    # Shard on the COMPLETE canonical cell list, never on the remaining one.
+    # Partitioning the residual means a cell's shard changes as other cells
+    # finish, so two workers can converge on the same cell and a cell can move
+    # between them. The complete list is fixed for the whole run, so a cell
+    # belongs to exactly one shard from start to finish (OPERATIONS 12).
+    everything = sorted(cells(args.escalated, only))
     if args.shard:
         i, n = (int(v) for v in args.shard.split("/"))
-        todo = [x for j, x in enumerate(todo) if j % n == i]
+        mine = {x for j, x in enumerate(everything) if j % n == i}
+    else:
+        mine = set(everything)
+    todo = [x for x in everything if x in mine and x not in have]
+    total = len([x for x in everything if x not in have])
     if args.list:
         for s, seed in todo:
             print(f"{s}\t{seed}")
