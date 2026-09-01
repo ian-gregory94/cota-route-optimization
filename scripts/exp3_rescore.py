@@ -68,26 +68,48 @@ def wanted() -> list[str]:
             if l.strip()]
 
 
-def done() -> set[str]:
-    """States already re-scored WITH a receipt.
+def frozen_code_version() -> str | None:
+    """The source digest this batch is pinned to, if one is set."""
+    f = OUT / "EVAL_PATH_FROZEN"
+    return f.read_text().strip() if f.exists() else None
 
-    A row written before the firewall existed carries no receipt, so the state
-    it names has a corrected number and no evidence. Treating it as done would
-    leave it permanently unpromotable while looking finished, so it is not
-    done: it is re-run under a contract.
+
+def done() -> set[str]:
+    """States already re-scored WITH a receipt, under the frozen source.
+
+    Read from the OBSERVATION STORE, not the row log. The rows are a
+    human-readable record; the receipts are the evidence, and only the receipt
+    knows which source revision produced it. An earlier version of this
+    consulted the rows and treated a missing `code_version` as acceptable,
+    which let every pre-change row count as finished -- the exact "looks
+    complete, is not evidence" failure the receipt exists to prevent.
+
+    Three ways a state is not done:
+
+    * no receipt -- a corrected number with no evidence behind it;
+    * a different contract -- it answers a question this census is not asking;
+    * a different source revision -- `code_version` is an identity field, so a
+      cell scored either side of an edit to the evaluation path cannot be
+      compared with one scored on the other side (OPERATIONS 24).
     """
+    frozen = frozen_code_version()
+    base = CONTRACT.solver.seeds[0]
     out = set()
-    if ROWS.exists():
-        for line in ROWS.open():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                r = json.loads(line)
-            except Exception:       # a torn final line is expected, not fatal
-                continue
-            if r.get("receipt_digest") and r.get("contract") == CONTRACT.digest:
-                out.add(r["role"])
+    for rec in STORE.all():
+        if rec.spec.contract_digest != CONTRACT.digest:
+            continue
+        if frozen and rec.code_version != frozen:
+            continue
+        key = rec.spec.state_key
+        if key == "<none>":
+            # The control and its replicates share a state key and differ only
+            # by seed; each is its own cell.
+            out.add("<none>" if rec.spec.seed == base else
+                    f"<none>|rep{rec.spec.seed - base}")
+            if rec.spec.seed == base:
+                out.add("<none>|rep0")      # rep0 IS the base seed
+        else:
+            out.add(key)
     return out
 
 
@@ -206,7 +228,7 @@ def main() -> int:
         row = {**s.row(), "role": role, "starts": STARTS,
                "repair": s.evaluator.get("incumbent_repair", {}),
                "receipt_digest": rec.digest, "spec_digest": rec.spec.digest,
-               "contract": CONTRACT.digest,
+               "contract": CONTRACT.digest, "code_version": rec.code_version,
                "admissible": bool(admit(rec, CONTRACT))}
         with ROWS.open("a") as f:
             f.write(json.dumps(row) + "\n")
