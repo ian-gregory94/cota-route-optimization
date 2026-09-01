@@ -14,6 +14,15 @@ Promoted:
 * the best state at **each cardinality**, not required to be nested — 2B found
   cardinality winners are not nested, so a nested rule would miss them;
 * the **null**, always. It is the incumbent, and Experiment 2B's answer.
+
+Promotion requires an admissible comparison, not a score
+--------------------------------------------------------
+A state enters the frontier only if ``firewall.compare()`` admitted it against
+the control. A raw objective is not sufficient and never was: for four
+experiments the control and the treatments were optimized by different methods,
+and every ranking built from those scores ranked the optimizer as much as the
+geometry (D27). States whose comparison is refused are listed with the
+dimensions that refused them, so a frontier can never quietly shrink.
 """
 from __future__ import annotations
 
@@ -28,9 +37,23 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 OUT = ROOT / "outputs" / "exp3"
+NULL = "<none>"
 TIE_FLOORS = 2.0
 PER_KIND = 2
 PER_CARDINALITY = 1
+
+
+def load_receipts() -> dict:
+    """Execution receipts by state key, if any have been written yet."""
+    from cota_opt.firewall.receipt import ExecutionReceipt   # noqa: F401
+    import pickle
+    path = OUT / "stageA_receipts.pkl"
+    if not path.exists():
+        return {}
+    try:
+        return pickle.loads(path.read_bytes())
+    except Exception:
+        return {}
 
 
 def load() -> tuple[dict, dict, float, float]:
@@ -51,9 +74,70 @@ def load() -> tuple[dict, dict, float, float]:
     return states, reps, base, floor
 
 
+def admissible_states(states: dict) -> tuple[dict, list[dict]]:
+    """Split the census into states with a valid comparison and states without.
+
+    Receipts live beside the score rows. A state with no receipt predates the
+    firewall: it is not evidence, and saying so is the migration path.
+    """
+    from cota_opt.firewall import EXP3_STAGE_A, compare
+    receipts = load_receipts()
+    control = receipts.get(NULL)
+    if control is None:
+        return {}, [{"state": k, "why": "no control receipt to compare against"}
+                    for k in states]
+    ok, refused = {}, []
+    for k, v in states.items():
+        r = receipts.get(k)
+        if r is None:
+            refused.append({"state": k, "why": "no execution receipt "
+                                               "(evaluated before the firewall)"})
+            continue
+        c = compare(control, r, EXP3_STAGE_A)
+        if c:
+            ok[k] = {**v, "comparison_id": c.id, "effect_pct": c.effect_pct}
+        else:
+            refused.append({"state": k, "why": "comparison refused",
+                            "dimensions": sorted({d.dimension for d in
+                                                  getattr(c, "undeclared", ())}),
+                            "notes": list(getattr(c, "notes", ()))})
+    return ok, refused
+
+
 def main() -> int:
     states, reps, base, floor = load()
-    pct = {k: 100 * (v["score"] - base) / base for k, v in states.items()}
+    admitted, refused = admissible_states(states)
+    if refused:
+        print(f"  {len(refused)} of {len(states)} states have no admissible "
+              f"comparison and cannot be promoted")
+        why = defaultdict(int)
+        for r in refused:
+            why[r["why"]] += 1
+            for d in r.get("dimensions", ()):
+                why[f"  refused on: {d}"] += 1
+        for k, n in sorted(why.items(), key=lambda x: -x[1]):
+            print(f"      {n:4d}  {k}")
+        (OUT / "stageA_refused.json").write_text(json.dumps(refused, indent=2))
+    if not admitted:
+        # Never overwrite a prior frontier with an empty one in place: the old
+        # selection is provenance, and a reader who finds an empty file where a
+        # frontier used to be learns nothing about why (corrective plan, s1).
+        prev = OUT / "stageA_promoted.json"
+        if prev.exists():
+            keep = OUT / "stageA_promoted.superseded.json"
+            if not keep.exists():
+                keep.write_text(prev.read_text())
+                print(f"  preserved the previous frontier as {keep.name}")
+        print("\nNo state has an admissible comparison against the control.")
+        print("Nothing can be promoted. This is the correct outcome when the "
+              "census was produced before the comparison firewall existed; "
+              "re-score under a contract and run this again.")
+        (OUT / "stageA_promoted.json").write_text(json.dumps(
+            {"promoted": [], "refused": len(refused),
+             "reason": "no admissible comparison against the control"}, indent=2))
+        return 1
+    states = admitted
+    pct = {k: v["effect_pct"] for k, v in states.items()}
     ranked = sorted(pct, key=lambda k: pct[k])
     leader = ranked[0]
     band = floor * TIE_FLOORS

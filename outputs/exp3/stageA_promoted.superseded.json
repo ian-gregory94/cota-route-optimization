@@ -1,0 +1,189 @@
+{
+  "stage": "A \u2014 DISCOVERY. These magnitudes are not findings; the promoted set is a selection of what to look at in Stage B.",
+  "states_scored": 120,
+  "replicates": 3,
+  "objective_floor_pct": 0.0391,
+  "tie_band_pct": 0.0783,
+  "leader": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+  "leader_pct": -0.681,
+  "n_promoted": 24,
+  "promotion_rule": {
+    "tie_floors": 2.0,
+    "per_kind": 2,
+    "per_cardinality": 1,
+    "committed": "before Stage A ran",
+    "why_not_top_n": "D24 \u2014 a ranking at this effort inverted outright, so every state within a floor is a tie and a top-N rule discards the true winner whenever the ranking is off by one floor"
+  },
+  "promoted": [
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.681,
+      "floors": 17.39,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6659,
+      "floors": 17.01,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6559,
+      "floors": 16.75,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.655,
+      "floors": 16.73,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6482,
+      "floors": 16.56,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-141-STAHIGW#b5ce9b1e03b5+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6457,
+      "floors": 16.49,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+change_terminal-023-EASHAMN#357bdf4fa511+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6454,
+      "floors": 16.48,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6389,
+      "floors": 16.32,
+      "cardinality": 3,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-023#1dc299b50907+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6307,
+      "floors": 16.11,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-032#228795f35539+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6202,
+      "floors": 15.84,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-004#27407b151153+add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6183,
+      "floors": 15.79,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-024#26db14321a47+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6038,
+      "floors": 15.42,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+change_terminal-023-EASHAMN#357bdf4fa511+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.6029,
+      "floors": 15.4,
+      "cardinality": 4,
+      "why_promoted": "within 2.0 floors of the leader"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2+reroute-031#dfd049714f7d",
+      "objective_pct_vs_null": -0.5523,
+      "floors": 14.11,
+      "cardinality": 2,
+      "why_promoted": "best at cardinality 2"
+    },
+    {
+      "state": "add_stop-010#22c4c35ac5b2",
+      "objective_pct_vs_null": -0.401,
+      "floors": 10.24,
+      "cardinality": 1,
+      "why_promoted": "best at cardinality 1"
+    },
+    {
+      "state": "split-034-STE418N#f2471e265dfb",
+      "objective_pct_vs_null": -0.1812,
+      "floors": 4.63,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind split"
+    },
+    {
+      "state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "objective_pct_vs_null": -0.1599,
+      "floors": 4.08,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind splice"
+    },
+    {
+      "state": "split-024-EASHAMN#572a1ac33bc2",
+      "objective_pct_vs_null": -0.1538,
+      "floors": 3.93,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind split"
+    },
+    {
+      "state": "splice-011-033-WESHIGW#573afb5ae3bf",
+      "objective_pct_vs_null": -0.1262,
+      "floors": 3.22,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind splice"
+    },
+    {
+      "state": "truncate-035#7cdb09a45253",
+      "objective_pct_vs_null": -0.088,
+      "floors": 2.25,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind truncate"
+    },
+    {
+      "state": "truncate-025#d3209fe02367",
+      "objective_pct_vs_null": -0.0786,
+      "floors": 2.01,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind truncate"
+    },
+    {
+      "state": "straighten-102#4dd646541565",
+      "objective_pct_vs_null": -0.0609,
+      "floors": 1.56,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind straighten"
+    },
+    {
+      "state": "straighten-004#600ca164ad60",
+      "objective_pct_vs_null": -0.04,
+      "floors": 1.02,
+      "cardinality": 1,
+      "why_promoted": "best 2 featuring kind straighten"
+    },
+    {
+      "state": "<none>",
+      "objective_pct_vs_null": 0.011,
+      "floors": 0.28,
+      "cardinality": 0,
+      "why_promoted": "the incumbent, always"
+    }
+  ],
+  "caveat": "Discovery only. This does not establish exhaustive coverage, a global optimum, or that every state was reachable.",
+  "_superseded": "SUPERSEDED FOR QUANTITATIVE INTERPRETATION \u2014 optimizer initialization depended on incumbent feasibility after ladder snapping (D27), so this frontier was selected by rankings that partly ranked the optimizer. Preserved for provenance and debugging. Not evidence."
+}
