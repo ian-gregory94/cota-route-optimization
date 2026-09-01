@@ -99,3 +99,10 @@
 {"state": "add_stop-010#22c4c35ac5b2+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d", "score": 2943013.330684786, "at": "2026-08-31T06:51:01Z", "cardinality": 4, "lane": "lane1"}
 {"state": "add_stop-033#273b2cd43dfd+extend-024#26db14321a47+extend-025#441ece050fe8+reroute-031#dfd049714f7d", "score": 2947175.4810210876, "at": "2026-08-31T06:58:43Z", "cardinality": 4, "lane": "lane1"}
 {"state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539", "score": 2947239.6002132148, "at": "2026-08-31T07:06:11Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-032#228795f35539+reroute-031#dfd049714f7d", "score": 2944044.2147060605, "at": "2026-08-31T07:14:05Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d", "score": 2942986.9275703994, "at": "2026-08-31T07:21:05Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+extend-032#228795f35539+reroute-031#dfd049714f7d", "score": 2947196.503597658, "at": "2026-08-31T07:28:05Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d", "score": 2947441.898775843, "at": "2026-08-31T07:35:15Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-010#22c4c35ac5b2+add_stop-033#273b2cd43dfd+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d", "score": 2944624.3387223943, "at": "2026-08-31T07:42:14Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-010#22c4c35ac5b2+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d", "score": 2943215.705983307, "at": "2026-08-31T07:49:21Z", "cardinality": 4, "lane": "lane1"}
+{"state": "add_stop-033#273b2cd43dfd+extend-025#441ece050fe8+reroute-006#dbfb2f9ee60d+reroute-031#dfd049714f7d", "score": 2947073.8411127506, "at": "2026-08-31T07:56:30Z", "cardinality": 4, "lane": "lane1"}
