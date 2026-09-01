@@ -226,13 +226,24 @@ def main() -> int:
             raise Deadline()
 
     t_solve = [time.time()]
+    last = [0.0]
+
+    def on_pass(phase, evals, max_evals, moves, cur):
+        now = time.time()
+        if now - last[0] < 20.0:
+            return
+        last[0] = now
+        log.info("  %-10s pass: %d/%d evals, %d moves, obj=%.7g, %.0fs in, "
+                 "%.0fs left", phase, evals, max_evals, moves, cur,
+                 now - t_solve[0], deadline - now)
+
     try:
         r = optimize_frequencies(
             judge.model, judge.budget, ladder=[], unserved_multiplier=args.lam,
             local_search_iterations=args.iterations, seed=args.seed,
             ladders=judge.ladders, initial=initial, n_restarts=args.restarts,
             candidate_width=args.width, greedy_start=use_greedy,
-            resume=resume, progress=progress)
+            resume=resume, progress=progress, on_pass=on_pass)
     except Deadline:
         log.info("slice deadline: checkpointed, %s not finished", tag)
         return 7

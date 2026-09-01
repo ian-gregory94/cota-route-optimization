@@ -1583,9 +1583,39 @@ each one happened to receive. `splice` also ranks near-worst *despite* getting
 the better optimizer, so geometry effects are real — it is the magnitudes and
 the ordering among the leaders that are not trustworthy.
 
-**Open, and the next thing to test:** whether the gap closes at certification
-effort. If 400000/20/0 converges both start sets to the same optimum, only
-discovery is affected and the Stage B/C gates are sound as written.
+**Resolved: it is a discovery-effort problem only.** The zero-edit control,
+same state, same seed, both start sets, at both efforts:
+
+| effort | incumbent start | greedy | gap | vs 0.0391% floor |
+|---|---|---|---|---|
+| discovery 60000/2/32 | 2,962,743 | 2,956,121 | 0.2240% | **5.7x** |
+| certification 400000/20/0 | 2,956,364 | 2,956,121 | 0.0082% | **0.21x** |
+
+Greedy is unmoved by ten times the effort (2,956,121 either way): it lands in
+the right basin immediately. The incumbent start closes on it — 2,962,743 to
+2,956,364, a 0.2153% climb — once it has twenty restarts instead of two. At
+certification effort the residual gap is a fifth of the noise floor.
+
+So:
+
+* **Experiment 2B's certified NULL stands.** It was certified at 400000/20/0
+  over three seeds, where the start set does not decide the answer. A null is
+  not manufactured by a bias that pushes toward finding effects.
+* **Experiment 3 Phase A1 and A2 are contaminated.** Both ran at discovery
+  effort, where it does.
+* **The Stage B and C gates are sound as written**, because they certify. Gate
+  12 — convergence matched, not nominal effort — is doing exactly the job it
+  was written to do.
+
+**The remediation is small.** A state that fell back already sat in the right
+basin, so `starts="both"` would change nothing for it. Only states that were
+*accepted* on the incumbent start were scored in the wrong one: **40 of 115**,
+every one of them cardinality 1, listed in `outputs/exp3/rescore_needed.txt`
+(12 `straighten`, 12 `truncate`, 6 `add_stop`, 3 `change_terminal`, the three
+null replicates and the zero-edit control, and one each of `reroute`, `splice`,
+`split`). All 46 of A2's k=2 and k=3 states already used greedy. About 4.7
+hours re-scores the census; A2's states need nothing but a corrected
+comparison point, which is already measured.
 
 **The fix.** `starts="both"` — repaired incumbent *and* greedy, best kept: the
 only start set whose composition does not depend on the treatment, and never
@@ -1597,3 +1627,29 @@ Default remains `"incumbent"` so no recorded number silently changes meaning.
 runs is not a warning, it is a code path. This one ran for three experiments.
 Nothing checked how often it fired, because nothing was *counting* — the line
 was visible in every log and invisible in every summary.
+
+
+## D28 — the effort ladder's iteration count is not the lever
+
+*Measured 2026-08-31 while scoping D27.*
+
+`_exchange_search` bounds itself by total model evaluations, and the effort
+ladder's first number is that bound: 60000 for discovery, 400000 for
+certification. At certification effort each restart terminated after roughly
+**4,000 evaluations of the 400,000 it was allowed** — the search runs out of
+improving moves (`applied_this_pass == 0`) long before it runs out of budget.
+
+So the iteration count is nominal for this problem at this size. What actually
+separates discovery from certification is the **restart count**: 2 versus 20.
+Greedy reached 2,956,121 at both efforts and never improved across twenty
+restarts; the incumbent start needed nineteen of them to climb from 2,962,743
+to 2,956,364.
+
+Two consequences:
+
+* A run reporting "certification effort 400000/20/0" is not doing 6.7x the
+  search of a 60000/20/0 run — it is doing the same search. Effort claims
+  should quote restarts, and gate 12 should read convergence off restarts.
+* A certification solve is ~25s per restart here, not the hour its iteration
+  count suggests. Certification is cheaper than budgeted, which is worth
+  knowing before Stage B is scheduled.

@@ -380,6 +380,7 @@ def optimize_frequencies(
     n_restarts: int = 6,
     greedy_start: bool = True,
     progress=None,
+    on_pass=None,
     resume: dict | None = None,
 ) -> OptimizationResult:
     """Marginal-exchange search for the best frequency plan inside the budget.
@@ -490,10 +491,12 @@ def optimize_frequencies(
         log.info("resuming solve at restart %d/%d, saved objective %.6g",
                  first_restart, n_restarts, best_obj)
     else:
-        for st in starts:
+        for si, st in enumerate(starts):
             idx, fit, o, n_moves = _exchange_search(
                 model, budget, L, L_len, st.copy(), obj, feasible,
-                local_search_iterations, width, rng)
+                local_search_iterations, width, rng,
+                on_pass=(None if on_pass is None
+                         else lambda *a, _p=f"start{si}": on_pass(_p, *a)))
             if o < best_obj:
                 best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
         if progress is not None:
@@ -523,7 +526,9 @@ def optimize_frequencies(
                 continue
         idx, fit, o, n_moves = _exchange_search(
             model, budget, L, L_len, cand, obj, feasible,
-            local_search_iterations, width, rng)
+            local_search_iterations, width, rng,
+            on_pass=(None if on_pass is None
+                     else lambda *a, _p=f"restart{restart}": on_pass(_p, *a)))
         if o < best_obj - 1e-9:
             best_idx, best_fit, best_obj, moves = idx, fit, o, n_moves
         if progress is not None:
@@ -576,7 +581,7 @@ def _greedy_build(model, budget, L, L_len, idx, obj, feasible) -> np.ndarray:
 
 
 def _exchange_search(model, budget, L, L_len, idx, obj, feasible,
-                     max_evaluations, width, rng):
+                     max_evaluations, width, rng, on_pass=None):
     """Move service hours from where they buy least to where they buy most.
 
     Each pass prices one ladder step in each direction for every route-period
@@ -660,6 +665,13 @@ def _exchange_search(model, budget, L, L_len, idx, obj, feasible,
             if evals >= max_evaluations:
                 break
 
+        if on_pass is not None:
+            # After each repricing pass, so a caller can see a long search
+            # advancing and stop it cleanly. A certification search is an hour
+            # of silence otherwise, and silence is indistinguishable from a
+            # hang -- which is how this project lost two runs to processes it
+            # could not tell were alive.
+            on_pass(evals, max_evaluations, moves, cur)
         if applied_this_pass == 0:
             break
     return idx, fit, cur, moves
@@ -698,8 +710,8 @@ def integer_fleet(model: FrequencyModel, plan: FrequencyPlan) -> dict[str, int]:
     return out
 
 
-def snap_to_ladder(ladders: dict[tuple[str, str], list[float]],
-                   plan: "FrequencyPlan") -> "FrequencyPlan":
+def snap_plan_to_ladder(ladders: dict[tuple[str, str], list[float]],
+                        plan: "FrequencyPlan") -> "FrequencyPlan":
     """Snap a plan onto the per-route-period ladder, nearest rung.
 
     This is exactly what :func:`optimize_frequencies` does internally to an
@@ -751,7 +763,7 @@ def repair_to_ladder(model: FrequencyModel, budget: ResourceBudget,
     keys = list(model.keys)
     lads = {k: sorted(ladders[k]) for k in keys}
     idx = {}
-    snapped = snap_to_ladder(ladders, plan)
+    snapped = snap_plan_to_ladder(ladders, plan)
     for k in keys:
         lad = lads[k]
         h = float(snapped.headways[k])

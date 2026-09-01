@@ -29,3 +29,31 @@ def test_the_stopwatch_is_stripped():
     a = rc._pytest_summary("== 356 passed in 4.66s ==")
     b = rc._pytest_summary("== 356 passed in 5.02s ==")
     assert a == b == "356 passed"
+
+
+def test_no_shadowed_module_level_names():
+    """A second `def` of a live name silently replaces the first.
+
+    Appending `snap_to_ladder(ladders, plan)` to frequency.py shadowed the
+    existing `snap_to_ladder(headway, ladder)` there, and the whole suite still
+    passed because nothing covered the original. Python does not warn; the
+    later definition simply wins, for every caller, everywhere.
+    """
+    import ast
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parents[1] / "src" / "cota_opt"
+    bad = []
+    for p in sorted(root.glob("*.py")):
+        tree = ast.parse(p.read_text())
+        seen: dict[str, int] = {}
+        for node in tree.body:                       # module level only
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef,
+                                 ast.ClassDef)):
+                if node.name in seen and not any(
+                        isinstance(d, ast.Attribute) and
+                        d.attr in ("setter", "getter", "deleter")
+                        for d in node.decorator_list):
+                    bad.append(f"{p.name}:{node.lineno} redefines "
+                               f"{node.name!r} (first at line {seen[node.name]})")
+                seen[node.name] = node.lineno
+    assert not bad, "shadowed definitions:\n  " + "\n  ".join(bad)
