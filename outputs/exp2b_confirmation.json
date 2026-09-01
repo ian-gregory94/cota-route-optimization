@@ -1,0 +1,247 @@
+{
+  "contract": "7157ce1de9373420",
+  "methodology_generation": "gen1",
+  "candidate": "splice-011-034-WESHIGW",
+  "effort": "400000/20/0",
+  "seeds": [
+    20260825,
+    20260826,
+    20260827
+  ],
+  "start_policy": "both",
+  "per_seed": [
+    {
+      "seed": 20260825,
+      "admissible": true,
+      "unserved_effect_pct": 0.09307226530034718,
+      "comparison_id": "cmp-75d6e5dc3cdf4437",
+      "contract": "7157ce1de9373420",
+      "methodology_generation": "gen1",
+      "control_receipt": "1b9b5ea93de12c10",
+      "treatment_receipt": "812c474b05efd5d5",
+      "control_state": "<none>",
+      "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "effect": 1559.9060987266712,
+      "effect_pct": 0.05276868972101983,
+      "components": {
+        "gc_per_served_trip": [
+          84.32016477290007,
+          84.26185896272096
+        ],
+        "generalized_cost": [
+          1787084.1295641689,
+          1786612.7109357275
+        ],
+        "lambda": [
+          2.0,
+          2.0
+        ],
+        "objective": [
+          2957680.4900542153,
+          2956120.5839554886
+        ],
+        "peak_vehicles": [
+          176.29287268510072,
+          176.19194675925925
+        ],
+        "revenue_veh_hours": [
+          2514.3822760235607,
+          2515.1316648835345
+        ],
+        "served_demand": [
+          21194.030329249614,
+          21203.10105816866
+        ],
+        "unserved_demand": [
+          9754.969670750388,
+          9745.898941831343
+        ]
+      },
+      "declared_differences": [
+        "repair_occurred",
+        "repair_steps",
+        "spec.cardinality",
+        "spec.members",
+        "spec.state_digest",
+        "spec.state_key"
+      ],
+      "above_noise_floor": false,
+      "control_signatures": {
+        "treatment": "97a55e7650c854e3",
+        "nuisance": "687d27d6776a4fc2",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "33398cdfcbe0bbca",
+        "receipt": "1b9b5ea93de12c10",
+        "spec": "77321193b74a2ca4",
+        "contract": "7157ce1de9373420"
+      },
+      "treatment_signatures": {
+        "treatment": "5f087ba2a2c96d3e",
+        "nuisance": "40c2ab72032ad813",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "47f5756d3699c6f0",
+        "receipt": "812c474b05efd5d5",
+        "spec": "1c49c60252745c7a",
+        "contract": "7157ce1de9373420"
+      }
+    },
+    {
+      "seed": 20260826,
+      "admissible": true,
+      "unserved_effect_pct": 0.09307226530034718,
+      "comparison_id": "cmp-9290a8158f783bff",
+      "contract": "7157ce1de9373420",
+      "methodology_generation": "gen1",
+      "control_receipt": "18d761cb0e98b7ec",
+      "treatment_receipt": "61cff550fc31efa4",
+      "control_state": "<none>",
+      "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "effect": 1559.9060987266712,
+      "effect_pct": 0.05276868972101983,
+      "components": {
+        "gc_per_served_trip": [
+          84.32016477290007,
+          84.26185896272096
+        ],
+        "generalized_cost": [
+          1787084.1295641689,
+          1786612.7109357275
+        ],
+        "lambda": [
+          2.0,
+          2.0
+        ],
+        "objective": [
+          2957680.4900542153,
+          2956120.5839554886
+        ],
+        "peak_vehicles": [
+          176.29287268510072,
+          176.19194675925925
+        ],
+        "revenue_veh_hours": [
+          2514.3822760235607,
+          2515.1316648835345
+        ],
+        "served_demand": [
+          21194.030329249614,
+          21203.10105816866
+        ],
+        "unserved_demand": [
+          9754.969670750388,
+          9745.898941831343
+        ]
+      },
+      "declared_differences": [
+        "repair_occurred",
+        "repair_steps",
+        "spec.cardinality",
+        "spec.members",
+        "spec.state_digest",
+        "spec.state_key"
+      ],
+      "above_noise_floor": false,
+      "control_signatures": {
+        "treatment": "97a55e7650c854e3",
+        "nuisance": "e365fc0a22868938",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "6f9780ccd6f63dd9",
+        "receipt": "18d761cb0e98b7ec",
+        "spec": "a464007a34f2ae76",
+        "contract": "7157ce1de9373420"
+      },
+      "treatment_signatures": {
+        "treatment": "5f087ba2a2c96d3e",
+        "nuisance": "5537ee2e6fd08b73",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "a03816a733293724",
+        "receipt": "61cff550fc31efa4",
+        "spec": "d794f69eac4d594f",
+        "contract": "7157ce1de9373420"
+      }
+    },
+    {
+      "seed": 20260827,
+      "admissible": true,
+      "unserved_effect_pct": 0.08434873225356458,
+      "comparison_id": "cmp-ce9d49193966f1fc",
+      "contract": "7157ce1de9373420",
+      "methodology_generation": "gen1",
+      "control_receipt": "c11fe6845b839664",
+      "treatment_receipt": "9ad29d1e89ec6985",
+      "control_state": "<none>",
+      "treatment_state": "splice-011-034-WESHIGW#2c53c24a4f24",
+      "effect": 1671.9618287594058,
+      "effect_pct": 0.056561468371781526,
+      "components": {
+        "gc_per_served_trip": [
+          84.32016477290007,
+          84.2551420244199
+        ],
+        "generalized_cost": [
+          1787084.1295641689,
+          1786398.7187819881
+        ],
+        "lambda": [
+          2.0,
+          2.0
+        ],
+        "objective": [
+          2957680.4900542153,
+          2956008.528225456
+        ],
+        "peak_vehicles": [
+          176.29287268510072,
+          176.45735185185183
+        ],
+        "revenue_veh_hours": [
+          2514.3822760235607,
+          2515.8546263530684
+        ],
+        "served_demand": [
+          21194.030329249614,
+          21202.25158797111
+        ],
+        "unserved_demand": [
+          9754.969670750388,
+          9746.748412028897
+        ]
+      },
+      "declared_differences": [
+        "repair_occurred",
+        "repair_steps",
+        "spec.cardinality",
+        "spec.members",
+        "spec.state_digest",
+        "spec.state_key"
+      ],
+      "above_noise_floor": false,
+      "control_signatures": {
+        "treatment": "97a55e7650c854e3",
+        "nuisance": "06b0a39246e27d91",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "c246ebe119576b07",
+        "receipt": "c11fe6845b839664",
+        "spec": "74a3067e9eba4233",
+        "contract": "7157ce1de9373420"
+      },
+      "treatment_signatures": {
+        "treatment": "5f087ba2a2c96d3e",
+        "nuisance": "df69dd2e7f5bab7d",
+        "evidence": "ab0009a68ebd135e",
+        "execution": "fa576fbbaf3504fa",
+        "receipt": "9ad29d1e89ec6985",
+        "spec": "9655bea752f95119",
+        "contract": "7157ce1de9373420"
+      }
+    }
+  ],
+  "mean_effect_pct": 0.05403294927127372,
+  "mean_unserved_effect_pct": 0.09016442095141965,
+  "judged_on": "unserved_demand \u2014 the quantity 2B's effect_pct and floor_pts are measured on",
+  "floor_pct": 0.28700000000000003,
+  "measurable": false,
+  "recorded_2b_effect_pct": 0.0065,
+  "recorded_2b_discovery_pct": -0.5845518890625012,
+  "verdict": "NULL \u2014 2B's conclusion survives matched starts"
+}

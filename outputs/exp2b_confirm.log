@@ -964,3 +964,5188 @@ Not every seed produced an admissible comparison yet.
 Not every seed produced an admissible comparison yet.
 
 Not every seed produced an admissible comparison yet.
+2026-08-31 15:50:52,326 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 15:50:52,370 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:50:52,370 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:50:52,372 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:50:52,391 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:52,896 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:50:52,906 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:50:53,025 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:50:53,035 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:53,084 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:50:53,092 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:50:53,098 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:50:53,103 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:50:53,116 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:50:53,121 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:50:53,126 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:50:53,126 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:50:54,323 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.4s)
+2026-08-31 15:50:54,359 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:50:54,360 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:50:54,361 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:50:54,372 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:55,149 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:50:55,158 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:50:55,277 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:50:55,287 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:50:55,333 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:50:55,340 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:50:55,347 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:50:55,352 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:50:55,357 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:50:55,362 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:50:55,367 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:50:55,367 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:01:33,290 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:01:33,310 null                       seed 20260825 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:01:33,657 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:01:33,666 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:01:33,773 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:01:33,782 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:01:33,847 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:01:33,860 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:01:33,867 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:01:33,874 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:01:33,880 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:01:33,886 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:01:33,892 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:01:33,892 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:02:08,317 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:02:08,339 null                       seed 20260825 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:02:08,340 stopping cleanly: 750s needed, 724s left
+
+Not every seed produced an admissible comparison yet.
+2026-08-31 16:02:10,461 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:02:10,499 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:02:10,500 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:02:10,501 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:02:10,513 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:02:11,068 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:02:11,079 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:02:11,200 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:02:11,210 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:02:11,281 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:02:11,287 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:02:11,294 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:02:11,299 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:02:11,305 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:02:11,310 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:02:11,315 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:02:11,316 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:12:21,562 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:12:21,581 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:12:21,581 stopping cleanly: 750s needed, 112s left
+
+        seed     effect %
+    20260825      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:12:23,583 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:12:23,643 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:12:23,644 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:12:23,645 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:12:23,671 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:24,390 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:12:24,400 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:12:24,533 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:12:24,543 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:24,594 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:12:24,601 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:12:24,607 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:12:24,612 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:12:24,619 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:12:24,624 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:12:24,629 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:12:24,629 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:12:31,621 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:12:31,647 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:12:32,034 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:12:32,045 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:12:32,181 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:12:32,192 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:12:32,246 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:12:32,253 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:12:32,260 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:12:32,265 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:12:32,271 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:12:32,277 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:12:32,282 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:12:32,282 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:22:46,636 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:22:46,656 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:22:47,070 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:22:47,081 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:22:47,197 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:22:47,209 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:22:47,278 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:22:47,284 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:22:47,291 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:22:47,296 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:22:47,302 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:22:47,307 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:22:47,313 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:22:47,313 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:22:55,937 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 16:22:55,953 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:22:55,955 stopping cleanly: 750s needed, 154s left
+
+        seed     effect %
+    20260825      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:22:58,034 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:22:58,075 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:22:58,076 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:22:58,077 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:22:58,089 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:22:58,606 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:22:58,615 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:22:58,736 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:22:58,745 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:22:58,799 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:22:58,805 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:22:58,812 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:22:58,817 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:22:58,823 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:22:58,828 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:22:58,833 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:22:58,833 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:33:51,451 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:33:51,469 splice-011-034-WESHIGW     seed 20260826 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:33:51,469 stopping cleanly: 750s needed, 112s left
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:33:53,653 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:33:53,697 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:33:53,697 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:33:53,698 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:33:53,724 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:33:54,223 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:33:54,233 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:33:54,344 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:33:54,353 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:33:54,399 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:33:54,405 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:33:54,412 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:33:54,417 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:33:54,423 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:33:54,429 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:33:54,434 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:33:54,434 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:34:02,399 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:34:02,417 splice-011-034-WESHIGW     seed 20260826 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:34:02,417 stopping cleanly: 750s needed, 736s left
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:34:04,442 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:34:04,484 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:34:04,484 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:34:04,485 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:34:04,498 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:34:05,032 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:34:05,041 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:34:05,167 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:34:05,177 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:34:05,225 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:34:05,232 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 16:34:05,238 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 16:34:05,244 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 16:34:05,251 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 16:34:05,256 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 16:34:05,261 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 16:34:05,261 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:45:03,570 solve lambda=2.0: obj=2.95601e+06 vh=2515.9/2517.2 exchanges=36
+2026-08-31 16:45:03,589 null                       seed 20260827 obj=2956009 unserved=9746.7 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:45:03,590 stopping cleanly: 750s needed, 730s left
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:45:05,527 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:45:05,568 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:45:05,568 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:45:05,569 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:45:05,583 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:45:06,125 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:45:06,136 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:45:06,267 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:45:06,276 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:45:06,344 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:45:06,351 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:45:06,358 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:45:06,364 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:45:06,370 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:45:06,376 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:45:06,380 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:45:06,381 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:45:14,835 solve lambda=2.0: obj=2.95601e+06 vh=2515.9/2517.2 exchanges=36
+2026-08-31 16:45:14,851 null                       seed 20260827 obj=2956009 unserved=9746.7 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 16:45:14,852 stopping cleanly: 750s needed, 729s left
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+        mean      +0.0528   floor 0.2870%  (0.18 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0528% (0.18 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:45:16,868 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 16:45:16,905 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 16:45:16,906 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 16:45:16,907 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 16:45:16,918 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 16:45:17,456 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 16:45:17,467 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 16:45:17,601 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 16:45:17,611 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 16:45:17,691 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 16:45:17,697 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 16:45:17,704 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 16:45:17,709 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 16:45:17,716 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 16:45:17,721 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 16:45:17,726 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 16:45:17,726 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 16:56:20,443 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:56:20,468 splice-011-034-WESHIGW     seed 20260827 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+2026-08-31 16:56:24,915 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 16:56:24,936 splice-011-034-WESHIGW     seed 20260827 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed     effect %
+    20260825      +0.0528
+    20260826      +0.0528
+    20260827      +0.0566
+        mean      +0.0540   floor 0.2870%  (0.19 floors)
+
+2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)
+this retest, matched starts   : +0.0540% (0.19 floors, NULL)
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json
+
+        seed   objective %   unserved %
+    20260825       +0.0528      +0.0931
+    20260826       +0.0528      +0.0931
+    20260827       +0.0566      +0.0843
+        mean       +0.0540      +0.0902
+
+            unserved floor 0.2870%  (0.31 floors)
+
+2B recorded, incumbent starts : +0.0065% unserved (0.02 floors, NULL)
+this retest, matched starts   : +0.0902% unserved (0.31 floors, NULL)
+
+sign is unchanged: the candidate is WORSE than doing nothing, on both quantities, at every seed.
+
+PASS — 2B's certified NULL survives matched starts.
+
+wrote /home/claude/columbus-transit-opt/outputs/exp2b_confirmation.json

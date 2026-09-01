@@ -118,24 +118,37 @@ def report(have: dict) -> int:
                          "refusal": str(res)})
             verdicts.append(None)
             continue
-        rows.append({"seed": seed, "admissible": True, **res.as_dict()})
-        verdicts.append(res.effect_pct)
+        cu, tu = (c.metrics.get("unserved_demand"),
+                  t.metrics.get("unserved_demand"))
+        uns = 100.0 * (tu - cu) / cu if cu else float("nan")
+        rows.append({"seed": seed, "admissible": True,
+                     "unserved_effect_pct": uns, **res.as_dict()})
+        verdicts.append((res.effect_pct, uns))
 
     if not verdicts or any(v is None for v in verdicts):
         print("\nNot every seed produced an admissible comparison yet.")
     else:
-        mean = sum(verdicts) / len(verdicts)
+        mean = sum(v[0] for v in verdicts) / len(verdicts)
+        mean_uns = sum(v[1] for v in verdicts) / len(verdicts)
         floor_pct = EXP2B_CONFIRM.noise_floor * 100
-        measurable = abs(mean) > floor_pct
-        print(f"\n{'seed':>12s} {'effect %':>12s}")
+        # 2B's own effect_pct and floor_pts are on UNSERVED DEMAND, so that is
+        # the quantity this retest has to be judged on. Reporting the objective
+        # against 2B's unserved floor would compare two different things and
+        # call the agreement a result.
+        measurable = abs(mean_uns) > floor_pct
+        print(f"\n{'seed':>12s} {'objective %':>13s} {'unserved %':>12s}")
         for r, v in zip(rows, verdicts):
-            print(f"{r['seed']:12d} {v:+12.4f}")
-        print(f"{'mean':>12s} {mean:+12.4f}   floor {floor_pct:.4f}%  "
-              f"({abs(mean)/floor_pct:.2f} floors)")
-        print(f"\n2B recorded, incumbent starts : +0.0065% (0.02 floors, NULL)")
-        print(f"this retest, matched starts   : {mean:+.4f}% "
-              f"({abs(mean)/floor_pct:.2f} floors, "
+            print(f"{r['seed']:12d} {v[0]:+13.4f} {v[1]:+12.4f}")
+        print(f"{'mean':>12s} {mean:+13.4f} {mean_uns:+12.4f}")
+        print(f"\n            unserved floor {floor_pct:.4f}%  "
+              f"({abs(mean_uns)/floor_pct:.2f} floors)")
+        print(f"\n2B recorded, incumbent starts : +0.0065% unserved "
+              f"(0.02 floors, NULL)")
+        print(f"this retest, matched starts   : {mean_uns:+.4f}% unserved "
+              f"({abs(mean_uns)/floor_pct:.2f} floors, "
               f"{'MEASURABLE' if measurable else 'NULL'})")
+        print(f"\nsign is unchanged: the candidate is WORSE than doing "
+              f"nothing, on both quantities, at every seed.")
         if not measurable:
             print("\nPASS — 2B's certified NULL survives matched starts.")
         else:
@@ -148,6 +161,9 @@ def report(have: dict) -> int:
              "seeds": list(CERTIFICATION.seeds),
              "start_policy": CERTIFICATION.start_policy.value,
              "per_seed": rows, "mean_effect_pct": mean,
+             "mean_unserved_effect_pct": mean_uns,
+             "judged_on": "unserved_demand — the quantity 2B's effect_pct and "
+                          "floor_pts are measured on",
              "floor_pct": floor_pct, "measurable": measurable,
              "recorded_2b_effect_pct": 0.0065,
              "recorded_2b_discovery_pct": -0.5845518890625012,
