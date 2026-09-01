@@ -127,16 +127,18 @@ def test_execution_difference_alone_refuses_when_both_arms_are_admissible():
     the policy requires -- yet one of them had to repair its way there. Equal
     entitlement, unequal execution, and the comparison is still refused.
     """
-    control = receipt()
-    treatment = treated(repair_occurred=True, repair_steps=7,
-                        events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED,
-                                               "walked back into the envelope",
+    control = receipt(restarts_completed=2, evaluations_performed=4000)
+    treatment = treated(restarts_completed=2, evaluations_performed=4000,
+                        resumed=True,
+                        events=(ExecutionEvent(EventType.CHECKPOINT_RESUMED,
+                                               "rejoined at restart 1",
                                                "frequency"),))
     assert admit(control, CONTRACT) and admit(treatment, CONTRACT)
     out = compare(control, treatment, CONTRACT)
     assert isinstance(out, InadmissibleComparison)
     dims = {d.dimension for d in out.undeclared}
-    assert {"repair_occurred", "repair_steps"} <= dims
+    assert "resumed" in dims
+    assert "opportunity_events.CHECKPOINT_RESUMED" in dims
     assert "REFUSED" in str(out) and "No treatment effect" in str(out)
 
 
@@ -147,7 +149,8 @@ def test_a_fallback_in_only_one_arm_is_refused_even_with_matching_fields():
                                                "evaluator degraded", "eval"),))
     out = compare(control, treatment, CONTRACT)
     assert isinstance(out, InadmissibleComparison)
-    assert any(d.dimension == "opportunity_events" for d in out.undeclared)
+    assert any(d.dimension == "opportunity_events.MODEL_FALLBACK"
+               for d in out.undeclared)
 
 
 def test_an_operationally_neutral_event_does_not_block_comparison():
@@ -172,7 +175,6 @@ def test_an_operationally_neutral_event_does_not_block_comparison():
     ("restarts_completed", 1),
     ("termination", StopRule.DEADLINE),
     ("converged", False),
-    ("repair_occurred", True),
     ("resumed", True),
 ])
 def test_any_undeclared_mismatch_refuses(field, value):
@@ -242,7 +244,8 @@ def test_certification_requires_both_arms_converged():
         evaluator=CONTRACT.evaluator, envelope=CONTRACT.envelope,
         pathset_policy=CONTRACT.pathset_policy, pool_version=CONTRACT.pool_version,
         solver=CERTIFICATION,
-        allowed_treatment_differences=CONTRACT.allowed_treatment_differences)
+        allowed_treatment_differences=CONTRACT.allowed_treatment_differences,
+        justifications=CONTRACT.justifications)
     c = receipt(cert, restarts_requested=20, restarts_completed=20,
                 converged=False, termination=StopRule.DEADLINE,
                 spec_=spec(cert))
@@ -272,7 +275,9 @@ def test_a_treatment_dependent_start_policy_is_allowed_if_declared():
         objective_version="1", evaluator="e", envelope="v", pathset_policy="p",
         pool_version="q",
         solver=SolverPolicy(start_policy=StartPolicy.INCUMBENT_ONLY),
-        allowed_treatment_differences=frozenset({"starts_attempted"}))
+        allowed_treatment_differences=frozenset({"starts_attempted"}),
+        justifications={"starts_attempted":
+                        "this experiment IS about the start set"})
     assert c.digest
 
 
@@ -531,3 +536,43 @@ def test_a_pre_firewall_row_cannot_pass_as_completed_work():
     assert not v
     assert any("contract" in r for r in v.reasons)
     assert any("methodology" in r for r in v.reasons)
+
+
+
+def test_a_declared_difference_needs_a_written_reason():
+    """A whitelist without reasons is a place to put anything inconvenient."""
+    with pytest.raises(ContractError):
+        ExperimentContract(
+            experiment="x", version="1", stage="discovery", objective="o",
+            objective_version="1", evaluator="e", envelope="v",
+            pathset_policy="p", pool_version="q",
+            allowed_treatment_differences=frozenset({"restarts_completed"}))
+    ok = ExperimentContract(
+        experiment="x", version="1", stage="discovery", objective="o",
+        objective_version="1", evaluator="e", envelope="v",
+        pathset_policy="p", pool_version="q",
+        allowed_treatment_differences=frozenset({"restarts_completed"}),
+        justifications={"restarts_completed": "measured not to matter here"})
+    assert ok.digest
+
+
+def test_declaring_one_event_type_does_not_waive_the_others():
+    """The repair waiver must not buy an exemption for a model fallback."""
+    assert CONTRACT.allows("opportunity_events.INCUMBENT_REPAIRED")
+    assert not CONTRACT.allows("opportunity_events.MODEL_FALLBACK")
+    assert not CONTRACT.allows("opportunity_events.START_FALLBACK")
+
+    repaired = treated(repair_occurred=True, repair_steps=10,
+                       events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED,
+                                              "walked into the envelope",
+                                              "frequency"),))
+    assert isinstance(compare(receipt(), repaired, CONTRACT), ComparisonResult)
+
+    also_fell_back = treated(
+        repair_occurred=True, repair_steps=10,
+        events=(ExecutionEvent(EventType.INCUMBENT_REPAIRED, "x", "frequency"),
+                ExecutionEvent(EventType.MODEL_FALLBACK, "y", "eval")))
+    out = compare(receipt(), also_fell_back, CONTRACT)
+    assert isinstance(out, InadmissibleComparison)
+    assert any(d.dimension == "opportunity_events.MODEL_FALLBACK"
+               for d in out.undeclared)

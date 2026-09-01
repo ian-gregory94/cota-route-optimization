@@ -114,7 +114,9 @@ def _amended(*extra):
     """
     return dataclasses.replace(
         C, allowed_treatment_differences=C.allowed_treatment_differences
-        | set(extra))
+        | set(extra),
+        justifications={**C.justifications,
+                        **{k: "declared for this test" for k in extra}})
 
 
 def _under(contract, **kw):
@@ -177,8 +179,17 @@ def test_treatment_and_nuisance_signatures_split_cleanly():
 
 def test_an_undeclared_execution_change_moves_the_nuisance_signature():
     a = _receipt()
-    b = _receipt(repair_occurred=True)
+    # Undeclared, but still individually admissible -- so this isolates the
+    # signature split rather than the admission check.
+    b = _receipt(resumed=True)
     assert admit(a, C).nuisance_signature != admit(b, C).nuisance_signature
+
+
+def test_a_declared_execution_change_moves_the_treatment_signature_instead():
+    a = _receipt()
+    b = _receipt(repair_occurred=True)     # declared, with a written reason
+    assert admit(a, C).nuisance_signature == admit(b, C).nuisance_signature
+    assert admit(a, C).treatment_signature != admit(b, C).treatment_signature
 
 
 def test_evidence_signature_tracks_provenance_not_results():

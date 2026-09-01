@@ -9,8 +9,10 @@ class of issue that motivated it, without being specialised to it.
 """
 from __future__ import annotations
 
+import hashlib
 import subprocess
 import time
+from pathlib import Path
 from typing import Any, Sequence
 
 from . import exp3
@@ -34,6 +36,34 @@ _TERMINATION = {"no_improving_move": StopRule.NO_IMPROVING_MOVE,
 
 
 def code_version() -> str:
+    """Digest of the code that can actually change a number.
+
+    Not the repo HEAD. HEAD moves when a shell script, a document or an
+    unrelated experiment changes, and two cells of one comparison separated by
+    such a commit are then refused for a difference that cannot have touched
+    either of them -- which happened, and cost a certification batch.
+
+    A markdown edit is not a different evaluator. A change under
+    ``src/cota_opt`` might be, so that is what is hashed, along with the two
+    scripts the scoring chain imports.
+    """
+    root = Path(__file__).resolve().parents[2]
+    parts = []
+    for f in sorted((root / "src" / "cota_opt").rglob("*.py")):
+        parts.append((str(f.relative_to(root)), f.read_bytes()))
+    for name in ("exp2_treatments.py", "exp3_pin_envelope.py"):
+        f = root / "scripts" / name
+        if f.exists():
+            parts.append((name, f.read_bytes()))
+    h = hashlib.sha256()
+    for name, blob in parts:
+        h.update(name.encode())
+        h.update(hashlib.sha256(blob).digest())
+    return f"src-{h.hexdigest()[:12]}"
+
+
+def repo_revision() -> str:
+    """Provenance only: which commit was checked out. Never an identity field."""
     try:
         return subprocess.run(["git", "rev-parse", "--short", "HEAD"],
                               capture_output=True, text=True, timeout=10

@@ -46,3 +46,905 @@
 2026-08-31 14:31:51,067 period evening : 23618 paths, 20000 OD pairs
 2026-08-31 14:31:51,072 period owl     : 22678 paths, 20000 OD pairs
 2026-08-31 14:31:51,072 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:41:57,252 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 14:41:57,272 splice-011-034-WESHIGW     seed 20260825 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 14:41:57,272 stopping cleanly: 750s needed, 150s left
+
+Not every seed produced an admissible comparison yet.
+2026-08-31 14:41:59,214 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 14:41:59,250 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 14:41:59,251 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 14:41:59,252 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 14:41:59,263 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:41:59,780 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:41:59,789 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:41:59,895 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:41:59,905 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:41:59,949 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:41:59,956 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 14:41:59,962 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 14:41:59,967 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 14:41:59,973 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 14:41:59,979 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 14:41:59,983 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 14:41:59,984 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:52:19,468 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 14:52:19,488 null                       seed 20260826 obj=2956121 unserved=9745.9 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 14:52:19,489 stopping cleanly: 1150s needed, 780s left
+
+Not every seed produced an admissible comparison yet.
+2026-08-31 14:52:21,597 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 14:52:21,642 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 14:52:21,643 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 14:52:21,644 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 14:52:21,657 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 14:52:22,194 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:52:22,203 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:52:22,325 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:52:22,335 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 14:52:22,408 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:52:22,472 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:53:17,720 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:53:17,815 path set: 24214 paths over 17381/20000 OD pairs (86.6% of flow served), 119210 legs
+2026-08-31 14:53:17,865 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 14:53:17,877 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:54:20,753 rejected 119 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:54:20,869 path set: 28358 paths over 19272/20000 OD pairs (96.2% of flow served), 140027 legs
+2026-08-31 14:54:20,934 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 14:54:20,946 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:55:15,544 rejected 91 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:55:15,638 path set: 23623 paths over 17384/20000 OD pairs (86.6% of flow served), 116489 legs
+2026-08-31 14:55:15,692 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 14:55:15,704 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:56:15,221 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:56:15,327 path set: 27555 paths over 18668/20000 OD pairs (93.6% of flow served), 137834 legs
+2026-08-31 14:56:15,386 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 14:56:15,398 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:57:12,676 rejected 128 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:57:12,769 path set: 23618 paths over 17378/20000 OD pairs (86.6% of flow served), 116384 legs
+2026-08-31 14:57:12,827 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 14:57:12,840 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:58:06,048 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:58:06,156 path set: 22678 paths over 17001/20000 OD pairs (85.1% of flow served), 111453 legs
+2026-08-31 14:58:06,213 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 14:58:06,213 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:08:48,499 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 15:08:48,871 splice-011-034-WESHIGW     seed 20260826 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 15:08:48,872 stopping cleanly: 1150s needed, 413s left
+
+Not every seed produced an admissible comparison yet.
+2026-08-31 15:08:50,810 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 15:08:50,846 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:08:50,847 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:08:50,848 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:08:50,859 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:08:51,264 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:08:51,273 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:08:51,393 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:08:51,404 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:08:51,455 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:08:51,524 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:09:44,391 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:09:44,491 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-31 15:09:44,542 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 15:09:44,554 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:10:46,013 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:10:46,126 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-31 15:10:46,191 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 15:10:46,203 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:11:42,787 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:11:42,881 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-31 15:11:42,936 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 15:11:42,949 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:12:40,006 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:12:40,116 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-31 15:12:40,176 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 15:12:40,188 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:13:37,813 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:13:37,916 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-31 15:13:37,967 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 15:13:37,979 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:14:29,906 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:14:29,992 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-31 15:14:30,043 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 15:14:30,043 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:25:44,225 solve lambda=2.0: obj=2.95601e+06 vh=2515.9/2517.2 exchanges=36
+2026-08-31 15:25:44,602 null                       seed 20260827 obj=2956009 unserved=9746.7 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+2026-08-31 15:25:44,604 stopping cleanly: 1150s needed, 386s left
+
+Not every seed produced an admissible comparison yet.
+2026-08-31 15:25:46,578 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 15:25:46,614 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 15:25:46,614 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 15:25:46,615 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 15:25:46,627 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 15:25:47,064 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 15:25:47,073 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 15:25:47,189 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 15:25:47,200 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 15:25:47,270 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 15:25:47,335 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:26:45,854 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:26:45,948 path set: 24214 paths over 17381/20000 OD pairs (86.6% of flow served), 119210 legs
+2026-08-31 15:26:46,008 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 15:26:46,021 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:27:52,835 rejected 119 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:27:52,942 path set: 28358 paths over 19272/20000 OD pairs (96.2% of flow served), 140027 legs
+2026-08-31 15:27:53,004 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 15:27:53,016 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:28:47,385 rejected 91 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:28:47,473 path set: 23623 paths over 17384/20000 OD pairs (86.6% of flow served), 116489 legs
+2026-08-31 15:28:47,527 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 15:28:47,540 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:29:48,421 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:29:48,529 path set: 27555 paths over 18668/20000 OD pairs (93.6% of flow served), 137834 legs
+2026-08-31 15:29:48,592 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 15:29:48,607 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:30:50,941 rejected 128 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:30:51,044 path set: 23618 paths over 17378/20000 OD pairs (86.6% of flow served), 116384 legs
+2026-08-31 15:30:51,097 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 15:30:51,109 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 15:31:47,806 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 15:31:47,894 path set: 22678 paths over 17001/20000 OD pairs (85.1% of flow served), 111453 legs
+2026-08-31 15:31:47,943 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 15:31:47,943 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 15:42:49,177 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 15:42:49,530 splice-011-034-WESHIGW     seed 20260827 obj=2957680 unserved=9755.0 starts=('repaired', 'greedy') won=greedy restarts=20 admissible=True
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp2b_confirm.py", line 47, in <module>
+    from cota_opt.exp3_cell import run_cell                           # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/src/cota_opt/exp3_cell.py", line 21, in <module>
+    from .firewall import (EventType, ExecutionEvent, ExecutionReceipt,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/__init__.py", line 12, in <module>
+    from .compare import (ComparisonResult, Difference, InadmissibleComparison,
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/compare.py", line 24, in <module>
+    from .contract import ExperimentContract
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 114, in <module>
+    EXP3_STAGE_A = ExperimentContract(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 21, in __init__
+  File "/home/claude/columbus-transit-opt/src/cota_opt/firewall/contract.py", line 75, in __post_init__
+    raise ContractError(
+cota_opt.firewall.contract.ContractError: every declared treatment difference needs a written reason it does not confound the comparison; missing for: cardinality, members, pathset_digest, state_digest, state_key
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
+
+Not every seed produced an admissible comparison yet.
