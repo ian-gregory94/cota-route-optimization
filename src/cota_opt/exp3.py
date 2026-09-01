@@ -255,3 +255,18 @@ def config_digest(base=None) -> str:
         h.update(name.encode())
         h.update(p.read_bytes() if p.exists() else b"MISSING")
     return h.hexdigest()[:16]
+
+
+def pathset_cache_params(edits, seed: int, common_lines: str) -> dict:
+    """Cache key for a state's path sets: everything they actually depend on.
+
+    Path sets are five and a half of a discovery evaluation's seven minutes and
+    depend only on the network, zones, OD and baseline headways -- none of
+    which vary with the start set, the effort or lambda. Keying them here, in
+    one place, keeps the re-score driver and the resumable certification runner
+    from drifting into two subtly different keys and silently missing each
+    other's cache.
+    """
+    return {"state": state_digest(edits), "seed": int(seed),
+            "common_lines": common_lines, "config": config_digest(),
+            "pool": POOL_VERSION}

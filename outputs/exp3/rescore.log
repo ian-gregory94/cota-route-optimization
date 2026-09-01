@@ -1,0 +1,86 @@
+2026-08-31 12:30:08,997 40 of 40 states still to re-score
+2026-08-31 12:30:09,137 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 12:30:09,173 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 12:30:09,174 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 12:30:09,175 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 12:30:09,194 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:30:09,410 path sets from cache for <none>
+2026-08-31 12:30:09,667 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 12:30:09,676 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 12:30:09,786 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 12:30:09,796 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:30:09,841 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 12:30:09,847 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 12:30:09,854 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 12:30:09,859 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 12:30:09,864 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 12:30:09,869 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 12:30:09,874 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 12:30:09,874 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 12:31:53,522 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 12:31:53,540 <none>                                               obj=2956121 unserved=9745.9 vh=2515.1 104s
+2026-08-31 12:31:53,540 stopping cleanly: not enough slice left for another state
+2026-08-31 12:31:53,542 slice re-scored 1 states; 39 remain
+2026-08-31 12:32:18,892 39 of 40 states still to re-score
+2026-08-31 12:32:19,035 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 12:32:19,075 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 12:32:19,076 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 12:32:19,077 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 12:32:19,102 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:32:19,339 path sets from cache for <none>|rep0
+2026-08-31 12:32:19,624 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 12:32:19,634 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 12:32:19,753 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 12:32:19,763 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:32:19,810 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 12:32:19,816 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 12:32:19,823 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 12:32:19,828 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 12:32:19,835 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 12:32:19,839 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 12:32:19,844 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 12:32:19,845 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 12:34:08,667 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 12:34:08,682 <none>|rep0                                          obj=2956121 unserved=9745.9 vh=2515.1 109s
+2026-08-31 12:34:08,682 stopping cleanly: not enough slice left for another state
+2026-08-31 12:34:08,684 slice re-scored 1 states; 38 remain
+2026-08-31 12:34:15,977 38 of 40 states still to re-score
+2026-08-31 12:34:16,112 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 12:34:16,158 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 12:34:16,159 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 12:34:16,160 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 12:34:16,180 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:34:16,593 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 12:34:16,602 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 12:34:16,711 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 12:34:16,721 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 12:34:16,768 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 12:34:16,830 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:35:08,366 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:35:08,458 path set: 24668 paths over 17388/20000 OD pairs (86.7% of flow served), 121381 legs
+2026-08-31 12:35:08,506 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 12:35:08,517 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:36:06,879 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:36:06,983 path set: 28763 paths over 19278/20000 OD pairs (96.2% of flow served), 141637 legs
+2026-08-31 12:36:07,042 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 12:36:07,053 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:37:01,641 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:37:01,743 path set: 24097 paths over 17389/20000 OD pairs (86.7% of flow served), 118697 legs
+2026-08-31 12:37:01,801 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 12:37:01,814 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:37:59,424 rejected 121 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:37:59,528 path set: 27986 paths over 18673/20000 OD pairs (93.6% of flow served), 139640 legs
+2026-08-31 12:37:59,591 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 12:37:59,605 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:38:55,224 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:38:55,317 path set: 24058 paths over 17386/20000 OD pairs (86.6% of flow served), 118267 legs
+2026-08-31 12:38:55,370 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 12:38:55,382 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 12:39:46,856 rejected 129 malformed candidate paths that failed the re-pricing check
+2026-08-31 12:39:46,944 path set: 22669 paths over 17006/20000 OD pairs (85.1% of flow served), 111737 legs
+2026-08-31 12:39:46,992 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 12:39:46,992 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 12:41:36,814 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 12:41:37,251 <none>|rep1                                          obj=2956121 unserved=9745.9 vh=2515.1 441s
+2026-08-31 12:41:37,251 stopping cleanly: not enough slice left for another state
+2026-08-31 12:41:37,253 slice re-scored 1 states; 37 remain
