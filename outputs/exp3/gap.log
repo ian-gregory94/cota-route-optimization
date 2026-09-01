@@ -1,0 +1,70 @@
+2026-08-31 17:47:23,780 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:47:23,822 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:47:23,823 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:47:23,824 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:47:23,843 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:47:24,242 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:47:24,251 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:47:24,359 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:47:24,369 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:47:24,492 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:47:24,498 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 17:47:24,505 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 17:47:24,509 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 17:47:24,515 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 17:47:24,520 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 17:47:24,525 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:47:24,525 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:49:08,143 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:49:08,152 control: Gen1 full-problem solution 2956120.583955
+2026-08-31 17:49:11,554 solve lambda=2.0: obj=2.95607e+06 vh=2515.8/2517.2 exchanges=0
+2026-08-31 17:49:11,555 control:peak:8                 exact 2956066.2815  delivered 2956120.5840  gap +54.3025 (+0.00184%)  6561 combos in 3s
+2026-08-31 17:49:42,525 solve lambda=2.0: obj=2.95607e+06 vh=2515.8/2517.2 exchanges=0
+2026-08-31 17:49:42,526 control:peak:10                exact 2956066.2815  delivered 2956120.5840  gap +54.3025 (+0.00184%)  59049 combos in 31s
+2026-08-31 17:49:43,618 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:49:43,621 control:offpeak:6              exact 2956120.5840  delivered 2956120.5840  gap +0.0000 (+0.00000%)  729 combos in 1s
+2026-08-31 17:49:51,912 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:49:51,914 control:offpeak:8              exact 2956120.5840  delivered 2956120.5840  gap +0.0000 (+0.00000%)  6561 combos in 8s
+2026-08-31 17:51:06,458 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:51:06,461 control:offpeak:10             exact 2956120.5840  delivered 2956120.5840  gap +0.0000 (+0.00000%)  59049 combos in 74s
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 432, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 389, in main
+    free = choose_free(judge, stratum, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 199, in choose_free
+    net = judge.baseline.network
+          ^^^^^^^^^^^^^^
+AttributeError: 'Exp2Setup' object has no attribute 'baseline'
+2026-08-31 17:51:09,181 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-08-31 17:51:09,218 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 17:51:09,219 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 17:51:09,220 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 17:51:09,232 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:51:09,667 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:51:09,676 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:51:09,804 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:51:09,814 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:51:09,959 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:51:09,966 period early   : 24668 paths, 20000 OD pairs
+2026-08-31 17:51:09,974 period am_peak : 28763 paths, 20000 OD pairs
+2026-08-31 17:51:09,978 period midday  : 24097 paths, 20000 OD pairs
+2026-08-31 17:51:09,984 period pm_peak : 27986 paths, 20000 OD pairs
+2026-08-31 17:51:09,990 period evening : 24058 paths, 20000 OD pairs
+2026-08-31 17:51:09,995 period owl     : 22669 paths, 20000 OD pairs
+2026-08-31 17:51:09,995 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 17:52:52,861 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-08-31 17:52:52,870 control: Gen1 full-problem solution 2956120.583955
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 432, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 389, in main
+    free = choose_free(judge, stratum, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp3_gap_benchmark.py", line 199, in choose_free
+    net = judge.baseline.network
+          ^^^^^^^^^^^^^^
+AttributeError: 'Exp2Setup' object has no attribute 'baseline'
