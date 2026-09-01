@@ -415,6 +415,7 @@ def main() -> int:
                "n_free": n, "k_rungs": K_RUNGS,
                "free_route_periods": [f"{a}|{b}" for a, b in free],
                "anchor": args.anchor,
+               "n_route_periods": len(list(judge.model.keys)),
                "combinations": n_eval, "exact_objective": exact_obj,
                "delivered_objective": delivered,
                "reduced_heuristic_objective": heur_obj,
