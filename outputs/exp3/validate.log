@@ -388,3 +388,156 @@
 2026-08-31 13:50:56,421 path set: 24120 paths over 17390/20000 OD pairs (86.7% of flow served), 118211 legs
 2026-08-31 13:50:56,475 period midday  : 24120 paths, 20000 OD pairs
 2026-08-31 13:50:56,487 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:51:54,574 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:51:54,687 path set: 27977 paths over 18674/20000 OD pairs (93.6% of flow served), 138951 legs
+2026-08-31 13:51:54,749 period pm_peak : 27977 paths, 20000 OD pairs
+2026-08-31 13:51:54,761 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:52:49,835 rejected 82 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:52:49,930 path set: 24079 paths over 17387/20000 OD pairs (86.7% of flow served), 117800 legs
+2026-08-31 13:52:49,988 period evening : 24079 paths, 20000 OD pairs
+2026-08-31 13:52:50,001 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:53:43,030 rejected 127 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:53:43,120 path set: 22698 paths over 17007/20000 OD pairs (85.1% of flow served), 111280 legs
+2026-08-31 13:53:43,170 period owl     : 22698 paths, 20000 OD pairs
+2026-08-31 13:53:43,170 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 13:53:43,204      incumbent rescaled x1.0010
+2026-08-31 13:55:17,893 solve lambda=2.0: obj=2.95141e+06 vh=2512.4/2517.2 exchanges=0
+2026-08-31 13:55:18,314 single reroute  [greedy] obj=2951409 won=greedy    plan=72fa20c714f01554 428s
+2026-08-31 13:55:18,654 footpaths: 15543 links (9 from transfers.txt)
+2026-08-31 13:55:18,668 raptor network: 2946 stops, 111 patterns, 15543 footpaths
+2026-08-31 13:55:18,795 zones: 1397 (637 with transit access within 600 m), 3937 access links
+2026-08-31 13:55:18,805 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:55:18,876 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:55:18,882 period early   : 24660 paths, 20000 OD pairs
+2026-08-31 13:55:18,888 period am_peak : 28767 paths, 20000 OD pairs
+2026-08-31 13:55:18,893 period midday  : 24120 paths, 20000 OD pairs
+2026-08-31 13:55:18,899 period pm_peak : 27977 paths, 20000 OD pairs
+2026-08-31 13:55:18,904 period evening : 24079 paths, 20000 OD pairs
+2026-08-31 13:55:18,909 period owl     : 22698 paths, 20000 OD pairs
+2026-08-31 13:55:18,909 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 13:55:18,942      incumbent rescaled x1.0010
+2026-08-31 13:57:13,045 solve lambda=2.0: obj=2.95141e+06 vh=2512.4/2517.2 exchanges=0
+2026-08-31 13:57:13,061 single reroute  [both  ] obj=2951409 won=greedy    plan=72fa20c714f01554 115s
+2026-08-31 13:57:13,061 stopping cleanly: 440s needed, 297s left
+2026-08-31 13:57:13,063 slice ran 2 cells; 2 remain
+2026-08-31 13:57:16,263 2 of 16 (state, start set) cells still to run
+2026-08-31 13:57:16,414 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-08-31 13:57:16,455 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-08-31 13:57:16,456 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-08-31 13:57:16,456 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-08-31 13:57:16,469 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 13:57:16,930 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 13:57:16,941 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 13:57:17,096 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 13:57:17,106 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 13:57:17,169 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 13:57:17,241 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:58:11,318 rejected 122 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:58:11,413 path set: 24214 paths over 17381/20000 OD pairs (86.6% of flow served), 119210 legs
+2026-08-31 13:58:11,469 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 13:58:11,481 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 13:59:13,951 rejected 119 malformed candidate paths that failed the re-pricing check
+2026-08-31 13:59:14,065 path set: 28358 paths over 19272/20000 OD pairs (96.2% of flow served), 140027 legs
+2026-08-31 13:59:14,137 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 13:59:14,149 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:00:10,731 rejected 91 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:00:10,828 path set: 23623 paths over 17384/20000 OD pairs (86.6% of flow served), 116489 legs
+2026-08-31 14:00:10,883 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 14:00:10,897 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:01:10,087 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:01:10,190 path set: 27555 paths over 18668/20000 OD pairs (93.6% of flow served), 137834 legs
+2026-08-31 14:01:10,250 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 14:01:10,261 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:02:07,965 rejected 128 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:02:08,054 path set: 23618 paths over 17378/20000 OD pairs (86.6% of flow served), 116384 legs
+2026-08-31 14:02:08,107 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 14:02:08,118 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 14:03:01,272 rejected 165 malformed candidate paths that failed the re-pricing check
+2026-08-31 14:03:01,362 path set: 22678 paths over 17001/20000 OD pairs (85.1% of flow served), 111453 legs
+2026-08-31 14:03:01,417 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 14:03:01,417 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:04:37,078 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 14:04:37,461 single splice   [greedy] obj=2957680 won=greedy    plan=1c435b33f6dfa8d5 441s
+2026-08-31 14:04:37,824 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 14:04:37,834 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 14:04:37,960 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 14:04:37,970 route classes: {'all_day': 24, 'peak_express': 14}
+2026-08-31 14:04:38,023 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 14:04:38,029 period early   : 24214 paths, 20000 OD pairs
+2026-08-31 14:04:38,035 period am_peak : 28358 paths, 20000 OD pairs
+2026-08-31 14:04:38,040 period midday  : 23623 paths, 20000 OD pairs
+2026-08-31 14:04:38,046 period pm_peak : 27555 paths, 20000 OD pairs
+2026-08-31 14:04:38,052 period evening : 23618 paths, 20000 OD pairs
+2026-08-31 14:04:38,057 period owl     : 22678 paths, 20000 OD pairs
+2026-08-31 14:04:38,058 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-08-31 14:06:19,888 solve lambda=2.0: obj=2.95768e+06 vh=2514.4/2517.2 exchanges=0
+2026-08-31 14:06:19,905 single splice   [both  ] obj=2957680 won=greedy    plan=1c435b33f6dfa8d5 102s
+2026-08-31 14:06:19,907 slice ran 2 cells; 0 remain
+2026-08-31 14:06:23,557 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:26,976 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:30,431 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:33,840 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:37,284 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:40,552 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:43,946 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:47,250 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:50,632 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:54,153 0 of 16 (state, start set) cells still to run
+2026-08-31 14:06:57,433 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:00,832 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:04,065 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:07,264 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:10,650 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:14,006 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:17,177 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:20,417 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:23,761 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:27,182 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:30,481 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:33,826 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:37,107 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:40,401 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:43,615 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:47,295 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:50,795 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:54,512 0 of 16 (state, start set) cells still to run
+2026-08-31 14:07:57,942 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:01,283 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:04,451 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:07,583 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:10,839 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:14,042 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:17,311 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:20,482 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:23,706 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:26,855 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:29,956 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:33,272 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:36,555 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:39,784 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:42,972 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:46,269 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:49,499 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:52,783 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:56,005 0 of 16 (state, start set) cells still to run
+2026-08-31 14:08:59,391 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:02,676 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:06,228 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:09,572 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:12,990 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:16,375 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:19,713 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:23,015 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:26,116 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:29,237 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:32,463 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:35,832 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:39,087 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:42,317 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:45,552 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:48,988 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:52,221 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:55,505 0 of 16 (state, start set) cells still to run
+2026-08-31 14:09:58,736 0 of 16 (state, start set) cells still to run
+2026-08-31 14:10:02,018 0 of 16 (state, start set) cells still to run
+2026-08-31 14:10:05,196 0 of 16 (state, start set) cells still to run
