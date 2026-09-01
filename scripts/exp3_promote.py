@@ -44,10 +44,18 @@ PER_CARDINALITY = 1
 
 
 def load_receipts() -> dict:
-    """Execution receipts by state key, from the observation store."""
-    from cota_opt.firewall import ObservationStore
+    """Execution receipts by state key, from the observation store.
+
+    Keyed at the BASE SEED only. The zero-edit replicates share the control's
+    state key and differ only in seed -- they measure the noise floor, they are
+    not alternative controls -- so keying on the state key alone would let
+    whichever replicate landed last become the thing every treatment is
+    compared against.
+    """
+    from cota_opt.firewall import EXP3_STAGE_A, ObservationStore
+    base = EXP3_STAGE_A.solver.seeds[0]
     store = ObservationStore(OUT / "observations")
-    return {r.spec.state_key: r for r in store.all()}
+    return {r.spec.state_key: r for r in store.all() if r.spec.seed == base}
 
 
 def load() -> tuple[dict, dict, float, float]:
