@@ -1,0 +1,57 @@
+{
+  "census": "Experiment 3 Phase A1, corrected",
+  "methodology_generation": "gen1",
+  "contract": "00c0953c95a96ffd",
+  "effort": "60000/2/32",
+  "start_policy": "both",
+  "control_objective": 2956120.5839554886,
+  "control_receipt": "23b4d9fda5a51e83",
+  "interpretation": "DESCRIPTIVE ONLY. Signed effects and rankings, no significance or materiality classification.",
+  "discovery_same_run_floor": "UNDEFINED for materiality purposes. Under starts='both' at 60000/2/32 the pipeline is deterministic, so same-run replicate spread is exactly zero. That measures solver VARIANCE and places no bound on solver ERROR, which is what materiality requires. Not 0%. Not substituted from certification effort. See decisions/2026-08-31-replicate-spread-is-not-a-materiality-floor.md.",
+  "solver_variance_observation": {
+    "n_replicates": 3,
+    "seeds": [
+      20260825,
+      20260826,
+      20260827
+    ],
+    "objectives": [
+      2956120.5839554886,
+      2956120.5839554886,
+      2956120.5839554886
+    ],
+    "spread_absolute": 0.0,
+    "spread_pct_of_mean": 0.0,
+    "what_this_is": "SOLVER VARIANCE ONLY \u2014 how far the answer moves when the seed moves. Zero here because the discovery pipeline is deterministic (D32). It is not a materiality floor and not a statement about accuracy."
+  },
+  "n_states": 1,
+  "n_refused": 0,
+  "refused": [],
+  "states": [
+    {
+      "state": "add_stop-001#dc6e768a1ae6",
+      "cardinality": 1,
+      "kind": "add_stop",
+      "comparison_id": "cmp-6c88d8b8ac3efa4b",
+      "objective": 2956225.372875088,
+      "effect": 104.78891959926113,
+      "effect_pct": 0.0035448120813477268,
+      "unserved_demand": 9747.29273594072,
+      "unserved_pct": 0.014301339647539596,
+      "generalized_cost": 1786550.2445622012,
+      "revenue_veh_hours": 2515.576537716619,
+      "winning_start": "greedy",
+      "evaluations": 21622,
+      "receipt": "dfca3fa14ef7cb03"
+    }
+  ],
+  "per_kind": {
+    "add_stop": {
+      "n": 1,
+      "best": 0.0035448120813477268,
+      "median": 0.0035448120813477268,
+      "worst": 0.0035448120813477268,
+      "mean": 0.0035448120813477268
+    }
+  }
+}
