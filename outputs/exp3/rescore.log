@@ -1851,3 +1851,23 @@ NameError: name 'warm' is not defined
 2026-08-31 17:32:53,596 period owl     : 22669 paths, 20000 OD pairs
 2026-08-31 17:32:53,596 locking 28 route-periods across 14 routes in classes ('peak_express',)
 2026-08-31 17:32:53,632      incumbent rescaled x1.0003
+2026-08-31 17:35:24,928 solve lambda=2.0: obj=2.95623e+06 vh=2515.6/2517.2 exchanges=0
+2026-08-31 17:35:25,410 add_stop-001#dc6e768a1ae6                            obj=2956225 unserved=9747.3 vh=2515.6 646s
+2026-08-31 17:35:25,789 footpaths: 15573 links (9 from transfers.txt)
+2026-08-31 17:35:25,808 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-08-31 17:35:25,972 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-08-31 17:35:25,992 route classes: {'all_day': 25, 'peak_express': 14}
+2026-08-31 17:35:26,055 evaluator pricing: common_lines=same_route (explicit)
+2026-08-31 17:35:26,069 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:36:45,526 rejected 94 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:36:45,692 path set: 24674 paths over 17388/20000 OD pairs (86.7% of flow served), 121380 legs
+2026-08-31 17:36:45,802 period early   : 24674 paths, 20000 OD pairs
+2026-08-31 17:36:45,831 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:38:14,746 rejected 73 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:38:14,889 path set: 28749 paths over 19278/20000 OD pairs (96.2% of flow served), 141548 legs
+2026-08-31 17:38:14,960 period am_peak : 28749 paths, 20000 OD pairs
+2026-08-31 17:38:14,977 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
+2026-08-31 17:39:32,361 rejected 72 malformed candidate paths that failed the re-pricing check
+2026-08-31 17:39:32,448 path set: 24078 paths over 17389/20000 OD pairs (86.7% of flow served), 118568 legs
+2026-08-31 17:39:32,526 period midday  : 24078 paths, 20000 OD pairs
+2026-08-31 17:39:32,551 path enumeration: 20000 OD pairs, 636 origin zones, 3 scenarios, cap 4 paths/OD
