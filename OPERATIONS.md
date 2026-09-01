@@ -240,14 +240,43 @@ belongs to exactly one shard from start to finish, and subtract the finished
 ones afterwards. The symptom that exposed it was a shard whose remaining count
 did not drop after it completed a cell.
 
-**27. A keeper you never checked is not a keeper.** The hourly trigger that
-exists to revive the batch after a container recycle had been *failing at
-startup on every firing* — ten seconds, then `FAILED` — while reporting
-`enabled: true` and a healthy `next_run_at`. Nine hours of certification time
-were lost to a watchdog that was itself dead, and nothing surfaced it, because
-"the keeper is scheduled" was mistaken for "the keeper is working." This is the
-same failure class as rule 18 and as the `done()` check that read rows instead
-of receipts: a mechanism that *looks* like it is running is not evidence that it
-ran. `list_triggers` reports `last_run.status` and `finished_at`; read them.
-A keeper whose last run failed is an outage, and a keeper whose runs are
-suspiciously short is a startup failure, not a quiet success.
+**27. A watchdog is verified by an effect you can see, never by its own
+status.** The hourly keeper that was supposed to revive this batch had been
+failing at startup on every firing while reporting `enabled: true` and a healthy
+`next_run_at`. Nine hours were lost. The first fix was to read
+`last_run.status` — and having read `SUCCEEDED`, the keeper was declared
+working. **It was not.** `SUCCEEDED` means the session ran; it says nothing
+about whether the session did the thing. The keeper was firing in a *different
+container*, where this repository does not exist, so it "succeeded" at finding
+nothing. Proven by firing it with an instruction to write a marker file into
+`outputs/exp3/` and observing that the marker never appeared here.
+
+The rule is therefore not "check the status." It is: **a watchdog is verified
+only by an effect observable from the place the work actually lives.** Write a
+marker, watch a counter move, look for a file — something the watchdog must
+touch *here* to have done its job. Everything else is the watchdog grading its
+own homework.
+
+The most galling part is that this was already known. The previous keepalive
+trigger is *named* `COTA job keepalive (disabled — fires in a different
+container)`. It was diagnosed and disabled on 2026-08-29, and a new keeper with
+the identical defect was built on 2026-08-31 without reading the name of the one
+sitting next to it in the list. **Disabled things carry the reason they were
+disabled; read it before building the replacement.**
+
+**28. This container dies of SESSION idleness, not process idleness.** Busy
+workers do not keep it alive. The shard loops committed a cell at 21:20:55 and
+the container was still reclaimed at 21:26:58 — roughly fifteen minutes after
+the last *foreground tool call*, with both workers running the whole time. Disk
+survives, processes do not, so the batch resumes without rework, but every
+reclaim costs whatever wall clock passes before something wakes the session.
+
+Only a turn delivered into **this** session revives **this** container. A
+scheduled task that starts a fresh session cannot do it (rule 27). What works is
+a self-bound wake — `send_later`, which delivers an ordinary user turn back here
+— re-armed by each wake so the chain continues. The foreground alternative is to
+keep making tool calls, which is cheaper per beat but ends when the turn ends.
+
+Estimate the interval from the observed reclaim window and leave margin; do not
+tune it to the edge, because the cost of one missed beat is hours and the cost
+of an extra beat is seconds.
