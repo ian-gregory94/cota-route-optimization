@@ -1941,3 +1941,67 @@ points is not distinguishable from treatment-correlated solver error. A margin
 above it is **not** thereby established — it is only not excluded by this
 measurement, which is a much weaker statement and must be written as such
 wherever the census is reported.
+
+## D33-B — at Stage B effort the optimization gap did not shrink, and it moved into the control
+
+*Measured 2026-09-02. 375 cells: 5 networks × 5 Stage B seeds × 5 strata × 3
+neighbourhood sizes, anchored on plans whose digests were verified against the
+Stage B receipts.*
+
+D33 was measured at discovery effort and preregistration §7 forbids that figure
+from transferring. This is the re-measurement, designed in
+`EXPERIMENT3_D33_STAGEB_DESIGN.md` before any gap here was computed. Only the
+anchor changed: the delivered plan now comes from the frozen Stage B
+configuration on each of the five predeclared seeds. The exact reference is
+exhaustive enumeration and has no effort parameter.
+
+**The design predicted the gap would shrink with more search. It did not.**
+
+| | discovery effort | Stage B effort |
+|---|---|---|
+| max gap | 0.0018370% | **0.0018970%** |
+| cells with any gap | 9 of 75 | 17 of 375 |
+
+That prediction was written down in advance precisely so that being wrong would
+be a result rather than something to explain away. Ten times the restarts bought
+no reduction in the worst neighbourhood gap.
+
+### Where the gap went is the finding
+
+| network | max gap | cells with a gap |
+|---|---|---|
+| **control** | **0.0018970%** | **9 of 75** |
+| `extend-025` | 0.0009392% | 3 of 75 |
+| `truncate-035` | 0.0003614% | 5 of 75 |
+| `add_stop-010` (the leader) | **0** | **0 of 75** |
+| `straighten-021` | **0** | **0 of 75** |
+
+At discovery effort the gap straddled the control. At Stage B effort it sits
+**almost entirely in the control arm**, and two treatments — including the
+leader — are locally optimal in every one of their 75 cells. The paired
+differential is therefore positive throughout (mean +0.00022%): the control is
+solved *less* well than the treatment it is being compared against.
+
+**That is the shape of the Experiment 2 artifact** — D24's "the unedited network
+was the under-optimized one", which inflated an apparent geometry benefit until
+gate 12 exposed it. The same asymmetry is present here, in the same direction,
+and would inflate every measured treatment effect.
+
+**It is three orders of magnitude too small to matter.** The largest
+differential is 0.0018970%, against a leader margin of 0.18657% — a ratio of
+**98×**. The smallest certified margin, `straighten-021` at 0.00780%, is 4.1×
+the bound, and that candidate was measured directly with a gap of exactly zero.
+
+**Verdict: PASS. 0 of 30 certified candidates vetoed.**
+
+By stratum the concentration also moved: `peak` 12 of 75 and `offpeak` 5 of 75,
+with `common_lines`, `weak_interaction` and `seeded_random` at exactly zero —
+where at discovery effort the secondary concentration was in `common_lines`.
+
+### What this still does not license
+
+Unchanged from D33's Q4, and it must travel with the figure: this is a **local**
+optimality check over at most 10 of 173 route-periods across three ladder rungs.
+It is a *lower* bound on the differential-error bound; the full-problem
+differential can only be larger. A margin above it is **not thereby
+established** — it is only *not excluded* by this measurement.
