@@ -1,0 +1,39 @@
+diff --git a/scripts/exp3_stage_b_report.py b/scripts/exp3_stage_b_report.py
+index 717c173e..908c1d6b 100644
+--- a/scripts/exp3_stage_b_report.py
++++ b/scripts/exp3_stage_b_report.py
+@@ -310,6 +310,18 @@ def main() -> int:
+             if st not in esc:
+                 esc.append(st)
+ 
++    # §8 outcome (1) asks whether SOME candidate is certified against the
++    # control AND distinguishable from every OTHER certified candidate. That is
++    # a property of one candidate, not of the whole pairwise matrix: unresolved
++    # pairs among the also-rans say nothing about the leader. Requiring every
++    # pair to resolve understates the result and is how this first reported
++    # outcome (2) when a clean leader existed.
++    def separates_from_all(state: str) -> bool:
++        mine = [q for q in pw if state in (q["a"], q["b"])]
++        return bool(mine) and all(q["resolved"] for q in mine)
++
++    leaders = [r["state"] for r in res["rows"]
++               if r["certified"] and separates_from_all(r["state"])]
+     print(f"\nOutcome: ", end="")
+     if not certified:
+         print("(3) EFFECTIVELY NULL after certification — none of the 39 "
+@@ -317,9 +329,12 @@ def main() -> int:
+               "not a failure (§8).")
+     elif len(certified) == 1:
+         print(f"(1) ONE CERTIFIED CANDIDATE: {certified[0]}")
+-    elif all(p["resolved"] for p in pw):
+-        print(f"(1) A LEADER among {len(certified)} certified: "
+-              f"{res['rows'][0]['state']}")
++    elif leaders and leaders[0] == res["rows"][0]["state"]:
++        print(f"(1) A CERTIFIED LEADER: {leaders[0]}\n"
++              f"  certified against the control and distinguishable from all "
++              f"{len(certified) - 1} other certified candidates.\n"
++              f"  {sum(1 for q in pw if not q['resolved'])} of {len(pw)} pairs "
++              "elsewhere in the set remain unresolved; none involves the leader.")
+     else:
+         print(f"(2) {len(certified)} CERTIFIED, NOT ALL DISTINGUISHABLE — "
+               "reported as a set, no leader named (§8).")

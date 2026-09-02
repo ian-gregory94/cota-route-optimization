@@ -1,0 +1,89 @@
+Stage B contract ec7e566dc028f94d
+  200 of 200 cells present
+
+Control spread (run-level diagnostic, NOT a gate):
+  3sigma = 0.00714%  (flag above 0.01971%) -> normal
+
+Candidates (39 analysable, median SD 0.002379%):
+
+  state                                             mean%        SD%   |m|/SD  verdict
+  add_stop-010#22c4c35ac5b2                      -0.18657   0.002375    78.55  CERTIFIED
+  reroute-031#dfd049714f7d                       -0.16110   0.002836    56.81  CERTIFIED
+  truncate-035#7cdb09a45253                      -0.13714   0.002376    57.71  CERTIFIED
+  truncate-025#d3209fe02367                      -0.13169   0.002376    55.42  CERTIFIED
+  truncate-101#3d4f770cd393                      -0.09780   0.004017    24.35  CERTIFIED
+  straighten-102#4dd646541565                    -0.08160   0.001951    41.82  CERTIFIED
+  extend-025#441ece050fe8                        -0.07669   0.005740    13.36  CERTIFIED
+  straighten-025#f0732765f122                    -0.07337   0.002402    30.54  CERTIFIED
+  truncate-007#e0327cd10f50                      -0.06488   0.002253    28.79  CERTIFIED
+  add_stop-007#02161399a599                      -0.05700   0.002690    21.19  CERTIFIED
+  straighten-024#6a687792ef0b                    -0.04659   0.002552    18.26  CERTIFIED
+  straighten-011#f2a996066a3d                    -0.04267   0.002243    19.02  CERTIFIED
+  truncate-007#a14f6e0894dd                      -0.04147   0.002260    18.35  CERTIFIED
+  straighten-007#830e388b3427                    -0.04126   0.002889    14.28  CERTIFIED
+  truncate-032#00b89519f00f                      -0.03723   0.002563    14.53  CERTIFIED
+  add_stop-033#273b2cd43dfd                      -0.03693   0.002379    15.52  CERTIFIED
+  change_terminal-007-EMO4THW#16606ceb331e       -0.03226   0.002381    13.55  CERTIFIED
+  straighten-004#600ca164ad60                    -0.02655   0.002379    11.16  CERTIFIED
+  extend-024#26db14321a47                        -0.02506   0.002379    10.53  CERTIFIED
+  extend-032#228795f35539                        -0.02458   0.002933     8.38  CERTIFIED
+  reroute-006#dbfb2f9ee60d                       -0.02364   0.002379     9.94  CERTIFIED
+  change_terminal-101-EMO4THW#56a30c84c920       -0.02018   0.002379     8.48  CERTIFIED
+  add_stop-004#27407b151153                      -0.01889   0.004268     4.43  CERTIFIED
+  straighten-031#d0ecad5fc231                    -0.01828   0.002371     7.71  CERTIFIED
+  add_stop-006#9aecfd5100eb                      -0.01703   0.004769     3.57  CERTIFIED
+  truncate-012#584263ee6bf8                      -0.01569   0.002794     5.62  CERTIFIED
+  reroute-023#1dc299b50907                       -0.01433   0.002379     6.02  CERTIFIED
+  truncate-023#3ef9178c6974                      -0.01346   0.002480     5.43  CERTIFIED
+  change_terminal-141-STAHIGW#b5ce9b1e03b5       -0.01025   0.002379     4.31  CERTIFIED
+  straighten-002#716a0b294c2c                    -0.00941   0.003664     2.57  not certified
+  add_stop-008#f178c37040f5                      -0.00804   0.003955     2.03  not certified
+  straighten-021#110f4a755fe7                    -0.00780   0.002379     3.28  CERTIFIED
+  straighten-001#95a4287b6fa0                    -0.00653   0.002192     2.98  not certified (ddof-sensitive)
+  change_terminal-023-EASHAMN#357bdf4fa511       -0.00571   0.004018     1.42  not certified
+  reroute-012#fb24f651cbc5                       -0.00460   0.002318     1.99  not certified
+  add_stop-102#78da77548338                      -0.00433   0.002903     1.49  not certified
+  extend-023#292a06c5a525                        -0.00379   0.005315     0.71  not certified
+  reroute-009#8323c2fb0368                       -0.00292   0.002379     1.23  not certified
+  add_stop-141#2fc0aa211ecb                       0.00017   0.001020     0.17  not certified
+
+Outcome: (2) 30 CERTIFIED, NOT ALL DISTINGUISHABLE — reported as a set, no leader named (§8).
+
+Escalate to 40 restarts x the same 5 seeds (33):
+  straighten-102#4dd646541565: pairwise unresolved
+  extend-025#441ece050fe8: pairwise unresolved
+  straighten-025#f0732765f122: pairwise unresolved
+  truncate-007#e0327cd10f50: pairwise unresolved
+  straighten-024#6a687792ef0b: pairwise unresolved
+  straighten-011#f2a996066a3d: pairwise unresolved
+  truncate-007#a14f6e0894dd: pairwise unresolved
+  straighten-007#830e388b3427: pairwise unresolved
+  truncate-032#00b89519f00f: pairwise unresolved
+  add_stop-033#273b2cd43dfd: pairwise unresolved
+  change_terminal-007-EMO4THW#16606ceb331e: pairwise unresolved
+  straighten-004#600ca164ad60: pairwise unresolved
+  extend-024#26db14321a47: pairwise unresolved
+  extend-032#228795f35539: pairwise unresolved
+  reroute-006#dbfb2f9ee60d: pairwise unresolved
+  change_terminal-101-EMO4THW#56a30c84c920: pairwise unresolved
+  add_stop-004#27407b151153: pairwise unresolved
+  straighten-031#d0ecad5fc231: pairwise unresolved
+  add_stop-006#9aecfd5100eb: pairwise unresolved
+  truncate-012#584263ee6bf8: pairwise unresolved
+  reroute-023#1dc299b50907: pairwise unresolved
+  truncate-023#3ef9178c6974: pairwise unresolved
+  change_terminal-141-STAHIGW#b5ce9b1e03b5: pairwise unresolved
+  straighten-002#716a0b294c2c: failed paired criterion at 20 restarts
+  add_stop-008#f178c37040f5: failed paired criterion at 20 restarts
+  straighten-021#110f4a755fe7: pairwise unresolved
+  straighten-001#95a4287b6fa0: failed paired criterion at 20 restarts; verdict depends on the SD convention
+  change_terminal-023-EASHAMN#357bdf4fa511: failed paired criterion at 20 restarts
+  reroute-012#fb24f651cbc5: failed paired criterion at 20 restarts
+  add_stop-102#78da77548338: failed paired criterion at 20 restarts
+  extend-023#292a06c5a525: failed paired criterion at 20 restarts
+  reroute-009#8323c2fb0368: failed paired criterion at 20 restarts
+  add_stop-141#2fc0aa211ecb: failed paired criterion at 20 restarts
+
+Certified means distinguishable from solver variance at this effort, and nothing more (§9). D33 is re-measured at Stage B effort as a veto diagnostic and is not part of this threshold (§7).
+
+wrote outputs/exp3/classifier_audit/result_ORIGINAL.json
