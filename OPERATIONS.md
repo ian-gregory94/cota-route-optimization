@@ -289,3 +289,22 @@ without it. The regression was invisible because both kinds report `SUCCEEDED`.
 Estimate the interval from the observed reclaim window and leave margin; do not
 tune it to the edge, because the cost of one missed beat is hours and the cost
 of an extra beat is seconds.
+
+**29. A wake chain does not survive a foreground hold.** The self-bound
+`send_later` chain of rule 28 re-arms itself only when its wake actually *runs*.
+A wake that fires while a foreground turn is in progress is **queued, not
+executed** -- it is delivered as a batch when the turn ends, by which time it is
+stale, and crucially it never re-armed its successor. So the chain silently
+lapses exactly while a long foreground loop is holding the container, which is
+also the moment it looks least necessary and is most needed as a backstop. Three
+wakes died this way in one afternoon and the listener was found unarmed only
+because someone asked.
+
+Two consequences. **Verify by the pending list, not by memory of having armed
+one** -- `list_triggers` with `recurring:false, enabled:true` shows what is
+actually queued, and `persist_session: true` plus a matching
+`persistent_session_id` is what distinguishes a wake pointed at this session
+from one that will spawn a fresh container elsewhere. And **arm several
+staggered wakes rather than one**, each re-arming only itself: consuming one no
+longer kills the listener, and the cost of a redundant beat is seconds against
+hours for a missed one.
