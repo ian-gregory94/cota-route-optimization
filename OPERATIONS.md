@@ -290,6 +290,18 @@ Estimate the interval from the observed reclaim window and leave margin; do not
 tune it to the edge, because the cost of one missed beat is hours and the cost
 of an extra beat is seconds.
 
+**A foreground hold is a mitigation, not a guarantee.** On 2026-09-02 at 21:20
+the container was killed *during* an active `sleep 540` tool call -- exit 137,
+SIGKILL -- after six hours of unbroken uptime, alongside an MCP
+disconnect/reconnect. So this was infrastructure, not idle reclaim, and no
+amount of foreground activity prevents it. Two in-flight cells were lost, about
+fifty minutes of compute, and nothing else: the receipts already written were
+intact and the relaunch resumed exactly where it stopped. That is the whole
+argument for cell-level checkpointing and for keeping the wake chain armed even
+while a foreground loop is running -- the chain is not merely a backstop for
+when the turn ends, it is the recovery path for a hold that gets killed under
+you.
+
 **29. A wake chain does not survive a foreground hold.** The self-bound
 `send_later` chain of rule 28 re-arms itself only when its wake actually *runs*.
 A wake that fires while a foreground turn is in progress is **queued, not
