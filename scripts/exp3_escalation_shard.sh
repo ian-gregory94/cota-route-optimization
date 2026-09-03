@@ -3,6 +3,24 @@
 # Stage B's and the slice budget is doubled -- with Stage B's 760s cell estimate
 # the runner would start a cell it cannot finish and the timeout would throw the
 # work away.
+#
+# 2026-09-03, mid-batch: cell durations drifted from ~1065s (median of the first
+# ~110 cells) to 1550-1789s for the later candidates, overrunning the 1650s
+# admission estimate. Two consequences, both observed: slices declined a second
+# cell with 1638s left (shard 1, 20:43Z) because 1650s was "needed", and slices
+# that did admit a second cell finished with as little as 49s of margin before
+# the timeout would have discarded it. Re-sized from the measured `seconds`
+# field: worst observed warm cell 1789s -> cell-seconds 1850, deadline
+# 2*1850+500 = 4300, timeout 4500.
+#
+# These three flags are slice-admission scheduling only. exp3_stage_b.py uses
+# them solely in `need = cell_seconds + (0 if warm else cold_extra)` to decide
+# whether to START another cell; they never reach run_cell, the contract, the
+# receipt or the emitted row. This file is also not part of code_version, which
+# hashes src/cota_opt/**/*.py plus scripts/exp2_treatments.py and
+# scripts/exp3_pin_envelope.py. The regime (200 restarts, EXP3_STAGE_B_ESCALATED
+# contract, five predeclared seeds) and the frozen 33-candidate manifest are
+# untouched. No number can move as a result of this edit.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 SHARD="${1:?usage: exp3_escalation_shard.sh i/n}"
@@ -29,8 +47,8 @@ while true; do
       "$(date -u +%FT%TZ)" "$SHARD" "$n" "$$" > "$OUT/$TAG.heartbeat.json"
   echo "$(date -u +%FT%TZ) remaining=$n" >> "$OUT/$TAG.log"
   [ "$n" -eq 0 ] && break
-  timeout 3500 python scripts/exp3_stage_b.py --escalated --only "$ONLY" \
-      --shard "$SHARD" --deadline-seconds 3400 --cell-seconds 1650 \
+  timeout 4500 python scripts/exp3_stage_b.py --escalated --only "$ONLY" \
+      --shard "$SHARD" --deadline-seconds 4300 --cell-seconds 1850 \
       --cold-extra 500 >> "$OUT/$TAG.run.log" 2>&1
   after=$(python scripts/exp3_stage_b.py --escalated --only "$ONLY" --list --shard "$SHARD" 2>/dev/null | grep -cP '\t'); after=${after:-0}
   case "$after" in (''|*[!0-9]*) echo "FATAL: count not a number" >&2; rm -f "$OUT/$TAG.pid"; exit 4;; esac
