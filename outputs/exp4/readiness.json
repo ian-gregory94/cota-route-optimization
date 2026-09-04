@@ -1,0 +1,141 @@
+{
+  "items": [
+    {
+      "id": "C1",
+      "title": "Experiment 3 closed and frozen",
+      "status": "OPEN",
+      "detail": "tag=exp3-final-v1, tree=dirty"
+    },
+    {
+      "id": "C2",
+      "title": "pre_exp4_baseline_v1 exists",
+      "status": "OPEN",
+      "detail": "not found"
+    },
+    {
+      "id": "C3",
+      "title": "Synthetic routes exist independently of legacy route ids",
+      "status": "MET",
+      "detail": "206 accepted from 5 generators"
+    },
+    {
+      "id": "C4",
+      "title": "Legacy network reconstructs and reproduces score and resources",
+      "status": "MET",
+      "detail": "41 routes, stop coverage complete=True; SCORE/RESOURCE reproduction is the part to confirm"
+    },
+    {
+      "id": "C5",
+      "title": "Peak express service explicitly separated",
+      "status": "MANUAL",
+      "detail": "confirm the express class is separated in the pool/eligibility rules"
+    },
+    {
+      "id": "C6",
+      "title": "Observed-link graph built and audited",
+      "status": "MET",
+      "detail": "2763 stops, 2952 links, every_pattern_is_a_path=True"
+    },
+    {
+      "id": "C7",
+      "title": "Frozen route pool contains the current network",
+      "status": "MET",
+      "detail": "legacy_in_pool=41/41"
+    },
+    {
+      "id": "C8",
+      "title": "Synthetic route-period service can be OFF",
+      "status": "MANUAL",
+      "detail": "confirm OFF is representable with no fabricated baseline headway"
+    },
+    {
+      "id": "C9",
+      "title": "Discovery path reuse benchmarked against exact rebuilds",
+      "status": "MANUAL",
+      "detail": "needs a measured benchmark artifact under outputs/exp4/"
+    },
+    {
+      "id": "C10",
+      "title": "Outer network search recovers an exhaustively known optimum",
+      "status": "OPEN",
+      "detail": "no recovery-test artifact under outputs/exp4/"
+    },
+    {
+      "id": "C11",
+      "title": "Committed gate on common-lines exposure",
+      "status": "MANUAL",
+      "detail": "confirm the gate is committed, not merely designed"
+    },
+    {
+      "id": "C12",
+      "title": "Committed transfer-depth, path-cap and OD-cap adequacy gates",
+      "status": "MANUAL",
+      "detail": "confirm committed"
+    },
+    {
+      "id": "C13",
+      "title": "Demand-robustness claims written before the winner is known",
+      "status": "MANUAL",
+      "detail": "confirm written and committed ahead of any result"
+    },
+    {
+      "id": "C14",
+      "title": "Structural-distance measurement exists",
+      "status": "MANUAL",
+      "detail": "confirm a committed implementation"
+    },
+    {
+      "id": "C15",
+      "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
+      "status": "MANUAL",
+      "detail": "confirm each rejection condition is implemented"
+    },
+    {
+      "id": "D16",
+      "title": "Experiment 4 ExperimentContract exists and is in force",
+      "status": "OPEN",
+      "detail": "draft module present=True, exported from firewall/=False; the draft is explicitly 'not yet in force'"
+    },
+    {
+      "id": "D17",
+      "title": "Recovery behaviours classified in writing before the search",
+      "status": "MET",
+      "detail": "EXPERIMENT4_DESIGN.md section 2 classifies seven; a committed machine-readable form is what the search will actually consult"
+    },
+    {
+      "id": "D18",
+      "title": "Gap benchmark run on Experiment 4 networks, Q3 answered",
+      "status": "OPEN",
+      "detail": "not run -- this is the compute-heavy gate and it can forbid discovery-effort comparison outright"
+    },
+    {
+      "id": "D19",
+      "title": "Effort stated in restarts with convergence asserted",
+      "status": "MANUAL",
+      "detail": "confirm no Experiment 4 document quotes an iteration ceiling as depth"
+    },
+    {
+      "id": "D20",
+      "title": "Transition-level evidence on every pool line and the receipt",
+      "status": "MET",
+      "detail": "206 lines classified, classes={'observed_edge_synthesis': 150, 'legacy_sequence': 41, 'observed_turn_synthesis': 15}; receipt-side attachment still to confirm"
+    },
+    {
+      "id": "D21",
+      "title": "Gen1 frozen and the Gen1->Gen2 bridge suite has run",
+      "status": "OPEN",
+      "detail": "GEN1_FREEZE.md absent; METHODOLOGY puts Gen1 freeze immediately after Experiment 3 certification, which is now complete -- this is the next step"
+    },
+    {
+      "id": "D22",
+      "title": "Search-allowance contract merged into firewall/ and in force",
+      "status": "OPEN",
+      "detail": "still staged at scripts/exp4_staging/search_allowance.py; OPERATIONS 24 blocked the move while the Experiment 3 batch ran and that block is now lifted"
+    }
+  ],
+  "met": 6,
+  "open": 7,
+  "manual": 9,
+  "total": 22,
+  "ready": false
+}
