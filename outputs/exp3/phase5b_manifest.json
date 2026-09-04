@@ -1,0 +1,172 @@
+{
+  "phase": "5b",
+  "rule": "escalate every promoted candidate with no measurement at the escalation effort, so the whole certified comparison set sits in one solver-effort regime",
+  "rule_is_over": "a property of the measurement, not of the result",
+  "generated_from": [
+    "outputs/exp3/stageA_census.json",
+    "outputs/exp3/observations_stageB_esc (store)"
+  ],
+  "does_not_modify": "outputs/exp3/escalation_manifest.json",
+  "escalation_contract": "45e23ae01be4d071",
+  "stage_b_contract": "ec7e566dc028f94d",
+  "eval_path_frozen": "src-bd82ac5a6dae",
+  "promoted_total": 39,
+  "already_escalated": 33,
+  "n_candidates": 6,
+  "control_cells_added": 0,
+  "control_note": "the control already has its escalated cells inside the existing 170; none are added and none are re-run",
+  "cells": 30,
+  "store_total_after": 200,
+  "candidates": [
+    {
+      "candidate": "add_stop-010#22c4c35ac5b2",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.18656513176548822,
+      "stage_b_sd_pct": 0.002375084658091754,
+      "stage_b_ratio": 78.55093970224318,
+      "stage_b_effects_by_seed_pct": [
+        -0.18884690238516988,
+        -0.18884690238516988,
+        -0.18506328284585938,
+        -0.18664807371175143,
+        -0.18342049749949063
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    },
+    {
+      "candidate": "reroute-031#dfd049714f7d",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.16110002298177534,
+      "stage_b_sd_pct": 0.002835717427521693,
+      "stage_b_ratio": 56.81102828449677,
+      "stage_b_effects_by_seed_pct": [
+        -0.1621650482013985,
+        -0.1621650482013985,
+        -0.15838041721214777,
+        -0.1647359510919589,
+        -0.15805365020197315
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    },
+    {
+      "candidate": "truncate-035#7cdb09a45253",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.13713580796344568,
+      "stage_b_sd_pct": 0.002376260840724651,
+      "stage_b_ratio": 57.71075532331944,
+      "stage_b_effects_by_seed_pct": [
+        -0.13941870855504895,
+        -0.13941870855504895,
+        -0.13563321530248937,
+        -0.13721879098398235,
+        -0.13398961642065885
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    },
+    {
+      "candidate": "truncate-025#d3209fe02367",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.13169340020882653,
+      "stage_b_sd_pct": 0.0023763903441244437,
+      "stage_b_ratio": 55.417410920909795,
+      "stage_b_effects_by_seed_pct": [
+        -0.13397642521580666,
+        -0.13397642521580666,
+        -0.13019072565835085,
+        -0.13177638775183947,
+        -0.12854703720232907
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    },
+    {
+      "candidate": "truncate-101#3d4f770cd393",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.09780336763320337,
+      "stage_b_sd_pct": 0.0040165583049147835,
+      "stage_b_ratio": 24.35004304892778,
+      "stage_b_effects_by_seed_pct": [
+        -0.10161882182091275,
+        -0.10240256145907285,
+        -0.09501783389490669,
+        -0.09660405443865762,
+        -0.0933735665524669
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    },
+    {
+      "candidate": "add_stop-007#02161399a599",
+      "reason": "promoted, and has no cell at the escalation effort",
+      "stage_b_status": "certified",
+      "stage_b_effect_pct": -0.05699926050141668,
+      "stage_b_sd_pct": 0.0026900142169922576,
+      "stage_b_ratio": 21.18920418389028,
+      "stage_b_effects_by_seed_pct": [
+        -0.05949655156244832,
+        -0.05820058957678039,
+        -0.05853319670856653,
+        -0.055998882779527435,
+        -0.052767081879760744
+      ],
+      "escalation_restarts": 40,
+      "stage_b_restarts": 20,
+      "escalation_seeds": [
+        20260825,
+        20260826,
+        20260827,
+        20260828,
+        20260829
+      ],
+      "escalation_contract_digest": "45e23ae01be4d071"
+    }
+  ]
+}
