@@ -320,3 +320,33 @@ from one that will spawn a fresh container elsewhere. And **arm several
 staggered wakes rather than one**, each re-arming only itself: consuming one no
 longer kills the listener, and the cost of a redundant beat is seconds against
 hours for a missed one.
+
+**30. Match the wake ladder to what is actually at risk.** Rule 29's fix --
+several staggered wakes, each topped up every cycle -- was applied during the
+§6 escalation alongside a continuous foreground hold of ~9.5-minute beats. The
+result: *every* wake fired during a foreground turn, so every wake was queued
+and none executed. Over roughly nine hours that produced **56 stale
+notifications delivered in one batch** and not one protective action, while
+costing two `send_later` calls per beat.
+
+The ladder was not wrong; it was aimed at the wrong failure. It protects against
+*the turn ending* -- context exhaustion, a kill, a stop. While a foreground hold
+is actually holding, a short ladder is redundant by construction. The shape that
+works:
+
+* **during a foreground hold** -- one wake far enough out that it lands *after*
+  the hold plausibly ends (30-60 min), as a recovery path for rule 28's SIGKILL.
+  Not a short ladder.
+* **when no foreground hold is running but work is** -- the staggered ladder of
+  rule 29, which is the case it was written for.
+* **when nothing is running at all** -- no wake. A keeper with no compute to
+  protect is pure cost, and this project's owner has said plainly that routine
+  keepers should not burn a top-tier model.
+
+Related, and reassuring: on 2026-09-04 the container recycled to `up 1 minute`
+with the working tree **completely intact** -- 170/170 observation files, a
+clean `exp3-clean` at the expected commit, every closure claim still verifying.
+Filesystem state survives a recycle. What does *not* survive is anything never
+mirrored off the container, which is the actual durability risk and is handled
+by bundling to the folder bridge (see `PUSH_TO_GITHUB.md`), not by keeping a
+container awake.
