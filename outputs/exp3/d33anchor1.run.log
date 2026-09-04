@@ -1,0 +1,255 @@
+2026-09-02 15:24:28,243 12 anchors to reproduce
+2026-09-02 15:24:29,019 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.8s)
+2026-09-02 15:24:29,067 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 15:24:29,067 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 15:24:29,068 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 15:24:29,091 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:24:32,148 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 15:24:32,157 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 15:24:32,256 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 15:24:32,264 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:24:32,304 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 15:24:32,310 period early   : 24668 paths, 20000 OD pairs
+2026-09-02 15:24:32,316 period am_peak : 28763 paths, 20000 OD pairs
+2026-09-02 15:24:32,320 period midday  : 24097 paths, 20000 OD pairs
+2026-09-02 15:24:32,326 period pm_peak : 27986 paths, 20000 OD pairs
+2026-09-02 15:24:32,330 period evening : 24058 paths, 20000 OD pairs
+2026-09-02 15:24:32,335 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 15:24:32,335 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 15:34:23,739 solve lambda=2.0: obj=2.95612e+06 vh=2515.1/2517.2 exchanges=0
+2026-09-02 15:34:25,673 control              seed 20260826  digest VERIFIED 6116926d5b0b2bbe  obj=2956120.583955  594s
+2026-09-02 15:34:25,673 stopping cleanly before control/20260828
+2026-09-02 15:34:28,598 11 anchors to reproduce
+2026-09-02 15:34:28,993 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.4s)
+2026-09-02 15:34:29,047 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 15:34:29,048 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 15:34:29,049 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 15:34:29,077 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:34:31,428 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 15:34:31,438 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 15:34:31,540 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 15:34:31,550 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:34:31,601 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 15:34:31,608 period early   : 24668 paths, 20000 OD pairs
+2026-09-02 15:34:31,614 period am_peak : 28763 paths, 20000 OD pairs
+2026-09-02 15:34:31,618 period midday  : 24097 paths, 20000 OD pairs
+2026-09-02 15:34:31,624 period pm_peak : 27986 paths, 20000 OD pairs
+2026-09-02 15:34:31,630 period evening : 24058 paths, 20000 OD pairs
+2026-09-02 15:34:31,634 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 15:34:31,635 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 15:45:24,987 solve lambda=2.0: obj=2.95606e+06 vh=2515.7/2517.2 exchanges=78
+2026-09-02 15:45:25,004 control              seed 20260828  digest VERIFIED b1636d655bb6cb50  obj=2956055.462380  654s
+2026-09-02 15:45:25,004 stopping cleanly before lengthen_add_stop/20260825
+2026-09-02 15:45:27,733 10 anchors to reproduce
+2026-09-02 15:45:27,952 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-09-02 15:45:27,996 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 15:45:27,997 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 15:45:27,998 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 15:45:28,022 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:45:30,171 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 15:45:30,182 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 15:45:30,288 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 15:45:30,298 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:45:30,364 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 15:45:30,370 period early   : 24641 paths, 20000 OD pairs
+2026-09-02 15:45:30,376 period am_peak : 28822 paths, 20000 OD pairs
+2026-09-02 15:45:30,381 period midday  : 24118 paths, 20000 OD pairs
+2026-09-02 15:45:30,386 period pm_peak : 28007 paths, 20000 OD pairs
+2026-09-02 15:45:30,391 period evening : 24124 paths, 20000 OD pairs
+2026-09-02 15:45:30,396 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 15:45:30,396 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 15:55:25,377 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.2 exchanges=0
+2026-09-02 15:55:25,397 lengthen_add_stop    seed 20260825  digest VERIFIED 1c401866b4765167  obj=2950538.041802  595s
+2026-09-02 15:55:25,397 stopping cleanly before lengthen_add_stop/20260827
+2026-09-02 15:55:28,055 9 anchors to reproduce
+2026-09-02 15:55:28,173 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-09-02 15:55:28,208 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 15:55:28,208 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 15:55:28,209 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 15:55:28,229 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:55:30,391 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 15:55:30,400 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 15:55:30,506 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 15:55:30,515 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 15:55:30,581 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 15:55:30,588 period early   : 24641 paths, 20000 OD pairs
+2026-09-02 15:55:30,594 period am_peak : 28822 paths, 20000 OD pairs
+2026-09-02 15:55:30,598 period midday  : 24118 paths, 20000 OD pairs
+2026-09-02 15:55:30,604 period pm_peak : 28007 paths, 20000 OD pairs
+2026-09-02 15:55:30,608 period evening : 24124 paths, 20000 OD pairs
+2026-09-02 15:55:30,613 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 15:55:30,613 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 16:06:13,613 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.2 exchanges=0
+2026-09-02 16:06:13,633 lengthen_add_stop    seed 20260827  digest VERIFIED 1c401866b4765167  obj=2950538.041802  644s
+2026-09-02 16:06:13,633 stopping cleanly before lengthen_add_stop/20260829
+2026-09-02 16:06:16,816 8 anchors to reproduce
+2026-09-02 16:06:16,969 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-09-02 16:06:17,028 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 16:06:17,029 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 16:06:17,030 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 16:06:17,042 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:06:19,623 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 16:06:19,635 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 16:06:19,748 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 16:06:19,758 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:06:19,917 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 16:06:19,924 period early   : 24641 paths, 20000 OD pairs
+2026-09-02 16:06:19,931 period am_peak : 28822 paths, 20000 OD pairs
+2026-09-02 16:06:19,937 period midday  : 24118 paths, 20000 OD pairs
+2026-09-02 16:06:19,943 period pm_peak : 28007 paths, 20000 OD pairs
+2026-09-02 16:06:19,949 period evening : 24124 paths, 20000 OD pairs
+2026-09-02 16:06:19,954 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 16:06:19,954 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 16:17:43,233 solve lambda=2.0: obj=2.95054e+06 vh=2515.7/2517.2 exchanges=0
+2026-09-02 16:17:43,254 lengthen_add_stop    seed 20260829  digest VERIFIED 1c401866b4765167  obj=2950538.041802  684s
+2026-09-02 16:17:43,254 stopping cleanly before lengthen_extend/20260826
+2026-09-02 16:17:46,106 7 anchors to reproduce
+2026-09-02 16:17:46,959 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.9s)
+2026-09-02 16:17:47,014 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 16:17:47,015 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 16:17:47,016 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 16:17:47,043 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:17:49,438 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 16:17:49,448 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 16:17:49,562 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 16:17:49,573 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:17:49,674 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 16:17:49,682 period early   : 24653 paths, 20000 OD pairs
+2026-09-02 16:17:49,688 period am_peak : 28777 paths, 20000 OD pairs
+2026-09-02 16:17:49,694 period midday  : 24117 paths, 20000 OD pairs
+2026-09-02 16:17:49,700 period pm_peak : 28005 paths, 20000 OD pairs
+2026-09-02 16:17:49,705 period evening : 24081 paths, 20000 OD pairs
+2026-09-02 16:17:49,709 period owl     : 22672 paths, 20000 OD pairs
+2026-09-02 16:17:49,710 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 16:17:49,745      incumbent rescaled x1.0022
+2026-09-02 16:28:08,669 solve lambda=2.0: obj=2.95378e+06 vh=2515.3/2517.2 exchanges=35
+2026-09-02 16:28:08,687 lengthen_extend      seed 20260826  digest VERIFIED 65070ee4e5aaacc0  obj=2953778.709953  620s
+2026-09-02 16:28:08,687 stopping cleanly before lengthen_extend/20260828
+2026-09-02 16:28:11,595 6 anchors to reproduce
+2026-09-02 16:28:11,712 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-09-02 16:28:11,756 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 16:28:11,757 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 16:28:11,757 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 16:28:11,785 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:28:13,749 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 16:28:13,758 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 16:28:13,863 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 16:28:13,871 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:28:13,936 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 16:28:13,943 period early   : 24653 paths, 20000 OD pairs
+2026-09-02 16:28:13,949 period am_peak : 28777 paths, 20000 OD pairs
+2026-09-02 16:28:13,954 period midday  : 24117 paths, 20000 OD pairs
+2026-09-02 16:28:13,959 period pm_peak : 28005 paths, 20000 OD pairs
+2026-09-02 16:28:13,964 period evening : 24081 paths, 20000 OD pairs
+2026-09-02 16:28:13,968 period owl     : 22672 paths, 20000 OD pairs
+2026-09-02 16:28:13,969 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 16:28:13,998      incumbent rescaled x1.0022
+2026-09-02 16:38:55,263 solve lambda=2.0: obj=2.95391e+06 vh=2515.1/2517.2 exchanges=34
+2026-09-02 16:38:55,284 lengthen_extend      seed 20260828  digest VERIFIED 99f364dd49cda390  obj=2953911.955309  642s
+2026-09-02 16:38:55,285 stopping cleanly before shorten_straighten/20260825
+2026-09-02 16:38:58,802 5 anchors to reproduce
+2026-09-02 16:38:58,943 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-09-02 16:38:58,990 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 16:38:58,991 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 16:38:58,992 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 16:38:59,012 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:39:01,287 footpaths: 15549 links (9 from transfers.txt)
+2026-09-02 16:39:01,297 raptor network: 2946 stops, 111 patterns, 15549 footpaths
+2026-09-02 16:39:01,414 zones: 1397 (637 with transit access within 600 m), 3935 access links
+2026-09-02 16:39:01,425 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:39:01,497 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 16:39:01,504 period early   : 24677 paths, 20000 OD pairs
+2026-09-02 16:39:01,510 period am_peak : 28769 paths, 20000 OD pairs
+2026-09-02 16:39:01,516 period midday  : 24116 paths, 20000 OD pairs
+2026-09-02 16:39:01,522 period pm_peak : 27993 paths, 20000 OD pairs
+2026-09-02 16:39:01,527 period evening : 24107 paths, 20000 OD pairs
+2026-09-02 16:39:01,532 period owl     : 22697 paths, 20000 OD pairs
+2026-09-02 16:39:01,532 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 16:50:17,798 solve lambda=2.0: obj=2.95582e+06 vh=2515.6/2517.2 exchanges=0
+2026-09-02 16:50:17,823 shorten_straighten   seed 20260825  digest VERIFIED ca9f5587e9f89bfb  obj=2955822.412475  677s
+2026-09-02 16:50:17,823 stopping cleanly before shorten_straighten/20260827
+2026-09-02 16:50:20,546 4 anchors to reproduce
+2026-09-02 16:50:20,652 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.1s)
+2026-09-02 16:50:20,690 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 16:50:20,691 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 16:50:20,692 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 16:50:20,718 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:50:22,830 footpaths: 15549 links (9 from transfers.txt)
+2026-09-02 16:50:22,841 raptor network: 2946 stops, 111 patterns, 15549 footpaths
+2026-09-02 16:50:22,943 zones: 1397 (637 with transit access within 600 m), 3935 access links
+2026-09-02 16:50:22,952 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 16:50:23,013 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 16:50:23,019 period early   : 24677 paths, 20000 OD pairs
+2026-09-02 16:50:23,025 period am_peak : 28769 paths, 20000 OD pairs
+2026-09-02 16:50:23,030 period midday  : 24116 paths, 20000 OD pairs
+2026-09-02 16:50:23,035 period pm_peak : 27993 paths, 20000 OD pairs
+2026-09-02 16:50:23,040 period evening : 24107 paths, 20000 OD pairs
+2026-09-02 16:50:23,044 period owl     : 22697 paths, 20000 OD pairs
+2026-09-02 16:50:23,044 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 17:00:53,967 solve lambda=2.0: obj=2.95582e+06 vh=2515.6/2517.2 exchanges=0
+2026-09-02 17:00:53,988 shorten_straighten   seed 20260827  digest VERIFIED ca9f5587e9f89bfb  obj=2955822.412475  631s
+2026-09-02 17:00:53,988 stopping cleanly before shorten_straighten/20260829
+2026-09-02 17:00:57,051 3 anchors to reproduce
+2026-09-02 17:00:57,205 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.2s)
+2026-09-02 17:00:57,260 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 17:00:57,261 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 17:00:57,262 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 17:00:57,292 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:00:59,351 footpaths: 15549 links (9 from transfers.txt)
+2026-09-02 17:00:59,362 raptor network: 2946 stops, 111 patterns, 15549 footpaths
+2026-09-02 17:00:59,469 zones: 1397 (637 with transit access within 600 m), 3935 access links
+2026-09-02 17:00:59,480 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:00:59,552 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 17:00:59,559 period early   : 24677 paths, 20000 OD pairs
+2026-09-02 17:00:59,565 period am_peak : 28769 paths, 20000 OD pairs
+2026-09-02 17:00:59,570 period midday  : 24116 paths, 20000 OD pairs
+2026-09-02 17:00:59,576 period pm_peak : 27993 paths, 20000 OD pairs
+2026-09-02 17:00:59,582 period evening : 24107 paths, 20000 OD pairs
+2026-09-02 17:00:59,587 period owl     : 22697 paths, 20000 OD pairs
+2026-09-02 17:00:59,587 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 17:12:46,440 solve lambda=2.0: obj=2.95582e+06 vh=2515.6/2517.2 exchanges=0
+2026-09-02 17:12:46,498 shorten_straighten   seed 20260829  digest VERIFIED ca9f5587e9f89bfb  obj=2955822.412475  707s
+2026-09-02 17:12:46,498 stopping cleanly before shorten_truncate/20260826
+2026-09-02 17:12:50,774 2 anchors to reproduce
+2026-09-02 17:12:51,179 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.4s)
+2026-09-02 17:12:51,233 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 17:12:51,234 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 17:12:51,236 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 17:12:51,332 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:12:58,691 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 17:12:58,706 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 17:12:58,929 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 17:12:58,945 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:12:59,531 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 17:12:59,541 period early   : 24663 paths, 20000 OD pairs
+2026-09-02 17:12:59,557 period am_peak : 28734 paths, 20000 OD pairs
+2026-09-02 17:12:59,565 period midday  : 24097 paths, 20000 OD pairs
+2026-09-02 17:12:59,681 period pm_peak : 27986 paths, 20000 OD pairs
+2026-09-02 17:12:59,812 period evening : 24066 paths, 20000 OD pairs
+2026-09-02 17:12:59,817 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 17:12:59,817 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 17:25:24,534 solve lambda=2.0: obj=2.952e+06 vh=2514.8/2517.2 exchanges=0
+2026-09-02 17:25:24,564 shorten_truncate     seed 20260826  digest VERIFIED 941276cec73d5d8b  obj=2951999.198814  747s
+2026-09-02 17:25:24,564 stopping cleanly before shorten_truncate/20260828
+2026-09-02 17:25:28,134 1 anchors to reproduce
+2026-09-02 17:25:28,416 cache hit  baseline-a5bf710e8b2c9129 (53.2 MB, 0.3s)
+2026-09-02 17:25:28,506 cache hit  raptor-51c3309f35ffd25f (0.6 MB, 0.0s)
+2026-09-02 17:25:28,507 cache hit  zones-77edf71b615ba370 (0.2 MB, 0.0s)
+2026-09-02 17:25:28,509 cache hit  od-ba345b9cb167aecb (0.5 MB, 0.0s)
+2026-09-02 17:25:28,575 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:25:31,759 footpaths: 15573 links (9 from transfers.txt)
+2026-09-02 17:25:31,772 raptor network: 2949 stops, 111 patterns, 15573 footpaths
+2026-09-02 17:25:31,951 zones: 1397 (637 with transit access within 600 m), 3938 access links
+2026-09-02 17:25:31,965 route classes: {'all_day': 25, 'peak_express': 14}
+2026-09-02 17:25:32,073 evaluator pricing: common_lines=same_route (explicit)
+2026-09-02 17:25:32,081 period early   : 24663 paths, 20000 OD pairs
+2026-09-02 17:25:32,087 period am_peak : 28734 paths, 20000 OD pairs
+2026-09-02 17:25:32,093 period midday  : 24097 paths, 20000 OD pairs
+2026-09-02 17:25:32,100 period pm_peak : 27986 paths, 20000 OD pairs
+2026-09-02 17:25:32,106 period evening : 24066 paths, 20000 OD pairs
+2026-09-02 17:25:32,111 period owl     : 22669 paths, 20000 OD pairs
+2026-09-02 17:25:32,112 locking 28 route-periods across 14 routes in classes ('peak_express',)
+2026-09-02 17:37:35,765 solve lambda=2.0: obj=2.952e+06 vh=2514.8/2517.2 exchanges=0
+2026-09-02 17:37:35,791 shorten_truncate     seed 20260828  digest VERIFIED 941276cec73d5d8b  obj=2951999.198814  724s
+2026-09-02 17:37:39,012 all anchors present for this shard
+2026-09-02 17:37:41,946 all anchors present for this shard
