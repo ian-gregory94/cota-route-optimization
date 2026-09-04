@@ -154,7 +154,24 @@ be a measurement chosen by its expected answer. Closing the asymmetry requires
 escalating **all six** non-escalated candidates, a rule that does not depend on
 which candidate it favours.
 
-**Status of that step: open.**
+**Status of that step: attempted and abandoned; the asymmetry stands.** Phase 5b
+was designed, its manifest frozen, and its workers launched twice on 2026-09-04.
+Both launches were killed by container reclaim before a single cell completed —
+a 40-restart cell needs ~28 minutes of continuous uptime against an ~8-minute
+idle window, and the foreground hold that is the only measured way to bridge that
+gap was declined. **Zero Phase 5b cells exist**, verified against the observation
+store: 0 of the 6 target states are present and the store equals the §6 design
+exactly. The abandonment therefore cannot have been influenced by Phase 5b
+results, because there are none. Full record in
+`EXPERIMENT3_PHASE5B_ABANDONED.md`.
+
+So this section describes the experiment's terminal state, not a temporary one.
+The certified set is **not** uniform in effort: 23 of the 29 certified
+candidates carry 40-restart verdicts, and 6 — every one of the states §6 never
+triggered on, the leader among them — carry 20-restart verdicts. Anyone quoting the leader should quote this paragraph with
+it. The remedy is scoped and ready to run unchanged: 30 cells, ~7 hours under a
+foreground hold, manifest at `outputs/exp3/phase5b_manifest.json` and worker at
+`scripts/exp3_phase5b_shard.sh`.
 
 ## 8. Disclosed post-hoc code changes
 

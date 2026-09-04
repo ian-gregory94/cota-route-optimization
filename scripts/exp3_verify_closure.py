@@ -13,7 +13,20 @@ import json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 OUT = ROOT / "outputs" / "exp3"
+
+
+def _no_phase5b_cells() -> bool:
+    """True iff the escalated store contains none of the six Phase 5b states."""
+    from cota_opt.firewall import EXP3_STAGE_B_ESCALATED as E, ObservationStore
+    frozen = (OUT / "EVAL_PATH_FROZEN").read_text().strip()
+    targets = {c["candidate"] for c in
+               json.loads((OUT / "phase5b_manifest.json").read_text())["candidates"]}
+    present = {(r.spec.state_key or "<none>")
+               for r in ObservationStore(OUT / "observations_stageB_esc").all()
+               if r.spec.contract_digest == E.digest and r.code_version == frozen}
+    return not (present & targets)
 
 
 def main() -> int:
@@ -26,6 +39,9 @@ def main() -> int:
     best_esc = [r for r in e["combined"]
                 if r["certified"] and r["regime"] == "escalated"][0]
 
+    # Phase 5b was launched twice and killed before any cell completed. If a
+    # cell had landed, the abandonment would need arguing rather than showing,
+    # so this is checked against the store every time the closure is verified.
     claims = [
         ("leader state",        "add_stop-010#22c4c35ac5b2",   lead["state"] == "add_stop-010#22c4c35ac5b2"),
         ("leader effect",       "−0.18657%",              f"{lead['mean_pct']:.5f}" == "-0.18657"),
@@ -59,6 +75,18 @@ def main() -> int:
          lead["state"] in e["not_escalated"]),
         ("exactly one certification change",
          len(e["certification_changes"]) == 1),
+        # Phase 5b was abandoned with no cells; the certified set stays split.
+        ("23 certified at the escalated effort",
+         sum(1 for r in e["combined"]
+             if r["certified"] and r["regime"] == "escalated") == 23),
+        ("6 certified at Stage B effort",
+         sum(1 for r in e["combined"]
+             if r["certified"] and r["regime"] != "escalated") == 6),
+        ("every non-escalated promoted state is certified",
+         all(next(r for r in e["combined"] if r["state"] == s)["certified"]
+             for s in e["not_escalated"])),
+        ("no Phase 5b cell exists in the escalated store",
+         _no_phase5b_cells()),
     ]
 
     bad = 0
