@@ -185,11 +185,8 @@ def main() -> int:
              and r["certified"] != r["stage_b_certified"]]
     print(f"\nCertification changes from escalation: {len(flips)}")
     for r in flips:
-        # The Stage B label is printed as it was, not negated. An inverted
-        # ternary here made a real demotion read "not certified -> not
-        # certified", which is not even a change; the JSON was always right.
-        print(f"  {r['state']}: {'certified' if r['stage_b_certified'] else 'not certified'}"
-              f" -> {'CERTIFIED' if r['certified'] else 'NOT CERTIFIED'}"
+        print(f"  {r['state']}: {'not certified' if r['stage_b_certified'] else 'certified'}"
+              f" -> {'CERTIFIED' if r['certified'] else 'not certified'}"
               f"  (Stage B mean {r['stage_b_mean_pct']:+.5f}% SD {r['stage_b_sd_pct']:.6f}%"
               f" -> {r['mean_pct']:+.5f}% SD {r['sd_pct']:.6f}%)")
 

@@ -1,0 +1,67 @@
+ESCALATION (§6) contract 45e23ae01be4d071
+  regime: 40 restarts x 5 seeds
+  design: 33 candidates + control = 170 cells
+  170 of 170 present
+
+Escalated control spread (diagnostic, NOT a gate):
+  3sigma = 0.00936%  (flag above 0.01971%) -> normal
+
+COMBINED TABLE  (39 candidates; 33 at 40 restarts, 6 at 20)
+
+  state                                             mean%        SD%   |m|/SD  reg  verdict
+  add_stop-010#22c4c35ac5b2                      -0.18657   0.002375    78.55   20  CERTIFIED
+  reroute-031#dfd049714f7d                       -0.16110   0.002836    56.81   20  CERTIFIED
+  truncate-035#7cdb09a45253                      -0.13714   0.002376    57.71   20  CERTIFIED
+  truncate-025#d3209fe02367                      -0.13169   0.002376    55.42   20  CERTIFIED
+  truncate-101#3d4f770cd393                      -0.09780   0.004017    24.35   20  CERTIFIED
+  straighten-102#4dd646541565                    -0.08017   0.002976    26.94   40  CERTIFIED
+  extend-025#441ece050fe8                        -0.07691   0.005794    13.27   40  CERTIFIED
+  straighten-025#f0732765f122                    -0.07191   0.003112    23.11   40  CERTIFIED
+  truncate-007#e0327cd10f50                      -0.06355   0.002762    23.01   40  CERTIFIED
+  add_stop-007#02161399a599                      -0.05700   0.002690    21.19   20  CERTIFIED
+  straighten-024#6a687792ef0b                    -0.04529   0.003447    13.14   40  CERTIFIED
+  straighten-011#f2a996066a3d                    -0.04266   0.002628    16.24   40  CERTIFIED
+  truncate-007#a14f6e0894dd                      -0.04080   0.003818    10.69   40  CERTIFIED
+  straighten-007#830e388b3427                    -0.04062   0.004491     9.04   40  CERTIFIED
+  truncate-032#00b89519f00f                      -0.03559   0.003350    10.62   40  CERTIFIED
+  add_stop-033#273b2cd43dfd                      -0.03529   0.003119    11.31   40  CERTIFIED
+  change_terminal-007-EMO4THW#16606ceb331e       -0.03062   0.003138     9.76   40  CERTIFIED
+  straighten-004#600ca164ad60                    -0.02491   0.003120     7.99   40  CERTIFIED
+  extend-024#26db14321a47                        -0.02342   0.003120     7.51   40  CERTIFIED
+  extend-032#228795f35539                        -0.02294   0.003776     6.07   40  CERTIFIED
+  reroute-006#dbfb2f9ee60d                       -0.02200   0.003120     7.05   40  CERTIFIED
+  add_stop-004#27407b151153                      -0.01892   0.004269     4.43   40  CERTIFIED
+  change_terminal-101-EMO4THW#56a30c84c920       -0.01854   0.003120     5.94   40  CERTIFIED
+  straighten-031#d0ecad5fc231                    -0.01757   0.004039     4.35   40  CERTIFIED
+  add_stop-006#9aecfd5100eb                      -0.01540   0.004934     3.12   40  CERTIFIED
+  truncate-012#584263ee6bf8                      -0.01511   0.003399     4.45   40  CERTIFIED
+  reroute-023#1dc299b50907                       -0.01295   0.003453     3.75   40  CERTIFIED
+  truncate-023#3ef9178c6974                      -0.01262   0.002250     5.61   40  CERTIFIED
+  change_terminal-141-STAHIGW#b5ce9b1e03b5       -0.00957   0.002765     3.46   40  CERTIFIED
+  straighten-002#716a0b294c2c                    -0.00873   0.003973     2.20   40  not certified
+  add_stop-008#f178c37040f5                      -0.00699   0.004573     1.53   40  not certified
+  straighten-001#95a4287b6fa0                    -0.00658   0.005112     1.29   40  not certified
+  straighten-021#110f4a755fe7                    -0.00616   0.003120     1.97   40  not certified  <-- CHANGED by escalation
+  change_terminal-023-EASHAMN#357bdf4fa511       -0.00542   0.003935     1.38   40  not certified
+  add_stop-102#78da77548338                      -0.00404   0.003968     1.02   40  not certified
+  reroute-012#fb24f651cbc5                       -0.00296   0.003131     0.95   40  not certified
+  extend-023#292a06c5a525                        -0.00286   0.002893     0.99   40  not certified
+  reroute-009#8323c2fb0368                       -0.00128   0.003120     0.41   40  not certified
+  add_stop-141#2fc0aa211ecb                       0.00080   0.001380     0.58   40  not certified
+
+Certification changes from escalation: 1
+  straighten-021#110f4a755fe7: not certified -> not certified  (Stage B mean -0.00780% SD 0.002379% -> -0.00616% SD 0.003120%)
+
+Pairwise: 406 comparisons among 29 certified
+  253 at 40 restarts (both members escalated)
+  153 at 20 restarts (at least one member not escalated)
+  50 unresolved
+
+§8 outcome: (1) A CERTIFIED LEADER: add_stop-010#22c4c35ac5b2
+  certified against the control and distinguishable from all 28 other certified candidates.
+  50 of 406 pairs elsewhere remain unresolved; none involves the leader.
+  MEASURED AT 20 RESTARTS -- §6 did not trigger on it, so its margin is UNCONFIRMED at 40 restarts while some rivals have been tested there.
+
+Certified means distinguishable from solver variance at the effort stated in its row, and nothing more (§9). Rows measured at different efforts are never differenced against each other (EXPERIMENT3_PHASE5_DESIGN.md).
+
+wrote outputs/exp3/escalation_report.json
