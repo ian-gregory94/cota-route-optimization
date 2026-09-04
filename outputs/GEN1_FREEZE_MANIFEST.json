@@ -1,0 +1,82 @@
+{
+  "generation": "gen1",
+  "frozen_at": "2026-09-04T21:48:56Z",
+  "definition": "METHODOLOGY.md, section 'Generation 1'",
+  "experiments_closed": [
+    "exp1",
+    "exp2",
+    "exp2b",
+    "exp3"
+  ],
+  "tags": {
+    "exp3-frozen-v1": "80221f75ea38c838c1f76c03a01ed7919ceced21",
+    "exp3-final-v1": "8c2841c4a813e537c13e1cdd0548ca80d8291e9d"
+  },
+  "repo_revision": "5ab7a05d55ac2be972a7571379eebe3e4faf5343",
+  "branch": "exp3-clean",
+  "asserted": {
+    "contract_digests": {
+      "exp3_stage_a": "00c0953c95a96ffd",
+      "exp3_stage_b": "ec7e566dc028f94d",
+      "exp3_escalated": "45e23ae01be4d071"
+    },
+    "stores": {
+      "exp3_stage_a": {
+        "path": "outputs/exp3/observations",
+        "contract_digest": "00c0953c95a96ffd",
+        "restarts": 2,
+        "n_receipts": 104,
+        "receipt_digests_sha256": "9e379841ccc84cda46a5b4b5207a2bc3e578cca7b01e1215c7b1c7bf957495dc",
+        "code_versions": [
+          "src-744bc4630e03",
+          "src-74b02d24b77f"
+        ]
+      },
+      "exp3_stage_b": {
+        "path": "outputs/exp3/observations_stageB",
+        "contract_digest": "ec7e566dc028f94d",
+        "restarts": 20,
+        "n_receipts": 200,
+        "receipt_digests_sha256": "066f3958d3b1db8dff7715b8e70992831374f4522610d61568af346e03b6dca2",
+        "code_versions": [
+          "src-bd82ac5a6dae"
+        ]
+      },
+      "exp3_escalated": {
+        "path": "outputs/exp3/observations_stageB_esc",
+        "contract_digest": "45e23ae01be4d071",
+        "restarts": 40,
+        "n_receipts": 170,
+        "receipt_digests_sha256": "69b4b3478207096771ed3ab644fd8703cbe3f21d6b1688c5f975acee5710ffde",
+        "code_versions": [
+          "src-bd82ac5a6dae"
+        ]
+      }
+    },
+    "artifact_sha256": {
+      "outputs/CANONICAL_RESULTS.json": "2281e13da08db06897137e3684088b5a80828e12e9660e6e1a160682388851eb",
+      "outputs/exp3/stageA_census.json": "b870265adbd92ae353a41e5fb243302aa329ddbf4ef4989bade65066d8c03388",
+      "outputs/exp3/stageB_report.json": "0598f5a5264845686db7addcb436f2fa97015b48ed558078b6fe606da67cbac0",
+      "outputs/exp3/escalation_manifest.json": "62000c409b1bef1daa48061823d1bd44bd21b075eaf9a99db5007358392e4a57",
+      "outputs/exp3/escalation_report.json": "e419947d389376b279f4465e62949fc9307981e41b51b02ad65323a40d1701a7",
+      "outputs/exp3/d33_stageb/d33_stageb_report.json": "83ac64fe99f354523a5757ba6c524bfb0d00b28393247bdeb504316c551f1711",
+      "outputs/exp3/phase5b_manifest.json": "7cae30c0bf9cf6451a3c30e870cd9dc17aeb3cc575fb7cf78e77b7b3d0b55ea4",
+      "EXPERIMENT3_CLOSURE.md": "1db28a4087f729c43acce37b3ce0d3eaadadbbeead23c10806e4e42959cc28b8",
+      "EXPERIMENT3_ROBUSTNESS.md": "74db0587154d68b5900e845fd0b565aab12c547f2469dcdc08f42147a682ef83",
+      "EXPERIMENT3_PHASE5_DESIGN.md": "dff151382a26e94e260688493756bb7153978647867b6abee21d957dcd58d51b",
+      "EXPERIMENT3_PHASE5B_DESIGN.md": "3c8c8b4428eeba9b266065566288293e8a598b4293d1befab1856edab695f8e9",
+      "EXPERIMENT3_D33_STAGEB_DESIGN.md": "ab8bd105b727ca79d43dff55159cbdd21d223fe543cf892d9c1266d7e61e82f2",
+      "EXPERIMENT3_STAGE_B_PREREGISTRATION.md": "259cbf38d41949e3c61f10854c4084463a945c5838d60d86e6cd477e5fc5e7ac",
+      "METHODOLOGY.md": "10d3f36f5f579999265cf38563fb0eb8183011a0cb0e722dded0c5fa8aa60d6a"
+    }
+  },
+  "recorded": {
+    "source_digest_at_freeze": "src-bd82ac5a6dae",
+    "source_digest_note": "RECORDED, NOT ASSERTED. Gen2 development moves this by definition. Gen1 results stay verifiable because every receipt carries the code_version it was produced under.",
+    "artifact_sha256": {
+      "DISCOVERIES.md": "40b0341619ffee992fdb5d214420d18350abe9e2798c20400ee2abe4572620b1",
+      "OPERATIONS.md": "8c3634fb95101f89a488343ed045a794f31fbbe0773e42fede51e4f8f6fe6a60",
+      "ACCEPTANCE.md": "4e9d6633d729506947e772923a4cc4ecec6fc369d0d1fcb40935b65c0675656a"
+    }
+  }
+}
