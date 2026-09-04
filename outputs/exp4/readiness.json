@@ -93,8 +93,8 @@
     {
       "id": "D16",
       "title": "Experiment 4 ExperimentContract exists and is in force",
-      "status": "OPEN",
-      "detail": "draft module present=True, exported from firewall/=False; the draft is explicitly 'not yet in force'"
+      "status": "MET",
+      "detail": "draft module present=True, exported from firewall/=True; the draft is explicitly 'not yet in force'"
     },
     {
       "id": "D17",
@@ -121,21 +121,27 @@
       "detail": "206 lines classified, classes={'observed_edge_synthesis': 150, 'legacy_sequence': 41, 'observed_turn_synthesis': 15}; receipt-side attachment still to confirm"
     },
     {
-      "id": "D21",
-      "title": "Gen1 frozen and the Gen1->Gen2 bridge suite has run",
+      "id": "D21a",
+      "title": "Gen1 frozen",
+      "status": "MET",
+      "detail": "GEN1_FREEZE.md + outputs/GEN1_FREEZE_MANIFEST.json; verify with scripts/gen1_freeze.py --verify"
+    },
+    {
+      "id": "D21b",
+      "title": "Gen1->Gen2 bridge suite has run",
       "status": "OPEN",
-      "detail": "GEN1_FREEZE.md absent; METHODOLOGY puts Gen1 freeze immediately after Experiment 3 certification, which is now complete -- this is the next step"
+      "detail": "not run. METHODOLOGY's order of work puts four steps between the Gen1 freeze and Gen2: the exact frequency benchmark, the optimization-gap measurement, the evidence-based reopening decision, and incremental evaluation with full-rebuild canaries"
     },
     {
       "id": "D22",
       "title": "Search-allowance contract merged into firewall/ and in force",
-      "status": "OPEN",
-      "detail": "still staged at scripts/exp4_staging/search_allowance.py; OPERATIONS 24 blocked the move while the Experiment 3 batch ran and that block is now lifted"
+      "status": "MET",
+      "detail": "merged"
     }
   ],
-  "met": 6,
-  "open": 7,
+  "met": 9,
+  "open": 5,
   "manual": 9,
-  "total": 22,
+  "total": 23,
   "ready": false
 }

@@ -26,6 +26,8 @@ stall=0
 echo "$TAG start $(date -u +%FT%TZ) pid=$$" >> "$OUT/$TAG.log"
 # A pidfile, never a process-name pattern: a pattern that appears in your own
 # command line kills your own tool call (OPERATIONS 17, 25).
+python -c "import sys;sys.path.insert(0,'src');from cota_opt.exp3_cell import code_version;print(code_version())" > "$OUT/BATCH_IN_FLIGHT"
+trap 'rm -f "$OUT/BATCH_IN_FLIGHT"' EXIT
 echo $$ > "$OUT/$TAG.pid"
 while true; do
   n=$(python scripts/exp3_stage_b.py --list --shard "$SHARD" $EXTRA 2>/dev/null | grep -cP '\t'); n=${n:-0}

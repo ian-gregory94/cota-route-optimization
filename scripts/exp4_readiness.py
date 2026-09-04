@@ -145,11 +145,22 @@ def checks() -> list[tuple[str, str, str, str]]:
         f"{tr.get('n_lines')} lines classified, classes={cls}; receipt-side "
         "attachment still to confirm" if tr else "absent")
 
+    # Two conditions, and an earlier version of this check tested only the
+    # first and reported MET. Splitting them is the point: a gate that passes
+    # on half its own text is worse than no gate.
     gen1 = ROOT / "GEN1_FREEZE.md"
-    add("D21", "Gen1 frozen and the Gen1->Gen2 bridge suite has run",
-        MET if gen1.exists() else OPEN,
-        "GEN1_FREEZE.md absent; METHODOLOGY puts Gen1 freeze immediately after "
-        "Experiment 3 certification, which is now complete -- this is the next step")
+    gen1_man = OUT.parent / "GEN1_FREEZE_MANIFEST.json"
+    add("D21a", "Gen1 frozen",
+        MET if gen1.exists() and gen1_man.exists() else OPEN,
+        "GEN1_FREEZE.md + outputs/GEN1_FREEZE_MANIFEST.json; verify with "
+        "scripts/gen1_freeze.py --verify" if gen1.exists() else "absent")
+    bridge = OUT.parent / "gen1_gen2_bridge.json"
+    add("D21b", "Gen1->Gen2 bridge suite has run",
+        MET if bridge.exists() else OPEN,
+        "not run. METHODOLOGY's order of work puts four steps between the Gen1 "
+        "freeze and Gen2: the exact frequency benchmark, the optimization-gap "
+        "measurement, the evidence-based reopening decision, and incremental "
+        "evaluation with full-rebuild canaries")
 
     merged = (ROOT / "src" / "cota_opt" / "firewall" / "search_allowance.py")
     staged = (ROOT / "scripts" / "exp4_staging" / "search_allowance.py")

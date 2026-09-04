@@ -69,14 +69,22 @@ def test_the_evaluation_path_is_not_edited_while_a_batch_is_running():
     then five census states, and was both times a rule I was supposed to
     remember rather than a check that could fail.
 
-    A running batch writes `outputs/exp3/EVAL_PATH_FROZEN` with the digest it
+    A running batch writes `outputs/exp3/BATCH_IN_FLIGHT` naming the digest it
     started under. While that file exists, this test goes red the moment the
-    evaluation path diverges from it. Delete the file when the batch is done.
+    evaluation path diverges from it. Shard runners create it on start and
+    remove it on clean exit.
+
+    It is deliberately NOT `EVAL_PATH_FROZEN`. That file was doing two jobs at
+    once -- "a batch is live, do not touch src" and "these receipts were
+    produced under this digest" -- and the two came apart the moment the batch
+    ended: the second is a permanent record every analysis script still reads,
+    while the first must stop applying or nobody can ever edit the evaluator
+    again. Conflating a lock with a record makes the lock un-releasable.
     """
     import pathlib
     import sys
     root = pathlib.Path(__file__).resolve().parents[1]
-    marker = root / "outputs" / "exp3" / "EVAL_PATH_FROZEN"
+    marker = root / "outputs" / "exp3" / "BATCH_IN_FLIGHT"
     if not marker.exists():
         return                              # no batch in flight
     sys.path.insert(0, str(root / "src"))
@@ -87,5 +95,5 @@ def test_the_evaluation_path_is_not_edited_while_a_batch_is_running():
         f"a scoring batch is running under {frozen} and the evaluation path is "
         f"now {now}. Cells scored either side of this edit cannot be compared. "
         f"Either revert the change until the batch finishes, or stop the batch "
-        f"and re-score what it produced. Delete {marker.name} when the batch "
-        f"is complete.")
+        f"and re-score what it produced. The runner removes {marker.name} on "
+        f"clean exit.")

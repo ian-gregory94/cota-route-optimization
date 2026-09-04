@@ -40,7 +40,17 @@ class ExecutionReceipt:
     repair_steps: int = semfield(Sem.OPPORTUNITY, default=0)
     restarts_requested: int = semfield(Sem.OPPORTUNITY, default=0)
     restarts_completed: int = semfield(Sem.OPPORTUNITY, default=0)
-    evaluations_performed: int = semfield(Sem.OPPORTUNITY, default=0)
+    #: OUTCOME, not OPPORTUNITY, reclassified 2026-09-04 for Experiment 4
+    #: (EXPERIMENT4_DESIGN.md section 1). What a cell was ENTITLED to search is
+    #: `SearchAllowance`; what it actually spent is a result of the search. Two
+    #: networks with different route counts have different numbers of frequency
+    #: decisions, so this differs structurally rather than incidentally, and
+    #: comparing it would refuse every honest whole-network comparison. Leaving
+    #: it an opportunity field would also invite whitelisting it, which would
+    #: let a genuine difference in entitlement pass as a mechanical one.
+    #: Experiment 3 comparisons are unaffected: nothing was ever refused on this
+    #: field, and OPPORTUNITY -> OUTCOME can only turn a refusal into a pass.
+    evaluations_performed: int = semfield(Sem.OUTCOME, default=0)
     termination: StopRule = semfield(Sem.OPPORTUNITY,
                                      default=StopRule.NO_IMPROVING_MOVE)
     converged: bool = semfield(Sem.OPPORTUNITY, default=False)

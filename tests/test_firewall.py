@@ -220,10 +220,46 @@ def test_evaluations_within_the_declared_tolerance_are_allowed():
     assert isinstance(r, ComparisonResult)
 
 
-def test_evaluations_beyond_the_declared_tolerance_refuse():
+def test_evaluations_performed_is_an_outcome_and_no_longer_refuses():
+    """Reclassified OPPORTUNITY -> OUTCOME on 2026-09-04.
+
+    This test previously asserted the opposite, and the change is deliberate.
+    What a cell was ENTITLED to search is `SearchAllowance`; what it actually
+    spent is a result of the search. Experiment 4 compares whole networks with
+    different route counts and therefore different numbers of frequency
+    decisions, so this field differs structurally rather than incidentally --
+    comparing it would refuse every honest whole-network comparison.
+
+    Experiment 3 is unaffected: it never refused a comparison on this field, and
+    OPPORTUNITY -> OUTCOME can only turn a refusal into a pass.
+    """
     r = compare(receipt(evaluations_performed=4000),
                 treated(evaluations_performed=400_000), CONTRACT)
-    assert isinstance(r, InadmissibleComparison)
+    assert not isinstance(r, InadmissibleComparison)
+
+
+def test_the_d27_class_of_difference_is_still_fatal():
+    """The reclassification must not have loosened anything else.
+
+    A field that decides what the search was ABLE to find stays an opportunity
+    field, and a difference in one still refuses. If this ever goes green,
+    something widened the whitelist.
+    """
+    for kw in ({"fallback_occurred": True}, {"restarts_completed": 3},
+               {"starts_attempted": ("greedy",)}):
+        r = compare(receipt(), treated(**kw), CONTRACT)
+        assert isinstance(r, InadmissibleComparison), (
+            f"{kw} no longer refuses; an execution difference decided by the "
+            f"treatment must stay fatal (D27)")
+
+    # `repair_occurred` is the counter-example, and it belongs here: it does
+    # NOT refuse, because this contract whitelists it with a written
+    # justification. The guard above is meaningful only because the whitelist
+    # is short and deliberate -- so the test asserts both halves.
+    assert "repair_occurred" in CONTRACT.allowed_treatment_differences
+    assert not isinstance(
+        compare(receipt(), treated(repair_occurred=True), CONTRACT),
+        InadmissibleComparison)
 
 
 def test_a_severe_event_makes_an_observation_inadmissible():

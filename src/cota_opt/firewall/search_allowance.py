@@ -1,10 +1,11 @@
 """Search opportunity per decision dimension — the Experiment 4 effort contract.
 
-STAGED, NOT IN FORCE. This belongs in `src/cota_opt/firewall/`, but that path is
-frozen while the Experiment 3 re-score runs (OPERATIONS 24): any edit under
-`src/cota_opt` changes `code_version` and splits the running batch into two
-incomparable halves. It is written here, tested here, and folded into the
-firewall when the batch completes. Nothing imports it yet.
+IN FORCE from 2026-09-04. Staged outside `src/cota_opt` until then because
+OPERATIONS 24 freezes that path while a batch runs: any edit changes
+`code_version` and splits a running batch into two incomparable halves. It moved
+here after Generation 1 was frozen (`gen1-frozen-v1`), which is the declared
+boundary the source digest is allowed to cross -- Gen1 results stay verifiable
+because every receipt carries the `code_version` it was produced under.
 
 The invariant
 -------------
@@ -182,3 +183,44 @@ def comparable(a: AllowanceRecord, b: AllowanceRecord,
                 f"opportunity. The contract must define and justify the "
                 f"budget-limited case before such a comparison may be made.")
     return (not bad), bad
+
+
+# ---------------------------------------------------------------------------
+# The preregistered Experiment 4 allowance.
+#
+# Declared 2026-09-04, BEFORE any Experiment 4 network has been scored, because
+# EXPERIMENT4_DESIGN.md section 9 item 22 requires k, the ceiling, the minimum
+# and the rounding rule to be preregistered rather than settled by whoever
+# first hits them.
+#
+# k = 2000. Chosen from D28, not from taste: at Experiment 3 certification
+# effort each restart terminated after roughly 4,000 of its 400,000 permitted
+# evaluations, and Gen1's networks carry 173 route-periods. So a whole solve
+# used on the order of 4,000 evaluations per restart against ~173 decisions --
+# about 23 per decision per restart. At 40 restarts that is ~900 per decision.
+# k = 2000 is a little over double the observed need, which is the point: the
+# allowance must not bind in ordinary cases, or it silently becomes the
+# stopping rule and the stopping contract stops meaning anything.
+#
+# absolute_ceiling = 400,000. Carried over from Gen1's certification effort so
+# that the ceiling is a number this project has already lived with, not a new
+# free parameter. It binds at 200 decision dimensions, which is above Gen1's
+# 173 but reachable by a large reconstructed network -- which is exactly the
+# case the ceiling exists for, and it is marked `budget_limited` when it fires.
+#
+# minimum_budget = 20,000. A network reduced to a handful of active lines still
+# needs enough search to be worth comparing; without a floor, a 3-decision
+# network would be allocated 6,000 evaluations and its result would say more
+# about its allowance than about the network.
+#
+# rounding = "up_to_1000". Deterministic, declared, and rounds UP so the
+# adjustment can never quietly reduce an allowance.
+#
+# None of these may be changed once an Experiment 4 result exists. Changing k
+# after seeing a result is the search-budget form of moving a threshold.
+EXP4_ALLOWANCE = SearchAllowance(
+    k=2000,
+    absolute_ceiling=400_000,
+    minimum_budget=20_000,
+    rounding="up_to_1000",
+)

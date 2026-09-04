@@ -22,6 +22,8 @@ from .observation import ComparableObservation, Inadmissible, admit
 from .policy import (CERTIFICATION, DISCOVERY, SolverPolicy, StartPolicy,
                      StopRule)
 from .receipt import ExecutionReceipt
+from .search_allowance import (EXP4_ALLOWANCE, AllowanceError,
+                               AllowanceRecord, SearchAllowance, comparable)
 from .spec import EvaluationSpec, build_spec
 from .store import CacheMiss, ObservationStore
 
@@ -37,4 +39,8 @@ __all__ = [
     "health_report", "HealthReport", "balance_audit", "Imbalance",
     "ObservationStore", "CacheMiss",
     "Finding", "FindingLog", "finding",
+    # Experiment 4's effort contract: allocated search opportunity per decision
+    # dimension. In force from 2026-09-04 (gen1-frozen-v1).
+    "SearchAllowance", "AllowanceRecord", "AllowanceError", "comparable",
+    "EXP4_ALLOWANCE",
 ]

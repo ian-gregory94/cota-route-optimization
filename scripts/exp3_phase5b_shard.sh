@@ -45,6 +45,8 @@ fi
 ONLY=$(python -c "
 import json;print(','.join(c['candidate'] for c in json.load(open('outputs/exp3/phase5b_manifest.json'))['candidates']))")
 case "$ONLY" in (*'#'*) : ;; (*) echo "FATAL: manifest read failed" >&2; exit 4;; esac
+python -c "import sys;sys.path.insert(0,'src');from cota_opt.exp3_cell import code_version;print(code_version())" > "$OUT/BATCH_IN_FLIGHT"
+trap 'rm -f "$OUT/BATCH_IN_FLIGHT"' EXIT
 echo $$ > "$OUT/$TAG.pid"
 echo "$TAG start $(date -u +%FT%TZ) pid=$$" >> "$OUT/$TAG.log"
 stall=0

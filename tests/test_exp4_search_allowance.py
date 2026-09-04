@@ -10,8 +10,8 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from exp4_staging.search_allowance import (AllowanceError,  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from cota_opt.firewall.search_allowance import (AllowanceError,  # noqa: E402
                                            AllowanceRecord, SearchAllowance,
                                            comparable)
 
@@ -155,3 +155,39 @@ def test_both_arms_ceiling_bound_still_needs_the_declaration():
     d = CEILING // K + 50
     ok, _ = comparable(rec(d), rec(d), A)
     assert not ok
+
+
+def test_the_preregistered_allowance_is_declared_and_does_not_bind_on_gen1_sizes():
+    """k, the ceiling, the minimum and the rounding are preregistered.
+
+    The allowance must not bind in ordinary cases. If it did, it would silently
+    become the stopping rule and the stopping contract would stop meaning
+    anything -- which is D28 wearing different clothes, where an iteration
+    ceiling that never bound was quoted as search depth.
+    """
+    from cota_opt.firewall import EXP4_ALLOWANCE as A
+
+    assert (A.k, A.absolute_ceiling, A.minimum_budget, A.rounding) == (
+        2000, 400_000, 20_000, "up_to_1000")
+
+    # Gen1's network carries 173 route-periods; the ceiling must not bind there.
+    budget, limited = A.allocate(173)
+    assert not limited and budget == 346_000
+
+    # The floor protects a heavily reduced network from a meaningless search.
+    assert A.allocate(3) == (20_000, False)
+
+    # The ceiling exists and is honest when it fires.
+    assert A.allocate(200) == (400_000, False)
+    assert A.allocate(205)[1] is True
+
+
+def test_changing_the_preregistered_allowance_changes_its_digest():
+    """A post-hoc change to k must be detectable, not merely discouraged."""
+    from cota_opt.firewall import EXP4_ALLOWANCE as A
+    from cota_opt.firewall import SearchAllowance, digest
+
+    tampered = SearchAllowance(k=A.k * 2, absolute_ceiling=A.absolute_ceiling,
+                               minimum_budget=A.minimum_budget,
+                               rounding=A.rounding)
+    assert digest(tampered.digest_fields) != digest(A.digest_fields)
