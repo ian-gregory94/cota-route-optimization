@@ -1,5 +1,5 @@
 {
-  "generated_commit": "f1a05645575567727f9dd3796b0ffdadc2283b35",
+  "generated_commit": "f0e65d8bd1312309ccbbc4b20ab44fa2a380e928",
   "why_this_exists": "The Experiment 2 evaluator scored every plan under Model A for three days while reporting Model B, so an artifact can look entirely legitimate and contain the wrong model. Nothing here is deleted \u2014 superseded outputs are the record of what was run \u2014 but a reader must be able to tell which files are load-bearing without reconstructing the history.",
   "how_to_check_an_artifact": "Open its experiment.json and read `evaluator`. `common_lines: same_route` with `source: explicit` is Model B, declared. `null` means the run predates provenance recording and the model must be established another way \u2014 for Experiment 2 that means checking whether the cell key carries |same_route|.",
   "experiments": {
@@ -81,18 +81,32 @@
     },
     "exp3": {
       "title": "Route mutation \u2014 search over network states under a committed treatment contract",
-      "status": "NOT STARTED \u2014 contract committed, gates committed",
-      "canonical": [],
+      "status": "CLOSED, frozen at tag exp3-final-v1 \u2014 section 8 outcome (1), a certified leader",
+      "canonical": [
+        "EXPERIMENT3_CLOSURE.md",
+        "outputs/exp3/escalation_report.json",
+        "outputs/exp3/stageB_report.json",
+        "outputs/exp3/d33_stageb/d33_stageb_report.json",
+        "outputs/exp3/escalation_manifest.json",
+        "outputs/exp3/stageA_census.json"
+      ],
       "evaluator": "same_route (Model B), required by gate 3-1 and asserted by the state validator rather than requested and hoped for",
-      "certified": false,
-      "headline": "n/a \u2014 nothing scored yet. The conservative incumbent Experiment 3 must beat is Experiment 1's certified frequency plan on COTA's UNCHANGED geometry, because Experiment 2B certified the null and promoted no geometry edit.",
+      "certified": true,
+      "headline": "CERTIFIED LEADER add_stop-010#22c4c35ac5b2 at -0.18657% on the lambda=2 objective, |mean delta|/SD = 78.6, distinguishable from all 28 other certified candidates. 84 census states -> 39 promoted -> 30 certified at Stage B (20 restarts) -> 29 after the literal section 6 escalation (40 restarts). One verdict changed and it was the one named in advance: straighten-021#110f4a755fe7 lost certification (ratio 3.28 -> 1.97). D33 re-measured at Stage B effort PASSED with 0 of 30 vetoed; the leader's margin is 98x the largest measured differential.",
       "superseded": [],
       "contract": "EXPERIMENT3_CONTRACT.md",
       "limitations": [
         "the stop-service penalty is not measurable from this feed, so no mutation may claim a runtime benefit from serving fewer stops on the same alignment; see outputs/exp3_stopprice_diagnosis.json",
         "stop consolidation is a DEFERRED question, not this experiment \u2014 its gates are marked conditional in ACCEPTANCE.md",
-        "the search is heuristic and must recover the known optimum on the exhaustively enumerated 2B space before it is trusted on the mutation space"
-      ]
+        "the search is heuristic and must recover the known optimum on the exhaustively enumerated 2B space before it is trusted on the mutation space",
+        "certified means distinguishable from solver variance at the effort stated in each row, and nothing more; it is not a claim that -0.19% of a scalarized objective is operationally meaningful",
+        "D33 bounds a neighbourhood of at most 10 of 173 route-periods, so it is a LOWER bound on differential solver error; the full-problem figure can only be larger",
+        "two analysis-code fixes were made after results were visible; both are display-only with the machine-readable payload byte-identical across the fix (outputs/exp3/classifier_audit/, outputs/exp3/phase5_audit/)"
+      ],
+      "regime_caveat": "The certified set is NOT uniform in solver effort. 23 of the 29 carry 40-restart verdicts; 6 -- every state section 6 never triggered on, the leader among them -- carry 20-restart verdicts, because section 6 escalates what is unresolved or failing and that is by construction the smaller margins. All 28 of the leader's pairwise comparisons are at 20 restarts and the best margin confirmed at 40 restarts is 2.33x smaller. Phase 5b would have closed this and was abandoned with zero cells completed. Quote this with the headline.",
+      "closeout": "EXPERIMENT3_CLOSURE.md",
+      "freeze_tag": "exp3-final-v1"
     }
-  }
+  },
+  "note_on_experiment_2_effort_figures": "Two effort-shift figures for splice|011|034|WESHIGW both circulate and both are real, from different measurements: D23/D26 re-solved it at 400000/20 and got -0.585% -> +0.060%, a 0.645-point move; Experiment 2B's stage C got -0.585% -> +0.0065%, a 0.591-point move. EXPERIMENT3_ROBUSTNESS.md quotes the D23 figure and says so."
 }
