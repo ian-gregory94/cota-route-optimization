@@ -35,6 +35,16 @@ def _json(p: Path):
         return None
 
 
+def _acceptance_gate(label: str) -> bool:
+    """Is this Experiment 4 gate committed in ACCEPTANCE.md?
+
+    Committed is not satisfied. A gate written down is a promise about what will
+    be checked; running it is a separate item. Items that need the gate RUN say
+    so in their own detail line.
+    """
+    return label in (ROOT / "ACCEPTANCE.md").read_text()
+
+
 def _git(*args: str) -> str:
     r = subprocess.run(("git",) + args, cwd=ROOT, capture_output=True, text=True)
     return r.stdout.strip()
@@ -76,8 +86,18 @@ def checks() -> list[tuple[str, str, str, str]]:
         f"{rc.get('stop_coverage_complete')}; SCORE/RESOURCE reproduction is the "
         "part to confirm" if rc else "no reconstruction artifact")
 
-    add("C5", "Peak express service explicitly separated", MANUAL,
-        "confirm the express class is separated in the pool/eligibility rules")
+    try:
+        from cota_opt.routeclass import RouteClass                # noqa: F401
+        has_klass = "peak_express" in (
+            ROOT / "src" / "cota_opt" / "routeclass.py").read_text()
+    except Exception:
+        has_klass = False
+    locks = "peak_express" in (
+        ROOT / "src" / "cota_opt" / "exp3_score.py").read_text()
+    add("C5", "Peak express service explicitly separated",
+        MET if has_klass and locks else OPEN,
+        "routeclass.py defines the peak_express class and exp3_score locks it "
+        "via lock_classes" if has_klass and locks else "class or lock missing")
 
     add("C6", "Observed-link graph built and audited",
         MET if lg and lg.get("every_pattern_is_a_path") else OPEN,
@@ -91,21 +111,49 @@ def checks() -> list[tuple[str, str, str, str]]:
         f"{pool.get('legacy_lines')}" if pool else "no pool")
 
     add("C8", "Synthetic route-period service can be OFF", MANUAL,
-        "confirm OFF is representable with no fabricated baseline headway")
-    add("C9", "Discovery path reuse benchmarked against exact rebuilds", MANUAL,
-        "needs a measured benchmark artifact under outputs/exp4/")
+        "no OFF/inactive representation found in routepool.py, frequency.py or "
+        "network.py by grep. Either it lives under another name or it is not "
+        "built -- this one needs a human to look, and it is load-bearing: "
+        "service activation including OFF is a decision variable in Exp 4")
+    add("C9", "Discovery path reuse benchmarked against exact rebuilds",
+        MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
+        "Gate 4-7 is COMMITTED in ACCEPTANCE.md but the benchmark has not been "
+        "RUN; it needs objective gap, unserved gap, ranking stability, omitted "
+        "and improvable flow, and whether the promoted set changes"
+        if _acceptance_gate("Gate 4-7") else "gate not found in ACCEPTANCE.md")
     add("C10", "Outer network search recovers an exhaustively known optimum",
         OPEN, "no recovery-test artifact under outputs/exp4/")
-    add("C11", "Committed gate on common-lines exposure", MANUAL,
-        "confirm the gate is committed, not merely designed")
+    add("C11", "Committed gate on common-lines exposure",
+        MET if _acceptance_gate("Gate 4-10") else OPEN,
+        "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the "
+        "diagnostic; if exposure balloons the result is classified "
+        "model-dependent")
     add("C12", "Committed transfer-depth, path-cap and OD-cap adequacy gates",
-        MANUAL, "confirm committed")
+        MET if _acceptance_gate("Gate 4-9") else OPEN,
+        "ACCEPTANCE.md Gate 4-9 covers all three: deeper max_rounds on promoted "
+        "networks, the 4->6 paths-per-OD sensitivity redone, and certification "
+        "on a materially wider OD set than the top 20,000")
+    claims = ROOT / "EXPERIMENT4_DEMAND_ROBUSTNESS.md"
     add("C13", "Demand-robustness claims written before the winner is known",
-        MANUAL, "confirm written and committed ahead of any result")
-    add("C14", "Structural-distance measurement exists", MANUAL,
-        "confirm a committed implementation")
+        MET if claims.exists() else OPEN,
+        "Gate 4-12 is COMMITTED in ACCEPTANCE.md, but the CLAIMS themselves are "
+        "not written. They must exist before any Exp 4 winner is known, so this "
+        "is cheap now and impossible later"
+        if _acceptance_gate("Gate 4-12") else "gate not found")
+    ed = "network_edit_distance_pct" in (
+        ROOT / "src" / "cota_opt" / "contract.py").read_text()
+    add("C14", "Structural-distance measurement exists",
+        MET if ed and _acceptance_gate("Gate 4-13") else OPEN,
+        "contract.py computes network_edit_distance_pct with a committed cap; "
+        "ACCEPTANCE Gate 4-13 requires geometry-based identity because Exp 4 "
+        "route ids are synthetic")
+    gates4 = [g for g in (f"Gate 4-{n}" for n in range(1, 14))
+              if _acceptance_gate(g)]
     add("C15", "Every ACCEPTANCE.md rejection condition in place before scoring",
-        MANUAL, "confirm each rejection condition is implemented")
+        MANUAL,
+        f"{len(gates4)} of 13 Experiment 4 gates are written in ACCEPTANCE.md; "
+        "written is not implemented, and which are enforced in code needs a "
+        "human pass")
 
     # ---- design section 9 ---------------------------------------------------
     try:
@@ -136,8 +184,13 @@ def checks() -> list[tuple[str, str, str, str]]:
         else "not run -- this is the compute-heavy gate and it can forbid "
              "discovery-effort comparison outright")
 
-    add("D19", "Effort stated in restarts with convergence asserted", MANUAL,
-        "confirm no Experiment 4 document quotes an iteration ceiling as depth")
+    docs = " ".join((ROOT / f).read_text() for f in
+                    ("EXPERIMENT4_DESIGN.md", "EXPERIMENT4_CONTRACT.md"))
+    add("D19", "Effort stated in restarts with convergence asserted",
+        MET if "restarts_completed" in docs and "converged" in docs else OPEN,
+        "EXPERIMENT4_DESIGN.md section 4 states effort in restarts, records "
+        "restarts_completed and converged, and refuses a certification "
+        "comparison where either arm did not converge")
 
     cls = (tr or {}).get("classes", {})
     add("D20", "Transition-level evidence on every pool line and the receipt",

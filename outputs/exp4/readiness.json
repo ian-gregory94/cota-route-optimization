@@ -27,8 +27,8 @@
     {
       "id": "C5",
       "title": "Peak express service explicitly separated",
-      "status": "MANUAL",
-      "detail": "confirm the express class is separated in the pool/eligibility rules"
+      "status": "MET",
+      "detail": "routeclass.py defines the peak_express class and exp3_score locks it via lock_classes"
     },
     {
       "id": "C6",
@@ -46,13 +46,13 @@
       "id": "C8",
       "title": "Synthetic route-period service can be OFF",
       "status": "MANUAL",
-      "detail": "confirm OFF is representable with no fabricated baseline headway"
+      "detail": "no OFF/inactive representation found in routepool.py, frequency.py or network.py by grep. Either it lives under another name or it is not built -- this one needs a human to look, and it is load-bearing: service activation including OFF is a decision variable in Exp 4"
     },
     {
       "id": "C9",
       "title": "Discovery path reuse benchmarked against exact rebuilds",
-      "status": "MANUAL",
-      "detail": "needs a measured benchmark artifact under outputs/exp4/"
+      "status": "OPEN",
+      "detail": "Gate 4-7 is COMMITTED in ACCEPTANCE.md but the benchmark has not been RUN; it needs objective gap, unserved gap, ranking stability, omitted and improvable flow, and whether the promoted set changes"
     },
     {
       "id": "C10",
@@ -63,32 +63,32 @@
     {
       "id": "C11",
       "title": "Committed gate on common-lines exposure",
-      "status": "MANUAL",
-      "detail": "confirm the gate is committed, not merely designed"
+      "status": "MET",
+      "detail": "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the diagnostic; if exposure balloons the result is classified model-dependent"
     },
     {
       "id": "C12",
       "title": "Committed transfer-depth, path-cap and OD-cap adequacy gates",
-      "status": "MANUAL",
-      "detail": "confirm committed"
+      "status": "MET",
+      "detail": "ACCEPTANCE.md Gate 4-9 covers all three: deeper max_rounds on promoted networks, the 4->6 paths-per-OD sensitivity redone, and certification on a materially wider OD set than the top 20,000"
     },
     {
       "id": "C13",
       "title": "Demand-robustness claims written before the winner is known",
-      "status": "MANUAL",
-      "detail": "confirm written and committed ahead of any result"
+      "status": "OPEN",
+      "detail": "Gate 4-12 is COMMITTED in ACCEPTANCE.md, but the CLAIMS themselves are not written. They must exist before any Exp 4 winner is known, so this is cheap now and impossible later"
     },
     {
       "id": "C14",
       "title": "Structural-distance measurement exists",
-      "status": "MANUAL",
-      "detail": "confirm a committed implementation"
+      "status": "MET",
+      "detail": "contract.py computes network_edit_distance_pct with a committed cap; ACCEPTANCE Gate 4-13 requires geometry-based identity because Exp 4 route ids are synthetic"
     },
     {
       "id": "C15",
       "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
       "status": "MANUAL",
-      "detail": "confirm each rejection condition is implemented"
+      "detail": "13 of 13 Experiment 4 gates are written in ACCEPTANCE.md; written is not implemented, and which are enforced in code needs a human pass"
     },
     {
       "id": "D16",
@@ -111,8 +111,8 @@
     {
       "id": "D19",
       "title": "Effort stated in restarts with convergence asserted",
-      "status": "MANUAL",
-      "detail": "confirm no Experiment 4 document quotes an iteration ceiling as depth"
+      "status": "MET",
+      "detail": "EXPERIMENT4_DESIGN.md section 4 states effort in restarts, records restarts_completed and converged, and refuses a certification comparison where either arm did not converge"
     },
     {
       "id": "D20",
@@ -139,9 +139,9 @@
       "detail": "merged"
     }
   ],
-  "met": 9,
-  "open": 5,
-  "manual": 9,
+  "met": 14,
+  "open": 7,
+  "manual": 2,
   "total": 23,
   "ready": false
 }
