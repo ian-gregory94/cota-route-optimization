@@ -37,8 +37,7 @@ spread was stable, its verdict did not depend on the SD convention, and all 29
 of its pairwise comparisons resolved. None of §6's triggers fires on a
 candidate with nothing unresolved about it.
 
-The consequence is worth stating plainly rather than discovering later: **the
-escalation contains no 200-restart measurement of the leader**, so it cannot
+The consequence is worth stating plainly rather than discovering later: **the escalation contains no 40-restart measurement of the leader**, so it cannot
 confirm the leader's own margin at higher effort. What it can do is change *who
 else is certified* and resolve the pairwise relations that were open.
 
@@ -48,7 +47,7 @@ Ian's Phase 5 instruction is *escalated supersedes lower-effort for the
 triggering decision; do not average regimes*. Transcribed into the three
 decisions this report makes:
 
-1. **Certification.** For each of the 33 escalated candidates, the 200-restart
+1. **Certification.** For each of the 33 escalated candidates, the 40-restart
    verdict supersedes the 20-restart verdict outright. For the 6 candidates §6
    did not trigger, the Stage B verdict stands unchanged — their certification
    was never a triggering decision and no higher-effort measurement of them
@@ -56,11 +55,11 @@ decisions this report makes:
 
 2. **Pairwise distinguishability.** A comparison is computed **within one
    regime or not at all.**
-   * both members escalated → 200-restart comparison; supersedes Stage B for
+   * both members escalated → 40-restart comparison; supersedes Stage B for
      that pair.
-   * either member not escalated → 200-restart comparison is impossible, so the
+   * either member not escalated → 40-restart comparison is impossible, so the
      20-restart comparison stands and is labelled as such.
-   A 20-restart effect is never differenced against a 200-restart effect. The
+   A 20-restart effect is never differenced against a 40-restart effect. The
    firewall would refuse it anyway — the two carry different contract digests —
    and that refusal is a feature being relied on, not routed around.
 
@@ -81,15 +80,15 @@ the output rather than smoothed away.
 
 After Phase 5 the certified set is measured at two efforts, and the leader is
 on the weaker side of that split: the escalated candidates have been examined
-at 10× the restarts, the leader has not. Two honest readings follow and both
+at 2× the restarts, the leader has not. Two honest readings follow and both
 are reported:
 
-* the leader's margin is **unconfirmed at 200 restarts**, because §6 gave no
+* the leader's margin is **unconfirmed at 40 restarts**, because §6 gave no
   reason to look;
-* candidates that survive certification at 200 restarts have passed a stricter
+* candidates that survive certification at 40 restarts have passed a stricter
   test than the leader has.
 
-If the escalated results produce a candidate that certifies at 200 restarts
+If the escalated results produce a candidate that certifies at 40 restarts
 with a margin comparable to or larger than the leader's, the two cannot be
 separated within a common regime and **no leader may be named** — that is §8
 outcome (2), and it is an acceptable terminal state. Losing the leader to a
@@ -97,12 +96,12 @@ regime split is a result, not a problem to be engineered around.
 
 ## What is not permitted here
 
-* Re-running the leader at 200 restarts *after* seeing that escalation
+* Re-running the leader at 40 restarts *after* seeing that escalation
   threatened it. Any such run would be a measurement chosen by its expected
   answer. If the leader is to be escalated, the decision must be justified by a
   rule and recorded before the escalated numbers are read — and §6 already
   declined to escalate it.
 * Widening the manifest.
 * Comparing across regimes "for reference".
-* Treating the 6 non-escalated candidates as though 20 restarts and 200
+* Treating the 6 non-escalated candidates as though 20 restarts and 40
   restarts were the same measurement.
