@@ -206,3 +206,46 @@ bounded to one line of prose, with the payload digest unchanged.
 | escalation cells | 170/170 |
 | D33-B cells | 375 enumerations + 25 anchor solves |
 | firewall refusals, all batches | 0 |
+
+---
+
+## 9. The freeze
+
+Experiment 3 is frozen at tag **`exp3-final-v1`**.
+
+| | |
+|---|---|
+| branch | `exp3-clean` |
+| tag | `exp3-final-v1` |
+| working tree at tag | clean, 0 uncommitted entries |
+| verification at tag time | `exp3_verify_closure.py` 27 claims PASS; `exp3_freeze_integrity.py` 21 checks PASS |
+
+Both suites are committed and re-runnable, and both read the observation stores
+rather than any report — a report is what the pipeline said about the work; a
+receipt is the work.
+
+**The freeze does not assert a uniform effort regime, because there is not one.**
+23 of the 29 certified candidates carry 40-restart verdicts and 6 — including
+the leader — carry 20-restart verdicts. Phase 5b was designed to remove that
+split and was abandoned before producing a cell
+(`EXPERIMENT3_PHASE5B_ABANDONED.md`). Its manifest and worker are committed and
+will run unchanged if anyone wants to close it later: 30 cells, ~7 hours under a
+foreground container hold.
+
+### What would move this result
+
+In rough order of how much each could move it:
+
+1. **Escalating the remaining six** — the only outstanding step inside the
+   existing method. It can only cost the leader something; it cannot help it.
+2. **A demand model that is not commute-only LODES.** 24.7% of regional flow is
+   transit-accessible in the current input, and that is the largest unquantified
+   error in the project.
+3. **A differential-error measurement over more than 10 of 173 route-periods.**
+   D33 bounds a neighbourhood, and the full-problem figure can only be larger.
+4. **A cross-route hyperpath model.** 0.516% of generalized cost, deferred.
+
+None of these is a defect in what was run. They are the edges of what a −0.19%
+effect on a scalarized objective, certified against solver variance at one
+effort, is entitled to claim — which is: this edit is distinguishable from the
+solver's own noise, and nothing more.
