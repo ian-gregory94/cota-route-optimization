@@ -89,19 +89,25 @@ def main() -> int:
                         max_lines=case.get("max_lines"),
                         min_lines=case.get("min_lines", 1),
                         pool_version=POOL_VERSION,
-                        allow_swaps=False, max_evaluations=400)
+                        allow_swaps=False, pair_adds=False,
+                        max_evaluations=400)
         gen2 = search(lines, scorer, periods,
                       seed_lines=case.get("seed"),
                       max_lines=case.get("max_lines"),
                       min_lines=case.get("min_lines", 1),
                       pool_version=POOL_VERSION,
-                      allow_swaps=True, max_evaluations=400)
+                      allow_swaps=True, pair_adds=True, max_evaluations=800)
 
         opt = sorted(oracle.best.selection.lines)
         g = sorted(greedy.best.selection.lines) if greedy.best else None
         n = sorted(gen2.best.selection.lines) if gen2.best else None
-        greedy_missed = (g != opt)
-        gen2_found = (n == opt)
+        # A tie is not a miss: greedy is defeated only if its objective is
+        # strictly worse. Gen2 succeeds if it MATCHES the optimum objective --
+        # an equally good different network is a correct answer, not a failure.
+        gobj = greedy.best.objective if greedy.best else float("inf")
+        nobj = gen2.best.objective if gen2.best else float("inf")
+        greedy_missed = gobj > oracle.best.objective + 1e-9
+        gen2_found = abs(nobj - oracle.best.objective) <= 1e-9
 
         print(f"    optimum  {opt}   obj {oracle.best.objective:.4f}"
               f"   ({oracle.n_evaluations} networks enumerated)")

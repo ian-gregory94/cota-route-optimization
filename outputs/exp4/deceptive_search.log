@@ -28,3 +28,22 @@
   space 27  vh   160  overlap  11  opt 3 lines  DECEPTIVE
   space 28  vh    90  overlap  17  opt 3 lines  DECEPTIVE
   space 29  vh   200  overlap  20  opt 3 lines  greedy finds it
+  space 30  vh   200  overlap  22  opt 3 lines  greedy finds it
+  space 31  vh   160  overlap  86  opt 3 lines  greedy finds it
+  space 32  vh    90  overlap   6  opt 3 lines  DECEPTIVE
+  space 33  vh   200  overlap  86  opt 3 lines  greedy finds it
+  space 34  vh   120  overlap  23  opt 2 lines  DECEPTIVE
+  space 35  vh    90  overlap  86  opt 3 lines  greedy finds it
+  space 36  vh   200  overlap  18  opt 3 lines  DECEPTIVE
+  space 37  vh   160  overlap   8  opt 3 lines  greedy finds it
+  space 38  vh    90  overlap  86  opt 2 lines  DECEPTIVE
+  space 39  vh    90  overlap  20  opt 3 lines  greedy finds it
+  space 40  vh   160  overlap  86  opt 2 lines  greedy finds it
+  space 41  vh   200  overlap  86  opt 3 lines  DECEPTIVE
+  space 42  vh   160  overlap  22  opt 3 lines  DECEPTIVE
+  space 43  vh   120  overlap  86  opt 2 lines  greedy finds it
+  space 44  vh   200  overlap  86  opt 3 lines  greedy finds it
+
+  scanned 45 spaces in 807s
+  deceptive spaces found: 19
+  wrote outputs/exp4/deceptive_search.json

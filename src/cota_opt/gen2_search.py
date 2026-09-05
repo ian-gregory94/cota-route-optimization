@@ -211,7 +211,9 @@ def search(pool_lines: Sequence[str], scorer: Scorer, periods: Sequence[str],
            pinned_off: Iterable[tuple[str, str]] = (),
            pool_version: str = "bench",
            max_evaluations: int = 500,
-           allow_swaps: bool = True) -> SearchResult:
+           allow_swaps: bool = True,
+           pair_adds: bool = True,
+           max_pair_adds: int = 400) -> SearchResult:
     """Gen2's outer search: steepest-descent over add / drop / swap moves.
 
     Swaps are included because add-and-drop alone cannot cross a valley, and the
@@ -219,6 +221,14 @@ def search(pool_lines: Sequence[str], scorer: Scorer, periods: Sequence[str],
     worth more together than either is alone, so a search that only ever adds
     the single best next line walks past the pair. Gate 4-14 names exactly that
     structure.
+
+    **Paired adds** are included for the same reason, and were added because
+    measurement demanded it rather than because they seemed prudent: on the C10
+    benchmark, add/drop/swap alone recovered 3 of 5 deceptive optima and failed
+    the two where the optimum needs two lines added *together*. Neither line
+    improves the network alone, so every single-move neighbour is worse and the
+    search stops one pair short. `max_pair_adds` bounds the cost, since the
+    move set is quadratic in the pool and only tractable on small spaces.
 
     Every candidate records its parent and the move that produced it, so a
     disagreement with the oracle is diagnosable as a path rather than reported
@@ -268,6 +278,17 @@ def search(pool_lines: Sequence[str], scorer: Scorer, periods: Sequence[str],
                     if y not in cl:
                         moves.append((tuple(z for z in cl if z != x) + (y,),
                                       f"swap:{x}->{y}"))
+        if pair_adds:                                     # add two at once
+            out = [x for x in lines if x not in cl]
+            pairs = 0
+            for i, x in enumerate(out):
+                for y in out[i + 1:]:
+                    if pairs >= max_pair_adds:
+                        break
+                    moves.append((cl + (x, y), f"add2:{x}+{y}"))
+                    pairs += 1
+                if pairs >= max_pair_adds:
+                    break
         cands: list[Candidate] = []
         for combo, mv in moves:
             s = mk(combo)
@@ -293,4 +314,5 @@ def search(pool_lines: Sequence[str], scorer: Scorer, periods: Sequence[str],
                                "hit_evaluation_cap":
                                    len(evaluated) >= max_evaluations,
                                "allow_swaps": allow_swaps,
+                               "pair_adds": pair_adds,
                                "seed": list(start)})

@@ -72,7 +72,11 @@ def main() -> int:
                    max_evaluations=200)
         opt = sorted(oracle.best.selection.lines)
         got = sorted(g.best.selection.lines) if g.best else None
-        missed = got != opt
+        # A TIE IS NOT A MISS. Comparing line sets marked greedy as defeated
+        # whenever it found a different network of equal objective, which is
+        # not deception -- it is a flat optimum. Deceptive means strictly worse.
+        gv = g.best.objective if g.best else float("inf")
+        missed = gv > oracle.best.objective + 1e-9
         rec = {"space": i, "lines": lines, "veh_hour_budget": vh,
                "peak_vehicle_budget": case["peak_vehicle_budget"],
                "max_stop_overlap": overlap,

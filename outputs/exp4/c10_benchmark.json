@@ -1,364 +1,26 @@
 {
   "evaluator": "production (solve_on_network via score_exp4_network)",
-  "seconds": 44.955018281936646,
+  "seconds": 148.73140668869019,
   "cases": [
     {
-      "case": "shared_junction_pair",
-      "complementarity": "two short lines crossing at shared stops: alone each serves a corridor, together they open transfers between both corridors",
+      "case": "greedy_finds_nothing",
+      "complementarity": "add-only greedy reaches no feasible network at all from its seed, while three lines together fit the envelope: the first line it adds consumes the budget and every extension is infeasible",
       "n_networks_enumerated": 25,
       "optimum": [
-        "syn-2663c6d04f289b58",
+        "syn-91cfb5fd76db5ab6",
         "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
+        "syn-a13da236edef295b"
       ],
-      "optimum_objective": 3632006.817812674,
+      "optimum_objective": 3632624.1165919495,
       "optimum_fitness": {
-        "objective": 3632006.817812674,
+        "objective": 3632624.1165919495,
         "lambda": 2.0,
-        "generalized_cost": 6426.755443895035,
-        "unserved_demand": 30213.167186406492,
-        "served_demand": 735.8328135935149,
-        "gc_per_served_trip": 8.733988652271861,
-        "revenue_veh_hours": 198.81555555555553,
-        "peak_vehicles": 17.607777777777773
-      },
-      "optimum_route_fates": [
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "am_peak",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "early",
-          "fate": "active",
-          "headway_min": 6.0
-        },
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "evening",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "midday",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "owl",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-2663c6d04f289b58",
-          "period": "pm_peak",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "am_peak",
-          "fate": "active",
-          "headway_min": 6.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "early",
-          "fate": "active",
-          "headway_min": 40.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "evening",
-          "fate": "active",
-          "headway_min": 7.5
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "midday",
-          "fate": "active",
-          "headway_min": 6.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "owl",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "pm_peak",
-          "fate": "active",
-          "headway_min": 6.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "am_peak",
-          "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "early",
-          "fate": "active",
-          "headway_min": 6.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "evening",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "midday",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "owl",
-          "fate": "chosen_off",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "pm_peak",
-          "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "am_peak",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "early",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "evening",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "midday",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "owl",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "pm_peak",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "am_peak",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "early",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "evening",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "midday",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "owl",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e8ce379fa4507794",
-          "period": "pm_peak",
-          "fate": "absent",
-          "headway_min": null
-        }
-      ],
-      "greedy": [
-        "syn-2663c6d04f289b58",
-        "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
-      ],
-      "greedy_objective": 3632006.817812674,
-      "greedy_evaluations": 10,
-      "greedy_missed_optimum": false,
-      "gen2": [
-        "syn-2663c6d04f289b58",
-        "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
-      ],
-      "gen2_objective": 3632006.817812674,
-      "gen2_evaluations": 19,
-      "gen2_recovered_optimum": true,
-      "gen2_seconds": 6.221171140670776,
-      "oracle_seconds": 7.1591956615448,
-      "case_is_deceptive": false,
-      "gen2_path": [
-        {
-          "state": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "parent": null,
-          "move": "seed",
-          "objective": 3645587.595114432
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#96f7de653836",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "add:syn-2663c6d04f289b58",
-          "objective": 3643006.468380223
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "add:syn-e33ebec18132c464",
-          "objective": 3632945.4938069168
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#43e474581aa7",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#b12cea55e019",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "add:syn-e8ce379fa4507794",
-          "objective": 3637763.9336222387
-        },
-        {
-          "state": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-2663c6d04f289b58",
-          "objective": 3647743.141733504
-        },
-        {
-          "state": "exp4|exp4-pool-v1|1lines#8f830a8cb1b1",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e33ebec18132c464",
-          "objective": 3637643.325899447
-        },
-        {
-          "state": "exp4|exp4-pool-v1|1lines#53d637622eec",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
-          "parent": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e8ce379fa4507794",
-          "objective": 3642444.6997391996
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#f6ec2c7f7014",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "add:syn-2663c6d04f289b58",
-          "objective": 3632006.817812674
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#900b2a743306",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#fad62ca1c372",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "add:syn-e8ce379fa4507794",
-          "objective": 3632746.9281847826
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#aa9ea1621681",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-2663c6d04f289b58",
-          "objective": 3636655.0458413814
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#22c989780f30",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#46c0066dea32",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e8ce379fa4507794",
-          "objective": 3637427.903450209
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#a30201524104",
-          "parent": "exp4|exp4-pool-v1|3lines#f6ec2c7f7014",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#6ec0badee6bf",
-          "parent": "exp4|exp4-pool-v1|3lines#f6ec2c7f7014",
-          "move": "swap:syn-9a1726e4c4a0670b->syn-e8ce379fa4507794",
-          "objective": 3636490.479688472
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#e587a7a620fe",
-          "parent": "exp4|exp4-pool-v1|3lines#f6ec2c7f7014",
-          "move": "swap:syn-e33ebec18132c464->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#2f70511b03a9",
-          "parent": "exp4|exp4-pool-v1|3lines#f6ec2c7f7014",
-          "move": "swap:syn-e33ebec18132c464->syn-e8ce379fa4507794",
-          "objective": 3641822.826538699
-        }
-      ]
-    },
-    {
-      "case": "trunk_plus_feeder",
-      "complementarity": "a long trunk and a short feeder: the feeder alone reaches little, the trunk alone misses the feeder's catchment, together they chain",
-      "n_networks_enumerated": 25,
-      "optimum": [
-        "syn-60f95ff936eeeacd",
-        "syn-9a1726e4c4a0670b",
-        "syn-fc6d21f652a0cc01"
-      ],
-      "optimum_objective": 3628705.7209226736,
-      "optimum_fitness": {
-        "objective": 3628705.7209226736,
-        "lambda": 2.0,
-        "generalized_cost": 7318.82453160861,
-        "unserved_demand": 30178.22413659221,
-        "served_demand": 770.775863407794,
-        "gc_per_served_trip": 9.495399219236376,
-        "revenue_veh_hours": 159.10833333333332,
-        "peak_vehicles": 13.972499999999998
+        "generalized_cost": 6347.652756436032,
+        "unserved_demand": 30218.970531962612,
+        "served_demand": 730.0294680373945,
+        "gc_per_served_trip": 8.695063739688498,
+        "revenue_veh_hours": 159.6,
+        "peak_vehicles": 9.497083333333332
       },
       "optimum_route_fates": [
         {
@@ -398,76 +60,789 @@
           "headway_min": null
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "am_peak",
           "fate": "active",
-          "headway_min": 5.0
+          "headway_min": 10.0
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "early",
           "fate": "active",
-          "headway_min": 7.5
+          "headway_min": 10.0
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "evening",
           "fate": "chosen_off",
           "headway_min": null
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "midday",
           "fate": "chosen_off",
           "headway_min": null
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "owl",
           "fate": "chosen_off",
           "headway_min": null
         },
         {
-          "line_id": "syn-60f95ff936eeeacd",
+          "line_id": "syn-91cfb5fd76db5ab6",
           "period": "pm_peak",
-          "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "am_peak",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "early",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "evening",
           "fate": "active",
           "headway_min": 10.0
         },
         {
           "line_id": "syn-9a1726e4c4a0670b",
-          "period": "midday",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 20.0
+        },
+        {
+          "line_id": "syn-9a1726e4c4a0670b",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 20.0
+        },
+        {
+          "line_id": "syn-9a1726e4c4a0670b",
+          "period": "evening",
           "fate": "active",
           "headway_min": 7.5
         },
         {
           "line_id": "syn-9a1726e4c4a0670b",
+          "period": "midday",
+          "fate": "active",
+          "headway_min": 6.0
+        },
+        {
+          "line_id": "syn-9a1726e4c4a0670b",
           "period": "owl",
           "fate": "active",
-          "headway_min": 40.0
+          "headway_min": 12.0
         },
         {
           "line_id": "syn-9a1726e4c4a0670b",
           "period": "pm_peak",
           "fate": "active",
+          "headway_min": 20.0
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "am_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "early",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-a13da236edef295b",
+          "period": "pm_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e7c589431bb22c3b",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        }
+      ],
+      "greedy": null,
+      "greedy_objective": null,
+      "greedy_evaluations": 5,
+      "greedy_missed_optimum": true,
+      "gen2": [
+        "syn-91cfb5fd76db5ab6",
+        "syn-9a1726e4c4a0670b",
+        "syn-a13da236edef295b"
+      ],
+      "gen2_objective": 3632624.1165919495,
+      "gen2_evaluations": 23,
+      "gen2_recovered_optimum": true,
+      "gen2_seconds": 6.564370155334473,
+      "oracle_seconds": 7.595472812652588,
+      "case_is_deceptive": true,
+      "gen2_path": [
+        {
+          "state": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "parent": null,
+          "move": "seed",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#cb872578ac5a",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add:syn-2663c6d04f289b58",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#2f31ace16825",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add:syn-91cfb5fd76db5ab6",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#43e474581aa7",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add:syn-9a1726e4c4a0670b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#51525f5c2de6",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add:syn-a13da236edef295b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "swap:syn-e7c589431bb22c3b->syn-2663c6d04f289b58",
+          "objective": 3647789.8434759495
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "swap:syn-e7c589431bb22c3b->syn-91cfb5fd76db5ab6",
+          "objective": 3636885.7938588765
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "swap:syn-e7c589431bb22c3b->syn-9a1726e4c4a0670b",
+          "objective": 3645615.929918294
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#7db3820b797d",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "swap:syn-e7c589431bb22c3b->syn-a13da236edef295b",
+          "objective": 3650033.6289759376
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#35ec49393879",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-2663c6d04f289b58+syn-91cfb5fd76db5ab6",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#e587a7a620fe",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-2663c6d04f289b58+syn-9a1726e4c4a0670b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#4f235c6a46ed",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-2663c6d04f289b58+syn-a13da236edef295b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#6fb35a1955c9",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-91cfb5fd76db5ab6+syn-9a1726e4c4a0670b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#11644f08f9ae",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-91cfb5fd76db5ab6+syn-a13da236edef295b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#621aea36876a",
+          "parent": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "move": "add2:syn-9a1726e4c4a0670b+syn-a13da236edef295b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-2663c6d04f289b58",
+          "objective": 3637013.8019012334
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#dbda0fde23df",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-9a1726e4c4a0670b",
+          "objective": 3632715.281808801
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#17cce2674079",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-a13da236edef295b",
+          "objective": 3636640.2678199313
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#0ccd940f1232",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-2663c6d04f289b58+syn-9a1726e4c4a0670b",
+          "objective": 3642440.340081624
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#46ddad6ef870",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-2663c6d04f289b58+syn-a13da236edef295b",
+          "objective": 3636940.79508201
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#d73f3849068f",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-9a1726e4c4a0670b+syn-a13da236edef295b",
+          "objective": 3632624.1165919495
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#5d1f04d99cc1",
+          "parent": "exp4|exp4-pool-v1|3lines#d73f3849068f",
+          "move": "drop:syn-91cfb5fd76db5ab6",
+          "objective": 3645378.8422609433
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#17547eff48bc",
+          "parent": "exp4|exp4-pool-v1|3lines#d73f3849068f",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-2663c6d04f289b58",
+          "objective": 3642957.7788427584
+        }
+      ]
+    },
+    {
+      "case": "large_gap",
+      "complementarity": "the largest measured deception: greedy stops two lines short of an optimum worth 18,901 more in objective, because the pair it needs is only worth adding together",
+      "n_networks_enumerated": 25,
+      "optimum": [
+        "syn-0811e763f266fdf9",
+        "syn-47ece08f5664f6eb",
+        "syn-f3421db8fc18598a"
+      ],
+      "optimum_objective": 3623241.1731768716,
+      "optimum_fitness": {
+        "objective": 3623241.1731768716,
+        "lambda": 2.0,
+        "generalized_cost": 9039.257657010972,
+        "unserved_demand": 30118.34929599884,
+        "served_demand": 830.6507040011612,
+        "gc_per_served_trip": 10.882140487535583,
+        "revenue_veh_hours": 121.95555555555556,
+        "peak_vehicles": 17.704250000000002
+      },
+      "optimum_route_fates": [
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 7.5
+        },
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 10.0
+        },
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-0811e763f266fdf9",
+          "period": "pm_peak",
+          "fate": "active",
+          "headway_min": 7.5
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 180.0
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "early",
+          "fate": "active",
           "headway_min": 30.0
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-47ece08f5664f6eb",
+          "period": "pm_peak",
+          "fate": "active",
+          "headway_min": 180.0
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-8352b3f4b3bcd2f2",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 6.0
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 6.0
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-f3421db8fc18598a",
+          "period": "pm_peak",
+          "fate": "active",
+          "headway_min": 6.0
+        }
+      ],
+      "greedy": [
+        "syn-47ece08f5664f6eb",
+        "syn-e8ce379fa4507794"
+      ],
+      "greedy_objective": 3642142.0740542635,
+      "greedy_evaluations": 9,
+      "greedy_missed_optimum": true,
+      "gen2": [
+        "syn-0811e763f266fdf9",
+        "syn-47ece08f5664f6eb",
+        "syn-f3421db8fc18598a"
+      ],
+      "gen2_objective": 3623241.1731768716,
+      "gen2_evaluations": 22,
+      "gen2_recovered_optimum": true,
+      "gen2_seconds": 16.34980320930481,
+      "oracle_seconds": 19.230289459228516,
+      "case_is_deceptive": true,
+      "gen2_path": [
+        {
+          "state": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "parent": null,
+          "move": "seed",
+          "objective": 3642444.6997391996
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#a71de29ada8a",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-0811e763f266fdf9",
+          "objective": 3647247.4304964226
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#747bb75d11c5",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-47ece08f5664f6eb",
+          "objective": 3642142.0740542635
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#740a340a2267",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-8352b3f4b3bcd2f2",
+          "objective": 3647853.0113903615
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-f3421db8fc18598a",
+          "objective": 3647248.3946471503
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#e88a9f67d7ae",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "swap:syn-e8ce379fa4507794->syn-0811e763f266fdf9",
+          "objective": 3648034.6864306433
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#05431c245e91",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "swap:syn-e8ce379fa4507794->syn-47ece08f5664f6eb",
+          "objective": 3650016.3087408063
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#ae7f23ebf11f",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "swap:syn-e8ce379fa4507794->syn-8352b3f4b3bcd2f2",
+          "objective": 3648255.8813772583
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#efd9f4448b4e",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "swap:syn-e8ce379fa4507794->syn-f3421db8fc18598a",
+          "objective": 3648130.4325522142
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#d45e0221c0ec",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-0811e763f266fdf9+syn-47ece08f5664f6eb",
+          "objective": 3646948.9249581355
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#09f9952e5a35",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-0811e763f266fdf9+syn-8352b3f4b3bcd2f2",
+          "objective": 3635764.361897353
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-0811e763f266fdf9+syn-f3421db8fc18598a",
+          "objective": 3624722.530768391
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#ebffced3ec4c",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-47ece08f5664f6eb+syn-8352b3f4b3bcd2f2",
+          "objective": 3647843.29847368
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-47ece08f5664f6eb+syn-f3421db8fc18598a",
+          "objective": 3646950.5448185527
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#04ab844078de",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-8352b3f4b3bcd2f2+syn-f3421db8fc18598a",
+          "objective": 3639222.9311981765
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#509e131389c8",
+          "parent": "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "move": "drop:syn-e8ce379fa4507794",
+          "objective": 3623242.709242542
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "parent": "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "move": "swap:syn-e8ce379fa4507794->syn-47ece08f5664f6eb",
+          "objective": 3623241.1731768716
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#1607e8a41796",
+          "parent": "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "move": "swap:syn-e8ce379fa4507794->syn-8352b3f4b3bcd2f2",
+          "objective": 3625315.078356112
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#750f5b49c2db",
+          "parent": "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "move": "drop:syn-0811e763f266fdf9",
+          "objective": 3647816.4640270346
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#3be405c3d448",
+          "parent": "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "move": "drop:syn-f3421db8fc18598a",
+          "objective": 3647720.717905464
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+          "parent": "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "move": "swap:syn-0811e763f266fdf9->syn-8352b3f4b3bcd2f2",
+          "objective": 3638218.02187464
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#bc193752e408",
+          "parent": "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "move": "swap:syn-f3421db8fc18598a->syn-8352b3f4b3bcd2f2",
+          "objective": 3635675.783946481
+        }
+      ]
+    },
+    {
+      "case": "moderate_gap",
+      "complementarity": "greedy settles for two lines where three fit; the third is unattractive until the other two are present",
+      "n_networks_enumerated": 25,
+      "optimum": [
+        "syn-60f95ff936eeeacd",
+        "syn-91cfb5fd76db5ab6",
+        "syn-fc6d21f652a0cc01"
+      ],
+      "optimum_objective": 3628620.6269035037,
+      "optimum_fitness": {
+        "objective": 3628620.6269035037,
+        "lambda": 2.0,
+        "generalized_cost": 7465.162055213612,
+        "unserved_demand": 30176.295540402418,
+        "served_demand": 772.7044595975868,
+        "gc_per_served_trip": 9.661083176744391,
+        "revenue_veh_hours": 116.5,
+        "peak_vehicles": 17.458916666666667
+      },
+      "optimum_route_fates": [
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 6.0
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 7.5
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "pm_peak",
+          "fate": "active",
+          "headway_min": 6.0
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "am_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 15.0
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-91cfb5fd76db5ab6",
+          "period": "pm_peak",
+          "fate": "chosen_off",
+          "headway_min": null
         },
         {
           "line_id": "syn-e7c589431bb22c3b",
@@ -508,14 +883,14 @@
         {
           "line_id": "syn-fc6d21f652a0cc01",
           "period": "am_peak",
-          "fate": "chosen_off",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 7.5
         },
         {
           "line_id": "syn-fc6d21f652a0cc01",
           "period": "early",
           "fate": "active",
-          "headway_min": 12.0
+          "headway_min": 10.0
         },
         {
           "line_id": "syn-fc6d21f652a0cc01",
@@ -538,29 +913,358 @@
         {
           "line_id": "syn-fc6d21f652a0cc01",
           "period": "pm_peak",
-          "fate": "chosen_off",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 7.5
         }
       ],
       "greedy": [
-        "syn-60f95ff936eeeacd",
-        "syn-9a1726e4c4a0670b",
-        "syn-fc6d21f652a0cc01"
+        "syn-2663c6d04f289b58",
+        "syn-91cfb5fd76db5ab6"
       ],
-      "greedy_objective": 3628705.7209226736,
-      "greedy_evaluations": 15,
-      "greedy_missed_optimum": false,
+      "greedy_objective": 3636395.894030559,
+      "greedy_evaluations": 9,
+      "greedy_missed_optimum": true,
       "gen2": [
         "syn-60f95ff936eeeacd",
-        "syn-9a1726e4c4a0670b",
+        "syn-91cfb5fd76db5ab6",
         "syn-fc6d21f652a0cc01"
       ],
-      "gen2_objective": 3628705.7209226736,
-      "gen2_evaluations": 22,
+      "gen2_objective": 3628620.6269035037,
+      "gen2_evaluations": 18,
       "gen2_recovered_optimum": true,
-      "gen2_seconds": 7.236534595489502,
-      "oracle_seconds": 7.216919422149658,
-      "case_is_deceptive": false,
+      "gen2_seconds": 6.935839653015137,
+      "oracle_seconds": 8.35389757156372,
+      "case_is_deceptive": true,
+      "gen2_path": [
+        {
+          "state": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "parent": null,
+          "move": "seed",
+          "objective": 3636526.496615203
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-2663c6d04f289b58",
+          "objective": 3636395.894030559
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#3a589b3f0e7a",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-60f95ff936eeeacd",
+          "objective": 3639287.689426774
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#2f31ace16825",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-e7c589431bb22c3b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#3d0a7d6a3fb5",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add:syn-fc6d21f652a0cc01",
+          "objective": 3636614.6616013143
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-2663c6d04f289b58",
+          "objective": 3647743.141733504
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-60f95ff936eeeacd",
+          "objective": 3648130.6777763427
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-e7c589431bb22c3b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#82bd79bbe51b",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-fc6d21f652a0cc01",
+          "objective": 3649136.251220801
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#34051eabc62e",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-2663c6d04f289b58+syn-60f95ff936eeeacd",
+          "objective": 3637652.9649353204
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#35ec49393879",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-2663c6d04f289b58+syn-e7c589431bb22c3b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#970b4748cd78",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-2663c6d04f289b58+syn-fc6d21f652a0cc01",
+          "objective": 3639149.7328822794
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#644057e647f7",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-60f95ff936eeeacd+syn-e7c589431bb22c3b",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-60f95ff936eeeacd+syn-fc6d21f652a0cc01",
+          "objective": 3628620.6269035037
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#72de99c69c1a",
+          "parent": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "move": "add2:syn-e7c589431bb22c3b+syn-fc6d21f652a0cc01",
+          "objective": Infinity
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
+          "parent": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+          "move": "drop:syn-91cfb5fd76db5ab6",
+          "objective": 3633024.65465706
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#dbf38acc1cac",
+          "parent": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-2663c6d04f289b58",
+          "objective": 3634393.7773847347
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#22add0556b57",
+          "parent": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+          "move": "swap:syn-91cfb5fd76db5ab6->syn-e7c589431bb22c3b",
+          "objective": Infinity
+        }
+      ]
+    },
+    {
+      "case": "greedy_overbuilds",
+      "complementarity": "greedy takes MORE lines than the optimum and is worse for it -- adding service inside a binding envelope forces frequency down elsewhere",
+      "n_networks_enumerated": 25,
+      "optimum": [
+        "syn-cc10538c6cdfdd3d",
+        "syn-e8ce379fa4507794"
+      ],
+      "optimum_objective": 3642142.0740542635,
+      "optimum_fitness": {
+        "objective": 3642142.0740542635,
+        "lambda": 2.0,
+        "generalized_cost": 2462.529825464896,
+        "unserved_demand": 30330.662868573323,
+        "served_demand": 618.337131426677,
+        "gc_per_served_trip": 3.9825035572150576,
+        "revenue_veh_hours": 83.38333333333333,
+        "peak_vehicles": 17.746416666666665
+      },
+      "optimum_route_fates": [
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-2663c6d04f289b58",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-60f95ff936eeeacd",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "am_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 10.0
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-cc10538c6cdfdd3d",
+          "period": "pm_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d5325fe875cf4d92",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 5.0
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "early",
+          "fate": "active",
+          "headway_min": 5.0
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-e8ce379fa4507794",
+          "period": "pm_peak",
+          "fate": "active",
+          "headway_min": 5.0
+        }
+      ],
+      "greedy": [
+        "syn-2663c6d04f289b58",
+        "syn-60f95ff936eeeacd",
+        "syn-e8ce379fa4507794"
+      ],
+      "greedy_objective": 3645546.069348904,
+      "greedy_evaluations": 10,
+      "greedy_missed_optimum": true,
+      "gen2": [
+        "syn-cc10538c6cdfdd3d",
+        "syn-e8ce379fa4507794"
+      ],
+      "gen2_objective": 3642142.0740542635,
+      "gen2_evaluations": 23,
+      "gen2_recovered_optimum": true,
+      "gen2_seconds": 15.494414567947388,
+      "oracle_seconds": 16.751964807510376,
+      "case_is_deceptive": true,
       "gen2_path": [
         {
           "state": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
@@ -572,25 +1276,25 @@
           "state": "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
           "move": "add:syn-60f95ff936eeeacd",
-          "objective": 3646471.5092305867
+          "objective": 3646344.2665271065
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#96f7de653836",
+          "state": "exp4|exp4-pool-v1|2lines#732fc5db6aa8",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "add:syn-9a1726e4c4a0670b",
-          "objective": 3643055.5142739033
+          "move": "add:syn-cc10538c6cdfdd3d",
+          "objective": 3647429.1732083247
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#cb872578ac5a",
+          "state": "exp4|exp4-pool-v1|2lines#5846810f394b",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "move": "add:syn-d5325fe875cf4d92",
+          "objective": 3647429.1732083247
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#c0661202bea6",
+          "state": "exp4|exp4-pool-v1|2lines#247665c523d7",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "add:syn-fc6d21f652a0cc01",
-          "objective": 3639126.664518539
+          "move": "add:syn-e8ce379fa4507794",
+          "objective": 3646497.4398121797
         },
         {
           "state": "exp4|exp4-pool-v1|1lines#12fb51fae200",
@@ -599,362 +1303,467 @@
           "objective": 3648130.6777763427
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+          "state": "exp4|exp4-pool-v1|1lines#e6e3edc739cc",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "swap:syn-2663c6d04f289b58->syn-9a1726e4c4a0670b",
-          "objective": 3645775.5678006103
+          "move": "swap:syn-2663c6d04f289b58->syn-cc10538c6cdfdd3d",
+          "objective": 3650016.3087408063
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#53d637622eec",
+          "state": "exp4|exp4-pool-v1|1lines#2f55ef97d559",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "swap:syn-2663c6d04f289b58->syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "move": "swap:syn-2663c6d04f289b58->syn-d5325fe875cf4d92",
+          "objective": 3650016.3087408063
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#82bd79bbe51b",
+          "state": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
           "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
-          "move": "swap:syn-2663c6d04f289b58->syn-fc6d21f652a0cc01",
-          "objective": 3649136.251220801
+          "move": "swap:syn-2663c6d04f289b58->syn-e8ce379fa4507794",
+          "objective": 3642444.6997391996
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#dbf38acc1cac",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
+          "state": "exp4|exp4-pool-v1|3lines#c051110a7382",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-60f95ff936eeeacd+syn-cc10538c6cdfdd3d",
+          "objective": 3646058.935010081
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#7fbc31d4ddd1",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-60f95ff936eeeacd+syn-d5325fe875cf4d92",
+          "objective": 3646058.935010081
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#7cb1083e64b3",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-60f95ff936eeeacd+syn-e8ce379fa4507794",
+          "objective": 3645546.069348904
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#a08df25aae20",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-cc10538c6cdfdd3d+syn-d5325fe875cf4d92",
+          "objective": 3647429.1732083247
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#6c92d5c6db24",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-cc10538c6cdfdd3d+syn-e8ce379fa4507794",
+          "objective": 3646486.970759102
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#3a2b960b5923",
+          "parent": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "move": "add2:syn-d5325fe875cf4d92+syn-e8ce379fa4507794",
+          "objective": 3646486.970759102
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#8d08a1f3a789",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
           "move": "add:syn-60f95ff936eeeacd",
-          "objective": 3634547.4868437164
+          "objective": 3647272.4693136136
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#79664245d19b",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
-          "move": "add:syn-9a1726e4c4a0670b",
-          "objective": 3634616.8881172617
+          "state": "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-cc10538c6cdfdd3d",
+          "objective": 3642142.0740542635
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#8820e449af2c",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|2lines#5f8626aca7d6",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add:syn-d5325fe875cf4d92",
+          "objective": 3642142.0740542635
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
-          "move": "swap:syn-2663c6d04f289b58->syn-60f95ff936eeeacd",
-          "objective": 3633084.7616241532
+          "state": "exp4|exp4-pool-v1|3lines#17ff012a1e2c",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-60f95ff936eeeacd+syn-cc10538c6cdfdd3d",
+          "objective": 3646974.922097693
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#9d05ddb33fad",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
-          "move": "swap:syn-2663c6d04f289b58->syn-9a1726e4c4a0670b",
-          "objective": 3644433.3763331133
+          "state": "exp4|exp4-pool-v1|3lines#87cde3722a1e",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-60f95ff936eeeacd+syn-d5325fe875cf4d92",
+          "objective": 3646974.922097693
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#b682e1106edb",
-          "parent": "exp4|exp4-pool-v1|2lines#c0661202bea6",
-          "move": "swap:syn-2663c6d04f289b58->syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|3lines#e5f70bcd8d08",
+          "parent": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "move": "add2:syn-cc10538c6cdfdd3d+syn-d5325fe875cf4d92",
+          "objective": 3642142.0740542635
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#0e26ff2d9c6e",
-          "parent": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
-          "move": "add:syn-9a1726e4c4a0670b",
-          "objective": 3628705.7209226736
+          "state": "exp4|exp4-pool-v1|2lines#b9388ed491b0",
+          "parent": "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+          "move": "swap:syn-e8ce379fa4507794->syn-60f95ff936eeeacd",
+          "objective": 3647817.218669844
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#22add0556b57",
-          "parent": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#fe6de1ad549f",
-          "parent": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
-          "move": "swap:syn-fc6d21f652a0cc01->syn-9a1726e4c4a0670b",
-          "objective": 3643445.3374309554
-        },
-        {
-          "state": "exp4|exp4-pool-v1|2lines#ab3589834314",
-          "parent": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
-          "move": "swap:syn-fc6d21f652a0cc01->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#3d41892db6c6",
-          "parent": "exp4|exp4-pool-v1|3lines#0e26ff2d9c6e",
-          "move": "swap:syn-60f95ff936eeeacd->syn-e7c589431bb22c3b",
-          "objective": Infinity
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#0fdaa19fd243",
-          "parent": "exp4|exp4-pool-v1|3lines#0e26ff2d9c6e",
-          "move": "swap:syn-fc6d21f652a0cc01->syn-2663c6d04f289b58",
-          "objective": 3641873.516249777
-        },
-        {
-          "state": "exp4|exp4-pool-v1|3lines#4d693679bf37",
-          "parent": "exp4|exp4-pool-v1|3lines#0e26ff2d9c6e",
-          "move": "swap:syn-fc6d21f652a0cc01->syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|2lines#5ff7d7fe252c",
+          "parent": "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+          "move": "swap:syn-e8ce379fa4507794->syn-d5325fe875cf4d92",
+          "objective": 3650016.3087408063
         }
       ]
     },
     {
-      "case": "legacy_vs_synthetic",
-      "complementarity": "a reconstructed legacy line against synthetic alternatives, so the incumbent-is-optimal case is in the suite too",
-      "n_networks_enumerated": 14,
+      "case": "weak_junction",
+      "complementarity": "the smallest stop overlap in the suite (6 shared stops), so the complementarity is thin and the gap is only 633 -- included because a suite of only dramatic cases would not test the margin",
+      "n_networks_enumerated": 25,
       "optimum": [
-        "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
+        "syn-0a0e2e5cac7df60e",
+        "syn-d0292863e848ff46",
+        "syn-ffe3ea8843390b99"
       ],
-      "optimum_objective": 3633270.7722727745,
+      "optimum_objective": 3636083.6261476353,
       "optimum_fitness": {
-        "objective": 3633270.7722727745,
+        "objective": 3636083.6261476353,
         "lambda": 2.0,
-        "generalized_cost": 5520.9408563739335,
-        "unserved_demand": 30231.248595136673,
-        "served_demand": 717.7514048633327,
-        "gc_per_served_trip": 7.691995890171999,
-        "revenue_veh_hours": 118.71333333333334,
-        "peak_vehicles": 9.9015
+        "generalized_cost": 5733.561986117103,
+        "unserved_demand": 30252.917201345983,
+        "served_demand": 696.0827986540197,
+        "gc_per_served_trip": 8.236896526108392,
+        "revenue_veh_hours": 89.63777777777777,
+        "peak_vehicles": 9.804388888888887
       },
       "optimum_route_fates": [
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "am_peak",
-          "fate": "absent",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 7.5
         },
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "early",
-          "fate": "absent",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 15.0
         },
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "evening",
-          "fate": "absent",
+          "fate": "chosen_off",
           "headway_min": null
         },
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "midday",
-          "fate": "absent",
+          "fate": "chosen_off",
           "headway_min": null
         },
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "owl",
-          "fate": "absent",
+          "fate": "chosen_off",
           "headway_min": null
         },
         {
           "line_id": "syn-0a0e2e5cac7df60e",
           "period": "pm_peak",
-          "fate": "absent",
+          "fate": "active",
+          "headway_min": 7.5
+        },
+        {
+          "line_id": "syn-d0292863e848ff46",
+          "period": "am_peak",
+          "fate": "chosen_off",
           "headway_min": null
         },
         {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "am_peak",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
+          "line_id": "syn-d0292863e848ff46",
           "period": "early",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "evening",
-          "fate": "active",
-          "headway_min": 12.0
-        },
-        {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "midday",
           "fate": "active",
           "headway_min": 10.0
         },
         {
-          "line_id": "syn-9a1726e4c4a0670b",
+          "line_id": "syn-d0292863e848ff46",
+          "period": "evening",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d0292863e848ff46",
+          "period": "midday",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d0292863e848ff46",
           "period": "owl",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-d0292863e848ff46",
+          "period": "pm_peak",
+          "fate": "chosen_off",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-dcef27a3822e47f8",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "am_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "early",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "evening",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "midday",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "owl",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-edf252439b3ffff1",
+          "period": "pm_peak",
+          "fate": "absent",
+          "headway_min": null
+        },
+        {
+          "line_id": "syn-ffe3ea8843390b99",
+          "period": "am_peak",
+          "fate": "active",
+          "headway_min": 24.0
+        },
+        {
+          "line_id": "syn-ffe3ea8843390b99",
+          "period": "early",
           "fate": "active",
           "headway_min": 40.0
         },
         {
-          "line_id": "syn-9a1726e4c4a0670b",
-          "period": "pm_peak",
-          "fate": "active",
-          "headway_min": 30.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "am_peak",
-          "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
-          "period": "early",
-          "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-e33ebec18132c464",
+          "line_id": "syn-ffe3ea8843390b99",
           "period": "evening",
-          "fate": "chosen_off",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 40.0
         },
         {
-          "line_id": "syn-e33ebec18132c464",
+          "line_id": "syn-ffe3ea8843390b99",
           "period": "midday",
-          "fate": "chosen_off",
-          "headway_min": null
+          "fate": "active",
+          "headway_min": 24.0
         },
         {
-          "line_id": "syn-e33ebec18132c464",
+          "line_id": "syn-ffe3ea8843390b99",
           "period": "owl",
           "fate": "chosen_off",
           "headway_min": null
         },
         {
-          "line_id": "syn-e33ebec18132c464",
+          "line_id": "syn-ffe3ea8843390b99",
           "period": "pm_peak",
           "fate": "active",
-          "headway_min": 5.0
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "am_peak",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "early",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "evening",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "midday",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "owl",
-          "fate": "absent",
-          "headway_min": null
-        },
-        {
-          "line_id": "syn-e7c589431bb22c3b",
-          "period": "pm_peak",
-          "fate": "absent",
-          "headway_min": null
+          "headway_min": 24.0
         }
       ],
       "greedy": [
-        "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
+        "syn-0a0e2e5cac7df60e",
+        "syn-d0292863e848ff46",
+        "syn-dcef27a3822e47f8"
       ],
-      "greedy_objective": 3633270.7722727745,
+      "greedy_objective": 3636716.735227376,
       "greedy_evaluations": 10,
-      "greedy_missed_optimum": false,
+      "greedy_missed_optimum": true,
       "gen2": [
-        "syn-9a1726e4c4a0670b",
-        "syn-e33ebec18132c464"
+        "syn-0a0e2e5cac7df60e",
+        "syn-d0292863e848ff46",
+        "syn-ffe3ea8843390b99"
       ],
-      "gen2_objective": 3633270.7722727745,
-      "gen2_evaluations": 12,
+      "gen2_objective": 3636083.6261476353,
+      "gen2_evaluations": 22,
       "gen2_recovered_optimum": true,
-      "gen2_seconds": 2.2117645740509033,
-      "oracle_seconds": 2.2987654209136963,
-      "case_is_deceptive": false,
+      "gen2_seconds": 12.744755268096924,
+      "oracle_seconds": 14.897600889205933,
+      "case_is_deceptive": true,
       "gen2_path": [
         {
-          "state": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
+          "state": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
           "parent": null,
           "move": "seed",
+          "objective": 3650033.6289759376
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#1d9113de282d",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add:syn-0a0e2e5cac7df60e",
+          "objective": 3642287.9841278046
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#ed16b935a26f",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add:syn-d0292863e848ff46",
+          "objective": 3639317.4980905526
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#32d1e6ea1a96",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add:syn-edf252439b3ffff1",
+          "objective": 3647478.1176587488
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#8cff74339bb9",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add:syn-ffe3ea8843390b99",
+          "objective": 3647250.2565381476
+        },
+        {
+          "state": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "swap:syn-dcef27a3822e47f8->syn-0a0e2e5cac7df60e",
           "objective": 3642534.2871622923
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#5c38157800cd",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "add:syn-9a1726e4c4a0670b",
-          "objective": 3638197.964796587
+          "state": "exp4|exp4-pool-v1|1lines#ad3c70688c71",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "swap:syn-dcef27a3822e47f8->syn-d0292863e848ff46",
+          "objective": 3639436.5585639034
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#9f84f56a6df6",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "add:syn-e33ebec18132c464",
-          "objective": 3641815.879640413
+          "state": "exp4|exp4-pool-v1|1lines#0c6640d0ecf0",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "swap:syn-dcef27a3822e47f8->syn-edf252439b3ffff1",
+          "objective": 3647747.8270029104
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#15808c737546",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|1lines#b2185b7a5336",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "swap:syn-dcef27a3822e47f8->syn-ffe3ea8843390b99",
+          "objective": 3647176.5764617682
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "swap:syn-0a0e2e5cac7df60e->syn-9a1726e4c4a0670b",
-          "objective": 3645814.194618431
+          "state": "exp4|exp4-pool-v1|3lines#89cb2314e11f",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-0a0e2e5cac7df60e+syn-d0292863e848ff46",
+          "objective": 3636716.735227376
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#8f830a8cb1b1",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "swap:syn-0a0e2e5cac7df60e->syn-e33ebec18132c464",
-          "objective": 3637643.325899447
+          "state": "exp4|exp4-pool-v1|3lines#cd265f60c2bf",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-0a0e2e5cac7df60e+syn-edf252439b3ffff1",
+          "objective": 3646788.8670109
         },
         {
-          "state": "exp4|exp4-pool-v1|1lines#53d637622eec",
-          "parent": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
-          "move": "swap:syn-0a0e2e5cac7df60e->syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|3lines#c1a0bd986e81",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-0a0e2e5cac7df60e+syn-ffe3ea8843390b99",
+          "objective": 3639633.9904183513
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "parent": "exp4|exp4-pool-v1|1lines#8f830a8cb1b1",
-          "move": "add:syn-9a1726e4c4a0670b",
-          "objective": 3633270.7722727745
+          "state": "exp4|exp4-pool-v1|3lines#69bc5bc6d2d5",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-d0292863e848ff46+syn-edf252439b3ffff1",
+          "objective": 3646837.95206909
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#22c989780f30",
-          "parent": "exp4|exp4-pool-v1|1lines#8f830a8cb1b1",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|3lines#9280f3298e25",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-d0292863e848ff46+syn-ffe3ea8843390b99",
+          "objective": 3636763.715412668
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#fea0b1183156",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "add:syn-0a0e2e5cac7df60e",
-          "objective": 3637487.9462700663
+          "state": "exp4|exp4-pool-v1|3lines#528df31fc657",
+          "parent": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "move": "add2:syn-edf252439b3ffff1+syn-ffe3ea8843390b99",
+          "objective": 3644787.2203880213
         },
         {
-          "state": "exp4|exp4-pool-v1|3lines#900b2a743306",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "add:syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|2lines#6fef689660dd",
+          "parent": "exp4|exp4-pool-v1|3lines#89cb2314e11f",
+          "move": "drop:syn-dcef27a3822e47f8",
+          "objective": 3638714.748804967
         },
         {
-          "state": "exp4|exp4-pool-v1|2lines#43e474581aa7",
-          "parent": "exp4|exp4-pool-v1|2lines#b717972be51c",
-          "move": "swap:syn-e33ebec18132c464->syn-e7c589431bb22c3b",
-          "objective": Infinity
+          "state": "exp4|exp4-pool-v1|3lines#50066a6eed7a",
+          "parent": "exp4|exp4-pool-v1|3lines#89cb2314e11f",
+          "move": "swap:syn-dcef27a3822e47f8->syn-edf252439b3ffff1",
+          "objective": 3637810.6909981957
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#bd2af3a0e5f0",
+          "parent": "exp4|exp4-pool-v1|3lines#89cb2314e11f",
+          "move": "swap:syn-dcef27a3822e47f8->syn-ffe3ea8843390b99",
+          "objective": 3636083.6261476353
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#d3ae84679b25",
+          "parent": "exp4|exp4-pool-v1|3lines#bd2af3a0e5f0",
+          "move": "drop:syn-0a0e2e5cac7df60e",
+          "objective": 3636767.108058986
+        },
+        {
+          "state": "exp4|exp4-pool-v1|2lines#663b58c1696f",
+          "parent": "exp4|exp4-pool-v1|3lines#bd2af3a0e5f0",
+          "move": "drop:syn-d0292863e848ff46",
+          "objective": 3639813.818101552
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#8eb4a5939555",
+          "parent": "exp4|exp4-pool-v1|3lines#bd2af3a0e5f0",
+          "move": "swap:syn-0a0e2e5cac7df60e->syn-edf252439b3ffff1",
+          "objective": 3644168.2598987427
+        },
+        {
+          "state": "exp4|exp4-pool-v1|3lines#57672fe82403",
+          "parent": "exp4|exp4-pool-v1|3lines#bd2af3a0e5f0",
+          "move": "swap:syn-d0292863e848ff46->syn-edf252439b3ffff1",
+          "objective": 3643769.0850163805
         }
       ]
     }
   ],
-  "n_deceptive": 0,
-  "n_recovered": 3,
-  "gate_4_14_closes": false
+  "n_deceptive": 5,
+  "n_recovered": 5,
+  "gate_4_14_closes": true
 }
