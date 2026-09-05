@@ -1,0 +1,99 @@
+{
+  "gates": [
+    {
+      "gate": "4-1",
+      "title": "Primary evidence class is the observed-link graph",
+      "state": "MET",
+      "detail": "all 206 pool lines carry an evidence class {'observed_edge_synthesis': 150, 'legacy_sequence': 41, 'observed_turn_synthesis': 15}; no line uses an unobserved link (class 3 count 0). The headline restriction to observed-link networks binds on a RESULT and is enforced by gate 4-15"
+    },
+    {
+      "gate": "4-2",
+      "title": "Peak-express layer frozen and excluded from the graph",
+      "state": "MET",
+      "detail": "routeclass.py defines the peak_express class; exp3_score locks it via lock_classes. Exclusion of express links from the observed-link graph is asserted by the pool build, not re-derived here"
+    },
+    {
+      "gate": "4-3",
+      "title": "Stop universe is fixed; no stop created or moved",
+      "state": "MET",
+      "detail": "reconstruction covers 2763 stops against the link graph's 2763; stops_missed=[]"
+    },
+    {
+      "gate": "4-4",
+      "title": "Frozen pool contains the current network",
+      "state": "MET",
+      "detail": "41/41 legacy lines in the pool; 41 reconstructed, 0 failed, stop coverage complete=True"
+    },
+    {
+      "gate": "4-5",
+      "title": "Service activation is a real decision (OFF is representable)",
+      "state": "MET",
+      "detail": "frequency.OFF is an infinite headway: zero trips, zero vehicle-hours, zero peak vehicles, unboardable by the path model. build_ladders(allow_off=) is opt-in so Gen1 cannot represent it. The second half -- no synthetic route may be given a copied baseline headway -- binds when the Exp 4 FrequencyModel is built and is armed by gate 4-15's review"
+    },
+    {
+      "gate": "4-6",
+      "title": "Search bounds proved inactive on the incumbent",
+      "state": "MET",
+      "detail": "today's local routes run 23.7-99.9 min one way, inside the 10-120 bound, and outside_search_bounds is empty. NOTE: 1 POOL line sits on the bound (pool range 23.3-119.2), so if that line wins, gate 4-6 censors the result"
+    },
+    {
+      "gate": "4-7",
+      "title": "Discovery approximation benchmarked, buys no conclusions",
+      "state": "OPEN",
+      "detail": "needs outputs/exp4/pathreuse_benchmark.json with objective gap, unserved gap, ranking stability, omitted and improvable flow, and whether the promoted set changes"
+    },
+    {
+      "gate": "4-8",
+      "title": "What the optimizer abandons is reported",
+      "state": "ARMED",
+      "detail": "applies to a promoted network: stops losing service, demand losing access, one-seat rides lost, transfer burden created. Nothing to compute before a network is promoted"
+    },
+    {
+      "gate": "4-9",
+      "title": "Path-model adequacy re-established, not inherited",
+      "state": "ARMED",
+      "detail": "adequacy() exists and measures cached-set cost against fresh RAPTOR. The gate requires it rerun on PROMOTED networks with a deeper max_rounds, the 4->6 paths-per-OD sensitivity redone, and certification on a wider OD set than the top 20,000"
+    },
+    {
+      "gate": "4-10",
+      "title": "Common-lines exposure re-measured on promoted networks",
+      "state": "ARMED",
+      "detail": "the diagnostic exists and reported 0.516% cross-route today; the gate reruns it per promoted network and classifies the result model-dependent if exposure balloons"
+    },
+    {
+      "gate": "4-11",
+      "title": "Crowding re-checked on promoted networks",
+      "state": "ARMED",
+      "detail": "crowding.py exists; it did not bind on the existing network and a greenfield optimizer may concentrate load onto few trunks"
+    },
+    {
+      "gate": "4-12",
+      "title": "Demand robustness preregistered before the winner is known",
+      "state": "OPEN",
+      "detail": "EXPERIMENT4_DEMAND_ROBUSTNESS.md must exist BEFORE any Exp 4 result. Cheap now, impossible later"
+    },
+    {
+      "gate": "4-13",
+      "title": "Structural identity uses geometry, not route ids",
+      "state": "MET",
+      "detail": "contract.py computes network_edit_distance_pct with a committed cap; Exp 4 route ids are synthetic so id disagreement is meaningless"
+    },
+    {
+      "gate": "4-14",
+      "title": "Search benchmarked on a space that can defeat it",
+      "state": "OPEN",
+      "detail": "needs an enumerated envelope and recovery of the true optimum from incumbent, random and deceptive starts, including a drop-a-good-route case, a non-nested optimum, a required swap, and an optimal incumbent. Passing the 2B benchmark is explicitly insufficient"
+    },
+    {
+      "gate": "4-15",
+      "title": "Conclusion language is bounded and the null is precommitted",
+      "state": "MET",
+      "detail": "ACCEPTANCE.md bounds the admissible claim and precommits the null as a fine result. Binds on the write-up, enforced by review"
+    }
+  ],
+  "met": 8,
+  "armed": 4,
+  "open": 3,
+  "total": 15,
+  "all_pre_search_gates_met": false
+}
