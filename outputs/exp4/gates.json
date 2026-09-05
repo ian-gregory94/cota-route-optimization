@@ -40,7 +40,7 @@
       "gate": "4-7",
       "title": "Discovery approximation benchmarked, buys no conclusions",
       "state": "ARMED",
-      "detail": "the SUBSTRATE half is measured: an assembled network reproduces the legacy scoring path exactly (worst relative difference 0.0 across seven FitnessVector fields, outputs/exp4/equivalence_isolated.json). The gate's own subject -- a frozen supernetwork master path set versus exact per-network rebuilds -- needs the outer search to produce networks to compare, so it is ARMED, not met"
+      "detail": "the SUBSTRATE half is measured: an assembled network reproduces the legacy scoring path exactly (worst relative difference 0.0 across seven FitnessVector fields, outputs/exp4/equivalence_isolated.json). The gate's own subject -- a frozen supernetwork master path set versus exact per-network rebuilds -- is NOT YET BUILT. What was measured on real Gen2 networks is naive cross-network cache sharing, and it is invalid: worst 1.307 relative on revenue_veh_hours, 0.958 on generalized_cost, though ranking survived (0 inversions in 17 pairs). outputs/exp4/pathreuse_benchmark.json"
     },
     {
       "gate": "4-8",

@@ -130,23 +130,26 @@ def checks() -> list[tuple[str, str, str, str]]:
         "peak vehicles, unboardable by the path model. build_ladders(allow_off=) "
         "defaults False so Gen1 cannot represent it. tests/test_off_service.py"
         if off_ok else "no OFF representation")
+    # The FILE existing is not the gate passing -- an earlier version of this
+    # check tested only for the artifact and reported MET on a benchmark whose
+    # own verdict was False. Third time a check here over-claimed; read the
+    # verdict, never the artifact.
+    _pr = _json(OUT / "pathreuse_benchmark.json")
     add("C9", "Discovery path reuse benchmarked against exact rebuilds",
-        MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
-        "SUBSTRATE BUILT AND MEASURED: an assembled network reproduces the "
-        "legacy scoring path EXACTLY (0.000e+00 across seven FitnessVector "
-        "fields, outputs/exp4/equivalence_isolated.json). The gate's own "
-        "subject -- master path set vs exact per-network rebuilds -- still "
-        "needs the outer search to generate networks to compare. See D34 for "
-        "the pattern-order sensitivity this test discovered")
+        MET if (_pr or {}).get("gate_4_7_closes") else OPEN,
+        "RUN on real Gen2 networks, and NOT closed. Substrate equivalence is "
+        "exact (0.000e+00 on all seven fields). But the gate's own subject -- a "
+        "frozen SUPERNETWORK master path set -- is not built; what was measured "
+        "is naive cross-network cache sharing, which is invalid at worst 1.307 "
+        "relative on revenue_veh_hours (ranking survived, 0 inversions in 17 "
+        "pairs). outputs/exp4/pathreuse_benchmark.json")
+    _c10 = _json(OUT / "c10_benchmark.json")
     add("C10", "Outer network search recovers an exhaustively known optimum",
-        OPEN,
-        "RUN, and NOT CLOSED for a measured reason. The assembly layer now "
-        "exists and every feasible network in four enumerated spaces was "
-        "assembled, scored and ranked with the optimum found by enumeration. "
-        "But the four deceptive cases cannot be built on a submodular surrogate "
-        "(535,599 diminishing-returns checks, 0 violations) where greedy has a "
-        "(1-1/e) guarantee and found every optimum. Needs the production "
-        "evaluator and the outer search. outputs/exp4/known_optimum_recovery.json")
+        MET if (_c10 or {}).get("gate_4_14_closes") else OPEN,
+        "CLOSED on the production evaluator: 5 of 5 cases genuinely defeat "
+        "add-only greedy and Gen2 recovers all 5 exact optima. Cases were "
+        "discovered by scanning 45 spaces, not hand-tuned. "
+        "outputs/exp4/c10_benchmark.json")
     add("C11", "Committed gate on common-lines exposure",
         MET if _acceptance_gate("Gate 4-10") else OPEN,
         "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the "
@@ -249,12 +252,16 @@ def checks() -> list[tuple[str, str, str, str]]:
     bridge = OUT.parent / "gen1_gen2_bridge.json"
     add("D21b", "Gen1->Gen2 bridge suite has run",
         MET if bridge.exists() else OPEN,
-        "BLOCKED: there is no Gen2 to bridge to. methodology_generation exists "
-        "as a field defaulting to gen1, but no alternative algorithm is "
-        "implemented -- no exact/MILP/CP-SAT frequency solver, no incremental "
-        "evaluator. Gen1 IS frozen (gen1-frozen-v1), which was the "
-        "precondition; the rest is Gen2 development. See "
-        "EXPERIMENT4_BLOCKERS.md")
+        "PARTIALLY UNBLOCKED, still open. A Gen2 OUTER SEARCH now exists "
+        "(cota_opt.gen2_search) and produces scored networks with provenance "
+        "through the frozen interface. But METHODOLOGY's bridge compares the "
+        "two generations ON THE SAME QUESTION, and Gen1 never searched over "
+        "whole networks -- it optimized frequencies inside a fixed geometry and "
+        "mutated that geometry. There is no Gen1 answer for a Gen2 "
+        "network-selection result to agree or disagree with. The bridge needs "
+        "the OTHER half of Gen2: a replacement frequency solver that re-answers "
+        "a Gen1 question, which METHODOLOGY lists as the exact frequency "
+        "benchmark and the optimization-gap measurement. Neither is started")
 
     merged = (ROOT / "src" / "cota_opt" / "firewall" / "search_allowance.py")
     staged = (ROOT / "scripts" / "exp4_staging" / "search_allowance.py")

@@ -1,0 +1,602 @@
+{
+  "n_networks": 11,
+  "worst_rel_diff": 1.3067125393455825,
+  "ranking_inversions": 0,
+  "ranking_pairs": 17,
+  "fields_compared": [
+    "generalized_cost",
+    "unserved_demand",
+    "served_demand",
+    "revenue_veh_hours",
+    "peak_vehicles",
+    "mean_wait_min",
+    "gc_per_served_trip"
+  ],
+  "seconds": 39.43578028678894,
+  "networks": [
+    [
+      "syn-2663c6d04f289b58"
+    ],
+    [
+      "syn-2663c6d04f289b58",
+      "syn-91cfb5fd76db5ab6"
+    ],
+    [
+      "syn-e8ce379fa4507794"
+    ],
+    [
+      "syn-0811e763f266fdf9",
+      "syn-e8ce379fa4507794"
+    ],
+    [
+      "syn-47ece08f5664f6eb",
+      "syn-e8ce379fa4507794"
+    ],
+    [
+      "syn-8352b3f4b3bcd2f2",
+      "syn-e8ce379fa4507794"
+    ],
+    [
+      "syn-e8ce379fa4507794",
+      "syn-f3421db8fc18598a"
+    ],
+    [
+      "syn-91cfb5fd76db5ab6"
+    ],
+    [
+      "syn-2663c6d04f289b58",
+      "syn-91cfb5fd76db5ab6"
+    ],
+    [
+      "syn-60f95ff936eeeacd",
+      "syn-91cfb5fd76db5ab6"
+    ],
+    [
+      "syn-91cfb5fd76db5ab6",
+      "syn-fc6d21f652a0cc01"
+    ]
+  ],
+  "rows": [
+    {
+      "case": "greedy_finds_nothing",
+      "state_key": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+      "lines": [
+        "syn-2663c6d04f289b58"
+      ],
+      "objective_rebuild": 3647789.8434759495,
+      "objective_reuse": 3647789.8434759495,
+      "objective_rel_diff": 0.0,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 1349.7124286615158,
+          "reuse": 1349.7124286615158,
+          "rel_diff": 0.0
+        },
+        "unserved_demand": {
+          "rebuild": 30387.00109206073,
+          "reuse": 30387.00109206073,
+          "rel_diff": 0.0
+        },
+        "served_demand": {
+          "rebuild": 561.9989079392703,
+          "reuse": 561.9989079392703,
+          "rel_diff": 0.0
+        },
+        "revenue_veh_hours": {
+          "rebuild": 16.527777777777775,
+          "reuse": 16.527777777777775,
+          "rel_diff": 0.0
+        },
+        "peak_vehicles": {
+          "rebuild": 9.50347222222222,
+          "reuse": 9.50347222222222,
+          "rel_diff": 0.0
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 2.4016282053120395,
+          "reuse": 2.4016282053120395,
+          "rel_diff": 0.0
+        }
+      },
+      "worst_rel_diff": 0.0
+    },
+    {
+      "case": "greedy_finds_nothing",
+      "state_key": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+      "lines": [
+        "syn-2663c6d04f289b58",
+        "syn-91cfb5fd76db5ab6"
+      ],
+      "objective_rebuild": 3637013.8019012334,
+      "objective_reuse": 3647789.8434759495,
+      "objective_rel_diff": 0.0029628816830672934,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 5917.7866405248815,
+          "reuse": 1349.7124286615158,
+          "rel_diff": 0.7719227625716155
+        },
+        "unserved_demand": {
+          "rebuild": 30259.133460505906,
+          "reuse": 30387.00109206073,
+          "rel_diff": 0.004225753249732607
+        },
+        "served_demand": {
+          "rebuild": 689.8665394940987,
+          "reuse": 561.9989079392703,
+          "rel_diff": 0.18535125888059129
+        },
+        "revenue_veh_hours": {
+          "rebuild": 63.54166666666666,
+          "reuse": 16.527777777777775,
+          "rel_diff": 0.7398907103825137
+        },
+        "peak_vehicles": {
+          "rebuild": 9.136111111111111,
+          "reuse": 9.50347222222222,
+          "rel_diff": 0.04020979020978993
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 8.578161574359854,
+          "reuse": 2.4016282053120395,
+          "rel_diff": 0.7200299639388337
+        }
+      },
+      "worst_rel_diff": 0.7719227625716155
+    },
+    {
+      "case": "large_gap",
+      "state_key": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+      "lines": [
+        "syn-e8ce379fa4507794"
+      ],
+      "objective_rebuild": 3642444.6997391996,
+      "objective_reuse": 3642444.6997391996,
+      "objective_rel_diff": 0.0,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 2217.5065108567815,
+          "reuse": 2217.5065108567815,
+          "rel_diff": 0.0
+        },
+        "unserved_demand": {
+          "rebuild": 30335.226610236194,
+          "reuse": 30335.226610236194,
+          "rel_diff": 0.0
+        },
+        "served_demand": {
+          "rebuild": 613.7733897638094,
+          "reuse": 613.7733897638094,
+          "rel_diff": 0.0
+        },
+        "revenue_veh_hours": {
+          "rebuild": 70.02666666666667,
+          "reuse": 70.02666666666667,
+          "rel_diff": 0.0
+        },
+        "peak_vehicles": {
+          "rebuild": 10.066333333333333,
+          "reuse": 10.066333333333333,
+          "rel_diff": 0.0
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 3.612907545095945,
+          "reuse": 3.612907545095945,
+          "rel_diff": 0.0
+        }
+      },
+      "worst_rel_diff": 0.0
+    },
+    {
+      "case": "large_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#a71de29ada8a",
+      "lines": [
+        "syn-0811e763f266fdf9",
+        "syn-e8ce379fa4507794"
+      ],
+      "objective_rebuild": 3647247.4304964226,
+      "objective_reuse": 3642444.6997391996,
+      "objective_rel_diff": 0.0013168096897032517,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 1411.0389974390519,
+          "reuse": 2217.5065108567815,
+          "rel_diff": 0.5715416192475318
+        },
+        "unserved_demand": {
+          "rebuild": 30381.969929158196,
+          "reuse": 30335.226610236194,
+          "rel_diff": 0.001538521663703652
+        },
+        "served_demand": {
+          "rebuild": 567.0300708418065,
+          "reuse": 613.7733897638094,
+          "rel_diff": 0.08243534395381942
+        },
+        "revenue_veh_hours": {
+          "rebuild": 31.099999999999994,
+          "reuse": 70.02666666666667,
+          "rel_diff": 1.2516613076098613
+        },
+        "peak_vehicles": {
+          "rebuild": 17.8825,
+          "reuse": 10.066333333333333,
+          "rel_diff": 0.4370846730975349
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 2.4884729576056506,
+          "reuse": 3.612907545095945,
+          "rel_diff": 0.45185726614132016
+        }
+      },
+      "worst_rel_diff": 1.2516613076098613
+    },
+    {
+      "case": "large_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#747bb75d11c5",
+      "lines": [
+        "syn-47ece08f5664f6eb",
+        "syn-e8ce379fa4507794"
+      ],
+      "objective_rebuild": 3642142.0740542635,
+      "objective_reuse": 3642444.6997391996,
+      "objective_rel_diff": 8.309002745716516e-05,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 2462.529825464896,
+          "reuse": 2217.5065108567815,
+          "rel_diff": 0.09950064850965089
+        },
+        "unserved_demand": {
+          "rebuild": 30330.662868573323,
+          "reuse": 30335.226610236194,
+          "rel_diff": 0.00015046626849686337
+        },
+        "served_demand": {
+          "rebuild": 618.337131426677,
+          "reuse": 613.7733897638094,
+          "rel_diff": 0.007380668944039979
+        },
+        "revenue_veh_hours": {
+          "rebuild": 83.36,
+          "reuse": 70.02666666666667,
+          "rel_diff": 0.15994881637875874
+        },
+        "peak_vehicles": {
+          "rebuild": 17.733,
+          "reuse": 10.066333333333333,
+          "rel_diff": 0.432338953739732
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 3.9825035572150576,
+          "reuse": 3.612907545095945,
+          "rel_diff": 0.09280494211976771
+        }
+      },
+      "worst_rel_diff": 0.432338953739732
+    },
+    {
+      "case": "large_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#740a340a2267",
+      "lines": [
+        "syn-8352b3f4b3bcd2f2",
+        "syn-e8ce379fa4507794"
+      ],
+      "objective_rebuild": 3647853.0113903615,
+      "objective_reuse": 3642444.6997391996,
+      "objective_rel_diff": 0.001482601309393363,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 1132.7929799396102,
+          "reuse": 2217.5065108567815,
+          "rel_diff": 0.9575567205359958
+        },
+        "unserved_demand": {
+          "rebuild": 30389.33515342018,
+          "reuse": 30335.226610236194,
+          "rel_diff": 0.0017805109230201745
+        },
+        "served_demand": {
+          "rebuild": 559.6648465798236,
+          "reuse": 613.7733897638094,
+          "rel_diff": 0.09668026054280411
+        },
+        "revenue_veh_hours": {
+          "rebuild": 30.357777777777777,
+          "reuse": 70.02666666666667,
+          "rel_diff": 1.3067125393455825
+        },
+        "peak_vehicles": {
+          "rebuild": 17.45572222222222,
+          "reuse": 10.066333333333333,
+          "rel_diff": 0.4233218651636044
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 2.0240559807574816,
+          "reuse": 3.612907545095945,
+          "rel_diff": 0.7849840021439786
+        }
+      },
+      "worst_rel_diff": 1.3067125393455825
+    },
+    {
+      "case": "large_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c",
+      "lines": [
+        "syn-e8ce379fa4507794",
+        "syn-f3421db8fc18598a"
+      ],
+      "objective_rebuild": 3647248.3946471503,
+      "objective_reuse": 3642444.6997391996,
+      "objective_rel_diff": 0.0013170736917728994,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 1284.4443008901803,
+          "reuse": 2217.5065108567815,
+          "rel_diff": 0.7264325975987788
+        },
+        "unserved_demand": {
+          "rebuild": 30383.03291955217,
+          "reuse": 30335.226610236194,
+          "rel_diff": 0.001573454152604094
+        },
+        "served_demand": {
+          "rebuild": 565.9670804478341,
+          "reuse": 613.7733897638094,
+          "rel_diff": 0.08446835684886042
+        },
+        "revenue_veh_hours": {
+          "rebuild": 31.02777777777778,
+          "reuse": 70.02666666666667,
+          "rel_diff": 1.256902417188899
+        },
+        "peak_vehicles": {
+          "rebuild": 17.84097222222222,
+          "reuse": 10.066333333333333,
+          "rel_diff": 0.43577439570277526
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 2.269468216903773,
+          "reuse": 3.612907545095945,
+          "rel_diff": 0.5919621690164145
+        }
+      },
+      "worst_rel_diff": 1.256902417188899
+    },
+    {
+      "case": "moderate_gap",
+      "state_key": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+      "lines": [
+        "syn-91cfb5fd76db5ab6"
+      ],
+      "objective_rebuild": 3636526.496615203,
+      "objective_reuse": 3636526.496615203,
+      "objective_rel_diff": 0.0,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 4024.7535079952604,
+          "reuse": 4024.7535079952604,
+          "rel_diff": 0.0
+        },
+        "unserved_demand": {
+          "rebuild": 30270.847859226735,
+          "reuse": 30270.847859226735,
+          "rel_diff": 0.0
+        },
+        "served_demand": {
+          "rebuild": 678.1521407732702,
+          "reuse": 678.1521407732702,
+          "rel_diff": 0.0
+        },
+        "revenue_veh_hours": {
+          "rebuild": 95.33333333333333,
+          "reuse": 95.33333333333333,
+          "rel_diff": 0.0
+        },
+        "peak_vehicles": {
+          "rebuild": 13.704166666666666,
+          "reuse": 13.704166666666666,
+          "rel_diff": 0.0
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 5.934882847093858,
+          "reuse": 5.934882847093858,
+          "rel_diff": 0.0
+        }
+      },
+      "worst_rel_diff": 0.0
+    },
+    {
+      "case": "moderate_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+      "lines": [
+        "syn-2663c6d04f289b58",
+        "syn-91cfb5fd76db5ab6"
+      ],
+      "objective_rebuild": 3636395.894030559,
+      "objective_reuse": 3636526.496615203,
+      "objective_rel_diff": 3.59153921768022e-05,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 5398.644898362282,
+          "reuse": 4024.7535079952604,
+          "rel_diff": 0.25448819402509726
+        },
+        "unserved_demand": {
+          "rebuild": 30258.31040943497,
+          "reuse": 30270.847859226735,
+          "rel_diff": 0.0004143473188726422
+        },
+        "served_demand": {
+          "rebuild": 690.6895905650325,
+          "reuse": 678.1521407732702,
+          "rel_diff": 0.018152075784877316
+        },
+        "revenue_veh_hours": {
+          "rebuild": 99.94444444444444,
+          "reuse": 95.33333333333333,
+          "rel_diff": 0.04613674263479714
+        },
+        "peak_vehicles": {
+          "rebuild": 16.355555555555554,
+          "reuse": 13.704166666666666,
+          "rel_diff": 0.162109375
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 7.816311367811135,
+          "reuse": 5.934882847093858,
+          "rel_diff": 0.24070542128929398
+        }
+      },
+      "worst_rel_diff": 0.25448819402509726
+    },
+    {
+      "case": "moderate_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#3a589b3f0e7a",
+      "lines": [
+        "syn-60f95ff936eeeacd",
+        "syn-91cfb5fd76db5ab6"
+      ],
+      "objective_rebuild": 3639287.689426774,
+      "objective_reuse": 3636526.496615203,
+      "objective_rel_diff": 0.0007587179270254334,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 3889.703319744098,
+          "reuse": 4024.7535079952604,
+          "rel_diff": 0.03471992004265443
+        },
+        "unserved_demand": {
+          "rebuild": 30294.983217558583,
+          "reuse": 30270.847859226735,
+          "rel_diff": 0.0007966783859401562
+        },
+        "served_demand": {
+          "rebuild": 654.0167824414217,
+          "reuse": 678.1521407732702,
+          "rel_diff": 0.036903270649649114
+        },
+        "revenue_veh_hours": {
+          "rebuild": 101.11111111111111,
+          "reuse": 95.33333333333333,
+          "rel_diff": 0.05714285714285722
+        },
+        "peak_vehicles": {
+          "rebuild": 17.02638888888889,
+          "reuse": 13.704166666666666,
+          "rel_diff": 0.19512195121951223
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 5.947405975155518,
+          "reuse": 5.934882847093858,
+          "rel_diff": 0.0021056454047316516
+        }
+      },
+      "worst_rel_diff": 0.19512195121951223
+    },
+    {
+      "case": "moderate_gap",
+      "state_key": "exp4|exp4-pool-v1|2lines#3d0a7d6a3fb5",
+      "lines": [
+        "syn-91cfb5fd76db5ab6",
+        "syn-fc6d21f652a0cc01"
+      ],
+      "objective_rebuild": 3636614.6616013143,
+      "objective_reuse": 3636526.496615203,
+      "objective_rel_diff": 2.4243697591100267e-05,
+      "fields": {
+        "generalized_cost": {
+          "rebuild": 4468.5153123612345,
+          "reuse": 4024.7535079952604,
+          "rel_diff": 0.09930855627559286
+        },
+        "unserved_demand": {
+          "rebuild": 30267.884552407944,
+          "reuse": 30270.847859226735,
+          "rel_diff": 9.790267349736863e-05
+        },
+        "served_demand": {
+          "rebuild": 681.1154475920598,
+          "reuse": 678.1521407732702,
+          "rel_diff": 0.004350667466529784
+        },
+        "revenue_veh_hours": {
+          "rebuild": 101.16111111111111,
+          "reuse": 95.33333333333333,
+          "rel_diff": 0.0576088747322753
+        },
+        "peak_vehicles": {
+          "rebuild": 17.05513888888889,
+          "reuse": 13.704166666666666,
+          "rel_diff": 0.19647874133732923
+        },
+        "mean_wait_min": {
+          "rebuild": 0.0,
+          "reuse": 0.0,
+          "rel_diff": 0.0
+        },
+        "gc_per_served_trip": {
+          "rebuild": 6.560584300589172,
+          "reuse": 5.934882847093858,
+          "rel_diff": 0.09537282425273044
+        }
+      },
+      "worst_rel_diff": 0.19647874133732923
+    }
+  ],
+  "what_was_measured": "naive cross-network path-set cache sharing",
+  "what_gate_4_7_describes": "a frozen SUPERNETWORK master path set, enumerated once over the union of all candidate lines -- a different object, not yet built",
+  "verdict": "naive sharing is invalid: worst 1.307 relative on revenue_veh_hours. Ranking survived (0 inversions in 17 pairs) but magnitudes did not, and gate 4-7 requires the approximation to buy no conclusions, so it may not be used. The gate stays open because its own approximation is unbuilt, not because this one failed.",
+  "gate_4_7_closes": false,
+  "note": "networks are real Gen2 search output, not a sample invented for the comparison; unknown field names are rejected"
+}

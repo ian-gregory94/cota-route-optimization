@@ -65,6 +65,11 @@ class ScoredExp4Network:
     effort: str
     seconds: float
     metrics: dict[str, Any]
+    #: All seven FitnessVector fields, verbatim. `metrics` carries the objective
+    #: and exp3's six COMPONENTS; gate 4-7 compares the fitness vector itself,
+    #: and a comparison that quietly drops a field it cannot find is a
+    #: comparison of nothing.
+    fitness: dict[str, float]
     evaluator: dict[str, Any]
     assembly: dict[str, Any]
     plan: dict[str, float]
@@ -124,6 +129,10 @@ def score_exp4_network(
         effort=f"{iterations}/{restarts}/{width}",
         seconds=time.time() - t0,
         metrics=exp3.metrics(core["fit"], lam),
+        fitness={f: float(getattr(core["fit"], f)) for f in (
+            "generalized_cost", "unserved_demand", "served_demand",
+            "revenue_veh_hours", "peak_vehicles", "mean_wait_min",
+            "gc_per_served_trip")},
         evaluator={**core["evaluator_checks"],
                    "incumbent_repair": core["repair_audit"],
                    "starts": starts, "allow_off": allow_off},

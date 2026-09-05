@@ -132,8 +132,11 @@ def gates() -> list[dict]:
       f"{eq.get('worst_rel_diff') if eq else 'n/a'} across seven FitnessVector "
       f"fields, outputs/exp4/equivalence_isolated.json). The gate's own subject "
       f"-- a frozen supernetwork master path set versus exact per-network "
-      f"rebuilds -- needs the outer search to produce networks to compare, so "
-      f"it is ARMED, not met")
+      f"rebuilds -- is NOT YET BUILT. What was measured on real Gen2 networks "
+      f"is naive cross-network cache sharing, and it is invalid: worst 1.307 "
+      f"relative on revenue_veh_hours, 0.958 on generalized_cost, though "
+      f"ranking survived (0 inversions in 17 pairs). "
+      f"outputs/exp4/pathreuse_benchmark.json")
 
     # --- 4-8 what the optimizer abandons is reported ------------------------
     g("4-8", "What the optimizer abandons is reported", ARMED,
@@ -180,19 +183,19 @@ def gates() -> list[dict]:
       "Exp 4 route ids are synthetic so id disagreement is meaningless")
 
     # --- 4-14 search benchmarked on a space that can defeat it --------------
-    ko = _j("known_optimum_recovery.json")
+    c10 = _j("c10_benchmark.json")
+    closes = bool(c10 and c10.get("gate_4_14_closes"))
     g("4-14", "Search benchmarked on a space that can defeat it",
-      OPEN,
-      "RUN and NOT CLOSED, with the reason measured. The substrate is "
-      "validated -- every feasible network in four enumerated spaces assembled, "
-      "scored and ranked, optimum found by exhaustive enumeration. But the four "
-      "deceptive cases cannot be built on a cheap surrogate: weighted set "
-      "coverage is submodular ("
-      f"{(ko or {}).get('submodularity', {}).get('diminishing_returns_checks', '?')}"
-      " checks, 0 violations), greedy carries a (1-1/e) guarantee there and "
-      "found the exact optimum in all four. The production evaluator is not "
-      "submodular, so this gate needs it and the outer search. "
-      "outputs/exp4/known_optimum_recovery.json")
+      MET if closes else OPEN,
+      f"CLOSED on the PRODUCTION evaluator: "
+      f"{(c10 or {}).get('n_deceptive', 0)} of "
+      f"{len((c10 or {}).get('cases', []))} cases genuinely defeat add-only "
+      f"greedy (strictly worse objective -- a tie is not a miss), and Gen2 "
+      f"recovers {(c10 or {}).get('n_recovered', 0)} exact optima. Cases were "
+      f"DISCOVERED by scanning 45 candidate spaces, not hand-tuned; 14 defeated "
+      f"greedy and five were frozen, one per structural mechanism. "
+      f"outputs/exp4/c10_benchmark.json"
+      if closes else "not closed")
 
     # --- 4-15 what Experiment 4 may conclude --------------------------------
     g("4-15", "Conclusion language is bounded and the null is precommitted",
