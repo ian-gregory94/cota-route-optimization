@@ -93,8 +93,8 @@
     {
       "id": "D16",
       "title": "Experiment 4 ExperimentContract exists and is in force",
-      "status": "OPEN",
-      "detail": "ExperimentContract instances exported: ['EXP4_CERTIFICATION', 'EXP4_DISCOVERY']; exp4_draft.py still says 'not yet in force'=True. The criterion has not been EXECUTED: run scripts/exp4_d16_check.py"
+      "status": "MET",
+      "detail": "14/14 checks pass in scripts/exp4_d16_check.py, which executes the criterion's three clauses separately and fires the construction guard for EVERY declared dimension in turn. Contracts in force: ['EXP4_CERTIFICATION', 'EXP4_DISCOVERY'] (digests 22579b91a8ff1f83, 2eb6a7a867f1f179). Bridge verdict SUPERSEDED. outputs/exp4/d16_check.json"
     },
     {
       "id": "D17",
@@ -129,8 +129,8 @@
     {
       "id": "D21b",
       "title": "Gen1->Gen2 bridge suite has run",
-      "status": "OPEN",
-      "detail": "the bridge has not been run: scripts/exp4_gen_bridge.py. Gen2's replacement frequency solver (cota_opt.gen2_frequency) now exists, so the Gen1 question the bridge needs -- the optimal frequency plan for one network -- can be answered by both generations"
+      "status": "MET",
+      "detail": "RUN. One real Gen1 question -- the optimal frequency plan for an assembled Exp 4 network under a pinned envelope -- answered twice, arms differing only in the solver. Verdict SUPERSEDED: the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network. Gen1 0.4s vs Gen2 2578.7s over 7,529,536 combinations. outputs/exp4/gen_bridge.json"
     },
     {
       "id": "D22",
@@ -139,8 +139,8 @@
       "detail": "merged"
     }
   ],
-  "met": 18,
-  "open": 4,
+  "met": 20,
+  "open": 2,
   "manual": 1,
   "total": 23,
   "ready": false
