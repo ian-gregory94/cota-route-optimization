@@ -134,15 +134,41 @@ def checks() -> list[tuple[str, str, str, str]]:
     # check tested only for the artifact and reported MET on a benchmark whose
     # own verdict was False. Third time a check here over-claimed; read the
     # verdict, never the artifact.
+    # C9 stays tied to the GATE'S CLOSURE, not to the benchmark having run.
+    # The looser reading -- "benchmarked" is satisfied once a benchmark exists --
+    # is available and is refused: it is the same move as reporting MET because
+    # an artifact is on disk, which this check has made three times. Readiness
+    # means discovery may proceed with reuse, and it may not.
+    _mp = _json(OUT / "masterpath_benchmark.json")
     _pr = _json(OUT / "pathreuse_benchmark.json")
+    if _mp:
+        _inv = sum(c["ranking_inversions"] for c in _mp["cases"])
+        _prs = sum(c["ranking_pairs"] for c in _mp["cases"])
+        _ld = sum(c["leader_identified"] for c in _mp["cases"])
+        _nc = len(_mp["cases"])
+        _c9_detail = (
+            f"BUILT and RUN, and NOT closed. The gate's own object -- a frozen "
+            f"supernetwork master path set, filtered per candidate -- now "
+            f"exists and was benchmarked against exact rebuilds on "
+            f"{_mp['n_candidates']} preregistered candidates: exact leader "
+            f"identified in {_ld}/{_nc} cases, {_inv}/{_prs} ranking pairs "
+            f"inverted, promoted set changes in "
+            f"{sum(c['promoted_set_changes'] for c in _mp['cases'])}/{_nc}, "
+            f"worst objective rel gap {_mp['worst_objective_rel_gap']:.3e}, "
+            f"median speedup ~5.3x. At survival 1.000 the reuse arm still "
+            f"differs and is BETTER in 4/5 cases, so the residual is "
+            f"enumeration richness rather than filtering, and widening -- the "
+            f"remedy the gate names -- changed nothing. Closure now needs "
+            f"D18's promotion band. This replaces the naive cache-sharing "
+            f"result (worst 1.307), which was a different and invalid object. "
+            f"EXPERIMENT4_MASTERPATH.md, outputs/exp4/masterpath_benchmark.json")
+        _c9_met = bool(_mp.get("band_independent_pass"))
+    else:
+        _c9_detail = ("the master-path benchmark has not been run: "
+                      "scripts/exp4_masterpath_benchmark.py")
+        _c9_met = bool((_pr or {}).get("gate_4_7_closes"))
     add("C9", "Discovery path reuse benchmarked against exact rebuilds",
-        MET if (_pr or {}).get("gate_4_7_closes") else OPEN,
-        "RUN on real Gen2 networks, and NOT closed. Substrate equivalence is "
-        "exact (0.000e+00 on all seven fields). But the gate's own subject -- a "
-        "frozen SUPERNETWORK master path set -- is not built; what was measured "
-        "is naive cross-network cache sharing, which is invalid at worst 1.307 "
-        "relative on revenue_veh_hours (ranking survived, 0 inversions in 17 "
-        "pairs). outputs/exp4/pathreuse_benchmark.json")
+        MET if _c9_met else OPEN, _c9_detail)
     _c10 = _json(OUT / "c10_benchmark.json")
     add("C10", "Outer network search recovers an exhaustively known optimum",
         MET if (_c10 or {}).get("gate_4_14_closes") else OPEN,
@@ -176,12 +202,23 @@ def checks() -> list[tuple[str, str, str, str]]:
         "route ids are synthetic")
     gates4 = [g for g in (f"Gate 4-{n}" for n in range(1, 16))
               if _acceptance_gate(g)]
+    # The counts are read from the gate runner rather than retyped, because a
+    # hand-maintained tally in a checklist is a number nobody re-checks -- this
+    # line said "9 MET, 4 ARMED, 2 OPEN" after the gates had already moved.
+    _gs = _json(OUT / "gates.json") or {}
+    _gtxt = (f"{_gs['met']} MET, {_gs['armed']} ARMED (they fire on a promoted "
+             f"network and cannot be satisfied before the search), "
+             f"{_gs['open']} OPEN"
+             if "met" in _gs else
+             "run scripts/exp4_gates.py --json outputs/exp4/gates.json for "
+             "current counts")
     add("C15", "Every ACCEPTANCE.md rejection condition in place before scoring",
         MANUAL,
-        f"{len(gates4)} of 15 gates written; scripts/exp4_gates.py now executes "
-        "them: 9 MET, 4 ARMED (they fire on a promoted network and cannot be "
-        "satisfied before the search), 2 OPEN. Remains MANUAL because 'armed' "
-        "is a judgement that the right machinery exists, not a proof")
+        f"{len(gates4)} of 15 gates written; scripts/exp4_gates.py executes "
+        f"them: {_gtxt}. Remains MANUAL because 'armed' is a judgement that the "
+        "right machinery exists, not a proof -- and because D35 showed a "
+        "constraint can be fully written, validated at construction, hashed "
+        "into the state digest and still reach nothing that scores")
 
     # ---- design section 9 ---------------------------------------------------
     try:
@@ -202,16 +239,35 @@ def checks() -> list[tuple[str, str, str, str]]:
         in_force = []
     draft_says_not_in_force = "not yet in force" in _src(
         "src/cota_opt/firewall/exp4_draft.py")
+    # D16 is NOT closed by an ExperimentContract merely existing, and NOT by
+    # D21b closing. Its criterion has three clauses -- the contract exists,
+    # every declared treatment difference carries a written justification, and
+    # construction REFUSES when one is missing -- and the third can only be
+    # settled by firing the guard. scripts/exp4_d16_check.py executes all
+    # three, plus the precondition the draft set for itself, and this reads
+    # that script's verdict. An earlier version tested clause one and reported
+    # MET, which is the same error as D21 passing on half its own text.
+    _d16 = _json(OUT / "d16_check.json")
+    if _d16:
+        _d16_detail = (
+            f"{_d16['passed']}/{_d16['total']} checks pass in "
+            f"scripts/exp4_d16_check.py, which executes the criterion's three "
+            f"clauses separately and fires the construction guard for EVERY "
+            f"declared dimension in turn. Contracts in force: "
+            f"{sorted(_d16['contracts'])} "
+            f"(digests {', '.join(sorted(c['digest'] for c in _d16['contracts'].values()))}). "
+            f"Bridge verdict {_d16['bridge_verdict']}. "
+            f"outputs/exp4/d16_check.json")
+        _d16_met = _d16.get("verdict") == "MET"
+    else:
+        _d16_detail = (
+            f"ExperimentContract instances exported: {in_force or 'none'}; "
+            f"exp4_draft.py still says 'not yet in force'="
+            f"{draft_says_not_in_force}. The criterion has not been EXECUTED: "
+            f"run scripts/exp4_d16_check.py")
+        _d16_met = False
     add("D16", "Experiment 4 ExperimentContract exists and is in force",
-        MET if in_force else OPEN,
-        f"exp4_draft.py defines EXP4_DISCOVERY_DRAFT and "
-        f"EXP4_CERTIFICATION_DRAFT but they are not exported from firewall/ and "
-        f"the module says 'not yet in force'={draft_says_not_in_force}. "
-        f"ExperimentContract instances exported: {in_force or 'none'}. "
-        f"BLOCKED BY D21b: exp4_draft.py's own condition is that these become "
-        f"active 'only when Gen1 is frozen AND the Gen1->Gen2 bridge suite has "
-        f"run'. Gen1 is frozen; the bridge suite is blocked on Gen2 not "
-        f"existing. See EXPERIMENT4_BLOCKERS.md")
+        MET if _d16_met else OPEN, _d16_detail)
 
     add("D17", "Recovery behaviours classified in writing before the search",
         MET if "recovery" in (ROOT / "EXPERIMENT4_DESIGN.md").read_text().lower()
@@ -249,19 +305,31 @@ def checks() -> list[tuple[str, str, str, str]]:
         MET if gen1.exists() and gen1_man.exists() else OPEN,
         "GEN1_FREEZE.md + outputs/GEN1_FREEZE_MANIFEST.json; verify with "
         "scripts/gen1_freeze.py --verify" if gen1.exists() else "absent")
+    # Read the bridge's VERDICT, not the file's existence. A bridge that ran
+    # and came back BROKEN is a bridge that has run and must not close this.
+    _bridge = _json(OUT / "gen_bridge.json")
+    if _bridge:
+        _b_met = _bridge.get("verdict") in ("CONFIRMED", "SUPERSEDED")
+        add("D21b", "Gen1->Gen2 bridge suite has run",
+            MET if _b_met else OPEN,
+            f"RUN. One real Gen1 question -- the optimal frequency plan for an "
+            f"assembled Exp 4 network under a pinned envelope -- answered twice, "
+            f"arms differing only in the solver. Verdict {_bridge['verdict']}: "
+            f"{_bridge['note']} Gen1 {_bridge['seconds']['gen1']:.1f}s vs Gen2 "
+            f"{_bridge['seconds']['gen2']:.1f}s over "
+            f"{_bridge['exact_combinations']:,} combinations. "
+            f"outputs/exp4/gen_bridge.json")
+        return_early_d21b = True
+    else:
+        return_early_d21b = False
     bridge = OUT.parent / "gen1_gen2_bridge.json"
-    add("D21b", "Gen1->Gen2 bridge suite has run",
-        MET if bridge.exists() else OPEN,
-        "PARTIALLY UNBLOCKED, still open. A Gen2 OUTER SEARCH now exists "
-        "(cota_opt.gen2_search) and produces scored networks with provenance "
-        "through the frozen interface. But METHODOLOGY's bridge compares the "
-        "two generations ON THE SAME QUESTION, and Gen1 never searched over "
-        "whole networks -- it optimized frequencies inside a fixed geometry and "
-        "mutated that geometry. There is no Gen1 answer for a Gen2 "
-        "network-selection result to agree or disagree with. The bridge needs "
-        "the OTHER half of Gen2: a replacement frequency solver that re-answers "
-        "a Gen1 question, which METHODOLOGY lists as the exact frequency "
-        "benchmark and the optimization-gap measurement. Neither is started")
+    if not return_early_d21b:
+        add("D21b", "Gen1->Gen2 bridge suite has run",
+            MET if bridge.exists() else OPEN,
+            "the bridge has not been run: scripts/exp4_gen_bridge.py. Gen2's "
+            "replacement frequency solver (cota_opt.gen2_frequency) now exists, "
+            "so the Gen1 question the bridge needs -- the optimal frequency "
+            "plan for one network -- can be answered by both generations")
 
     merged = (ROOT / "src" / "cota_opt" / "firewall" / "search_allowance.py")
     staged = (ROOT / "scripts" / "exp4_staging" / "search_allowance.py")

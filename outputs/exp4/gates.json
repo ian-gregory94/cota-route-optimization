@@ -40,7 +40,7 @@
       "gate": "4-7",
       "title": "Discovery approximation benchmarked, buys no conclusions",
       "state": "ARMED",
-      "detail": "the SUBSTRATE half is measured: an assembled network reproduces the legacy scoring path exactly (worst relative difference 0.0 across seven FitnessVector fields, outputs/exp4/equivalence_isolated.json). The gate's own subject -- a frozen supernetwork master path set versus exact per-network rebuilds -- is NOT YET BUILT. What was measured on real Gen2 networks is naive cross-network cache sharing, and it is invalid: worst 1.307 relative on revenue_veh_hours, 0.958 on generalized_cost, though ranking survived (0 inversions in 17 pairs). outputs/exp4/pathreuse_benchmark.json"
+      "detail": "BUILT and MEASURED. Frozen supernetwork master path set, filtered per candidate, vs exact rebuilds on 80 preregistered candidates over 5 deception spaces: exact leader identified in 2/5 cases, 120/600 ranking pairs inverted, promoted set unchanged in 1/5, worst objective rel gap 5.745e-03, worst field rel diff 8.082e+00, omitted flow 972.4 trips. At survival 1.000 the reuse arm STILL differs and is BETTER in 4/5 cases, so the residual is enumeration richness, not filtering -- which is why widening 3x on scenarios and 2x on paths-per-OD changed nothing. Closes only on the band-independent condition; otherwise blocked on D18's promotion band. See EXPERIMENT4_MASTERPATH.md, outputs/exp4/masterpath_benchmark.json"
     },
     {
       "gate": "4-8",
@@ -81,8 +81,8 @@
     {
       "gate": "4-14",
       "title": "Search benchmarked on a space that can defeat it",
-      "state": "OPEN",
-      "detail": "RUN and NOT CLOSED, with the reason measured. The substrate is validated -- every feasible network in four enumerated spaces assembled, scored and ranked, optimum found by exhaustive enumeration. But the four deceptive cases cannot be built on a cheap surrogate: weighted set coverage is submodular (535599 checks, 0 violations), greedy carries a (1-1/e) guarantee there and found the exact optimum in all four. The production evaluator is not submodular, so this gate needs it and the outer search. outputs/exp4/known_optimum_recovery.json"
+      "state": "MET",
+      "detail": "CLOSED on the PRODUCTION evaluator: 5 of 5 cases genuinely defeat add-only greedy (strictly worse objective -- a tie is not a miss), and Gen2 recovers 5 exact optima. Cases were DISCOVERED by scanning 45 candidate spaces, not hand-tuned; 14 defeated greedy and five were frozen, one per structural mechanism. outputs/exp4/c10_benchmark.json"
     },
     {
       "gate": "4-15",
@@ -91,9 +91,9 @@
       "detail": "ACCEPTANCE.md bounds the admissible claim and precommits the null as a fine result. Binds on the write-up, enforced by review"
     }
   ],
-  "met": 9,
+  "met": 10,
   "armed": 5,
-  "open": 1,
+  "open": 0,
   "total": 15,
-  "all_pre_search_gates_met": false
+  "all_pre_search_gates_met": true
 }
