@@ -1,0 +1,61 @@
+{
+  "seed": 20260825,
+  "effort": "60000/2/32",
+  "fields": [
+    {
+      "field": "objective",
+      "legacy": NaN,
+      "assembled": NaN,
+      "abs_diff": NaN,
+      "rel_diff": NaN
+    },
+    {
+      "field": "generalized_cost",
+      "legacy": 1785263.3794816681,
+      "assembled": 1785095.3825596224,
+      "abs_diff": -167.9969220457133,
+      "rel_diff": 9.410203781499701e-05
+    },
+    {
+      "field": "unserved_demand",
+      "legacy": 9812.327818373697,
+      "assembled": 9806.560525356988,
+      "abs_diff": -5.767293016708209,
+      "rel_diff": 0.0005877599203227685
+    },
+    {
+      "field": "served_demand",
+      "legacy": 21136.672181626305,
+      "assembled": 21142.439474643015,
+      "abs_diff": 5.767293016710028,
+      "rel_diff": 0.00027285719185839586
+    },
+    {
+      "field": "revenue_veh_hours",
+      "legacy": 2507.763673330894,
+      "assembled": 2506.73580847514,
+      "abs_diff": -1.02786485575416,
+      "rel_diff": 0.0004098730939781563
+    },
+    {
+      "field": "peak_concurrency",
+      "legacy": NaN,
+      "assembled": NaN,
+      "abs_diff": NaN,
+      "rel_diff": NaN
+    }
+  ],
+  "worst_rel_diff": 0.0005877599203227685,
+  "seconds": {
+    "legacy": 415.47423243522644,
+    "assembled": 428.75193524360657
+  },
+  "n_patterns": {
+    "legacy": 111,
+    "assembled": 111
+  },
+  "n_stops": {
+    "legacy": 2949,
+    "assembled": 2949
+  }
+}

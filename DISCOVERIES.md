@@ -2005,3 +2005,63 @@ optimality check over at most 10 of 173 route-periods across three ladder rungs.
 It is a *lower* bound on the differential-error bound; the full-problem
 differential can only be larger. A margin above it is **not thereby
 established** — it is only *not excluded* by this measurement.
+
+## D34 — the evaluator is not invariant to pattern identifier renaming
+
+**Found by the Experiment 4 substrate's equivalence test**, which is exactly the
+check `EXPERIMENT4_CONTRACT.md` calls "the one most likely to fail quietly": do
+not trust a new representation until it reproduces a number the old one already
+produced.
+
+The same network, scored twice through the same `solve_on_network`, differs when
+its patterns are renamed and re-sorted:
+
+| | worst relative difference |
+|---|---|
+| identical construction, **original pattern ids and insertion order** | **0.000e+00** — exact on every field |
+| identical construction, **content-derived ids, sorted order** | **5.878e-04** on unserved demand |
+
+The geometry, segment times, stop set, trip stats and pattern count are
+identical in both. 2,949 stops, 111 patterns and 2,331 trip-stat rows either
+way, and no stop is dropped. Only the identifiers differ.
+
+**Mechanism.** `raptor.build_raptor_network` builds its pattern index from dict
+iteration order:
+
+```python
+pattern_ids = [p for p in net.patterns if all(s in stop_index for s in ...)]
+```
+
+That is insertion order. Pattern index order sets RAPTOR's scan order, which
+breaks ties between equal-cost boardings, and with `max_paths_per_od = 4` a
+different enumeration order retains a different subset of near-equal paths. The
+retained set is what gets repriced under every headway vector, so the difference
+propagates into generalized cost and unserved demand.
+
+**Size.** 5.878e-04 relative on unserved demand — about 0.06%. Small, but not
+nothing: Experiment 3's certified leader is 0.187%, so this is roughly a third
+of that margin, and it is larger than several certified Experiment 3 effects.
+
+**What it does and does not threaten.**
+
+* It does **not** invalidate any Gen1 result. Every Gen1 comparison scored both
+  arms with the same network object and therefore the same pattern order, so the
+  effect cancels. Experiment 3's receipts are unaffected and its closure and
+  integrity suites still pass.
+* It **does** mean a score is a property of *(network, pattern order)* rather
+  than of the network alone, and that two representations of one network can
+  disagree by ~6e-4. Any future comparison across differently-constructed
+  networks must fix the order or absorb this as a floor.
+
+**What was done.** `exp4_assemble.assemble` iterates `sorted(selection.lines)`
+and derives pattern ids from content, so an Experiment 4 network is
+deterministic: the same selection always assembles to the same order and scores
+identically. That makes Experiment 4 internally consistent. It does not make an
+Experiment 4 network comparable to a legacy-ordered one at finer than ~6e-4, and
+that limit is recorded here rather than discovered later.
+
+**What would falsify or fix it.** A canonical pattern ordering applied inside
+`build_raptor_network` — sorting by (route_id, direction_id, stop sequence)
+rather than accepting insertion order — would make the score a function of the
+network alone. That is a Gen2 change: it would move Gen1 numbers by up to this
+amount, so it is a candidate for the reopening decision rather than a patch.

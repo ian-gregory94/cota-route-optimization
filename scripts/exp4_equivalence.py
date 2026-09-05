@@ -51,6 +51,13 @@ def main() -> int:
     ap.add_argument("--restarts", type=int, default=2)
     ap.add_argument("--iterations", type=int, default=60_000)
     ap.add_argument("--width", type=int, default=32)
+    ap.add_argument("--preserve-ids", action="store_true",
+                    help="keep the original pattern ids, isolating CONSTRUCTION "
+                         "equivalence from identifier renaming")
+    ap.add_argument("--preserve-order", action="store_true",
+                    help="keep the original pattern/stop insertion order. "
+                         "RaptorNetwork builds pattern_ids from dict iteration "
+                         "order, so this isolates construction from scan order")
     a = ap.parse_args()
 
     t0 = time.time()
@@ -75,7 +82,9 @@ def main() -> int:
     # Rebuild the identical network through the assembler's own construction
     # rules, then score it the same way.
     from cota_opt.exp4_assemble import rebuild_like_assembler
-    net2, ts2 = rebuild_like_assembler(H.baseline.network, H.baseline.tstats)
+    net2, ts2 = rebuild_like_assembler(
+        H.baseline.network, H.baseline.tstats,
+        preserve_ids=a.preserve_ids, preserve_order=a.preserve_order)
     print(f"rebuilt: {len(net2.patterns)} patterns, {len(net2.stops)} stops, "
           f"{len(ts2)} tstat rows")
 
@@ -85,13 +94,21 @@ def main() -> int:
     t_asm = time.time() - t
 
     lf, af = legacy["fit"], asm["fit"]
-    fields = ["objective", "generalized_cost", "unserved_demand",
-              "served_demand", "revenue_veh_hours", "peak_concurrency"]
+    # FitnessVector's actual fields. An earlier version listed "objective" and
+    # "peak_concurrency", which do not exist on it, and both came back nan --
+    # a comparison that silently compares nothing.
+    fields = ["generalized_cost", "unserved_demand", "served_demand",
+              "revenue_veh_hours", "peak_vehicles", "mean_wait_min",
+              "gc_per_served_trip"]
     rows = []
     worst = 0.0
     for f in fields:
-        lv = float(getattr(lf, f, float("nan")))
-        av = float(getattr(af, f, float("nan")))
+        if not hasattr(lf, f):
+            raise AttributeError(
+                f"FitnessVector has no field {f!r}; a comparison field that "
+                f"does not exist compares nothing and reports nan")
+        lv = float(getattr(lf, f))
+        av = float(getattr(af, f))
         rel = abs(av - lv) / abs(lv) if lv else abs(av - lv)
         worst = max(worst, rel)
         rows.append({"field": f, "legacy": lv, "assembled": av,
@@ -109,7 +126,9 @@ def main() -> int:
            "n_patterns": {"legacy": len(H.baseline.network.patterns),
                           "assembled": len(net2.patterns)},
            "n_stops": {"legacy": len(H.baseline.network.stops),
-                       "assembled": len(net2.stops)}}
+                       "assembled": len(net2.stops)},
+           "preserve_ids": bool(a.preserve_ids),
+           "preserve_order": bool(a.preserve_order)}
     if a.json:
         Path(a.json).write_text(json.dumps(out, indent=2))
         print(f"\nwrote {a.json}")

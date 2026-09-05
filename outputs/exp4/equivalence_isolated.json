@@ -1,0 +1,70 @@
+{
+  "seed": 20260825,
+  "effort": "60000/2/32",
+  "fields": [
+    {
+      "field": "generalized_cost",
+      "legacy": 1785263.3794816681,
+      "assembled": 1785263.3794816681,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "unserved_demand",
+      "legacy": 9812.327818373697,
+      "assembled": 9812.327818373697,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "served_demand",
+      "legacy": 21136.672181626305,
+      "assembled": 21136.672181626305,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "revenue_veh_hours",
+      "legacy": 2507.763673330894,
+      "assembled": 2507.763673330894,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "peak_vehicles",
+      "legacy": 176.13235185185187,
+      "assembled": 176.13235185185187,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "mean_wait_min",
+      "legacy": 0.0,
+      "assembled": 0.0,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "gc_per_served_trip",
+      "legacy": 84.46284089288012,
+      "assembled": 84.46284089288012,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    }
+  ],
+  "worst_rel_diff": 0.0,
+  "seconds": {
+    "legacy": 389.34973526000977,
+    "assembled": 380.06180238723755
+  },
+  "n_patterns": {
+    "legacy": 111,
+    "assembled": 111
+  },
+  "n_stops": {
+    "legacy": 2949,
+    "assembled": 2949
+  },
+  "preserve_ids": true,
+  "preserve_order": true
+}

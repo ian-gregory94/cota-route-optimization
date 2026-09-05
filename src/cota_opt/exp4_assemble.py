@@ -176,7 +176,9 @@ def assemble(selection: Exp4Selection, pool: Mapping[str, Any],
             unobserved_links=unobserved))
 
 
-def rebuild_like_assembler(net: TransitNetwork, tstats: pd.DataFrame
+def rebuild_like_assembler(net: TransitNetwork, tstats: pd.DataFrame,
+                           *, preserve_ids: bool = False,
+                           preserve_order: bool = False,
                            ) -> tuple[TransitNetwork, pd.DataFrame]:
     """Rebuild an existing network through the assembler's own construction.
 
@@ -198,9 +200,11 @@ def rebuild_like_assembler(net: TransitNetwork, tstats: pd.DataFrame
     """
     patterns: dict[str, RoutePattern] = {}
     remap: dict[str, str] = {}
-    for old_pid in sorted(net.patterns):
+    order = list(net.patterns) if preserve_order else sorted(net.patterns)
+    for old_pid in order:
         p = net.patterns[old_pid]
-        pid = _pattern_id(p.route_id, p.direction_id, p.stops)
+        pid = (old_pid if preserve_ids
+               else _pattern_id(p.route_id, p.direction_id, p.stops))
         remap[old_pid] = pid
         segs = [PatternSegment(p.route_id, p.direction_id, pid,
                                s.from_stop, s.to_stop, s.seq, s.run_time_sec)
@@ -208,7 +212,8 @@ def rebuild_like_assembler(net: TransitNetwork, tstats: pd.DataFrame
         patterns[pid] = RoutePattern(p.route_id, p.direction_id, pid,
                                      list(p.stops), segs, n_trips=p.n_trips)
 
-    used = sorted({s for p in patterns.values() for s in p.stops})
+    used = ([s for s in net.stops] if preserve_order
+            else sorted({s for p in patterns.values() for s in p.stops}))
     out = TransitNetwork(stops={s: net.stops[s] for s in used if s in net.stops},
                          patterns=patterns)
     out.stop_routes, out.route_stops = {}, {}
@@ -220,6 +225,8 @@ def rebuild_like_assembler(net: TransitNetwork, tstats: pd.DataFrame
 
     ts = tstats.copy()
     ts["pattern_id"] = ts["pattern_id"].map(lambda x: remap.get(x, x))
-    ts = ts.sort_values(["route_id", "direction_id", "pattern_id", "trip_id"]
-                        ).reset_index(drop=True)
+    if not preserve_order:
+        ts = ts.sort_values(
+            ["route_id", "direction_id", "pattern_id", "trip_id"]
+        ).reset_index(drop=True)
     return out, ts

@@ -1,0 +1,88 @@
+{
+  "scope": "substrate-level: assembly + exhaustive enumeration. The Experiment 4 OUTER SEARCH does not exist yet.",
+  "objective": "cheap surrogate over covered demand and running time, NOT the production evaluator",
+  "cases": [
+    {
+      "space": "drop_a_locally_good_route",
+      "why_hard": "the single best line consumes the budget; the optimum excludes it",
+      "n_feasible_networks": 6,
+      "true_optimum": [
+        "L_b",
+        "L_c"
+      ],
+      "true_optimum_objective": 4.008,
+      "greedy_result": [
+        "L_b",
+        "L_c"
+      ],
+      "greedy_objective": 4.008,
+      "greedy_found_optimum": true,
+      "case_behaves_as_designed": false,
+      "expectation": "greedy must FAIL here"
+    },
+    {
+      "space": "non_nested_optimum",
+      "why_hard": "the best single line is not contained in the best pair",
+      "n_feasible_networks": 6,
+      "true_optimum": [
+        "P",
+        "R"
+      ],
+      "true_optimum_objective": 2.012,
+      "greedy_result": [
+        "P",
+        "R"
+      ],
+      "greedy_objective": 2.012,
+      "greedy_found_optimum": true,
+      "case_behaves_as_designed": false,
+      "expectation": "greedy must FAIL here"
+    },
+    {
+      "space": "swap_required",
+      "why_hard": "no single add or drop improves the greedy network; only an exchange",
+      "n_feasible_networks": 10,
+      "true_optimum": [
+        "S2",
+        "S4"
+      ],
+      "true_optimum_objective": 1.008,
+      "greedy_result": [
+        "S2",
+        "S4"
+      ],
+      "greedy_objective": 1.008,
+      "greedy_found_optimum": true,
+      "case_behaves_as_designed": false,
+      "expectation": "greedy must FAIL here"
+    },
+    {
+      "space": "incumbent_is_optimal",
+      "why_hard": "the starting network is already best; a search must not wander off it",
+      "n_feasible_networks": 3,
+      "true_optimum": [
+        "I1",
+        "I2"
+      ],
+      "true_optimum_objective": 0.008,
+      "greedy_result": [
+        "I1",
+        "I2"
+      ],
+      "greedy_objective": 0.008,
+      "greedy_found_optimum": true,
+      "case_behaves_as_designed": true,
+      "expectation": "greedy must SUCCEED here"
+    }
+  ],
+  "all_cases_behave_as_designed": false,
+  "substrate_validated": true,
+  "substrate_evidence": "every feasible network in each space was assembled through exp4_assemble.assemble, scored, and ranked; the optimum is a measured fact from exhaustive enumeration, not an assertion",
+  "submodularity": {
+    "diminishing_returns_checks": 535599,
+    "violations": 0,
+    "submodular": true
+  },
+  "gate_4_14_closed": false,
+  "why_gate_not_closed": "The four cases gate 4-14 names (drop a locally good route, non-nested optimum, required swap, optimal incumbent) cannot be constructed on a submodular objective: greedy carries a (1-1/e) guarantee there and finds the exact optimum on spaces small enough to enumerate. Measured above across 535k diminishing-returns checks with zero violations. The production evaluator is not submodular -- transfers and frequency interactions create complementarities between lines -- so a benchmark that can genuinely defeat a search must use it, which requires the outer search and real compute. Substituting a surrogate that greedy always solves would produce a green gate that proves nothing, which is the failure mode gate 4-14 already warns about when it rules out the 2B benchmark."
+}
