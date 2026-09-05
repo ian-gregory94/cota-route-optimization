@@ -350,3 +350,22 @@ Filesystem state survives a recycle. What does *not* survive is anything never
 mirrored off the container, which is the actual durability risk and is handled
 by bundling to the folder bridge (see `PUSH_TO_GITHUB.md`), not by keeping a
 container awake.
+
+**31. Checkpoint an expensive result the instant it exists, before any code
+that merely formats it can run.** On 2026-09-05 an exact ladder enumeration ran
+41.9 minutes, computed its answer, printed its verdict to stdout -- and then
+died in `json.dumps` on a tuple key, with nothing on disk. Every second of the
+science had succeeded; the loss was entirely in reporting code that ran
+afterwards. The result now goes to disk the moment the solver returns, and the
+artifact writer preserves its payload to a `.repr.txt` on any failure and
+re-raises, so the bug stays loud but the hours stay saved. A result that exists
+only in stdout is a result that has to be recomputed.
+
+**32. Validate a serializer before the long run, not after it.** Route-period
+keys are `(route, period)` tuples throughout this project and `json.dumps`
+refuses a non-string key outright -- `default=` does not help, because that hook
+only fires for unserializable *values*, never for keys. Any artifact that maps
+route-periods will raise at write time, which is to say at the end, which is to
+say after the compute. Either round-trip a representative payload at startup or
+write through a coercing helper that has its own test. This is rule 2 pointed at
+the reporting code: do not begin work whose *last* step is unproven.

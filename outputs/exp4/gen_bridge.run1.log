@@ -1,0 +1,46 @@
+network: 1 line, 2 patterns, 12 tstat rows, envelope 200.0 vh / 18.0 peak
+
+arm 1: Gen1 (exchange heuristic + restarts) ...
+arm 2: Gen2 (exhaustive ladder enumeration) ...
+
+  field                              gen1             gen2         rel
+  generalized_cost            1353.911796      1352.641177   9.385e-04
+  unserved_demand            30368.614028     30368.614028   0.000e+00
+  served_demand                580.385972       580.385972   0.000e+00
+  revenue_veh_hours            193.200000       199.333333   3.175e-02
+  peak_vehicles                 10.580000        10.580000   0.000e+00
+  mean_wait_min                  0.000000         0.000000   0.000e+00
+  gc_per_served_trip             2.332778         2.330589   9.385e-04
+
+  route-period key sets identical : True
+  headways differing              : 2 of 6
+  OFF set gen1 / gen2             : 0 / 0
+  active set gen1 / gen2          : 6 / 6
+  envelope used gen1 / gen2       : 193.200 / 199.333 of 200.0
+  objective gen1 / gen2           : 3,645,587.5951 / 3,645,586.3245
+  OPTIMIZATION GAP (gen1 - exact) : 1.270619
+  combinations enumerated         : 7,529,536 (7,529,389 feasible)
+  seconds gen1 / gen2             : 0.5 / 2516.1
+
+  BRIDGE VERDICT: SUPERSEDED
+    the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network.
+Traceback (most recent call last):
+  File "/home/claude/columbus-transit-opt/scripts/exp4_gen_bridge.py", line 186, in <module>
+    print(f"\nwrote {a.json}")
+                 ^^^^^^
+  File "/home/claude/columbus-transit-opt/scripts/exp4_gen_bridge.py", line 180, in main
+    "exact_combinations": g2["solver_meta"].get("n_combinations"),
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 377, in _iterencode_dict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+TypeError: keys must be str, int, float, bool or None, not tuple

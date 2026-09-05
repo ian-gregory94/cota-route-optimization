@@ -40,6 +40,43 @@ FIELDS = ["generalized_cost", "unserved_demand", "served_demand",
           "gc_per_served_trip"]
 
 
+def _jsonable(o):
+    """Coerce tuple KEYS to strings, recursively.
+
+    json.dumps refuses a non-str key outright -- `default=` does not help,
+    because that hook only fires for unserializable VALUES. Route-period keys
+    are `(route, period)` tuples throughout this project, so any artifact that
+    maps them raises TypeError at write time.
+
+    This cost a 41.9-minute exact solve: the run computed its answer, printed
+    the verdict, and then died in json.dumps with nothing on disk. See the
+    write guard in `_write` below, which is the other half of that lesson.
+    """
+    if isinstance(o, dict):
+        return {("|".join(map(str, k)) if isinstance(k, tuple) else str(k)):
+                _jsonable(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [_jsonable(v) for v in o]
+    return o
+
+
+def _write(path: str, payload: dict) -> None:
+    """Write the artifact, and never lose an expensive run to a write bug.
+
+    A result that exists only in stdout is a result that has to be recomputed.
+    If the JSON write fails for any reason, the payload goes to a .repr file
+    beside it and the exception is re-raised -- so the failure is still loud,
+    but the hours are still on disk.
+    """
+    try:
+        Path(path).write_text(json.dumps(_jsonable(payload), indent=2))
+    except Exception:
+        fallback = Path(path).with_suffix(".repr.txt")
+        fallback.write_text(repr(payload))
+        print(f"  JSON write FAILED; payload preserved at {fallback}")
+        raise
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", default="")
@@ -97,6 +134,15 @@ def main() -> int:
                           restarts=1, width=0, solver="exact",
                           exact_max_combinations=a.max_combinations, **common)
     t2 = time.time() - t
+
+    # Checkpoint the expensive arm the instant it returns. Arm 2 costs ~42
+    # minutes; everything after it is cheap formatting, and formatting is
+    # exactly what killed the first run.
+    if a.json:
+        _write(str(Path(a.json).with_suffix(".arm2.json")),
+               {"solver_meta": g2.get("solver_meta", {}),
+                "plan": dict(g2["plan"].headways),
+                "seconds_gen1": t1, "seconds_gen2": t2})
 
     f1, f2 = g1["fit"], g2["fit"]
     rows, worst_abs, worst_rel = [], 0.0, 0.0
@@ -182,7 +228,7 @@ def main() -> int:
            "seconds": {"gen1": t1, "gen2": t2},
            "verdict": verdict, "note": note}
     if a.json:
-        Path(a.json).write_text(json.dumps(out, indent=2))
+        _write(a.json, out)
         print(f"\nwrote {a.json}")
     return 0 if verdict in ("CONFIRMED", "SUPERSEDED") else 1
 
