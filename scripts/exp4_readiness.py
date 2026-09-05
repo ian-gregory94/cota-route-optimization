@@ -35,6 +35,11 @@ def _json(p: Path):
         return None
 
 
+def _src(rel: str) -> str:
+    p = ROOT / rel
+    return p.read_text() if p.exists() else ""
+
+
 def _acceptance_gate(label: str) -> bool:
     """Is this Experiment 4 gate committed in ACCEPTANCE.md?
 
@@ -127,12 +132,16 @@ def checks() -> list[tuple[str, str, str, str]]:
         if off_ok else "no OFF representation")
     add("C9", "Discovery path reuse benchmarked against exact rebuilds",
         MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
-        "Gate 4-7 is COMMITTED in ACCEPTANCE.md but the benchmark has not been "
-        "RUN; it needs objective gap, unserved gap, ranking stability, omitted "
-        "and improvable flow, and whether the promoted set changes"
-        if _acceptance_gate("Gate 4-7") else "gate not found in ACCEPTANCE.md")
+        "BLOCKED on capability, not on a check: there is no way to assemble an "
+        "Exp 4 network from pool line ids and score it. routepool.py exposes "
+        "only generate_pool/PoolAudit, and score_state takes GeometryEdits over "
+        "the LEGACY network. See EXPERIMENT4_BLOCKERS.md")
     add("C10", "Outer network search recovers an exhaustively known optimum",
-        OPEN, "no recovery-test artifact under outputs/exp4/")
+        OPEN,
+        "BLOCKED on capability: there is no outer network search to test, and "
+        "no assembly layer to build the enumerated envelope from. Gate 4-14 "
+        "also rules out substituting the 2B benchmark. See "
+        "EXPERIMENT4_BLOCKERS.md")
     add("C11", "Committed gate on common-lines exposure",
         MET if _acceptance_gate("Gate 4-10") else OPEN,
         "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the "
@@ -157,13 +166,14 @@ def checks() -> list[tuple[str, str, str, str]]:
         "contract.py computes network_edit_distance_pct with a committed cap; "
         "ACCEPTANCE Gate 4-13 requires geometry-based identity because Exp 4 "
         "route ids are synthetic")
-    gates4 = [g for g in (f"Gate 4-{n}" for n in range(1, 14))
+    gates4 = [g for g in (f"Gate 4-{n}" for n in range(1, 16))
               if _acceptance_gate(g)]
     add("C15", "Every ACCEPTANCE.md rejection condition in place before scoring",
         MANUAL,
-        f"{len(gates4)} of 13 Experiment 4 gates are written in ACCEPTANCE.md; "
-        "written is not implemented, and which are enforced in code needs a "
-        "human pass")
+        f"{len(gates4)} of 15 gates written; scripts/exp4_gates.py now executes "
+        "them: 9 MET, 4 ARMED (they fire on a promoted network and cannot be "
+        "satisfied before the search), 2 OPEN. Remains MANUAL because 'armed' "
+        "is a judgement that the right machinery exists, not a proof")
 
     # ---- design section 9 ---------------------------------------------------
     try:
@@ -171,15 +181,29 @@ def checks() -> list[tuple[str, str, str, str]]:
         has_draft = True
     except Exception:
         has_draft = False
+    # Must be an ExperimentContract, not merely a name beginning with EXP4.
+    # An earlier version of this check tested the latter and flipped to MET the
+    # moment EXP4_ALLOWANCE was exported -- a different object entirely.
     try:
         import cota_opt.firewall as fw
-        exported = any(n.startswith("EXP4") for n in dir(fw))
+        from cota_opt.firewall.contract import ExperimentContract
+        in_force = [n for n in dir(fw)
+                    if n.startswith("EXP4")
+                    and isinstance(getattr(fw, n, None), ExperimentContract)]
     except Exception:
-        exported = False
+        in_force = []
+    draft_says_not_in_force = "not yet in force" in _src(
+        "src/cota_opt/firewall/exp4_draft.py")
     add("D16", "Experiment 4 ExperimentContract exists and is in force",
-        OPEN if not exported else MET,
-        f"draft module present={has_draft}, exported from firewall/={exported}; "
-        "the draft is explicitly 'not yet in force'")
+        MET if in_force else OPEN,
+        f"exp4_draft.py defines EXP4_DISCOVERY_DRAFT and "
+        f"EXP4_CERTIFICATION_DRAFT but they are not exported from firewall/ and "
+        f"the module says 'not yet in force'={draft_says_not_in_force}. "
+        f"ExperimentContract instances exported: {in_force or 'none'}. "
+        f"BLOCKED BY D21b: exp4_draft.py's own condition is that these become "
+        f"active 'only when Gen1 is frozen AND the Gen1->Gen2 bridge suite has "
+        f"run'. Gen1 is frozen; the bridge suite is blocked on Gen2 not "
+        f"existing. See EXPERIMENT4_BLOCKERS.md")
 
     add("D17", "Recovery behaviours classified in writing before the search",
         MET if "recovery" in (ROOT / "EXPERIMENT4_DESIGN.md").read_text().lower()
@@ -220,10 +244,12 @@ def checks() -> list[tuple[str, str, str, str]]:
     bridge = OUT.parent / "gen1_gen2_bridge.json"
     add("D21b", "Gen1->Gen2 bridge suite has run",
         MET if bridge.exists() else OPEN,
-        "not run. METHODOLOGY's order of work puts four steps between the Gen1 "
-        "freeze and Gen2: the exact frequency benchmark, the optimization-gap "
-        "measurement, the evidence-based reopening decision, and incremental "
-        "evaluation with full-rebuild canaries")
+        "BLOCKED: there is no Gen2 to bridge to. methodology_generation exists "
+        "as a field defaulting to gen1, but no alternative algorithm is "
+        "implemented -- no exact/MILP/CP-SAT frequency solver, no incremental "
+        "evaluator. Gen1 IS frozen (gen1-frozen-v1), which was the "
+        "precondition; the rest is Gen2 development. See "
+        "EXPERIMENT4_BLOCKERS.md")
 
     merged = (ROOT / "src" / "cota_opt" / "firewall" / "search_allowance.py")
     staged = (ROOT / "scripts" / "exp4_staging" / "search_allowance.py")

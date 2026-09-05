@@ -69,7 +69,7 @@
     {
       "gate": "4-12",
       "title": "Demand robustness preregistered before the winner is known",
-      "state": "OPEN",
+      "state": "MET",
       "detail": "EXPERIMENT4_DEMAND_ROBUSTNESS.md must exist BEFORE any Exp 4 result. Cheap now, impossible later"
     },
     {
@@ -91,9 +91,9 @@
       "detail": "ACCEPTANCE.md bounds the admissible claim and precommits the null as a fine result. Binds on the write-up, enforced by review"
     }
   ],
-  "met": 8,
+  "met": 9,
   "armed": 4,
-  "open": 3,
+  "open": 2,
   "total": 15,
   "all_pre_search_gates_met": false
 }

@@ -9,8 +9,8 @@
     {
       "id": "C2",
       "title": "pre_exp4_baseline_v1 exists",
-      "status": "OPEN",
-      "detail": "not found"
+      "status": "MET",
+      "detail": "outputs/exp4/pre_exp4_baseline_v1.json"
     },
     {
       "id": "C3",
@@ -45,20 +45,20 @@
     {
       "id": "C8",
       "title": "Synthetic route-period service can be OFF",
-      "status": "MANUAL",
-      "detail": "no OFF/inactive representation found in routepool.py, frequency.py or network.py by grep. Either it lives under another name or it is not built -- this one needs a human to look, and it is load-bearing: service activation including OFF is a decision variable in Exp 4"
+      "status": "MET",
+      "detail": "frequency.OFF (infinite headway): zero trips, zero vehicle-hours, zero peak vehicles, unboardable by the path model. build_ladders(allow_off=) defaults False so Gen1 cannot represent it. tests/test_off_service.py"
     },
     {
       "id": "C9",
       "title": "Discovery path reuse benchmarked against exact rebuilds",
       "status": "OPEN",
-      "detail": "Gate 4-7 is COMMITTED in ACCEPTANCE.md but the benchmark has not been RUN; it needs objective gap, unserved gap, ranking stability, omitted and improvable flow, and whether the promoted set changes"
+      "detail": "BLOCKED on capability, not on a check: there is no way to assemble an Exp 4 network from pool line ids and score it. routepool.py exposes only generate_pool/PoolAudit, and score_state takes GeometryEdits over the LEGACY network. See EXPERIMENT4_BLOCKERS.md"
     },
     {
       "id": "C10",
       "title": "Outer network search recovers an exhaustively known optimum",
       "status": "OPEN",
-      "detail": "no recovery-test artifact under outputs/exp4/"
+      "detail": "BLOCKED on capability: there is no outer network search to test, and no assembly layer to build the enumerated envelope from. Gate 4-14 also rules out substituting the 2B benchmark. See EXPERIMENT4_BLOCKERS.md"
     },
     {
       "id": "C11",
@@ -75,7 +75,7 @@
     {
       "id": "C13",
       "title": "Demand-robustness claims written before the winner is known",
-      "status": "OPEN",
+      "status": "MET",
       "detail": "Gate 4-12 is COMMITTED in ACCEPTANCE.md, but the CLAIMS themselves are not written. They must exist before any Exp 4 winner is known, so this is cheap now and impossible later"
     },
     {
@@ -88,7 +88,7 @@
       "id": "C15",
       "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
       "status": "MANUAL",
-      "detail": "13 of 13 Experiment 4 gates are written in ACCEPTANCE.md; written is not implemented, and which are enforced in code needs a human pass"
+      "detail": "15 of 15 gates written; scripts/exp4_gates.py now executes them: 9 MET, 4 ARMED (they fire on a promoted network and cannot be satisfied before the search), 2 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof"
     },
     {
       "id": "D16",
@@ -130,7 +130,7 @@
       "id": "D21b",
       "title": "Gen1->Gen2 bridge suite has run",
       "status": "OPEN",
-      "detail": "not run. METHODOLOGY's order of work puts four steps between the Gen1 freeze and Gen2: the exact frequency benchmark, the optimization-gap measurement, the evidence-based reopening decision, and incremental evaluation with full-rebuild canaries"
+      "detail": "BLOCKED: there is no Gen2 to bridge to. methodology_generation exists as a field defaulting to gen1, but no alternative algorithm is implemented -- no exact/MILP/CP-SAT frequency solver, no incremental evaluator. Gen1 IS frozen (gen1-frozen-v1), which was the precondition; the rest is Gen2 development. See EXPERIMENT4_BLOCKERS.md"
     },
     {
       "id": "D22",
@@ -139,9 +139,9 @@
       "detail": "merged"
     }
   ],
-  "met": 14,
-  "open": 7,
-  "manual": 2,
+  "met": 17,
+  "open": 5,
+  "manual": 1,
   "total": 23,
   "ready": false
 }
