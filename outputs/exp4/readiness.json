@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "OPEN",
-      "detail": "tag=exp3-final-v1, tree=dirty"
+      "status": "MET",
+      "detail": "tag=exp3-final-v1, tree=clean"
     },
     {
       "id": "C2",
@@ -93,8 +93,8 @@
     {
       "id": "D16",
       "title": "Experiment 4 ExperimentContract exists and is in force",
-      "status": "MET",
-      "detail": "draft module present=True, exported from firewall/=True; the draft is explicitly 'not yet in force'"
+      "status": "OPEN",
+      "detail": "exp4_draft.py defines EXP4_DISCOVERY_DRAFT and EXP4_CERTIFICATION_DRAFT but they are not exported from firewall/ and the module says 'not yet in force'=True. ExperimentContract instances exported: none. BLOCKED BY D21b: exp4_draft.py's own condition is that these become active 'only when Gen1 is frozen AND the Gen1->Gen2 bridge suite has run'. Gen1 is frozen; the bridge suite is blocked on Gen2 not existing. See EXPERIMENT4_BLOCKERS.md"
     },
     {
       "id": "D17",
