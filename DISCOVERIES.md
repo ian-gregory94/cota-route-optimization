@@ -2071,8 +2071,23 @@ identically. That makes Experiment 4 internally consistent. It does not make an
 Experiment 4 network comparable to a legacy-ordered one at finer than ~6e-4, and
 that limit is recorded here rather than discovered later.
 
-**What would falsify or fix it.** A canonical pattern ordering applied inside
-`build_raptor_network` — sorting by (route_id, direction_id, stop sequence)
-rather than accepting insertion order — would make the score a function of the
-network alone. That is a Gen2 change: it would move Gen1 numbers by up to this
-amount, so it is a candidate for the reopening decision rather than a patch.
+**FIXED 2026-09-05.** `raptor._canonical_pattern_order` orders patterns by
+transit content — `(route_id, direction_id, stops, segment run times, n_trips)`
+— and `pattern_id` is deliberately absent from the key, since including an
+arbitrary label would reintroduce the dependence being removed. Stop order was
+already `sorted`, so patterns were the only gap.
+
+Verified end to end by re-running the same comparison that produced the table
+above: the renamed, re-sorted network now agrees with the legacy one at
+**0.000e+00 on all seven fields**, peak vehicles included
+(`outputs/exp4/equivalence_d34fixed.json`). Seven unit tests exercise every
+insertion permutation of a five-pattern network, five id prefixes, 200
+randomised permutation+rename combinations, reconstruction into a fresh object,
+and a peak-vehicle stress case sized to sit at the real 197-vehicle cap.
+
+**Class-B under `METHODOLOGY.md`**: same problem, same objective, same feasible
+set — what changed is that the evaluator now computes a function of the network
+alone. Gen1's stored results are untouched, and Experiment 3's closure and
+integrity suites, the Gen1 freeze and the baseline all still verify, because
+every Gen1 comparison scored both arms from one network object in one order and
+the effect cancelled. A Gen1 *re-run* may move by up to the figures above.

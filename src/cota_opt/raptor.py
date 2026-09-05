@@ -91,6 +91,43 @@ class RaptorNetwork:
         return self.stop_index[stop_id]
 
 
+def _canonical_pattern_order(net, stop_index) -> list[str]:
+    """Patterns in a SEMANTIC order, never dict insertion order (D34).
+
+    The pattern index sets RAPTOR's scan order, which breaks ties between
+    equal-cost boardings, which -- under the four-paths-per-OD cap -- decides
+    which of several near-equal paths is retained and repriced. Taking that
+    order from ``net.patterns`` dict insertion order made the score a property
+    of *(network, construction history)* rather than of the network: renaming
+    and re-sorting a transit-identical network moved peak vehicles by 8.568e-04,
+    and peak vehicles is a hard constraint, so a network at its cap could change
+    feasibility on a rename alone.
+
+    The key is the pattern's transit content -- the route it belongs to, its
+    direction, the stops it serves in order, and the running times between them.
+    Two patterns with the same key are the same service and their relative order
+    cannot matter. ``pattern_id`` is deliberately absent: it is an arbitrary
+    label, and including it would reintroduce exactly the dependence this
+    removes.
+
+    Class-B change under METHODOLOGY.md: same problem, same objective, same
+    feasible set; what changes is that the evaluator now computes a function of
+    the network alone. Gen1's STORED results are untouched -- every Gen1
+    comparison scored both arms from one network object in one order, so the
+    effect cancelled -- but a Gen1 re-run may move by up to the figure above.
+    """
+    eligible = [pid for pid in net.patterns
+                if all(s in stop_index for s in net.patterns[pid].stops)]
+
+    def key(pid: str):
+        p = net.patterns[pid]
+        return (str(p.route_id), int(p.direction_id), tuple(p.stops),
+                tuple(round(float(sg.run_time_sec), 6) for sg in p.segments),
+                int(p.n_trips))
+
+    return sorted(eligible, key=key)
+
+
 def build_raptor_network(
     feed: GTFSFeed,
     net: TransitNetwork,
@@ -109,8 +146,7 @@ def build_raptor_network(
     stop_index = {s: i for i, s in enumerate(stop_ids)}
     n_stops = len(stop_ids)
 
-    pattern_ids = [p for p in net.patterns
-                   if all(s in stop_index for s in net.patterns[p].stops)]
+    pattern_ids = _canonical_pattern_order(net, stop_index)
     pat_offsets = np.zeros(len(pattern_ids) + 1, dtype=np.int64)
     stops_flat: list[int] = []
     cum_flat: list[float] = []
