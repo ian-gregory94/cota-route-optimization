@@ -1,0 +1,56 @@
+[
+  {
+    "case": "greedy_finds_nothing",
+    "n_lines": 4,
+    "enum_networks": 14,
+    "enum_sec": 3.9232594966888428,
+    "gen2_evals": 14,
+    "gen2_sec": 4.004611968994141,
+    "found": true
+  },
+  {
+    "case": "greedy_finds_nothing",
+    "n_lines": 5,
+    "enum_networks": 25,
+    "enum_sec": 7.431589365005493,
+    "gen2_evals": 23,
+    "gen2_sec": 6.2452239990234375,
+    "found": true
+  },
+  {
+    "case": "large_gap",
+    "n_lines": 4,
+    "enum_networks": 14,
+    "enum_sec": 8.352299690246582,
+    "gen2_evals": 14,
+    "gen2_sec": 8.34228777885437,
+    "found": true
+  },
+  {
+    "case": "large_gap",
+    "n_lines": 5,
+    "enum_networks": 25,
+    "enum_sec": 18.66418957710266,
+    "gen2_evals": 22,
+    "gen2_sec": 16.03045916557312,
+    "found": true
+  },
+  {
+    "case": "moderate_gap",
+    "n_lines": 4,
+    "enum_networks": 14,
+    "enum_sec": 8.362678289413452,
+    "gen2_evals": 12,
+    "gen2_sec": 6.9335572719573975,
+    "found": true
+  },
+  {
+    "case": "moderate_gap",
+    "n_lines": 5,
+    "enum_networks": 25,
+    "enum_sec": 7.943076848983765,
+    "gen2_evals": 18,
+    "gen2_sec": 6.923214673995972,
+    "found": true
+  }
+]
