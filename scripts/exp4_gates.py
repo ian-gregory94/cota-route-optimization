@@ -124,11 +124,16 @@ def gates() -> list[dict]:
       f"gate 4-6 censors the result")
 
     # --- 4-7 discovery approximation benchmarked ----------------------------
+    eq = _j("equivalence_isolated.json")
     g("4-7", "Discovery approximation benchmarked, buys no conclusions",
-      MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
-      "needs outputs/exp4/pathreuse_benchmark.json with objective gap, "
-      "unserved gap, ranking stability, omitted and improvable flow, and "
-      "whether the promoted set changes")
+      ARMED if eq and eq.get("worst_rel_diff") == 0.0 else OPEN,
+      f"the SUBSTRATE half is measured: an assembled network reproduces the "
+      f"legacy scoring path exactly (worst relative difference "
+      f"{eq.get('worst_rel_diff') if eq else 'n/a'} across seven FitnessVector "
+      f"fields, outputs/exp4/equivalence_isolated.json). The gate's own subject "
+      f"-- a frozen supernetwork master path set versus exact per-network "
+      f"rebuilds -- needs the outer search to produce networks to compare, so "
+      f"it is ARMED, not met")
 
     # --- 4-8 what the optimizer abandons is reported ------------------------
     g("4-8", "What the optimizer abandons is reported", ARMED,
@@ -175,12 +180,19 @@ def gates() -> list[dict]:
       "Exp 4 route ids are synthetic so id disagreement is meaningless")
 
     # --- 4-14 search benchmarked on a space that can defeat it --------------
+    ko = _j("known_optimum_recovery.json")
     g("4-14", "Search benchmarked on a space that can defeat it",
-      MET if (OUT / "known_optimum_recovery.json").exists() else OPEN,
-      "needs an enumerated envelope and recovery of the true optimum from "
-      "incumbent, random and deceptive starts, including a drop-a-good-route "
-      "case, a non-nested optimum, a required swap, and an optimal incumbent. "
-      "Passing the 2B benchmark is explicitly insufficient")
+      OPEN,
+      "RUN and NOT CLOSED, with the reason measured. The substrate is "
+      "validated -- every feasible network in four enumerated spaces assembled, "
+      "scored and ranked, optimum found by exhaustive enumeration. But the four "
+      "deceptive cases cannot be built on a cheap surrogate: weighted set "
+      "coverage is submodular ("
+      f"{(ko or {}).get('submodularity', {}).get('diminishing_returns_checks', '?')}"
+      " checks, 0 violations), greedy carries a (1-1/e) guarantee there and "
+      "found the exact optimum in all four. The production evaluator is not "
+      "submodular, so this gate needs it and the outer search. "
+      "outputs/exp4/known_optimum_recovery.json")
 
     # --- 4-15 what Experiment 4 may conclude --------------------------------
     g("4-15", "Conclusion language is bounded and the null is precommitted",

@@ -3,13 +3,6 @@
   "effort": "60000/2/32",
   "fields": [
     {
-      "field": "objective",
-      "legacy": NaN,
-      "assembled": NaN,
-      "abs_diff": NaN,
-      "rel_diff": NaN
-    },
-    {
       "field": "generalized_cost",
       "legacy": 1785263.3794816681,
       "assembled": 1785095.3825596224,
@@ -38,17 +31,31 @@
       "rel_diff": 0.0004098730939781563
     },
     {
-      "field": "peak_concurrency",
-      "legacy": NaN,
-      "assembled": NaN,
-      "abs_diff": NaN,
-      "rel_diff": NaN
+      "field": "peak_vehicles",
+      "legacy": 176.13235185185187,
+      "assembled": 176.28325462962965,
+      "abs_diff": 0.15090277777778738,
+      "rel_diff": 0.0008567578652711937
+    },
+    {
+      "field": "mean_wait_min",
+      "legacy": 0.0,
+      "assembled": 0.0,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "gc_per_served_trip",
+      "legacy": 84.46284089288012,
+      "assembled": 84.43185492859325,
+      "abs_diff": -0.03098596428687017,
+      "rel_diff": 0.00036685912952144335
     }
   ],
-  "worst_rel_diff": 0.0005877599203227685,
+  "worst_rel_diff": 0.0008567578652711937,
   "seconds": {
-    "legacy": 415.47423243522644,
-    "assembled": 428.75193524360657
+    "legacy": 381.0556960105896,
+    "assembled": 382.09332370758057
   },
   "n_patterns": {
     "legacy": 111,
@@ -57,5 +64,7 @@
   "n_stops": {
     "legacy": 2949,
     "assembled": 2949
-  }
+  },
+  "preserve_ids": false,
+  "preserve_order": false
 }

@@ -2016,10 +2016,17 @@ produced.
 The same network, scored twice through the same `solve_on_network`, differs when
 its patterns are renamed and re-sorted:
 
-| | worst relative difference |
-|---|---|
-| identical construction, **original pattern ids and insertion order** | **0.000e+00** — exact on every field |
-| identical construction, **content-derived ids, sorted order** | **5.878e-04** on unserved demand |
+| field | ids+order preserved | ids renamed, sorted |
+|---|---|---|
+| `generalized_cost` | 0.000e+00 | 9.410e-05 |
+| `unserved_demand` | 0.000e+00 | 5.878e-04 |
+| `served_demand` | 0.000e+00 | 2.729e-04 |
+| `revenue_veh_hours` | 0.000e+00 | 4.099e-04 |
+| **`peak_vehicles`** | 0.000e+00 | **8.568e-04** |
+| `gc_per_served_trip` | 0.000e+00 | 3.669e-04 |
+
+Exact on every field when order is preserved; **worst 8.568e-04, on peak
+vehicles**, when it is not.
 
 The geometry, segment times, stop set, trip stats and pattern count are
 identical in both. 2,949 stops, 111 patterns and 2,331 trip-stat rows either
@@ -2038,9 +2045,13 @@ different enumeration order retains a different subset of near-equal paths. The
 retained set is what gets repriced under every headway vector, so the difference
 propagates into generalized cost and unserved demand.
 
-**Size.** 5.878e-04 relative on unserved demand — about 0.06%. Small, but not
-nothing: Experiment 3's certified leader is 0.187%, so this is roughly a third
-of that margin, and it is larger than several certified Experiment 3 effects.
+**Size.** Worst 8.568e-04 relative, on peak vehicles — 176.132 against 176.283,
+a sixth of a bus. Unserved demand moves 5.878e-04, about 0.06%. Small but not
+nothing: Experiment 3's certified leader is 0.187%, so the unserved figure is a
+third of that margin and larger than several certified Experiment 3 effects.
+Peak vehicles matters separately because it is a **constraint** rather than just
+a reported quantity: a network sitting at 197.0 of 197.0 peak vehicles could
+cross its cap on renaming alone.
 
 **What it does and does not threaten.**
 

@@ -5,9 +5,29 @@ or building something small. Four remain. Three of them share one root cause,
 and it is worth naming precisely because it is easy to mistake for a missing
 check when it is a missing *capability*.
 
-## The root cause
+## RESOLVED 2026-09-05 — the substrate now exists
 
-**There is no way to assemble an Experiment 4 network and score it.**
+The root cause below has been removed. `exp4_network.Exp4Selection` +
+`exp4_assemble.assemble` + `exp4_score.score_exp4_network` assemble a network
+from pool line ids and score it on `exp3_score.solve_on_network`, which is
+Gen1's evaluation core extracted verbatim and shared by both experiments.
+
+**Measured, not asserted:** an assembled network reproduces the legacy scoring
+path **exactly** — 0.000e+00 relative difference across all seven
+`FitnessVector` fields (`outputs/exp4/equivalence_isolated.json`).
+
+That test also found **D34**: the evaluator is not invariant to pattern
+identifier renaming, worst 8.568e-04 on peak vehicles. No Gen1 result is
+affected, but a score is a property of *(network, pattern order)*, and peak
+vehicles is a constraint, so a network at its cap could cross it on renaming
+alone.
+
+The two gates below therefore move, but neither closes, and the reasons are
+measured rather than asserted — see "What survived" at the end.
+
+## The original root cause (historical)
+
+**There was no way to assemble an Experiment 4 network and score it.**
 
 Verified rather than assumed:
 
@@ -82,6 +102,27 @@ the Experiment 2B space, which gate 4-14 rules out in advance ("passing the 2B
 benchmark is explicitly insufficient — its winner is a singleton adjacent to the
 null"); or call the bridge suite done because Gen1 is frozen. The gates exist to
 stop exactly that.
+
+## What survived, after the substrate
+
+* **C9 / gate 4-7** — the substrate half is *measured and exact*. The gate's own
+  subject is a frozen master path set versus exact per-network rebuilds, which
+  needs the outer search to produce networks to compare. **ARMED, not met.**
+* **C10 / gate 4-14** — **run, and not closed for a measured reason.** Every
+  feasible network in four enumerated spaces was assembled, scored and ranked,
+  and the optimum found by exhaustive enumeration, so the substrate is
+  validated. But the four deceptive cases the gate names cannot be built on the
+  cheap surrogate: weighted set coverage is submodular (535,599
+  diminishing-returns checks, zero violations), greedy carries a (1 − 1/e)
+  guarantee on it, and greedy found the exact optimum in all four spaces. The
+  production evaluator is **not** submodular — lines meeting at a junction
+  create transfer value exceeding their sum — so a benchmark that can genuinely
+  defeat a search must use it, which requires the outer search and real compute.
+  Substituting a surrogate greedy always solves would produce a green gate that
+  proves nothing, which is the failure mode gate 4-14 already names when it
+  rules out the 2B benchmark.
+* **D16, D21b** — unchanged. Still the Gen2 chain.
+* **D18** — unchanged. Still the compute-policy decision.
 
 **Status: 16 of 23 readiness items met, 1 manual, 6 open. Every open item is a
 capability gap — machinery that does not exist yet — rather than an unchecked

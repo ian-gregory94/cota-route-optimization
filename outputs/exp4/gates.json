@@ -39,8 +39,8 @@
     {
       "gate": "4-7",
       "title": "Discovery approximation benchmarked, buys no conclusions",
-      "state": "OPEN",
-      "detail": "needs outputs/exp4/pathreuse_benchmark.json with objective gap, unserved gap, ranking stability, omitted and improvable flow, and whether the promoted set changes"
+      "state": "ARMED",
+      "detail": "the SUBSTRATE half is measured: an assembled network reproduces the legacy scoring path exactly (worst relative difference 0.0 across seven FitnessVector fields, outputs/exp4/equivalence_isolated.json). The gate's own subject -- a frozen supernetwork master path set versus exact per-network rebuilds -- needs the outer search to produce networks to compare, so it is ARMED, not met"
     },
     {
       "gate": "4-8",
@@ -82,7 +82,7 @@
       "gate": "4-14",
       "title": "Search benchmarked on a space that can defeat it",
       "state": "OPEN",
-      "detail": "needs an enumerated envelope and recovery of the true optimum from incumbent, random and deceptive starts, including a drop-a-good-route case, a non-nested optimum, a required swap, and an optimal incumbent. Passing the 2B benchmark is explicitly insufficient"
+      "detail": "RUN and NOT CLOSED, with the reason measured. The substrate is validated -- every feasible network in four enumerated spaces assembled, scored and ranked, optimum found by exhaustive enumeration. But the four deceptive cases cannot be built on a cheap surrogate: weighted set coverage is submodular (535599 checks, 0 violations), greedy carries a (1-1/e) guarantee there and found the exact optimum in all four. The production evaluator is not submodular, so this gate needs it and the outer search. outputs/exp4/known_optimum_recovery.json"
     },
     {
       "gate": "4-15",
@@ -92,8 +92,8 @@
     }
   ],
   "met": 9,
-  "armed": 4,
-  "open": 2,
+  "armed": 5,
+  "open": 1,
   "total": 15,
   "all_pre_search_gates_met": false
 }

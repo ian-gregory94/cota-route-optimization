@@ -132,16 +132,21 @@ def checks() -> list[tuple[str, str, str, str]]:
         if off_ok else "no OFF representation")
     add("C9", "Discovery path reuse benchmarked against exact rebuilds",
         MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
-        "BLOCKED on capability, not on a check: there is no way to assemble an "
-        "Exp 4 network from pool line ids and score it. routepool.py exposes "
-        "only generate_pool/PoolAudit, and score_state takes GeometryEdits over "
-        "the LEGACY network. See EXPERIMENT4_BLOCKERS.md")
+        "SUBSTRATE BUILT AND MEASURED: an assembled network reproduces the "
+        "legacy scoring path EXACTLY (0.000e+00 across seven FitnessVector "
+        "fields, outputs/exp4/equivalence_isolated.json). The gate's own "
+        "subject -- master path set vs exact per-network rebuilds -- still "
+        "needs the outer search to generate networks to compare. See D34 for "
+        "the pattern-order sensitivity this test discovered")
     add("C10", "Outer network search recovers an exhaustively known optimum",
         OPEN,
-        "BLOCKED on capability: there is no outer network search to test, and "
-        "no assembly layer to build the enumerated envelope from. Gate 4-14 "
-        "also rules out substituting the 2B benchmark. See "
-        "EXPERIMENT4_BLOCKERS.md")
+        "RUN, and NOT CLOSED for a measured reason. The assembly layer now "
+        "exists and every feasible network in four enumerated spaces was "
+        "assembled, scored and ranked with the optimum found by enumeration. "
+        "But the four deceptive cases cannot be built on a submodular surrogate "
+        "(535,599 diminishing-returns checks, 0 violations) where greedy has a "
+        "(1-1/e) guarantee and found every optimum. Needs the production "
+        "evaluator and the outer search. outputs/exp4/known_optimum_recovery.json")
     add("C11", "Committed gate on common-lines exposure",
         MET if _acceptance_gate("Gate 4-10") else OPEN,
         "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the "
