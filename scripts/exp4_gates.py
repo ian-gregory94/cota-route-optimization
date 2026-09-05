@@ -132,8 +132,38 @@ def gates() -> list[dict]:
     # promotion band" and Experiment 4's band is D18's output, which has not
     # been run. A small-looking gap is not a substitute for the band.
     eq = _j("equivalence_isolated.json")
+    # The ONE-FACTOR instrument. masterpath_benchmark.json varied reuse and
+    # enumeration richness together and is unidentified; it is preserved but
+    # must not be read as this gate's evidence. See
+    # decisions/2026-09-05-gate-4-7-amendment.md
+    g47 = _j("gate47.json")
     mp = _j("masterpath_benchmark.json")
-    if mp:
+    if g47:
+        _inv = sum(c["ranking_inversions"] for c in g47["cases"])
+        _prs = sum(c["ranking_pairs"] for c in g47["cases"])
+        _ld = sum(c["leader_preserved"] for c in g47["cases"])
+        _pr = sum(c["promoted_set_preserved"] for c in g47["cases"])
+        _n = len(g47["cases"])
+        g("4-7", "Discovery approximation benchmarked, buys no conclusions",
+          MET if g47.get("verdict") == "MET" else ARMED,
+          f"ONE-FACTOR comparison (common candidate universe, identical "
+          f"enumeration settings, arms differ only in reuse). Substrate PROVED "
+          f"SOUND: filtering is exactly the identity at survival 1.000 "
+          f"(signed gap 0.0 on all {sum(c['survival_1_candidates'] for c in g47['cases'])} "
+          f"such candidates), zero hard failures, PINNED_OFF binds in both "
+          f"arms. Approximation FAILS: exact leader preserved in {_ld}/{_n} "
+          f"cases, {_inv}/{_prs} ranking pairs inverted, promoted set preserved "
+          f"in {_pr}/{_n}, worst objective rel gap "
+          f"{g47['worst_objective_rel_gap']:.3e}. The bias is SYSTEMATIC and "
+          f"DIRECTIONAL: penalty 0.00 at survival 1.000, median +267/+355/+257 "
+          f"at 1/2/3 active lines, so reuse scores sparse networks worse than "
+          f"they are and biases the search toward activating more lines. The "
+          f"supernetwork master is NOT a superset of candidate paths -- an "
+          f"exact rebuild finds more paths in 62% of 480 observations. Widening "
+          f"is not the remedy; richness is the confound the amendment removed. "
+          f"Closure here is band-independent and does NOT wait on D18. "
+          f"EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json")
+    elif mp:
         inv = sum(c["ranking_inversions"] for c in mp["cases"])
         prs = sum(c["ranking_pairs"] for c in mp["cases"])
         leaders = sum(c["leader_identified"] for c in mp["cases"])

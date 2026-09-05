@@ -1,0 +1,6079 @@
+{
+  "diagnostic": "enumeration richness (NOT gate 4-7)",
+  "gate": null,
+  "base_scenarios": 0,
+  "rich_scenarios": 6,
+  "reuse": "OFF in both arms -- every candidate rebuilds its own paths",
+  "n_cases": 5,
+  "leader_changes": 3,
+  "promoted_changes": 5,
+  "ranking_inversions": 67,
+  "ranking_pairs": 600,
+  "worst_objective_rel_gap": 0.003766192530933553,
+  "worst_field_rel_diff": 3.202731476289893,
+  "note": "informational unless the preregistration separately gives it a gate; a large effect here is a finding about the PATH MODEL and belongs to gate 4-9, not to gate 4-7",
+  "seconds": 318.4586548805237,
+  "cases": [
+    {
+      "case": "greedy_finds_nothing",
+      "universe_digest": "b111d18ae710deb8",
+      "n": 16,
+      "leader_base": "exp4|exp4-pool-v1|3lines#d73f3849068f",
+      "leader_rich": "exp4|exp4-pool-v1|4lines#1be3cd377edf",
+      "leader_changes": true,
+      "ranking_inversions": 15,
+      "ranking_pairs": 120,
+      "promoted_changes": true,
+      "promoted_base": [
+        "exp4|exp4-pool-v1|2lines#dbda0fde23df",
+        "exp4|exp4-pool-v1|3lines#d73f3849068f",
+        "exp4|exp4-pool-v1|4lines#1be3cd377edf"
+      ],
+      "promoted_rich": [
+        "exp4|exp4-pool-v1|3lines#0ccd940f1232",
+        "exp4|exp4-pool-v1|4lines#1be3cd377edf",
+        "exp4|exp4-pool-v1|4lines|6off#17dc1de0fbd5"
+      ],
+      "n_rich_better": 13,
+      "worst_objective_rel_gap": 0.003766192530933553,
+      "worst_field_rel_diff": 1.4818653376915898,
+      "rows": [
+        {
+          "kind": "supernetwork",
+          "id": "exp4|exp4-pool-v1|4lines#1be3cd377edf",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6",
+            "syn-9a1726e4c4a0670b",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3632777.9508754243,
+          "objective_rich": 3628658.1390596014,
+          "objective_rel_gap": 0.0011340665109548392,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 323,
+            "am_peak": 323,
+            "midday": 323,
+            "pm_peak": 323,
+            "evening": 323,
+            "owl": 323
+          },
+          "paths_rich": {
+            "early": 384,
+            "am_peak": 391,
+            "midday": 396,
+            "pm_peak": 392,
+            "evening": 392,
+            "owl": 399
+          },
+          "path_count_delta": {
+            "am_peak": 68,
+            "early": 61,
+            "evening": 69,
+            "midday": 73,
+            "owl": 76,
+            "pm_peak": 69
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 7900.470025958448,
+              "rich": 9255.57437831925,
+              "rel_diff": 0.17152199146485686
+            },
+            "unserved_demand": {
+              "base": 30207.312340412216,
+              "rich": 30161.688039010685,
+              "rel_diff": 0.0015103727497296513
+            },
+            "served_demand": {
+              "base": 741.6876595877859,
+              "rich": 787.3119609893166,
+              "rel_diff": 0.06151417083963312
+            },
+            "revenue_veh_hours": {
+              "base": 155.66527777777776,
+              "rich": 155.66527777777776,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.879618055555554,
+              "rich": 9.879618055555554,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 10.652017630102353,
+              "rich": 11.755917396058514,
+              "rel_diff": 0.10363292704628707
+            }
+          },
+          "worst_rel_diff": 0.17152199146485686
+        },
+        {
+          "kind": "pinned_off",
+          "id": "exp4|exp4-pool-v1|4lines|6off#17dc1de0fbd5",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6",
+            "syn-9a1726e4c4a0670b",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3635089.408538172,
+          "objective_rich": 3630407.060064532,
+          "objective_rel_gap": 0.0012880971958054632,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 323,
+            "am_peak": 323,
+            "midday": 323,
+            "pm_peak": 323,
+            "evening": 323,
+            "owl": 323
+          },
+          "paths_rich": {
+            "early": 384,
+            "am_peak": 391,
+            "midday": 396,
+            "pm_peak": 392,
+            "evening": 392,
+            "owl": 399
+          },
+          "path_count_delta": {
+            "am_peak": 68,
+            "early": 61,
+            "evening": 69,
+            "midday": 73,
+            "owl": 76,
+            "pm_peak": 69
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 6195.893045150094,
+              "rich": 7519.824021724833,
+              "rel_diff": 0.21367879770149703
+            },
+            "unserved_demand": {
+              "base": 30240.77929577518,
+              "rich": 30190.72696702339,
+              "rel_diff": 0.0016551269483581898
+            },
+            "served_demand": {
+              "base": 708.2207042248202,
+              "rich": 758.2730329766131,
+              "rel_diff": 0.0706733486513606
+            },
+            "revenue_veh_hours": {
+              "base": 159.77499999999998,
+              "rich": 159.6,
+              "rel_diff": 0.0010952902519166515
+            },
+            "peak_vehicles": {
+              "base": 9.497083333333332,
+              "rich": 9.497083333333332,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.748534190244806,
+              "rich": 9.91704003003462,
+              "rel_diff": 0.13356589965582755
+            }
+          },
+          "worst_rel_diff": 0.21367879770149703
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "lines": [
+            "syn-2663c6d04f289b58"
+          ],
+          "objective_base": 3647789.8434759495,
+          "objective_rich": 3647789.8434759495,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 158,
+            "pm_peak": 158,
+            "evening": 158,
+            "owl": 158
+          },
+          "paths_rich": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 158
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 11,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1349.7124286615158,
+              "rich": 1349.7124286615158,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30387.00109206073,
+              "rich": 30387.00109206073,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 561.9989079392703,
+              "rich": 561.9989079392703,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 16.527777777777775,
+              "rich": 16.527777777777775,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.50347222222222,
+              "rich": 9.50347222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.4016282053120395,
+              "rich": 2.4016282053120395,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "lines": [
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3636885.7938588765,
+          "objective_rich": 3636401.8094125865,
+          "objective_rel_gap": 0.00013307661381811579,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 81,
+            "am_peak": 81,
+            "midday": 81,
+            "pm_peak": 81,
+            "evening": 81,
+            "owl": 81
+          },
+          "paths_rich": {
+            "early": 81,
+            "am_peak": 81,
+            "midday": 89,
+            "pm_peak": 89,
+            "evening": 89,
+            "owl": 81
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 8,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4379.036447122689,
+              "rich": 4515.629350442067,
+              "rel_diff": 0.031192456369968855
+            },
+            "unserved_demand": {
+              "base": 30270.88964509795,
+              "rich": 30265.71816718454,
+              "rel_diff": 0.00017083997114192848
+            },
+            "served_demand": {
+              "base": 678.1103549020538,
+              "rich": 683.2818328154632,
+              "rel_diff": 0.007626307246342439
+            },
+            "revenue_veh_hours": {
+              "base": 63.55555555555556,
+              "rich": 63.55555555555556,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.136111111111111,
+              "rich": 9.136111111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.45770473119408,
+              "rich": 6.608736151867838,
+              "rel_diff": 0.02338778667661859
+            }
+          },
+          "worst_rel_diff": 0.031192456369968855
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+          "lines": [
+            "syn-9a1726e4c4a0670b"
+          ],
+          "objective_base": 3645615.929918294,
+          "objective_rich": 3645535.1377063924,
+          "objective_rel_gap": 2.2161471053042947e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 6,
+            "am_peak": 6,
+            "midday": 6,
+            "pm_peak": 6,
+            "evening": 6,
+            "owl": 6
+          },
+          "paths_rich": {
+            "early": 6,
+            "am_peak": 6,
+            "midday": 7,
+            "pm_peak": 7,
+            "evening": 7,
+            "owl": 6
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 1,
+            "midday": 1,
+            "owl": 0,
+            "pm_peak": 1
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1382.2465999692886,
+              "rich": 1398.4195989438097,
+              "rel_diff": 0.011700516373041118
+            },
+            "unserved_demand": {
+              "base": 30368.614027652704,
+              "rich": 30367.805984228737,
+              "rel_diff": 2.66078466153095e-05
+            },
+            "served_demand": {
+              "base": 580.385972347301,
+              "rich": 581.1940157712712,
+              "rel_diff": 0.0013922518159805407
+            },
+            "revenue_veh_hours": {
+              "base": 157.93333333333334,
+              "rich": 157.93333333333334,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 8.816666666666666,
+              "rich": 8.816666666666666,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.3815989114605216,
+              "rich": 2.4061149306364458,
+              "rel_diff": 0.010293932810411664
+            }
+          },
+          "worst_rel_diff": 0.011700516373041118
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#7db3820b797d",
+          "lines": [
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3650033.6289759376,
+          "objective_rich": 3650033.6289759376,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 116.66006592526202,
+              "rich": 116.66006592526202,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 53.42666666666666,
+              "rich": 53.42666666666666,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 7.680083333333333,
+              "rich": 7.680083333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.21886404806764362,
+              "rich": 0.21886404806764362,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3637013.8019012334,
+          "objective_rich": 3632893.8834912893,
+          "objective_rel_gap": 0.0011327750276312882,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 253,
+            "am_peak": 253,
+            "midday": 253,
+            "pm_peak": 253,
+            "evening": 253,
+            "owl": 253
+          },
+          "paths_rich": {
+            "early": 290,
+            "am_peak": 308,
+            "midday": 317,
+            "pm_peak": 335,
+            "evening": 338,
+            "owl": 327
+          },
+          "path_count_delta": {
+            "am_peak": 55,
+            "early": 37,
+            "evening": 85,
+            "midday": 64,
+            "owl": 74,
+            "pm_peak": 82
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5917.7866405248815,
+              "rich": 7172.0449730889495,
+              "rel_diff": 0.21194720403992479
+            },
+            "unserved_demand": {
+              "base": 30259.133460505906,
+              "rich": 30214.34865431834,
+              "rel_diff": 0.0014800425876709098
+            },
+            "served_demand": {
+              "base": 689.8665394940987,
+              "rich": 734.6513456816629,
+              "rel_diff": 0.06491807273390347
+            },
+            "revenue_veh_hours": {
+              "base": 63.54166666666666,
+              "rich": 63.54166666666666,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.136111111111111,
+              "rich": 9.136111111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.578161574359854,
+              "rich": 9.762515260125475,
+              "rel_diff": 0.1380661433687211
+            }
+          },
+          "worst_rel_diff": 0.21194720403992479
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#96f7de653836",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-9a1726e4c4a0670b"
+          ],
+          "objective_base": 3643169.356459967,
+          "objective_rich": 3643084.0914355144,
+          "objective_rel_gap": 2.3404079280937262e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 164,
+            "am_peak": 164,
+            "midday": 164,
+            "pm_peak": 164,
+            "evening": 164,
+            "owl": 164
+          },
+          "paths_rich": {
+            "early": 164,
+            "am_peak": 164,
+            "midday": 165,
+            "pm_peak": 176,
+            "evening": 176,
+            "owl": 165
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 12,
+            "midday": 1,
+            "owl": 1,
+            "pm_peak": 12
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2811.234572288805,
+              "rich": 2828.5559303579575,
+              "rel_diff": 0.006161477323840055
+            },
+            "unserved_demand": {
+              "base": 30336.31768239732,
+              "rich": 30335.462795876305,
+              "rel_diff": 2.818029959879316e-05
+            },
+            "served_demand": {
+              "base": 612.6823176026835,
+              "rich": 613.5372041236955,
+              "rel_diff": 0.0013953177633018385
+            },
+            "revenue_veh_hours": {
+              "base": 158.12222222222223,
+              "rich": 158.12222222222223,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.806944444444444,
+              "rich": 9.806944444444444,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 4.58840493926553,
+              "rich": 4.610243537550319,
+              "rel_diff": 0.004759518519802733
+            }
+          },
+          "worst_rel_diff": 0.006161477323840055
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#c0db0dd42a35",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3647520.1341317873,
+          "objective_rich": 3647520.1341317873,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 166,
+            "evening": 166,
+            "owl": 166
+          },
+          "paths_rich": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 166
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1454.935233221556,
+              "rich": 1454.935233221556,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30383.87665748805,
+              "rich": 30383.87665748805,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 565.1233425119551,
+              "rich": 565.1233425119551,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 56.59777777777778,
+              "rich": 56.59777777777778,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.50347222222222,
+              "rich": 9.50347222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.5745445706673795,
+              "rich": 2.5745445706673795,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#dbda0fde23df",
+          "lines": [
+            "syn-91cfb5fd76db5ab6",
+            "syn-9a1726e4c4a0670b"
+          ],
+          "objective_base": 3632715.281808801,
+          "objective_rich": 3632155.7639914695,
+          "objective_rel_gap": 0.00015402192958345005,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 87,
+            "am_peak": 87,
+            "midday": 87,
+            "pm_peak": 87,
+            "evening": 87,
+            "owl": 87
+          },
+          "paths_rich": {
+            "early": 87,
+            "am_peak": 87,
+            "midday": 88,
+            "pm_peak": 96,
+            "evening": 96,
+            "owl": 88
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 9,
+            "midday": 1,
+            "owl": 1,
+            "pm_peak": 9
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 6295.47809634008,
+              "rich": 6459.124011139034,
+              "rel_diff": 0.025994199692965517
+            },
+            "unserved_demand": {
+              "base": 30220.165030937176,
+              "rich": 30214.138666502757,
+              "rel_diff": 0.0001994153383427977
+            },
+            "served_demand": {
+              "base": 728.8349690628299,
+              "rich": 734.8613334972514,
+              "rel_diff": 0.008268489699623542
+            },
+            "revenue_veh_hours": {
+              "base": 159.6,
+              "rich": 159.6,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.497083333333332,
+              "rich": 9.497083333333332,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.63772783080798,
+              "rich": 8.789582084009858,
+              "rel_diff": 0.017580347074639513
+            }
+          },
+          "worst_rel_diff": 0.025994199692965517
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#17cce2674079",
+          "lines": [
+            "syn-91cfb5fd76db5ab6",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3636640.2678199313,
+          "objective_rich": 3636156.2833736413,
+          "objective_rel_gap": 0.00013308559842243754,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 133,
+            "am_peak": 133,
+            "midday": 133,
+            "pm_peak": 133,
+            "evening": 133,
+            "owl": 133
+          },
+          "paths_rich": {
+            "early": 133,
+            "am_peak": 133,
+            "midday": 133,
+            "pm_peak": 142,
+            "evening": 142,
+            "owl": 133
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 9,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 9
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4780.007390338112,
+              "rich": 4916.60029365749,
+              "rel_diff": 0.028575877015478018
+            },
+            "unserved_demand": {
+              "base": 30265.50217024661,
+              "rich": 30260.330692333202,
+              "rel_diff": 0.0001708703818730293
+            },
+            "served_demand": {
+              "base": 683.4978297533916,
+              "rich": 688.669307666801,
+              "rel_diff": 0.007566195075228516
+            },
+            "revenue_veh_hours": {
+              "base": 64.03555555555556,
+              "rich": 64.03555555555556,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.41211111111111,
+              "rich": 9.41211111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.993449258006796,
+              "rich": 7.139276048637685,
+              "rel_diff": 0.020851912304065308
+            }
+          },
+          "worst_rel_diff": 0.028575877015478018
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#5d1f04d99cc1",
+          "lines": [
+            "syn-9a1726e4c4a0670b",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3645378.8422609433,
+          "objective_rich": 3645337.0059934645,
+          "objective_rel_gap": 1.1476521176278154e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 14,
+            "am_peak": 14,
+            "midday": 14,
+            "pm_peak": 14,
+            "evening": 14,
+            "owl": 14
+          },
+          "paths_rich": {
+            "early": 14,
+            "am_peak": 14,
+            "midday": 14,
+            "pm_peak": 15,
+            "evening": 15,
+            "owl": 14
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 1,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 1
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1560.7894431082273,
+              "rich": 1569.5437204347486,
+              "rel_diff": 0.0056088778439503445
+            },
+            "unserved_demand": {
+              "base": 30365.150440148624,
+              "rich": 30364.728852275246,
+              "rel_diff": 1.3883938240600788e-05
+            },
+            "served_demand": {
+              "base": 583.8495598513806,
+              "rich": 584.2711477247564,
+              "rel_diff": 0.0007220830542084708
+            },
+            "revenue_veh_hours": {
+              "base": 159.29583333333332,
+              "rich": 159.29583333333332,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.61336111111111,
+              "rich": 9.61336111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.673273306064541,
+              "rich": 2.6863276178308624,
+              "rel_diff": 0.004883268664190364
+            }
+          },
+          "worst_rel_diff": 0.0056088778439503445
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#0ccd940f1232",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6",
+            "syn-9a1726e4c4a0670b"
+          ],
+          "objective_base": 3642440.340081624,
+          "objective_rich": 3628722.2084784377,
+          "objective_rel_gap": 0.003766192530933553,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 259,
+            "am_peak": 259,
+            "midday": 259,
+            "pm_peak": 259,
+            "evening": 259,
+            "owl": 259
+          },
+          "paths_rich": {
+            "early": 321,
+            "am_peak": 317,
+            "midday": 333,
+            "pm_peak": 341,
+            "evening": 323,
+            "owl": 343
+          },
+          "path_count_delta": {
+            "am_peak": 58,
+            "early": 62,
+            "evening": 64,
+            "midday": 74,
+            "owl": 84,
+            "pm_peak": 82
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3699.4382704471022,
+              "rich": 9181.507612352389,
+              "rel_diff": 1.4818653376915898
+            },
+            "unserved_demand": {
+              "base": 30322.840848426473,
+              "rich": 30162.839173884047,
+              "rel_diff": 0.00527660568949391
+            },
+            "served_demand": {
+              "base": 626.1591515735319,
+              "rich": 786.1608261159517,
+              "rel_diff": 0.255528764756272
+            },
+            "revenue_veh_hours": {
+              "base": 158.2486111111111,
+              "rich": 155.6652777777778,
+              "rel_diff": 0.016324524526281487
+            },
+            "peak_vehicles": {
+              "base": 9.879618055555554,
+              "rich": 9.879618055555554,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.908143738138219,
+              "rich": 11.678917732029296,
+              "rel_diff": 0.9767490856120522
+            }
+          },
+          "worst_rel_diff": 1.4818653376915898
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#46ddad6ef870",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3636940.79508201,
+          "objective_rich": 3632766.250571436,
+          "objective_rel_gap": 0.0011478175603570548,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 317,
+            "am_peak": 317,
+            "midday": 317,
+            "pm_peak": 317,
+            "evening": 317,
+            "owl": 317
+          },
+          "paths_rich": {
+            "early": 378,
+            "am_peak": 375,
+            "midday": 391,
+            "pm_peak": 399,
+            "evening": 380,
+            "owl": 400
+          },
+          "path_count_delta": {
+            "am_peak": 58,
+            "early": 61,
+            "evening": 63,
+            "midday": 74,
+            "owl": 83,
+            "pm_peak": 82
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5989.037462026468,
+              "rich": 7269.83366339338,
+              "rel_diff": 0.21385676905309223
+            },
+            "unserved_demand": {
+              "base": 30257.931313499863,
+              "rich": 30212.470140900354,
+              "rel_diff": 0.00150245474908677
+            },
+            "served_demand": {
+              "base": 691.068686500142,
+              "rich": 736.5298590996465,
+              "rel_diff": 0.06578386995037888
+            },
+            "revenue_veh_hours": {
+              "base": 63.541666666666664,
+              "rich": 63.541666666666664,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.136111111111111,
+              "rich": 9.136111111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.66634182537981,
+              "rich": 9.870385529624308,
+              "rel_diff": 0.1389333271759944
+            }
+          },
+          "worst_rel_diff": 0.21385676905309223
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#17547eff48bc",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-9a1726e4c4a0670b",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3642957.7788427584,
+          "objective_rich": 3642872.830009211,
+          "objective_rel_gap": 2.331864344980629e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 172,
+            "am_peak": 172,
+            "midday": 172,
+            "pm_peak": 172,
+            "evening": 172,
+            "owl": 172
+          },
+          "paths_rich": {
+            "early": 172,
+            "am_peak": 172,
+            "midday": 173,
+            "pm_peak": 184,
+            "evening": 173,
+            "owl": 184
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 1,
+            "midday": 1,
+            "owl": 12,
+            "pm_peak": 12
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3008.0858539115757,
+              "rich": 3025.72340288576,
+              "rel_diff": 0.00586337951466692
+            },
+            "unserved_demand": {
+              "base": 30332.91410824039,
+              "rich": 30332.059221719377,
+              "rel_diff": 2.818346163390481e-05
+            },
+            "served_demand": {
+              "base": 616.0858917596148,
+              "rich": 616.9407782806269,
+              "rel_diff": 0.001387609312997606
+            },
+            "revenue_veh_hours": {
+              "base": 155.7252777777778,
+              "rich": 155.7252777777778,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.61336111111111,
+              "rich": 9.61336111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 4.882575456029554,
+              "rich": 4.9043984599595625,
+              "rel_diff": 0.004469568187227744
+            }
+          },
+          "worst_rel_diff": 0.00586337951466692
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#d73f3849068f",
+          "lines": [
+            "syn-91cfb5fd76db5ab6",
+            "syn-9a1726e4c4a0670b",
+            "syn-a13da236edef295b"
+          ],
+          "objective_base": 3632624.1165919495,
+          "objective_rich": 3632064.5987746175,
+          "objective_rel_gap": 0.00015402579495532045,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 139,
+            "am_peak": 139,
+            "midday": 139,
+            "pm_peak": 139,
+            "evening": 139,
+            "owl": 139
+          },
+          "paths_rich": {
+            "early": 139,
+            "am_peak": 139,
+            "midday": 140,
+            "pm_peak": 149,
+            "evening": 140,
+            "owl": 149
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 1,
+            "midday": 1,
+            "owl": 10,
+            "pm_peak": 10
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 6347.652756436032,
+              "rich": 6511.2986712349875,
+              "rel_diff": 0.025780539843335153
+            },
+            "unserved_demand": {
+              "base": 30218.970531962612,
+              "rich": 30212.94416752819,
+              "rel_diff": 0.00019942322085555732
+            },
+            "served_demand": {
+              "base": 730.0294680373945,
+              "rich": 736.055832471816,
+              "rel_diff": 0.008254960516351051
+            },
+            "revenue_veh_hours": {
+              "base": 159.6,
+              "rich": 159.6,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.497083333333332,
+              "rich": 9.497083333333332,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.695063739688498,
+              "rich": 8.846202127586984,
+              "rel_diff": 0.01738209085329842
+            }
+          },
+          "worst_rel_diff": 0.025780539843335153
+        }
+      ]
+    },
+    {
+      "case": "large_gap",
+      "universe_digest": "2f1b3f3610c58aec",
+      "n": 16,
+      "leader_base": "exp4|exp4-pool-v1|2lines#509e131389c8",
+      "leader_rich": "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+      "leader_changes": true,
+      "ranking_inversions": 13,
+      "ranking_pairs": 120,
+      "promoted_changes": true,
+      "promoted_base": [
+        "exp4|exp4-pool-v1|2lines#509e131389c8",
+        "exp4|exp4-pool-v1|2lines#7ef66665019b",
+        "exp4|exp4-pool-v1|5lines#dcd73d79f2b7"
+      ],
+      "promoted_rich": [
+        "exp4|exp4-pool-v1|2lines#509e131389c8",
+        "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+        "exp4|exp4-pool-v1|5lines|6off#36e7233e68e5"
+      ],
+      "n_rich_better": 6,
+      "worst_objective_rel_gap": 0.0036575399658928718,
+      "worst_field_rel_diff": 3.202731476289893,
+      "rows": [
+        {
+          "kind": "supernetwork",
+          "id": "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-47ece08f5664f6eb",
+            "syn-8352b3f4b3bcd2f2",
+            "syn-e8ce379fa4507794",
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3627971.507573298,
+          "objective_rich": 3614702.056789228,
+          "objective_rel_gap": 0.0036575399658928718,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 422,
+            "am_peak": 422,
+            "midday": 422,
+            "pm_peak": 422,
+            "evening": 422,
+            "owl": 422
+          },
+          "paths_rich": {
+            "early": 766,
+            "am_peak": 778,
+            "midday": 671,
+            "pm_peak": 699,
+            "evening": 848,
+            "owl": 959
+          },
+          "path_count_delta": {
+            "am_peak": 356,
+            "early": 344,
+            "evening": 426,
+            "midday": 249,
+            "owl": 537,
+            "pm_peak": 277
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 8317.21413900287,
+              "rich": 13541.011902638027,
+              "rel_diff": 0.6280706107034807
+            },
+            "unserved_demand": {
+              "base": 30163.785778619127,
+              "rich": 30009.675374054917,
+              "rel_diff": 0.0051091201116222965
+            },
+            "served_demand": {
+              "base": 785.2142213808759,
+              "rich": 939.3246259450827,
+              "rel_diff": 0.1962654271508082
+            },
+            "revenue_veh_hours": {
+              "base": 159.06222222222223,
+              "rich": 159.97722222222222,
+              "rel_diff": 0.005752465841459616
+            },
+            "peak_vehicles": {
+              "base": 16.65711111111111,
+              "rich": 17.047472222222222,
+              "rel_diff": 0.023435102792267612
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 10.592286681176299,
+              "rich": 14.415689239504403,
+              "rel_diff": 0.360961015634398
+            }
+          },
+          "worst_rel_diff": 0.6280706107034807
+        },
+        {
+          "kind": "pinned_off",
+          "id": "exp4|exp4-pool-v1|5lines|6off#36e7233e68e5",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-47ece08f5664f6eb",
+            "syn-8352b3f4b3bcd2f2",
+            "syn-e8ce379fa4507794",
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3637033.8377882848,
+          "objective_rich": 3623987.1949116243,
+          "objective_rel_gap": 0.003587165657109817,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 422,
+            "am_peak": 422,
+            "midday": 422,
+            "pm_peak": 422,
+            "evening": 422,
+            "owl": 422
+          },
+          "paths_rich": {
+            "early": 766,
+            "am_peak": 778,
+            "midday": 671,
+            "pm_peak": 699,
+            "evening": 848,
+            "owl": 959
+          },
+          "path_count_delta": {
+            "am_peak": 356,
+            "early": 344,
+            "evening": 426,
+            "midday": 249,
+            "owl": 537,
+            "pm_peak": 277
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4718.152093724226,
+              "rich": 10170.694228169114,
+              "rel_diff": 1.155652048965844
+            },
+            "unserved_demand": {
+              "base": 30269.297380788004,
+              "rich": 30115.13750569546,
+              "rel_diff": 0.005092945275643885
+            },
+            "served_demand": {
+              "base": 679.702619211997,
+              "rich": 833.8624943045435,
+              "rel_diff": 0.2268048860415889
+            },
+            "revenue_veh_hours": {
+              "base": 156.95666666666668,
+              "rich": 159.6277777777778,
+              "rel_diff": 0.017018143719781147
+            },
+            "peak_vehicles": {
+              "base": 17.341361111111112,
+              "rich": 17.341361111111112,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.941494648342159,
+              "rich": 12.197088006280529,
+              "rel_diff": 0.7571270488832784
+            }
+          },
+          "worst_rel_diff": 1.155652048965844
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#e88a9f67d7ae",
+          "lines": [
+            "syn-0811e763f266fdf9"
+          ],
+          "objective_base": 3648034.6864306433,
+          "objective_rich": 3648034.6864306433,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 192,
+            "am_peak": 192,
+            "midday": 192,
+            "pm_peak": 192,
+            "evening": 192,
+            "owl": 192
+          },
+          "paths_rich": {
+            "early": 192,
+            "am_peak": 192,
+            "midday": 203,
+            "pm_peak": 203,
+            "evening": 203,
+            "owl": 192
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 11,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1084.7051415701449,
+              "rich": 1084.7051415701449,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30391.24984407561,
+              "rich": 30391.24984407561,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 557.7501559243918,
+              "rich": 557.7501559243918,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 19.813333333333333,
+              "rich": 19.813333333333333,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 11.392666666666665,
+              "rich": 11.392666666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.9447868011303373,
+              "rich": 1.9447868011303373,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#05431c245e91",
+          "lines": [
+            "syn-47ece08f5664f6eb"
+          ],
+          "objective_base": 3650016.3087408063,
+          "objective_rich": 3650016.3087408063,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 99.3398307940744,
+              "rich": 99.3398307940744,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 106.66666666666667,
+              "rich": 106.66666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 15.333333333333334,
+              "rich": 15.333333333333334,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.18636983726611975,
+              "rich": 0.18636983726611975,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#ae7f23ebf11f",
+          "lines": [
+            "syn-8352b3f4b3bcd2f2"
+          ],
+          "objective_base": 3648255.8813772583,
+          "objective_rich": 3648255.8813772583,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 174,
+            "am_peak": 174,
+            "midday": 174,
+            "pm_peak": 174,
+            "evening": 174,
+            "owl": 174
+          },
+          "paths_rich": {
+            "early": 174,
+            "am_peak": 174,
+            "midday": 181,
+            "pm_peak": 181,
+            "evening": 181,
+            "owl": 174
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 7,
+            "midday": 7,
+            "owl": 0,
+            "pm_peak": 7
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 942.685628449239,
+              "rich": 942.685628449239,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30394.276631240078,
+              "rich": 30394.276631240078,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 554.7233687599218,
+              "rich": 554.7233687599218,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 18.686666666666667,
+              "rich": 18.686666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 10.744833333333332,
+              "rich": 10.744833333333332,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.6993796936238736,
+              "rich": 1.6993796936238736,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "lines": [
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3642444.6997391996,
+          "objective_rich": 3642239.750531211,
+          "objective_rel_gap": 5.6266937423440386e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 54,
+            "pm_peak": 54,
+            "evening": 54,
+            "owl": 54
+          },
+          "paths_rich": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 60,
+            "pm_peak": 60,
+            "evening": 60,
+            "owl": 54
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 6,
+            "midday": 6,
+            "owl": 0,
+            "pm_peak": 6
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2217.5065108567815,
+              "rich": 2268.882729880658,
+              "rel_diff": 0.02316846366508589
+            },
+            "unserved_demand": {
+              "base": 30335.226610236194,
+              "rich": 30333.090565011087,
+              "rel_diff": 7.041467837216425e-05
+            },
+            "served_demand": {
+              "base": 613.7733897638094,
+              "rich": 615.9094349889132,
+              "rel_diff": 0.0034801854572511825
+            },
+            "revenue_veh_hours": {
+              "base": 70.02666666666667,
+              "rich": 70.02666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 10.066333333333333,
+              "rich": 10.066333333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.612907545095945,
+              "rich": 3.683792780218572,
+              "rel_diff": 0.019619996979674814
+            }
+          },
+          "worst_rel_diff": 0.02316846366508589
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#efd9f4448b4e",
+          "lines": [
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3648130.4325522142,
+          "objective_rich": 3648130.4325522142,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 169
+          },
+          "paths_rich": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 178,
+            "pm_peak": 178,
+            "evening": 178,
+            "owl": 169
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 9,
+            "midday": 9,
+            "owl": 0,
+            "pm_peak": 9
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 777.9713310978234,
+              "rich": 777.9713310978234,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30394.603843509303,
+              "rich": 30394.603843509303,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 554.3961564906989,
+              "rich": 554.3961564906989,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 19.72666666666667,
+              "rich": 19.72666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 11.342833333333333,
+              "rich": 11.342833333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.403276920284485,
+              "rich": 1.403276920284485,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#3be405c3d448",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-47ece08f5664f6eb"
+          ],
+          "objective_base": 3647720.717905464,
+          "objective_rich": 3647720.717905464,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 200,
+            "am_peak": 200,
+            "midday": 200,
+            "pm_peak": 200,
+            "evening": 200,
+            "owl": 200
+          },
+          "paths_rich": {
+            "early": 200,
+            "am_peak": 200,
+            "midday": 200,
+            "pm_peak": 211,
+            "evening": 211,
+            "owl": 200
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1186.4222595390881,
+              "rich": 1186.4222595390881,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30387.785797049375,
+              "rich": 30387.785797049375,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 561.2142029506293,
+              "rich": 561.2142029506293,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 110.92444444444445,
+              "rich": 110.92444444444445,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.781555555555556,
+              "rich": 17.781555555555556,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.1140275019794164,
+              "rich": 2.1140275019794164,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#7ef66665019b",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-8352b3f4b3bcd2f2"
+          ],
+          "objective_base": 3635952.471721225,
+          "objective_rich": 3636721.4729893873,
+          "objective_rel_gap": 0.0002114992630248421,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 261,
+            "am_peak": 261,
+            "midday": 261,
+            "pm_peak": 261,
+            "evening": 261,
+            "owl": 261
+          },
+          "paths_rich": {
+            "early": 338,
+            "am_peak": 393,
+            "midday": 374,
+            "pm_peak": 443,
+            "evening": 439,
+            "owl": 441
+          },
+          "path_count_delta": {
+            "am_peak": 132,
+            "early": 77,
+            "evening": 178,
+            "midday": 113,
+            "owl": 180,
+            "pm_peak": 182
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4623.9330826924,
+              "rich": 5517.654245729197,
+              "rel_diff": 0.19328159535483722
+            },
+            "unserved_demand": {
+              "base": 30261.071155321104,
+              "rich": 30260.031822863817,
+              "rel_diff": 3.4345527689762225e-05
+            },
+            "served_demand": {
+              "base": 687.9288446788985,
+              "rich": 688.968177136185,
+              "rel_diff": 0.0015108138949626627
+            },
+            "revenue_veh_hours": {
+              "base": 88.2211111111111,
+              "rich": 58.50111111111111,
+              "rel_diff": 0.33688081713875484
+            },
+            "peak_vehicles": {
+              "base": 16.549138888888887,
+              "rich": 16.549138888888887,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.7215281325362835,
+              "rich": 8.008576344794731,
+              "rel_diff": 0.19148148856632047
+            }
+          },
+          "worst_rel_diff": 0.33688081713875484
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#a71de29ada8a",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3647247.4304964226,
+          "objective_rich": 3636066.746590734,
+          "objective_rel_gap": 0.0030655128610692557,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 297,
+            "am_peak": 297,
+            "midday": 297,
+            "pm_peak": 297,
+            "evening": 297,
+            "owl": 297
+          },
+          "paths_rich": {
+            "early": 328,
+            "am_peak": 341,
+            "midday": 324,
+            "pm_peak": 376,
+            "evening": 381,
+            "owl": 377
+          },
+          "path_count_delta": {
+            "am_peak": 44,
+            "early": 31,
+            "evening": 84,
+            "midday": 27,
+            "owl": 80,
+            "pm_peak": 79
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1411.0389974390519,
+              "rich": 5930.218008809637,
+              "rel_diff": 3.202731476289893
+            },
+            "unserved_demand": {
+              "base": 30381.969929158196,
+              "rich": 30251.1377381827,
+              "rel_diff": 0.004306244502267563
+            },
+            "served_demand": {
+              "base": 567.0300708418065,
+              "rich": 697.8622618173023,
+              "rel_diff": 0.2307323680052167
+            },
+            "revenue_veh_hours": {
+              "base": 31.099999999999994,
+              "rich": 60.81999999999999,
+              "rel_diff": 0.9556270096463024
+            },
+            "peak_vehicles": {
+              "base": 17.8825,
+              "rich": 17.8825,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.4884729576056506,
+              "rich": 8.497691211109142,
+              "rel_diff": 2.4148216017928594
+            }
+          },
+          "worst_rel_diff": 3.202731476289893
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#509e131389c8",
+          "lines": [
+            "syn-0811e763f266fdf9",
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3623242.709242542,
+          "objective_rich": 3625952.2451558104,
+          "objective_rel_gap": 0.0007478207039116661,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 199,
+            "am_peak": 199,
+            "midday": 199,
+            "pm_peak": 199,
+            "evening": 199,
+            "owl": 199
+          },
+          "paths_rich": {
+            "early": 221,
+            "am_peak": 249,
+            "midday": 235,
+            "pm_peak": 305,
+            "evening": 299,
+            "owl": 292
+          },
+          "path_count_delta": {
+            "am_peak": 50,
+            "early": 22,
+            "evening": 100,
+            "midday": 36,
+            "owl": 93,
+            "pm_peak": 106
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 8759.357914016444,
+              "rich": 7832.894308273087,
+              "rel_diff": 0.10576843814783043
+            },
+            "unserved_demand": {
+              "base": 30120.694594404376,
+              "rich": 30150.99459039614,
+              "rel_diff": 0.001005952764362682
+            },
+            "served_demand": {
+              "base": 828.3054055956228,
+              "rich": 798.0054096038597,
+              "rel_diff": 0.03658070536190069
+            },
+            "revenue_veh_hours": {
+              "base": 118.5911111111111,
+              "rich": 103.80333333333333,
+              "rel_diff": 0.12469549900685829
+            },
+            "peak_vehicles": {
+              "base": 17.047472222222222,
+              "rich": 17.039166666666667,
+              "rel_diff": 0.00048720158902670874
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 10.575034105587797,
+              "rich": 9.815590488492349,
+              "rel_diff": 0.07181476764166286
+            }
+          },
+          "worst_rel_diff": 0.12469549900685829
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#ca9033a7dcfc",
+          "lines": [
+            "syn-47ece08f5664f6eb",
+            "syn-8352b3f4b3bcd2f2"
+          ],
+          "objective_base": 3647742.575223792,
+          "objective_rich": 3647742.575223792,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 221,
+            "am_peak": 221,
+            "midday": 221,
+            "pm_peak": 221,
+            "evening": 221,
+            "owl": 221
+          },
+          "paths_rich": {
+            "early": 221,
+            "am_peak": 221,
+            "midday": 228,
+            "pm_peak": 228,
+            "evening": 228,
+            "owl": 228
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 7,
+            "midday": 7,
+            "owl": 7,
+            "pm_peak": 7
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1306.810133498397,
+              "rich": 1306.810133498397,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30386.964709085776,
+              "rich": 30386.964709085776,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 562.0352909142289,
+              "rich": 562.0352909142289,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 109.79777777777778,
+              "rich": 109.79777777777778,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.13372222222222,
+              "rich": 17.13372222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.325138927437613,
+              "rich": 2.325138927437613,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#747bb75d11c5",
+          "lines": [
+            "syn-47ece08f5664f6eb",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3642142.0740542635,
+          "objective_rich": 3641937.124846275,
+          "objective_rel_gap": 5.627161264481583e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 96,
+            "pm_peak": 96,
+            "evening": 96,
+            "owl": 96
+          },
+          "paths_rich": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 103,
+            "pm_peak": 103,
+            "evening": 103,
+            "owl": 103
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 7,
+            "midday": 7,
+            "owl": 7,
+            "pm_peak": 7
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2462.529825464896,
+              "rich": 2513.9060444887727,
+              "rel_diff": 0.02086318650543756
+            },
+            "unserved_demand": {
+              "base": 30330.662868573323,
+              "rich": 30328.52682334822,
+              "rel_diff": 7.042527340594637e-05
+            },
+            "served_demand": {
+              "base": 618.337131426677,
+              "rich": 620.4731766517809,
+              "rel_diff": 0.003454499360527533
+            },
+            "revenue_veh_hours": {
+              "base": 83.36,
+              "rich": 83.36,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.733,
+              "rich": 17.733,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.9825035572150576,
+              "rich": 4.051595039215717,
+              "rel_diff": 0.017348755878820725
+            }
+          },
+          "worst_rel_diff": 0.02086318650543756
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#750f5b49c2db",
+          "lines": [
+            "syn-47ece08f5664f6eb",
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3647816.4640270346,
+          "objective_rich": 3647816.4640270346,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 177,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 177
+          },
+          "paths_rich": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 186,
+            "pm_peak": 186,
+            "evening": 186,
+            "owl": 186
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 9,
+            "midday": 9,
+            "owl": 9,
+            "pm_peak": 9
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 879.6884490667667,
+              "rich": 879.6884490667667,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30391.13979648307,
+              "rich": 30391.13979648307,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 557.8602035169364,
+              "rich": 557.8602035169364,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 110.83777777777779,
+              "rich": 110.83777777777779,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.731722222222224,
+              "rich": 17.731722222222224,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.5768976591642816,
+              "rich": 1.5768976591642816,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#740a340a2267",
+          "lines": [
+            "syn-8352b3f4b3bcd2f2",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3647853.0113903615,
+          "objective_rich": 3643598.5988638774,
+          "objective_rel_gap": 0.001166278496748575,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 244,
+            "am_peak": 244,
+            "midday": 244,
+            "pm_peak": 244,
+            "evening": 244,
+            "owl": 244
+          },
+          "paths_rich": {
+            "early": 291,
+            "am_peak": 316,
+            "midday": 312,
+            "pm_peak": 343,
+            "evening": 343,
+            "owl": 337
+          },
+          "path_count_delta": {
+            "am_peak": 72,
+            "early": 47,
+            "evening": 99,
+            "midday": 68,
+            "owl": 93,
+            "pm_peak": 99
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1132.7929799396102,
+              "rich": 2536.0897141589057,
+              "rel_diff": 1.2387936357922222
+            },
+            "unserved_demand": {
+              "base": 30389.33515342018,
+              "rich": 30342.187576247656,
+              "rel_diff": 0.001551451419864885
+            },
+            "served_demand": {
+              "base": 559.6648465798236,
+              "rich": 606.8124237523464,
+              "rel_diff": 0.08424252025233867
+            },
+            "revenue_veh_hours": {
+              "base": 30.357777777777777,
+              "rich": 56.617777777777775,
+              "rel_diff": 0.8650172022545933
+            },
+            "peak_vehicles": {
+              "base": 17.45572222222222,
+              "rich": 17.45572222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.0240559807574816,
+              "rich": 4.179363531281193,
+              "rel_diff": 1.0648458199842428
+            }
+          },
+          "worst_rel_diff": 1.2387936357922222
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#45d4c04a70df",
+          "lines": [
+            "syn-8352b3f4b3bcd2f2",
+            "syn-f3421db8fc18598a"
+          ],
+          "objective_base": 3638319.930754242,
+          "objective_rich": 3647317.1551013635,
+          "objective_rel_gap": 0.002472906318949356,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 260,
+            "am_peak": 260,
+            "midday": 260,
+            "pm_peak": 260,
+            "evening": 260,
+            "owl": 260
+          },
+          "paths_rich": {
+            "early": 318,
+            "am_peak": 391,
+            "midday": 362,
+            "pm_peak": 419,
+            "evening": 441,
+            "owl": 439
+          },
+          "path_count_delta": {
+            "am_peak": 131,
+            "early": 58,
+            "evening": 181,
+            "midday": 102,
+            "owl": 179,
+            "pm_peak": 159
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4032.9715165009725,
+              "rich": 1204.570886508464,
+              "rel_diff": 0.7013192675475288
+            },
+            "unserved_demand": {
+              "base": 30285.724660314507,
+              "rich": 30384.271535123793,
+              "rel_diff": 0.003253905129053064
+            },
+            "served_demand": {
+              "base": 663.2753396854979,
+              "rich": 564.7284648762095,
+              "rel_diff": 0.148576117508026
+            },
+            "revenue_veh_hours": {
+              "base": 84.95666666666668,
+              "rich": 28.89666666666667,
+              "rel_diff": 0.6598658139443638
+            },
+            "peak_vehicles": {
+              "base": 16.615583333333333,
+              "rich": 16.615583333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.080388151341896,
+              "rich": 2.133008979408378,
+              "rel_diff": 0.649198550106108
+            }
+          },
+          "worst_rel_diff": 0.7013192675475288
+        }
+      ]
+    },
+    {
+      "case": "moderate_gap",
+      "universe_digest": "b934a09f73f2f69b",
+      "n": 16,
+      "leader_base": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+      "leader_rich": "exp4|exp4-pool-v1|3lines#dbf38acc1cac",
+      "leader_changes": true,
+      "ranking_inversions": 30,
+      "ranking_pairs": 120,
+      "promoted_changes": true,
+      "promoted_base": [
+        "exp4|exp4-pool-v1|3lines#00bb038bb795",
+        "exp4|exp4-pool-v1|4lines#8aa04c3c86e9",
+        "exp4|exp4-pool-v1|4lines|6off#4b30a1e38c19"
+      ],
+      "promoted_rich": [
+        "exp4|exp4-pool-v1|2lines#f5c50f983575",
+        "exp4|exp4-pool-v1|3lines#970b4748cd78",
+        "exp4|exp4-pool-v1|3lines#dbf38acc1cac"
+      ],
+      "n_rich_better": 8,
+      "worst_objective_rel_gap": 0.002790266997302307,
+      "worst_field_rel_diff": 0.6743463475762221,
+      "rows": [
+        {
+          "kind": "supernetwork",
+          "id": "exp4|exp4-pool-v1|4lines#8aa04c3c86e9",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-91cfb5fd76db5ab6",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3628997.417229129,
+          "objective_rich": 3632465.4591062805,
+          "objective_rel_gap": 0.0009556473809230326,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 338,
+            "am_peak": 338,
+            "midday": 338,
+            "pm_peak": 338,
+            "evening": 338,
+            "owl": 338
+          },
+          "paths_rich": {
+            "early": 637,
+            "am_peak": 616,
+            "midday": 627,
+            "pm_peak": 658,
+            "evening": 597,
+            "owl": 601
+          },
+          "path_count_delta": {
+            "am_peak": 278,
+            "early": 299,
+            "evening": 259,
+            "midday": 289,
+            "owl": 263,
+            "pm_peak": 320
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 8196.471331091056,
+              "rich": 6561.032979799184,
+              "rel_diff": 0.1995295640318153
+            },
+            "unserved_demand": {
+              "base": 30173.34121581698,
+              "rich": 30215.87021772068,
+              "rel_diff": 0.0014094893104315707
+            },
+            "served_demand": {
+              "base": 775.6587841830194,
+              "rich": 733.1297822793222,
+              "rel_diff": 0.054829523974890444
+            },
+            "revenue_veh_hours": {
+              "base": 117.30305555555556,
+              "rich": 102.28222222222223,
+              "rel_diff": 0.12805150950410968
+            },
+            "peak_vehicles": {
+              "base": 17.920673611111106,
+              "rich": 17.699777777777776,
+              "rel_diff": 0.012326313068743744
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 10.567109530931413,
+              "rich": 8.949347221171044,
+              "rel_diff": 0.1530941176510901
+            }
+          },
+          "worst_rel_diff": 0.1995295640318153
+        },
+        {
+          "kind": "pinned_off",
+          "id": "exp4|exp4-pool-v1|4lines|6off#4b30a1e38c19",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-91cfb5fd76db5ab6",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3630910.3633041186,
+          "objective_rich": 3634213.8960921965,
+          "objective_rel_gap": 0.0009098359522903862,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 338,
+            "am_peak": 338,
+            "midday": 338,
+            "pm_peak": 338,
+            "evening": 338,
+            "owl": 338
+          },
+          "paths_rich": {
+            "early": 637,
+            "am_peak": 616,
+            "midday": 627,
+            "pm_peak": 658,
+            "evening": 597,
+            "owl": 601
+          },
+          "path_count_delta": {
+            "am_peak": 278,
+            "early": 299,
+            "evening": 259,
+            "midday": 289,
+            "owl": 263,
+            "pm_peak": 320
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 6552.762220940317,
+              "rich": 4988.47214516238,
+              "rel_diff": 0.23872224003169498
+            },
+            "unserved_demand": {
+              "base": 30202.980009026487,
+              "rich": 30243.545199558615,
+              "rel_diff": 0.001343085699490745
+            },
+            "served_demand": {
+              "base": 746.0199909735136,
+              "rich": 705.4548004413874,
+              "rel_diff": 0.05437547387864353
+            },
+            "revenue_veh_hours": {
+              "base": 116.5,
+              "rich": 102.64777777777778,
+              "rel_diff": 0.11890319504053411
+            },
+            "peak_vehicles": {
+              "base": 17.458916666666667,
+              "rich": 17.90997222222222,
+              "rel_diff": 0.02583525451019118
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.783628187214306,
+              "rich": 7.071285278718358,
+              "rel_diff": 0.19494710750490124
+            }
+          },
+          "worst_rel_diff": 0.23872224003169498
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "lines": [
+            "syn-2663c6d04f289b58"
+          ],
+          "objective_base": 3647743.141733504,
+          "objective_rich": 3647743.141733504,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 158,
+            "pm_peak": 158,
+            "evening": 158,
+            "owl": 158
+          },
+          "paths_rich": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 158
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 11,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1310.63218790351,
+              "rich": 1310.63218790351,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30386.93757954667,
+              "rich": 30386.93757954667,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 562.0624204533323,
+              "rich": 562.0624204533323,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 19.833333333333332,
+              "rich": 19.833333333333332,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 11.404166666666665,
+              "rich": 11.404166666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.331826751282211,
+              "rich": 2.331826751282211,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "lines": [
+            "syn-60f95ff936eeeacd"
+          ],
+          "objective_base": 3648130.6777763427,
+          "objective_rich": 3648130.6777763427,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 169
+          },
+          "paths_rich": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 177,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 169
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 8,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 778.1422689341223,
+              "rich": 778.1422689341223,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30394.604462561736,
+              "rich": 30394.604462561736,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 554.3955374382645,
+              "rich": 554.3955374382645,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 21.233333333333334,
+              "rich": 21.233333333333334,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 12.209166666666665,
+              "rich": 12.209166666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.4035868191323122,
+              "rich": 1.4035868191323122,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "lines": [
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3636526.496615203,
+          "objective_rich": 3636034.783057902,
+          "objective_rel_gap": 0.000135215172434125,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 81,
+            "am_peak": 81,
+            "midday": 81,
+            "pm_peak": 81,
+            "evening": 81,
+            "owl": 81
+          },
+          "paths_rich": {
+            "early": 81,
+            "am_peak": 81,
+            "midday": 89,
+            "pm_peak": 89,
+            "evening": 89,
+            "owl": 81
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 8,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4024.7535079952604,
+              "rich": 4153.617300302749,
+              "rel_diff": 0.03201780979915856
+            },
+            "unserved_demand": {
+              "base": 30270.847859226735,
+              "rich": 30265.676381313326,
+              "rel_diff": 0.00017084020696938416
+            },
+            "served_demand": {
+              "base": 678.1521407732702,
+              "rich": 683.3236186866795,
+              "rel_diff": 0.007625837334248541
+            },
+            "revenue_veh_hours": {
+              "base": 95.33333333333333,
+              "rich": 95.33333333333333,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 13.704166666666666,
+              "rich": 13.704166666666666,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.934882847093858,
+              "rich": 6.07855075796419,
+              "rel_diff": 0.024207370991439513
+            }
+          },
+          "worst_rel_diff": 0.03201780979915856
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#82bd79bbe51b",
+          "lines": [
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3649136.251220801,
+          "objective_rich": 3649136.251220801,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 67,
+            "am_peak": 67,
+            "midday": 67,
+            "pm_peak": 67,
+            "evening": 67,
+            "owl": 67
+          },
+          "paths_rich": {
+            "early": 67,
+            "am_peak": 67,
+            "midday": 71,
+            "pm_peak": 71,
+            "evening": 71,
+            "owl": 67
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 4,
+            "midday": 4,
+            "owl": 0,
+            "pm_peak": 4
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 439.3527222836491,
+              "rich": 439.3527222836491,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30405.807487487647,
+              "rich": 30405.807487487647,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 543.1925125123569,
+              "rich": 543.1925125123569,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 16.526666666666667,
+              "rich": 16.526666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.502833333333333,
+              "rich": 9.502833333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.8088342754423634,
+              "rich": 0.8088342754423634,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd"
+          ],
+          "objective_base": 3646344.2665271065,
+          "objective_rich": 3646340.1780038453,
+          "objective_rel_gap": 1.1212663869347432e-06,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 262,
+            "am_peak": 262,
+            "midday": 262,
+            "pm_peak": 262,
+            "evening": 262,
+            "owl": 262
+          },
+          "paths_rich": {
+            "early": 303,
+            "am_peak": 374,
+            "midday": 351,
+            "pm_peak": 403,
+            "evening": 413,
+            "owl": 401
+          },
+          "path_count_delta": {
+            "am_peak": 112,
+            "early": 41,
+            "evening": 151,
+            "midday": 89,
+            "owl": 139,
+            "pm_peak": 141
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1893.927628961208,
+              "rich": 1890.780653169833,
+              "rel_diff": 0.0016616135396372927
+            },
+            "unserved_demand": {
+              "base": 30370.419490817876,
+              "rich": 30370.411644588963,
+              "rel_diff": 2.5835102196529424e-07
+            },
+            "served_demand": {
+              "base": 578.5805091821265,
+              "rich": 578.58835541104,
+              "rel_diff": 1.3561170466169969e-05
+            },
+            "revenue_veh_hours": {
+              "base": 30.916666666666664,
+              "rich": 30.916666666666664,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.77708333333333,
+              "rich": 17.77708333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.273403785479117,
+              "rich": 3.2679203366037104,
+              "rel_diff": 0.0016751519930817008
+            }
+          },
+          "worst_rel_diff": 0.0016751519930817008
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3636395.894030559,
+          "objective_rich": 3632195.823563719,
+          "objective_rel_gap": 0.0011550091324584507,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 253,
+            "am_peak": 253,
+            "midday": 253,
+            "pm_peak": 253,
+            "evening": 253,
+            "owl": 253
+          },
+          "paths_rich": {
+            "early": 290,
+            "am_peak": 308,
+            "midday": 317,
+            "pm_peak": 335,
+            "evening": 338,
+            "owl": 327
+          },
+          "path_count_delta": {
+            "am_peak": 55,
+            "early": 37,
+            "evening": 85,
+            "midday": 64,
+            "owl": 74,
+            "pm_peak": 82
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5398.644898362282,
+              "rich": 6573.560622747371,
+              "rel_diff": 0.2176315995040733
+            },
+            "unserved_demand": {
+              "base": 30258.31040943497,
+              "rich": 30213.51885784143,
+              "rel_diff": 0.0014803057734370944
+            },
+            "served_demand": {
+              "base": 690.6895905650325,
+              "rich": 735.4811421585706,
+              "rel_diff": 0.06485048016562035
+            },
+            "revenue_veh_hours": {
+              "base": 99.94444444444444,
+              "rich": 99.94444444444444,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 16.355555555555554,
+              "rich": 16.355555555555554,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 7.816311367811135,
+              "rich": 8.937769095553646,
+              "rel_diff": 0.14347659336613172
+            }
+          },
+          "worst_rel_diff": 0.2176315995040733
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#c0661202bea6",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3638997.4199417494,
+          "objective_rich": 3646617.1398026994,
+          "objective_rel_gap": 0.0020939063653065164,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 263,
+            "am_peak": 263,
+            "midday": 263,
+            "pm_peak": 263,
+            "evening": 263,
+            "owl": 263
+          },
+          "paths_rich": {
+            "early": 285,
+            "am_peak": 307,
+            "midday": 308,
+            "pm_peak": 328,
+            "evening": 327,
+            "owl": 314
+          },
+          "path_count_delta": {
+            "am_peak": 44,
+            "early": 22,
+            "evening": 64,
+            "midday": 45,
+            "owl": 51,
+            "pm_peak": 65
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4632.763196330699,
+              "rich": 2076.8301255763417,
+              "rel_diff": 0.5517081194175305
+            },
+            "unserved_demand": {
+              "base": 30286.372139545158,
+              "rich": 30371.169247309357,
+              "rel_diff": 0.0027998436845950046
+            },
+            "served_demand": {
+              "base": 662.6278604548468,
+              "rich": 577.8307526906466,
+              "rel_diff": 0.12797093636538767
+            },
+            "revenue_veh_hours": {
+              "base": 80.43111111111112,
+              "rich": 30.85111111111111,
+              "rel_diff": 0.6164281372603194
+            },
+            "peak_vehicles": {
+              "base": 17.73938888888889,
+              "rich": 17.73938888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.991500769603376,
+              "rich": 3.594184137666025,
+              "rel_diff": 0.48592094085260024
+            }
+          },
+          "worst_rel_diff": 0.6164281372603194
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#3a589b3f0e7a",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3639287.689426774,
+          "objective_rich": 3633286.541934861,
+          "objective_rel_gap": 0.0016489895836892556,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 236,
+            "am_peak": 236,
+            "midday": 236,
+            "pm_peak": 236,
+            "evening": 236,
+            "owl": 236
+          },
+          "paths_rich": {
+            "early": 292,
+            "am_peak": 313,
+            "midday": 314,
+            "pm_peak": 349,
+            "evening": 353,
+            "owl": 345
+          },
+          "path_count_delta": {
+            "am_peak": 77,
+            "early": 56,
+            "evening": 117,
+            "midday": 78,
+            "owl": 109,
+            "pm_peak": 113
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3889.703319744098,
+              "rich": 5554.753439659946,
+              "rel_diff": 0.4280660973457973
+            },
+            "unserved_demand": {
+              "base": 30294.983217558583,
+              "rich": 30231.09823746001,
+              "rel_diff": 0.0021087643336784112
+            },
+            "served_demand": {
+              "base": 654.0167824414217,
+              "rich": 717.9017625399916,
+              "rel_diff": 0.09768094919535482
+            },
+            "revenue_veh_hours": {
+              "base": 101.11111111111111,
+              "rich": 101.11111111111111,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.02638888888889,
+              "rich": 17.02638888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.947405975155518,
+              "rich": 7.737484053537911,
+              "rel_diff": 0.3009846790113542
+            }
+          },
+          "worst_rel_diff": 0.4280660973457973
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3633024.65465706,
+          "objective_rich": 3643161.763451335,
+          "objective_rel_gap": 0.002790266997302307,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 199,
+            "am_peak": 199,
+            "midday": 199,
+            "pm_peak": 199,
+            "evening": 199,
+            "owl": 199
+          },
+          "paths_rich": {
+            "early": 243,
+            "am_peak": 269,
+            "midday": 272,
+            "pm_peak": 297,
+            "evening": 302,
+            "owl": 300
+          },
+          "path_count_delta": {
+            "am_peak": 70,
+            "early": 44,
+            "evening": 103,
+            "midday": 73,
+            "owl": 101,
+            "pm_peak": 98
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5548.319034520142,
+              "rich": 2444.8364159800103,
+              "rel_diff": 0.5593554731137668
+            },
+            "unserved_demand": {
+              "base": 30228.969463521164,
+              "rich": 30339.307725294624,
+              "rel_diff": 0.0036500834706459755
+            },
+            "served_demand": {
+              "base": 720.0305364788411,
+              "rich": 609.692274705377,
+              "rel_diff": 0.1532410865698145
+            },
+            "revenue_veh_hours": {
+              "base": 92.41222222222221,
+              "rich": 53.50222222222222,
+              "rel_diff": 0.42104820189729586
+            },
+            "peak_vehicles": {
+              "base": 16.509527777777777,
+              "rich": 16.509527777777777,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 7.7056718478261175,
+              "rich": 4.009951441752209,
+              "rel_diff": 0.47961040634198887
+            }
+          },
+          "worst_rel_diff": 0.5593554731137668
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#3d0a7d6a3fb5",
+          "lines": [
+            "syn-91cfb5fd76db5ab6",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3636614.6616013143,
+          "objective_rich": 3634544.4193837913,
+          "objective_rel_gap": 0.0005692773115014209,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 179,
+            "am_peak": 179,
+            "midday": 179,
+            "pm_peak": 179,
+            "evening": 179,
+            "owl": 179
+          },
+          "paths_rich": {
+            "early": 210,
+            "am_peak": 205,
+            "midday": 216,
+            "pm_peak": 226,
+            "evening": 225,
+            "owl": 218
+          },
+          "path_count_delta": {
+            "am_peak": 26,
+            "early": 31,
+            "evening": 46,
+            "midday": 37,
+            "owl": 39,
+            "pm_peak": 47
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4468.5153123612345,
+              "rich": 4881.011485611,
+              "rel_diff": 0.0923116839520902
+            },
+            "unserved_demand": {
+              "base": 30267.884552407944,
+              "rich": 30247.195065818167,
+              "rel_diff": 0.0006835458406072048
+            },
+            "served_demand": {
+              "base": 681.1154475920598,
+              "rich": 701.8049341818356,
+              "rel_diff": 0.030375888056744467
+            },
+            "revenue_veh_hours": {
+              "base": 101.16111111111111,
+              "rich": 101.16111111111111,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.05513888888889,
+              "rich": 17.05513888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.560584300589172,
+              "rich": 6.954940394229751,
+              "rel_diff": 0.06010990417502355
+            }
+          },
+          "worst_rel_diff": 0.0923116839520902
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#34051eabc62e",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "objective_base": 3637652.9649353204,
+          "objective_rich": 3635030.8872850044,
+          "objective_rel_gap": 0.0007208157775332705,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 340,
+            "am_peak": 340,
+            "midday": 340,
+            "pm_peak": 340,
+            "evening": 340,
+            "owl": 340
+          },
+          "paths_rich": {
+            "early": 538,
+            "am_peak": 557,
+            "midday": 554,
+            "pm_peak": 548,
+            "evening": 534,
+            "owl": 569
+          },
+          "path_count_delta": {
+            "am_peak": 217,
+            "early": 198,
+            "evening": 194,
+            "midday": 214,
+            "owl": 229,
+            "pm_peak": 208
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5387.278184057415,
+              "rich": 6080.847263248612,
+              "rel_diff": 0.12874202064479928
+            },
+            "unserved_demand": {
+              "base": 30268.88072292719,
+              "rich": 30241.250333514632,
+              "rel_diff": 0.0009128315534849225
+            },
+            "served_demand": {
+              "base": 680.119277072811,
+              "rich": 707.7496664853708,
+              "rel_diff": 0.04062579953839742
+            },
+            "revenue_veh_hours": {
+              "base": 101.29722222222222,
+              "rich": 101.53055555555557,
+              "rel_diff": 0.0023034524364495424
+            },
+            "peak_vehicles": {
+              "base": 17.133402777777775,
+              "rich": 17.26756944444444,
+              "rel_diff": 0.007830707560361633
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 7.921078501470961,
+              "rich": 8.59180519779772,
+              "rel_diff": 0.08467618345181198
+            }
+          },
+          "worst_rel_diff": 0.12874202064479928
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#dbf38acc1cac",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3634393.7773847347,
+          "objective_rich": 3625250.477890159,
+          "objective_rel_gap": 0.002515770181940801,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 296,
+            "am_peak": 296,
+            "midday": 296,
+            "pm_peak": 296,
+            "evening": 296,
+            "owl": 296
+          },
+          "paths_rich": {
+            "early": 497,
+            "am_peak": 501,
+            "midday": 528,
+            "pm_peak": 519,
+            "evening": 474,
+            "owl": 524
+          },
+          "path_count_delta": {
+            "am_peak": 205,
+            "early": 201,
+            "evening": 178,
+            "midday": 232,
+            "owl": 228,
+            "pm_peak": 223
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 5698.816047350814,
+              "rich": 9541.791834390599,
+              "rel_diff": 0.6743463475762221
+            },
+            "unserved_demand": {
+              "base": 30239.12467781153,
+              "rich": 30130.9057171314,
+              "rel_diff": 0.0035787729252473
+            },
+            "served_demand": {
+              "base": 709.8753221884707,
+              "rich": 818.0942828686042,
+              "rel_diff": 0.15244784161041947
+            },
+            "revenue_veh_hours": {
+              "base": 94.42500000000001,
+              "rich": 109.14944444444446,
+              "rel_diff": 0.15593798723266553
+            },
+            "peak_vehicles": {
+              "base": 17.666874999999997,
+              "rich": 17.983763888888884,
+              "rel_diff": 0.017936895398245962
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 8.027911196830967,
+              "rich": 11.663437863094229,
+              "rel_diff": 0.4528608472523205
+            }
+          },
+          "worst_rel_diff": 0.6743463475762221
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#970b4748cd78",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3639149.7328822794,
+          "objective_rich": 3631600.3823785093,
+          "objective_rel_gap": 0.0020744819691139588,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 340,
+            "am_peak": 340,
+            "midday": 340,
+            "pm_peak": 340,
+            "evening": 340,
+            "owl": 340
+          },
+          "paths_rich": {
+            "early": 460,
+            "am_peak": 476,
+            "midday": 485,
+            "pm_peak": 471,
+            "evening": 474,
+            "owl": 501
+          },
+          "path_count_delta": {
+            "am_peak": 136,
+            "early": 120,
+            "evening": 134,
+            "midday": 145,
+            "owl": 161,
+            "pm_peak": 131
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4634.604023072757,
+              "rich": 7165.31048024526,
+              "rel_diff": 0.5460458853817326
+            },
+            "unserved_demand": {
+              "base": 30287.626073826723,
+              "rich": 30203.625599152198,
+              "rel_diff": 0.0027734255061711475
+            },
+            "served_demand": {
+              "base": 661.3739261732763,
+              "rich": 745.374400847806,
+              "rel_diff": 0.12700905093213785
+            },
+            "revenue_veh_hours": {
+              "base": 79.01,
+              "rich": 102.24944444444444,
+              "rel_diff": 0.2941329508219773
+            },
+            "peak_vehicles": {
+              "base": 16.92225,
+              "rich": 17.680930555555552,
+              "rel_diff": 0.04483331445614819
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 7.00753966804932,
+              "rich": 9.613035371345287,
+              "rel_diff": 0.3718131936056889
+            }
+          },
+          "worst_rel_diff": 0.5460458853817326
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|3lines#00bb038bb795",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-91cfb5fd76db5ab6",
+            "syn-fc6d21f652a0cc01"
+          ],
+          "objective_base": 3628620.6269035037,
+          "objective_rich": 3633169.783798784,
+          "objective_rel_gap": 0.0012536876579358448,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 235,
+            "am_peak": 235,
+            "midday": 235,
+            "pm_peak": 235,
+            "evening": 235,
+            "owl": 235
+          },
+          "paths_rich": {
+            "early": 368,
+            "am_peak": 413,
+            "midday": 442,
+            "pm_peak": 430,
+            "evening": 406,
+            "owl": 425
+          },
+          "path_count_delta": {
+            "am_peak": 178,
+            "early": 133,
+            "evening": 171,
+            "midday": 207,
+            "owl": 190,
+            "pm_peak": 195
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 7465.162055213612,
+              "rich": 5568.702700628436,
+              "rel_diff": 0.2540412841085885
+            },
+            "unserved_demand": {
+              "base": 30176.295540402418,
+              "rich": 30230.009009151298,
+              "rel_diff": 0.001779988821920299
+            },
+            "served_demand": {
+              "base": 772.7044595975868,
+              "rich": 718.9909908487047,
+              "rel_diff": 0.06951360003390607
+            },
+            "revenue_veh_hours": {
+              "base": 116.5,
+              "rich": 101.86333333333333,
+              "rel_diff": 0.12563662374821177
+            },
+            "peak_vehicles": {
+              "base": 17.458916666666667,
+              "rich": 17.458916666666667,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 9.661083176744391,
+              "rich": 7.745163390788917,
+              "rel_diff": 0.19831314469658717
+            }
+          },
+          "worst_rel_diff": 0.2540412841085885
+        }
+      ]
+    },
+    {
+      "case": "greedy_overbuilds",
+      "universe_digest": "56ec56b18e76b308",
+      "n": 16,
+      "leader_base": "exp4|exp4-pool-v1|5lines#f01258f88309",
+      "leader_rich": "exp4|exp4-pool-v1|5lines#f01258f88309",
+      "leader_changes": false,
+      "ranking_inversions": 2,
+      "ranking_pairs": 120,
+      "promoted_changes": true,
+      "promoted_base": [
+        "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+        "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+        "exp4|exp4-pool-v1|5lines#f01258f88309"
+      ],
+      "promoted_rich": [
+        "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+        "exp4|exp4-pool-v1|5lines#f01258f88309",
+        "exp4|exp4-pool-v1|5lines|6off#5d673bafe9a5"
+      ],
+      "n_rich_better": 5,
+      "worst_objective_rel_gap": 0.0005417481416228079,
+      "worst_field_rel_diff": 0.3108441610620975,
+      "rows": [
+        {
+          "kind": "supernetwork",
+          "id": "exp4|exp4-pool-v1|5lines#f01258f88309",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-cc10538c6cdfdd3d",
+            "syn-d5325fe875cf4d92",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3640815.2750918013,
+          "objective_rich": 3639134.4417160307,
+          "objective_rel_gap": 0.0004616640089569546,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 474,
+            "am_peak": 474,
+            "midday": 474,
+            "pm_peak": 474,
+            "evening": 474,
+            "owl": 474
+          },
+          "paths_rich": {
+            "early": 783,
+            "am_peak": 773,
+            "midday": 662,
+            "pm_peak": 783,
+            "evening": 811,
+            "owl": 737
+          },
+          "path_count_delta": {
+            "am_peak": 299,
+            "early": 309,
+            "evening": 337,
+            "midday": 188,
+            "owl": 263,
+            "pm_peak": 309
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4477.218540891706,
+              "rich": 5134.655942963715,
+              "rel_diff": 0.14684058775944187
+            },
+            "unserved_demand": {
+              "base": 30302.81713792425,
+              "rich": 30283.33154810889,
+              "rel_diff": 0.0006430289872611171
+            },
+            "served_demand": {
+              "base": 646.1828620757566,
+              "rich": 665.6684518911119,
+              "rel_diff": 0.030154915827945408
+            },
+            "revenue_veh_hours": {
+              "base": 153.74,
+              "rich": 153.3,
+              "rel_diff": 0.0028619747625861693
+            },
+            "peak_vehicles": {
+              "base": 17.901666666666664,
+              "rich": 17.901666666666664,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.92871755606358,
+              "rich": 7.7135335592013705,
+              "rel_diff": 0.11327002389511012
+            }
+          },
+          "worst_rel_diff": 0.14684058775944187
+        },
+        {
+          "kind": "pinned_off",
+          "id": "exp4|exp4-pool-v1|5lines|6off#5d673bafe9a5",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd",
+            "syn-cc10538c6cdfdd3d",
+            "syn-d5325fe875cf4d92",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3642874.213260967,
+          "objective_rich": 3640900.692925767,
+          "objective_rel_gap": 0.0005417481416228079,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 474,
+            "am_peak": 474,
+            "midday": 474,
+            "pm_peak": 474,
+            "evening": 474,
+            "owl": 474
+          },
+          "paths_rich": {
+            "early": 783,
+            "am_peak": 773,
+            "midday": 662,
+            "pm_peak": 783,
+            "evening": 811,
+            "owl": 737
+          },
+          "path_count_delta": {
+            "am_peak": 299,
+            "early": 309,
+            "evening": 337,
+            "midday": 188,
+            "owl": 263,
+            "pm_peak": 309
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2721.5549148210216,
+              "rich": 3567.5343691029902,
+              "rel_diff": 0.3108441610620975
+            },
+            "unserved_demand": {
+              "base": 30334.605486217883,
+              "rich": 30311.109654638865,
+              "rel_diff": 0.0007745553700934816
+            },
+            "served_demand": {
+              "base": 614.3945137821217,
+              "rich": 637.8903453611376,
+              "rel_diff": 0.03824225485735382
+            },
+            "revenue_veh_hours": {
+              "base": 169.7811111111111,
+              "rich": 151.53222222222223,
+              "rel_diff": 0.1074848006910858
+            },
+            "peak_vehicles": {
+              "base": 17.32922222222222,
+              "rich": 16.885194444444444,
+              "rel_diff": 0.02562306444477209
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 4.429653673284828,
+              "rich": 5.59270789258184,
+              "rel_diff": 0.2625609822075649
+            }
+          },
+          "worst_rel_diff": 0.3108441610620975
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "lines": [
+            "syn-2663c6d04f289b58"
+          ],
+          "objective_base": 3647743.141733504,
+          "objective_rich": 3647743.141733504,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 158,
+            "pm_peak": 158,
+            "evening": 158,
+            "owl": 158
+          },
+          "paths_rich": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 158
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 11,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1310.63218790351,
+              "rich": 1310.63218790351,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30386.93757954667,
+              "rich": 30386.93757954667,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 562.0624204533323,
+              "rich": 562.0624204533323,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 19.833333333333332,
+              "rich": 19.833333333333332,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 11.404166666666665,
+              "rich": 11.404166666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.331826751282211,
+              "rich": 2.331826751282211,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "lines": [
+            "syn-60f95ff936eeeacd"
+          ],
+          "objective_base": 3648130.6777763427,
+          "objective_rich": 3648130.6777763427,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 169,
+            "pm_peak": 169,
+            "evening": 169,
+            "owl": 169
+          },
+          "paths_rich": {
+            "early": 169,
+            "am_peak": 169,
+            "midday": 177,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 169
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 8,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 778.1422689341223,
+              "rich": 778.1422689341223,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30394.604462561736,
+              "rich": 30394.604462561736,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 554.3955374382645,
+              "rich": 554.3955374382645,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 21.233333333333334,
+              "rich": 21.233333333333334,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 12.209166666666665,
+              "rich": 12.209166666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.4035868191323122,
+              "rich": 1.4035868191323122,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#e6e3edc739cc",
+          "lines": [
+            "syn-cc10538c6cdfdd3d"
+          ],
+          "objective_base": 3650016.3087408063,
+          "objective_rich": 3650016.3087408063,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 99.3398307940744,
+              "rich": 99.3398307940744,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 106.85333333333332,
+              "rich": 106.85333333333332,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 15.360166666666666,
+              "rich": 15.360166666666666,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.18636983726611975,
+              "rich": 0.18636983726611975,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#2f55ef97d559",
+          "lines": [
+            "syn-d5325fe875cf4d92"
+          ],
+          "objective_base": 3650016.3087408063,
+          "objective_rich": 3650016.3087408063,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 99.3398307940744,
+              "rich": 99.3398307940744,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 106.26666666666668,
+              "rich": 106.26666666666668,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 15.275833333333333,
+              "rich": 15.275833333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.18636983726611975,
+              "rich": 0.18636983726611975,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "lines": [
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3642444.6997391996,
+          "objective_rich": 3642239.750531211,
+          "objective_rel_gap": 5.6266937423440386e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 54,
+            "pm_peak": 54,
+            "evening": 54,
+            "owl": 54
+          },
+          "paths_rich": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 60,
+            "pm_peak": 60,
+            "evening": 60,
+            "owl": 54
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 6,
+            "midday": 6,
+            "owl": 0,
+            "pm_peak": 6
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2217.5065108567815,
+              "rich": 2268.882729880658,
+              "rel_diff": 0.02316846366508589
+            },
+            "unserved_demand": {
+              "base": 30335.226610236194,
+              "rich": 30333.090565011087,
+              "rel_diff": 7.041467837216425e-05
+            },
+            "served_demand": {
+              "base": 613.7733897638094,
+              "rich": 615.9094349889132,
+              "rel_diff": 0.0034801854572511825
+            },
+            "revenue_veh_hours": {
+              "base": 70.02666666666667,
+              "rich": 70.02666666666667,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 10.066333333333333,
+              "rich": 10.066333333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.612907545095945,
+              "rich": 3.683792780218572,
+              "rel_diff": 0.019619996979674814
+            }
+          },
+          "worst_rel_diff": 0.02316846366508589
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-60f95ff936eeeacd"
+          ],
+          "objective_base": 3646344.2665271065,
+          "objective_rich": 3646340.1780038453,
+          "objective_rel_gap": 1.1212663869347432e-06,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 262,
+            "am_peak": 262,
+            "midday": 262,
+            "pm_peak": 262,
+            "evening": 262,
+            "owl": 262
+          },
+          "paths_rich": {
+            "early": 303,
+            "am_peak": 374,
+            "midday": 351,
+            "pm_peak": 403,
+            "evening": 413,
+            "owl": 401
+          },
+          "path_count_delta": {
+            "am_peak": 112,
+            "early": 41,
+            "evening": 151,
+            "midday": 89,
+            "owl": 139,
+            "pm_peak": 141
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1893.927628961208,
+              "rich": 1890.780653169833,
+              "rel_diff": 0.0016616135396372927
+            },
+            "unserved_demand": {
+              "base": 30370.419490817876,
+              "rich": 30370.411644588963,
+              "rel_diff": 2.5835102196529424e-07
+            },
+            "served_demand": {
+              "base": 578.5805091821265,
+              "rich": 578.58835541104,
+              "rel_diff": 1.3561170466169969e-05
+            },
+            "revenue_veh_hours": {
+              "base": 30.916666666666664,
+              "rich": 30.916666666666664,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.77708333333333,
+              "rich": 17.77708333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.273403785479117,
+              "rich": 3.2679203366037104,
+              "rel_diff": 0.0016751519930817008
+            }
+          },
+          "worst_rel_diff": 0.0016751519930817008
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#732fc5db6aa8",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-cc10538c6cdfdd3d"
+          ],
+          "objective_base": 3647429.1732083247,
+          "objective_rich": 3647429.1732083247,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 166,
+            "evening": 166,
+            "owl": 166
+          },
+          "paths_rich": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 166
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1412.3493058724532,
+              "rich": 1412.3493058724532,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30383.473532520435,
+              "rich": 30383.473532520435,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 565.5264674795698,
+              "rich": 565.5264674795698,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 111.10388888888889,
+              "rich": 111.10388888888889,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.80423611111111,
+              "rich": 17.80423611111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.4974061995135104,
+              "rich": 2.4974061995135104,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#5846810f394b",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-d5325fe875cf4d92"
+          ],
+          "objective_base": 3647429.1732083247,
+          "objective_rich": 3647429.1732083247,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 166,
+            "evening": 166,
+            "owl": 166
+          },
+          "paths_rich": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 166
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 11,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 11
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1412.3493058724532,
+              "rich": 1412.3493058724532,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30383.473532520435,
+              "rich": 30383.473532520435,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 565.5264674795698,
+              "rich": 565.5264674795698,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 110.60277777777779,
+              "rich": 110.60277777777779,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.76909722222222,
+              "rich": 17.76909722222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.4974061995135104,
+              "rich": 2.4974061995135104,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#247665c523d7",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3646497.4398121797,
+          "objective_rich": 3646497.4398121797,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 298,
+            "am_peak": 298,
+            "midday": 298,
+            "pm_peak": 298,
+            "evening": 298,
+            "owl": 298
+          },
+          "paths_rich": {
+            "early": 325,
+            "am_peak": 325,
+            "midday": 328,
+            "pm_peak": 360,
+            "evening": 356,
+            "owl": 348
+          },
+          "path_count_delta": {
+            "am_peak": 27,
+            "early": 27,
+            "evening": 58,
+            "midday": 30,
+            "owl": 50,
+            "pm_peak": 62
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2165.8421496758665,
+              "rich": 2165.8421496758665,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30369.429980520865,
+              "rich": 30369.429980520865,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 579.570019479138,
+              "rich": 579.570019479138,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 31.11666666666666,
+              "rich": 31.11666666666666,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.892083333333332,
+              "rich": 17.892083333333332,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.736980997778867,
+              "rich": 3.736980997778867,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#b9388ed491b0",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-cc10538c6cdfdd3d"
+          ],
+          "objective_base": 3647817.218669844,
+          "objective_rich": 3647817.218669844,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 177,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 177
+          },
+          "paths_rich": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 177,
+            "pm_peak": 185,
+            "evening": 185,
+            "owl": 177
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 880.3688055833948,
+              "rich": 880.3688055833948,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30391.1404155355,
+              "rich": 30391.1404155355,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 557.859584464502,
+              "rich": 557.859584464502,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 110.27777777777777,
+              "rich": 110.27777777777777,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.32922222222222,
+              "rich": 17.32922222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.5781189928438253,
+              "rich": 1.5781189928438253,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#75cbdc92dde8",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-d5325fe875cf4d92"
+          ],
+          "objective_base": 3647817.218669844,
+          "objective_rich": 3647817.218669844,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 177,
+            "pm_peak": 177,
+            "evening": 177,
+            "owl": 177
+          },
+          "paths_rich": {
+            "early": 177,
+            "am_peak": 177,
+            "midday": 177,
+            "pm_peak": 185,
+            "evening": 185,
+            "owl": 177
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 8,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 880.3688055833948,
+              "rich": 880.3688055833948,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30391.1404155355,
+              "rich": 30391.1404155355,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 557.859584464502,
+              "rich": 557.859584464502,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 109.78888888888889,
+              "rich": 109.78888888888889,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.30111111111111,
+              "rich": 17.30111111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.5781189928438253,
+              "rich": 1.5781189928438253,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#8d08a1f3a789",
+          "lines": [
+            "syn-60f95ff936eeeacd",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3647272.4693136136,
+          "objective_rich": 3647272.4693136136,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 285,
+            "am_peak": 285,
+            "midday": 285,
+            "pm_peak": 285,
+            "evening": 285,
+            "owl": 285
+          },
+          "paths_rich": {
+            "early": 334,
+            "am_peak": 333,
+            "midday": 329,
+            "pm_peak": 383,
+            "evening": 369,
+            "owl": 374
+          },
+          "path_count_delta": {
+            "am_peak": 48,
+            "early": 49,
+            "evening": 84,
+            "midday": 44,
+            "owl": 89,
+            "pm_peak": 98
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1304.2222543180012,
+              "rich": 1304.2222543180012,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30383.06872549413,
+              "rich": 30383.06872549413,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 565.9312745058718,
+              "rich": 565.9312745058718,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 29.365555555555552,
+              "rich": 29.365555555555552,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 16.885194444444444,
+              "rich": 16.885194444444444,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.3045594280979596,
+              "rich": 2.3045594280979596,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#5ff7d7fe252c",
+          "lines": [
+            "syn-cc10538c6cdfdd3d",
+            "syn-d5325fe875cf4d92"
+          ],
+          "objective_base": 3650016.3087408063,
+          "objective_rich": 3650016.3087408063,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 16,
+            "am_peak": 14,
+            "midday": 16,
+            "pm_peak": 16,
+            "evening": 16,
+            "owl": 16
+          },
+          "path_count_delta": {
+            "am_peak": 6,
+            "early": 8,
+            "evening": 8,
+            "midday": 8,
+            "owl": 8,
+            "pm_peak": 8
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 99.3398307940744,
+              "rich": 99.3398307940744,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 106.85333333333332,
+              "rich": 106.48666666666668,
+              "rel_diff": 0.0034314948839528872
+            },
+            "peak_vehicles": {
+              "base": 15.360166666666666,
+              "rich": 15.360166666666666,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.18636983726611975,
+              "rich": 0.18636983726611975,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0034314948839528872
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+          "lines": [
+            "syn-cc10538c6cdfdd3d",
+            "syn-e8ce379fa4507794"
+          ],
+          "objective_base": 3642142.0740542635,
+          "objective_rich": 3641937.124846275,
+          "objective_rel_gap": 5.627161264481583e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 96,
+            "pm_peak": 96,
+            "evening": 96,
+            "owl": 96
+          },
+          "paths_rich": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 103,
+            "pm_peak": 103,
+            "evening": 103,
+            "owl": 103
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 7,
+            "midday": 7,
+            "owl": 7,
+            "pm_peak": 7
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2462.529825464896,
+              "rich": 2513.9060444887727,
+              "rel_diff": 0.02086318650543756
+            },
+            "unserved_demand": {
+              "base": 30330.662868573323,
+              "rich": 30328.52682334822,
+              "rel_diff": 7.042527340594637e-05
+            },
+            "served_demand": {
+              "base": 618.337131426677,
+              "rich": 620.4731766517809,
+              "rel_diff": 0.003454499360527533
+            },
+            "revenue_veh_hours": {
+              "base": 83.38333333333333,
+              "rich": 83.38333333333333,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 17.746416666666665,
+              "rich": 17.746416666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.9825035572150576,
+              "rich": 4.051595039215717,
+              "rel_diff": 0.017348755878820725
+            }
+          },
+          "worst_rel_diff": 0.02086318650543756
+        }
+      ]
+    },
+    {
+      "case": "weak_junction",
+      "universe_digest": "65c631411bba19aa",
+      "n": 16,
+      "leader_base": "exp4|exp4-pool-v1|5lines#983fb4dcb032",
+      "leader_rich": "exp4|exp4-pool-v1|5lines#983fb4dcb032",
+      "leader_changes": false,
+      "ranking_inversions": 7,
+      "ranking_pairs": 120,
+      "promoted_changes": true,
+      "promoted_base": [
+        "exp4|exp4-pool-v1|2lines#d3ae84679b25",
+        "exp4|exp4-pool-v1|5lines#983fb4dcb032",
+        "exp4|exp4-pool-v1|5lines|6off#313c0b96672b"
+      ],
+      "promoted_rich": [
+        "exp4|exp4-pool-v1|2lines#6fef689660dd",
+        "exp4|exp4-pool-v1|5lines#983fb4dcb032",
+        "exp4|exp4-pool-v1|5lines|6off#313c0b96672b"
+      ],
+      "n_rich_better": 11,
+      "worst_objective_rel_gap": 0.002927346919255752,
+      "worst_field_rel_diff": 2.8237121408231944,
+      "rows": [
+        {
+          "kind": "supernetwork",
+          "id": "exp4|exp4-pool-v1|5lines#983fb4dcb032",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-d0292863e848ff46",
+            "syn-dcef27a3822e47f8",
+            "syn-edf252439b3ffff1",
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3629437.263982365,
+          "objective_rich": 3620184.2437864104,
+          "objective_rel_gap": 0.002549436599381165,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 481,
+            "am_peak": 481,
+            "midday": 481,
+            "pm_peak": 481,
+            "evening": 481,
+            "owl": 481
+          },
+          "paths_rich": {
+            "early": 649,
+            "am_peak": 631,
+            "midday": 637,
+            "pm_peak": 653,
+            "evening": 669,
+            "owl": 650
+          },
+          "path_count_delta": {
+            "am_peak": 150,
+            "early": 168,
+            "evening": 188,
+            "midday": 156,
+            "owl": 169,
+            "pm_peak": 172
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 12582.570838883647,
+              "rich": 17840.74475039873,
+              "rel_diff": 0.417893447916531
+            },
+            "unserved_demand": {
+              "base": 30140.45577619568,
+              "rich": 30019.52915863343,
+              "rel_diff": 0.004012103150004532
+            },
+            "served_demand": {
+              "base": 808.5442238043205,
+              "rich": 929.4708413665699,
+              "rel_diff": 0.14956091949216047
+            },
+            "revenue_veh_hours": {
+              "base": 89.85240740740738,
+              "rich": 89.5511111111111,
+              "rel_diff": 0.0033532356560036615
+            },
+            "peak_vehicles": {
+              "base": 9.740819444444442,
+              "rich": 9.77372222222222,
+              "rel_diff": 0.0033778244187190913
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 15.562006960708697,
+              "rich": 19.194517951922066,
+              "rel_diff": 0.23342175597175957
+            }
+          },
+          "worst_rel_diff": 0.417893447916531
+        },
+        {
+          "kind": "pinned_off",
+          "id": "exp4|exp4-pool-v1|5lines|6off#313c0b96672b",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-d0292863e848ff46",
+            "syn-dcef27a3822e47f8",
+            "syn-edf252439b3ffff1",
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3630467.383012104,
+          "objective_rich": 3620695.6599187274,
+          "objective_rel_gap": 0.002691588179279868,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 481,
+            "am_peak": 481,
+            "midday": 481,
+            "pm_peak": 481,
+            "evening": 481,
+            "owl": 481
+          },
+          "paths_rich": {
+            "early": 649,
+            "am_peak": 631,
+            "midday": 637,
+            "pm_peak": 653,
+            "evening": 669,
+            "owl": 650
+          },
+          "path_count_delta": {
+            "am_peak": 150,
+            "early": 168,
+            "evening": 188,
+            "midday": 156,
+            "owl": 169,
+            "pm_peak": 172
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 11263.772883970669,
+              "rich": 16571.478663745518,
+              "rel_diff": 0.47121917624317317
+            },
+            "unserved_demand": {
+              "base": 30160.03008440111,
+              "rich": 30034.368177124852,
+              "rel_diff": 0.004166504705883949
+            },
+            "served_demand": {
+              "base": 788.9699155988936,
+              "rich": 914.6318228751521,
+              "rel_diff": 0.15927338266234228
+            },
+            "revenue_veh_hours": {
+              "base": 89.3611111111111,
+              "rich": 89.8,
+              "rel_diff": 0.0049114081442338505
+            },
+            "peak_vehicles": {
+              "base": 9.957722222222221,
+              "rich": 9.358444444444443,
+              "rel_diff": 0.060182214808161286
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 14.276555621795199,
+              "rich": 18.118196031768225,
+              "rel_diff": 0.26908734233544496
+            }
+          },
+          "worst_rel_diff": 0.47121917624317317
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
+          "lines": [
+            "syn-0a0e2e5cac7df60e"
+          ],
+          "objective_base": 3642534.2871622923,
+          "objective_rich": 3642331.4739995287,
+          "objective_rel_gap": 5.567913622073387e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 54,
+            "pm_peak": 54,
+            "evening": 54,
+            "owl": 54
+          },
+          "paths_rich": {
+            "early": 54,
+            "am_peak": 54,
+            "midday": 60,
+            "pm_peak": 60,
+            "evening": 60,
+            "owl": 54
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 6,
+            "midday": 6,
+            "owl": 0,
+            "pm_peak": 6
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2307.093933949131,
+              "rich": 2360.606198198111,
+              "rel_diff": 0.023194662107832466
+            },
+            "unserved_demand": {
+              "base": 30335.226610236194,
+              "rich": 30333.090565011087,
+              "rel_diff": 7.041467837216425e-05
+            },
+            "served_demand": {
+              "base": 613.7733897638094,
+              "rich": 615.9094349889132,
+              "rel_diff": 0.0034801854572511825
+            },
+            "revenue_veh_hours": {
+              "base": 58.44444444444444,
+              "rich": 58.44444444444444,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 8.401388888888889,
+              "rich": 8.401388888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.7588692706879008,
+              "rich": 3.832716409419193,
+              "rel_diff": 0.019646104563188875
+            }
+          },
+          "worst_rel_diff": 0.023194662107832466
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#ad3c70688c71",
+          "lines": [
+            "syn-d0292863e848ff46"
+          ],
+          "objective_base": 3639436.5585639034,
+          "objective_rich": 3639041.7869578875,
+          "objective_rel_gap": 0.00010847052824345616,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 50,
+            "am_peak": 50,
+            "midday": 50,
+            "pm_peak": 50,
+            "evening": 50,
+            "owl": 50
+          },
+          "paths_rich": {
+            "early": 50,
+            "am_peak": 50,
+            "midday": 53,
+            "pm_peak": 53,
+            "evening": 53,
+            "owl": 50
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 3,
+            "midday": 3,
+            "owl": 0,
+            "pm_peak": 3
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3237.215877792387,
+              "rich": 3301.131878009307,
+              "rel_diff": 0.019744126629116714
+            },
+            "unserved_demand": {
+              "base": 30301.661189050927,
+              "rich": 30297.838792332317,
+              "rel_diff": 0.00012614479103180963
+            },
+            "served_demand": {
+              "base": 647.3388109490764,
+              "rich": 651.1612076676832,
+              "rel_diff": 0.005904785336449554
+            },
+            "revenue_veh_hours": {
+              "base": 64.64,
+              "rich": 64.64,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.291999999999998,
+              "rich": 9.291999999999998,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.000806104991974,
+              "rich": 5.069607708716614,
+              "rel_diff": 0.013758102649882713
+            }
+          },
+          "worst_rel_diff": 0.019744126629116714
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#b968dfb278a4",
+          "lines": [
+            "syn-dcef27a3822e47f8"
+          ],
+          "objective_base": 3650033.6289759376,
+          "objective_rich": 3650033.6289759376,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "paths_rich": {
+            "early": 8,
+            "am_peak": 8,
+            "midday": 8,
+            "pm_peak": 8,
+            "evening": 8,
+            "owl": 8
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 116.66006592526202,
+              "rich": 116.66006592526202,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30415.97474091677,
+              "rich": 30415.97474091677,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 533.0252590832381,
+              "rich": 533.0252590832381,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 53.333333333333336,
+              "rich": 53.333333333333336,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 7.666666666666667,
+              "rich": 7.666666666666667,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 0.21886404806764362,
+              "rich": 0.21886404806764362,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#0c6640d0ecf0",
+          "lines": [
+            "syn-edf252439b3ffff1"
+          ],
+          "objective_base": 3647747.8270029104,
+          "objective_rich": 3647747.8270029104,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 158,
+            "pm_peak": 158,
+            "evening": 158,
+            "owl": 158
+          },
+          "paths_rich": {
+            "early": 158,
+            "am_peak": 158,
+            "midday": 172,
+            "pm_peak": 172,
+            "evening": 172,
+            "owl": 158
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 14,
+            "midday": 14,
+            "owl": 0,
+            "pm_peak": 14
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1329.1783287815433,
+              "rich": 1329.1783287815433,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30386.82207228441,
+              "rich": 30386.82207228441,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 562.1779277155927,
+              "rich": 562.1779277155927,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 16.41111111111111,
+              "rich": 16.41111111111111,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.436388888888889,
+              "rich": 9.436388888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.364337451281044,
+              "rich": 2.364337451281044,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|1lines#b2185b7a5336",
+          "lines": [
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3647176.5764617682,
+          "objective_rich": 3647176.5764617682,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 9,
+            "am_peak": 9,
+            "midday": 9,
+            "pm_peak": 9,
+            "evening": 9,
+            "owl": 9
+          },
+          "paths_rich": {
+            "early": 9,
+            "am_peak": 9,
+            "midday": 9,
+            "pm_peak": 9,
+            "evening": 9,
+            "owl": 9
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1031.6947841401925,
+              "rich": 1031.6947841401925,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30384.5406806469,
+              "rich": 30384.5406806469,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 564.4593193531055,
+              "rich": 564.4593193531055,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 89.6311111111111,
+              "rich": 89.6311111111111,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 7.191333333333333,
+              "rich": 7.191333333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.8277575527011563,
+              "rich": 1.8277575527011563,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#6fef689660dd",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-d0292863e848ff46"
+          ],
+          "objective_base": 3638714.748804967,
+          "objective_rich": 3636256.0389613286,
+          "objective_rel_gap": 0.0006757083237826892,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 215,
+            "am_peak": 215,
+            "midday": 215,
+            "pm_peak": 215,
+            "evening": 215,
+            "owl": 215
+          },
+          "paths_rich": {
+            "early": 215,
+            "am_peak": 222,
+            "midday": 220,
+            "pm_peak": 236,
+            "evening": 237,
+            "owl": 232
+          },
+          "path_count_delta": {
+            "am_peak": 7,
+            "early": 0,
+            "evening": 22,
+            "midday": 5,
+            "owl": 17,
+            "pm_peak": 21
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4353.879955938339,
+              "rich": 4991.0948448256695,
+              "rel_diff": 0.14635564033368018
+            },
+            "unserved_demand": {
+              "base": 30286.3405737419,
+              "rich": 30260.54120097086,
+              "rel_diff": 0.0008518484664142533
+            },
+            "served_demand": {
+              "base": 662.6594262581028,
+              "rich": 688.4587990291462,
+              "rel_diff": 0.03893308047653829
+            },
+            "revenue_veh_hours": {
+              "base": 60.45111111111111,
+              "rich": 65.09777777777778,
+              "rel_diff": 0.0768665220747712
+            },
+            "peak_vehicles": {
+              "base": 9.555222222222222,
+              "rich": 9.555222222222222,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.57031317055848,
+              "rich": 7.249663817012772,
+              "rel_diff": 0.10339699627994248
+            }
+          },
+          "worst_rel_diff": 0.14635564033368018
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#1d9113de282d",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-dcef27a3822e47f8"
+          ],
+          "objective_base": 3642287.9841278046,
+          "objective_rich": 3642085.170965041,
+          "objective_rel_gap": 5.568290142004502e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 96,
+            "pm_peak": 96,
+            "evening": 96,
+            "owl": 96
+          },
+          "paths_rich": {
+            "early": 96,
+            "am_peak": 96,
+            "midday": 96,
+            "pm_peak": 103,
+            "evening": 103,
+            "owl": 96
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 7,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 7
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2589.971409183512,
+              "rich": 2643.4836734324927,
+              "rel_diff": 0.0206613339665592
+            },
+            "unserved_demand": {
+              "base": 30330.816772655176,
+              "rich": 30328.680727430074,
+              "rel_diff": 7.042491605529789e-05
+            },
+            "served_demand": {
+              "base": 618.183227344827,
+              "rich": 620.3192725699308,
+              "rel_diff": 0.0034553593993134723
+            },
+            "revenue_veh_hours": {
+              "base": 61.07777777777778,
+              "rich": 61.07777777777778,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.915555555555557,
+              "rich": 9.915555555555557,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 4.189650082076406,
+              "rich": 4.261488866016948,
+              "rel_diff": 0.017146726464788167
+            }
+          },
+          "worst_rel_diff": 0.0206613339665592
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#bec3166d835c",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-edf252439b3ffff1"
+          ],
+          "objective_base": 3646798.839773259,
+          "objective_rich": 3646797.088981667,
+          "objective_rel_gap": 4.800899827440579e-07,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 295,
+            "am_peak": 295,
+            "midday": 295,
+            "pm_peak": 295,
+            "evening": 295,
+            "owl": 295
+          },
+          "paths_rich": {
+            "early": 317,
+            "am_peak": 326,
+            "midday": 336,
+            "pm_peak": 354,
+            "evening": 352,
+            "owl": 348
+          },
+          "path_count_delta": {
+            "am_peak": 31,
+            "early": 22,
+            "evening": 57,
+            "midday": 41,
+            "owl": 53,
+            "pm_peak": 59
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2390.102701169735,
+              "rich": 2389.115862153162,
+              "rel_diff": 0.00041288561202411557
+            },
+            "unserved_demand": {
+              "base": 30370.072808934077,
+              "rich": 30370.066442662617,
+              "rel_diff": 2.0962318728011103e-07
+            },
+            "served_demand": {
+              "base": 578.9271910659273,
+              "rich": 578.9335573373864,
+              "rel_diff": 1.0996670319445461e-05
+            },
+            "revenue_veh_hours": {
+              "base": 17.15222222222222,
+              "rich": 17.15222222222222,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.862527777777778,
+              "rich": 9.862527777777778,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 4.128503096855843,
+              "rich": 4.126753116784439,
+              "rel_diff": 0.00042387762110110796
+            }
+          },
+          "worst_rel_diff": 0.00042387762110110796
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#663b58c1696f",
+          "lines": [
+            "syn-0a0e2e5cac7df60e",
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3639813.818101552,
+          "objective_rich": 3639614.209006626,
+          "objective_rel_gap": 5.484046846929172e-05,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 63,
+            "am_peak": 63,
+            "midday": 63,
+            "pm_peak": 63,
+            "evening": 63,
+            "owl": 63
+          },
+          "paths_rich": {
+            "early": 63,
+            "am_peak": 63,
+            "midday": 63,
+            "pm_peak": 69,
+            "evening": 69,
+            "owl": 63
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 6,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 6
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3606.041587761194,
+              "rich": 3662.7579198478306,
+              "rel_diff": 0.015728141427744563
+            },
+            "unserved_demand": {
+              "base": 30301.731470948256,
+              "rich": 30299.595425723153,
+              "rel_diff": 7.04925138403656e-05
+            },
+            "served_demand": {
+              "base": 647.268529051745,
+              "rich": 649.4045742768488,
+              "rel_diff": 0.003300091274688132
+            },
+            "revenue_veh_hours": {
+              "base": 89.48666666666665,
+              "rich": 89.48666666666665,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.7175,
+              "rich": 9.7175,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.571167801166051,
+              "rich": 5.64017881137738,
+              "rel_diff": 0.012387171356943368
+            }
+          },
+          "worst_rel_diff": 0.015728141427744563
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#ed16b935a26f",
+          "lines": [
+            "syn-d0292863e848ff46",
+            "syn-dcef27a3822e47f8"
+          ],
+          "objective_base": 3639317.4980905526,
+          "objective_rich": 3638926.548881255,
+          "objective_rel_gap": 0.00010742377094129918,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 58,
+            "am_peak": 58,
+            "midday": 58,
+            "pm_peak": 58,
+            "evening": 58,
+            "owl": 58
+          },
+          "paths_rich": {
+            "early": 58,
+            "am_peak": 58,
+            "midday": 58,
+            "pm_peak": 61,
+            "evening": 61,
+            "owl": 58
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 3,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 3
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 3526.076990810808,
+              "rich": 3593.815387746335,
+              "rel_diff": 0.019210697075548178
+            },
+            "unserved_demand": {
+              "base": 30298.26184249785,
+              "rich": 30294.43944577924,
+              "rel_diff": 0.0001261589439843061
+            },
+            "served_demand": {
+              "base": 650.7381575021549,
+              "rich": 654.5605542207618,
+              "rel_diff": 0.005873939732194439
+            },
+            "revenue_veh_hours": {
+              "base": 67.67111111111112,
+              "rich": 67.67111111111112,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.930888888888887,
+              "rich": 9.930888888888887,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 5.418580346272582,
+              "rich": 5.490424628512306,
+              "rel_diff": 0.01325887550770487
+            }
+          },
+          "worst_rel_diff": 0.019210697075548178
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#069b14a8dccc",
+          "lines": [
+            "syn-d0292863e848ff46",
+            "syn-edf252439b3ffff1"
+          ],
+          "objective_base": 3647107.6614132524,
+          "objective_rich": 3636431.31203642,
+          "objective_rel_gap": 0.002927346919255752,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 230,
+            "am_peak": 230,
+            "midday": 230,
+            "pm_peak": 230,
+            "evening": 230,
+            "owl": 230
+          },
+          "paths_rich": {
+            "early": 272,
+            "am_peak": 290,
+            "midday": 303,
+            "pm_peak": 316,
+            "evening": 313,
+            "owl": 313
+          },
+          "path_count_delta": {
+            "am_peak": 60,
+            "early": 42,
+            "evening": 83,
+            "midday": 73,
+            "owl": 83,
+            "pm_peak": 86
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 2099.2023388324696,
+              "rich": 5283.608333081189,
+              "rel_diff": 1.5169600068280298
+            },
+            "unserved_demand": {
+              "base": 30375.07049228683,
+              "rich": 30259.564197527827,
+              "rel_diff": 0.00380266754568802
+            },
+            "served_demand": {
+              "base": 573.9295077131698,
+              "rich": 689.4358024721752,
+              "rel_diff": 0.20125519459566016
+            },
+            "revenue_veh_hours": {
+              "base": 17.16888888888889,
+              "rich": 65.64888888888889,
+              "rel_diff": 2.8237121408231944
+            },
+            "peak_vehicles": {
+              "base": 9.87211111111111,
+              "rich": 9.87211111111111,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 3.6575961169809355,
+              "rich": 7.663669792220326,
+              "rel_diff": 1.0952750241177793
+            }
+          },
+          "worst_rel_diff": 2.8237121408231944
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#d3ae84679b25",
+          "lines": [
+            "syn-d0292863e848ff46",
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3636767.108058986,
+          "objective_rich": 3636376.1588496882,
+          "objective_rel_gap": 0.00010749910502413195,
+          "rich_is_better": true,
+          "paths_base": {
+            "early": 59,
+            "am_peak": 59,
+            "midday": 59,
+            "pm_peak": 59,
+            "evening": 59,
+            "owl": 59
+          },
+          "paths_rich": {
+            "early": 59,
+            "am_peak": 59,
+            "midday": 59,
+            "pm_peak": 62,
+            "evening": 62,
+            "owl": 59
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 3,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 3
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 4588.02733338567,
+              "rich": 4655.765730321197,
+              "rel_diff": 0.014764165950498013
+            },
+            "unserved_demand": {
+              "base": 30268.159006046666,
+              "rich": 30264.336609328057,
+              "rel_diff": 0.00012628441385701474
+            },
+            "served_demand": {
+              "base": 680.840993953337,
+              "rich": 684.6633906719441,
+              "rel_diff": 0.005614228215625043
+            },
+            "revenue_veh_hours": {
+              "base": 89.73555555555555,
+              "rich": 89.73555555555555,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.541166666666665,
+              "rich": 9.541166666666665,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 6.738764813124812,
+              "rich": 6.8000798549370725,
+              "rel_diff": 0.00909885468815294
+            }
+          },
+          "worst_rel_diff": 0.014764165950498013
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#32d1e6ea1a96",
+          "lines": [
+            "syn-dcef27a3822e47f8",
+            "syn-edf252439b3ffff1"
+          ],
+          "objective_base": 3647478.1176587488,
+          "objective_rich": 3647478.1176587488,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 166,
+            "pm_peak": 166,
+            "evening": 166,
+            "owl": 166
+          },
+          "paths_rich": {
+            "early": 166,
+            "am_peak": 166,
+            "midday": 180,
+            "pm_peak": 180,
+            "evening": 180,
+            "owl": 180
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 14,
+            "midday": 14,
+            "owl": 14,
+            "pm_peak": 14
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 1434.4011333415835,
+              "rich": 1434.4011333415835,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30383.697637711724,
+              "rich": 30383.697637711724,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 565.3023622882774,
+              "rich": 565.3023622882774,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 56.41111111111111,
+              "rich": 56.41111111111111,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 9.436388888888889,
+              "rich": 9.436388888888889,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 2.537405164088288,
+              "rich": 2.537405164088288,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        },
+        {
+          "kind": "subset",
+          "id": "exp4|exp4-pool-v1|2lines#8cff74339bb9",
+          "lines": [
+            "syn-dcef27a3822e47f8",
+            "syn-ffe3ea8843390b99"
+          ],
+          "objective_base": 3647250.2565381476,
+          "objective_rich": 3647250.2565381476,
+          "objective_rel_gap": 0.0,
+          "rich_is_better": false,
+          "paths_base": {
+            "early": 17,
+            "am_peak": 17,
+            "midday": 17,
+            "pm_peak": 17,
+            "evening": 17,
+            "owl": 17
+          },
+          "paths_rich": {
+            "early": 17,
+            "am_peak": 17,
+            "midday": 17,
+            "pm_peak": 17,
+            "evening": 17,
+            "owl": 17
+          },
+          "path_count_delta": {
+            "am_peak": 0,
+            "early": 0,
+            "evening": 0,
+            "midday": 0,
+            "owl": 0,
+            "pm_peak": 0
+          },
+          "fields": {
+            "generalized_cost": {
+              "base": 978.5622972658937,
+              "rich": 978.5622972658937,
+              "rel_diff": 0.0
+            },
+            "unserved_demand": {
+              "base": 30385.597452007347,
+              "rich": 30385.597452007347,
+              "rel_diff": 0.0
+            },
+            "served_demand": {
+              "base": 563.4025479926561,
+              "rich": 563.4025479926561,
+              "rel_diff": 0.0
+            },
+            "revenue_veh_hours": {
+              "base": 89.83777777777777,
+              "rich": 89.83777777777777,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "base": 7.191333333333333,
+              "rich": 7.191333333333333,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "base": 0.0,
+              "rich": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "base": 1.7368794315048948,
+              "rich": 1.7368794315048948,
+              "rel_diff": 0.0
+            }
+          },
+          "worst_rel_diff": 0.0
+        }
+      ]
+    }
+  ]
+}

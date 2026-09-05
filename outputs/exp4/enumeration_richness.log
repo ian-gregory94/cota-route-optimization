@@ -1,0 +1,106 @@
+
+=== greedy_finds_nothing: 16 candidates, digest b111d18ae710deb8 ===
+  supernetwork  base 3632777.9509  rich 3628658.1391  RICH better  rel 1.134e-03
+  pinned_off    base 3635089.4085  rich 3630407.0601  RICH better  rel 1.288e-03
+  subset        base 3647789.8435  rich 3647789.8435  base better/equal  rel 0.000e+00
+  subset        base 3636885.7939  rich 3636401.8094  RICH better  rel 1.331e-04
+  subset        base 3645615.9299  rich 3645535.1377  RICH better  rel 2.216e-05
+  subset        base 3650033.6290  rich 3650033.6290  base better/equal  rel 0.000e+00
+  subset        base 3637013.8019  rich 3632893.8835  RICH better  rel 1.133e-03
+  subset        base 3643169.3565  rich 3643084.0914  RICH better  rel 2.340e-05
+  subset        base 3647520.1341  rich 3647520.1341  base better/equal  rel 0.000e+00
+  subset        base 3632715.2818  rich 3632155.7640  RICH better  rel 1.540e-04
+  subset        base 3636640.2678  rich 3636156.2834  RICH better  rel 1.331e-04
+  subset        base 3645378.8423  rich 3645337.0060  RICH better  rel 1.148e-05
+  subset        base 3642440.3401  rich 3628722.2085  RICH better  rel 3.766e-03
+  subset        base 3636940.7951  rich 3632766.2506  RICH better  rel 1.148e-03
+  subset        base 3642957.7788  rich 3642872.8300  RICH better  rel 2.332e-05
+  subset        base 3632624.1166  rich 3632064.5988  RICH better  rel 1.540e-04
+  -> leader CHANGES, 15/120 inversions, promoted set CHANGES, rich better in 13/16
+
+=== large_gap: 16 candidates, digest 2f1b3f3610c58aec ===
+  supernetwork  base 3627971.5076  rich 3614702.0568  RICH better  rel 3.658e-03
+  pinned_off    base 3637033.8378  rich 3623987.1949  RICH better  rel 3.587e-03
+  subset        base 3648034.6864  rich 3648034.6864  base better/equal  rel 0.000e+00
+  subset        base 3650016.3087  rich 3650016.3087  base better/equal  rel 0.000e+00
+  subset        base 3648255.8814  rich 3648255.8814  base better/equal  rel 0.000e+00
+  subset        base 3642444.6997  rich 3642239.7505  RICH better  rel 5.627e-05
+  subset        base 3648130.4326  rich 3648130.4326  base better/equal  rel 0.000e+00
+  subset        base 3647720.7179  rich 3647720.7179  base better/equal  rel 0.000e+00
+  subset        base 3635952.4717  rich 3636721.4730  base better/equal  rel 2.115e-04
+  subset        base 3647247.4305  rich 3636066.7466  RICH better  rel 3.066e-03
+  subset        base 3623242.7092  rich 3625952.2452  base better/equal  rel 7.478e-04
+  subset        base 3647742.5752  rich 3647742.5752  base better/equal  rel 0.000e+00
+  subset        base 3642142.0741  rich 3641937.1248  RICH better  rel 5.627e-05
+  subset        base 3647816.4640  rich 3647816.4640  base better/equal  rel 0.000e+00
+  subset        base 3647853.0114  rich 3643598.5989  RICH better  rel 1.166e-03
+  subset        base 3638319.9308  rich 3647317.1551  base better/equal  rel 2.473e-03
+  -> leader CHANGES, 13/120 inversions, promoted set CHANGES, rich better in 6/16
+
+=== moderate_gap: 16 candidates, digest b934a09f73f2f69b ===
+  supernetwork  base 3628997.4172  rich 3632465.4591  base better/equal  rel 9.556e-04
+  pinned_off    base 3630910.3633  rich 3634213.8961  base better/equal  rel 9.098e-04
+  subset        base 3647743.1417  rich 3647743.1417  base better/equal  rel 0.000e+00
+  subset        base 3648130.6778  rich 3648130.6778  base better/equal  rel 0.000e+00
+  subset        base 3636526.4966  rich 3636034.7831  RICH better  rel 1.352e-04
+  subset        base 3649136.2512  rich 3649136.2512  base better/equal  rel 0.000e+00
+  subset        base 3646344.2665  rich 3646340.1780  RICH better  rel 1.121e-06
+  subset        base 3636395.8940  rich 3632195.8236  RICH better  rel 1.155e-03
+  subset        base 3638997.4199  rich 3646617.1398  base better/equal  rel 2.094e-03
+  subset        base 3639287.6894  rich 3633286.5419  RICH better  rel 1.649e-03
+  subset        base 3633024.6547  rich 3643161.7635  base better/equal  rel 2.790e-03
+  subset        base 3636614.6616  rich 3634544.4194  RICH better  rel 5.693e-04
+  subset        base 3637652.9649  rich 3635030.8873  RICH better  rel 7.208e-04
+  subset        base 3634393.7774  rich 3625250.4779  RICH better  rel 2.516e-03
+  subset        base 3639149.7329  rich 3631600.3824  RICH better  rel 2.074e-03
+  subset        base 3628620.6269  rich 3633169.7838  base better/equal  rel 1.254e-03
+  -> leader CHANGES, 30/120 inversions, promoted set CHANGES, rich better in 8/16
+
+=== greedy_overbuilds: 16 candidates, digest 56ec56b18e76b308 ===
+  supernetwork  base 3640815.2751  rich 3639134.4417  RICH better  rel 4.617e-04
+  pinned_off    base 3642874.2133  rich 3640900.6929  RICH better  rel 5.417e-04
+  subset        base 3647743.1417  rich 3647743.1417  base better/equal  rel 0.000e+00
+  subset        base 3648130.6778  rich 3648130.6778  base better/equal  rel 0.000e+00
+  subset        base 3650016.3087  rich 3650016.3087  base better/equal  rel 0.000e+00
+  subset        base 3650016.3087  rich 3650016.3087  base better/equal  rel 0.000e+00
+  subset        base 3642444.6997  rich 3642239.7505  RICH better  rel 5.627e-05
+  subset        base 3646344.2665  rich 3646340.1780  RICH better  rel 1.121e-06
+  subset        base 3647429.1732  rich 3647429.1732  base better/equal  rel 0.000e+00
+  subset        base 3647429.1732  rich 3647429.1732  base better/equal  rel 0.000e+00
+  subset        base 3646497.4398  rich 3646497.4398  base better/equal  rel 0.000e+00
+  subset        base 3647817.2187  rich 3647817.2187  base better/equal  rel 0.000e+00
+  subset        base 3647817.2187  rich 3647817.2187  base better/equal  rel 0.000e+00
+  subset        base 3647272.4693  rich 3647272.4693  base better/equal  rel 0.000e+00
+  subset        base 3650016.3087  rich 3650016.3087  base better/equal  rel 0.000e+00
+  subset        base 3642142.0741  rich 3641937.1248  RICH better  rel 5.627e-05
+  -> leader unchanged, 2/120 inversions, promoted set CHANGES, rich better in 5/16
+
+=== weak_junction: 16 candidates, digest 65c631411bba19aa ===
+  supernetwork  base 3629437.2640  rich 3620184.2438  RICH better  rel 2.549e-03
+  pinned_off    base 3630467.3830  rich 3620695.6599  RICH better  rel 2.692e-03
+  subset        base 3642534.2872  rich 3642331.4740  RICH better  rel 5.568e-05
+  subset        base 3639436.5586  rich 3639041.7870  RICH better  rel 1.085e-04
+  subset        base 3650033.6290  rich 3650033.6290  base better/equal  rel 0.000e+00
+  subset        base 3647747.8270  rich 3647747.8270  base better/equal  rel 0.000e+00
+  subset        base 3647176.5765  rich 3647176.5765  base better/equal  rel 0.000e+00
+  subset        base 3638714.7488  rich 3636256.0390  RICH better  rel 6.757e-04
+  subset        base 3642287.9841  rich 3642085.1710  RICH better  rel 5.568e-05
+  subset        base 3646798.8398  rich 3646797.0890  RICH better  rel 4.801e-07
+  subset        base 3639813.8181  rich 3639614.2090  RICH better  rel 5.484e-05
+  subset        base 3639317.4981  rich 3638926.5489  RICH better  rel 1.074e-04
+  subset        base 3647107.6614  rich 3636431.3120  RICH better  rel 2.927e-03
+  subset        base 3636767.1081  rich 3636376.1588  RICH better  rel 1.075e-04
+  subset        base 3647478.1177  rich 3647478.1177  base better/equal  rel 0.000e+00
+  subset        base 3647250.2565  rich 3647250.2565  base better/equal  rel 0.000e+00
+  -> leader unchanged, 7/120 inversions, promoted set CHANGES, rich better in 11/16
+
+========================================================================
+  cases                    : 5
+  leader changes           : 3/5
+  promoted set changes     : 5/5
+  ranking inversions       : 67/600
+  worst objective rel gap  : 3.766e-03
+
+  INFORMATIONAL. This is not gate 4-7 and closes nothing.
+
+wrote outputs/exp4/enumeration_richness.json

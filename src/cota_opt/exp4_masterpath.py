@@ -10,9 +10,25 @@ relative error on revenue vehicle-hours.
 The real object:
 
 1. **Enumerate once on the supernetwork** — every line the pool allows, active
-   together. Its path set contains, by construction, every ride any candidate
-   network could offer, because a candidate's patterns are a subset of the
-   supernetwork's.
+   together.
+
+   An earlier version of this file claimed the supernetwork's path set
+   "contains, by construction, every ride any candidate network could offer,
+   because a candidate's patterns are a subset of the supernetwork's."
+   **That claim is false, and it was load-bearing.** The *patterns* are a
+   subset; the *enumerated paths* are not. Enumeration keeps the best k paths
+   per OD pair, and the best k in the supernetwork are not the best k in a
+   candidate that runs a quarter of its lines — a route worth taking only once
+   the better lines are gone is dominated in the supernetwork and never enters
+   its top-k at all.
+
+   Measured (`outputs/exp4/gate47.json`, 480 period-candidate observations):
+   an exact rebuild finds **more** paths than the filtered master keeps in
+   **62%** of them, median 26 paths and up to 181; and in 12 observations the
+   rebuild finds more paths than the master holds **in total** (worst 340
+   against 338). The master is not a superset. Raising `max_paths_per_od` does
+   not reach these paths, because the shortfall is dominance in a different
+   network, not truncation in this one.
 2. **Filter per candidate.** A master path is usable in a candidate iff *every*
    ride leg it uses belongs to a route the candidate actually runs. A path
    through a line the candidate does not select cannot be taken, and keeping it
@@ -23,11 +39,21 @@ The real object:
    step 2 already excluded -- and it is re-checked here rather than assumed.
 
 Filtering is a **restriction of the choice set, not an approximation of it**:
-every surviving path is a real path in the candidate, priced identically. What
-reuse can lose is paths the supernetwork's enumeration never proposed because
-they only become attractive once other lines are absent. That is exactly the
-error gate 4-7 asks to be measured, and `scripts/exp4_masterpath_benchmark.py`
-measures it against exact per-candidate rebuilds.
+every surviving path is a real path in the candidate, priced identically, and
+where the candidate is the supernetwork the filter is exactly the identity —
+verified at 0.000e+00 on all seven FitnessVector fields across 10 candidates.
+
+What reuse loses is paths the supernetwork's enumeration never proposed. That
+loss is **systematic and directional**, not noise: it is zero at survival 1.000
+and grows as the candidate thins, so reuse scores sparse candidates worse than
+they are and therefore **biases the search toward activating more lines**.
+Median signed penalty by active-line count: +267 at one line, +355 at two, +257
+at three, exactly 0.00 at four and five.
+
+`scripts/exp4_gate47.py` is the measurement, as a one-factor comparison.
+`scripts/exp4_masterpath_benchmark.py` was the first attempt and is preserved
+but superseded: it varied reuse and enumeration richness together, so its
+numbers are unidentified. See `decisions/2026-09-05-gate-4-7-amendment.md`.
 """
 from __future__ import annotations
 

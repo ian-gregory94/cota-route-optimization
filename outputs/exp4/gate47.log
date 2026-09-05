@@ -1,0 +1,132 @@
+
+=== greedy_finds_nothing ===
+  drop syn-e7c589431bb22c3b: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pat
+  universe: 16 candidates, digest f004170af4470817
+  master: {'am_peak': 323, 'early': 323, 'evening': 323, 'midday': 323, 'owl': 323, 'pm_peak': 323} paths, 2.2s, digest cd57cde0f3eada09
+  universe assertion: digest, count and ordered ids identical in both arms (16 candidates)
+  supernetwork  surv 1.000  ==  obj gap 0.000e+00  x5.58
+  pinned_off    surv 1.000  ==  obj gap 0.000e+00  x6.60
+  subset        surv 0.406  !=  obj gap 8.581e-05  x5.34
+  subset        surv 0.238  !=  obj gap 6.057e-04  x3.58
+  subset        surv 0.019  ==  obj gap 0.000e+00  x2.43
+  subset        surv 0.028  !=  obj gap 7.322e-05  x3.57
+  subset        surv 0.783  !=  obj gap 2.007e-05  x6.40
+  subset        surv 0.424  !=  obj gap 8.301e-05  x4.17
+  subset        surv 0.433  !=  obj gap 1.598e-04  x6.31
+  subset        surv 0.257  !=  obj gap 6.535e-04  x3.12
+  subset        surv 0.396  !=  obj gap 6.310e-04  x5.30
+  subset        surv 0.046  !=  obj gap 5.829e-05  x3.10
+  subset        surv 0.802  !=  obj gap 2.653e-03  x4.31
+  subset        surv 0.981  ==  obj gap 0.000e+00  x8.42
+  subset        surv 0.452  !=  obj gap 1.411e-04  x4.36
+  subset        surv 0.415  !=  obj gap 6.787e-04  x4.12
+  survival-1.000 candidates: 2, identical: 2/2
+  -> leader CHANGED, 13/120 inversions, promoted set CHANGED, worst field 1.136e+00
+
+=== large_gap ===
+  universe: 16 candidates, digest daec48aa6c61130c
+  master: {'am_peak': 422, 'early': 422, 'evening': 422, 'midday': 422, 'owl': 422, 'pm_peak': 422} paths, 3.3s, digest 76d82777d4a95c50
+  universe assertion: digest, count and ordered ids identical in both arms (16 candidates)
+  supernetwork  surv 1.000  ==  obj gap 0.000e+00  x6.64
+  pinned_off    surv 1.000  ==  obj gap 0.000e+00  x7.72
+  subset        surv 0.166  !=  obj gap 1.898e-03  x5.22
+  subset        surv 0.019  ==  obj gap 0.000e+00  x3.26
+  subset        surv 0.135  !=  obj gap 1.550e-03  x5.35
+  subset        surv 0.078  !=  obj gap 2.097e-03  x4.45
+  subset        surv 0.263  !=  obj gap 3.511e-03  x4.51
+  subset        surv 0.185  !=  obj gap 1.892e-03  x4.49
+  subset        surv 0.334  !=  obj gap 7.668e-04  x5.77
+  subset        surv 0.275  !=  obj gap 1.760e-03  x6.36
+  subset        surv 0.429  !=  obj gap 9.010e-04  x4.31
+  subset        surv 0.201  !=  obj gap 1.458e-03  x7.79
+  subset        surv 0.156  !=  obj gap 2.102e-03  x5.51
+  subset        surv 0.282  !=  obj gap 3.506e-03  x4.69
+  subset        surv 0.239  !=  obj gap 1.515e-03  x6.48
+  subset        surv 0.441  !=  obj gap 7.569e-04  x6.42
+  survival-1.000 candidates: 2, identical: 2/2
+  -> leader PRESERVED, 35/120 inversions, promoted set preserved, worst field 5.185e+00
+
+=== moderate_gap ===
+  drop syn-e7c589431bb22c3b: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pat
+  universe: 16 candidates, digest 5c4791978f343039
+  master: {'am_peak': 338, 'early': 338, 'evening': 338, 'midday': 338, 'owl': 338, 'pm_peak': 338} paths, 2.0s, digest 3c7d7809c6baee6f
+  universe assertion: digest, count and ordered ids identical in both arms (16 candidates)
+  supernetwork  surv 1.000  ==  obj gap 0.000e+00  x5.55
+  pinned_off    surv 1.000  ==  obj gap 0.000e+00  x6.45
+  subset        surv 0.237  !=  obj gap 2.907e-04  x5.55
+  subset        surv 0.249  !=  obj gap 2.516e-03  x4.75
+  subset        surv 0.163  !=  obj gap 1.542e-03  x3.68
+  subset        surv 0.101  !=  obj gap 1.630e-03  x3.12
+  subset        surv 0.553  !=  obj gap 2.559e-03  x6.05
+  subset        surv 0.438  !=  obj gap 1.124e-03  x6.16
+  subset        surv 0.364  !=  obj gap 7.210e-04  x5.80
+  subset        surv 0.441  !=  obj gap 2.300e-03  x4.91
+  subset        surv 0.391  !=  obj gap 3.723e-04  x4.12
+  subset        surv 0.299  !=  obj gap 1.581e-03  x4.47
+  subset        surv 0.787  !=  obj gap 2.393e-03  x6.17
+  subset        surv 0.731  !=  obj gap 1.264e-03  x5.44
+  subset        surv 0.601  !=  obj gap 4.429e-04  x6.51
+  subset        surv 0.618  !=  obj gap 6.310e-04  x4.53
+  survival-1.000 candidates: 2, identical: 2/2
+  -> leader CHANGED, 35/120 inversions, promoted set CHANGED, worst field 3.456e+00
+
+=== greedy_overbuilds ===
+  universe: 16 candidates, digest 403475a00ec83517
+  master: {'am_peak': 474, 'early': 474, 'evening': 474, 'midday': 474, 'owl': 474, 'pm_peak': 474} paths, 3.2s, digest ce28da3b69b2ac54
+  universe assertion: digest, count and ordered ids identical in both arms (16 candidates)
+  supernetwork  surv 1.000  ==  obj gap 0.000e+00  x9.01
+  pinned_off    surv 1.000  ==  obj gap 0.000e+00  x10.04
+  subset        surv 0.179  !=  obj gap 2.759e-04  x5.37
+  subset        surv 0.268  !=  obj gap 9.721e-05  x5.08
+  subset        surv 0.017  ==  obj gap 0.000e+00  x3.24
+  subset        surv 0.000  !=  obj gap 1.750e-02  x4.38
+  subset        surv 0.114  !=  obj gap 1.969e-03  x3.77
+  subset        surv 0.530  !=  obj gap 3.783e-05  x7.21
+  subset        surv 0.196  !=  obj gap 2.759e-04  x4.97
+  subset        surv 0.179  !=  obj gap 3.620e-04  x6.70
+  subset        surv 0.395  !=  obj gap 3.323e-04  x7.60
+  subset        surv 0.285  !=  obj gap 9.721e-05  x5.14
+  subset        surv 0.268  !=  obj gap 1.831e-04  x6.10
+  subset        surv 0.473  !=  obj gap 1.064e-04  x7.01
+  subset        surv 0.017  ==  obj gap 0.000e+00  x3.57
+  subset        surv 0.222  !=  obj gap 1.903e-03  x5.38
+  survival-1.000 candidates: 2, identical: 2/2
+  -> leader PRESERVED, 28/120 inversions, promoted set CHANGED, worst field 1.000e+00
+
+=== weak_junction ===
+  universe: 16 candidates, digest e743d3f702f2eeaf
+  master: {'am_peak': 481, 'early': 481, 'evening': 481, 'midday': 481, 'owl': 481, 'pm_peak': 481} paths, 3.1s, digest b90fb0808d74ffc0
+  universe assertion: digest, count and ordered ids identical in both arms (16 candidates)
+  supernetwork  surv 1.000  ==  obj gap 0.000e+00  x6.59
+  pinned_off    surv 1.000  ==  obj gap 0.000e+00  x7.43
+  subset        surv 0.137  !=  obj gap 4.376e-04  x3.37
+  subset        surv 0.112  !=  obj gap 2.758e-03  x3.66
+  subset        surv 0.019  !=  obj gap 7.322e-05  x3.62
+  subset        surv 0.202  !=  obj gap 1.510e-04  x5.39
+  subset        surv 0.019  ==  obj gap 0.000e+00  x2.73
+  subset        surv 0.358  !=  obj gap 3.597e-04  x5.15
+  subset        surv 0.243  !=  obj gap 4.206e-04  x5.19
+  subset        surv 0.464  !=  obj gap 2.210e-03  x6.83
+  subset        surv 0.156  !=  obj gap 4.056e-04  x3.05
+  subset        surv 0.131  !=  obj gap 2.787e-03  x4.34
+  subset        surv 0.451  !=  obj gap 3.927e-05  x6.06
+  subset        surv 0.131  !=  obj gap 2.644e-03  x3.11
+  subset        surv 0.220  !=  obj gap 2.250e-04  x6.12
+  subset        surv 0.037  !=  obj gap 5.034e-07  x3.44
+  survival-1.000 candidates: 2, identical: 2/2
+  -> leader PRESERVED, 29/120 inversions, promoted set CHANGED, worst field 2.556e+00
+
+========================================================================
+  cases                        : 5
+  candidates compared          : 80
+  survival-1.000 is the identity: True
+  exact leader preserved, all  : False
+  zero ranking inversions      : False
+  promoted set preserved       : False
+  worst objective rel gap      : 1.750e-02
+  worst field rel diff         : 5.185e+00
+
+  GATE 4-7: ARMED
+  filtering is the identity where survival is 1.000, so the substrate is sound, but reuse does not preserve the decision at nontrivial survival (leader preserved everywhere=False, zero inversions=False, promoted set preserved=False). This is a genuine reuse-induced discrepancy: the master lacks paths a candidate would actually use. Gate 4-7 does not close. Widening the master is NOT the remedy -- richness is the confound this design removed and reintroducing it makes the comparison unidentified again.
+
+wrote outputs/exp4/gate47.json

@@ -139,9 +139,30 @@ def checks() -> list[tuple[str, str, str, str]]:
     # is available and is refused: it is the same move as reporting MET because
     # an artifact is on disk, which this check has made three times. Readiness
     # means discovery may proceed with reuse, and it may not.
+    _g47 = _json(OUT / "gate47.json")
     _mp = _json(OUT / "masterpath_benchmark.json")
     _pr = _json(OUT / "pathreuse_benchmark.json")
-    if _mp:
+    if _g47:
+        _inv = sum(c["ranking_inversions"] for c in _g47["cases"])
+        _prs = sum(c["ranking_pairs"] for c in _g47["cases"])
+        _ld = sum(c["leader_preserved"] for c in _g47["cases"])
+        _n = len(_g47["cases"])
+        _c9_detail = (
+            f"BENCHMARKED as a ONE-FACTOR comparison and NOT closed. The "
+            f"previous measurement varied reuse AND enumeration richness "
+            f"together and was unidentified; the amendment "
+            f"(decisions/2026-09-05-gate-4-7-amendment.md) narrows the gate to "
+            f"reuse alone. Substrate proved sound: filtering is exactly the "
+            f"identity at survival 1.000, zero hard failures. Approximation "
+            f"fails: exact leader preserved in {_ld}/{_n} cases, {_inv}/{_prs} "
+            f"pairs inverted, worst objective rel gap "
+            f"{_g47['worst_objective_rel_gap']:.3e}. The bias is systematic and "
+            f"directional -- zero at survival 1.000, growing as the candidate "
+            f"thins -- so reuse biases the search toward activating more lines. "
+            f"NO LONGER BLOCKED ON D18: closure is band-independent. "
+            f"EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json")
+        _c9_met = _g47.get("verdict") == "MET"
+    elif _mp:
         _inv = sum(c["ranking_inversions"] for c in _mp["cases"])
         _prs = sum(c["ranking_pairs"] for c in _mp["cases"])
         _ld = sum(c["leader_identified"] for c in _mp["cases"])
