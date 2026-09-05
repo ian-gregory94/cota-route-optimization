@@ -95,6 +95,7 @@ def score_exp4_network(
     starts: str = "greedy",
     allow_off: bool = True,
     pathset_cache=None,
+    n_random_scenarios: int = 0,
 ) -> tuple[ScoredExp4Network, AssembledNetwork]:
     """Assemble the selection and score it on the Gen1 evaluation core.
 
@@ -112,7 +113,8 @@ def score_exp4_network(
         built.network, built.tstats, harness=harness, stops_gdf=stops_gdf,
         lam=lam, seed=seed, iterations=iterations, restarts=restarts,
         width=width, constraints=constraints, pathset_cache=pathset_cache,
-        waiting_model=waiting_model, starts=starts, allow_off=allow_off)
+        waiting_model=waiting_model, starts=starts, allow_off=allow_off,
+        n_random_scenarios=n_random_scenarios)
 
     from .frequency import is_off
     plan = {f"{k[0]}|{k[1]}": float(v)

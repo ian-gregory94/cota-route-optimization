@@ -173,7 +173,11 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                      constraints, pathset_cache=None,
                      waiting_model: str = "same_route",
                      starts: str = "incumbent",
-                     allow_off: bool = False) -> dict:
+                     allow_off: bool = False,
+                     solver: str = "gen1",
+                     exact_max_combinations: int = 2_000_000,
+                     pinned_off: frozenset | None = None,
+                     n_random_scenarios: int = 0) -> dict:
     """Score a network that already exists. The Gen1 evaluation core.
 
     Extracted from :func:`score_state` verbatim so Experiment 4 can reuse it
@@ -189,6 +193,28 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
 
     ``allow_off`` is threaded to `build_ladders` and defaults to False, so
     Generation 1 is bit-identical through this function.
+
+    ``solver`` selects the INNER frequency optimizer and nothing else:
+
+      * ``"gen1"``  -- `optimize_frequencies`, the exchange heuristic with
+        restarts. The default, so every existing call is unchanged.
+      * ``"exact"`` -- `gen2_frequency.solve_exact`, exhaustive enumeration of
+        the ladder space. Refuses rather than sampling when the space is too
+        large.
+
+    Both run on the SAME setup: the same RAPTOR network, zone system, route
+    classes, path sets, frequency model, ladders and envelope, all built above
+    this switch. That is what makes a generation bridge measure the solver
+    rather than the scaffolding around it.
+
+    ``n_random_scenarios`` widens path enumeration with extra service/frequency
+    scenarios. It defaults to 0, which is what this function has always passed,
+    so no existing caller changes. It exists because EXPERIMENT4_CONTRACT
+    section 12 requires the gate 4-7 master path set to be enumerated "under
+    multiple service/frequency scenarios" -- a master built at 0 would be
+    thinner than the object the gate describes, and benchmarking a thinner
+    approximation would measure something the experiment is not going to use.
+    It has NO effect when `pathset_cache` supplies the period's paths already.
     """
     import sys as _sys
     from pathlib import Path as _Path
@@ -252,7 +278,8 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                              with_crowding=False,
                              lock_classes=("peak_express",),
                              constraints=constraints,
-                             n_random_scenarios=0, pathset_cache=pathset_cache,
+                             n_random_scenarios=n_random_scenarios,
+                             pathset_cache=pathset_cache,
                              common_lines=waiting_model, allow_off=allow_off)
 
     # Gate 3-1, asserted rather than requested: read the model out of the setup
@@ -322,11 +349,33 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
     if starts == "both":
         use_greedy = True         # greedy IS added alongside; best-of is kept
 
-    r = optimize_frequencies(
-        judge.model, judge.budget, ladder=[], unserved_multiplier=lam,
-        local_search_iterations=iterations, seed=seed, ladders=judge.ladders,
-        initial=initial,
-        n_restarts=restarts, candidate_width=width, greedy_start=use_greedy)
+    if solver not in ("gen1", "exact"):
+        raise ValueError(f"unknown solver {solver!r}")
+
+    if solver == "exact":
+        from .gen2_frequency import solve_exact
+        ex = solve_exact(judge.model, judge.budget, judge.ladders,
+                         unserved_multiplier=lam,
+                         max_combinations=exact_max_combinations,
+                         pinned_off=pinned_off)
+
+        class _R:                      # the shape optimize_frequencies returns
+            plan = ex.plan
+            meta = {"solver": "gen2_exact_enumeration",
+                    "n_combinations": ex.n_combinations,
+                    "n_feasible": ex.n_feasible,
+                    "exact_objective": ex.objective,
+                    "seconds": ex.seconds, "best_start": -1,
+                    "termination": "exhaustive", "restarts_completed": 0,
+                    "evaluations": ex.n_combinations}
+        r = _R()
+    else:
+        r = optimize_frequencies(
+            judge.model, judge.budget, ladder=[], unserved_multiplier=lam,
+            local_search_iterations=iterations, seed=seed,
+            ladders=judge.ladders, initial=initial,
+            n_restarts=restarts, candidate_width=width,
+            greedy_start=use_greedy)
     # Carry the solve's own account of itself through verbatim. Anything the
     # execution receipt needs must come from here, never from a log: that
     # dependency is what let a treatment-correlated fallback run for four
@@ -356,7 +405,8 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
             hw[k] = float(v)
     fit = judge.model.evaluate_array(np.array([hw[k] for k in judge.model.keys]))
 
-    return {"fit": fit, "plan": r.plan, "repair_audit": repair_audit,
+    return {"fit": fit, "plan": r.plan, "solver": solver,
+            "repair_audit": repair_audit,
             "waiting_model_used": got, "incumbent_scale": scale,
             "evaluator_checks": dict(judge.checks), "judge": judge,
             "raptor": rn, "solver_meta": dict(r.meta)}

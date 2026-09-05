@@ -16,6 +16,8 @@ from .contract import (EXP3_STAGE_A, EXP3_STAGE_B,
                        ExperimentContract)
 from .core import SCHEMA_VERSION, Sem, canonical_json, digest, semfield
 from .events import EventType, ExecutionEvent, Severity, event_rates, neutral
+from .exp4 import (ALLOWANCE, EXP4_CERTIFICATION, EXP4_DISCOVERY,
+                   NETWORK_DIFFERENCES, compare_exp4)
 from .findings import Finding, FindingLog, finding
 from .health import HealthReport, Imbalance, balance_audit, health_report
 from .observation import ComparableObservation, Inadmissible, admit
@@ -43,4 +45,9 @@ __all__ = [
     # dimension. In force from 2026-09-04 (gen1-frozen-v1).
     "SearchAllowance", "AllowanceRecord", "AllowanceError", "comparable",
     "EXP4_ALLOWANCE",
+    # Experiment 4's contracts, in force from 2026-09-05 under the
+    # condition exp4_draft.py set itself: Gen1 frozen AND the Gen1->Gen2
+    # bridge suite run. compare_exp4 requires the allowance check.
+    "EXP4_DISCOVERY", "EXP4_CERTIFICATION", "NETWORK_DIFFERENCES",
+    "compare_exp4", "ALLOWANCE",
 ]
