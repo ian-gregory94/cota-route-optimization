@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "OPEN",
-      "detail": "tag=exp3-final-v1, tree=dirty"
+      "status": "MET",
+      "detail": "tag=exp3-final-v1, tree=clean"
     },
     {
       "id": "C2",
@@ -52,7 +52,7 @@
       "id": "C9",
       "title": "Discovery path reuse benchmarked against exact rebuilds",
       "status": "OPEN",
-      "detail": "RUN on real Gen2 networks, and NOT closed. Substrate equivalence is exact (0.000e+00 on all seven fields). But the gate's own subject -- a frozen SUPERNETWORK master path set -- is not built; what was measured is naive cross-network cache sharing, which is invalid at worst 1.307 relative on revenue_veh_hours (ranking survived, 0 inversions in 17 pairs). outputs/exp4/pathreuse_benchmark.json"
+      "detail": "BUILT and RUN, and NOT closed. The gate's own object -- a frozen supernetwork master path set, filtered per candidate -- now exists and was benchmarked against exact rebuilds on 80 preregistered candidates: exact leader identified in 2/5 cases, 120/600 ranking pairs inverted, promoted set changes in 4/5, worst objective rel gap 5.745e-03, median speedup ~5.3x. At survival 1.000 the reuse arm still differs and is BETTER in 4/5 cases, so the residual is enumeration richness rather than filtering, and widening -- the remedy the gate names -- changed nothing. Closure now needs D18's promotion band. This replaces the naive cache-sharing result (worst 1.307), which was a different and invalid object. EXPERIMENT4_MASTERPATH.md, outputs/exp4/masterpath_benchmark.json"
     },
     {
       "id": "C10",
@@ -88,13 +88,13 @@
       "id": "C15",
       "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
       "status": "MANUAL",
-      "detail": "15 of 15 gates written; scripts/exp4_gates.py now executes them: 9 MET, 4 ARMED (they fire on a promoted network and cannot be satisfied before the search), 2 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof"
+      "detail": "15 of 15 gates written; scripts/exp4_gates.py executes them: 10 MET, 5 ARMED (they fire on a promoted network and cannot be satisfied before the search), 0 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof -- and because D35 showed a constraint can be fully written, validated at construction, hashed into the state digest and still reach nothing that scores"
     },
     {
       "id": "D16",
       "title": "Experiment 4 ExperimentContract exists and is in force",
       "status": "OPEN",
-      "detail": "exp4_draft.py defines EXP4_DISCOVERY_DRAFT and EXP4_CERTIFICATION_DRAFT but they are not exported from firewall/ and the module says 'not yet in force'=True. ExperimentContract instances exported: none. BLOCKED BY D21b: exp4_draft.py's own condition is that these become active 'only when Gen1 is frozen AND the Gen1->Gen2 bridge suite has run'. Gen1 is frozen; the bridge suite is blocked on Gen2 not existing. See EXPERIMENT4_BLOCKERS.md"
+      "detail": "ExperimentContract instances exported: ['EXP4_CERTIFICATION', 'EXP4_DISCOVERY']; exp4_draft.py still says 'not yet in force'=True. The criterion has not been EXECUTED: run scripts/exp4_d16_check.py"
     },
     {
       "id": "D17",
@@ -130,7 +130,7 @@
       "id": "D21b",
       "title": "Gen1->Gen2 bridge suite has run",
       "status": "OPEN",
-      "detail": "PARTIALLY UNBLOCKED, still open. A Gen2 OUTER SEARCH now exists (cota_opt.gen2_search) and produces scored networks with provenance through the frozen interface. But METHODOLOGY's bridge compares the two generations ON THE SAME QUESTION, and Gen1 never searched over whole networks -- it optimized frequencies inside a fixed geometry and mutated that geometry. There is no Gen1 answer for a Gen2 network-selection result to agree or disagree with. The bridge needs the OTHER half of Gen2: a replacement frequency solver that re-answers a Gen1 question, which METHODOLOGY lists as the exact frequency benchmark and the optimization-gap measurement. Neither is started"
+      "detail": "the bridge has not been run: scripts/exp4_gen_bridge.py. Gen2's replacement frequency solver (cota_opt.gen2_frequency) now exists, so the Gen1 question the bridge needs -- the optimal frequency plan for one network -- can be answered by both generations"
     },
     {
       "id": "D22",
@@ -139,8 +139,8 @@
       "detail": "merged"
     }
   ],
-  "met": 17,
-  "open": 5,
+  "met": 18,
+  "open": 4,
   "manual": 1,
   "total": 23,
   "ready": false

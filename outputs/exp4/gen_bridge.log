@@ -2,3 +2,27 @@ network: 1 line, 2 patterns, 12 tstat rows, envelope 200.0 vh / 18.0 peak
 
 arm 1: Gen1 (exchange heuristic + restarts) ...
 arm 2: Gen2 (exhaustive ladder enumeration) ...
+
+  field                              gen1             gen2         rel
+  generalized_cost            1353.911796      1352.641177   9.385e-04
+  unserved_demand            30368.614028     30368.614028   0.000e+00
+  served_demand                580.385972       580.385972   0.000e+00
+  revenue_veh_hours            193.200000       199.333333   3.175e-02
+  peak_vehicles                 10.580000        10.580000   0.000e+00
+  mean_wait_min                  0.000000         0.000000   0.000e+00
+  gc_per_served_trip             2.332778         2.330589   9.385e-04
+
+  route-period key sets identical : True
+  headways differing              : 2 of 6
+  OFF set gen1 / gen2             : 0 / 0
+  active set gen1 / gen2          : 6 / 6
+  envelope used gen1 / gen2       : 193.200 / 199.333 of 200.0
+  objective gen1 / gen2           : 3,645,587.5951 / 3,645,586.3245
+  OPTIMIZATION GAP (gen1 - exact) : 1.270619
+  combinations enumerated         : 7,529,536 (7,529,389 feasible)
+  seconds gen1 / gen2             : 0.4 / 2578.7
+
+  BRIDGE VERDICT: SUPERSEDED
+    the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network.
+
+wrote outputs/exp4/gen_bridge.json

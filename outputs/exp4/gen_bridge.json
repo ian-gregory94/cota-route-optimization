@@ -1,0 +1,145 @@
+{
+  "question": "optimal frequency plan for one assembled Exp 4 network under a pinned envelope, lambda=2",
+  "network": {
+    "lines": [
+      "syn-9a1726e4c4a0670b"
+    ],
+    "state_key": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+    "n_patterns": 2,
+    "n_route_periods": 6
+  },
+  "envelope": {
+    "veh_hours": 200.0,
+    "peak_vehicles": 18.0
+  },
+  "arms_differ_only_in": "solver",
+  "fields": [
+    {
+      "field": "generalized_cost",
+      "gen1": 1353.9117961074462,
+      "gen2": 1352.6411771001885,
+      "abs_diff": 1.2706190072576646,
+      "rel_diff": 0.0009384799001757339
+    },
+    {
+      "field": "unserved_demand",
+      "gen1": 30368.614027652704,
+      "gen2": 30368.614027652704,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "served_demand",
+      "gen1": 580.385972347301,
+      "gen2": 580.385972347301,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "revenue_veh_hours",
+      "gen1": 193.2,
+      "gen2": 199.33333333333334,
+      "abs_diff": 6.133333333333354,
+      "rel_diff": 0.031746031746031855
+    },
+    {
+      "field": "peak_vehicles",
+      "gen1": 10.58,
+      "gen2": 10.58,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "mean_wait_min",
+      "gen1": 0.0,
+      "gen2": 0.0,
+      "abs_diff": 0.0,
+      "rel_diff": 0.0
+    },
+    {
+      "field": "gc_per_served_trip",
+      "gen1": 2.3327782899915954,
+      "gen2": 2.3305890244548717,
+      "abs_diff": 0.002189265536723717,
+      "rel_diff": 0.0009384799001758561
+    }
+  ],
+  "worst_abs_diff": 6.133333333333354,
+  "worst_rel_diff": 0.031746031746031855,
+  "route_period_keys_identical": true,
+  "headways_differing": {
+    "syn-9a1726e4c4a0670b|early": [
+      5.0,
+      6.0
+    ],
+    "syn-9a1726e4c4a0670b|owl": [
+      10.0,
+      7.5
+    ]
+  },
+  "off_gen1": [],
+  "off_gen2": [],
+  "active_gen1": [
+    [
+      "syn-9a1726e4c4a0670b",
+      "am_peak"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "early"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "evening"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "midday"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "owl"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "pm_peak"
+    ]
+  ],
+  "active_gen2": [
+    [
+      "syn-9a1726e4c4a0670b",
+      "am_peak"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "early"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "evening"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "midday"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "owl"
+    ],
+    [
+      "syn-9a1726e4c4a0670b",
+      "pm_peak"
+    ]
+  ],
+  "objective_gen1": 3645587.595114432,
+  "objective_gen2": 3645586.3244954245,
+  "optimization_gap": 1.270619007293135,
+  "exact_combinations": 7529536,
+  "exact_feasible": 7529389,
+  "seconds": {
+    "gen1": 0.4396474361419678,
+    "gen2": 2578.681364297867
+  },
+  "verdict": "SUPERSEDED",
+  "note": "the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network."
+}

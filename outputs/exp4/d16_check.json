@@ -1,0 +1,106 @@
+{
+  "item": "D16",
+  "criterion": "An ExperimentContract for Experiment 4 exists, with every declared treatment difference carrying a written justification, and refuses at construction if any is missing.",
+  "checks": [
+    {
+      "name": "16-pre gen1 frozen",
+      "pass": true,
+      "detail": "GEN1_FREEZE.md + manifest present=True"
+    },
+    {
+      "name": "16-pre bridge suite run",
+      "pass": true,
+      "detail": "gen_bridge.json verdict=SUPERSEDED"
+    },
+    {
+      "name": "16a exp4 contract exists and is exported from firewall/",
+      "pass": true,
+      "detail": "['EXP4_CERTIFICATION', 'EXP4_DISCOVERY']"
+    },
+    {
+      "name": "16a in-force contracts are not draft versions",
+      "pass": true,
+      "detail": "versions: EXP4_CERTIFICATION=4.0, EXP4_DISCOVERY=4.0"
+    },
+    {
+      "name": "16a the exported contracts are not the draft objects",
+      "pass": true,
+      "detail": "exp4.py constructs its own contracts; exporting the draft objects under new names would put an artifact labelled 'not yet in force' in force"
+    },
+    {
+      "name": "16a the in-force module carries no self-disclaimer",
+      "pass": true,
+      "detail": "'not yet in force' is the draft's exact self-disclaimer; it appears in exp4_draft.py (True, which is not exported) and not in exp4.py"
+    },
+    {
+      "name": "16b EXP4_CERTIFICATION: every declared difference justified",
+      "pass": true,
+      "detail": "5 declared, 0 unjustified"
+    },
+    {
+      "name": "16b EXP4_CERTIFICATION: no placeholder justifications",
+      "pass": true,
+      "detail": "shortest reason is 6 words"
+    },
+    {
+      "name": "16b EXP4_DISCOVERY: every declared difference justified",
+      "pass": true,
+      "detail": "5 declared, 0 unjustified"
+    },
+    {
+      "name": "16b EXP4_DISCOVERY: no placeholder justifications",
+      "pass": true,
+      "detail": "shortest reason is 6 words"
+    },
+    {
+      "name": "16c EXP4_CERTIFICATION: refuses at construction for every dimension",
+      "pass": true,
+      "detail": "5/5 dimensions raise ContractError when their justification is removed"
+    },
+    {
+      "name": "16c EXP4_CERTIFICATION: whitespace is not a justification",
+      "pass": true,
+      "detail": "a whitespace-only reason raises ContractError"
+    },
+    {
+      "name": "16c EXP4_DISCOVERY: refuses at construction for every dimension",
+      "pass": true,
+      "detail": "5/5 dimensions raise ContractError when their justification is removed"
+    },
+    {
+      "name": "16c EXP4_DISCOVERY: whitespace is not a justification",
+      "pass": true,
+      "detail": "a whitespace-only reason raises ContractError"
+    }
+  ],
+  "passed": 14,
+  "total": 14,
+  "contracts": {
+    "EXP4_CERTIFICATION": {
+      "digest": "2eb6a7a867f1f179",
+      "stage": "certification",
+      "version": "4.0",
+      "declared": [
+        "cardinality",
+        "members",
+        "pathset_digest",
+        "state_digest",
+        "state_key"
+      ]
+    },
+    "EXP4_DISCOVERY": {
+      "digest": "22579b91a8ff1f83",
+      "stage": "discovery",
+      "version": "4.0",
+      "declared": [
+        "cardinality",
+        "members",
+        "pathset_digest",
+        "state_digest",
+        "state_key"
+      ]
+    }
+  },
+  "bridge_verdict": "SUPERSEDED",
+  "verdict": "MET"
+}

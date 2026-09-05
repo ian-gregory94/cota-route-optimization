@@ -1,0 +1,23 @@
+{
+  "solver_meta": {
+    "solver": "gen2_exact_enumeration",
+    "n_combinations": 7529536,
+    "n_feasible": 7529389,
+    "exact_objective": 3645586.3244954245,
+    "seconds": 2578.337441444397,
+    "best_start": -1,
+    "termination": "exhaustive",
+    "restarts_completed": 0,
+    "evaluations": 7529536
+  },
+  "plan": {
+    "syn-9a1726e4c4a0670b|am_peak": 5.0,
+    "syn-9a1726e4c4a0670b|early": 6.0,
+    "syn-9a1726e4c4a0670b|evening": 5.0,
+    "syn-9a1726e4c4a0670b|midday": 5.0,
+    "syn-9a1726e4c4a0670b|owl": 7.5,
+    "syn-9a1726e4c4a0670b|pm_peak": 5.0
+  },
+  "seconds_gen1": 0.4396474361419678,
+  "seconds_gen2": 2578.681364297867
+}

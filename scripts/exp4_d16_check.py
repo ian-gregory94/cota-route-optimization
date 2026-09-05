@@ -69,13 +69,38 @@ check("16a exp4 contract exists and is exported from firewall/",
       bool(in_force),
       f"{sorted(in_force) or 'none'}")
 
+# "In force" is checked three ways, none of them a loose substring match.
+#
+# The first version of this check tested `"not in force" not in exp4.py` and
+# FAILED on a comment that says the whitelist "cannot be changed by editing a
+# module labelled 'draft, not in force'" -- a reference to the draft, not a
+# self-disclaimer. A check that cannot tell a mention from a claim is the same
+# error as the readiness check that flipped to MET because a NAME began with
+# EXP4. The fix is to test the thing, not a phrase that resembles it.
+from cota_opt.firewall import exp4_draft                          # noqa: E402
+
 draft_src = (ROOT / "src/cota_opt/firewall/exp4_draft.py").read_text()
 promoted_src = (ROOT / "src/cota_opt/firewall/exp4.py").read_text()
-check("16a in-force module does not disclaim itself",
-      "not yet in force" not in promoted_src and "not in force" not in
-      promoted_src,
-      "exp4.py carries no 'not in force' disclaimer; exp4_draft.py still "
-      f"does ({'not yet in force' in draft_src}) and is not exported")
+
+drafty = sorted(n for n, c in in_force.items() if "draft" in c.version.lower())
+check("16a in-force contracts are not draft versions", not drafty,
+      "versions: " + ", ".join(f"{n}={c.version}"
+                               for n, c in sorted(in_force.items()))
+      + (f"; STILL DRAFT: {drafty}" if drafty else ""))
+
+draft_objs = {id(exp4_draft.EXP4_DISCOVERY_DRAFT),
+              id(exp4_draft.EXP4_CERTIFICATION_DRAFT)}
+aliased = sorted(n for n, c in in_force.items() if id(c) in draft_objs)
+check("16a the exported contracts are not the draft objects", not aliased,
+      "exp4.py constructs its own contracts; exporting the draft objects "
+      "under new names would put an artifact labelled 'not yet in force' in "
+      "force" + (f"; ALIASED: {aliased}" if aliased else ""))
+
+check("16a the in-force module carries no self-disclaimer",
+      "not yet in force" not in promoted_src,
+      "'not yet in force' is the draft's exact self-disclaimer; it appears in "
+      f"exp4_draft.py ({'not yet in force' in draft_src}, which is not "
+      f"exported) and not in exp4.py")
 
 # --- 16b ------------------------------------------------------------------
 for name, c in sorted(in_force.items()):
