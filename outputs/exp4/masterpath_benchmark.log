@@ -2,105 +2,105 @@
 === greedy_finds_nothing: pool 5 lines, cardinality 1-3 ===
   full supernetwork refused: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pattern needs at least two
     drop syn-e7c589431bb22c3b: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pattern needs
-  master: {'am_peak': 391, 'early': 384, 'evening': 392, 'midday': 396, 'owl': 399, 'pm_peak': 392} paths, 8.1s, digest 0ec0956f36d958b6
-  supernetwork  ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.134e-03  surv 1.000  x5.73
-  pinned_off    ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.134e-03  surv 1.000  x6.01
-  subset        ['syn-2663c6d04f289b58']                             obj gap 2.715e-05  surv 0.372  x5.52
-  subset        ['syn-91cfb5fd76db5ab6']                             obj gap 6.418e-04  surv 0.243  x3.62
-  subset        ['syn-9a1726e4c4a0670b']                             obj gap 1.316e-05  surv 0.015  x2.30
-  subset        ['syn-a13da236edef295b']                             obj gap 7.322e-05  surv 0.023  x3.69
-  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6']     obj gap 1.161e-03  surv 0.815  x6.43
-  subset        ['syn-2663c6d04f289b58', 'syn-9a1726e4c4a0670b']     obj gap 1.247e-05  surv 0.390  x4.21
-  subset        ['syn-2663c6d04f289b58', 'syn-a13da236edef295b']     obj gap 1.011e-04  surv 0.395  x6.29
-  subset        ['syn-91cfb5fd76db5ab6', 'syn-9a1726e4c4a0670b']     obj gap 6.354e-04  surv 0.258  x3.00
-  subset        ['syn-91cfb5fd76db5ab6', 'syn-a13da236edef295b']     obj gap 6.143e-04  surv 0.371  x5.65
-  subset        ['syn-9a1726e4c4a0670b', 'syn-a13da236edef295b']     obj gap 4.513e-05  surv 0.038  x3.12
-  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 3.784e-03  surv 0.833  x4.74
-  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.141e-03  surv 0.982  x8.66
-  subset        ['syn-2663c6d04f289b58', 'syn-9a1726e4c4a0670b', 'sy obj gap 7.055e-05  surv 0.413  x4.69
-  subset        ['syn-91cfb5fd76db5ab6', 'syn-9a1726e4c4a0670b', 'sy obj gap 6.103e-04  surv 0.386  x4.23
-  -> leader MISSED, 14/120 inversions, promoted set CHANGES
+  master: {'am_peak': 391, 'early': 384, 'evening': 392, 'midday': 396, 'owl': 399, 'pm_peak': 392} paths, 8.0s, digest 0ec0956f36d958b6
+  supernetwork  ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.134e-03  surv 1.000  x5.66
+  pinned_off    ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.288e-03  surv 1.000  x6.58
+  subset        ['syn-2663c6d04f289b58']                             obj gap 2.715e-05  surv 0.372  x5.41
+  subset        ['syn-91cfb5fd76db5ab6']                             obj gap 6.418e-04  surv 0.243  x3.41
+  subset        ['syn-9a1726e4c4a0670b']                             obj gap 1.316e-05  surv 0.015  x2.36
+  subset        ['syn-a13da236edef295b']                             obj gap 7.322e-05  surv 0.023  x3.62
+  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6']     obj gap 1.161e-03  surv 0.815  x6.28
+  subset        ['syn-2663c6d04f289b58', 'syn-9a1726e4c4a0670b']     obj gap 1.247e-05  surv 0.390  x3.79
+  subset        ['syn-2663c6d04f289b58', 'syn-a13da236edef295b']     obj gap 1.011e-04  surv 0.395  x5.93
+  subset        ['syn-91cfb5fd76db5ab6', 'syn-9a1726e4c4a0670b']     obj gap 6.354e-04  surv 0.258  x2.95
+  subset        ['syn-91cfb5fd76db5ab6', 'syn-a13da236edef295b']     obj gap 6.143e-04  surv 0.371  x5.38
+  subset        ['syn-9a1726e4c4a0670b', 'syn-a13da236edef295b']     obj gap 4.513e-05  surv 0.038  x3.07
+  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 3.784e-03  surv 0.833  x4.36
+  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.141e-03  surv 0.982  x8.57
+  subset        ['syn-2663c6d04f289b58', 'syn-9a1726e4c4a0670b', 'sy obj gap 7.055e-05  surv 0.413  x4.36
+  subset        ['syn-91cfb5fd76db5ab6', 'syn-9a1726e4c4a0670b', 'sy obj gap 6.103e-04  surv 0.386  x4.08
+  -> leader MISSED, 13/120 inversions, promoted set CHANGES
 
 === large_gap: pool 5 lines, cardinality 1-3 ===
-  master: {'am_peak': 778, 'early': 766, 'evening': 848, 'midday': 671, 'owl': 959, 'pm_peak': 699} paths, 8.9s, digest 0fd356749add1b43
-  supernetwork  ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb', 'sy obj gap 3.658e-03  surv 1.000  x5.57
-  pinned_off    ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb', 'sy obj gap 3.658e-03  surv 1.000  x5.76
-  subset        ['syn-0811e763f266fdf9']                             obj gap 3.623e-03  surv 0.097  x4.86
-  subset        ['syn-47ece08f5664f6eb']                             obj gap 0.000e+00  surv 0.008  x3.33
-  subset        ['syn-8352b3f4b3bcd2f2']                             obj gap 2.580e-03  surv 0.102  x5.52
-  subset        ['syn-e8ce379fa4507794']                             obj gap 7.492e-04  surv 0.070  x3.67
-  subset        ['syn-f3421db8fc18598a']                             obj gap 5.517e-03  surv 0.170  x4.82
-  subset        ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb']     obj gap 3.617e-03  surv 0.107  x4.98
-  subset        ['syn-0811e763f266fdf9', 'syn-8352b3f4b3bcd2f2']     obj gap 7.289e-04  surv 0.299  x6.41
-  subset        ['syn-0811e763f266fdf9', 'syn-e8ce379fa4507794']     obj gap 3.705e-03  surv 0.218  x5.98
-  subset        ['syn-0811e763f266fdf9', 'syn-f3421db8fc18598a']     obj gap 2.170e-04  surv 0.289  x4.41
-  subset        ['syn-47ece08f5664f6eb', 'syn-8352b3f4b3bcd2f2']     obj gap 2.491e-03  surv 0.142  x7.19
-  subset        ['syn-47ece08f5664f6eb', 'syn-e8ce379fa4507794']     obj gap 7.207e-04  surv 0.119  x5.50
+  master: {'am_peak': 778, 'early': 766, 'evening': 848, 'midday': 671, 'owl': 959, 'pm_peak': 699} paths, 8.8s, digest 0fd356749add1b43
+  supernetwork  ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb', 'sy obj gap 3.658e-03  surv 1.000  x5.37
+  pinned_off    ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb', 'sy obj gap 3.587e-03  surv 1.000  x7.88
+  subset        ['syn-0811e763f266fdf9']                             obj gap 3.623e-03  surv 0.097  x4.83
+  subset        ['syn-47ece08f5664f6eb']                             obj gap 0.000e+00  surv 0.008  x3.07
+  subset        ['syn-8352b3f4b3bcd2f2']                             obj gap 2.580e-03  surv 0.102  x5.45
+  subset        ['syn-e8ce379fa4507794']                             obj gap 7.492e-04  surv 0.070  x3.55
+  subset        ['syn-f3421db8fc18598a']                             obj gap 5.517e-03  surv 0.170  x4.39
+  subset        ['syn-0811e763f266fdf9', 'syn-47ece08f5664f6eb']     obj gap 3.617e-03  surv 0.107  x4.84
+  subset        ['syn-0811e763f266fdf9', 'syn-8352b3f4b3bcd2f2']     obj gap 7.289e-04  surv 0.299  x6.60
+  subset        ['syn-0811e763f266fdf9', 'syn-e8ce379fa4507794']     obj gap 3.705e-03  surv 0.218  x6.01
+  subset        ['syn-0811e763f266fdf9', 'syn-f3421db8fc18598a']     obj gap 2.170e-04  surv 0.289  x4.16
+  subset        ['syn-47ece08f5664f6eb', 'syn-8352b3f4b3bcd2f2']     obj gap 2.491e-03  surv 0.142  x7.44
+  subset        ['syn-47ece08f5664f6eb', 'syn-e8ce379fa4507794']     obj gap 7.207e-04  surv 0.119  x5.29
   subset        ['syn-47ece08f5664f6eb', 'syn-f3421db8fc18598a']     obj gap 5.511e-03  surv 0.178  x4.59
-  subset        ['syn-8352b3f4b3bcd2f2', 'syn-e8ce379fa4507794']     obj gap 2.636e-03  surv 0.235  x6.03
-  subset        ['syn-8352b3f4b3bcd2f2', 'syn-f3421db8fc18598a']     obj gap 1.828e-03  surv 0.343  x6.51
-  -> leader MISSED, 34/120 inversions, promoted set unchanged
+  subset        ['syn-8352b3f4b3bcd2f2', 'syn-e8ce379fa4507794']     obj gap 2.636e-03  surv 0.235  x6.28
+  subset        ['syn-8352b3f4b3bcd2f2', 'syn-f3421db8fc18598a']     obj gap 1.828e-03  surv 0.343  x6.42
+  -> leader MISSED, 34/120 inversions, promoted set CHANGES
 
 === moderate_gap: pool 5 lines, cardinality 1-3 ===
   full supernetwork refused: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pattern needs at least two
     drop syn-e7c589431bb22c3b: Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pattern needs
-  master: {'am_peak': 616, 'early': 637, 'evening': 597, 'midday': 627, 'owl': 601, 'pm_peak': 658} paths, 7.6s, digest 3f98e57f94e1b950
-  supernetwork  ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 9.556e-04  surv 1.000  x6.36
-  pinned_off    ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 9.556e-04  surv 1.000  x5.95
-  subset        ['syn-2663c6d04f289b58']                             obj gap 1.624e-04  surv 0.173  x5.82
-  subset        ['syn-60f95ff936eeeacd']                             obj gap 2.477e-03  surv 0.218  x4.96
-  subset        ['syn-91cfb5fd76db5ab6']                             obj gap 2.519e-04  surv 0.095  x4.10
-  subset        ['syn-fc6d21f652a0cc01']                             obj gap 1.227e-03  surv 0.069  x3.35
-  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd']     obj gap 2.517e-03  surv 0.502  x6.34
+  master: {'am_peak': 616, 'early': 637, 'evening': 597, 'midday': 627, 'owl': 601, 'pm_peak': 658} paths, 7.4s, digest 3f98e57f94e1b950
+  supernetwork  ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 9.556e-04  surv 1.000  x6.05
+  pinned_off    ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 9.098e-04  surv 1.000  x7.27
+  subset        ['syn-2663c6d04f289b58']                             obj gap 1.624e-04  surv 0.173  x5.27
+  subset        ['syn-60f95ff936eeeacd']                             obj gap 2.477e-03  surv 0.218  x4.90
+  subset        ['syn-91cfb5fd76db5ab6']                             obj gap 2.519e-04  surv 0.095  x3.69
+  subset        ['syn-fc6d21f652a0cc01']                             obj gap 1.227e-03  surv 0.069  x3.69
+  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd']     obj gap 2.517e-03  surv 0.502  x6.67
   subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6']     obj gap 7.206e-04  surv 0.380  x6.31
-  subset        ['syn-2663c6d04f289b58', 'syn-fc6d21f652a0cc01']     obj gap 9.778e-04  surv 0.263  x6.32
-  subset        ['syn-60f95ff936eeeacd', 'syn-91cfb5fd76db5ab6']     obj gap 1.358e-03  surv 0.364  x5.45
-  subset        ['syn-60f95ff936eeeacd', 'syn-fc6d21f652a0cc01']     obj gap 3.338e-04  surv 0.372  x4.32
-  subset        ['syn-91cfb5fd76db5ab6', 'syn-fc6d21f652a0cc01']     obj gap 4.996e-04  surv 0.226  x4.64
-  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 1.403e-03  surv 0.749  x6.89
-  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 5.433e-04  surv 0.712  x5.89
-  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.723e-03  surv 0.503  x6.70
-  subset        ['syn-60f95ff936eeeacd', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.541e-03  surv 0.557  x4.93
-  -> leader MISSED, 27/120 inversions, promoted set CHANGES
+  subset        ['syn-2663c6d04f289b58', 'syn-fc6d21f652a0cc01']     obj gap 9.778e-04  surv 0.263  x6.00
+  subset        ['syn-60f95ff936eeeacd', 'syn-91cfb5fd76db5ab6']     obj gap 1.358e-03  surv 0.364  x5.44
+  subset        ['syn-60f95ff936eeeacd', 'syn-fc6d21f652a0cc01']     obj gap 3.338e-04  surv 0.372  x4.46
+  subset        ['syn-91cfb5fd76db5ab6', 'syn-fc6d21f652a0cc01']     obj gap 4.996e-04  surv 0.226  x4.48
+  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 1.403e-03  surv 0.749  x6.64
+  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 5.433e-04  surv 0.712  x6.20
+  subset        ['syn-2663c6d04f289b58', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.723e-03  surv 0.503  x6.61
+  subset        ['syn-60f95ff936eeeacd', 'syn-91cfb5fd76db5ab6', 'sy obj gap 1.541e-03  surv 0.557  x5.03
+  -> leader MISSED, 29/120 inversions, promoted set CHANGES
 
 === greedy_overbuilds: pool 5 lines, cardinality 1-3 ===
-  master: {'am_peak': 773, 'early': 783, 'evening': 811, 'midday': 662, 'owl': 737, 'pm_peak': 783} paths, 8.5s, digest aabb8162bc66140c
-  supernetwork  ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 4.617e-04  surv 1.000  x8.04
-  pinned_off    ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 4.617e-04  surv 1.000  x7.99
-  subset        ['syn-2663c6d04f289b58']                             obj gap 1.202e-04  surv 0.157  x5.63
-  subset        ['syn-60f95ff936eeeacd']                             obj gap 5.863e-05  surv 0.231  x5.27
-  subset        ['syn-cc10538c6cdfdd3d']                             obj gap 0.000e+00  surv 0.010  x3.66
-  subset        ['syn-d5325fe875cf4d92']                             obj gap 5.745e-03  surv 0.000  x3.36
-  subset        ['syn-e8ce379fa4507794']                             obj gap 1.836e-03  surv 0.074  x3.80
-  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd']     obj gap 8.150e-05  surv 0.469  x6.71
-  subset        ['syn-2663c6d04f289b58', 'syn-cc10538c6cdfdd3d']     obj gap 1.203e-04  surv 0.167  x5.14
-  subset        ['syn-2663c6d04f289b58', 'syn-d5325fe875cf4d92']     obj gap 1.203e-04  surv 0.166  x5.49
-  subset        ['syn-2663c6d04f289b58', 'syn-e8ce379fa4507794']     obj gap 6.883e-05  surv 0.322  x8.09
-  subset        ['syn-60f95ff936eeeacd', 'syn-cc10538c6cdfdd3d']     obj gap 5.864e-05  surv 0.241  x5.20
-  subset        ['syn-60f95ff936eeeacd', 'syn-d5325fe875cf4d92']     obj gap 5.864e-05  surv 0.241  x5.15
-  subset        ['syn-60f95ff936eeeacd', 'syn-e8ce379fa4507794']     obj gap 1.421e-07  surv 0.411  x7.06
-  subset        ['syn-cc10538c6cdfdd3d', 'syn-d5325fe875cf4d92']     obj gap 0.000e+00  surv 0.012  x3.53
-  subset        ['syn-cc10538c6cdfdd3d', 'syn-e8ce379fa4507794']     obj gap 1.770e-03  surv 0.139  x5.33
-  -> leader IDENTIFIED, 25/120 inversions, promoted set CHANGES
+  master: {'am_peak': 773, 'early': 783, 'evening': 811, 'midday': 662, 'owl': 737, 'pm_peak': 783} paths, 8.8s, digest aabb8162bc66140c
+  supernetwork  ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 4.617e-04  surv 1.000  x8.09
+  pinned_off    ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd', 'sy obj gap 5.417e-04  surv 1.000  x9.66
+  subset        ['syn-2663c6d04f289b58']                             obj gap 1.202e-04  surv 0.157  x5.30
+  subset        ['syn-60f95ff936eeeacd']                             obj gap 5.863e-05  surv 0.231  x5.10
+  subset        ['syn-cc10538c6cdfdd3d']                             obj gap 0.000e+00  surv 0.010  x3.08
+  subset        ['syn-d5325fe875cf4d92']                             obj gap 5.745e-03  surv 0.000  x3.23
+  subset        ['syn-e8ce379fa4507794']                             obj gap 1.836e-03  surv 0.074  x3.60
+  subset        ['syn-2663c6d04f289b58', 'syn-60f95ff936eeeacd']     obj gap 8.150e-05  surv 0.469  x6.88
+  subset        ['syn-2663c6d04f289b58', 'syn-cc10538c6cdfdd3d']     obj gap 1.203e-04  surv 0.167  x5.49
+  subset        ['syn-2663c6d04f289b58', 'syn-d5325fe875cf4d92']     obj gap 1.203e-04  surv 0.166  x5.39
+  subset        ['syn-2663c6d04f289b58', 'syn-e8ce379fa4507794']     obj gap 6.883e-05  surv 0.322  x8.05
+  subset        ['syn-60f95ff936eeeacd', 'syn-cc10538c6cdfdd3d']     obj gap 5.864e-05  surv 0.241  x4.96
+  subset        ['syn-60f95ff936eeeacd', 'syn-d5325fe875cf4d92']     obj gap 5.864e-05  surv 0.241  x4.94
+  subset        ['syn-60f95ff936eeeacd', 'syn-e8ce379fa4507794']     obj gap 1.421e-07  surv 0.411  x6.72
+  subset        ['syn-cc10538c6cdfdd3d', 'syn-d5325fe875cf4d92']     obj gap 0.000e+00  surv 0.012  x3.61
+  subset        ['syn-cc10538c6cdfdd3d', 'syn-e8ce379fa4507794']     obj gap 1.770e-03  surv 0.139  x5.47
+  -> leader IDENTIFIED, 27/120 inversions, promoted set CHANGES
 
 === weak_junction: pool 5 lines, cardinality 1-3 ===
-  master: {'am_peak': 631, 'early': 649, 'evening': 669, 'midday': 637, 'owl': 650, 'pm_peak': 653} paths, 7.7s, digest 4ef0b59d3cc1b1f9
-  supernetwork  ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46', 'sy obj gap 2.549e-03  surv 1.000  x6.43
-  pinned_off    ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46', 'sy obj gap 2.549e-03  surv 1.000  x6.85
-  subset        ['syn-0a0e2e5cac7df60e']                             obj gap 1.834e-03  surv 0.115  x4.08
-  subset        ['syn-d0292863e848ff46']                             obj gap 8.393e-04  surv 0.111  x2.95
-  subset        ['syn-dcef27a3822e47f8']                             obj gap 7.322e-05  surv 0.013  x3.58
-  subset        ['syn-edf252439b3ffff1']                             obj gap 3.054e-05  surv 0.218  x5.52
-  subset        ['syn-ffe3ea8843390b99']                             obj gap 0.000e+00  surv 0.013  x2.79
-  subset        ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46']     obj gap 7.141e-04  surv 0.342  x5.37
-  subset        ['syn-0a0e2e5cac7df60e', 'syn-dcef27a3822e47f8']     obj gap 1.853e-03  surv 0.194  x5.79
-  subset        ['syn-0a0e2e5cac7df60e', 'syn-edf252439b3ffff1']     obj gap 2.755e-05  surv 0.466  x8.23
-  subset        ['syn-0a0e2e5cac7df60e', 'syn-ffe3ea8843390b99']     obj gap 1.752e-03  surv 0.129  x3.65
-  subset        ['syn-d0292863e848ff46', 'syn-dcef27a3822e47f8']     obj gap 8.692e-04  surv 0.125  x3.83
-  subset        ['syn-d0292863e848ff46', 'syn-edf252439b3ffff1']     obj gap 1.839e-03  surv 0.471  x6.28
-  subset        ['syn-d0292863e848ff46', 'syn-ffe3ea8843390b99']     obj gap 7.977e-04  surv 0.125  x3.07
-  subset        ['syn-dcef27a3822e47f8', 'syn-edf252439b3ffff1']     obj gap 1.045e-04  surv 0.232  x6.36
-  subset        ['syn-dcef27a3822e47f8', 'syn-ffe3ea8843390b99']     obj gap 5.034e-07  surv 0.027  x3.66
+  master: {'am_peak': 631, 'early': 649, 'evening': 669, 'midday': 637, 'owl': 650, 'pm_peak': 653} paths, 7.9s, digest 4ef0b59d3cc1b1f9
+  supernetwork  ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46', 'sy obj gap 2.549e-03  surv 1.000  x6.01
+  pinned_off    ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46', 'sy obj gap 2.692e-03  surv 1.000  x7.31
+  subset        ['syn-0a0e2e5cac7df60e']                             obj gap 1.834e-03  surv 0.115  x3.84
+  subset        ['syn-d0292863e848ff46']                             obj gap 8.393e-04  surv 0.111  x3.12
+  subset        ['syn-dcef27a3822e47f8']                             obj gap 7.322e-05  surv 0.013  x3.84
+  subset        ['syn-edf252439b3ffff1']                             obj gap 3.054e-05  surv 0.218  x5.27
+  subset        ['syn-ffe3ea8843390b99']                             obj gap 0.000e+00  surv 0.013  x2.70
+  subset        ['syn-0a0e2e5cac7df60e', 'syn-d0292863e848ff46']     obj gap 7.141e-04  surv 0.342  x5.47
+  subset        ['syn-0a0e2e5cac7df60e', 'syn-dcef27a3822e47f8']     obj gap 1.853e-03  surv 0.194  x6.35
+  subset        ['syn-0a0e2e5cac7df60e', 'syn-edf252439b3ffff1']     obj gap 2.755e-05  surv 0.466  x7.37
+  subset        ['syn-0a0e2e5cac7df60e', 'syn-ffe3ea8843390b99']     obj gap 1.752e-03  surv 0.129  x3.50
+  subset        ['syn-d0292863e848ff46', 'syn-dcef27a3822e47f8']     obj gap 8.692e-04  surv 0.125  x4.13
+  subset        ['syn-d0292863e848ff46', 'syn-edf252439b3ffff1']     obj gap 1.839e-03  surv 0.471  x5.70
+  subset        ['syn-d0292863e848ff46', 'syn-ffe3ea8843390b99']     obj gap 7.977e-04  surv 0.125  x3.19
+  subset        ['syn-dcef27a3822e47f8', 'syn-edf252439b3ffff1']     obj gap 1.045e-04  surv 0.232  x6.12
+  subset        ['syn-dcef27a3822e47f8', 'syn-ffe3ea8843390b99']     obj gap 5.034e-07  surv 0.027  x3.43
   -> leader IDENTIFIED, 17/120 inversions, promoted set unchanged
 
 ======================================================================

@@ -124,19 +124,46 @@ def gates() -> list[dict]:
       f"gate 4-6 censors the result")
 
     # --- 4-7 discovery approximation benchmarked ----------------------------
+    #
+    # The gate's own object is now BUILT and MEASURED, so this reads the
+    # measurement. It closes only on the band-independent condition -- same
+    # leader everywhere, zero ranking inversions, unchanged promoted set --
+    # because gate 4-7's closing test is "identify the exact leader within the
+    # promotion band" and Experiment 4's band is D18's output, which has not
+    # been run. A small-looking gap is not a substitute for the band.
     eq = _j("equivalence_isolated.json")
-    g("4-7", "Discovery approximation benchmarked, buys no conclusions",
-      ARMED if eq and eq.get("worst_rel_diff") == 0.0 else OPEN,
-      f"the SUBSTRATE half is measured: an assembled network reproduces the "
-      f"legacy scoring path exactly (worst relative difference "
-      f"{eq.get('worst_rel_diff') if eq else 'n/a'} across seven FitnessVector "
-      f"fields, outputs/exp4/equivalence_isolated.json). The gate's own subject "
-      f"-- a frozen supernetwork master path set versus exact per-network "
-      f"rebuilds -- is NOT YET BUILT. What was measured on real Gen2 networks "
-      f"is naive cross-network cache sharing, and it is invalid: worst 1.307 "
-      f"relative on revenue_veh_hours, 0.958 on generalized_cost, though "
-      f"ranking survived (0 inversions in 17 pairs). "
-      f"outputs/exp4/pathreuse_benchmark.json")
+    mp = _j("masterpath_benchmark.json")
+    if mp:
+        inv = sum(c["ranking_inversions"] for c in mp["cases"])
+        prs = sum(c["ranking_pairs"] for c in mp["cases"])
+        leaders = sum(c["leader_identified"] for c in mp["cases"])
+        promo = sum(not c["promoted_set_changes"] for c in mp["cases"])
+        n_cases = len(mp["cases"])
+        detail = (
+            f"BUILT and MEASURED. Frozen supernetwork master path set, filtered "
+            f"per candidate, vs exact rebuilds on {mp['n_candidates']} "
+            f"preregistered candidates over {n_cases} deception spaces: exact "
+            f"leader identified in {leaders}/{n_cases} cases, {inv}/{prs} "
+            f"ranking pairs inverted, promoted set unchanged in "
+            f"{promo}/{n_cases}, worst objective rel gap "
+            f"{mp['worst_objective_rel_gap']:.3e}, worst field rel diff "
+            f"{mp['worst_field_rel_diff']:.3e}, omitted flow "
+            f"{mp['total_omitted_flow']:.1f} trips. At survival 1.000 the reuse "
+            f"arm STILL differs and is BETTER in 4/5 cases, so the residual is "
+            f"enumeration richness, not filtering -- which is why widening 3x "
+            f"on scenarios and 2x on paths-per-OD changed nothing. Closes only "
+            f"on the band-independent condition; otherwise blocked on D18's "
+            f"promotion band. See EXPERIMENT4_MASTERPATH.md, "
+            f"outputs/exp4/masterpath_benchmark.json")
+        g("4-7", "Discovery approximation benchmarked, buys no conclusions",
+          MET if mp.get("band_independent_pass") else ARMED, detail)
+    else:
+        g("4-7", "Discovery approximation benchmarked, buys no conclusions",
+          ARMED if eq and eq.get("worst_rel_diff") == 0.0 else OPEN,
+          f"the SUBSTRATE half is measured (worst relative difference "
+          f"{eq.get('worst_rel_diff') if eq else 'n/a'} across seven "
+          f"FitnessVector fields). The gate's own subject has not been run: "
+          f"scripts/exp4_masterpath_benchmark.py")
 
     # --- 4-8 what the optimizer abandons is reported ------------------------
     g("4-8", "What the optimizer abandons is reported", ARMED,
