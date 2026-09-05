@@ -129,6 +129,83 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                              waiting_model=waiting_model)
     check.raise_if_bad()
 
+    core = solve_on_network(
+        net, ts, harness=H, stops_gdf=stops_gdf, lam=lam, seed=seed,
+        iterations=iterations, restarts=restarts, width=width,
+        constraints=constraints, pathset_cache=pathset_cache,
+        waiting_model=waiting_model, starts=starts)
+    fit, repair_audit, got, scale, plan = (
+        core["fit"], core["repair_audit"], core["waiting_model_used"],
+        core["incumbent_scale"], core["plan"])
+
+    # ENVELOPE, on the plan that was actually produced. Re-run rather than
+    # folded into the structural check because only now does the number exist.
+    final = validate_applied(before, net, list(edits), limits,
+                             sole_access_stops=sole_access_stops,
+                             coords=seg_model.coords, report=report,
+                             veh_hours=fit.revenue_veh_hours,
+                             edited_baseline_veh_hours=edited_vh,
+                             waiting_model=got)
+    final.raise_if_bad()
+
+    return ScoredState(
+        state_key=exp3.state_key(edits),
+        state_digest=exp3.state_digest(edits),
+        cardinality=len(list(edits)),
+        members=sorted(exp3.mutation_id(e) for e in edits),
+        lam=lam, seed=seed,
+        effort=f"{iterations}/{restarts}/{width}",
+        seconds=time.time() - t0,
+        metrics=exp3.metrics(fit, lam),
+        incumbent_scale=scale,
+        contract={"ok": final.ok,
+                  "rules_checked": sorted(set(check.rules_checked)
+                                          | set(final.rules_checked)),
+                  "facts": {**check.facts, **final.facts}},
+        evaluator={**core["evaluator_checks"], "incumbent_repair": repair_audit},
+        edit_report=(report.as_dict() if report is not None else {}),
+        plan={f"{k[0]}|{k[1]}": float(v) for k, v in plan.headways.items()},
+    )
+
+
+def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
+                     iterations: int, restarts: int, width: int,
+                     constraints, pathset_cache=None,
+                     waiting_model: str = "same_route",
+                     starts: str = "incumbent",
+                     allow_off: bool = False) -> dict:
+    """Score a network that already exists. The Gen1 evaluation core.
+
+    Extracted from :func:`score_state` verbatim so Experiment 4 can reuse it
+    rather than fork it. Everything here is network-agnostic: it takes the
+    ``(TransitNetwork, tstats)`` pair that `apply_edits` produces for
+    Experiments 1-3 and that `exp4_assemble.assemble` produces for Experiment 4,
+    and applies the same path assignment, RAPTOR semantics, waiting model,
+    vehicle-hour and peak-vehicle accounting and envelope to both.
+
+    The alternative -- a second scoring path for Experiment 4 -- would let the
+    two diverge silently, and this project has already lost three days to an
+    evaluator that reported one model while running another (D23).
+
+    ``allow_off`` is threaded to `build_ladders` and defaults to False, so
+    Generation 1 is bit-identical through this function.
+    """
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parents[2] / "scripts"))
+    from exp2_treatments import _Baseline, fit_incumbent  # 2B's own
+    from .configs import period_of_seconds, service_periods
+    from .exp2 import build_setup as path_level_setup
+    from .frequency import optimize_frequencies
+    from .odmatrix import build_zone_system
+    from .raptor import build_raptor_network
+    from .routeclass import classify_routes
+
+    H = harness
+    a = H.assumptions
+    pa = a["path_assignment"]
+    periods = service_periods(a)
+
     rn = build_raptor_network(
         H.baseline.feed, net, ts, stops_gdf,
         walk_radius_m=float(pa["walk_radius_m"]),
@@ -176,7 +253,7 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
                              lock_classes=("peak_express",),
                              constraints=constraints,
                              n_random_scenarios=0, pathset_cache=pathset_cache,
-                             common_lines=waiting_model)
+                             common_lines=waiting_model, allow_off=allow_off)
 
     # Gate 3-1, asserted rather than requested: read the model out of the setup
     # that will actually do the scoring, not out of what the caller asked for.
@@ -279,31 +356,7 @@ def score_state(edits: Sequence[GeometryEdit], *, harness, seg_model,
             hw[k] = float(v)
     fit = judge.model.evaluate_array(np.array([hw[k] for k in judge.model.keys]))
 
-    # ENVELOPE, on the plan that was actually produced. Re-run rather than
-    # folded into the structural check because only now does the number exist.
-    final = validate_applied(before, net, list(edits), limits,
-                             sole_access_stops=sole_access_stops,
-                             coords=seg_model.coords, report=report,
-                             veh_hours=fit.revenue_veh_hours,
-                             edited_baseline_veh_hours=edited_vh,
-                             waiting_model=got)
-    final.raise_if_bad()
-
-    return ScoredState(
-        state_key=exp3.state_key(edits),
-        state_digest=exp3.state_digest(edits),
-        cardinality=len(list(edits)),
-        members=sorted(exp3.mutation_id(e) for e in edits),
-        lam=lam, seed=seed,
-        effort=f"{iterations}/{restarts}/{width}",
-        seconds=time.time() - t0,
-        metrics=exp3.metrics(fit, lam),
-        incumbent_scale=scale,
-        contract={"ok": final.ok,
-                  "rules_checked": sorted(set(check.rules_checked)
-                                          | set(final.rules_checked)),
-                  "facts": {**check.facts, **final.facts}},
-        evaluator={**dict(judge.checks), "incumbent_repair": repair_audit},
-        edit_report=(report.as_dict() if report is not None else {}),
-        plan={f"{k[0]}|{k[1]}": float(v) for k, v in r.plan.headways.items()},
-    )
+    return {"fit": fit, "plan": r.plan, "repair_audit": repair_audit,
+            "waiting_model_used": got, "incumbent_scale": scale,
+            "evaluator_checks": dict(judge.checks), "judge": judge,
+            "raptor": rn, "solver_meta": dict(r.meta)}

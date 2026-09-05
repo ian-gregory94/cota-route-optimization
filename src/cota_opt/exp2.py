@@ -194,7 +194,8 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
                 extra_scenarios: list[tuple[str, dict]] | None = None,
                 max_paths_per_od: int | None = None,
                 n_random_scenarios: int | None = None,
-                common_lines: str | None = None) -> Exp2Setup:
+                common_lines: str | None = None,
+                allow_off: bool = False) -> Exp2Setup:
     from .exp1 import build_setup as exp1_setup
 
     a = b.assumptions
@@ -326,9 +327,13 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     budget = ResourceBudget(vh_budget, peak_budget,
                             tolerance=float(res.get("budget_tolerance", 0.0)))
     svc = cons["service"]
+    # allow_off defaults False: Generation 1 cannot represent an OFF
+    # route-period and this call is bit-identical without it. Experiment 4
+    # passes True, because gate 4-5 makes service activation a decision.
     ladders = build_ladders(model, svc["headway_ladder_min"],
                             float(svc["policy_max_headway_min"]),
-                            float(svc["policy_min_headway_min"]))
+                            float(svc["policy_min_headway_min"]),
+                            allow_off=allow_off)
     # a locked route-period has exactly one option: today's headway
     for k in locked:
         ladders[k] = [baseline_plan.headways[k]]
@@ -338,6 +343,7 @@ def build_setup(b: Baseline, rn: RaptorNetwork, zs: ZoneSystem, od: ODTable,
     checks["common_lines"] = cl
     checks["common_lines_source"] = ("explicit" if common_lines is not None
                                      else "config default")
+    checks["allow_off"] = bool(allow_off)
     if load_profiles:
         checks["peak_load_factor_median"] = float(np.median(np.concatenate(
             [lp.peak_load_factor[lp.boardings > 0] for lp in load_profiles.values()])))

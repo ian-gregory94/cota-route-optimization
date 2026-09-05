@@ -408,11 +408,27 @@ def build_ladders(model: FrequencyModel, ladder: Iterable[float],
     base = sorted(h for h in ladder if h >= min_headway)
     out: dict[tuple[str, str], list[float]] = {}
     for k, svc in model.services.items():
-        worst = max(max_headway, svc.baseline_headway_min)
+        no_baseline = is_off(svc.baseline_headway_min)
+        if no_baseline and not allow_off:
+            # A route-period with no baseline service cannot be laddered
+            # without an OFF rung. Refusing is the only honest option: giving it
+            # a finite "worst" headway would invent the service commitment gate
+            # 4-5 forbids, and the unconditional append below would otherwise
+            # leak an OFF rung into a ladder built with allow_off=False.
+            raise ValueError(
+                f"{k} has no baseline service, so its ladder needs an OFF rung; "
+                f"build it with allow_off=True, or give the route-period a "
+                f"baseline. Inventing a finite baseline for a route that did "
+                f"not run yesterday invents a service commitment nobody made.")
+        worst = (max_headway if no_baseline
+                 else max(max_headway, svc.baseline_headway_min))
         opts = [h for h in base if h <= worst]
         # today's headway is always an option, so the incumbent schedule is an
-        # exactly representable — and therefore exactly feasible — search point
-        opts.append(svc.baseline_headway_min)
+        # exactly representable — and therefore exactly feasible — search point.
+        # An OFF baseline is deliberately NOT appended here: OFF is added once,
+        # by the allow_off branch below, so it cannot arrive by two routes.
+        if not no_baseline:
+            opts.append(svc.baseline_headway_min)
         if worst not in opts:
             opts.append(worst)
         rungs = sorted(set(round(h, 9) for h in opts))
