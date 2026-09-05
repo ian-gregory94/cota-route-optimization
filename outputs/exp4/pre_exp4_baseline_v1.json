@@ -1,0 +1,45 @@
+{
+  "version": "pre_exp4_baseline_v1",
+  "built_at": "2026-09-05T15:26:05Z",
+  "repo_revision": "fdc8fd41058b53e86b5d496a741de89a14186b92",
+  "gen1_tag": "gen1-frozen-v1",
+  "exp3_tag": "exp3-final-v1",
+  "hierarchy": [
+    "published COTA schedule",
+    "Exp 1 frequency optimum",
+    "Exp 3 constrained route-mutation optimum",
+    "Exp 4 greenfield optimum (to be measured)"
+  ],
+  "exp2_contributes_geometry": false,
+  "exp2_note": "Experiment 2/2B certified the null and promoted no geometry edit, so it contributes no incumbent geometry.",
+  "incumbent": {
+    "tied_set": [
+      {
+        "state_key": "add_stop-010#22c4c35ac5b2",
+        "effect_pct": -0.18656513176548822,
+        "sd_pct": 0.002375084658091754,
+        "ratio": 78.55093970224318,
+        "measured_at_restarts": 20,
+        "regime": "stage_b",
+        "contract_digest": "ec7e566dc028f94d"
+      }
+    ],
+    "n_tied": 1,
+    "how_computed": "the leader plus every certified candidate it does not separate from, read from the pairwise matrix. Experiment 3's leader separates from all 28 others, so this is a singleton by computation, not by assumption.",
+    "exp4_must_beat": "the best matched-effort member of this set, re-solved in the same run at matched convergence"
+  },
+  "regime_caveat": {
+    "uniform_effort": false,
+    "detail": "The incumbent was measured at 20 restarts. Experiment 3's certified set is split -- 23 of 29 at 40 restarts, 6 including this leader at 20 -- because section 6 escalates what is unresolved or failing, which is by construction the smaller margins. Phase 5b would have closed the split and was abandoned with zero cells. An Experiment 4 comparison must re-solve the incumbent in its own run, so this affects the incumbent's HISTORICAL figure, not the matched-effort comparison Exp 4 makes."
+  },
+  "no_denominator": "A stored score is a reference, never a denominator (D24). No number in this file may be used as the base of an Experiment 4 percentage.",
+  "provenance": {
+    "escalation_report_sha256": "e419947d389376b279f4465e62949fc9307981e41b51b02ad65323a40d1701a7",
+    "stage_b_contract": "ec7e566dc028f94d",
+    "escalated_contract": "45e23ae01be4d071"
+  },
+  "representation": {
+    "off_is_representable": true,
+    "off_note": "frequency.OFF (infinite headway). Experiment 4 builds ladders with allow_off=True; this baseline's own measurements were made under Gen1 ladders, which cannot represent OFF. That asymmetry is intended: the incumbent is a network COTA runs, and every one of its route-periods is on."
+  }
+}
