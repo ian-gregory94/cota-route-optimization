@@ -110,11 +110,21 @@ def checks() -> list[tuple[str, str, str, str]]:
         f"legacy_in_pool={pool.get('legacy_in_pool')}/"
         f"{pool.get('legacy_lines')}" if pool else "no pool")
 
-    add("C8", "Synthetic route-period service can be OFF", MANUAL,
-        "no OFF/inactive representation found in routepool.py, frequency.py or "
-        "network.py by grep. Either it lives under another name or it is not "
-        "built -- this one needs a human to look, and it is load-bearing: "
-        "service activation including OFF is a decision variable in Exp 4")
+    try:
+        import inspect
+
+        from cota_opt.frequency import OFF, build_ladders, is_off
+        off_ok = (is_off(OFF)
+                  and inspect.signature(build_ladders)
+                  .parameters["allow_off"].default is False)
+    except Exception:
+        off_ok = False
+    add("C8", "Synthetic route-period service can be OFF",
+        MET if off_ok else OPEN,
+        "frequency.OFF (infinite headway): zero trips, zero vehicle-hours, zero "
+        "peak vehicles, unboardable by the path model. build_ladders(allow_off=) "
+        "defaults False so Gen1 cannot represent it. tests/test_off_service.py"
+        if off_ok else "no OFF representation")
     add("C9", "Discovery path reuse benchmarked against exact rebuilds",
         MET if (OUT / "pathreuse_benchmark.json").exists() else OPEN,
         "Gate 4-7 is COMMITTED in ACCEPTANCE.md but the benchmark has not been "

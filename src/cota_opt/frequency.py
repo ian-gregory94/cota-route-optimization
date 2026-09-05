@@ -91,6 +91,46 @@ class PassengerDemand:
         return float(sum(self.by_route_period.values()))
 
 
+#: A route-period that runs no service at all.
+#:
+#: Represented as an infinite headway rather than as ``None``, a sentinel
+#: object, or absence from the plan, because infinity makes every downstream
+#: quantity come out right *arithmetically* instead of by special case:
+#:
+#:   trips          = n_directions * duration / inf = 0
+#:   revenue_vh     = 0 * runtime / 60             = 0
+#:   peak_vehicles  = cycle / inf                  = 0
+#:   integer_fleet  = ceil(cycle / inf)            = 0
+#:
+#: and the path model already refuses to board a pattern whose headway is not
+#: finite (``raptor.generalized_cost``: ``expected_wait_min(h) if np.isfinite(h)
+#: and h < 1e5 else INF``), so an OFF route-period carries no passengers with no
+#: change to RAPTOR at all. ``pattern_headways`` has always used ``np.inf`` as
+#: its fallback for exactly this meaning.
+#:
+#: Absence from ``FrequencyPlan.headways`` is deliberately NOT the
+#: representation: a missing key is indistinguishable from a bug, and a bug that
+#: reads as "no service" is how a route silently disappears. OFF is a value that
+#: must be written on purpose.
+#:
+#: Gen1 (Experiments 1, 2, 2B, 3) never produces OFF -- ``build_ladders``
+#: refuses to offer it unless ``allow_off=True``, and its docstring policy that
+#: "no route-period with service today may lose it entirely" is unchanged.
+#: Experiment 4 treats service activation, including OFF, as a decision
+#: variable, which is what the flag is for.
+OFF: float = math.inf
+
+
+def is_off(headway: float) -> bool:
+    """True for a route-period that runs no service.
+
+    Anything non-finite counts, and so does anything at or above the path
+    model's own unusability threshold, so that OFF cannot be smuggled in as a
+    very large finite number that the resource arithmetic still charges for.
+    """
+    return (not math.isfinite(headway)) or headway >= 1e5
+
+
 @dataclass
 class FrequencyPlan:
     """A candidate assignment of headways to (route, period)."""
@@ -343,6 +383,7 @@ def _feasible(model: FrequencyModel, fit: FitnessVector,
 
 def build_ladders(model: FrequencyModel, ladder: Iterable[float],
                   max_headway: float = 60.0, min_headway: float = 5.0,
+                  allow_off: bool = False,
                   ) -> dict[tuple[str, str], list[float]]:
     """Per-route-period headway options honouring the minimum-service policy.
 
@@ -350,6 +391,19 @@ def build_ladders(model: FrequencyModel, ladder: Iterable[float],
     its own baseline headway)`` — the policy floor cannot *require* an
     improvement on a route-period that is already worse than the floor today,
     and no route-period with service today may lose it entirely.
+
+    ``allow_off`` is the one exception, and it is off by default so that
+    Generation 1 is unaffected: with it, every route-period additionally gets
+    the :data:`OFF` rung, and the sentence above stops applying. Experiment 4
+    treats service activation, including OFF, as a decision variable, so its
+    ladders are built with ``allow_off=True``; Experiments 1, 2, 2B and 3 build
+    theirs without it and cannot represent OFF at all.
+
+    The flag is deliberately a parameter of ladder CONSTRUCTION rather than a
+    property of a plan. A plan cannot acquire an OFF route-period unless the
+    ladder it was built against offered one, which is what makes accidental
+    deactivation — and, through the snap functions, accidental REactivation —
+    impossible rather than merely unlikely.
     """
     base = sorted(h for h in ladder if h >= min_headway)
     out: dict[tuple[str, str], list[float]] = {}
@@ -361,7 +415,10 @@ def build_ladders(model: FrequencyModel, ladder: Iterable[float],
         opts.append(svc.baseline_headway_min)
         if worst not in opts:
             opts.append(worst)
-        out[k] = sorted(set(round(h, 9) for h in opts))
+        rungs = sorted(set(round(h, 9) for h in opts))
+        if allow_off:
+            rungs.append(OFF)          # last: it is the worst service there is
+        out[k] = rungs
     return out
 
 
@@ -732,9 +789,26 @@ def pareto_filter(results: list[OptimizationResult]) -> list[OptimizationResult]
 
 
 def snap_to_ladder(headway: float, ladder: Iterable[float]) -> float:
-    """Nearest ladder value (used to make the baseline plan comparable)."""
+    """Nearest ladder value (used to make the baseline plan comparable).
+
+    An OFF headway snaps to OFF when the ladder offers it, and is an error when
+    it does not. It must never snap to a finite rung: ``abs(v - inf)`` is ``inf``
+    for every rung, so the old nearest-value rule broke the tie on magnitude and
+    turned an inactive route-period into the MOST frequent one on the ladder.
+    That is the precise shape of an inactive service becoming active by default.
+    """
     lad = sorted(ladder)
-    return min(lad, key=lambda x: abs(x - headway))
+    if is_off(headway):
+        if any(is_off(v) for v in lad):
+            return OFF
+        raise ValueError(
+            "cannot snap an OFF route-period onto a ladder with no OFF rung; "
+            "either the ladder was built without allow_off=True or this plan "
+            "does not belong to this model")
+    finite = [v for v in lad if not is_off(v)]
+    if not finite:
+        raise ValueError("ladder offers no service at all")
+    return min(finite, key=lambda x: abs(x - headway))
 
 
 def integer_fleet(model: FrequencyModel, plan: FrequencyPlan) -> dict[str, int]:
@@ -758,8 +832,21 @@ def snap_plan_to_ladder(ladders: dict[tuple[str, str], list[float]],
     out = {}
     for k, h in plan.headways.items():
         lad = ladders.get(k)
-        out[k] = float(h) if not lad else float(
-            min(lad, key=lambda v: (abs(v - float(h)), v)))
+        if not lad:
+            out[k] = float(h)
+            continue
+        if is_off(h):
+            # Same defect as snap_to_ladder: abs(v - inf) is inf for every rung,
+            # so the (distance, value) tie-break picked the smallest headway and
+            # an OFF route-period came back as the most frequent one.
+            if not any(is_off(v) for v in lad):
+                raise ValueError(
+                    f"{k} is OFF but its ladder offers no OFF rung; refusing to "
+                    f"snap it onto service it was not given")
+            out[k] = OFF
+            continue
+        finite = [v for v in lad if not is_off(v)]
+        out[k] = float(min(finite, key=lambda v: (abs(v - float(h)), v)))
     return FrequencyPlan(out)
 
 
