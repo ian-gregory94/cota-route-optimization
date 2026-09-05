@@ -219,3 +219,84 @@ def test_gen1_default_is_unchanged_everywhere():
             .parameters["allow_off"].default is False)
     assert (inspect.signature(build_ladders)
             .parameters["allow_off"].default is False)
+
+
+# --------------------------------------------------------------------------
+# D35: PINNED_OFF was a label, not a constraint.
+#
+# `Exp4Selection.pinned_off` was validated at construction and hashed into the
+# state digest, and then reached nothing that scores: `assemble` recorded it in
+# the assembly report, `score_exp4_network` did not forward it, and
+# `solve_on_network` forwarded it on the "exact" solver branch alone. Two
+# selections differing only in pinned_off therefore produced IDENTICAL scores
+# under different state digests -- which the firewall admits as a declared
+# treatment difference and reports a zero effect for a treatment that was never
+# applied.
+#
+# These tests pin the wiring rather than the numbers, so they run without a
+# harness. The end-to-end effect is measured in
+# `scripts/exp4_masterpath_benchmark.py`, whose pinned_off rows were byte-
+# identical to its supernetwork rows and are what exposed this.
+# --------------------------------------------------------------------------
+
+def test_score_exp4_network_forwards_pinned_off_to_the_solver():
+    """The passthrough itself. Its absence is the whole of D35."""
+    import inspect
+
+    from cota_opt.exp4_score import score_exp4_network
+    src = inspect.getsource(score_exp4_network)
+    assert "pinned_off=" in src, (
+        "score_exp4_network must forward the selection's pins to "
+        "solve_on_network; without this a PINNED_OFF fate cannot change a score")
+    assert "selection.pinned_off" in src
+
+
+def test_solve_on_network_pins_the_setup_not_one_solver():
+    """Pinning must bind Gen1 and Gen2 alike.
+
+    The mechanism is the one `locked` already uses -- a single-rung ladder
+    cannot be moved by any optimizer -- so it is applied to the setup above the
+    solver switch. Pinning inside `solve_exact` alone leaves the Gen1 branch
+    unconstrained, which is how this shipped.
+    """
+    import inspect
+
+    from cota_opt.exp3_score import solve_on_network
+    src = inspect.getsource(solve_on_network)
+    pin_at = src.index("if pinned_off:")
+    switch_at = src.index('if solver == "exact":')
+    assert pin_at < switch_at, (
+        "the pin is applied after the solver switch, so it binds one "
+        "generation and not the other")
+    assert "judge.ladders[k] = [off[0]]" in src
+    # snap_to_ladder REFUSES a finite headway against an OFF-only ladder, so
+    # pinning the ladder without pinning the baseline plan crashes rather
+    # than pins.
+    assert "judge.baseline_plan.headways[k] = OFF" in src
+
+
+def test_pinned_off_is_asserted_on_the_result():
+    """A constraint enforced only by construction is one nobody has watched fail."""
+    import inspect
+
+    from cota_opt.exp3_score import solve_on_network
+    src = inspect.getsource(solve_on_network)
+    assert "came back with service" in src
+    assert src.index("came back with service") > src.index('if solver == "exact":')
+
+
+def test_pinned_off_refuses_a_pin_that_matches_nothing():
+    import inspect
+
+    from cota_opt.exp3_score import solve_on_network
+    src = inspect.getsource(solve_on_network)
+    assert "names route-periods this network does not have" in src
+    assert "pinned_off requires allow_off=True" in src
+
+
+def test_snap_refuses_finite_headway_against_an_off_only_ladder():
+    """Why the baseline plan has to be pinned too -- the failure is a crash."""
+    from cota_opt.frequency import snap_to_ladder
+    assert snap_to_ladder(OFF, [OFF]) == OFF
+    with pytest.raises(ValueError, match="offers no service at all"):
+        snap_to_ladder(20.0, [OFF])

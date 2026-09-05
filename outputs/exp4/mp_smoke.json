@@ -1,0 +1,639 @@
+{
+  "gate": "4-7",
+  "object_measured": "frozen supernetwork master path set, filtered per candidate onto its own route-period vector",
+  "not_measured": "naive cross-network cache sharing -- that is outputs/exp4/pathreuse_benchmark.json and it FAILED",
+  "criterion": "On a preregistered sample the approximation is compared against exact rebuilds for objective gap, unserved gap, ranking stability, omitted and improvable flow, and whether the promoted set changes; if it cannot identify the exact leader within the promotion band, it is widened or abandoned.",
+  "sample_rule": "every subset of each frozen C10 deception pool within its cardinality bounds, plus the supernetwork, plus a pinned-off variant; deterministic order, capped not curated",
+  "master_scenarios": 4,
+  "n_candidates": 5,
+  "leader_identified_all_cases": false,
+  "zero_ranking_inversions": false,
+  "promoted_set_unchanged_all_cases": true,
+  "band_independent_pass": false,
+  "promotion_band_available": false,
+  "promotion_band_source": "D18 gap benchmark (not run)",
+  "worst_objective_rel_gap": 0.0011522986889964245,
+  "worst_unserved_gap": 45.8342797707337,
+  "total_omitted_flow": 4.7342597335300525,
+  "worst_improvable_flow_rel": 0.2546854102701269,
+  "worst_field_rel_diff": 0.8869516087509653,
+  "fields_compared": [
+    "generalized_cost",
+    "unserved_demand",
+    "served_demand",
+    "revenue_veh_hours",
+    "peak_vehicles",
+    "mean_wait_min",
+    "gc_per_served_trip"
+  ],
+  "seconds": 14.474986791610718,
+  "verdict": "ARMED",
+  "why": "the approximation does not reproduce the exact arm's decision everywhere (leader identified in every case=False, zero inversions=False, promoted set unchanged=True). Whether the residual is tolerable is a question about the promotion band, and Experiment 4's band is the output of D18's gap benchmark, which has not been run. The gate stays ARMED and is blocked on D18. The remedy the gate itself names is to widen the master set (--scenarios) or abandon it -- not to declare the number small.",
+  "cases": [
+    {
+      "case": "greedy_finds_nothing",
+      "n_candidates": 5,
+      "master": {
+        "periods": [
+          "am_peak",
+          "early",
+          "evening",
+          "midday",
+          "owl",
+          "pm_peak"
+        ],
+        "n_lines": 4,
+        "paths_by_period": {
+          "am_peak": 377,
+          "early": 383,
+          "evening": 391,
+          "midday": 396,
+          "owl": 388,
+          "pm_peak": 390
+        },
+        "od_by_period": {
+          "am_peak": 20000,
+          "early": 20000,
+          "evening": 20000,
+          "midday": 20000,
+          "owl": 20000,
+          "pm_peak": 20000
+        },
+        "digest": "6ac17e1156e70caa"
+      },
+      "master_seconds": 6.626787424087524,
+      "lines_dropped_from_supernetwork": [
+        {
+          "line": "syn-e7c589431bb22c3b",
+          "error": "Exp4SelectionError: line 'syn-e7c589431bb22c3b' direction 1 has 1 stop(s); a pattern needs at least two"
+        }
+      ],
+      "leader_exact": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+      "leader_reuse": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+      "leader_identified": false,
+      "ranking_inversions": 1,
+      "ranking_pairs": 10,
+      "promoted_set_exact": [
+        "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+        "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+        "exp4|exp4-pool-v1|2lines#f5c50f983575"
+      ],
+      "promoted_set_reuse": [
+        "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+        "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+        "exp4|exp4-pool-v1|2lines#f5c50f983575"
+      ],
+      "promoted_set_changes": false,
+      "worst_objective_rel_gap": 0.0011522986889964245,
+      "worst_unserved_gap": 45.8342797707337,
+      "total_omitted_flow": 4.7342597335300525,
+      "worst_improvable_flow_rel": 0.2546854102701269,
+      "worst_field_rel_diff": 0.8869516087509653,
+      "min_survival_fraction": 0.015151515151515152,
+      "median_speedup": 3.5946301470279907,
+      "rows": [
+        {
+          "kind": "subset",
+          "state_key": "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "lines": [
+            "syn-2663c6d04f289b58"
+          ],
+          "pinned_off": [],
+          "objective_exact": 3647789.8434759495,
+          "objective_reuse": 3647888.892593798,
+          "objective_gap": 99.04911784874275,
+          "objective_rel_gap": 2.715318647698181e-05,
+          "unserved_exact": 30387.00109206073,
+          "unserved_reuse": 30388.64604954436,
+          "unserved_gap": 1.644957483629696,
+          "omitted_flow": 1.644957483629696,
+          "improvable_flow": 0.0,
+          "improvable_flow_rel": 0.0,
+          "fields": {
+            "generalized_cost": {
+              "exact": 1349.7124286615158,
+              "reuse": 1251.3666484747198,
+              "abs_diff": 98.34578018679599,
+              "rel_diff": 0.0728642473006814
+            },
+            "unserved_demand": {
+              "exact": 30387.00109206073,
+              "reuse": 30388.64604954436,
+              "abs_diff": 1.644957483629696,
+              "rel_diff": 5.4133590828727e-05
+            },
+            "served_demand": {
+              "exact": 561.9989079392703,
+              "reuse": 560.3539504556411,
+              "abs_diff": 1.6449574836292413,
+              "rel_diff": 0.0029269762990482458
+            },
+            "revenue_veh_hours": {
+              "exact": 16.527777777777775,
+              "reuse": 16.527777777777775,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "exact": 9.50347222222222,
+              "reuse": 9.50347222222222,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "exact": 0.0,
+              "reuse": 0.0,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "exact": 2.4016282053120395,
+              "reuse": 2.233171814809541,
+              "abs_diff": 0.16845639050249828,
+              "rel_diff": 0.0701425766610744
+            }
+          },
+          "worst_rel_diff": 0.0728642473006814,
+          "worst_abs_diff": 98.34578018679599,
+          "seconds_exact": 0.8496251106262207,
+          "seconds_reuse": 0.13723325729370117,
+          "seconds_filter": 0.001894235610961914,
+          "speedup": 6.106809609574616,
+          "survival_fraction": {
+            "am_peak": 0.38726790450928383,
+            "early": 0.38642297650130547,
+            "evening": 0.3734015345268542,
+            "midday": 0.3838383838383838,
+            "owl": 0.3917525773195876,
+            "pm_peak": 0.37435897435897436
+          },
+          "paths": {
+            "am_peak": {
+              "master": 377,
+              "kept": 146,
+              "exact": 158
+            },
+            "early": {
+              "master": 383,
+              "kept": 148,
+              "exact": 158
+            },
+            "evening": {
+              "master": 391,
+              "kept": 146,
+              "exact": 158
+            },
+            "midday": {
+              "master": 396,
+              "kept": 152,
+              "exact": 158
+            },
+            "owl": {
+              "master": 388,
+              "kept": 152,
+              "exact": 158
+            },
+            "pm_peak": {
+              "master": 390,
+              "kept": 146,
+              "exact": 158
+            }
+          }
+        },
+        {
+          "kind": "subset",
+          "state_key": "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "lines": [
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "pinned_off": [],
+          "objective_exact": 3636885.7938588765,
+          "objective_reuse": 3634583.6716898754,
+          "objective_gap": -2302.122169001028,
+          "objective_rel_gap": 0.0006329927029571054,
+          "unserved_exact": 30270.88964509795,
+          "unserved_reuse": 30242.41132123858,
+          "unserved_gap": -28.478323859369993,
+          "omitted_flow": 0.0,
+          "improvable_flow": 1115.2766941232812,
+          "improvable_flow_rel": 0.2546854102701269,
+          "fields": {
+            "generalized_cost": {
+              "exact": 4379.036447122689,
+              "reuse": 5494.313141245971,
+              "abs_diff": 1115.2766941232812,
+              "rel_diff": 0.2546854102701269
+            },
+            "unserved_demand": {
+              "exact": 30270.88964509795,
+              "reuse": 30242.41132123858,
+              "abs_diff": 28.478323859369993,
+              "rel_diff": 0.0009407825205421988
+            },
+            "served_demand": {
+              "exact": 678.1103549020538,
+              "reuse": 706.5886787614221,
+              "abs_diff": 28.478323859368288,
+              "rel_diff": 0.04199659193153258
+            },
+            "revenue_veh_hours": {
+              "exact": 63.55555555555556,
+              "reuse": 63.55555555555556,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "exact": 9.136111111111111,
+              "reuse": 9.136111111111111,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "exact": 0.0,
+              "reuse": 0.0,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "exact": 6.45770473119408,
+              "reuse": 7.775829568734304,
+              "abs_diff": 1.318124837540224,
+              "rel_diff": 0.20411661610556361
+            }
+          },
+          "worst_rel_diff": 0.2546854102701269,
+          "worst_abs_diff": 1115.2766941232812,
+          "seconds_exact": 0.5518317222595215,
+          "seconds_reuse": 0.15159273147583008,
+          "seconds_filter": 0.0019228458404541016,
+          "speedup": 3.5946301470279907,
+          "survival_fraction": {
+            "am_peak": 0.246684350132626,
+            "early": 0.2506527415143603,
+            "evening": 0.2659846547314578,
+            "midday": 0.26262626262626265,
+            "owl": 0.25,
+            "pm_peak": 0.26666666666666666
+          },
+          "paths": {
+            "am_peak": {
+              "master": 377,
+              "kept": 93,
+              "exact": 81
+            },
+            "early": {
+              "master": 383,
+              "kept": 96,
+              "exact": 81
+            },
+            "evening": {
+              "master": 391,
+              "kept": 104,
+              "exact": 81
+            },
+            "midday": {
+              "master": 396,
+              "kept": 104,
+              "exact": 81
+            },
+            "owl": {
+              "master": 388,
+              "kept": 97,
+              "exact": 81
+            },
+            "pm_peak": {
+              "master": 390,
+              "kept": 104,
+              "exact": 81
+            }
+          }
+        },
+        {
+          "kind": "subset",
+          "state_key": "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+          "lines": [
+            "syn-9a1726e4c4a0670b"
+          ],
+          "pinned_off": [],
+          "objective_exact": 3645615.929918294,
+          "objective_reuse": 3645567.9668672048,
+          "objective_gap": -47.96305108908564,
+          "objective_rel_gap": 1.315636424985684e-05,
+          "unserved_exact": 30368.614027652704,
+          "unserved_reuse": 30368.133885908024,
+          "unserved_gap": -0.48014174467971316,
+          "omitted_flow": 0.0,
+          "improvable_flow": 9.653958272394902,
+          "improvable_flow_rel": 0.00698425177722224,
+          "fields": {
+            "generalized_cost": {
+              "exact": 1382.2465999692886,
+              "reuse": 1391.9005582416835,
+              "abs_diff": 9.653958272394902,
+              "rel_diff": 0.00698425177722224
+            },
+            "unserved_demand": {
+              "exact": 30368.614027652704,
+              "reuse": 30368.133885908024,
+              "abs_diff": 0.48014174467971316,
+              "rel_diff": 1.5810459583124577e-05
+            },
+            "served_demand": {
+              "exact": 580.385972347301,
+              "reuse": 580.8661140919791,
+              "abs_diff": 0.48014174467800785,
+              "rel_diff": 0.0008272800645682949
+            },
+            "revenue_veh_hours": {
+              "exact": 157.93333333333334,
+              "reuse": 157.93333333333334,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "exact": 8.816666666666666,
+              "reuse": 8.816666666666666,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "exact": 0.0,
+              "reuse": 0.0,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "exact": 2.3815989114605216,
+              "reuse": 2.396250227847305,
+              "abs_diff": 0.014651316386783186,
+              "rel_diff": 0.006151882382998836
+            }
+          },
+          "worst_rel_diff": 0.00698425177722224,
+          "worst_abs_diff": 9.653958272394902,
+          "seconds_exact": 0.39813899993896484,
+          "seconds_reuse": 0.162123441696167,
+          "seconds_filter": 0.0013647079467773438,
+          "speedup": 2.4352774241343758,
+          "survival_fraction": {
+            "am_peak": 0.015915119363395226,
+            "early": 0.018276762402088774,
+            "evening": 0.017902813299232736,
+            "midday": 0.015151515151515152,
+            "owl": 0.015463917525773196,
+            "pm_peak": 0.017948717948717947
+          },
+          "paths": {
+            "am_peak": {
+              "master": 377,
+              "kept": 6,
+              "exact": 6
+            },
+            "early": {
+              "master": 383,
+              "kept": 7,
+              "exact": 6
+            },
+            "evening": {
+              "master": 391,
+              "kept": 7,
+              "exact": 6
+            },
+            "midday": {
+              "master": 396,
+              "kept": 6,
+              "exact": 6
+            },
+            "owl": {
+              "master": 388,
+              "kept": 6,
+              "exact": 6
+            },
+            "pm_peak": {
+              "master": 390,
+              "kept": 7,
+              "exact": 6
+            }
+          }
+        },
+        {
+          "kind": "subset",
+          "state_key": "exp4|exp4-pool-v1|1lines#7db3820b797d",
+          "lines": [
+            "syn-a13da236edef295b"
+          ],
+          "pinned_off": [],
+          "objective_exact": 3650033.6289759376,
+          "objective_reuse": 3650300.873412776,
+          "objective_gap": 267.24443683819845,
+          "objective_rel_gap": 7.321697934963334e-05,
+          "unserved_exact": 30415.97474091677,
+          "unserved_reuse": 30419.06404316667,
+          "unserved_gap": 3.0893022499003564,
+          "omitted_flow": 3.0893022499003564,
+          "improvable_flow": 0.0,
+          "improvable_flow_rel": 0.0,
+          "fields": {
+            "generalized_cost": {
+              "exact": 116.66006592526202,
+              "reuse": 13.188232775857202,
+              "abs_diff": 103.47183314940482,
+              "rel_diff": 0.8869516087509653
+            },
+            "unserved_demand": {
+              "exact": 30415.97474091677,
+              "reuse": 30419.06404316667,
+              "abs_diff": 3.0893022499003564,
+              "rel_diff": 0.00010156841186958592
+            },
+            "served_demand": {
+              "exact": 533.0252590832381,
+              "reuse": 529.9359568333347,
+              "abs_diff": 3.089302249903426,
+              "rel_diff": 0.005795789593943043
+            },
+            "revenue_veh_hours": {
+              "exact": 53.42666666666666,
+              "reuse": 13.356666666666666,
+              "abs_diff": 40.06999999999999,
+              "rel_diff": 0.7499999999999999
+            },
+            "peak_vehicles": {
+              "exact": 7.680083333333333,
+              "reuse": 7.680083333333333,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "exact": 0.0,
+              "reuse": 0.0,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "exact": 0.21886404806764362,
+              "reuse": 0.024886465252639788,
+              "abs_diff": 0.19397758281500382,
+              "rel_diff": 0.8862925844954297
+            }
+          },
+          "worst_rel_diff": 0.8869516087509653,
+          "worst_abs_diff": 103.47183314940482,
+          "seconds_exact": 0.5099527835845947,
+          "seconds_reuse": 0.1515660285949707,
+          "seconds_filter": 0.001455545425415039,
+          "speedup": 3.3325548168564656,
+          "survival_fraction": {
+            "am_peak": 0.023872679045092837,
+            "early": 0.02349869451697128,
+            "evening": 0.023017902813299233,
+            "midday": 0.022727272727272728,
+            "owl": 0.023195876288659795,
+            "pm_peak": 0.023076923076923078
+          },
+          "paths": {
+            "am_peak": {
+              "master": 377,
+              "kept": 9,
+              "exact": 8
+            },
+            "early": {
+              "master": 383,
+              "kept": 9,
+              "exact": 8
+            },
+            "evening": {
+              "master": 391,
+              "kept": 9,
+              "exact": 8
+            },
+            "midday": {
+              "master": 396,
+              "kept": 9,
+              "exact": 8
+            },
+            "owl": {
+              "master": 388,
+              "kept": 9,
+              "exact": 8
+            },
+            "pm_peak": {
+              "master": 390,
+              "kept": 9,
+              "exact": 8
+            }
+          }
+        },
+        {
+          "kind": "subset",
+          "state_key": "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "lines": [
+            "syn-2663c6d04f289b58",
+            "syn-91cfb5fd76db5ab6"
+          ],
+          "pinned_off": [],
+          "objective_exact": 3637013.8019012334,
+          "objective_reuse": 3632822.8756654407,
+          "objective_gap": -4190.926235792693,
+          "objective_rel_gap": 0.0011522986889964245,
+          "unserved_exact": 30259.133460505906,
+          "unserved_reuse": 30213.299180735172,
+          "unserved_gap": -45.8342797707337,
+          "omitted_flow": 0.0,
+          "improvable_flow": 1309.1873366955824,
+          "improvable_flow_rel": 0.22122922238025522,
+          "fields": {
+            "generalized_cost": {
+              "exact": 5917.7866405248815,
+              "reuse": 7226.973977220464,
+              "abs_diff": 1309.1873366955824,
+              "rel_diff": 0.22122922238025522
+            },
+            "unserved_demand": {
+              "exact": 30259.133460505906,
+              "reuse": 30213.299180735172,
+              "abs_diff": 45.8342797707337,
+              "rel_diff": 0.0015147254573749248
+            },
+            "served_demand": {
+              "exact": 689.8665394940987,
+              "reuse": 735.7008192648312,
+              "abs_diff": 45.834279770732564,
+              "rel_diff": 0.06643934318708125
+            },
+            "revenue_veh_hours": {
+              "exact": 63.54166666666666,
+              "reuse": 63.54166666666666,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "peak_vehicles": {
+              "exact": 9.136111111111111,
+              "reuse": 9.136111111111111,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "mean_wait_min": {
+              "exact": 0.0,
+              "reuse": 0.0,
+              "abs_diff": 0.0,
+              "rel_diff": 0.0
+            },
+            "gc_per_served_trip": {
+              "exact": 8.578161574359854,
+              "reuse": 9.823251229273078,
+              "abs_diff": 1.2450896549132242,
+              "rel_diff": 0.14514644473878882
+            }
+          },
+          "worst_rel_diff": 0.22122922238025522,
+          "worst_abs_diff": 1309.1873366955824,
+          "seconds_exact": 1.2593812942504883,
+          "seconds_reuse": 0.19127583503723145,
+          "seconds_filter": 0.004010438919067383,
+          "speedup": 6.448898167478543,
+          "survival_fraction": {
+            "am_peak": 0.8143236074270557,
+            "early": 0.814621409921671,
+            "evening": 0.8158567774936062,
+            "midday": 0.8207070707070707,
+            "owl": 0.8195876288659794,
+            "pm_peak": 0.8153846153846154
+          },
+          "paths": {
+            "am_peak": {
+              "master": 377,
+              "kept": 307,
+              "exact": 253
+            },
+            "early": {
+              "master": 383,
+              "kept": 312,
+              "exact": 253
+            },
+            "evening": {
+              "master": 391,
+              "kept": 319,
+              "exact": 253
+            },
+            "midday": {
+              "master": 396,
+              "kept": 325,
+              "exact": 253
+            },
+            "owl": {
+              "master": 388,
+              "kept": 318,
+              "exact": 253
+            },
+            "pm_peak": {
+              "master": 390,
+              "kept": 318,
+              "exact": 253
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

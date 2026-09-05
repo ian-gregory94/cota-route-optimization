@@ -107,6 +107,12 @@ def main() -> int:
                     help="cap per case; the enumeration order is deterministic "
                          "(by cardinality then sorted line id), so a cap "
                          "truncates the sample rather than selecting it")
+    ap.add_argument("--master-paths-per-od", type=int, default=0,
+                    help="widen the MASTER's per-OD path cap (0 = production "
+                         "default). The second widening lever gate 4-7 names, "
+                         "and the one that matters when a candidate is sparse: "
+                         "a route only worth taking once other lines are absent "
+                         "is truncated out of the supernetwork's top-k")
     ap.add_argument("--scenarios", type=int, default=6,
                     help="service/frequency scenarios used to enumerate the "
                          "MASTER only. EXPERIMENT4_CONTRACT s.12 requires the "
@@ -130,7 +136,7 @@ def main() -> int:
     first_dep = _first_dep_by_period()
     t_all = time.time()
 
-    def score(sel, case, cache, scen=0):
+    def score(sel, case, cache, scen=0, mppo=None):
         vh = float(case["veh_hour_budget"])
         peak = float(case.get("peak_vehicle_budget", 40.0))
         cons = pinned(vh, {p: peak for p in periods})
@@ -145,7 +151,8 @@ def main() -> int:
                 limits=limits, constraints=cons, lam=2.0, seed=20260825,
                 iterations=eff[0], restarts=eff[1], width=eff[2],
                 waiting_model="same_route", starts="greedy", allow_off=True,
-                pathset_cache=cache, n_random_scenarios=scen)
+                pathset_cache=cache, n_random_scenarios=scen,
+                max_paths_per_od=mppo)
         except Exception as e:
             return {"ok": False, "error": f"{type(e).__name__}: {e}"[:200],
                     "seconds": time.time() - t0}
@@ -168,17 +175,58 @@ def main() -> int:
         print(f"\n=== {name}: pool {len(lines)} lines, cardinality {lo}-{hi} ===")
 
         # --- 1. the master, enumerated ONCE on the supernetwork -------------
+        #
+        # A pool line the ASSEMBLER refuses cannot be in the supernetwork --
+        # and cannot be in any candidate either, because the refusal is a
+        # property of the line (e.g. a direction with one stop), not of the
+        # selection it appears in. So dropping it loses no candidate path: every
+        # scoreable candidate's patterns are still a subset of the
+        # supernetwork's, which is the property the whole filter relies on.
+        #
+        # It is measured, not assumed: each refused line is retested ALONE and
+        # only dropped if it is refused on its own too. A line that assembles
+        # alone but not in company would mean the refusal depends on the
+        # selection, the subset property would not hold, and this raises rather
+        # than quietly shrinking the supernetwork.
         superset = Exp4Selection(pool_version=POOL_VERSION,
                                  lines=frozenset(lines),
                                  pinned_off=frozenset())
         master_cache: dict = {}
         t0 = time.time()
-        sup = score(superset, case, master_cache, scen=a.scenarios)
-        t_master = time.time() - t0
+        _mppo = a.master_paths_per_od or None
+        sup = score(superset, case, master_cache, scen=a.scenarios,
+                    mppo=_mppo)
+        dropped: list[dict] = []
         if not master_cache:
-            print(f"  master enumeration produced nothing: "
+            print(f"  full supernetwork refused: "
                   f"{sup.get('error', 'no cache populated')}")
-            continue
+            keep = []
+            for ln in lines:
+                solo = score(Exp4Selection(POOL_VERSION, frozenset([ln]),
+                                           frozenset()), case, {}, scen=0)
+                if solo["ok"]:
+                    keep.append(ln)
+                else:
+                    dropped.append({"line": ln, "error": solo.get("error")})
+                    print(f"    drop {ln}: {str(solo.get('error'))[:90]}")
+            if not keep:
+                print("    no pool line assembles alone; nothing to measure")
+                continue
+            superset = Exp4Selection(POOL_VERSION, frozenset(keep),
+                                     frozenset())
+            master_cache = {}
+            sup = score(superset, case, master_cache, scen=a.scenarios,
+                        mppo=_mppo)
+            if not master_cache:
+                raise RuntimeError(
+                    f"{name}: every pool line assembles alone but their union "
+                    f"does not ({sup.get('error')}). The refusal therefore "
+                    f"depends on the SELECTION, so a candidate can contain a "
+                    f"pattern the supernetwork lacks and master-path filtering "
+                    f"is unsound for this pool. This is a real finding, not a "
+                    f"case to skip.")
+        t_master = time.time() - t0
+        lines = sorted(superset.lines)
         master = MasterPathSet(
             by_period=dict(master_cache),
             supernetwork_lines=tuple(lines),
@@ -190,32 +238,40 @@ def main() -> int:
               f"{t_master:.1f}s, digest {master.digest}")
 
         # --- 2. the preregistered candidate sample -------------------------
-        cands: list[tuple[str, Exp4Selection]] = []
-        for s in _subsets(lines, lo, hi):
-            cands.append(("subset", Exp4Selection(POOL_VERSION, s,
-                                                  frozenset())))
-        cands.append(("supernetwork", superset))
-        seed_lines = frozenset(case.get("seed") or [lines[0]])
+        # The supernetwork and the pinned-off variant go FIRST. They are named
+        # individually in the declared sample and there is one of each, so a
+        # cap applied to a subset-first list silently drops exactly the two
+        # candidates the sample went out of its way to include -- which is what
+        # the first full run did. Subsets fill whatever the cap leaves, in
+        # deterministic order, so the cap still truncates rather than selects.
+        cands: list[tuple[str, Exp4Selection]] = [("supernetwork", superset)]
+        # PINNED_OFF is a (line, period) fate, not a line-level one. Pin every
+        # period of one line that survived into the supernetwork, so the
+        # candidate runs that line's geometry with no service on it -- a state
+        # no subset of the pool can express, which is why it is in the sample.
+        pin_line = lines[0]
         cands.append(("pinned_off", Exp4Selection(
-            POOL_VERSION, frozenset(lines), frozenset(seed_lines))))
+            POOL_VERSION, frozenset(lines),
+            frozenset((pin_line, per) for per in periods))))
+        for sub in _subsets(lines, lo, hi):
+            cands.append(("subset", Exp4Selection(POOL_VERSION, sub,
+                                                  frozenset())))
         cands = cands[:a.max_candidates] if a.max_candidates else cands
 
         crows: list[dict] = []
         for kind, sel in cands:
-            # EXACT arm: production default enumeration, no cache at all.
-            ex = score(sel, case, None, scen=0)
-            if not ex["ok"]:
-                continue
-
-            # REUSE arm: filter the master onto this candidate's own
-            # route-period vector, per period. The candidate's rp_keys are
-            # taken from the exact arm's own path sets so the two arms are
-            # indexed identically -- in production they come from the
-            # assembler, which knows the route-periods without enumerating
-            # anything, and the check below is what would catch a divergence.
+            # EXACT arm: production-default enumeration. The cache is a FRESH
+            # empty dict rather than None, which is identical work for a single
+            # network -- nothing can hit an empty cache -- but leaves the
+            # candidate's own path sets behind. That is where the candidate's
+            # rp_keys come from, so the two arms are indexed identically and no
+            # second enumeration is needed to discover them. (In production the
+            # keys come from the assembler, which knows the route-periods
+            # without enumerating any paths; filter_for_network raises if they
+            # do not line up, which is what would catch a divergence.)
             probe: dict = {}
-            _ = score(sel, case, probe, scen=0)
-            if not probe:
+            ex = score(sel, case, probe, scen=0)
+            if not ex["ok"] or not probe:
                 continue
             t0 = time.time()
             filt: dict = {}
@@ -320,6 +376,7 @@ def main() -> int:
                   sorted(ok, key=lambda r: r["objective_reuse"])[:k]}
         rep = {"case": name, "n_candidates": len(ok),
                "master": ms, "master_seconds": t_master,
+               "lines_dropped_from_supernetwork": dropped,
                "leader_exact": leader_exact, "leader_reuse": leader_reuse,
                "leader_identified": leader_exact == leader_reuse,
                "ranking_inversions": inversions, "ranking_pairs": pairs,
@@ -376,11 +433,15 @@ def main() -> int:
                "itself names is to widen the master set (--scenarios) or "
                "abandon it -- not to declare the number small.")
 
+    # all() over an empty list is True, and printing "leader identified: True"
+    # when nothing was compared is exactly the kind of vacuous green this
+    # project keeps catching. Say so instead.
+    _n = "n/a (nothing measured)"
     print(f"\n{'=' * 70}")
     print(f"  candidates compared      : {len(rows)}")
-    print(f"  leader identified, all   : {all_leaders}")
-    print(f"  zero ranking inversions  : {all_rank}")
-    print(f"  promoted set unchanged   : {all_promo}")
+    print(f"  leader identified, all   : {all_leaders if case_reports else _n}")
+    print(f"  zero ranking inversions  : {all_rank if case_reports else _n}")
+    print(f"  promoted set unchanged   : {all_promo if case_reports else _n}")
     print(f"  worst objective rel gap  : "
           f"{max((r['objective_rel_gap'] for r in rows), default=0.0):.3e}")
     print(f"  worst field rel diff     : "
@@ -405,10 +466,11 @@ def main() -> int:
                         "pinned-off variant; deterministic order, capped not "
                         "curated"),
         "master_scenarios": a.scenarios,
+        "master_paths_per_od": a.master_paths_per_od or "production default",
         "n_candidates": len(rows),
-        "leader_identified_all_cases": all_leaders,
-        "zero_ranking_inversions": all_rank,
-        "promoted_set_unchanged_all_cases": all_promo,
+        "leader_identified_all_cases": all_leaders if case_reports else None,
+        "zero_ranking_inversions": all_rank if case_reports else None,
+        "promoted_set_unchanged_all_cases": all_promo if case_reports else None,
         "band_independent_pass": band_independent,
         "promotion_band_available": False,
         "promotion_band_source": "D18 gap benchmark (not run)",

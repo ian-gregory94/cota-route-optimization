@@ -46,7 +46,12 @@ def main() -> int:
     ap.add_argument("--max-combinations", type=int, default=10_000_000,
                     help="raised from the 2M default deliberately: the "
                          "one-line bridge network has 6 route-periods x 14 "
-                         "rungs = 7,529,536 combinations at 24us each, ~3 min")
+                         "rungs = 7,529,536 combinations. MEASURED at 336.6us "
+                         "each (30,000-combination timing on this network, "
+                         "single core) = ~42 min. An earlier version of this "
+                         "help said 24us and ~3 min; that was an estimate, it "
+                         "was wrong by 14x, and the run that outlived it is "
+                         "what corrected it.")
     a = ap.parse_args()
 
     from cota_opt.exp3_score import solve_on_network

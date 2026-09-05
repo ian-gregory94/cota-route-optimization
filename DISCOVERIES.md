@@ -2091,3 +2091,79 @@ alone. Gen1's stored results are untouched, and Experiment 3's closure and
 integrity suites, the Gen1 freeze and the baseline all still verify, because
 every Gen1 comparison scored both arms from one network object in one order and
 the effect cancelled. A Gen1 *re-run* may move by up to the figures above.
+
+## D35 — PINNED_OFF was a label on the state digest, not a constraint on the score
+
+**2026-09-05, found by the gate 4-7 master-path benchmark.**
+
+`Exp4Selection.pinned_off` is validated at construction, refuses anything that
+is not a `(line, period)` pair, and is hashed into `state_digest`. It reached
+nothing that scores:
+
+* `exp4_assemble.assemble` copied it into `AssemblyReport.pinned_off` and
+  otherwise ignored it — the route-periods kept their service;
+* `exp4_score.score_exp4_network` never forwarded `selection.pinned_off`;
+* `exp3_score.solve_on_network` accepted a `pinned_off` argument and forwarded
+  it on the `"exact"` solver branch **only**, so Generation 1's
+  `optimize_frequencies` never saw it.
+
+So two selections differing *only* in `pinned_off` produced **identical
+fitness under different state digests**. That is worse than a wrong number.
+`state_digest` is a declared treatment difference in the Experiment 4 contract,
+so the firewall would have admitted the comparison and reported a zero effect —
+for a treatment that was never applied. A null result from an unapplied
+treatment is indistinguishable, in the receipt, from a null result from a real
+one.
+
+**How it surfaced.** Not from a test. The master-path benchmark scores a
+`pinned_off` variant alongside the supernetwork, and its rows came back
+byte-identical in all five cases:
+
+| case | supernetwork objective | pinned_off objective |
+|---|---|---|
+| greedy_finds_nothing | 3.628658e+06 | 3.628658e+06 |
+| large_gap | 3.614702e+06 | 3.614702e+06 |
+| moderate_gap | 3.632465e+06 | 3.632465e+06 |
+| greedy_overbuilds | 3.639134e+06 | 3.639134e+06 |
+| weak_junction | 3.620184e+06 | 3.620184e+06 |
+
+Two candidates that differ are allowed to score the same. Ten values agreeing
+to every digit are not a coincidence, and the sample only contained a
+`pinned_off` variant because the preregistered sample said to include a fate
+the subsets cannot express.
+
+**The fix.** Pin the **setup**, not a solver. A route-period with a single-rung
+ladder cannot be moved by any optimizer, which is the mechanism `locked`
+already uses, so applying it above the solver switch binds Gen1 and Gen2
+alike — rather than each solver being trusted separately to honour a flag.
+
+The baseline plan is pinned too, and that is not belt-and-braces:
+`snap_to_ladder` **refuses** a finite headway against an OFF-only ladder
+("ladder offers no service at all"), so pinning the ladder alone would raise
+rather than pin. The result is then asserted — a plan that comes back with
+service on a pinned route-period is an `AssertionError`, because a constraint
+enforced only by construction is a constraint nobody has ever watched fail, and
+this one was a no-op for as long as it existed.
+
+Measured after the fix, three lines with one pinned off across all six periods:
+
+```
+free      objective 3.642440e+06  digest 0ccd940f1232
+pinned    objective 3.644617e+06  digest db07b4f83411
+pinned line has service in the returned plan: no -- all OFF
+```
+
+The pinned network is *worse*, which is the right direction: removing service
+cannot improve the objective. Before the fix these two numbers were equal.
+
+**What it says about the method.** The three Fates that the search can *choose*
+— ABSENT, CHOSEN_OFF, ACTIVE — were all exercised by ordinary candidates and
+all worked. PINNED_OFF is the one fate an input imposes, so no search path
+produced it and nothing tested it. A state space with a member nothing
+generates is a state space with a member nothing checks.
+
+Regression cover in `tests/test_exp4_substrate.py` pins the wiring rather than
+the numbers: the passthrough exists, the pin is applied *before* the solver
+switch, the baseline plan is pinned as well as the ladder, the result is
+asserted, a pin naming an absent route-period is refused, and
+`snap_to_ladder(20.0, [OFF])` still raises.

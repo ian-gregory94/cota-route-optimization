@@ -96,6 +96,7 @@ def score_exp4_network(
     allow_off: bool = True,
     pathset_cache=None,
     n_random_scenarios: int = 0,
+    max_paths_per_od: int | None = None,
 ) -> tuple[ScoredExp4Network, AssembledNetwork]:
     """Assemble the selection and score it on the Gen1 evaluation core.
 
@@ -114,7 +115,11 @@ def score_exp4_network(
         lam=lam, seed=seed, iterations=iterations, restarts=restarts,
         width=width, constraints=constraints, pathset_cache=pathset_cache,
         waiting_model=waiting_model, starts=starts, allow_off=allow_off,
-        n_random_scenarios=n_random_scenarios)
+        n_random_scenarios=n_random_scenarios,
+        max_paths_per_od=max_paths_per_od,
+        # The selection's OWN pins. Forwarding these is what makes PINNED_OFF a
+        # constraint on the score rather than a label on the state digest.
+        pinned_off=frozenset(selection.pinned_off))
 
     from .frequency import is_off
     plan = {f"{k[0]}|{k[1]}": float(v)

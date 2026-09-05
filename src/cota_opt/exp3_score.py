@@ -177,7 +177,8 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                      solver: str = "gen1",
                      exact_max_combinations: int = 2_000_000,
                      pinned_off: frozenset | None = None,
-                     n_random_scenarios: int = 0) -> dict:
+                     n_random_scenarios: int = 0,
+                     max_paths_per_od: int | None = None) -> dict:
     """Score a network that already exists. The Gen1 evaluation core.
 
     Extracted from :func:`score_state` verbatim so Experiment 4 can reuse it
@@ -214,7 +215,11 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
     multiple service/frequency scenarios" -- a master built at 0 would be
     thinner than the object the gate describes, and benchmarking a thinner
     approximation would measure something the experiment is not going to use.
-    It has NO effect when `pathset_cache` supplies the period's paths already.
+    ``max_paths_per_od`` is the other widening lever the gate names; None keeps
+    the configured production value. Both affect ENUMERATION only and have NO
+    effect when `pathset_cache` supplies the period's paths already, which is
+    what keeps the exact arm of a reuse benchmark at production settings while
+    the master is built wider.
     """
     import sys as _sys
     from pathlib import Path as _Path
@@ -279,6 +284,7 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                              lock_classes=("peak_express",),
                              constraints=constraints,
                              n_random_scenarios=n_random_scenarios,
+                             max_paths_per_od=max_paths_per_od,
                              pathset_cache=pathset_cache,
                              common_lines=waiting_model, allow_off=allow_off)
 
@@ -290,6 +296,45 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
             f"the evaluator came back priced as {got!r}, not {waiting_model!r}. "
             f"An unasserted evaluator scored three days of Experiment 2 under "
             f"the wrong model while its log reported the right one.")
+
+    # PINNED OFF, applied to the SETUP rather than to one solver.
+    #
+    # `Exp4Selection.pinned_off` was validated at construction and hashed into
+    # the state digest, and then reached nothing: `assemble` only recorded it in
+    # the assembly report, `score_exp4_network` never forwarded it, and
+    # `solve_on_network` forwarded it on the "exact" branch alone. So a
+    # PINNED_OFF fate was a LABEL: two selections differing only in pinned_off
+    # scored identically while carrying different state digests, which the
+    # firewall would admit as a declared treatment difference and report a zero
+    # effect for a treatment that was never applied. The master-path benchmark
+    # is what exposed it -- its pinned_off rows came back byte-identical to its
+    # supernetwork rows.
+    #
+    # The mechanism is the one `locked` already uses: a route-period with a
+    # single-rung ladder cannot be moved by any optimizer, so pinning here binds
+    # Gen1 and Gen2 alike instead of each solver being trusted to honour it. The
+    # baseline plan is pinned too, because `snap_to_ladder` REFUSES a finite
+    # headway against an OFF-only ladder ("ladder offers no service at all") --
+    # pinning the ladder alone would crash rather than pin.
+    if pinned_off:
+        from .frequency import OFF, is_off
+        unknown = sorted(k for k in pinned_off if k not in judge.ladders)
+        if unknown:
+            raise ValueError(
+                f"pinned_off names route-periods this network does not have: "
+                f"{unknown}. A pin that matches nothing is a pin that silently "
+                f"does nothing.")
+        if not allow_off:
+            raise ValueError(
+                "pinned_off requires allow_off=True; a ladder built without an "
+                "OFF rung cannot represent a pinned-off route-period")
+        for k in sorted(pinned_off):
+            off = [v for v in judge.ladders[k] if is_off(v)]
+            if not off:
+                raise ValueError(
+                    f"{k} is pinned OFF but its ladder offers no OFF rung")
+            judge.ladders[k] = [off[0]]
+            judge.baseline_plan.headways[k] = OFF
 
     # The incumbent must be REFITTED to the envelope before the solve, and
     # this is not a refinement -- it is the difference between optimizing and
@@ -403,6 +448,18 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
     for k, v in r.plan.headways.items():
         if k in hw:
             hw[k] = float(v)
+
+    # The pin is asserted on the RESULT, not trusted to the ladder that set it
+    # up. A constraint enforced only by construction is a constraint nobody has
+    # watched fail, and this one was a no-op for as long as it existed.
+    if pinned_off:
+        from .frequency import OFF, is_off
+        leaked = sorted(k for k in pinned_off if not is_off(hw.get(k, OFF)))
+        if leaked:
+            raise AssertionError(
+                f"route-periods pinned OFF came back with service: {leaked}. "
+                f"The optimizer moved a decision it was not offered.")
+
     fit = judge.model.evaluate_array(np.array([hw[k] for k in judge.model.keys]))
 
     return {"fit": fit, "plan": r.plan, "solver": solver,
