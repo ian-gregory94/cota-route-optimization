@@ -140,6 +140,14 @@ def checks() -> list[tuple[str, str, str, str]]:
     # an artifact is on disk, which this check has made three times. Readiness
     # means discovery may proceed with reuse, and it may not.
     _g47 = _json(OUT / "gate47.json")
+    _adj = _json(OUT / "gate47_adjudicated.json")
+    _adj_ok = (_adj or {}).get("verdict") == "MET"
+    _adj_note = ""
+    if _adj and not _adj_ok:
+        _adj_note = (
+            f"AND adjudication against D18 is blocked: {_adj.get('blocked_by')}. "
+            f"A gate about a DISCOVERY-EFFORT approximation cannot close when "
+            f"discovery-effort comparison is itself forbidden. ")
     _mp = _json(OUT / "masterpath_benchmark.json")
     _pr = _json(OUT / "pathreuse_benchmark.json")
     if _g47:
@@ -159,9 +167,10 @@ def checks() -> list[tuple[str, str, str, str]]:
             f"{_g47['worst_objective_rel_gap']:.3e}. The bias is systematic and "
             f"directional -- zero at survival 1.000, growing as the candidate "
             f"thins -- so reuse biases the search toward activating more lines. "
-            f"NO LONGER BLOCKED ON D18: closure is band-independent. "
-            f"EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json")
-        _c9_met = _g47.get("verdict") == "MET"
+            + (_adj_note if _adj_note else
+               "NO LONGER BLOCKED ON D18: closure is band-independent. ")
+            + "EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json")
+        _c9_met = _g47.get("verdict") == "MET" and _adj_ok
     elif _mp:
         _inv = sum(c["ranking_inversions"] for c in _mp["cases"])
         _prs = sum(c["ranking_pairs"] for c in _mp["cases"])
@@ -296,12 +305,42 @@ def checks() -> list[tuple[str, str, str, str]]:
         "EXPERIMENT4_DESIGN.md section 2 classifies seven; a committed machine-"
         "readable form is what the search will actually consult")
 
-    gap = OUT / "gap_benchmark.json"
-    add("D18", "Gap benchmark run on Experiment 4 networks, Q3 answered",
-        MET if gap.exists() else OPEN,
-        str(gap.relative_to(ROOT)) if gap.exists()
-        else "not run -- this is the compute-heavy gate and it can forbid "
-             "discovery-effort comparison outright")
+    # D18's criterion is that the benchmark HAS RUN and question 3's answer is
+    # RECORDED -- "including the branch where it forbids discovery-effort
+    # comparison". Taking the forbidding branch therefore MEETS D18. It does
+    # not make Experiment 4 runnable; it is the answer, and the answer being
+    # unwelcome is not the same as the item being open.
+    _gap = _json(OUT / "gap_benchmark.json")
+    if _gap:
+        _q3 = _gap["q3_gap_tracks_structure"]
+        add("D18", "Gap benchmark run on Experiment 4 networks, Q3 answered",
+            MET,
+            f"RUN on {_gap['n_cells']} cells over {len(_gap['q2_by_structure'])} "
+            f"network structures, by exhaustive enumeration of a reduced "
+            f"neighbourhood (K={_gap['k_rungs']}, N={_gap['sizes']}) under the "
+            f"production objective. Q1/Q2: median gap "
+            f"{_gap['q1_median_gap_pct']:+.6f}%, max "
+            f"{_gap['q1_max_gap_pct']:+.6f}%. Q3 ANSWER RECORDED: "
+            f"{_gap['q3_answer']} (largest structure-paired differential "
+            f"{_gap['q3_largest_paired_differential_pp']:.6f} pp against a "
+            f"median absolute gap of "
+            f"{_gap['q3_median_absolute_gap_pp']:.6f} pp, ratio "
+            f"{_gap['q3_ratio']:.3f} vs the limit "
+            f"{_gap['q3_forbid_ratio_declared']} declared before any number "
+            f"existed). Q4: "
+            + (f"NO BAND EMITTED -- section 3's forbidding branch. "
+               f"discovery_effort_comparison_permitted=False. This item is MET "
+               f"and Experiment 4 is BLOCKED BY ITS ANSWER, which is a "
+               f"different thing."
+               if _q3 else
+               f"promotion band {_gap['q4_promotion_band_pp']:.6f} pp.")
+            + " outputs/exp4/gap_benchmark.json")
+    else:
+        add("D18", "Gap benchmark run on Experiment 4 networks, Q3 answered",
+            OPEN,
+            "not run -- scripts/exp4_gap_benchmark.py. This is the "
+            "compute-heavy item and it can forbid discovery-effort comparison "
+            "outright")
 
     docs = " ".join((ROOT / f).read_text() for f in
                     ("EXPERIMENT4_DESIGN.md", "EXPERIMENT4_CONTRACT.md"))

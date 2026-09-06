@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "MET",
-      "detail": "tag=exp3-final-v1, tree=clean"
+      "status": "OPEN",
+      "detail": "tag=exp3-final-v1, tree=dirty"
     },
     {
       "id": "C2",
@@ -52,7 +52,7 @@
       "id": "C9",
       "title": "Discovery path reuse benchmarked against exact rebuilds",
       "status": "OPEN",
-      "detail": "BENCHMARKED as a ONE-FACTOR comparison and NOT closed. The previous measurement varied reuse AND enumeration richness together and was unidentified; the amendment (decisions/2026-09-05-gate-4-7-amendment.md) narrows the gate to reuse alone. Substrate proved sound: filtering is exactly the identity at survival 1.000, zero hard failures. Approximation fails: exact leader preserved in 3/5 cases, 140/600 pairs inverted, worst objective rel gap 1.750e-02. The bias is systematic and directional -- zero at survival 1.000, growing as the candidate thins -- so reuse biases the search toward activating more lines. NO LONGER BLOCKED ON D18: closure is band-independent. EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json"
+      "detail": "BENCHMARKED as a ONE-FACTOR comparison and NOT closed. The previous measurement varied reuse AND enumeration richness together and was unidentified; the amendment (decisions/2026-09-05-gate-4-7-amendment.md) narrows the gate to reuse alone. Substrate proved sound: filtering is exactly the identity at survival 1.000, zero hard failures. Approximation fails: exact leader preserved in 3/5 cases, 140/600 pairs inverted, worst objective rel gap 1.750e-02. The bias is systematic and directional -- zero at survival 1.000, growing as the candidate thins -- so reuse biases the search toward activating more lines. AND adjudication against D18 is blocked: D18 question 3 forbids discovery-effort comparison. A gate about a DISCOVERY-EFFORT approximation cannot close when discovery-effort comparison is itself forbidden. EXPERIMENT4_GATE47.md, outputs/exp4/gate47.json"
     },
     {
       "id": "C10",
@@ -105,8 +105,8 @@
     {
       "id": "D18",
       "title": "Gap benchmark run on Experiment 4 networks, Q3 answered",
-      "status": "OPEN",
-      "detail": "not run -- this is the compute-heavy gate and it can forbid discovery-effort comparison outright"
+      "status": "MET",
+      "detail": "RUN on 36 cells over 4 network structures, by exhaustive enumeration of a reduced neighbourhood (K=3, N=[6, 8, 10]) under the production objective. Q1/Q2: median gap +0.297432%, max +0.645892%. Q3 ANSWER RECORDED: the gap TRACKS network structure; section 3 forbids discovery-effort comparison (largest structure-paired differential 0.381749 pp against a median absolute gap of 0.297432 pp, ratio 1.283 vs the limit 0.5 declared before any number existed). Q4: NO BAND EMITTED -- section 3's forbidding branch. discovery_effort_comparison_permitted=False. This item is MET and Experiment 4 is BLOCKED BY ITS ANSWER, which is a different thing. outputs/exp4/gap_benchmark.json"
     },
     {
       "id": "D19",

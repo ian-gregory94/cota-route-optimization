@@ -2,3 +2,74 @@
 === dense: 5 lines, 30 route-periods, 21 OFF, delivered 3,630,945.3305 (2.7s) ===
   peak           N=6       729 combos  gap +0.174666%  (2.6s)
   peak           N=8     6,561 combos  gap +0.295620%  (3.3s)
+  peak           N=10   59,049 combos  gap +0.314440%  (9.3s)
+  offpeak        N=6       729 combos  gap +0.024198%  (2.5s)
+  offpeak        N=8     6,561 combos  gap +0.032754%  (3.0s)
+  offpeak        N=10   59,049 combos  gap +0.061303%  (5.1s)
+  seeded_random  N=6       729 combos  gap +0.000000%  (2.5s)
+  seeded_random  N=8     6,561 combos  gap +0.197777%  (2.6s)
+  seeded_random  N=10   59,049 combos  gap +0.381521%  (4.9s)
+
+=== sparse: 2 lines, 12 route-periods, 8 OFF, delivered 3,647,718.3406 (0.8s) ===
+  peak           N=6       729 combos  gap +0.408562%  (0.8s)
+  peak           N=8     6,561 combos  gap +0.299245%  (0.9s)
+  peak           N=10   59,049 combos  gap +0.383531%  (2.1s)
+  offpeak        N=6       729 combos  gap +0.029851%  (0.8s)
+  offpeak        N=8     6,561 combos  gap +0.304258%  (1.0s)
+  offpeak        N=10   59,049 combos  gap +0.414021%  (2.0s)
+  seeded_random  N=6       729 combos  gap +0.381749%  (0.8s)
+  seeded_random  N=8     6,561 combos  gap +0.554913%  (1.0s)
+  seeded_random  N=10   59,049 combos  gap +0.583427%  (2.1s)
+
+=== many_off: 5 lines, 30 route-periods, 21 OFF, delivered 3,636,836.7436 (2.7s) ===
+  peak           N=6       243 combos  gap +0.162401%  (2.4s)
+  peak           N=8       729 combos  gap +0.152756%  (2.5s)
+  peak           N=10    6,561 combos  gap +0.299352%  (3.1s)
+  offpeak        N=6       729 combos  gap +0.029660%  (2.6s)
+  offpeak        N=8       729 combos  gap +0.021690%  (2.5s)
+  offpeak        N=10    6,561 combos  gap +0.064712%  (2.7s)
+  seeded_random  N=6        27 combos  gap +0.000000%  (2.4s)
+  seeded_random  N=8       243 combos  gap +0.090419%  (2.4s)
+  seeded_random  N=10    6,561 combos  gap +0.401451%  (2.7s)
+
+=== other_pool: 5 lines, 30 route-periods, 23 OFF, delivered 3,640,332.1914 (2.5s) ===
+  peak           N=6       729 combos  gap +0.471218%  (2.5s)
+  peak           N=8     6,561 combos  gap +0.450424%  (2.7s)
+  peak           N=10   59,049 combos  gap +0.645892%  (4.1s)
+  offpeak        N=6       729 combos  gap +0.008458%  (2.4s)
+  offpeak        N=8     6,561 combos  gap +0.381786%  (2.6s)
+  offpeak        N=10   59,049 combos  gap +0.292970%  (5.2s)
+  seeded_random  N=6       729 combos  gap +0.377991%  (2.5s)
+  seeded_random  N=8     6,561 combos  gap +0.280967%  (2.6s)
+  seeded_random  N=10   59,049 combos  gap +0.363890%  (3.6s)
+
+==========================================================================
+Q1/Q2 - absolute gap of the delivered answer vs the exact optimum
+  cells 36   median +0.297432%   mean +0.259385%   max +0.645892%
+  nonzero gaps: 34/36
+
+  by network structure:
+    dense          n=  9  mean +0.164698%  max +0.381521%  nonzero 8
+    many_off       n=  9  mean +0.135827%  max +0.401451%  nonzero 8
+    other_pool     n=  9  mean +0.363733%  max +0.645892%  nonzero 9
+    sparse         n=  9  mean +0.373284%  max +0.583427%  nonzero 9
+
+Q3 - does the gap move SYSTEMATICALLY with network structure?
+  reference structure: dense
+    many_off       n=  9  mean diff -0.028871%  max |diff| 0.142864%
+    other_pool     n=  9  mean diff +0.199035%  max |diff| 0.377991%
+    sparse         n=  9  mean diff +0.208586%  max |diff| 0.381749%
+
+  largest paired |differential| : 0.381749 pp
+  median absolute gap           : 0.297432 pp
+  ratio                         : 1.283 (declared limit 0.5)
+  Q3 ANSWER: the gap TRACKS network structure
+
+Q4 - network effect distinguishable from structure-correlated solver error
+  NO BAND IS EMITTED.
+  Section 3's forbidding branch is taken: the gap tracks structure, so
+  Experiment 4 MAY NOT compare networks at discovery effort, and the
+  search must select on something else -- rank stability across efforts,
+  or certification of a wider frontier.
+
+wrote outputs/exp4/gap_benchmark.json

@@ -144,8 +144,14 @@ def gates() -> list[dict]:
         _ld = sum(c["leader_preserved"] for c in g47["cases"])
         _pr = sum(c["promoted_set_preserved"] for c in g47["cases"])
         _n = len(g47["cases"])
+        _adj = _j("gate47_adjudicated.json")
+        _blocked = (_adj or {}).get("blocked_by")
         g("4-7", "Discovery approximation benchmarked, buys no conclusions",
-          MET if g47.get("verdict") == "MET" else ARMED,
+          MET if (g47.get("verdict") == "MET"
+                  and (_adj or {}).get("verdict") == "MET") else ARMED,
+          (f"BLOCKED BY D18'S ANSWER: {_blocked}. A gate about a "
+           f"discovery-effort approximation cannot close when discovery-effort "
+           f"comparison is itself forbidden. " if _blocked else "") +
           f"ONE-FACTOR comparison (common candidate universe, identical "
           f"enumeration settings, arms differ only in reuse). Substrate PROVED "
           f"SOUND: filtering is exactly the identity at survival 1.000 "
