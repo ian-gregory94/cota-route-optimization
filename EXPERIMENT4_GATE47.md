@@ -152,3 +152,84 @@ tuning a benchmark parameter, because the benchmark now measures one thing.
 
 **Not done:** D18 not started, C9 not closed, nothing promoted, no Experiment 4
 search. All freezes, tags, firewalls and integrity checks intact.
+
+---
+
+# Disposal — 2026-09-06
+
+Gate 4-7 is not closed by proving master-path reuse unbiased. **It is not
+unbiased.** This document measured the bias and D18 found the same shape in the
+frequency solver. No further measurement is going to unfind either.
+
+It is closed by making the approximation **non-operative for inference**.
+
+## What changed
+
+The Experiment 4 execution contract is now:
+
+> **Gen2 discovery → permissive deterministic promotion → `solve_exact`
+> certification → exact-only conclusions.**
+
+Under it:
+
+* **reuse is permitted**, in proposal-only discovery, where speed is the whole
+  point;
+* **reuse output cannot determine any conclusion.** A discovery objective is a
+  `ProposalScore`, which refuses comparison, ordering, float conversion and
+  formatting. Its one accessor is `for_promotion_only()`. A future one-line
+  `sorted(candidates, key=discovery_score)` raises instead of silently
+  producing a wrong answer;
+* **every promoted candidate is rebuilt and exact-certified** by
+  `exp4_certify.certify`, which takes no `pathset_cache` parameter at all — the
+  biased shortcut cannot reach a certified number because there is no argument
+  through which to pass it.
+
+## The bias is contained, not absent
+
+Stated plainly so nobody later reads this gate as a clean bill of health:
+
+| finding | status |
+|---|---|
+| master-path reuse penalises sparse networks (median +267/+355/+257 at 1/2/3 active lines, exactly 0.00 at survival 1.000) | **real, measured, unchanged** |
+| the supernetwork master is not a superset of candidate paths (exact rebuild finds more paths in 62% of 480 observations) | **real, measured, unchanged** |
+| D18: the frequency heuristic's gap tracks structure (ratio 1.283) | **real, measured, unchanged** |
+| any of the above can reach an Experiment 4 conclusion | **no — blocked by the proposal/certification boundary** |
+
+## The risk that remains, and it is a different kind
+
+Containment converts an **inferential** risk into a **recall** risk. Reuse can
+no longer make a wrong network look good, because certification re-scores it.
+What it can still do is fail to *propose* a good network at all — and a
+candidate discovery never proposes is one certification never sees.
+
+That is what C9 now measures, and it is why C9 was redefined from "identify the
+exact leader inside the D18 promotion band" (a test that cannot exist, since
+D18 emitted no band) to:
+
+> **Can proposal-only discovery discard a candidate that exact certification
+> would have selected?**
+
+Agreement between discovery scores and certified scores is explicitly **not**
+the criterion. D18 established they diverge structurally, and the architecture
+is built on the assumption that they always will.
+
+## Why certification is admissible where discovery is not
+
+Because its quality does not depend on the treatment dimension. Measured:
+
+| | sparse | dense | spread |
+|---|---|---|---|
+| D18: Gen1 delivered gap | +0.373% | +0.165% | **0.208 pp** |
+| certification improvement over Gen1 | +1.166% | +1.183% | **0.018 pp** |
+
+Certification compresses the structure-correlated component by more than an
+order of magnitude. That is the empirical claim the architecture rests on, and
+it is measured rather than argued.
+
+**The residual is stated, not hidden.** Certification establishes
+(8,3)-block-local optimality — no block of 8 route-periods moved within 3 rungs
+improves it — not global optimality. The distance from that fixed point to the
+global optimum is unmeasured. It is strictly smaller than the gap D18 measured,
+because the certified plan is at least as good as the delivered one by
+construction, but "smaller than a forbidden quantity" is not "zero" and no
+Experiment 4 conclusion may pretend otherwise.

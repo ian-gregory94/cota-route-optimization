@@ -87,6 +87,23 @@ C9_CRITERION = {
 }
 
 
+class _Cached:
+    """A cached certified result, shaped like the real one for the fields used.
+
+    Deliberately minimal: if a field is needed that the cache does not carry,
+    this raises rather than silently returning a default, so a cache can never
+    quietly stand in for something it does not contain.
+    """
+
+    def __init__(self, **kw):
+        self.__dict__.update(kw)
+
+    def __getattr__(self, name):
+        raise AttributeError(
+            f"the certification cache does not carry {name!r}; recompute with "
+            f"--fresh rather than defaulting it")
+
+
 def _subsets(lines, lo, hi):
     for n in range(lo, hi + 1):
         for c in itertools.combinations(sorted(lines), n):
@@ -98,6 +115,9 @@ def main() -> int:
     ap.add_argument("--json", default="")
     ap.add_argument("--cells", default="")
     ap.add_argument("--max-candidates", type=int, default=0)
+    ap.add_argument("--fresh", action="store_true",
+                    help="ignore the certification cache and recompute ground "
+                         "truth from scratch; used for the cold determinism run")
     a = ap.parse_args()
 
     from cota_opt.configs import service_periods
@@ -208,9 +228,30 @@ def main() -> int:
         print(f"    stresses: {cell['stresses']}")
 
         # ---- STEP 1-3: ground truth, by exact certification -------------
+        #
+        # Checkpointed per candidate. The first run of this benchmark computed
+        # 1,369 seconds of certification for the dense cell and lost every
+        # second of it to a crash in the NEXT stage -- OPERATIONS 31 exactly.
+        # Certification is deterministic, so a cached result is the same result;
+        # the cache is keyed by the universe digest so it can never be read
+        # across a changed space. --fresh ignores it.
+        cache_path = (ROOT / "outputs" / "exp4" / "c9_cache" /
+                      f"{cell['name']}-{udig}.json")
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cached = {}
+        if cache_path.exists() and not a.fresh:
+            cached = json.loads(cache_path.read_text())
+            print(f"    cache: {len(cached)} certified results on disk")
+
         truth = {}
         t0 = time.time()
         for i, sel in enumerate(universe, 1):
+            if sel.state_key in cached:
+                c = cached[sel.state_key]
+                truth[sel.state_key] = {
+                    "sel": sel, "cert": _Cached(**c),
+                    "lines": sorted(sel.lines)}
+                continue
             built = assemble(sel, _BY_RID, graph, H.baseline.network.stops,
                              pool_version=POOL_VERSION,
                              first_dep_sec_by_period=first_dep)
@@ -228,6 +269,12 @@ def main() -> int:
                 continue
             truth[sel.state_key] = {"sel": sel, "cert": cr,
                                     "lines": sorted(sel.lines)}
+            # write the instant it exists, before anything else can fail
+            cached[sel.state_key] = {
+                "objective": cr.objective, "converged": cr.converged,
+                "rounds": cr.rounds, "plan_digest": cr.plan_digest,
+                "guarantee": cr.guarantee, "seconds": cr.seconds}
+            cache_path.write_text(json.dumps(cached, indent=1))
             if i % 10 == 0 or i == len(universe):
                 print(f"    certified {i}/{len(universe)} "
                       f"({time.time() - t0:.0f}s)")
@@ -264,8 +311,14 @@ def main() -> int:
                      if isinstance(v, (int, float))}, True, sc.plan)
 
         t0 = time.time()
+        # gen2_search seeds with a single line by default, which it then
+        # refuses when a cell's min_lines is above 1. The seed is the smallest
+        # admissible network in deterministic pool order -- a starting point,
+        # not a hint: it is chosen without reference to any certified result.
+        seed = tuple(sorted(pool)[:cell["lo"]])
         res = search(pool, scorer, periods, max_lines=cell["hi"],
-                     min_lines=cell["lo"], pinned_off=tuple(pins),
+                     min_lines=cell["lo"], seed_lines=seed,
+                     pinned_off=tuple(pins),
                      pool_version=POOL_VERSION, allow_swaps=True,
                      pair_adds=True, max_evaluations=400)
         t_disc = time.time() - t0

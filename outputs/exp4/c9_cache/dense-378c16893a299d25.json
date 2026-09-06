@@ -1,0 +1,130 @@
+{
+ "exp4|exp4-pool-v1|3lines#bc193752e408": {
+  "objective": 3595697.4509134386,
+  "converged": true,
+  "rounds": 17,
+  "plan_digest": "62cfb98bc8482a2a",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 92.78203845024109
+ },
+ "exp4|exp4-pool-v1|3lines#d45e0221c0ec": {
+  "objective": 3593157.402285139,
+  "converged": true,
+  "rounds": 16,
+  "plan_digest": "58f58d2e13ec806d",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 82.56034517288208
+ },
+ "exp4|exp4-pool-v1|3lines#9cb151d2e95b": {
+  "objective": 3600181.8612596523,
+  "converged": true,
+  "rounds": 12,
+  "plan_digest": "10af7604c198232d",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 37.062110900878906
+ },
+ "exp4|exp4-pool-v1|3lines#09f9952e5a35": {
+  "objective": 3591989.3133342965,
+  "converged": true,
+  "rounds": 12,
+  "plan_digest": "835268adce0b2028",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 58.52218818664551
+ },
+ "exp4|exp4-pool-v1|3lines#1607e8a41796": {
+  "objective": 3593100.5954436446,
+  "converged": true,
+  "rounds": 10,
+  "plan_digest": "3d4966f8ee64b1dc",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 39.62867498397827
+ },
+ "exp4|exp4-pool-v1|3lines#d81b7ff526b9": {
+  "objective": 3591902.152069302,
+  "converged": true,
+  "rounds": 10,
+  "plan_digest": "ed61878f90a91e38",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 38.48938608169556
+ },
+ "exp4|exp4-pool-v1|3lines#ebffced3ec4c": {
+  "objective": 3602510.6395625756,
+  "converged": true,
+  "rounds": 15,
+  "plan_digest": "cede8591f52ea1de",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 85.42960524559021
+ },
+ "exp4|exp4-pool-v1|3lines#cbff3f8bc370": {
+  "objective": 3593298.2074819743,
+  "converged": true,
+  "rounds": 13,
+  "plan_digest": "65b60e7625fc65e5",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 71.78626894950867
+ },
+ "exp4|exp4-pool-v1|3lines#0f308fbd0e83": {
+  "objective": 3592441.7629625043,
+  "converged": true,
+  "rounds": 15,
+  "plan_digest": "d568073852747444",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 75.81988620758057
+ },
+ "exp4|exp4-pool-v1|3lines#04ab844078de": {
+  "objective": 3588676.779997306,
+  "converged": true,
+  "rounds": 16,
+  "plan_digest": "f4f5d87cc8690d62",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 76.940114736557
+ },
+ "exp4|exp4-pool-v1|4lines#74b9321014d2": {
+  "objective": 3591151.654637334,
+  "converged": true,
+  "rounds": 19,
+  "plan_digest": "36013851a2b7e639",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 137.96810460090637
+ },
+ "exp4|exp4-pool-v1|4lines#e6532ea30f41": {
+  "objective": 3592566.7351277247,
+  "converged": true,
+  "rounds": 13,
+  "plan_digest": "2cd76f936c51862e",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 80.03596425056458
+ },
+ "exp4|exp4-pool-v1|4lines#d2ce95b7b85b": {
+  "objective": 3591281.432251585,
+  "converged": true,
+  "rounds": 15,
+  "plan_digest": "9cb486d18d246c20",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 86.87788319587708
+ },
+ "exp4|exp4-pool-v1|4lines#f7695aacdf95": {
+  "objective": 3588470.9636563705,
+  "converged": true,
+  "rounds": 18,
+  "plan_digest": "7a0f107c66975808",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 96.67631483078003
+ },
+ "exp4|exp4-pool-v1|4lines#df8c02477cc9": {
+  "objective": 3588758.6731021535,
+  "converged": true,
+  "rounds": 18,
+  "plan_digest": "b1db1b60f4fe8c6a",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 128.93878412246704
+ },
+ "exp4|exp4-pool-v1|5lines#dcd73d79f2b7": {
+  "objective": 3587974.7858595336,
+  "converged": true,
+  "rounds": 14,
+  "plan_digest": "989025d4ed690894",
+  "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+  "seconds": 146.82577466964722
+ }
+}
