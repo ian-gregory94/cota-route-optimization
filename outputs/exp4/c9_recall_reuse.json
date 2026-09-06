@@ -1,0 +1,3863 @@
+{
+  "item": "C9",
+  "criterion": {
+    "question": "can proposal-only discovery discard a candidate that exact certification would have selected?",
+    "primary": "the certified winner is promoted in 100% of cells",
+    "frontier": "recall of the certified top-5 is at least 90% across all cells",
+    "frontier_k": 5,
+    "frontier_min_recall": 0.9,
+    "not_the_criterion": "agreement between discovery scores and certified scores. D18 established they diverge structurally and the architecture assumes they always will.",
+    "version": 1
+  },
+  "certification_contract": {
+    "instrument": "gen2_frequency.solve_exact over a rotating block neighbourhood",
+    "n_keys": 8,
+    "k_rungs": 3,
+    "max_rounds": 40,
+    "rotation": "offset advances by n_keys // 2 each round",
+    "anchor": "the plan being certified, re-anchored after every improvement",
+    "guarantee": "no block of 8 route-periods moved within 3 ladder rungs of the certified plan improves the objective",
+    "version": 1
+  },
+  "certification_digest": "2125984c82b60a83",
+  "promotion_rule": {
+    "name": "permissive_frontier",
+    "version": 1,
+    "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+    "window_rel": 0.05,
+    "floor_n": 25,
+    "cap_n": 200,
+    "order": "ascending discovery objective, then state_key for determinism",
+    "justification": {
+      "d18_max_absolute_gap_pct": 0.645892,
+      "d18_largest_structure_paired_differential_pp": 0.381749,
+      "worst_case_discovery_misplacement_pct": 1.03,
+      "window_is_multiple_of_worst_case": 4.85
+    },
+    "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+    "may_decide": "frontier membership only; never a conclusion"
+  },
+  "promotion_digest": "ec6288fc8ec9b7d0",
+  "proposal_rule": {
+    "name": "multi_start_structural",
+    "revision": 2,
+    "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+    "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+    "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+    "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+    "stopping_rule": "never stop globally because one start reached a local optimum",
+    "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+    "total_eval_budget": 2000,
+    "n_diversified": 24,
+    "seed_schedule_base": 20260906,
+    "changes_to_inference": "none"
+  },
+  "proposal_digest": "2b8e18c681689a55",
+  "discovery_scorer": "master-path reuse (production)",
+  "n_cells": 6,
+  "winner_retained_all_cells": true,
+  "worst_frontier_recall": 1.0,
+  "frontier_criterion_met": true,
+  "verdict": "MET",
+  "seconds": 66.16921305656433,
+  "cells": [
+    {
+      "cell": "sparse_wide_pool",
+      "stresses": "sparse networks over the widest pool",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 30,
+        "unique_evaluations": 21,
+        "duplicate_visits": 470,
+        "unique_candidates": 21,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          18,
+          20,
+          20,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21
+        ],
+        "marginal_unique_per_start": [
+          18,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 18,
+            "new_unique": 18,
+            "cumulative_unique": 18
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 18,
+            "new_unique": 2,
+            "cumulative_unique": 20
+          },
+          {
+            "name": "spread_k1_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "1 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 20
+          },
+          {
+            "name": "spread_k2_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "2 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 15,
+            "new_unique": 1,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "greedy_add",
+            "kind": "constructed",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "built by greedily adding the best single line at each step",
+            "evaluated": 11,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "greedy_drop",
+            "kind": "constructed",
+            "lines": [
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "built by greedily dropping the worst single line from the maximum network",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b",
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-a13da236edef295b",
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b",
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-a13da236edef295b",
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b",
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b",
+              "syn-fc6d21f652a0cc01"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-91cfb5fd76db5ab6",
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-a13da236edef295b"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-9a1726e4c4a0670b"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 21
+          }
+        ],
+        "seconds": 3.1190969944000244
+      },
+      "greedy_construction_evals": 13,
+      "coverage_by_active_lines": {
+        "1": {
+          "space": 6,
+          "proposed": 6,
+          "promoted": 6
+        },
+        "2": {
+          "space": 15,
+          "proposed": 15,
+          "promoted": 15
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "22c883da3393e756",
+      "pool_size": 6,
+      "cardinality": [
+        1,
+        2
+      ],
+      "n_candidates": 21,
+      "n_certified": 21,
+      "n_converged": 21,
+      "certified_winner": "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+      "certified_winner_objective": 3577709.5310701844,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+        "exp4|exp4-pool-v1|2lines#c0661202bea6",
+        "exp4|exp4-pool-v1|2lines#f5c50f983575",
+        "exp4|exp4-pool-v1|2lines#96f7de653836",
+        "exp4|exp4-pool-v1|2lines#3a589b3f0e7a"
+      ],
+      "n_proposals": 21,
+      "n_feasible": 21,
+      "n_promoted": 21,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 21,
+        "n_feasible": 21,
+        "n_promoted": 21,
+        "window_absolute_APPROXIMATE": 181528.4251495957,
+        "best_discovery_objective_APPROXIMATE": 3630568.5029919143,
+        "cap_binding": false,
+        "floor_binding": true,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "exp4|exp4-pool-v1|1lines#7db3820b797d",
+          "exp4|exp4-pool-v1|1lines#82bd79bbe51b",
+          "exp4|exp4-pool-v1|1lines#9718c78dc97d",
+          "exp4|exp4-pool-v1|2lines#17cce2674079",
+          "exp4|exp4-pool-v1|2lines#3a589b3f0e7a",
+          "exp4|exp4-pool-v1|2lines#3d0a7d6a3fb5",
+          "exp4|exp4-pool-v1|2lines#3d84346ca0d9",
+          "exp4|exp4-pool-v1|2lines#50a7ecd74ab2",
+          "exp4|exp4-pool-v1|2lines#5d1f04d99cc1",
+          "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+          "exp4|exp4-pool-v1|2lines#96f7de653836",
+          "exp4|exp4-pool-v1|2lines#9d05ddb33fad",
+          "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1",
+          "exp4|exp4-pool-v1|2lines#c0661202bea6",
+          "exp4|exp4-pool-v1|2lines#c0db0dd42a35",
+          "exp4|exp4-pool-v1|2lines#dbda0fde23df",
+          "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "exp4|exp4-pool-v1|2lines#fe6de1ad549f"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+        "exp4|exp4-pool-v1|2lines#c0661202bea6",
+        "exp4|exp4-pool-v1|2lines#f5c50f983575",
+        "exp4|exp4-pool-v1|2lines#96f7de653836",
+        "exp4|exp4-pool-v1|2lines#3a589b3f0e7a"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.0005936622619628906,
+      "seconds_discovery": 4.897634506225586,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|1lines#12fb51fae200": 3607341.8441492915,
+        "exp4|exp4-pool-v1|1lines#30c070cb65bd": 3624002.362126694,
+        "exp4|exp4-pool-v1|1lines#6f3d5c79778f": 3599852.498782043,
+        "exp4|exp4-pool-v1|1lines#7db3820b797d": 3649736.026929022,
+        "exp4|exp4-pool-v1|1lines#82bd79bbe51b": 3626572.5505096857,
+        "exp4|exp4-pool-v1|1lines#9718c78dc97d": 3645618.72528011,
+        "exp4|exp4-pool-v1|2lines#17cce2674079": 3620689.5989556857,
+        "exp4|exp4-pool-v1|2lines#3a589b3f0e7a": 3597643.9469381403,
+        "exp4|exp4-pool-v1|2lines#3d0a7d6a3fb5": 3606666.903181209,
+        "exp4|exp4-pool-v1|2lines#3d84346ca0d9": 3607340.69679771,
+        "exp4|exp4-pool-v1|2lines#50a7ecd74ab2": 3626408.8678319873,
+        "exp4|exp4-pool-v1|2lines#5d1f04d99cc1": 3645160.025660484,
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5": 3577709.5310701844,
+        "exp4|exp4-pool-v1|2lines#96f7de653836": 3596743.558565904,
+        "exp4|exp4-pool-v1|2lines#9d05ddb33fad": 3622782.5621407335,
+        "exp4|exp4-pool-v1|2lines#bbbbb4fe54a1": 3604610.049523044,
+        "exp4|exp4-pool-v1|2lines#c0661202bea6": 3583505.814565425,
+        "exp4|exp4-pool-v1|2lines#c0db0dd42a35": 3599890.051659873,
+        "exp4|exp4-pool-v1|2lines#dbda0fde23df": 3620328.1727258507,
+        "exp4|exp4-pool-v1|2lines#f5c50f983575": 3585293.7853249894,
+        "exp4|exp4-pool-v1|2lines#fe6de1ad549f": 3603898.5417734757
+      }
+    },
+    {
+      "cell": "sparse_to_mid",
+      "stresses": "the sparse-to-mid range where D18's gap grows fastest",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 31,
+        "unique_evaluations": 25,
+        "duplicate_visits": 506,
+        "unique_candidates": 25,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          14,
+          20,
+          23,
+          24,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25
+        ],
+        "marginal_unique_per_start": [
+          14,
+          6,
+          3,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 14,
+            "new_unique": 14,
+            "cumulative_unique": 14
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 18,
+            "new_unique": 6,
+            "cumulative_unique": 20
+          },
+          {
+            "name": "spread_k2",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "2 lines spread evenly across the canonical ordering rather than the first 2, so seeds do not all start in one corner",
+            "evaluated": 20,
+            "new_unique": 3,
+            "cumulative_unique": 23
+          },
+          {
+            "name": "spread_k1_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "1 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 22,
+            "new_unique": 1,
+            "cumulative_unique": 24
+          },
+          {
+            "name": "spread_k2_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "2 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 19,
+            "new_unique": 1,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "spread_k3_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "3 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "greedy_add",
+            "kind": "constructed",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "built by greedily adding the best single line at each step",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          }
+        ],
+        "seconds": 4.378735303878784
+      },
+      "greedy_construction_evals": 17,
+      "coverage_by_active_lines": {
+        "1": {
+          "space": 5,
+          "proposed": 5,
+          "promoted": 5
+        },
+        "2": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        },
+        "3": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "22ea0cba7966f797",
+      "pool_size": 5,
+      "cardinality": [
+        1,
+        3
+      ],
+      "n_candidates": 25,
+      "n_certified": 25,
+      "n_converged": 25,
+      "certified_winner": "exp4|exp4-pool-v1|3lines#04ab844078de",
+      "certified_winner_objective": 3588676.779997306,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+        "exp4|exp4-pool-v1|3lines#09f9952e5a35",
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+        "exp4|exp4-pool-v1|3lines#1607e8a41796"
+      ],
+      "n_proposals": 25,
+      "n_feasible": 25,
+      "n_promoted": 25,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 25,
+        "n_feasible": 25,
+        "n_promoted": 25,
+        "window_absolute_APPROXIMATE": 181286.52872624906,
+        "best_discovery_objective_APPROXIMATE": 3625730.574524981,
+        "cap_binding": false,
+        "floor_binding": false,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|1lines#05431c245e91",
+          "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "exp4|exp4-pool-v1|1lines#ae7f23ebf11f",
+          "exp4|exp4-pool-v1|1lines#e88a9f67d7ae",
+          "exp4|exp4-pool-v1|1lines#efd9f4448b4e",
+          "exp4|exp4-pool-v1|2lines#3be405c3d448",
+          "exp4|exp4-pool-v1|2lines#45d4c04a70df",
+          "exp4|exp4-pool-v1|2lines#509e131389c8",
+          "exp4|exp4-pool-v1|2lines#740a340a2267",
+          "exp4|exp4-pool-v1|2lines#747bb75d11c5",
+          "exp4|exp4-pool-v1|2lines#750f5b49c2db",
+          "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c",
+          "exp4|exp4-pool-v1|2lines#7ef66665019b",
+          "exp4|exp4-pool-v1|2lines#a71de29ada8a",
+          "exp4|exp4-pool-v1|2lines#ca9033a7dcfc",
+          "exp4|exp4-pool-v1|3lines#04ab844078de",
+          "exp4|exp4-pool-v1|3lines#09f9952e5a35",
+          "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+          "exp4|exp4-pool-v1|3lines#1607e8a41796",
+          "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "exp4|exp4-pool-v1|3lines#bc193752e408",
+          "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+          "exp4|exp4-pool-v1|3lines#d45e0221c0ec",
+          "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "exp4|exp4-pool-v1|3lines#ebffced3ec4c"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+        "exp4|exp4-pool-v1|3lines#09f9952e5a35",
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+        "exp4|exp4-pool-v1|3lines#1607e8a41796"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.0007429122924804688,
+      "seconds_discovery": 6.984875679016113,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|1lines#05431c245e91": 3649735.2585259527,
+        "exp4|exp4-pool-v1|1lines#7fdd841ddd4b": 3634987.904066965,
+        "exp4|exp4-pool-v1|1lines#ae7f23ebf11f": 3609558.8311524983,
+        "exp4|exp4-pool-v1|1lines#e88a9f67d7ae": 3605506.1786833294,
+        "exp4|exp4-pool-v1|1lines#efd9f4448b4e": 3607038.7391779055,
+        "exp4|exp4-pool-v1|2lines#3be405c3d448": 3605575.581967318,
+        "exp4|exp4-pool-v1|2lines#45d4c04a70df": 3594228.111791612,
+        "exp4|exp4-pool-v1|2lines#509e131389c8": 3600114.8774420405,
+        "exp4|exp4-pool-v1|2lines#740a340a2267": 3604149.633364781,
+        "exp4|exp4-pool-v1|2lines#747bb75d11c5": 3632054.425687966,
+        "exp4|exp4-pool-v1|2lines#750f5b49c2db": 3607098.7137799193,
+        "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c": 3593317.610262005,
+        "exp4|exp4-pool-v1|2lines#7ef66665019b": 3596519.1731329393,
+        "exp4|exp4-pool-v1|2lines#a71de29ada8a": 3593996.019854497,
+        "exp4|exp4-pool-v1|2lines#ca9033a7dcfc": 3607482.9412836796,
+        "exp4|exp4-pool-v1|3lines#04ab844078de": 3588676.779997306,
+        "exp4|exp4-pool-v1|3lines#09f9952e5a35": 3591989.3133342965,
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83": 3592441.7629625043,
+        "exp4|exp4-pool-v1|3lines#1607e8a41796": 3593100.5954436446,
+        "exp4|exp4-pool-v1|3lines#9cb151d2e95b": 3600181.8612596523,
+        "exp4|exp4-pool-v1|3lines#bc193752e408": 3595697.4509134386,
+        "exp4|exp4-pool-v1|3lines#cbff3f8bc370": 3593298.2074819743,
+        "exp4|exp4-pool-v1|3lines#d45e0221c0ec": 3593157.402285139,
+        "exp4|exp4-pool-v1|3lines#d81b7ff526b9": 3591902.152069302,
+        "exp4|exp4-pool-v1|3lines#ebffced3ec4c": 3602510.6395625756
+      }
+    },
+    {
+      "cell": "dense",
+      "stresses": "dense networks, D18's low-gap end",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 30,
+        "unique_evaluations": 16,
+        "duplicate_visits": 335,
+        "unique_candidates": 16,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          10,
+          15,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "marginal_unique_per_start": [
+          10,
+          5,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 10,
+            "new_unique": 10,
+            "cumulative_unique": 10
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 13,
+            "new_unique": 5,
+            "cumulative_unique": 15
+          },
+          {
+            "name": "spread_k4",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "4 lines spread evenly across the canonical ordering rather than the first 4, so seeds do not all start in one corner",
+            "evaluated": 13,
+            "new_unique": 1,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "spread_k3_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "3 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "spread_k4_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "4 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "greedy_drop",
+            "kind": "constructed",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "built by greedily dropping the worst single line from the maximum network",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 13,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 16
+          }
+        ],
+        "seconds": 3.8335981369018555
+      },
+      "greedy_construction_evals": 24,
+      "coverage_by_active_lines": {
+        "3": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        },
+        "4": {
+          "space": 5,
+          "proposed": 5,
+          "promoted": 5
+        },
+        "5": {
+          "space": 1,
+          "proposed": 1,
+          "promoted": 1
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "378c16893a299d25",
+      "pool_size": 5,
+      "cardinality": [
+        3,
+        5
+      ],
+      "n_candidates": 16,
+      "n_certified": 16,
+      "n_converged": 16,
+      "certified_winner": "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+      "certified_winner_objective": 3587974.7858595336,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+        "exp4|exp4-pool-v1|4lines#f7695aacdf95",
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+        "exp4|exp4-pool-v1|4lines#74b9321014d2"
+      ],
+      "n_proposals": 16,
+      "n_feasible": 16,
+      "n_promoted": 16,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 16,
+        "n_feasible": 16,
+        "n_promoted": 16,
+        "window_absolute_APPROXIMATE": 181286.52872624906,
+        "best_discovery_objective_APPROXIMATE": 3625730.574524981,
+        "cap_binding": false,
+        "floor_binding": true,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|3lines#04ab844078de",
+          "exp4|exp4-pool-v1|3lines#09f9952e5a35",
+          "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+          "exp4|exp4-pool-v1|3lines#1607e8a41796",
+          "exp4|exp4-pool-v1|3lines#9cb151d2e95b",
+          "exp4|exp4-pool-v1|3lines#bc193752e408",
+          "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+          "exp4|exp4-pool-v1|3lines#d45e0221c0ec",
+          "exp4|exp4-pool-v1|3lines#d81b7ff526b9",
+          "exp4|exp4-pool-v1|3lines#ebffced3ec4c",
+          "exp4|exp4-pool-v1|4lines#74b9321014d2",
+          "exp4|exp4-pool-v1|4lines#d2ce95b7b85b",
+          "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+          "exp4|exp4-pool-v1|4lines#e6532ea30f41",
+          "exp4|exp4-pool-v1|4lines#f7695aacdf95",
+          "exp4|exp4-pool-v1|5lines#dcd73d79f2b7"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|5lines#dcd73d79f2b7",
+        "exp4|exp4-pool-v1|4lines#f7695aacdf95",
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+        "exp4|exp4-pool-v1|4lines#74b9321014d2"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.0006182193756103516,
+      "seconds_discovery": 8.69645380973816,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|3lines#04ab844078de": 3588676.779997306,
+        "exp4|exp4-pool-v1|3lines#09f9952e5a35": 3591989.3133342965,
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83": 3592441.7629625043,
+        "exp4|exp4-pool-v1|3lines#1607e8a41796": 3593100.5954436446,
+        "exp4|exp4-pool-v1|3lines#9cb151d2e95b": 3600181.8612596523,
+        "exp4|exp4-pool-v1|3lines#bc193752e408": 3595697.4509134386,
+        "exp4|exp4-pool-v1|3lines#cbff3f8bc370": 3593298.2074819743,
+        "exp4|exp4-pool-v1|3lines#d45e0221c0ec": 3593157.402285139,
+        "exp4|exp4-pool-v1|3lines#d81b7ff526b9": 3591902.152069302,
+        "exp4|exp4-pool-v1|3lines#ebffced3ec4c": 3602510.6395625756,
+        "exp4|exp4-pool-v1|4lines#74b9321014d2": 3591151.654637334,
+        "exp4|exp4-pool-v1|4lines#d2ce95b7b85b": 3591281.432251585,
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9": 3588758.6731021535,
+        "exp4|exp4-pool-v1|4lines#e6532ea30f41": 3592566.7351277247,
+        "exp4|exp4-pool-v1|4lines#f7695aacdf95": 3588470.9636563705,
+        "exp4|exp4-pool-v1|5lines#dcd73d79f2b7": 3587974.7858595336
+      }
+    },
+    {
+      "cell": "many_off",
+      "stresses": "a pinned-off line, the fate no subset can express",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 35,
+        "unique_evaluations": 25,
+        "duplicate_visits": 513,
+        "unique_candidates": 25,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          12,
+          22,
+          24,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25
+        ],
+        "marginal_unique_per_start": [
+          12,
+          10,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 12,
+            "new_unique": 12,
+            "cumulative_unique": 12
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 21,
+            "new_unique": 10,
+            "cumulative_unique": 22
+          },
+          {
+            "name": "spread_k3",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "3 lines spread evenly across the canonical ordering rather than the first 3, so seeds do not all start in one corner",
+            "evaluated": 19,
+            "new_unique": 2,
+            "cumulative_unique": 24
+          },
+          {
+            "name": "spread_k2_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "2 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 17,
+            "new_unique": 1,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "spread_k3_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "3 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "spread_k4_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "4 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "greedy_add",
+            "kind": "constructed",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "built by greedily adding the best single line at each step",
+            "evaluated": 9,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "greedy_drop",
+            "kind": "constructed",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "built by greedily dropping the worst single line from the maximum network",
+            "evaluated": 21,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "off_dense_k2_66fdf9",
+            "kind": "off_density",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "activates the pinned-off line alongside 1 others, so the OFF constraint binds and that basin is seeded",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "off_dense_k3_66fdf9",
+            "kind": "off_density",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "activates the pinned-off line alongside 2 others, so the OFF constraint binds and that basin is seeded",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "off_sparse_66fdf9",
+            "kind": "off_density",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "excludes the pinned-off line entirely, the complementary OFF density",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 9,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 21,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 21,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 21,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 21,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 12,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-e8ce379fa4507794",
+              "syn-f3421db8fc18598a"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 15,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          }
+        ],
+        "seconds": 4.1915647983551025
+      },
+      "greedy_construction_evals": 21,
+      "coverage_by_active_lines": {
+        "2": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        },
+        "3": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        },
+        "4": {
+          "space": 5,
+          "proposed": 5,
+          "promoted": 5
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "f6d873898d29d16f",
+      "pool_size": 5,
+      "cardinality": [
+        2,
+        4
+      ],
+      "n_candidates": 25,
+      "n_certified": 25,
+      "n_converged": 25,
+      "certified_winner": "exp4|exp4-pool-v1|3lines#04ab844078de",
+      "certified_winner_objective": 3588676.779997306,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+        "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+        "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c"
+      ],
+      "n_proposals": 25,
+      "n_feasible": 25,
+      "n_promoted": 25,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 25,
+        "n_feasible": 25,
+        "n_promoted": 25,
+        "window_absolute_APPROXIMATE": 181733.10245468514,
+        "best_discovery_objective_APPROXIMATE": 3634662.049093703,
+        "cap_binding": false,
+        "floor_binding": false,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|2lines#45d4c04a70df",
+          "exp4|exp4-pool-v1|2lines#740a340a2267",
+          "exp4|exp4-pool-v1|2lines#747bb75d11c5",
+          "exp4|exp4-pool-v1|2lines#750f5b49c2db",
+          "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c",
+          "exp4|exp4-pool-v1|2lines#ca9033a7dcfc",
+          "exp4|exp4-pool-v1|2lines|6off#0089821d4c2f",
+          "exp4|exp4-pool-v1|2lines|6off#1281c729d27d",
+          "exp4|exp4-pool-v1|2lines|6off#69ce50de3270",
+          "exp4|exp4-pool-v1|2lines|6off#8dfb9eb3b163",
+          "exp4|exp4-pool-v1|3lines#04ab844078de",
+          "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+          "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+          "exp4|exp4-pool-v1|3lines#ebffced3ec4c",
+          "exp4|exp4-pool-v1|3lines|6off#6b0fa5eeef1c",
+          "exp4|exp4-pool-v1|3lines|6off#7a2ec44c3858",
+          "exp4|exp4-pool-v1|3lines|6off#c7589a91fdc4",
+          "exp4|exp4-pool-v1|3lines|6off#dfaecc9cfd38",
+          "exp4|exp4-pool-v1|3lines|6off#e450706c002f",
+          "exp4|exp4-pool-v1|3lines|6off#f22977e87bb7",
+          "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+          "exp4|exp4-pool-v1|4lines|6off#5b7c83776b90",
+          "exp4|exp4-pool-v1|4lines|6off#79fcfb9d6799",
+          "exp4|exp4-pool-v1|4lines|6off#8d1e46675699",
+          "exp4|exp4-pool-v1|4lines|6off#c62cdf8aaf61"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|3lines#04ab844078de",
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9",
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83",
+        "exp4|exp4-pool-v1|3lines#cbff3f8bc370",
+        "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.0011944770812988281,
+      "seconds_discovery": 7.525052070617676,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|2lines#45d4c04a70df": 3594228.111791612,
+        "exp4|exp4-pool-v1|2lines#740a340a2267": 3604149.633364781,
+        "exp4|exp4-pool-v1|2lines#747bb75d11c5": 3632054.425687966,
+        "exp4|exp4-pool-v1|2lines#750f5b49c2db": 3607098.7137799193,
+        "exp4|exp4-pool-v1|2lines#7ad9d0bfdf3c": 3593317.610262005,
+        "exp4|exp4-pool-v1|2lines#ca9033a7dcfc": 3607482.9412836796,
+        "exp4|exp4-pool-v1|2lines|6off#0089821d4c2f": 3627852.5735250916,
+        "exp4|exp4-pool-v1|2lines|6off#1281c729d27d": 3615949.920289127,
+        "exp4|exp4-pool-v1|2lines|6off#69ce50de3270": 3626931.740534933,
+        "exp4|exp4-pool-v1|2lines|6off#8dfb9eb3b163": 3649736.1075570863,
+        "exp4|exp4-pool-v1|3lines#04ab844078de": 3588676.779997306,
+        "exp4|exp4-pool-v1|3lines#0f308fbd0e83": 3592441.7629625043,
+        "exp4|exp4-pool-v1|3lines#cbff3f8bc370": 3593298.2074819743,
+        "exp4|exp4-pool-v1|3lines#ebffced3ec4c": 3602510.6395625756,
+        "exp4|exp4-pool-v1|3lines|6off#6b0fa5eeef1c": 3616040.3415547707,
+        "exp4|exp4-pool-v1|3lines|6off#7a2ec44c3858": 3606758.8563951575,
+        "exp4|exp4-pool-v1|3lines|6off#c7589a91fdc4": 3625440.1279385965,
+        "exp4|exp4-pool-v1|3lines|6off#dfaecc9cfd38": 3623548.914093824,
+        "exp4|exp4-pool-v1|3lines|6off#e450706c002f": 3619275.842732395,
+        "exp4|exp4-pool-v1|3lines|6off#f22977e87bb7": 3607788.2908728337,
+        "exp4|exp4-pool-v1|4lines#df8c02477cc9": 3588758.6731021535,
+        "exp4|exp4-pool-v1|4lines|6off#5b7c83776b90": 3607082.5339545505,
+        "exp4|exp4-pool-v1|4lines|6off#79fcfb9d6799": 3617114.2362074316,
+        "exp4|exp4-pool-v1|4lines|6off#8d1e46675699": 3602750.011035071,
+        "exp4|exp4-pool-v1|4lines|6off#c62cdf8aaf61": 3605535.5897900667
+      }
+    },
+    {
+      "cell": "other_pool",
+      "stresses": "a different pool, so structure is not one pool's quirk",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 32,
+        "unique_evaluations": 25,
+        "duplicate_visits": 523,
+        "unique_candidates": 25,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          17,
+          22,
+          23,
+          23,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25
+        ],
+        "marginal_unique_per_start": [
+          17,
+          5,
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-cc10538c6cdfdd3d",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 17,
+            "new_unique": 17,
+            "cumulative_unique": 17
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 18,
+            "new_unique": 5,
+            "cumulative_unique": 22
+          },
+          {
+            "name": "spread_k2",
+            "kind": "structural",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "2 lines spread evenly across the canonical ordering rather than the first 2, so seeds do not all start in one corner",
+            "evaluated": 19,
+            "new_unique": 1,
+            "cumulative_unique": 23
+          },
+          {
+            "name": "spread_k1_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "1 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 23
+          },
+          {
+            "name": "spread_k2_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "2 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 19,
+            "new_unique": 2,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "spread_k3_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-d5325fe875cf4d92",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "3 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "greedy_add",
+            "kind": "constructed",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "built by greedily adding the best single line at each step",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "greedy_drop",
+            "kind": "constructed",
+            "lines": [
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "built by greedily dropping the worst single line from the maximum network",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-d5325fe875cf4d92",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-d5325fe875cf4d92",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-d5325fe875cf4d92",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 19,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-cc10538c6cdfdd3d",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 10,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 18,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-cc10538c6cdfdd3d",
+              "syn-e8ce379fa4507794"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 14,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-cc10538c6cdfdd3d",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 22,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-cc10538c6cdfdd3d",
+              "syn-d5325fe875cf4d92"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 17,
+            "new_unique": 0,
+            "cumulative_unique": 25
+          }
+        ],
+        "seconds": 3.5624608993530273
+      },
+      "greedy_construction_evals": 17,
+      "coverage_by_active_lines": {
+        "1": {
+          "space": 5,
+          "proposed": 5,
+          "promoted": 5
+        },
+        "2": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        },
+        "3": {
+          "space": 10,
+          "proposed": 10,
+          "promoted": 10
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "17874b535f75b712",
+      "pool_size": 5,
+      "cardinality": [
+        1,
+        3
+      ],
+      "n_candidates": 25,
+      "n_certified": 25,
+      "n_converged": 25,
+      "certified_winner": "exp4|exp4-pool-v1|3lines#7cb1083e64b3",
+      "certified_winner_objective": 3561849.266109934,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|3lines#7cb1083e64b3",
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+        "exp4|exp4-pool-v1|3lines#c051110a7382",
+        "exp4|exp4-pool-v1|3lines#7fbc31d4ddd1",
+        "exp4|exp4-pool-v1|3lines#6c92d5c6db24"
+      ],
+      "n_proposals": 25,
+      "n_feasible": 25,
+      "n_promoted": 25,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 25,
+        "n_feasible": 25,
+        "n_promoted": 25,
+        "window_absolute_APPROXIMATE": 182255.9210535188,
+        "best_discovery_objective_APPROXIMATE": 3645118.421070376,
+        "cap_binding": false,
+        "floor_binding": false,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "exp4|exp4-pool-v1|1lines#2f55ef97d559",
+          "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "exp4|exp4-pool-v1|1lines#7fdd841ddd4b",
+          "exp4|exp4-pool-v1|1lines#e6e3edc739cc",
+          "exp4|exp4-pool-v1|2lines#247665c523d7",
+          "exp4|exp4-pool-v1|2lines#5846810f394b",
+          "exp4|exp4-pool-v1|2lines#5f8626aca7d6",
+          "exp4|exp4-pool-v1|2lines#5ff7d7fe252c",
+          "exp4|exp4-pool-v1|2lines#635fea45c0d0",
+          "exp4|exp4-pool-v1|2lines#732fc5db6aa8",
+          "exp4|exp4-pool-v1|2lines#75cbdc92dde8",
+          "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+          "exp4|exp4-pool-v1|2lines#8d08a1f3a789",
+          "exp4|exp4-pool-v1|2lines#b9388ed491b0",
+          "exp4|exp4-pool-v1|3lines#17ff012a1e2c",
+          "exp4|exp4-pool-v1|3lines#3a2b960b5923",
+          "exp4|exp4-pool-v1|3lines#6c92d5c6db24",
+          "exp4|exp4-pool-v1|3lines#7cb1083e64b3",
+          "exp4|exp4-pool-v1|3lines#7fbc31d4ddd1",
+          "exp4|exp4-pool-v1|3lines#87cde3722a1e",
+          "exp4|exp4-pool-v1|3lines#a08df25aae20",
+          "exp4|exp4-pool-v1|3lines#a582fa6dc095",
+          "exp4|exp4-pool-v1|3lines#c051110a7382",
+          "exp4|exp4-pool-v1|3lines#e5f70bcd8d08"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|3lines#7cb1083e64b3",
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+        "exp4|exp4-pool-v1|3lines#c051110a7382",
+        "exp4|exp4-pool-v1|3lines#7fbc31d4ddd1",
+        "exp4|exp4-pool-v1|3lines#6c92d5c6db24"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.00074005126953125,
+      "seconds_discovery": 5.893535614013672,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|1lines#12fb51fae200": 3606616.7101185243,
+        "exp4|exp4-pool-v1|1lines#2f55ef97d559": 3649724.866384874,
+        "exp4|exp4-pool-v1|1lines#6f3d5c79778f": 3598858.121520632,
+        "exp4|exp4-pool-v1|1lines#7fdd841ddd4b": 3634881.886031823,
+        "exp4|exp4-pool-v1|1lines#e6e3edc739cc": 3649725.0022298554,
+        "exp4|exp4-pool-v1|2lines#247665c523d7": 3578386.880540169,
+        "exp4|exp4-pool-v1|2lines#5846810f394b": 3598765.7297068504,
+        "exp4|exp4-pool-v1|2lines#5f8626aca7d6": 3631508.6094813594,
+        "exp4|exp4-pool-v1|2lines#5ff7d7fe252c": 3649729.4511529966,
+        "exp4|exp4-pool-v1|2lines#635fea45c0d0": 3631520.457139468,
+        "exp4|exp4-pool-v1|2lines#732fc5db6aa8": 3598765.7297068504,
+        "exp4|exp4-pool-v1|2lines#75cbdc92dde8": 3606593.532509331,
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5": 3574991.47201071,
+        "exp4|exp4-pool-v1|2lines#8d08a1f3a789": 3591924.2137536593,
+        "exp4|exp4-pool-v1|2lines#b9388ed491b0": 3606590.466667053,
+        "exp4|exp4-pool-v1|3lines#17ff012a1e2c": 3590218.0184112685,
+        "exp4|exp4-pool-v1|3lines#3a2b960b5923": 3577600.432426062,
+        "exp4|exp4-pool-v1|3lines#6c92d5c6db24": 3577585.6630915203,
+        "exp4|exp4-pool-v1|3lines#7cb1083e64b3": 3561849.266109934,
+        "exp4|exp4-pool-v1|3lines#7fbc31d4ddd1": 3575138.451909871,
+        "exp4|exp4-pool-v1|3lines#87cde3722a1e": 3590201.5337093696,
+        "exp4|exp4-pool-v1|3lines#a08df25aae20": 3599468.8868949343,
+        "exp4|exp4-pool-v1|3lines#a582fa6dc095": 3606478.6964100692,
+        "exp4|exp4-pool-v1|3lines#c051110a7382": 3575105.5351469526,
+        "exp4|exp4-pool-v1|3lines#e5f70bcd8d08": 3631551.0164909717
+      }
+    },
+    {
+      "cell": "large_production_like",
+      "stresses": "a space several times larger than the others, so the proposal generator is exercised where enumeration is not the mechanism",
+      "proposal": {
+        "rule": {
+          "name": "multi_start_structural",
+          "revision": 2,
+          "supersedes": "revision 1: a single steepest-descent trajectory from one seed, which covered 79% of an enumerable space and missed the certified winner in 2 of 5 C9 cells",
+          "starts": "the preregistered structural family (max, min, per-cardinality spread and half-stride offset, incumbent where applicable, greedy-add, greedy-drop, OFF-density variants), followed by 24 diversified starts from fixed schedule 20260906",
+          "proposal_set": "the union of EVERY unique candidate visited on every trajectory, not only the terminal optima",
+          "budget": "a shared pool of 2000 unique scored evaluations per cell; a start that converges early releases the remainder; starts continue until the pool is exhausted or the family is finished",
+          "stopping_rule": "never stop globally because one start reached a local optimum",
+          "memoization": "scores are memoized across starts; duplicate visits are counted and reported but charged nothing",
+          "total_eval_budget": 2000,
+          "n_diversified": 24,
+          "seed_schedule_base": 20260906,
+          "changes_to_inference": "none"
+        },
+        "rule_digest": "2b8e18c681689a55",
+        "n_starts": 31,
+        "unique_evaluations": 63,
+        "duplicate_visits": 939,
+        "unique_candidates": 63,
+        "budget_exhausted": false,
+        "saturation_cumulative_unique": [
+          24,
+          37,
+          41,
+          53,
+          60,
+          62,
+          62,
+          62,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63,
+          63
+        ],
+        "marginal_unique_per_start": [
+          24,
+          13,
+          4,
+          12,
+          7,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "starts": [
+          {
+            "name": "max_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-2663c6d04f289b58",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "every line the cell allows, the dense end of the treatment dimension",
+            "evaluated": 24,
+            "new_unique": 24,
+            "cumulative_unique": 24
+          },
+          {
+            "name": "min_lines",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9"
+            ],
+            "rationale": "the sparsest admissible network, the end where D18 found the gap largest",
+            "evaluated": 33,
+            "new_unique": 13,
+            "cumulative_unique": 37
+          },
+          {
+            "name": "spread_k2",
+            "kind": "structural",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "2 lines spread evenly across the canonical ordering rather than the first 2, so seeds do not all start in one corner",
+            "evaluated": 26,
+            "new_unique": 4,
+            "cumulative_unique": 41
+          },
+          {
+            "name": "spread_k1_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "1 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 41,
+            "new_unique": 12,
+            "cumulative_unique": 53
+          },
+          {
+            "name": "spread_k2_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "2 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 33,
+            "new_unique": 7,
+            "cumulative_unique": 60
+          },
+          {
+            "name": "spread_k3_offset",
+            "kind": "structural",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-47ece08f5664f6eb",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "3 lines spread on a half-stride offset, so the two same-size structural seeds cover different lines",
+            "evaluated": 38,
+            "new_unique": 2,
+            "cumulative_unique": 62
+          },
+          {
+            "name": "greedy_add",
+            "kind": "constructed",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-60f95ff936eeeacd",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "built by greedily adding the best single line at each step",
+            "evaluated": 16,
+            "new_unique": 0,
+            "cumulative_unique": 62
+          },
+          {
+            "name": "div_00",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-60f95ff936eeeacd",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 0 from the fixed schedule 20260906",
+            "evaluated": 31,
+            "new_unique": 0,
+            "cumulative_unique": 62
+          },
+          {
+            "name": "div_01",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-2663c6d04f289b58",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 1 from the fixed schedule 20260906",
+            "evaluated": 38,
+            "new_unique": 1,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_02",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 2 from the fixed schedule 20260906",
+            "evaluated": 33,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_03",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 3 from the fixed schedule 20260906",
+            "evaluated": 26,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_04",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58"
+            ],
+            "rationale": "diversified start 4 from the fixed schedule 20260906",
+            "evaluated": 41,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_05",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 5 from the fixed schedule 20260906",
+            "evaluated": 40,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_06",
+            "kind": "diversified",
+            "lines": [
+              "syn-60f95ff936eeeacd",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 6 from the fixed schedule 20260906",
+            "evaluated": 26,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_07",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-8352b3f4b3bcd2f2",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 7 from the fixed schedule 20260906",
+            "evaluated": 24,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_08",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-0a0e2e5cac7df60e",
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "diversified start 8 from the fixed schedule 20260906",
+            "evaluated": 31,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_09",
+            "kind": "diversified",
+            "lines": [
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 9 from the fixed schedule 20260906",
+            "evaluated": 41,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_10",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "diversified start 10 from the fixed schedule 20260906",
+            "evaluated": 41,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_11",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 11 from the fixed schedule 20260906",
+            "evaluated": 33,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_12",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9"
+            ],
+            "rationale": "diversified start 12 from the fixed schedule 20260906",
+            "evaluated": 33,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_13",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-47ece08f5664f6eb"
+            ],
+            "rationale": "diversified start 13 from the fixed schedule 20260906",
+            "evaluated": 40,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_14",
+            "kind": "diversified",
+            "lines": [
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 14 from the fixed schedule 20260906",
+            "evaluated": 41,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_15",
+            "kind": "diversified",
+            "lines": [
+              "syn-2663c6d04f289b58",
+              "syn-47ece08f5664f6eb",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 15 from the fixed schedule 20260906",
+            "evaluated": 31,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_16",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-0a0e2e5cac7df60e",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 16 from the fixed schedule 20260906",
+            "evaluated": 24,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_17",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 17 from the fixed schedule 20260906",
+            "evaluated": 33,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_18",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 18 from the fixed schedule 20260906",
+            "evaluated": 24,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_19",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e"
+            ],
+            "rationale": "diversified start 19 from the fixed schedule 20260906",
+            "evaluated": 41,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_20",
+            "kind": "diversified",
+            "lines": [
+              "syn-0811e763f266fdf9",
+              "syn-2663c6d04f289b58",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 20 from the fixed schedule 20260906",
+            "evaluated": 24,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_21",
+            "kind": "diversified",
+            "lines": [
+              "syn-47ece08f5664f6eb",
+              "syn-8352b3f4b3bcd2f2"
+            ],
+            "rationale": "diversified start 21 from the fixed schedule 20260906",
+            "evaluated": 33,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_22",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-60f95ff936eeeacd",
+              "syn-91cfb5fd76db5ab6"
+            ],
+            "rationale": "diversified start 22 from the fixed schedule 20260906",
+            "evaluated": 31,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          },
+          {
+            "name": "div_23",
+            "kind": "diversified",
+            "lines": [
+              "syn-0a0e2e5cac7df60e",
+              "syn-47ece08f5664f6eb",
+              "syn-60f95ff936eeeacd"
+            ],
+            "rationale": "diversified start 23 from the fixed schedule 20260906",
+            "evaluated": 31,
+            "new_unique": 0,
+            "cumulative_unique": 63
+          }
+        ],
+        "seconds": 11.365856885910034
+      },
+      "greedy_construction_evals": 23,
+      "coverage_by_active_lines": {
+        "1": {
+          "space": 7,
+          "proposed": 7,
+          "promoted": 7
+        },
+        "2": {
+          "space": 21,
+          "proposed": 21,
+          "promoted": 21
+        },
+        "3": {
+          "space": 35,
+          "proposed": 35,
+          "promoted": 35
+        }
+      },
+      "proposal_coverage": 1.0,
+      "universe_digest": "113425e481d2e03e",
+      "pool_size": 7,
+      "cardinality": [
+        1,
+        3
+      ],
+      "n_candidates": 63,
+      "n_certified": 63,
+      "n_converged": 63,
+      "certified_winner": "exp4|exp4-pool-v1|3lines#9c8b269c033b",
+      "certified_winner_objective": 3561773.9406611165,
+      "certified_frontier": [
+        "exp4|exp4-pool-v1|3lines#9c8b269c033b",
+        "exp4|exp4-pool-v1|3lines#c79f309fa61d",
+        "exp4|exp4-pool-v1|3lines#34051eabc62e",
+        "exp4|exp4-pool-v1|3lines#3568545edd89",
+        "exp4|exp4-pool-v1|3lines#4fd3ad39847c"
+      ],
+      "n_proposals": 63,
+      "n_feasible": 63,
+      "n_promoted": 63,
+      "promotion": {
+        "rule": {
+          "name": "permissive_frontier",
+          "version": 1,
+          "statement": "Promote every FEASIBLE proposal whose discovery objective is within WINDOW_REL of the best discovery objective; if that yields fewer than FLOOR_N, promote the FLOOR_N best instead; never promote more than CAP_N, and record cap_binding when the cap truncates the set.",
+          "window_rel": 0.05,
+          "floor_n": 25,
+          "cap_n": 200,
+          "order": "ascending discovery objective, then state_key for determinism",
+          "justification": {
+            "d18_max_absolute_gap_pct": 0.645892,
+            "d18_largest_structure_paired_differential_pp": 0.381749,
+            "worst_case_discovery_misplacement_pct": 1.03,
+            "window_is_multiple_of_worst_case": 4.85
+          },
+          "asymmetry": "false positives cost only compute because certification removes them; false negatives are unrecoverable",
+          "may_decide": "frontier membership only; never a conclusion"
+        },
+        "rule_digest": "ec6288fc8ec9b7d0",
+        "n_proposals": 63,
+        "n_feasible": 63,
+        "n_promoted": 63,
+        "window_absolute_APPROXIMATE": 181118.25853712062,
+        "best_discovery_objective_APPROXIMATE": 3622365.170742412,
+        "cap_binding": false,
+        "floor_binding": false,
+        "window_binding": false,
+        "recall_risk": "none recorded",
+        "promoted_keys": [
+          "exp4|exp4-pool-v1|1lines#05431c245e91",
+          "exp4|exp4-pool-v1|1lines#12fb51fae200",
+          "exp4|exp4-pool-v1|1lines#30c070cb65bd",
+          "exp4|exp4-pool-v1|1lines#6f3d5c79778f",
+          "exp4|exp4-pool-v1|1lines#92652d1ae2d8",
+          "exp4|exp4-pool-v1|1lines#ae7f23ebf11f",
+          "exp4|exp4-pool-v1|1lines#e88a9f67d7ae",
+          "exp4|exp4-pool-v1|2lines#0c0514c7d6b9",
+          "exp4|exp4-pool-v1|2lines#376bdd07259e",
+          "exp4|exp4-pool-v1|2lines#3a589b3f0e7a",
+          "exp4|exp4-pool-v1|2lines#3be405c3d448",
+          "exp4|exp4-pool-v1|2lines#4405116f49eb",
+          "exp4|exp4-pool-v1|2lines#4997a5edb603",
+          "exp4|exp4-pool-v1|2lines#4ddf5b6466a3",
+          "exp4|exp4-pool-v1|2lines#5a5b620636be",
+          "exp4|exp4-pool-v1|2lines#612df65fd1be",
+          "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5",
+          "exp4|exp4-pool-v1|2lines#7ef66665019b",
+          "exp4|exp4-pool-v1|2lines#8ddc14ef8e48",
+          "exp4|exp4-pool-v1|2lines#a5a709c5b07c",
+          "exp4|exp4-pool-v1|2lines#b055be441469",
+          "exp4|exp4-pool-v1|2lines#b58178e4baca",
+          "exp4|exp4-pool-v1|2lines#b81a5bfe5310",
+          "exp4|exp4-pool-v1|2lines#becbcb9684b5",
+          "exp4|exp4-pool-v1|2lines#ca9033a7dcfc",
+          "exp4|exp4-pool-v1|2lines#debbf6e3e478",
+          "exp4|exp4-pool-v1|2lines#f0cadaa0e19d",
+          "exp4|exp4-pool-v1|2lines#f5c50f983575",
+          "exp4|exp4-pool-v1|3lines#05b5e83cd090",
+          "exp4|exp4-pool-v1|3lines#0b3dfecacdc1",
+          "exp4|exp4-pool-v1|3lines#0eddf618a922",
+          "exp4|exp4-pool-v1|3lines#1148e82dba7b",
+          "exp4|exp4-pool-v1|3lines#1bd3af326528",
+          "exp4|exp4-pool-v1|3lines#1cebe3c1090d",
+          "exp4|exp4-pool-v1|3lines#25cf2ef6c3c4",
+          "exp4|exp4-pool-v1|3lines#2706f7a4fb23",
+          "exp4|exp4-pool-v1|3lines#28c233f96629",
+          "exp4|exp4-pool-v1|3lines#34051eabc62e",
+          "exp4|exp4-pool-v1|3lines#3568545edd89",
+          "exp4|exp4-pool-v1|3lines#42eaccf2016b",
+          "exp4|exp4-pool-v1|3lines#4ce446351df6",
+          "exp4|exp4-pool-v1|3lines#4fd3ad39847c",
+          "exp4|exp4-pool-v1|3lines#5c3fa4660d85",
+          "exp4|exp4-pool-v1|3lines#61f45ce3f18a",
+          "exp4|exp4-pool-v1|3lines#642ba113a4f6",
+          "exp4|exp4-pool-v1|3lines#66fcdcb0b4cf",
+          "exp4|exp4-pool-v1|3lines#680663d938ff",
+          "exp4|exp4-pool-v1|3lines#6c474c1b8143",
+          "exp4|exp4-pool-v1|3lines#82ddcc482f62",
+          "exp4|exp4-pool-v1|3lines#88a55741eacd",
+          "exp4|exp4-pool-v1|3lines#9b895c1a0974",
+          "exp4|exp4-pool-v1|3lines#9c8b269c033b",
+          "exp4|exp4-pool-v1|3lines#9d303ff28199",
+          "exp4|exp4-pool-v1|3lines#a012df8b942d",
+          "exp4|exp4-pool-v1|3lines#b605ef809f84",
+          "exp4|exp4-pool-v1|3lines#b9d629ac963a",
+          "exp4|exp4-pool-v1|3lines#bc193752e408",
+          "exp4|exp4-pool-v1|3lines#c79f309fa61d",
+          "exp4|exp4-pool-v1|3lines#c8f2182c0030",
+          "exp4|exp4-pool-v1|3lines#cc640c49bd23",
+          "exp4|exp4-pool-v1|3lines#dd8b12f53065",
+          "exp4|exp4-pool-v1|3lines#e3f8d7c0fbad",
+          "exp4|exp4-pool-v1|3lines#f90d43e12bcf"
+        ]
+      },
+      "winner_retained": true,
+      "frontier_hits": [
+        "exp4|exp4-pool-v1|3lines#9c8b269c033b",
+        "exp4|exp4-pool-v1|3lines#c79f309fa61d",
+        "exp4|exp4-pool-v1|3lines#34051eabc62e",
+        "exp4|exp4-pool-v1|3lines#3568545edd89",
+        "exp4|exp4-pool-v1|3lines#4fd3ad39847c"
+      ],
+      "frontier_recall": 1.0,
+      "frontier_never_proposed": [],
+      "seconds_ground_truth": 0.0018100738525390625,
+      "seconds_discovery": 15.013193845748901,
+      "certified_objectives": {
+        "exp4|exp4-pool-v1|1lines#05431c245e91": 3649724.866384874,
+        "exp4|exp4-pool-v1|1lines#12fb51fae200": 3606616.7101185243,
+        "exp4|exp4-pool-v1|1lines#30c070cb65bd": 3623597.278444764,
+        "exp4|exp4-pool-v1|1lines#6f3d5c79778f": 3598858.121520632,
+        "exp4|exp4-pool-v1|1lines#92652d1ae2d8": 3634881.886031823,
+        "exp4|exp4-pool-v1|1lines#ae7f23ebf11f": 3608941.054674597,
+        "exp4|exp4-pool-v1|1lines#e88a9f67d7ae": 3604645.264537828,
+        "exp4|exp4-pool-v1|2lines#0c0514c7d6b9": 3620681.548737424,
+        "exp4|exp4-pool-v1|2lines#376bdd07259e": 3572117.8340035956,
+        "exp4|exp4-pool-v1|2lines#3a589b3f0e7a": 3596120.5785505474,
+        "exp4|exp4-pool-v1|2lines#3be405c3d448": 3604610.077637432,
+        "exp4|exp4-pool-v1|2lines#4405116f49eb": 3596091.436221412,
+        "exp4|exp4-pool-v1|2lines#4997a5edb603": 3605106.290100003,
+        "exp4|exp4-pool-v1|2lines#4ddf5b6466a3": 3619732.8872354883,
+        "exp4|exp4-pool-v1|2lines#5a5b620636be": 3631525.0754126073,
+        "exp4|exp4-pool-v1|2lines#612df65fd1be": 3591915.5463084755,
+        "exp4|exp4-pool-v1|2lines#77e3b9ec2ab5": 3574991.47201071,
+        "exp4|exp4-pool-v1|2lines#7ef66665019b": 3594516.2524368498,
+        "exp4|exp4-pool-v1|2lines#8ddc14ef8e48": 3578414.814843521,
+        "exp4|exp4-pool-v1|2lines#a5a709c5b07c": 3592040.4328009025,
+        "exp4|exp4-pool-v1|2lines#b055be441469": 3606478.6964100692,
+        "exp4|exp4-pool-v1|2lines#b58178e4baca": 3599263.2220270047,
+        "exp4|exp4-pool-v1|2lines#b81a5bfe5310": 3598816.0327715236,
+        "exp4|exp4-pool-v1|2lines#becbcb9684b5": 3582240.4908175743,
+        "exp4|exp4-pool-v1|2lines#ca9033a7dcfc": 3605981.810164529,
+        "exp4|exp4-pool-v1|2lines#debbf6e3e478": 3592721.383990539,
+        "exp4|exp4-pool-v1|2lines#f0cadaa0e19d": 3602846.4804967125,
+        "exp4|exp4-pool-v1|2lines#f5c50f983575": 3582732.7155361706,
+        "exp4|exp4-pool-v1|3lines#05b5e83cd090": 3594458.7567993905,
+        "exp4|exp4-pool-v1|3lines#0b3dfecacdc1": 3591346.2860722374,
+        "exp4|exp4-pool-v1|3lines#0eddf618a922": 3569639.0469070743,
+        "exp4|exp4-pool-v1|3lines#1148e82dba7b": 3581131.207836341,
+        "exp4|exp4-pool-v1|3lines#1bd3af326528": 3591685.1810379094,
+        "exp4|exp4-pool-v1|3lines#1cebe3c1090d": 3581043.1126999645,
+        "exp4|exp4-pool-v1|3lines#25cf2ef6c3c4": 3581741.9127592035,
+        "exp4|exp4-pool-v1|3lines#2706f7a4fb23": 3591133.6825025636,
+        "exp4|exp4-pool-v1|3lines#28c233f96629": 3580519.087841642,
+        "exp4|exp4-pool-v1|3lines#34051eabc62e": 3566115.8744777036,
+        "exp4|exp4-pool-v1|3lines#3568545edd89": 3566356.520129546,
+        "exp4|exp4-pool-v1|3lines#42eaccf2016b": 3590246.338791564,
+        "exp4|exp4-pool-v1|3lines#4ce446351df6": 3593332.98416646,
+        "exp4|exp4-pool-v1|3lines#4fd3ad39847c": 3567941.9212925048,
+        "exp4|exp4-pool-v1|3lines#5c3fa4660d85": 3589336.647967657,
+        "exp4|exp4-pool-v1|3lines#61f45ce3f18a": 3600430.1995998933,
+        "exp4|exp4-pool-v1|3lines#642ba113a4f6": 3590284.117558192,
+        "exp4|exp4-pool-v1|3lines#66fcdcb0b4cf": 3586893.7498214813,
+        "exp4|exp4-pool-v1|3lines#680663d938ff": 3594155.9029688863,
+        "exp4|exp4-pool-v1|3lines#6c474c1b8143": 3599273.0443867007,
+        "exp4|exp4-pool-v1|3lines#82ddcc482f62": 3602396.0592522323,
+        "exp4|exp4-pool-v1|3lines#88a55741eacd": 3602333.0462466534,
+        "exp4|exp4-pool-v1|3lines#9b895c1a0974": 3590243.234794666,
+        "exp4|exp4-pool-v1|3lines#9c8b269c033b": 3561773.9406611165,
+        "exp4|exp4-pool-v1|3lines#9d303ff28199": 3577184.057781991,
+        "exp4|exp4-pool-v1|3lines#a012df8b942d": 3574987.236976591,
+        "exp4|exp4-pool-v1|3lines#b605ef809f84": 3594247.1148832478,
+        "exp4|exp4-pool-v1|3lines#b9d629ac963a": 3577737.5331766317,
+        "exp4|exp4-pool-v1|3lines#bc193752e408": 3593054.0430329912,
+        "exp4|exp4-pool-v1|3lines#c79f309fa61d": 3563354.8894890803,
+        "exp4|exp4-pool-v1|3lines#c8f2182c0030": 3594236.5439002183,
+        "exp4|exp4-pool-v1|3lines#cc640c49bd23": 3568415.2667326205,
+        "exp4|exp4-pool-v1|3lines#dd8b12f53065": 3572142.9414855563,
+        "exp4|exp4-pool-v1|3lines#e3f8d7c0fbad": 3593522.09989315,
+        "exp4|exp4-pool-v1|3lines#f90d43e12bcf": 3617394.2537972857
+      }
+    }
+  ]
+}

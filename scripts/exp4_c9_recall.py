@@ -115,6 +115,16 @@ def main() -> int:
     ap.add_argument("--json", default="")
     ap.add_argument("--cells", default="")
     ap.add_argument("--max-candidates", type=int, default=0)
+    ap.add_argument("--reuse", action="store_true",
+                    help="run DISCOVERY against the frozen supernetwork master "
+                         "path set, which is the production configuration: "
+                         "gate 4-7 permits reuse in proposal-only discovery, "
+                         "and at production scale one full-rebuild discovery "
+                         "evaluation costs 329s at 41 active lines, so a "
+                         "2000-evaluation budget is 7.6 days without it. "
+                         "Certification is untouched -- it never takes a path "
+                         "cache. This exists so C9 validates the configuration "
+                         "production will actually run.")
     ap.add_argument("--fresh", action="store_true",
                     help="ignore the certification cache and recompute ground "
                          "truth from scratch; used for the cold determinism run")
@@ -134,7 +144,9 @@ def main() -> int:
                                         PROPOSAL_RULE, TOTAL_EVAL_BUDGET,
                                         build_seed_family, diversified_starts,
                                         run_multi_start)
+    from cota_opt.exp4_masterpath import filter_for_network
     from cota_opt.exp4_score import score_exp4_network
+    from cota_opt.configs import period_of_seconds
     from cota_opt.gen2_search import search
     from cota_opt.firewall.core import digest
     from exp2_treatments import pinned
@@ -308,8 +320,52 @@ def main() -> int:
               f"{n_conv}/{len(truth)} converged; {t_truth:.0f}s")
 
         # ---- STEP 4: the production pipeline, independently -------------
+        # PRODUCTION DISCOVERY SCORER. With --reuse this filters the frozen
+        # supernetwork master path set per candidate instead of rebuilding
+        # paths, which is what gate 4-7 permits for proposal-only discovery and
+        # what makes Experiment 4 affordable: one full-rebuild evaluation is
+        # 329s at 41 active lines. It is deliberately the BIASED path -- gate
+        # 4-7 measured that bias and it is contained, not absent -- and C9's
+        # job is to establish that the bias does not cost recall.
+        master = {}
+        if a.reuse:
+            sup_sel = Exp4Selection(POOL_VERSION, frozenset(pool),
+                                    frozenset())
+            if assembles(sup_sel):
+                mc = {}
+                try:
+                    score_exp4_network(
+                        sup_sel, harness=H, stops_gdf=sg, pool=_BY_RID,
+                        graph=graph, pool_version=POOL_VERSION,
+                        first_dep_sec_by_period=first_dep, limits=limits,
+                        constraints=cons, lam=2.0, seed=20260825,
+                        iterations=1, restarts=1, width=0,
+                        waiting_model="same_route", starts="greedy",
+                        allow_off=True, pathset_cache=mc)
+                except Exception:
+                    mc = {}
+                master = dict(mc)
+                print(f"    master path set: "
+                      f"{ {k: int(v.n_paths) for k, v in sorted(master.items())} }")
+
+        def _rp_keys(built):
+            ts = built.tstats.copy()
+            ts["period"] = ts["first_dep_sec"].map(
+                lambda x: period_of_seconds(x, service_periods(H.assumptions)))
+            return sorted({(str(r), str(pp))
+                           for r, pp in zip(ts["route_id"], ts["period"]) if pp})
+
         def scorer(s):
             try:
+                cache = None
+                if master:
+                    b = assemble(s, _BY_RID, graph, H.baseline.network.stops,
+                                 pool_version=POOL_VERSION,
+                                 first_dep_sec_by_period=first_dep)
+                    ck = _rp_keys(b)
+                    cache = {}
+                    for per, mps in master.items():
+                        cache[per], _ = filter_for_network(mps, list(ck))
                 sc, _ = score_exp4_network(
                     s, harness=H, stops_gdf=sg, pool=_BY_RID, graph=graph,
                     pool_version=POOL_VERSION,
@@ -317,7 +373,7 @@ def main() -> int:
                     constraints=cons, lam=2.0, seed=20260825,
                     iterations=20_000, restarts=1, width=0,
                     waiting_model="same_route", starts="greedy",
-                    allow_off=True)
+                    allow_off=True, pathset_cache=cache)
             except Exception as e:
                 return float("inf"), {"error": str(e)[:120]}, False, {}
             m = sc.metrics
@@ -481,6 +537,8 @@ def main() -> int:
         "promotion_digest": PROMOTION_DIGEST,
         "proposal_rule": PROPOSAL_RULE,
         "proposal_digest": PROPOSAL_DIGEST,
+        "discovery_scorer": ("master-path reuse (production)" if a.reuse
+                             else "full per-candidate rebuild"),
         "n_cells": len(reports),
         "winner_retained_all_cells": winners_ok,
         "worst_frontier_recall": worst_fr,

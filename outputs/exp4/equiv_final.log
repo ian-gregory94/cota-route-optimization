@@ -1,2 +1,16 @@
 harness ready in 1s
 scoring the LEGACY network through solve_on_network ...
+rebuilt: 111 patterns, 2949 stops, 2331 tstat rows
+scoring the ASSEMBLED network ...
+
+  field                              legacy          assembled          rel
+  generalized_cost           1785263.379482     1785263.379482    0.000e+00
+  unserved_demand               9812.327818        9812.327818    0.000e+00
+  served_demand                21136.672182       21136.672182    0.000e+00
+  revenue_veh_hours             2507.763673        2507.763673    0.000e+00
+  peak_vehicles                  176.132352         176.132352    0.000e+00
+  mean_wait_min                    0.000000           0.000000    0.000e+00
+  gc_per_served_trip              84.462841          84.462841    0.000e+00
+
+  worst relative difference: 0.000e+00
+  legacy 387s | assembled 411s
