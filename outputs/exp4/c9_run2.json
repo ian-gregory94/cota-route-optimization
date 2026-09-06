@@ -58,7 +58,7 @@
   "worst_frontier_recall": 1.0,
   "frontier_criterion_met": true,
   "verdict": "MET",
-  "seconds": 9178.469757318497,
+  "seconds": 316.6541917324066,
   "cells": [
     {
       "cell": "sparse_wide_pool",
@@ -482,7 +482,7 @@
             "cumulative_unique": 21
           }
         ],
-        "seconds": 14.069939374923706
+        "seconds": 13.785051345825195
       },
       "greedy_construction_evals": 13,
       "coverage_by_active_lines": {
@@ -581,8 +581,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 445.28474473953247,
-      "seconds_discovery": 22.175132274627686,
+      "seconds_ground_truth": 0.0005888938903808594,
+      "seconds_discovery": 21.508252382278442,
       "certified_objectives": {
         "exp4|exp4-pool-v1|1lines#12fb51fae200": 3607341.8441492915,
         "exp4|exp4-pool-v1|1lines#30c070cb65bd": 3624002.362126694,
@@ -1076,7 +1076,7 @@
             "cumulative_unique": 25
           }
         ],
-        "seconds": 27.730197191238403
+        "seconds": 27.345441579818726
       },
       "greedy_construction_evals": 17,
       "coverage_by_active_lines": {
@@ -1184,8 +1184,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 1047.7478649616241,
-      "seconds_discovery": 43.758814573287964,
+      "seconds_ground_truth": 0.0007255077362060547,
+      "seconds_discovery": 43.01439714431763,
       "certified_objectives": {
         "exp4|exp4-pool-v1|1lines#05431c245e91": 3649735.2585259527,
         "exp4|exp4-pool-v1|1lines#7fdd841ddd4b": 3634987.904066965,
@@ -1726,7 +1726,7 @@
             "cumulative_unique": 16
           }
         ],
-        "seconds": 27.40974712371826
+        "seconds": 27.080857753753662
       },
       "greedy_construction_evals": 24,
       "coverage_by_active_lines": {
@@ -1825,8 +1825,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 1364.3700802326202,
-      "seconds_discovery": 61.54877686500549,
+      "seconds_ground_truth": 0.0004951953887939453,
+      "seconds_discovery": 60.72847056388855,
       "certified_objectives": {
         "exp4|exp4-pool-v1|3lines#04ab844078de": 3588676.779997306,
         "exp4|exp4-pool-v1|3lines#09f9952e5a35": 3591989.3133342965,
@@ -2390,7 +2390,7 @@
             "cumulative_unique": 25
           }
         ],
-        "seconds": 37.514668464660645
+        "seconds": 34.67522621154785
       },
       "greedy_construction_evals": 21,
       "coverage_by_active_lines": {
@@ -2498,8 +2498,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 1519.2087106704712,
-      "seconds_discovery": 65.40003705024719,
+      "seconds_ground_truth": 0.0014340877532958984,
+      "seconds_discovery": 60.07890963554382,
       "certified_objectives": {
         "exp4|exp4-pool-v1|2lines#45d4c04a70df": 3594228.111791612,
         "exp4|exp4-pool-v1|2lines#740a340a2267": 3604149.633364781,
@@ -2997,7 +2997,7 @@
             "cumulative_unique": 25
           }
         ],
-        "seconds": 24.591957330703735
+        "seconds": 23.862733602523804
       },
       "greedy_construction_evals": 17,
       "coverage_by_active_lines": {
@@ -3105,8 +3105,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 1205.0425951480865,
-      "seconds_discovery": 38.835944175720215,
+      "seconds_ground_truth": 0.0007524490356445312,
+      "seconds_discovery": 38.25722551345825,
       "certified_objectives": {
         "exp4|exp4-pool-v1|1lines#12fb51fae200": 3606616.7101185243,
         "exp4|exp4-pool-v1|1lines#2f55ef97d559": 3649724.866384874,
@@ -3602,7 +3602,7 @@
             "cumulative_unique": 63
           }
         ],
-        "seconds": 73.01295161247253
+        "seconds": 73.50695443153381
       },
       "greedy_construction_evals": 23,
       "coverage_by_active_lines": {
@@ -3748,8 +3748,8 @@
       ],
       "frontier_recall": 1.0,
       "frontier_never_proposed": [],
-      "seconds_ground_truth": 3271.8961663246155,
-      "seconds_discovery": 92.68170046806335,
+      "seconds_ground_truth": 0.001821279525756836,
+      "seconds_discovery": 92.5322117805481,
       "certified_objectives": {
         "exp4|exp4-pool-v1|1lines#05431c245e91": 3649724.866384874,
         "exp4|exp4-pool-v1|1lines#12fb51fae200": 3606616.7101185243,

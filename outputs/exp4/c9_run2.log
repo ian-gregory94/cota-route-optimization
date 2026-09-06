@@ -1,10 +1,8 @@
 
 === sparse_wide_pool: 21 candidates, pool 6, cardinality 1-2, digest 22c883da3393e756 ===
     stresses: sparse networks over the widest pool
-    certified 10/21 (177s)
-    certified 20/21 (415s)
-    certified 21/21 (445s)
-    ground truth: winner exp4|exp4-pool-v1|2lines#77e3b9ec2ab5 obj 3,577,709.5311; 21/21 converged; 445s
+    cache: 21 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|2lines#77e3b9ec2ab5 obj 3,577,709.5311; 21/21 converged; 0s
     discovery: 29 starts, 21 unique evals (421 dup) -> 21 proposals (21 feasible) in 22s -> promoted 21
     saturation (cumulative unique per start): [15, 18, 18, 21, 21, 21, 21, 21, 21, 21, 21, 21]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
@@ -12,57 +10,44 @@
 
 === sparse_to_mid: 25 candidates, pool 5, cardinality 1-3, digest 22ea0cba7966f797 ===
     stresses: the sparse-to-mid range where D18's gap grows fastest
-    certified 10/25 (206s)
-    certified 20/25 (695s)
-    certified 25/25 (1048s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 1048s
-    discovery: 31 starts, 25 unique evals (494 dup) -> 25 proposals (25 feasible) in 44s -> promoted 25
+    cache: 25 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 0s
+    discovery: 31 starts, 25 unique evals (494 dup) -> 25 proposals (25 feasible) in 43s -> promoted 25
     saturation (cumulative unique per start): [17, 22, 24, 24, 25, 25, 25, 25, 25, 25, 25, 25]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
     coverage by active lines: k=1:5/5  k=2:10/10  k=3:10/10
 
 === dense: 16 candidates, pool 5, cardinality 3-5, digest 378c16893a299d25 ===
     stresses: dense networks, D18's low-gap end
-    certified 10/16 (687s)
-    certified 16/16 (1364s)
-    ground truth: winner exp4|exp4-pool-v1|5lines#dcd73d79f2b7 obj 3,587,974.7859; 16/16 converged; 1364s
-    discovery: 30 starts, 16 unique evals (392 dup) -> 16 proposals (16 feasible) in 62s -> promoted 16
+    cache: 16 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|5lines#dcd73d79f2b7 obj 3,587,974.7859; 16/16 converged; 0s
+    discovery: 30 starts, 16 unique evals (392 dup) -> 16 proposals (16 feasible) in 61s -> promoted 16
     saturation (cumulative unique per start): [13, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
     coverage by active lines: k=3:10/10  k=4:5/5  k=5:1/1
 
 === many_off: 25 candidates, pool 5, cardinality 2-4, digest f6d873898d29d16f ===
     stresses: a pinned-off line, the fate no subset can express
-    certified 10/25 (311s)
-    certified 20/25 (1011s)
-    certified 25/25 (1519s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 1519s
-    discovery: 34 starts, 25 unique evals (590 dup) -> 25 proposals (25 feasible) in 65s -> promoted 25
+    cache: 25 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 0s
+    discovery: 34 starts, 25 unique evals (590 dup) -> 25 proposals (25 feasible) in 60s -> promoted 25
     saturation (cumulative unique per start): [15, 22, 24, 25, 25, 25, 25, 25, 25, 25, 25, 25]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
     coverage by active lines: k=2:10/10  k=3:10/10  k=4:5/5
 
 === other_pool: 25 candidates, pool 5, cardinality 1-3, digest 17874b535f75b712 ===
     stresses: a different pool, so structure is not one pool's quirk
-    certified 10/25 (238s)
-    certified 20/25 (766s)
-    certified 25/25 (1205s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#7cb1083e64b3 obj 3,561,849.2661; 25/25 converged; 1205s
-    discovery: 31 starts, 25 unique evals (488 dup) -> 25 proposals (25 feasible) in 39s -> promoted 25
+    cache: 25 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|3lines#7cb1083e64b3 obj 3,561,849.2661; 25/25 converged; 0s
+    discovery: 31 starts, 25 unique evals (488 dup) -> 25 proposals (25 feasible) in 38s -> promoted 25
     saturation (cumulative unique per start): [14, 24, 24, 24, 25, 25, 25, 25, 25, 25, 25, 25]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
     coverage by active lines: k=1:5/5  k=2:10/10  k=3:10/10
 
 === large_production_like: 63 candidates, pool 7, cardinality 1-3, digest 113425e481d2e03e ===
     stresses: a space several times larger than the others, so the proposal generator is exercised where enumeration is not the mechanism
-    certified 10/63 (167s)
-    certified 20/63 (468s)
-    certified 30/63 (892s)
-    certified 40/63 (1554s)
-    certified 50/63 (2247s)
-    certified 60/63 (3032s)
-    certified 63/63 (3272s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#9c8b269c033b obj 3,561,773.9407; 63/63 converged; 3272s
+    cache: 63 certified results on disk
+    ground truth: winner exp4|exp4-pool-v1|3lines#9c8b269c033b obj 3,561,773.9407; 63/63 converged; 0s
     discovery: 31 starts, 63 unique evals (881 dup) -> 63 proposals (63 feasible) in 93s -> promoted 63
     saturation (cumulative unique per start): [31, 41, 44, 53, 62, 62, 62, 63, 63, 63, 63, 63]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
@@ -73,8 +58,8 @@
   certified winner retained     : 6/6  (required: all)
   worst top-5 recall           : 100%  (required: >= 90%)
   promotion breadth             : 175 promoted of 175 proposals across cells
-  ground-truth certification    : 175 candidates, 8854s
+  ground-truth certification    : 175 candidates, 0s
 
   C9: MET
 
-wrote outputs/exp4/c9_recall.json
+wrote outputs/exp4/c9_run2.json

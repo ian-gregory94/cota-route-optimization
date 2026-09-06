@@ -39,8 +39,8 @@
     {
       "gate": "4-7",
       "title": "Discovery approximation benchmarked, buys no conclusions",
-      "state": "ARMED",
-      "detail": "NON-OPERATIVE FOR INFERENCE BY ARCHITECTURE. The measured reuse bias is NOT claimed to be absent -- gate 4-7's own one-factor benchmark found it (leader preserved in 3/5 cases, penalty growing as the candidate thins) and D18 found the same shape in the frequency solver. It is CONTAINED by the proposal/certification boundary: reuse is permitted in proposal-only discovery, its output cannot determine any conclusion (enforced by ProposalScore, which refuses ordering and float conversion), and every promoted candidate is exact-certified by solve_exact without the reuse shortcut. The remaining risk is proposal RECALL, measured by C9: certified winner retained in 3/5 cells, worst top-5 recall 40%. EXPERIMENT4_GATE47.md, outputs/exp4/c9_recall.json"
+      "state": "MET",
+      "detail": "NON-OPERATIVE FOR INFERENCE BY ARCHITECTURE. The measured reuse bias is NOT claimed to be absent -- gate 4-7's own one-factor benchmark found it (leader preserved in 3/5 cases, penalty growing as the candidate thins) and D18 found the same shape in the frequency solver. It is CONTAINED by the proposal/certification boundary: reuse is permitted in proposal-only discovery, its output cannot determine any conclusion (enforced by ProposalScore, which refuses ordering and float conversion), and every promoted candidate is exact-certified by solve_exact without the reuse shortcut. The remaining risk is proposal RECALL, measured by C9: certified winner retained in 6/6 cells, worst top-5 recall 100%. EXPERIMENT4_GATE47.md, outputs/exp4/c9_recall.json"
     },
     {
       "gate": "4-8",
@@ -91,8 +91,8 @@
       "detail": "ACCEPTANCE.md bounds the admissible claim and precommits the null as a fine result. Binds on the write-up, enforced by review"
     }
   ],
-  "met": 10,
-  "armed": 5,
+  "met": 11,
+  "armed": 4,
   "open": 0,
   "total": 15,
   "all_pre_search_gates_met": true

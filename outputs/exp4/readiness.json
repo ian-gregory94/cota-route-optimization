@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "MET",
-      "detail": "tag=exp3-final-v1, tree=clean"
+      "status": "OPEN",
+      "detail": "tag=exp3-final-v1, tree=dirty"
     },
     {
       "id": "C2",
@@ -51,8 +51,8 @@
     {
       "id": "C9",
       "title": "Proposal recall: discovery cannot discard the exact winner",
-      "status": "OPEN",
-      "detail": "REDEFINED around proposal recall (D18 emitted no band, so the old 'identify the leader inside the band' test does not exist). On 5 cells spanning sparse_wide_pool, sparse_to_mid, dense, many_off, other_pool: the complete candidate space was enumerated and EXACT-CERTIFIED as ground truth, then the production discovery+promotion pipeline was run independently. Certified winner retained in 3/5 cells (required: all); worst top-5 recall 40% (required >= 90%). Promotion rule ec6288fc8ec9b7d0, certification contract 2125984c82b60a83. outputs/exp4/c9_recall.json"
+      "status": "MET",
+      "detail": "REDEFINED around proposal recall (D18 emitted no band, so the old 'identify the leader inside the band' test does not exist). On 6 cells spanning sparse_wide_pool, sparse_to_mid, dense, many_off, other_pool, large_production_like: the complete candidate space was enumerated and EXACT-CERTIFIED as ground truth, then the production discovery+promotion pipeline was run independently. Certified winner retained in 6/6 cells (required: all); worst top-5 recall 100% (required >= 90%). Promotion rule ec6288fc8ec9b7d0, certification contract 2125984c82b60a83. outputs/exp4/c9_recall.json"
     },
     {
       "id": "C10",
@@ -88,7 +88,7 @@
       "id": "C15",
       "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
       "status": "MANUAL",
-      "detail": "15 of 15 gates written; scripts/exp4_gates.py executes them: 10 MET, 5 ARMED (they fire on a promoted network and cannot be satisfied before the search), 0 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof -- and because D35 showed a constraint can be fully written, validated at construction, hashed into the state digest and still reach nothing that scores"
+      "detail": "15 of 15 gates written; scripts/exp4_gates.py executes them: 11 MET, 4 ARMED (they fire on a promoted network and cannot be satisfied before the search), 0 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof -- and because D35 showed a constraint can be fully written, validated at construction, hashed into the state digest and still reach nothing that scores"
     },
     {
       "id": "D16",
