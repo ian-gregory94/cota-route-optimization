@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "MET",
-      "detail": "tag=exp3-final-v1, tree=clean"
+      "status": "OPEN",
+      "detail": "tag=exp3-final-v1, tree=dirty"
     },
     {
       "id": "C2",
@@ -133,15 +133,21 @@
       "detail": "RUN. One real Gen1 question -- the optimal frequency plan for an assembled Exp 4 network under a pinned envelope -- answered twice, arms differing only in the solver. Verdict SUPERSEDED: the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network. Gen1 0.4s vs Gen2 2578.7s over 7,529,536 combinations. outputs/exp4/gen_bridge.json"
     },
     {
+      "id": "D23",
+      "title": "Production resource envelope equals the frozen canonical one",
+      "status": "OPEN",
+      "detail": "A PRODUCTION RUN MAY NOT LAUNCH ON AN ENVELOPE THAT IS NOT THE FROZEN CANONICAL ONE. exp4_launch.py uses VEH_HOURS=2507.0 against the canonical 2517.183333 (a 10.183 vh difference); exp4_launch.py declares a single scalar PEAK_VEHICLES=200.0, but the canonical fleet envelope is PER PERIOD and block-derived: {'am_peak': 187.0, 'early': 135.0, 'evening': 178.0, 'midday': 173.0, 'owl': 149.0, 'pm_peak': 197.0}. A uniform scalar is a different constraint, and 200.0 has no provenance in any artifact. Canonical: outputs/CANONICAL_ENVELOPE.json (b6c647d3766338a6). Note the trap this catches: the frequency model's peak_vehicles reads ~176.5 on the baseline and looks like a fleet figure, but it is peak CONCURRENCY, ~10% below the block-derived 197 at the same period because it does not model interlining (factor 1.307). contract.py already refuses that comparison."
+    },
+    {
       "id": "D22",
       "title": "Search-allowance contract merged into firewall/ and in force",
       "status": "MET",
       "detail": "merged"
     }
   ],
-  "met": 22,
-  "open": 0,
+  "met": 21,
+  "open": 2,
   "manual": 1,
-  "total": 23,
+  "total": 24,
   "ready": false
 }

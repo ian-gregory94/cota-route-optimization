@@ -422,6 +422,65 @@ def checks() -> list[tuple[str, str, str, str]]:
 
     merged = (ROOT / "src" / "cota_opt" / "firewall" / "search_allowance.py")
     staged = (ROOT / "scripts" / "exp4_staging" / "search_allowance.py")
+    # ---- D23: the envelope a production run uses IS the frozen canonical one.
+    #
+    # Added after a production launcher hard-coded 2507.0 vehicle-hours and a
+    # UNIFORM 200.0 peak. Neither number had provenance. The canonical envelope
+    # is 2517.183 hours and 197 BLOCK-DERIVED peak vehicles
+    # (EXPERIMENT4_CONTRACT section 3), and the 176.5 that looks like a fleet
+    # figure is peak CONCURRENCY -- an evaluation output that contract.py
+    # already refuses to compare against a block-derived budget.
+    #
+    # A cap read off an evaluated plan's usage is the error this item exists to
+    # catch. It checks the artifact and the launcher against each other, so a
+    # launcher can no longer invent an envelope without something objecting.
+    _env = _json(ROOT / "outputs" / "CANONICAL_ENVELOPE.json")
+    _launch = _src("scripts/exp4_launch.py")
+    if not _env:
+        add("D23", "Production resource envelope equals the frozen canonical one",
+            OPEN,
+            "outputs/CANONICAL_ENVELOPE.json does not exist: run "
+            "scripts/exp4_freeze_envelope.py --write. Until it does, nothing "
+            "holds a launcher's envelope to the contract's")
+    else:
+        _want_vh = float(_env["weekday_revenue_vehicle_hours"])
+        _want_peak = _env["peak_vehicles_by_period"]
+        _probs = []
+        import re as _re
+        m = _re.search(r"^VEH_HOURS\s*=\s*([0-9.]+)", _launch, _re.M)
+        if not m:
+            _probs.append("exp4_launch.py declares no VEH_HOURS constant")
+        elif abs(float(m.group(1)) - _want_vh) > 1e-6:
+            _probs.append(
+                f"exp4_launch.py uses VEH_HOURS={m.group(1)} against the "
+                f"canonical {_want_vh:.6f} (a {abs(float(m.group(1))-_want_vh):.3f} "
+                f"vh difference)")
+        m2 = _re.search(r"^PEAK_VEHICLES\s*=\s*([0-9.]+)", _launch, _re.M)
+        if m2:
+            _probs.append(
+                f"exp4_launch.py declares a single scalar PEAK_VEHICLES="
+                f"{m2.group(1)}, but the canonical fleet envelope is PER "
+                f"PERIOD and block-derived: {_want_peak}. A uniform scalar is "
+                f"a different constraint, and {m2.group(1)} has no provenance "
+                f"in any artifact")
+        add("D23", "Production resource envelope equals the frozen canonical one",
+            MET if not _probs else OPEN,
+            (f"envelope {_env['envelope_digest']}: "
+             f"{_want_vh:.3f} vh, peak {_env['peak_vehicles']} block-derived "
+             f"at {_env['peak_time']} (NTD VOMS "
+             f"{_env['ntd_reported_voms']}, {_env['ntd_agreement_pct']:+.2f}%), "
+             f"per period {_want_peak}. Launcher agrees."
+             if not _probs else
+             "A PRODUCTION RUN MAY NOT LAUNCH ON AN ENVELOPE THAT IS NOT THE "
+             "FROZEN CANONICAL ONE. " + "; ".join(_probs)
+             + f". Canonical: outputs/CANONICAL_ENVELOPE.json "
+               f"({_env['envelope_digest']}). Note the trap this catches: the "
+               f"frequency model's peak_vehicles reads ~176.5 on the baseline "
+               f"and looks like a fleet figure, but it is peak CONCURRENCY, "
+               f"~10% below the block-derived 197 at the same period because "
+               f"it does not model interlining (factor 1.307). contract.py "
+               f"already refuses that comparison."))
+
     add("D22", "Search-allowance contract merged into firewall/ and in force",
         MET if merged.exists() else OPEN,
         f"still staged at {staged.relative_to(ROOT)}; OPERATIONS 24 blocked the "

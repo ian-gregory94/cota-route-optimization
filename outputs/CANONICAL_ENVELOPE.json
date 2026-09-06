@@ -1,0 +1,44 @@
+{
+ "artifact": "CANONICAL_ENVELOPE",
+ "version": 1,
+ "why": "the envelope existed only in prose and in a runtime sentinel, so nothing objected when a launcher hard-coded 2507.0 hours and a uniform 200.0 peak",
+ "weekday_revenue_vehicle_hours": 2517.1833333333334,
+ "weekday_revenue_vehicle_hours_source": "outputs/experiments/exp1_frequency_redistribution_20260826T003902Z/experiment.json",
+ "weekday_revenue_vehicle_hours_semantics": "GTFS scheduled weekday revenue vehicle-hours; exp2.build_setup raises unless the model reproduces this to better than 1e-9",
+ "peak_vehicles": 197.0,
+ "peak_vehicles_by_period": {
+  "am_peak": 187.0,
+  "early": 135.0,
+  "evening": 178.0,
+  "midday": 173.0,
+  "owl": 149.0,
+  "pm_peak": 197.0
+ },
+ "peak_vehicles_source": "outputs/fleet_check_modelB.json",
+ "peak_vehicles_semantics": "BLOCK-DERIVED peak vehicles: COTA's vehicle blocks reconstructed from the feed, including interlining. This is the fleet CAP.",
+ "peak_time": "17:13",
+ "n_blocks": 284,
+ "ntd_reported_voms": 198,
+ "ntd_agreement_pct": -0.5050505050505052,
+ "contract_reference": "EXPERIMENT4_CONTRACT.md section 3",
+ "contract_text": "2,517.183 weekday revenue vehicle-hours . 197 peak vehicles",
+ "NOT_THE_CAP": {
+  "frequency_model_peak_concurrency": {
+   "value_on_baseline_pm_peak": 176.49,
+   "what": "FitnessVector.peak_vehicles = max over periods of sum(cycle/headway); an evaluation OUTPUT",
+   "why_not": "it does not model interlining and is ~10% below the block-derived figure at the same period. contract.py refuses to compare it to a block-derived budget and records the fleet check as NOT RUN rather than running wrong"
+  },
+  "routewise_peak": {
+   "value_on_baseline_pm_peak": 150.73,
+   "what": "the same proxy before interlining (factor 1.307)",
+   "why_not": "also an output, and further from the real fleet"
+  },
+  "optimized_plan_usage": {
+   "example": 2507.763673,
+   "what": "an optimized plan's realised revenue vehicle-hours, 99.63% of the cap",
+   "why_not": "a cap may never be read off a plan's usage"
+  }
+ },
+ "rule": "a resource cap is read from this artifact or from the production `baseline` sentinel. It is never read off an evaluated plan, and never retyped into a script.",
+ "envelope_digest": "b6c647d3766338a6"
+}
