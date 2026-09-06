@@ -134,9 +134,9 @@
     },
     {
       "id": "D23",
-      "title": "Production resource envelope equals the frozen canonical one",
+      "title": "Production envelope equals canonical AND constrains block-derived fleet",
       "status": "OPEN",
-      "detail": "A PRODUCTION RUN MAY NOT LAUNCH ON AN ENVELOPE THAT IS NOT THE FROZEN CANONICAL ONE. exp4_launch.py uses VEH_HOURS=2507.0 against the canonical 2517.183333 (a 10.183 vh difference); exp4_launch.py declares a single scalar PEAK_VEHICLES=200.0, but the canonical fleet envelope is PER PERIOD and block-derived: {'am_peak': 187.0, 'early': 135.0, 'evening': 178.0, 'midday': 173.0, 'owl': 149.0, 'pm_peak': 197.0}. A uniform scalar is a different constraint, and 200.0 has no provenance in any artifact. Canonical: outputs/CANONICAL_ENVELOPE.json (b6c647d3766338a6). Note the trap this catches: the frequency model's peak_vehicles reads ~176.5 on the baseline and looks like a fleet figure, but it is peak CONCURRENCY, ~10% below the block-derived 197 at the same period because it does not model interlining (factor 1.307). contract.py already refuses that comparison."
+      "detail": "A PRODUCTION RUN MAY NOT LAUNCH. hours cap 2507.0 != canonical 2517.183333; fleet is a SCALAR constant; the canonical envelope is a six-period vector and a scalar is a different constraint even when the number is right; the canonical six-period fleet vector {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197} does not appear; the run never invokes a block-derived fleet instrument, so whatever it constrains is not block-derived fleet. FitnessVector.peak_vehicles is peak CONCURRENCY: it reads 176.49 on the baseline against the block-derived 197 at the same period, and contract.py already refuses that comparison; the canonical envelope digest b6c647d3766338a6 is not referenced, so nothing ties the run to the frozen artifact. Canonical: outputs/CANONICAL_ENVELOPE.json (b6c647d3766338a6). NOTE: carrying the right six constants while constraining concurrency still fails this item -- right numbers, wrong variable."
     },
     {
       "id": "D22",
