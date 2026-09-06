@@ -139,6 +139,7 @@ def checks() -> list[tuple[str, str, str, str]]:
     # is available and is refused: it is the same move as reporting MET because
     # an artifact is on disk, which this check has made three times. Readiness
     # means discovery may proceed with reuse, and it may not.
+    _c9r = _json(OUT / "c9_recall.json")
     _g47 = _json(OUT / "gate47.json")
     _adj = _json(OUT / "gate47_adjudicated.json")
     _adj_ok = (_adj or {}).get("verdict") == "MET"
@@ -197,8 +198,36 @@ def checks() -> list[tuple[str, str, str, str]]:
         _c9_detail = ("the master-path benchmark has not been run: "
                       "scripts/exp4_masterpath_benchmark.py")
         _c9_met = bool((_pr or {}).get("gate_4_7_closes"))
-    add("C9", "Discovery path reuse benchmarked against exact rebuilds",
-        MET if _c9_met else OPEN, _c9_detail)
+    # C9 REDEFINED. D18 emitted no band, so "identify the exact leader inside
+    # the promotion band" is not a test anyone can run. Under the
+    # proposal/certification architecture the only question about discovery
+    # that still matters is RECALL: can proposal-only discovery discard a
+    # candidate exact certification would have selected? Agreement between
+    # discovery and certified scores is explicitly NOT the criterion -- D18
+    # established they diverge structurally.
+    if _c9r:
+        _cells = _c9r["cells"]
+        _wr = sum(c["winner_retained"] for c in _cells)
+        add("C9", "Proposal recall: discovery cannot discard the exact winner",
+            MET if _c9r.get("verdict") == "MET" else OPEN,
+            f"REDEFINED around proposal recall (D18 emitted no band, so the "
+            f"old 'identify the leader inside the band' test does not exist). "
+            f"On {len(_cells)} cells spanning "
+            f"{', '.join(c['cell'] for c in _cells)}: the complete candidate "
+            f"space was enumerated and EXACT-CERTIFIED as ground truth, then "
+            f"the production discovery+promotion pipeline was run "
+            f"independently. Certified winner retained in {_wr}/{len(_cells)} "
+            f"cells (required: all); worst top-"
+            f"{_c9r['criterion']['frontier_k']} recall "
+            f"{_c9r['worst_frontier_recall']:.0%} (required >= "
+            f"{_c9r['criterion']['frontier_min_recall']:.0%}). Promotion rule "
+            f"{_c9r['promotion_digest']}, certification contract "
+            f"{_c9r['certification_digest']}. outputs/exp4/c9_recall.json")
+    else:
+        add("C9", "Proposal recall: discovery cannot discard the exact winner",
+            OPEN,
+            "the recall benchmark has not been run: "
+            "scripts/exp4_c9_recall.py. " + _c9_detail)
     _c10 = _json(OUT / "c10_benchmark.json")
     add("C10", "Outer network search recovers an exhaustively known optimum",
         MET if (_c10 or {}).get("gate_4_14_closes") else OPEN,

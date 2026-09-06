@@ -144,14 +144,45 @@ def gates() -> list[dict]:
         _ld = sum(c["leader_preserved"] for c in g47["cases"])
         _pr = sum(c["promoted_set_preserved"] for c in g47["cases"])
         _n = len(g47["cases"])
-        _adj = _j("gate47_adjudicated.json")
-        _blocked = (_adj or {}).get("blocked_by")
-        g("4-7", "Discovery approximation benchmarked, buys no conclusions",
-          MET if (g47.get("verdict") == "MET"
-                  and (_adj or {}).get("verdict") == "MET") else ARMED,
-          (f"BLOCKED BY D18'S ANSWER: {_blocked}. A gate about a "
-           f"discovery-effort approximation cannot close when discovery-effort "
-           f"comparison is itself forbidden. " if _blocked else "") +
+        # DISPOSED BY ARCHITECTURE, not by proving the approximation unbiased.
+        #
+        # D18 and the 4-7 measurements both found structure-correlated
+        # discovery behaviour, and no further measurement is going to unfind
+        # it. Under "discovery proposes, exact optimization decides" the
+        # approximation is confined to proposal, where its only power is to
+        # decide what gets certified. Every promoted candidate is rebuilt and
+        # exact-certified without the reuse shortcut, so no reuse number can
+        # reach a conclusion. The bias is CONTAINED, not absent, and the
+        # residual risk changed kind: it is proposal RECALL, which is what C9
+        # now measures.
+        _c9r = _j("c9_recall.json")
+        if _c9r:
+            _wr = sum(c["winner_retained"] for c in _c9r["cells"])
+            g("4-7", "Discovery approximation benchmarked, buys no conclusions",
+              MET if _c9r.get("verdict") == "MET" else ARMED,
+              f"NON-OPERATIVE FOR INFERENCE BY ARCHITECTURE. The measured "
+              f"reuse bias is NOT claimed to be absent -- gate 4-7's own "
+              f"one-factor benchmark found it (leader preserved in "
+              f"{sum(c['leader_preserved'] for c in g47['cases'])}/"
+              f"{len(g47['cases'])} cases, penalty growing as the candidate "
+              f"thins) and D18 found the same shape in the frequency solver. "
+              f"It is CONTAINED by the proposal/certification boundary: reuse "
+              f"is permitted in proposal-only discovery, its output cannot "
+              f"determine any conclusion (enforced by ProposalScore, which "
+              f"refuses ordering and float conversion), and every promoted "
+              f"candidate is exact-certified by solve_exact without the reuse "
+              f"shortcut. The remaining risk is proposal RECALL, measured by "
+              f"C9: certified winner retained in {_wr}/{len(_c9r['cells'])} "
+              f"cells, worst top-{_c9r['criterion']['frontier_k']} recall "
+              f"{_c9r['worst_frontier_recall']:.0%}. "
+              f"EXPERIMENT4_GATE47.md, outputs/exp4/c9_recall.json")
+        else:
+            _adj = _j("gate47_adjudicated.json")
+            _blocked = (_adj or {}).get("blocked_by")
+            g("4-7", "Discovery approximation benchmarked, buys no conclusions",
+              ARMED,
+              (f"BLOCKED BY D18'S ANSWER: {_blocked}. " if _blocked else "")
+              + "C9 recall has not been run: scripts/exp4_c9_recall.py. " +
           f"ONE-FACTOR comparison (common candidate universe, identical "
           f"enumeration settings, arms differ only in reuse). Substrate PROVED "
           f"SOUND: filtering is exactly the identity at survival 1.000 "

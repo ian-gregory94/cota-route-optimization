@@ -1,0 +1,12 @@
+
+=== sparse_wide_pool: 21 candidates, pool 6, cardinality 1-2, digest 22c883da3393e756 ===
+    stresses: sparse networks over the widest pool
+    certified 10/21 (177s)
+    certified 20/21 (411s)
+    certified 21/21 (440s)
+    ground truth: winner exp4|exp4-pool-v1|2lines#77e3b9ec2ab5 obj 3,577,709.5311; 21/21 converged; 440s
+    discovery: 18 proposals (18 feasible) in 12s -> promoted 18
+    RECALL: winner RETAINED | top-5 recall 100% (5/5)
+
+=== sparse_to_mid: 25 candidates, pool 5, cardinality 1-3, digest 22ea0cba7966f797 ===
+    stresses: the sparse-to-mid range where D18's gap grows fastest
