@@ -1,57 +1,14 @@
 
 === sparse_wide_pool: 21 candidates, pool 6, cardinality 1-2, digest 22c883da3393e756 ===
     stresses: sparse networks over the widest pool
-    certified 10/21 (172s)
-    certified 20/21 (406s)
-    certified 21/21 (434s)
-    ground truth: winner exp4|exp4-pool-v1|2lines#77e3b9ec2ab5 obj 3,577,709.5311; 21/21 converged; 434s
-    discovery: 18 proposals (18 feasible) in 11s -> promoted 18
+    certified 10/21 (176s)
+    certified 20/21 (409s)
+    certified 21/21 (438s)
+    ground truth: winner exp4|exp4-pool-v1|2lines#77e3b9ec2ab5 obj 3,577,709.5311; 21/21 converged; 438s
+    discovery: 29 starts, 21 unique evals (421 dup) -> 21 proposals (21 feasible) in 22s -> promoted 21
+    saturation (cumulative unique per start): [15, 18, 18, 21, 21, 21, 21, 21, 21, 21, 21, 21]...
     RECALL: winner RETAINED | top-5 recall 100% (5/5)
+    coverage by active lines: k=1:6/6  k=2:15/15
 
 === sparse_to_mid: 25 candidates, pool 5, cardinality 1-3, digest 22ea0cba7966f797 ===
     stresses: the sparse-to-mid range where D18's gap grows fastest
-    certified 10/25 (201s)
-    certified 20/25 (678s)
-    certified 25/25 (1025s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 1025s
-    discovery: 18 proposals (18 feasible) in 18s -> promoted 18
-    RECALL: winner LOST | top-5 recall 80% (4/5) | 1 never proposed
-      LOST WINNER exp4|exp4-pool-v1|3lines#04ab844078de: 3 lines, certified 3,588,676.7800, proposed=False, feasible_at_discovery=None
-
-=== dense: 16 candidates, pool 5, cardinality 3-5, digest 378c16893a299d25 ===
-    stresses: dense networks, D18's low-gap end
-    certified 10/16 (659s)
-    certified 16/16 (1336s)
-    ground truth: winner exp4|exp4-pool-v1|5lines#dcd73d79f2b7 obj 3,587,974.7859; 16/16 converged; 1336s
-    discovery: 13 proposals (13 feasible) in 22s -> promoted 13
-    RECALL: winner RETAINED | top-5 recall 40% (2/5) | 3 never proposed
-
-=== many_off: 25 candidates, pool 5, cardinality 2-4, digest f6d873898d29d16f ===
-    stresses: a pinned-off line, the fate no subset can express
-    certified 10/25 (309s)
-    certified 20/25 (1001s)
-    certified 25/25 (1486s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#04ab844078de obj 3,588,676.7800; 25/25 converged; 1486s
-    discovery: 17 proposals (17 feasible) in 22s -> promoted 17
-    RECALL: winner LOST | top-5 recall 40% (2/5) | 3 never proposed
-      LOST WINNER exp4|exp4-pool-v1|3lines#04ab844078de: 3 lines, certified 3,588,676.7800, proposed=False, feasible_at_discovery=None
-
-=== other_pool: 25 candidates, pool 5, cardinality 1-3, digest 17874b535f75b712 ===
-    stresses: a different pool, so structure is not one pool's quirk
-    certified 10/25 (228s)
-    certified 20/25 (748s)
-    certified 25/25 (1184s)
-    ground truth: winner exp4|exp4-pool-v1|3lines#7cb1083e64b3 obj 3,561,849.2661; 25/25 converged; 1184s
-    discovery: 23 proposals (23 feasible) in 24s -> promoted 23
-    RECALL: winner RETAINED | top-5 recall 100% (5/5)
-
-==========================================================================
-  cells                         : 5
-  certified winner retained     : 3/5  (required: all)
-  worst top-5 recall           : 40%  (required: >= 90%)
-  promotion breadth             : 89 promoted of 89 proposals across cells
-  ground-truth certification    : 112 candidates, 5465s
-
-  C9: OPEN
-
-wrote outputs/exp4/c9_recall.json

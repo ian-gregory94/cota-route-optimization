@@ -130,6 +130,10 @@ def main() -> int:
     from cota_opt.exp4_network import Exp4Selection
     from cota_opt.exp4_promotion import (PROMOTION_DIGEST, PROMOTION_RULE,
                                          promote)
+    from cota_opt.exp4_proposal import (N_DIVERSIFIED, PROPOSAL_DIGEST,
+                                        PROPOSAL_RULE, TOTAL_EVAL_BUDGET,
+                                        build_seed_family, diversified_starts,
+                                        run_multi_start)
     from cota_opt.exp4_score import score_exp4_network
     from cota_opt.gen2_search import search
     from cota_opt.firewall.core import digest
@@ -173,6 +177,8 @@ def main() -> int:
                                            frozenset()))]
 
     poolA, poolB, poolC = solo(poolA), solo(poolB), solo(poolC)
+    # the widest pool the frozen C10 geometry offers, for the section-7 cell
+    poolD = solo(sorted({l for c in CASES for l in c["lines"]}))[:7]
 
     CELLS = [
         {"name": "sparse_wide_pool", "pool": poolC, "lo": 1, "hi": 2,
@@ -190,6 +196,15 @@ def main() -> int:
         {"name": "other_pool", "pool": poolB, "lo": 1, "hi": 3,
          "vh": 200.0, "peak": 40.0, "pins": (),
          "stresses": "a different pool, so structure is not one pool's quirk"},
+        # Section 7: the production-relevant cell. Enumeration is the GROUND
+        # TRUTH here, never the proposal mechanism -- the multi-start generator
+        # must find the winner in a space several times larger than the others,
+        # where walking the whole thing is not what it is doing.
+        {"name": "large_production_like", "pool": poolD, "lo": 1, "hi": 3,
+         "vh": 200.0, "peak": 40.0, "pins": (),
+         "stresses": ("a space several times larger than the others, so the "
+                      "proposal generator is exercised where enumeration is "
+                      "not the mechanism")},
     ]
     if a.cells:
         want = set(a.cells.split(","))
@@ -311,33 +326,68 @@ def main() -> int:
                      if isinstance(v, (int, float))}, True, sc.plan)
 
         t0 = time.time()
-        # gen2_search seeds with a single line by default, which it then
-        # refuses when a cell's min_lines is above 1. The seed is the smallest
-        # admissible network in deterministic pool order -- a starting point,
-        # not a hint: it is chosen without reference to any certified result.
-        seed = tuple(sorted(pool)[:cell["lo"]])
-        res = search(pool, scorer, periods, max_lines=cell["hi"],
-                     min_lines=cell["lo"], seed_lines=seed,
-                     pinned_off=tuple(pins),
-                     pool_version=POOL_VERSION, allow_swaps=True,
-                     pair_adds=True, max_evaluations=400)
+        # PREREGISTERED MULTI-START (proposal revision 2). The seed family and
+        # its order are fixed in cota_opt.exp4_proposal and were committed
+        # before any of these numbers existed.
+        hi_eff = min(cell["hi"], len(pool))
+
+        # greedy constructions cost evaluations and are charged like any other
+        greedy_evals = {"n": 0}
+
+        def _obj(lines):
+            greedy_evals["n"] += 1
+            sel = Exp4Selection(POOL_VERSION, frozenset(lines),
+                                pins if (pins and pool[0] in set(lines))
+                                else frozenset())
+            try:
+                return scorer(sel)[0]
+            except Exception:
+                return float("inf")
+
+        cur, best_add = [], None
+        for _ in range(hi_eff):
+            cands_ = [(l, _obj(cur + [l])) for l in pool if l not in cur]
+            if not cands_:
+                break
+            l, o = min(cands_, key=lambda t: (t[1], t[0]))
+            cur = sorted(cur + [l])
+            if len(cur) >= cell["lo"]:
+                best_add = tuple(cur)
+        cur = sorted(pool)[:hi_eff]
+        best_drop = tuple(cur) if len(cur) >= cell["lo"] else None
+        while len(cur) > cell["lo"]:
+            cands_ = [(l, _obj([x for x in cur if x != l])) for l in cur]
+            l, o = min(cands_, key=lambda t: (t[1], t[0]))
+            cur = sorted(x for x in cur if x != l)
+            best_drop = tuple(cur)
+
+        family = build_seed_family(
+            pool, cell["lo"], hi_eff,
+            pinned_lines=[pool[0]] if pins else [],
+            greedy_add=best_add, greedy_drop=best_drop)
+        family += diversified_starts(pool, cell["lo"], hi_eff, N_DIVERSIFIED)
+
+        ms = run_multi_start(pool, scorer, periods, lo=cell["lo"], hi=hi_eff,
+                             pins=pins, pool_version=POOL_VERSION,
+                             seed_family=family, budget=TOTAL_EVAL_BUDGET)
         t_disc = time.time() - t0
 
         proposals, feas = [], {}
-        for c in res.evaluated:
-            k = c.selection.state_key
-            if k in feas:
-                continue
+        for k, c in ms.candidates.items():
             feas[k] = bool(c.feasible)
             proposals.append(ProposalRecord(
                 state_key=k, state_digest=c.selection.state_digest,
                 score=ProposalScore(float(c.objective))))
         out = promote(proposals, feas)
         promoted = set(out.promoted_keys)
-        print(f"    discovery: {len(proposals)} proposals "
+        print(f"    discovery: {len(family)} starts, "
+              f"{ms.unique_evaluations} unique evals "
+              f"({ms.duplicate_visits} dup) -> {len(proposals)} proposals "
               f"({sum(feas.values())} feasible) in {t_disc:.0f}s "
               f"-> promoted {out.n_promoted}"
               f"{' [CAP BOUND]' if out.cap_binding else ''}")
+        print(f"    saturation (cumulative unique per start): "
+              f"{ms.saturation[:12]}{'...' if len(ms.saturation) > 12 else ''}")
 
         # ---- STEP 5-6: recall -------------------------------------------
         winner_retained = winner in promoted
@@ -359,8 +409,27 @@ def main() -> int:
                   f"proposed={winner in feas}, "
                   f"feasible_at_discovery={feas.get(winner)}")
 
+        # coverage by active-line count -- does multi-start still undersample
+        # sparse or dense structures?
+        by_k = {}
+        for sk, rec in truth.items():
+            k = len(rec["lines"])
+            d = by_k.setdefault(k, {"space": 0, "proposed": 0, "promoted": 0})
+            d["space"] += 1
+            if sk in feas:
+                d["proposed"] += 1
+            if sk in promoted:
+                d["promoted"] += 1
+        print("    coverage by active lines: " + "  ".join(
+            f"k={k}:{v['proposed']}/{v['space']}" for k, v in sorted(by_k.items())))
+
         reports.append({
             "cell": cell["name"], "stresses": cell["stresses"],
+            "proposal": ms.payload(),
+            "greedy_construction_evals": greedy_evals["n"],
+            "coverage_by_active_lines": {str(k): v
+                                         for k, v in sorted(by_k.items())},
+            "proposal_coverage": (len(feas) / len(truth)) if truth else None,
             "universe_digest": udig,
             "pool_size": len(pool), "cardinality": [cell["lo"], cell["hi"]],
             "n_candidates": len(universe), "n_certified": len(truth),
@@ -410,6 +479,8 @@ def main() -> int:
         "certification_digest": CERTIFICATION_DIGEST,
         "promotion_rule": PROMOTION_RULE,
         "promotion_digest": PROMOTION_DIGEST,
+        "proposal_rule": PROPOSAL_RULE,
+        "proposal_digest": PROPOSAL_DIGEST,
         "n_cells": len(reports),
         "winner_retained_all_cells": winners_ok,
         "worst_frontier_recall": worst_fr,

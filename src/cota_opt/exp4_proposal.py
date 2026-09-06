@@ -162,23 +162,51 @@ def build_seed_family(pool: Sequence[str], lo: int, hi: int,
     # 7. OFF-density variants: where the cell pins route-periods OFF, include
     #    seeds that DO and DO NOT activate the pinned line, so the basin where
     #    the pin actually binds is entered deliberately rather than by luck.
+    #
+    #    Built from the pool WITHOUT the pinned line and then adding it, rather
+    #    than spreading over the whole pool and unioning the pin in. The first
+    #    version did the latter and the result collided with an existing spread
+    #    seed, so de-duplication silently removed the only seed that activates
+    #    the pin -- in the `many_off` cell, which is one of the two cells
+    #    revision 1 missed. A seed family that drops the seed it was written
+    #    for is worse than one that never had it, because the intent is on the
+    #    page and the coverage is not.
     for pl in pinned_lines:
-        with_pin = tuple(sorted(set(_spread(pool, max(lo, 2))) | {pl}))
-        add(f"off_dense_{pl[-6:]}", with_pin, "off_density",
-            "activates the pinned-off line, so the OFF constraint binds and "
-            "that basin is represented")
+        rest = [x for x in pool if x != pl]
+        for k in range(max(lo, 1), hi + 1):
+            with_pin = tuple(sorted({pl} | set(_spread(rest, k - 1))))
+            if lo <= len(with_pin) <= hi and pl in with_pin:
+                add(f"off_dense_k{k}_{pl[-6:]}", with_pin, "off_density",
+                    f"activates the pinned-off line alongside {k - 1} others, "
+                    f"so the OFF constraint binds and that basin is seeded")
         without = tuple(x for x in _spread(pool, hi) if x != pl)
         add(f"off_sparse_{pl[-6:]}", without, "off_density",
             "excludes the pinned-off line entirely, the complementary OFF "
             "density")
 
-    # de-duplicate by line set, keeping first (preregistered) occurrence
+    # de-duplicate by line set, keeping the first (preregistered) occurrence
     seen, uniq = set(), []
     for s in out:
         if s.lines in seen:
             continue
         seen.add(s.lines)
         uniq.append(s)
+
+    # A pinned line must end up activated by SOMETHING. De-duplication is
+    # allowed to remove a redundant seed; it is not allowed to remove the only
+    # representative of a basin. Asserted rather than hoped for.
+    for pl in pinned_lines:
+        if not any(pl in s.lines for s in uniq):
+            for k in range(max(lo, 1), hi + 1):
+                cand = tuple(sorted({pl} | set(_spread(
+                    [x for x in pool if x != pl], k - 1))))
+                if lo <= len(cand) <= hi and cand not in seen:
+                    uniq.append(StartSpec(
+                        f"off_dense_fallback_{pl[-6:]}", cand, "off_density",
+                        "guaranteed representative of the basin where the pin "
+                        "binds; the preferred variants were all duplicates"))
+                    seen.add(cand)
+                    break
     return uniq
 
 
