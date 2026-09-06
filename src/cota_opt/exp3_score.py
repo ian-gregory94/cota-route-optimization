@@ -178,7 +178,9 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                      exact_max_combinations: int = 2_000_000,
                      pinned_off: frozenset | None = None,
                      n_random_scenarios: int = 0,
-                     max_paths_per_od: int | None = None) -> dict:
+                     max_paths_per_od: int | None = None,
+                     ladder_override: dict | None = None,
+                     include_setup: bool = False) -> dict:
     """Score a network that already exists. The Gen1 evaluation core.
 
     Extracted from :func:`score_state` verbatim so Experiment 4 can reuse it
@@ -215,6 +217,20 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
     multiple service/frequency scenarios" -- a master built at 0 would be
     thinner than the object the gate describes, and benchmarking a thinner
     approximation would measure something the experiment is not going to use.
+    ``ladder_override`` replaces the setup's ladders immediately before the
+    solve, and ``include_setup`` returns the built setup alongside the result.
+    They exist for the D18 / D33 gap benchmark, which needs the REDUCED
+    NEIGHBOURHOOD the method specifies: all but N route-periods frozen at the
+    delivered plan by a one-rung ladder, the free ones keeping K rungs around
+    theirs, enumerated exhaustively by `gen2_frequency.solve_exact` against
+    this same evaluator. That keeps the benchmark's objective IDENTICAL to the
+    production objective -- the reduction is confined to the size of the
+    decision space, which is stated rather than hidden, and no surrogate is
+    substituted (EXPERIMENT4_DESIGN section 3, ACCEPTANCE gate on D33).
+
+    Both default to inert. `ladder_override` is applied AFTER the pinned-off
+    pins, so an override can never resurrect a route-period an input pinned OFF.
+
     ``max_paths_per_od`` is the other widening lever the gate names; None keeps
     the configured production value. Both affect ENUMERATION only and have NO
     effect when `pathset_cache` supplies the period's paths already, which is
@@ -335,6 +351,36 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
                     f"{k} is pinned OFF but its ladder offers no OFF rung")
             judge.ladders[k] = [off[0]]
             judge.baseline_plan.headways[k] = OFF
+
+    # The reduced neighbourhood, if one was supplied. AFTER the pins, so an
+    # override cannot resurrect a route-period an input pinned OFF: the pinned
+    # keys are re-pinned over whatever the override says for them.
+    if ladder_override is not None:
+        unknown = sorted(k for k in ladder_override if k not in judge.ladders)
+        if unknown:
+            raise ValueError(
+                f"ladder_override names route-periods this network does not "
+                f"have: {unknown}")
+        missing = sorted(k for k in judge.ladders if k not in ladder_override)
+        if missing:
+            raise ValueError(
+                f"ladder_override must cover every route-period; missing "
+                f"{len(missing)} (e.g. {missing[:3]}). A partial override "
+                f"would leave some keys at full width and silently change what "
+                f"the benchmark enumerated.")
+        for k, lad in ladder_override.items():
+            if not lad:
+                raise ValueError(f"{k} has an empty overridden ladder")
+            judge.ladders[k] = list(lad)
+        if pinned_off:
+            from .frequency import is_off as _is_off
+            for k in sorted(pinned_off):
+                off = [v for v in judge.ladders[k] if _is_off(v)]
+                if not off:
+                    raise ValueError(
+                        f"{k} is pinned OFF but the override left it no OFF "
+                        f"rung; an override may not undo a pin")
+                judge.ladders[k] = [off[0]]
 
     # The incumbent must be REFITTED to the envelope before the solve, and
     # this is not a refinement -- it is the difference between optimizing and
@@ -462,7 +508,9 @@ def solve_on_network(net, ts, *, harness, stops_gdf, lam: float, seed: int,
 
     fit = judge.model.evaluate_array(np.array([hw[k] for k in judge.model.keys]))
 
-    return {"fit": fit, "plan": r.plan, "solver": solver,
+    out_setup = {"judge": judge, "incumbent": incumbent} if include_setup else {}
+    return {**out_setup,
+            "fit": fit, "plan": r.plan, "solver": solver,
             "repair_audit": repair_audit,
             "waiting_model_used": got, "incumbent_scale": scale,
             "evaluator_checks": dict(judge.checks), "judge": judge,
