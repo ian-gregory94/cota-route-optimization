@@ -3,8 +3,8 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "OPEN",
-      "detail": "tag=exp3-final-v1, tree=dirty"
+      "status": "MET",
+      "detail": "tag=exp3-final-v1, tree=clean"
     },
     {
       "id": "C2",
@@ -139,8 +139,8 @@
       "detail": "merged"
     }
   ],
-  "met": 20,
-  "open": 2,
+  "met": 21,
+  "open": 1,
   "manual": 1,
   "total": 23,
   "ready": false
