@@ -54,6 +54,49 @@ class BlockProfile:
         }
 
 
+def block_concurrency(start_sec, end_sec,
+                      periods: dict[str, tuple[float, float]] | None = None):
+    """Minute-by-minute vehicles in service, and the peaks that follow from it.
+
+    Factored out of `reconstruct` so that the candidate blocking solver counts
+    fleet the SAME way the canonical reconstruction does. Two instruments that
+    disagree about when a block occupies a vehicle would produce two fleet
+    figures that are not comparable, which is the whole problem this correction
+    exists to fix -- so there is one implementation and both call it.
+
+    A block occupies a vehicle from ``floor(start/60)`` to ``ceil(end/60)`` over
+    a 30-hour horizon, so trips past midnight are not wrapped on top of the
+    morning peak. A period window that ends before it starts (owl) wraps by
+    adding 24 hours.
+
+    Returns ``(concurrency, minutes, peak, peak_minute, peak_by_period)``.
+    """
+    start_sec = np.asarray(start_sec, dtype=float)
+    end_sec = np.asarray(end_sec, dtype=float)
+    if len(end_sec) == 0:
+        return (np.zeros(0, dtype=np.int64), np.zeros(0, dtype=int), 0, 0,
+                {name: 0 for name in (periods or {})})
+    horizon = int(np.ceil(end_sec.max() / 60.0)) + 1
+    delta = np.zeros(horizon + 2, dtype=np.int64)
+    s = np.floor(start_sec / 60.0).astype(int)
+    e = np.ceil(end_sec / 60.0).astype(int)
+    np.add.at(delta, s, 1)
+    np.add.at(delta, np.minimum(e, horizon + 1), -1)
+    conc = np.cumsum(delta)[:horizon]
+    minutes = np.arange(horizon)
+    peak = int(conc.max())
+    peak_min = int(minutes[int(np.argmax(conc))])
+    peak_by_period: dict[str, int] = {}
+    if periods:
+        for name, (h0, h1) in periods.items():
+            a, b = int(h0 * 60), int(h1 * 60)
+            if b <= a:
+                b += 24 * 60
+            window = conc[a:min(b, horizon)]
+            peak_by_period[name] = int(window.max()) if len(window) else 0
+    return conc, minutes, peak, peak_min, peak_by_period
+
+
 def reconstruct(trips: pd.DataFrame, tstats: pd.DataFrame,
                 periods: dict[str, tuple[float, float]] | None = None,
                 ) -> BlockProfile:
@@ -91,29 +134,9 @@ def reconstruct(trips: pd.DataFrame, tstats: pd.DataFrame,
     blocks["layover_minutes"] = (
         (blocks["end_sec"] - blocks["start_sec"]) / 60.0 - blocks["run_minutes"])
 
-    # minute-by-minute count of blocks in service, over a 30-hour day so that
-    # trips past midnight are not wrapped on top of the morning peak
-    horizon = int(np.ceil(blocks["end_sec"].max() / 60.0)) + 1
-    delta = np.zeros(horizon + 2, dtype=np.int64)
-    s = np.floor(blocks["start_sec"] / 60.0).astype(int).to_numpy()
-    e = np.ceil(blocks["end_sec"] / 60.0).astype(int).to_numpy()
-    np.add.at(delta, s, 1)
-    np.add.at(delta, np.minimum(e, horizon + 1), -1)
-    conc = np.cumsum(delta)[:horizon]
-    minutes = np.arange(horizon)
+    conc, minutes, peak, peak_min, peak_by_period = block_concurrency(
+        blocks["start_sec"].to_numpy(), blocks["end_sec"].to_numpy(), periods)
     concurrency = pd.DataFrame({"minute": minutes, "vehicles": conc})
-
-    peak = int(conc.max())
-    peak_min = int(minutes[int(np.argmax(conc))])
-
-    peak_by_period: dict[str, int] = {}
-    if periods:
-        for name, (h0, h1) in periods.items():
-            a, b = int(h0 * 60), int(h1 * 60)
-            if b <= a:                       # owl window wraps past midnight
-                b += 24 * 60
-            window = conc[a:min(b, horizon)]
-            peak_by_period[name] = int(window.max()) if len(window) else 0
 
     return BlockProfile(
         blocks=blocks, concurrency=concurrency, peak_vehicles=peak,

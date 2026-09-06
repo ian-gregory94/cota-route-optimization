@@ -425,11 +425,18 @@ def checks() -> list[tuple[str, str, str, str]]:
     # ---- D23: a production run's envelope IS the frozen canonical one, and
     # constrains the RIGHT QUANTITY.
     #
-    # Six assertions, because five of them can pass while the run still
+    # TEN assertions, because nine of them can pass while the run still
     # constrains the wrong thing. A launcher that carries the correct six
     # constants in its metadata and then applies them to the frequency model's
     # peak CONCURRENCY has the right numbers on the wrong variable, and must
     # fail. That is the specific failure this item exists to catch.
+    #
+    # Checks 7-10 were added once the candidate blocking instrument existed and
+    # its properties were measured. They close three further ways a run can
+    # look right and decide wrong: certifying against an unavailable deadhead
+    # model, certifying on a per-period figure that changes when a list is
+    # reversed, and reblocking without carrying the rule that says how much
+    # reblocking is allowed.
     _env = _json(ROOT / "outputs" / "CANONICAL_ENVELOPE.json")
     _launch = _src("scripts/exp4_launch.py")
     if not _env:
@@ -490,11 +497,68 @@ def checks() -> list[tuple[str, str, str, str]]:
                       "the measured 1.307 ratio is evidence of proxy error, "
                       "not an exchange rate")
 
+        # (7) the run must reach fleet through the SOLVER, not a proxy.
+        #     "block" appearing somewhere is check (4); this is stricter --
+        #     the candidate instrument must actually be invoked, because a
+        #     candidate network has no published block_id to reconstruct.
+        _solver = ("block_candidate_schedule" in _launch
+                   or "minimum_block_fleet" in _launch
+                   or "production_feasible" in _launch)
+        if not _solver:
+            _f.append("the run never calls the candidate blocking solver "
+                      "(block_candidate_schedule / minimum_block_fleet / "
+                      "production_feasible). A candidate network carries no "
+                      "published block_id, so blocks.reconstruct cannot answer "
+                      "for it and something else is supplying the fleet number")
+
+        # (8) deadhead provenance must be declared, and a BOUND may not certify.
+        #     SameTerminalOracle forbids all interlining (upper bound);
+        #     ZeroDeadheadRelaxation permits teleportation (lower bound).
+        #     Either can refute a plan. Neither can approve one.
+        if _solver:
+            _bound_only = ("SameTerminalOracle" in _launch
+                           or "ZeroDeadheadRelaxation" in _launch)
+            _real = ("TableDeadheadOracle" in _launch
+                     or "deadhead_table" in _launch)
+            if _bound_only and not _real:
+                _f.append("the run certifies with a BOUND oracle. "
+                          "SameTerminalOracle forbids every cross-terminal "
+                          "connection and ZeroDeadheadRelaxation permits all "
+                          "of them for free; each brackets the answer and "
+                          "neither is it. Deadhead provenance is OPEN, so a "
+                          "production run may refute but not approve")
+            elif not _bound_only and not _real:
+                _f.append("no DeadheadOracle is named, so nothing states what "
+                          "the run assumed about getting a bus from one "
+                          "terminal to another")
+
+        # (9) feasibility may not be decided on a matching-dependent figure.
+        #     CandidateBlockResult.fleet_by_period is the concurrency of one
+        #     maximum matching among many of equal size; on the real baseline
+        #     an equally maximum matching moves midday by 11 vehicles. A run
+        #     that compares it to the envelope is testing its own tie-break.
+        if _solver and "fleet_by_period" in _launch and \
+                "production_feasible" not in _launch and \
+                "period_lower_bounds" not in _launch:
+            _f.append("the run compares CandidateBlockResult.fleet_by_period "
+                      "to the envelope directly. That figure is a property of "
+                      "the maximum matching found, not of the schedule; use "
+                      "production_feasible (which refuses the arm) or "
+                      "period_lower_bounds (which is matching-independent)")
+
+        # (10) reblocking is recourse, and recourse has a preregistered rule.
+        if _solver and "OPERATIONAL_RECOURSE" not in _launch:
+            _f.append("the run reblocks without carrying "
+                      "OPERATIONAL_RECOURSE, the preregistered rule that "
+                      "permits a new block assignment and forbids any "
+                      "additional fleet, network, frequency, deadhead or "
+                      "layover change alongside it")
+
         add("D23", "Production envelope equals canonical AND constrains "
                    "block-derived fleet",
             MET if not _f else OPEN,
             (f"canonical {_env['envelope_digest']}: {_want_vh:.6f} vh, "
-             f"block-derived fleet {_want_fleet}. All six assertions pass."
+             f"block-derived fleet {_want_fleet}. All ten assertions pass."
              if not _f else
              "A PRODUCTION RUN MAY NOT LAUNCH. " + "; ".join(_f)
              + f". Canonical: outputs/CANONICAL_ENVELOPE.json "

@@ -1,0 +1,54 @@
+TEST A — published-block reconstruction (provenance)
+
+    am_peak   187  (canonical 187)  ok
+    early     135  (canonical 135)  ok
+    evening   178  (canonical 178)  ok
+    midday    173  (canonical 173)  ok
+    owl       149  (canonical 149)  ok
+    pm_peak   197  (canonical 197)  ok
+    system peak 197 @ 17:13 (canonical 197 @ 17:13)
+  TEST A: PASS
+
+  tstats terminal-bearing columns: ['n_stops']
+  terminals derived from stop_times for 5435 trips
+
+AUDIT — published transitions against the connection oracle
+
+    transitions examined            : 2047
+    same terminal, feasible         : 2007
+    same terminal, under min layover: 7  <-- real contradictions
+    cross-terminal / unknown        : 33
+    share needing deadhead data     : 1.6%
+
+TEST B — stripped-block candidate solve
+    2331 trips, block_ids discarded; solving ...
+    solved in 0s
+    am_peak   candidate  195   published  187   diff    +8  (+4.3%)
+    early     candidate  133   published  135   diff    -2  (-1.5%)
+    evening   candidate  192   published  178   diff   +14  (+7.9%)
+    midday    candidate  199   published  173   diff   +26  (+15.0%)
+    owl       candidate  176   published  149   diff   +27  (+18.1%)
+    pm_peak   candidate  202   published  197   diff    +5  (+2.5%)
+    system minimum fleet: 212 (published blocking uses 197)
+    UPPER BOUND: True — no cross-terminal connection was permitted
+    per-period figure matching-stable: False
+      an equally maximum matching gives {'am_peak': 210, 'early': 137, 'evening': 196, 'midday': 210, 'owl': 180, 'pm_peak': 209}
+      -> the per-period arm of the feasibility test is not well posed; minimum_blocks is the invariant answer
+
+BRACKET — the deadhead nobody has, bounded from both sides
+
+    analytic LOWER bound (zero deadhead, 300s layover): 180 @ 17:23
+    solved LOWER bound  : 180 (8s)
+    Dilworth cross-check: solver 180 vs analytic 180 -- AGREE
+
+    180 <= true minimum fleet <= 212
+
+§9 — production feasibility of the BASELINE against the frozen envelope
+
+    revenue vehicle-hours: 2517.183333 against 2517.183333
+    STATUS: UNDECIDABLE
+      - the per-period arm is UNDECIDABLE: fleet_by_period is a property of the maximum matching found, not of the schedule, and an equally maximum matching gives {'early': 137, 'am_peak': 210, 'midday': 210, 'pm_peak': 209, 'evening': 196, 'owl': 180}
+
+======================================================================
+  EXP 4 BLOCKED — CANDIDATE BLOCKER IMPLEMENTED, DEADHEAD PROVENANCE OPEN
+  wrote outputs/exp4/blocking_validation.json

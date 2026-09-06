@@ -1,0 +1,340 @@
+{
+ "periods": {
+  "am_peak": [
+   6.0,
+   9.0
+  ],
+  "early": [
+   4.0,
+   6.0
+  ],
+  "evening": [
+   18.0,
+   22.0
+  ],
+  "midday": [
+   9.0,
+   15.0
+  ],
+  "owl": [
+   22.0,
+   28.0
+  ],
+  "pm_peak": [
+   15.0,
+   18.0
+  ]
+ },
+ "test_a": {
+  "fleet_by_period": {
+   "early": 135,
+   "am_peak": 187,
+   "midday": 173,
+   "pm_peak": 197,
+   "evening": 178,
+   "owl": 149
+  },
+  "system_peak": 197,
+  "peak_time": "17:13",
+  "n_blocks": 284,
+  "canonical": {
+   "early": 135,
+   "am_peak": 187,
+   "midday": 173,
+   "pm_peak": 197,
+   "evening": 178,
+   "owl": 149
+  },
+  "pass": true,
+  "instrument": "blocks.reconstruct (published block_id)"
+ },
+ "tstats_columns": [
+  "trip_id",
+  "route_id",
+  "service_id",
+  "trip_headsign",
+  "trip_short_name",
+  "direction_id",
+  "block_id",
+  "shape_id",
+  "wheelchair_accessible",
+  "bikes_allowed",
+  "first_dep_sec",
+  "last_arr_sec",
+  "runtime_min",
+  "n_stops",
+  "pattern_id"
+ ],
+ "audit": {
+  "transitions_examined": 2047,
+  "same_terminal": 2014,
+  "same_terminal_feasible": 2007,
+  "same_terminal_under_min_layover": 7,
+  "cross_terminal_or_unknown": 33,
+  "share_needing_deadhead_data": 0.01612115290669272,
+  "oracle": {
+   "deadhead_source": "same_terminal_only",
+   "version": "1",
+   "time_dependent": false,
+   "min_layover_sec": 300.0,
+   "cross_terminal": "UNKNOWN -- every such connection infeasible",
+   "consequence": "fleet computed under this oracle is an UPPER BOUND; no interlining is permitted"
+  },
+  "connection_rule": {
+   "connection_rule": "arrival_plus_deadhead_plus_layover",
+   "version": "1",
+   "min_layover_sec": 300.0,
+   "definition": "j is reachable from i iff j.departure >= i.arrival + deadhead(i.dest, j.origin) + min_layover, and the deadhead is KNOWN"
+  },
+  "examples": [
+   {
+    "block_id": "103",
+    "from": "1049356",
+    "to": "1049351",
+    "gap_sec": 240.0,
+    "why": "same terminal but only 240s, under the 300s minimum layover"
+   },
+   {
+    "block_id": "105",
+    "from": "1053439",
+    "to": "1049406",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "151",
+    "from": "1053853",
+    "to": "1049293",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "305",
+    "from": "1050216",
+    "to": "1050489",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "361",
+    "from": "1056067",
+    "to": "1050277",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "361",
+    "from": "1050277",
+    "to": "1050279",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "361",
+    "from": "1050279",
+    "to": "1050278",
+    "why": "cross-terminal; the oracle has no deadhead"
+   },
+   {
+    "block_id": "404",
+    "from": "1050479",
+    "to": "1056157",
+    "why": "cross-terminal; the oracle has no deadhead"
+   }
+  ],
+  "interpretation": "a same-terminal transition the oracle refuses is a real contradiction with the published schedule. A cross-terminal one is not a contradiction -- it measures how much of COTA's actual blocking depends on deadhead data this project does not yet have",
+  "terminals_available": true
+ },
+ "test_b": {
+  "run": true,
+  "source": "candidate_block_solver",
+  "minimum_blocks": 212,
+  "fleet_by_period": {
+   "am_peak": 195,
+   "early": 133,
+   "evening": 192,
+   "midday": 199,
+   "owl": 176,
+   "pm_peak": 202
+  },
+  "system_peak": 202,
+  "system_peak_time": "16:23",
+  "n_trips": 2331,
+  "n_feasible_edges": 75400,
+  "n_blocks": 212,
+  "deadhead_provenance": {
+   "deadhead_source": "same_terminal_only",
+   "version": "1",
+   "time_dependent": false,
+   "min_layover_sec": 300.0,
+   "cross_terminal": "UNKNOWN -- every such connection infeasible",
+   "consequence": "fleet computed under this oracle is an UPPER BOUND; no interlining is permitted"
+  },
+  "connection_rule": {
+   "connection_rule": "arrival_plus_deadhead_plus_layover",
+   "version": "1",
+   "min_layover_sec": 300.0,
+   "definition": "j is reachable from i iff j.departure >= i.arrival + deadhead(i.dest, j.origin) + min_layover, and the deadhead is KNOWN"
+  },
+  "is_upper_bound": true,
+  "is_lower_bound": false,
+  "fleet_by_period_is_matching_dependent": true,
+  "fleet_by_period_stable": false,
+  "fleet_by_period_alternate": {
+   "am_peak": 210,
+   "early": 137,
+   "evening": 196,
+   "midday": 210,
+   "owl": 180,
+   "pm_peak": 209
+  },
+  "CERTIFICATION": "`minimum_blocks` is the matching number and is a graph invariant. `fleet_by_period` is the concurrency of ONE maximum matching among many of equal size and is NOT invariant; it is a diagnostic and may not decide feasibility. Use `period_lower_bounds` for a matching-independent per-period quantity.",
+  "NOT": "this is a minimum-fleet REQUIREMENT under a stated connection model, not a reconstruction of any published block assignment",
+  "notes": "computed under an oracle that forbids every cross-terminal connection, so this is an UPPER BOUND on the fleet requirement",
+  "model_digest": "860b8aae3d1e7449",
+  "published_for_reference": {
+   "early": 135,
+   "am_peak": 187,
+   "midday": 173,
+   "pm_peak": 197,
+   "evening": 178,
+   "owl": 149
+  },
+  "difference_by_period": {
+   "am_peak": 8,
+   "early": -2,
+   "evening": 14,
+   "midday": 26,
+   "owl": 27,
+   "pm_peak": 5
+  },
+  "invariant": "an independently derived feasible reblocking requirement, NOT a recreation of COTA's historical block assignment. Not calibrated toward the published figure in either direction."
+ },
+ "bracket": {
+  "lower_analytic": {
+   "by_period": {
+    "early": 119,
+    "am_peak": 165,
+    "midday": 162,
+    "pm_peak": 180,
+    "evening": 162,
+    "owl": 131
+   },
+   "system_peak": 180,
+   "peak_minute": 1043
+  },
+  "upper_solved": 212,
+  "published_peak_for_reference": 197,
+  "meaning": "any real deadhead model lies between the bound that forbids every cross-terminal connection and the relaxation that grants them all for free. The published figure is a peak concurrency of published blocks and is shown for reference only -- it is not the same quantity as a path-cover count.",
+  "lower_solved": 180,
+  "dilworth_cross_check": {
+   "solver": 180,
+   "analytic": 180,
+   "agree": true,
+   "why_it_must_hold": "under zero deadhead the reachability relation is transitively closed, so minimum chain cover = maximum antichain (Dilworth) = peak interval concurrency. This checks the Hopcroft-Karp implementation on real data at scale, independently of any transit assumption."
+  }
+ },
+ "production_feasibility": {
+  "status": "UNDECIDABLE",
+  "feasible": null,
+  "reasons": [
+   "the per-period arm is UNDECIDABLE: fleet_by_period is a property of the maximum matching found, not of the schedule, and an equally maximum matching gives {'early': 137, 'am_peak': 210, 'midday': 210, 'pm_peak': 209, 'evening': 196, 'owl': 180}"
+  ],
+  "per_period": {
+   "literal_test_as_specified": {
+    "am_peak": [
+     195,
+     187
+    ],
+    "early": [
+     133,
+     135
+    ],
+    "evening": [
+     192,
+     178
+    ],
+    "midday": [
+     199,
+     173
+    ],
+    "owl": [
+     176,
+     149
+    ],
+    "pm_peak": [
+     202,
+     197
+    ]
+   },
+   "literal_test_passes": false,
+   "literal_test_is_decision_grade": false,
+   "matching_stable": false,
+   "invariant_lower_bound": {
+    "early": 119,
+    "am_peak": 165,
+    "midday": 162,
+    "pm_peak": 180,
+    "evening": 162,
+    "owl": 131
+   },
+   "invariant_lower_bound_peak": 180,
+   "invariant_lower_bound_peak_minute": 1043,
+   "envelope": {
+    "am_peak": 187,
+    "early": 135,
+    "evening": 178,
+    "midday": 173,
+    "owl": 149,
+    "pm_peak": 197
+   },
+   "lower_bound_exceeds_envelope": {}
+  },
+  "vehicle_hours": {
+   "decidable": true,
+   "candidate": 2517.1833333333334,
+   "envelope": 2517.1833333333334,
+   "within": true,
+   "note": "revenue vehicle-hours is a property of the timetable, not of the blocking, so this arm is well posed"
+  },
+  "system": {
+   "candidate_minimum_blocks": 212,
+   "is_upper_bound": true,
+   "is_lower_bound": false,
+   "baseline_minimum_blocks": null,
+   "comparison": "instrument-consistent: both sides are path-cover counts under the same oracle and connection rule. The envelope's peak-vehicle figure is a concurrency of published blocks and is NOT this quantity"
+  },
+  "envelope_digest": "b6c647d3766338a6",
+  "verdicts": [
+   "FEASIBLE",
+   "INFEASIBLE",
+   "UNDECIDABLE"
+  ]
+ },
+ "verdict": {
+  "test_a_pass": true,
+  "candidate_blocker_implemented": true,
+  "deadhead_provenance": "OPEN \u2014 no defensible cross-terminal source",
+  "bracket": {
+   "lower_analytic": {
+    "by_period": {
+     "early": 119,
+     "am_peak": 165,
+     "midday": 162,
+     "pm_peak": 180,
+     "evening": 162,
+     "owl": 131
+    },
+    "system_peak": 180,
+    "peak_minute": 1043
+   },
+   "upper_solved": 212,
+   "published_peak_for_reference": 197,
+   "meaning": "any real deadhead model lies between the bound that forbids every cross-terminal connection and the relaxation that grants them all for free. The published figure is a peak concurrency of published blocks and is shown for reference only -- it is not the same quantity as a path-cover count.",
+   "lower_solved": 180,
+   "dilworth_cross_check": {
+    "solver": 180,
+    "analytic": 180,
+    "agree": true,
+    "why_it_must_hold": "under zero deadhead the reachability relation is transitively closed, so minimum chain cover = maximum antichain (Dilworth) = peak interval concurrency. This checks the Hopcroft-Karp implementation on real data at scale, independently of any transit assumption."
+   }
+  },
+  "per_period_candidate_figure_is_decision_grade": false,
+  "status": "EXP 4 BLOCKED \u2014 CANDIDATE BLOCKER IMPLEMENTED, DEADHEAD PROVENANCE OPEN"
+ }
+}
