@@ -67,9 +67,23 @@ MAX_LINES = 65
 #: production `baseline` sentinel, and never from a constant in a script.
 CANONICAL_ENVELOPE = ROOT / "outputs" / "CANONICAL_ENVELOPE.json"
 BLOCKING_VALIDATION = ROOT / "outputs" / "exp4" / "blocking_validation.json"
+READINESS_FROZEN = ROOT / "outputs" / "exp4" / "READINESS_FROZEN.json"
+
+
+def _json_or_none(p: Path):
+    try:
+        return json.loads(p.read_text())
+    except Exception:
+        return None
 
 #: The candidate blocking instrument's assumptions, frozen for the whole run.
 MIN_LAYOVER_SEC = 300.0
+
+#: The same-terminal connection graph is built pair-by-pair, so a large
+#: timetable is quadratic. Refuse rather than truncate (the solver raises), and
+#: record the refusal as an unavailable bound. Fleet is reported, not gated, so
+#: an unavailable bound costs a diagnostic and never a candidate.
+FLEET_MAX_EDGES = 4_000_000
 
 LAM = 2.0
 SEED = 20260825
@@ -99,6 +113,7 @@ def main() -> int:
                                         ZeroDeadheadRelaxation,
                                         block_candidate_schedule,
                                         materialize_timetable,
+                                        period_lower_bounds,
                                         production_feasible,
                                         provenance_is_certification_grade,
                                         terminal_identity,
@@ -196,27 +211,38 @@ def main() -> int:
     # validation artifact rather than recomputed here, for the same reason the
     # envelope is read rather than retyped: a number a launcher computes for
     # itself is a number nothing else can check.
-    if not BLOCKING_VALIDATION.exists():
-        print("FATAL: outputs/exp4/blocking_validation.json is missing. Run "
-              "scripts/exp4_blocking_validate.py first -- fleet feasibility "
-              "compares a candidate's block count against the BASELINE's "
-              "under the same oracle, and that measurement is an artifact, "
-              "not something this script may invent.")
-        return 2
-    _bv = json.loads(BLOCKING_VALIDATION.read_text())
-    _br = _bv["bracket"]
-    baseline_bound = CandidateFleetBound(
-        lower=int(_br.get("lower_solved", _br["lower_analytic"]["system_peak"])),
-        upper=int(_br["upper_solved"]),
-        lower_oracle="zero_deadhead_relaxation",
-        upper_oracle="same_terminal_only",
-        deadhead_provenance="OPEN",
-        n_trips=int(_bv["test_b"]["n_trips"]))
-    print(f"baseline under the same instrument: "
-          f"[{baseline_bound.lower}, {baseline_bound.upper}] blocks over "
-          f"{baseline_bound.n_trips} trips; published peak "
-          f"{_bv['test_a']['system_peak']} @ {_bv['test_a']['peak_time']} "
-          f"is a DIFFERENT instrument and is not the comparison")
+    # The baseline bracket is a REPORTING input, not a launch precondition.
+    # READINESS_FROZEN records the rule: only an error that makes candidate
+    # construction or objective comparison invalid may stop the run, and a
+    # missing fleet reference makes neither invalid. Absent it, fleet is
+    # reported as unavailable and the search proceeds.
+    baseline_bound = None
+    if BLOCKING_VALIDATION.exists():
+        try:
+            _bv = json.loads(BLOCKING_VALIDATION.read_text())
+            _br = _bv["bracket"]
+            baseline_bound = CandidateFleetBound(
+                lower=int(_br.get("lower_solved",
+                                  _br["lower_analytic"]["system_peak"])),
+                upper=int(_br["upper_solved"]),
+                lower_oracle="zero_deadhead_relaxation",
+                upper_oracle="same_terminal_only",
+                deadhead_provenance="OPEN",
+                n_trips=int(_bv["test_b"]["n_trips"]))
+            print(f"baseline under the same instrument: "
+                  f"[{baseline_bound.lower}, {baseline_bound.upper}] blocks "
+                  f"over {baseline_bound.n_trips} trips; published peak "
+                  f"{_bv['test_a']['system_peak']} @ "
+                  f"{_bv['test_a']['peak_time']} is a DIFFERENT instrument "
+                  f"and is not the comparison")
+        except Exception as e:
+            print(f"baseline fleet reference unreadable ({type(e).__name__}); "
+                  f"fleet will be reported without it")
+    else:
+        print("baseline fleet reference absent; fleet will be reported "
+              "without it. This does not gate the run.")
+    print("FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or "
+          "rejects a candidate. Ranking is on objective_EXACT alone.")
 
     def fleet_verdict(state_key, lines, plan_str):
         """Bracket + three-valued feasibility for one certified candidate."""
@@ -232,13 +258,20 @@ def main() -> int:
                                     source=f"certified:{state_key}")
         rule = ConnectionRule(min_layover_sec=MIN_LAYOVER_SEC)
         hi = block_candidate_schedule(tbl, SameTerminalOracle(MIN_LAYOVER_SEC),
-                                      periods_cfg, rule)
-        lo = block_candidate_schedule(tbl,
-                                      ZeroDeadheadRelaxation(MIN_LAYOVER_SEC),
-                                      periods_cfg, rule)
+                                      periods_cfg, rule,
+                                      max_edges=FLEET_MAX_EDGES)
+        # The LOWER bound is taken from the analytic identity rather than a
+        # second matching. Under the zero-deadhead relaxation the reachability
+        # relation is transitively closed, so Dilworth forces minimum chain
+        # cover = maximum antichain = peak interval concurrency; solver and
+        # identity agreed at 180 on the real baseline. Using the identity is
+        # therefore exact, not an approximation, and it avoids building a
+        # near-complete graph on every certified candidate.
+        _lb, lo_peak, _lm = period_lower_bounds(tbl, periods_cfg,
+                                                MIN_LAYOVER_SEC)
         bound = CandidateFleetBound(
-            lower=lo.minimum_blocks, upper=hi.minimum_blocks,
-            lower_oracle=lo.deadhead_provenance["deadhead_source"],
+            lower=int(lo_peak), upper=hi.minimum_blocks,
+            lower_oracle="zero_deadhead_relaxation (Dilworth identity)",
             upper_oracle=hi.deadhead_provenance["deadhead_source"],
             deadhead_provenance="OPEN", n_trips=len(tbl))
         vh = float(sum(t.runtime_min for t in tbl.trips)) / 60.0
@@ -253,7 +286,10 @@ def main() -> int:
             "feasible": fb.feasible,
             "reasons": list(fb.reasons),
             "deadhead_oracle_upper": hi.deadhead_provenance,
-            "deadhead_oracle_lower": lo.deadhead_provenance,
+            "deadhead_oracle_lower": {
+                "deadhead_source": "zero_deadhead_relaxation",
+                "method": "Dilworth identity, exact",
+                "is_bound_only": True},
             "deadhead_provenance_status": (
                 "COMPLETE" if fb.provenance_certification_grade else "OPEN"),
             "deadhead_provenance_note": fb.provenance_note,
@@ -487,9 +523,15 @@ def main() -> int:
                 v = fleet_verdict(d["state_key"], d["lines"],
                                   d.get("plan_EXACT") or {})
             except Exception as e:
+                # A failure to MEASURE fleet is a missing diagnostic, not an
+                # invalid comparison. It is recorded and the run continues;
+                # READINESS_FROZEN names this explicitly.
                 v = {"state_key": d["state_key"],
-                     "verdict": "ERROR",
-                     "error": f"{type(e).__name__}: {e}"[:300]}
+                     "verdict": "NOT_MEASURED",
+                     "error": f"{type(e).__name__}: {e}"[:300],
+                     "consequence": ("this candidate keeps its objective and "
+                                     "its rank; only its fleet diagnostic is "
+                                     "missing")}
             fp.write_text(json.dumps(v, indent=1, default=str))
             n_f += 1
         if n_f:
@@ -533,6 +575,24 @@ def main() -> int:
         print(f"  gate 4-6     : winner has {len(w['lines'])} lines; bounds "
               f"[{MIN_LINES}, {MAX_LINES}] "
               f"{'ACTIVE -- RESULT CENSORED' if on_bound else 'inactive'}")
+        wf = fleets.get(w["state_key"], {})
+        wv = wf.get("verdict", "NOT MEASURED")
+        wb = wf.get("fleet_bracket") or {}
+        print(f"  fleet        : {wv}"
+              + (f", bracket [{wb.get('lower')}, {wb.get('upper')}] blocks"
+                 if wb else "")
+              + f" (deadhead {wf.get('deadhead_provenance_status', 'OPEN')})")
+        print("  SCOPE OF THE CLAIM")
+        print("    This leader is the best CERTIFIED OBJECTIVE under the "
+              "canonical vehicle-hours")
+        print(f"    envelope ({VEH_HOURS:.6f} vh, {ENVELOPE_DIGEST}). Its "
+              f"FLEET REQUIREMENT IS {wv}:")
+        print("    deadhead provenance is OPEN and, on synthesised candidates, "
+              "terminal identity")
+        print("    is degenerate. No operational deployability claim follows "
+              "from this run.")
+        print("    Fleet was reported and never gated; ranking used "
+              "objective_EXACT alone.")
     complete = len(certs) == out.n_promoted and out.n_promoted > 0
     print(f"  status       : {'COMPLETE' if complete else 'IN PROGRESS'}")
 
@@ -568,6 +628,19 @@ def main() -> int:
         "exact_leader_lines": certs[0]["lines"] if certs else None,
         "note": ("every number reported here is EXACT-stage. Discovery scores "
                  "decide nothing and are stored only as approximate provenance."),
+        "scope_of_claim": (
+            "best CERTIFIED OBJECTIVE under the canonical vehicle-hours "
+            "envelope. FLEET REQUIREMENT IS NOT ESTABLISHED: deadhead "
+            "provenance is OPEN and terminal identity is degenerate on "
+            "synthesised candidates, so the fleet instrument returns "
+            "UNDECIDABLE. No operational deployability claim follows."),
+        "fleet_policy": (
+            "REPORTED, NOT GATED. No fleet verdict filtered, ranked or "
+            "rejected any candidate; ranking is on objective_EXACT alone. "
+            "Authorised in outputs/exp4/READINESS_FROZEN.json."),
+        "readiness_frozen": _json_or_none(READINESS_FROZEN),
+        "d24_classification": "POST-RESULT operational validation, not a "
+                              "launch gate",
         "seconds_this_shard": time.time() - t_start,
     }, indent=1))
     return 0

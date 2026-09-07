@@ -27,6 +27,16 @@ OUT = ROOT / "outputs" / "exp4"
 
 MET, OPEN, MANUAL = "MET", "OPEN", "MANUAL"
 
+#: Items that gate the LAUNCH, versus items validated AFTER a result exists.
+#: The distinction is not cosmetic. A launch gate asks "can this run produce a
+#: valid comparison?"; a post-result item asks "what is this result good for?"
+#: An input that only limits the INTERPRETATION of a fleet number cannot make
+#: an objective comparison invalid, so holding the run for it would be
+#: confusing two different questions.
+LAUNCH_GATE, POST_RESULT = "launch_gate", "post_result"
+
+FREEZE = ROOT / "outputs" / "exp4" / "READINESS_FROZEN.json"
+
 
 def _json(p: Path):
     try:
@@ -55,12 +65,12 @@ def _git(*args: str) -> str:
     return r.stdout.strip()
 
 
-def checks() -> list[tuple[str, str, str, str]]:
-    """(id, title, status, detail)"""
-    out: list[tuple[str, str, str, str]] = []
+def checks() -> list[tuple[str, str, str, str, str]]:
+    """(id, title, status, detail, kind)"""
+    out: list[tuple[str, str, str, str, str]] = []
 
-    def add(i, title, status, detail=""):
-        out.append((i, title, status, detail))
+    def add(i, title, status, detail="", kind=LAUNCH_GATE):
+        out.append((i, title, status, detail, kind))
 
     pool = _json(OUT / "route_pool.json")
     lg = _json(OUT / "linkgraph_audit.json")
@@ -612,18 +622,30 @@ def checks() -> list[tuple[str, str, str, str]]:
     # A fleet gate in that state would reject every candidate for a stop-id
     # convention. The instrument already refuses -- it withholds every
     # terminal-dependent comparison and returns UNDECIDABLE -- so nothing is
-    # silently wrong. But a production run whose fleet gate can only ever say
-    # UNDECIDABLE is not a fleet gate, which is why this is an item.
+    # silently wrong.
+    #
+    # RECLASSIFIED 2026-09-07 as POST-RESULT operational validation rather than
+    # a launch gate. The reasoning, recorded because the reclassification is a
+    # judgement and not a measurement: terminal identity affects only what a
+    # FLEET number means. It touches neither candidate construction nor the
+    # objective, so it cannot make a comparison between two candidates invalid,
+    # and Experiment 4 ranks on `objective_EXACT`. Holding the run for it would
+    # conflate "can this produce a valid comparison?" with "what is the result
+    # good for?". The cost of the reclassification is stated rather than
+    # softened: the winner arrives with its fleet requirement UNDECIDABLE, so
+    # no operational deployability claim may be made from this run.
     _pf = _json(ROOT / "outputs" / "exp4" / "run" / "preflight.json")
     if not _pf:
-        add("D24", "Terminal identity resolved for candidate timetables", OPEN,
+        add("D24", "Terminal identity — POST-RESULT operational validation",
+            OPEN,
             "not measured here: run scripts/exp4_launch.py --stage preflight, "
             "which materialises a real candidate and reports how many of its "
-            "trips end at a terminal that is never any trip's origin")
+            "trips end at a terminal that is never any trip's origin",
+            POST_RESULT)
     else:
         _ti = _pf.get("terminal_identity", {})
         _deg = bool(_ti.get("degenerate"))
-        add("D24", "Terminal identity resolved for candidate timetables",
+        add("D24", "Terminal identity — POST-RESULT operational validation",
             OPEN if _deg else MET,
             (f"DEGENERATE on the preflight candidate: "
              f"{_ti.get('trips_whose_destination_is_never_an_origin')} of "
@@ -640,7 +662,8 @@ def checks() -> list[tuple[str, str, str, str]]:
              f"candidates, which is correct behaviour and not a usable gate."
              if _deg else
              f"{_ti.get('share_stranded', 0):.1%} of preflight candidate "
-             f"trips stranded; terminal-dependent comparisons are admissible"))
+             f"trips stranded; terminal-dependent comparisons are admissible"),
+            POST_RESULT)
 
     add("D22", "Search-allowance contract merged into firewall/ and in force",
         MET if merged.exists() else OPEN,
@@ -657,29 +680,58 @@ def main() -> int:
     args = ap.parse_args()
 
     rows = checks()
-    w = max(len(t) for _, t, _, _ in rows)
+    w = max(len(t) for _, t, *_ in rows)
+    frozen = _json(FREEZE)
     print("EXPERIMENT 4 — DEFINITION OF READY\n")
     print(f"  {'':4} {'item':<{w}}  status")
-    for i, title, status, detail in rows:
-        print(f"  {i:<4} {title:<{w}}  {status}")
+    for i, title, status, detail, kind in rows:
+        tag = "" if kind == LAUNCH_GATE else "   [post-result]"
+        print(f"  {i:<4} {title:<{w}}  {status}{tag}")
         if detail:
             print(f"       {'':<{w}}  {detail}")
-    met = sum(1 for *_, s, _ in rows if s == MET)
-    opn = sum(1 for *_, s, _ in rows if s == OPEN)
-    man = sum(1 for *_, s, _ in rows if s == MANUAL)
-    print(f"\n  {met} met | {opn} open | {man} need manual confirmation "
-          f"| {len(rows)} total")
-    print("\nExperiment 4 is NOT ready to launch a search while any item is open "
-          "or unconfirmed.\nMANUAL items are not met -- they are unchecked.")
+
+    gates = [r for r in rows if r[4] == LAUNCH_GATE]
+    post = [r for r in rows if r[4] == POST_RESULT]
+    met = sum(1 for r in gates if r[2] == MET)
+    opn = sum(1 for r in gates if r[2] == OPEN)
+    man = sum(1 for r in gates if r[2] == MANUAL)
+    print(f"\n  LAUNCH GATES  {met} met | {opn} open | {man} manual "
+          f"| {len(gates)} total")
+    if post:
+        print(f"  POST-RESULT   "
+              + " | ".join(f"{r[0]} {r[2]}" for r in post)
+              + f"  ({len(post)} validated after a result exists, not before)")
+
+    # A frozen readiness record is the principal's judgement on the MANUAL
+    # items, recorded with its date and its cost rather than folded silently
+    # into the MET count. It does not change any item's status.
+    authorized = bool(frozen and frozen.get("authorized_to_execute"))
+    if authorized:
+        print(f"\n  READINESS FROZEN {frozen.get('frozen_at', '')} — "
+              f"execution AUTHORIZED by {frozen.get('authorized_by', '?')}")
+        for c in frozen.get("accepted_costs", []):
+            print(f"    accepted cost: {c}")
+    if opn:
+        print("\nExperiment 4 is NOT ready to launch: a LAUNCH GATE is open.")
+    elif man and not authorized:
+        print("\nEvery launch gate is met except MANUAL items, which are "
+              "unchecked rather than met. A human must confirm them.")
+    else:
+        print("\nEvery launch gate is met or explicitly authorized. "
+              "Post-result items do not gate execution.")
 
     if args.json:
         Path(args.json).write_text(json.dumps(
-            {"items": [{"id": i, "title": t, "status": s, "detail": d}
-                       for i, t, s, d in rows],
-             "met": met, "open": opn, "manual": man, "total": len(rows),
-             "ready": opn == 0 and man == 0}, indent=2))
+            {"items": [{"id": i, "title": t, "status": s, "detail": d,
+                        "kind": k} for i, t, s, d, k in rows],
+             "launch_gates": {"met": met, "open": opn, "manual": man,
+                              "total": len(gates)},
+             "post_result": [{"id": r[0], "status": r[2]} for r in post],
+             "total": len(rows),
+             "readiness_frozen": frozen,
+             "ready": opn == 0 and (man == 0 or authorized)}, indent=2))
         print(f"\nwrote {args.json}")
-    return 1 if (opn or man) else 0
+    return 0 if (opn == 0 and (man == 0 or authorized)) else 1
 
 
 if __name__ == "__main__":

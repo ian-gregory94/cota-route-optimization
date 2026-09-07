@@ -18,20 +18,15 @@
  },
  "deadhead_oracle_lower": {
   "deadhead_source": "zero_deadhead_relaxation",
-  "version": "1",
-  "time_dependent": false,
-  "min_layover_sec": 300.0,
-  "cross_terminal": "ZERO -- deliberately and knowingly false",
-  "is_bound_only": true,
-  "consequence": "fleet computed under this relaxation is a LOWER BOUND and may never certify a plan",
-  "NOT": "not a deadhead estimate, not a model, and not evidence about Columbus geography"
+  "method": "Dilworth identity, exact",
+  "is_bound_only": true
  },
  "deadhead_provenance_status": "OPEN",
  "deadhead_provenance_note": "same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for",
  "fleet_bracket": {
   "lower": 31,
   "upper": 244,
-  "lower_oracle": "zero_deadhead_relaxation",
+  "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
   "upper_oracle": "same_terminal_only",
   "deadhead_provenance": "OPEN",
   "n_trips": 288,
