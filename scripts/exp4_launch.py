@@ -481,8 +481,14 @@ def main() -> int:
             return digest([sorted(sel.lines), sorted(sel.pinned_off)])
 
         def scorer(s):
-            ck = _cache_key(s)
-            hit = eval_cache.get(ck)
+            # NOT `ck`: fifteen lines down, the incumbent scoring code binds
+            # `ck = rp_keys(b)`. Reusing the name made _write_cache receive a
+            # list of route-period tuples, `eval_cache[list]` raise
+            # TypeError, and `run_multi_start` swallow that as a per-start
+            # error and move to the next seed -- twenty evaluations in and
+            # every start quietly failing while the log printed "scored 20".
+            cache_key = _cache_key(s)
+            hit = eval_cache.get(cache_key)
             if hit is not None:
                 n_cached["n"] += 1
                 if n_cached["n"] % 200 == 0:
@@ -510,7 +516,7 @@ def main() -> int:
                     allow_off=True, pathset_cache=cache)
             except Exception as e:
                 out = (float("inf"), {"error": str(e)[:120]}, False, {})
-                _write_cache(ck, s, out)
+                _write_cache(cache_key, s, out)
                 return out
             n_scored["n"] += 1
             if n_scored["n"] % 20 == 0:
@@ -520,17 +526,22 @@ def main() -> int:
             out = (float(m.get("objective", float("inf"))),
                    {k: v for k, v in m.items()
                     if isinstance(v, (int, float))}, True, sc.plan)
-            _write_cache(ck, s, out)
+            _write_cache(cache_key, s, out)
             return out
 
-        def _write_cache(ck, sel, out):
+        def _write_cache(cache_key, sel, out):
             """The result goes to disk the instant it exists -- OPERATIONS 31.
 
             Line-delimited and flushed per record, so a kill mid-write costs
             the one line being written and the loader skips it.
             """
             obj, metrics, feasible, plan = out
-            rec = {"key": ck, "code_version": CODE_V,
+            if not isinstance(cache_key, str):
+                raise TypeError(
+                    f"cache key is {type(cache_key).__name__}, not str -- a "
+                    f"name collision, and the last one was swallowed as a "
+                    f"per-start error rather than raised")
+            rec = {"key": cache_key, "code_version": CODE_V,
                    "lines": sorted(sel.lines),
                    "pinned_off": sorted(sel.pinned_off),
                    "objective": float(obj),
@@ -538,7 +549,7 @@ def main() -> int:
                    "feasible": bool(feasible),
                    "plan": {f"{r}|{p}": float(v)
                             for (r, p), v in (plan or {}).items()}}
-            eval_cache[ck] = rec
+            eval_cache[cache_key] = rec
             cache_fh.write(json.dumps(rec) + "\n")
             cache_fh.flush()
             os.fsync(cache_fh.fileno())
@@ -555,6 +566,23 @@ def main() -> int:
         cache_fh.close()
         print(f"  discovery: {n_scored['n']} scored this process, "
               f"{n_cached['n']} replayed from cache")
+        # `run_multi_start` catches a per-start exception, records it, and
+        # moves to the next seed. That is right for a genuinely infeasible
+        # start and wrong for a bug in the scorer, and the two look identical
+        # in the log. So the errors are counted out loud rather than left in
+        # a payload nobody reads.
+        _errs = [r for r in ms.payload().get("starts", [])
+                 if isinstance(r, dict) and r.get("error")]
+        if _errs:
+            print(f"  START ERRORS: {len(_errs)} of {len(family)} starts "
+                  f"raised. These are recorded, not fatal -- but a scorer bug "
+                  f"and an infeasible seed look identical here:")
+            for r in _errs[:5]:
+                print(f"    {r.get('name')}: {r.get('error')}")
+            if len(_errs) > 5:
+                print(f"    ... and {len(_errs) - 5} more")
+        else:
+            print(f"  start errors: none of {len(family)} starts raised")
         rec = {"proposals": [{"state_key": k,
                               "state_digest": c.selection.state_digest,
                               "lines": sorted(c.selection.lines),
