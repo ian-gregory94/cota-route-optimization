@@ -451,24 +451,41 @@ def checks() -> list[tuple[str, str, str, str]]:
         _f: list[str] = []
         import re as _re
 
-        # (1) hours cap exactly canonical
-        _m = _re.search(r"^VEH_HOURS\s*=\s*([0-9.]+)", _launch, _re.M)
-        if not _m:
-            _f.append("no VEH_HOURS constant")
-        elif abs(float(_m.group(1)) - _want_vh) > 1e-9:
-            _f.append(f"hours cap {_m.group(1)} != canonical {_want_vh:.6f}")
+        # (1) hours are READ from the frozen artifact, not carried as a
+        #     constant. A correct constant is still a constant: 2507.0 stood
+        #     in this file and looked exactly as legitimate as 2517.183333
+        #     would have. The fix is provenance, not a better number.
+        _lit = _re.search(r"^VEH_HOURS\s*=\s*([0-9.]+)", _launch, _re.M)
+        if _lit:
+            _f.append(f"hours are a literal constant ({_lit.group(1)}); a "
+                      f"resource cap is read from CANONICAL_ENVELOPE.json or "
+                      f"the production `baseline` sentinel, never retyped")
+        elif "CANONICAL_ENVELOPE" not in _launch or \
+                "weekday_revenue_vehicle_hours" not in _launch:
+            _f.append("the run does not read weekday_revenue_vehicle_hours "
+                      "from outputs/CANONICAL_ENVELOPE.json")
+        # (1b) and the stale value is gone from executable code entirely
+        for _stale in ("2507.0", "2507.763673"):
+            if _re.search(r"^[^#]*\b" + _re.escape(_stale), _launch, _re.M):
+                _f.append(f"the stale hours figure {_stale} still appears in "
+                          f"executable code (canonical is {_want_vh:.6f})")
 
-        # (2)+(3) fleet is the canonical six-period VECTOR, never a scalar
+        # (2)+(3) fleet is the canonical six-period VECTOR, never a scalar,
+        #     and is likewise read rather than typed.
         if _re.search(r"^PEAK_VEHICLES\s*=\s*[0-9.]+\s*$", _launch, _re.M):
             _f.append("fleet is a SCALAR constant; the canonical envelope is a "
                       "six-period vector and a scalar is a different "
                       "constraint even when the number is right")
-        _has_vector = all(str(v) in _launch for v in
-                          sorted(_want_fleet.values())) and \
-            all(p in _launch for p in _want_fleet)
-        if not _has_vector:
-            _f.append(f"the canonical six-period fleet vector {_want_fleet} "
-                      f"does not appear")
+        if "peak_vehicles_by_period" not in _launch:
+            _f.append("the run does not read peak_vehicles_by_period from the "
+                      "canonical envelope, so whatever fleet vector it uses "
+                      "has no provenance")
+        if _re.search(r"peak_vehicle_budget\s*=\s*(?!None)", _launch):
+            _f.append("ContractLimits.peak_vehicle_budget is set to a number. "
+                      "contract.py cannot evaluate it without a block-derived "
+                      "peak and records `peak_fleet_check: NOT RUN`, so this "
+                      "is a gate that reports instead of gating. Fleet is "
+                      "decided by the blocking instrument or not at all")
 
         # (4) the feasibility/certification quantity is BLOCK-DERIVED fleet.
         #     This is the assertion the other five cannot substitute for.
@@ -484,11 +501,11 @@ def checks() -> list[tuple[str, str, str, str]]:
                       "197 at the same period, and contract.py already refuses "
                       "that comparison")
 
-        # (5) provenance digest is carried
-        if _env["envelope_digest"] not in _launch:
-            _f.append(f"the canonical envelope digest "
-                      f"{_env['envelope_digest']} is not referenced, so "
-                      f"nothing ties the run to the frozen artifact")
+        # (5) provenance digest is carried into the run's own artifacts
+        if "envelope_digest" not in _launch:
+            _f.append("the canonical envelope digest is never read or "
+                      "propagated, so nothing ties the run's outputs to the "
+                      "frozen artifact")
 
         # (6) no concurrency-to-fleet conversion anywhere
         if _re.search(r"1\.30[0-9]|interlining_factor\s*\*|\*\s*interlin",
@@ -520,17 +537,27 @@ def checks() -> list[tuple[str, str, str, str]]:
                            or "ZeroDeadheadRelaxation" in _launch)
             _real = ("TableDeadheadOracle" in _launch
                      or "deadhead_table" in _launch)
-            if _bound_only and not _real:
-                _f.append("the run certifies with a BOUND oracle. "
-                          "SameTerminalOracle forbids every cross-terminal "
-                          "connection and ZeroDeadheadRelaxation permits all "
-                          "of them for free; each brackets the answer and "
-                          "neither is it. Deadhead provenance is OPEN, so a "
-                          "production run may refute but not approve")
-            elif not _bound_only and not _real:
+            if not (_bound_only or _real):
                 _f.append("no DeadheadOracle is named, so nothing states what "
                           "the run assumed about getting a bus from one "
                           "terminal to another")
+            # Using the bracket oracles is correct -- that is how the bound is
+            # measured. What must not happen is a FEASIBLE verdict coming out
+            # of one, so the verdict has to run through production_feasible,
+            # which gates on provenance, and the status has to be propagated.
+            elif _bound_only and not _real:
+                if "production_feasible" not in _launch:
+                    _f.append("the run uses a BOUND oracle without routing the "
+                              "verdict through production_feasible. "
+                              "SameTerminalOracle forbids every cross-terminal "
+                              "connection and ZeroDeadheadRelaxation grants "
+                              "them all free; each brackets the answer and "
+                              "neither is it, so nothing else may turn one "
+                              "into an approval")
+                if "deadhead_provenance" not in _launch:
+                    _f.append("the run never propagates deadhead provenance "
+                              "status, so a reader of its output cannot tell "
+                              "whether a verdict rests on a real oracle")
 
         # (9) feasibility may not be decided on a matching-dependent figure.
         #     CandidateBlockResult.fleet_by_period is the concurrency of one
@@ -538,13 +565,17 @@ def checks() -> list[tuple[str, str, str, str]]:
         #     an equally maximum matching moves midday by 11 vehicles. A run
         #     that compares it to the envelope is testing its own tie-break.
         if _solver and "fleet_by_period" in _launch and \
-                "production_feasible" not in _launch and \
-                "period_lower_bounds" not in _launch:
-            _f.append("the run compares CandidateBlockResult.fleet_by_period "
-                      "to the envelope directly. That figure is a property of "
-                      "the maximum matching found, not of the schedule; use "
-                      "production_feasible (which refuses the arm) or "
-                      "period_lower_bounds (which is matching-independent)")
+                "DIAGNOSTIC" not in _launch:
+            _f.append("the run reads CandidateBlockResult.fleet_by_period "
+                      "without marking it diagnostic. AMENDMENT 1 removed the "
+                      "per-period arm as a gate: that figure is a property of "
+                      "the maximum matching found, not of the candidate "
+                      "timetable, and an equally optimal matching moves it by "
+                      "as much as 15 vehicles")
+        if _solver and "BLOCKING_CONTRACT_DIGEST" not in _launch:
+            _f.append("the run does not carry BLOCKING_CONTRACT_DIGEST, so "
+                      "nothing records WHICH version of §9 it ran under -- "
+                      "and §9 was amended before execution")
 
         # (10) reblocking is recourse, and recourse has a preregistered rule.
         if _solver and "OPERATIONAL_RECOURSE" not in _launch:
@@ -565,6 +596,51 @@ def checks() -> list[tuple[str, str, str, str]]:
                f"({_env['envelope_digest']}). NOTE: carrying the right six "
                f"constants while constraining concurrency still fails this "
                f"item -- right numbers, wrong variable."))
+
+    # ---- D24: terminal identity. A SECOND missing input, found by running
+    # the fleet gate on a real candidate rather than by reasoning about it.
+    #
+    # The deadhead oracle asks whether a bus can get from terminal X to Y. Even
+    # the same-terminal case first needs to know when X and Y are the same
+    # place, and this feed does not say: `parent_station` is empty in all 2,949
+    # stop rows. On COTA's published trips it barely matters -- 9 of 2,331
+    # trips end where nothing starts. On synthesised pool lines it dominates:
+    # an outbound ends at HIGHALS while its own inbound starts at HIGHALN, and
+    # 240 of 288 trips (83.3%) are stranded, so the same-terminal upper bound
+    # is one block per trip almost by construction.
+    #
+    # A fleet gate in that state would reject every candidate for a stop-id
+    # convention. The instrument already refuses -- it withholds every
+    # terminal-dependent comparison and returns UNDECIDABLE -- so nothing is
+    # silently wrong. But a production run whose fleet gate can only ever say
+    # UNDECIDABLE is not a fleet gate, which is why this is an item.
+    _pf = _json(ROOT / "outputs" / "exp4" / "run" / "preflight.json")
+    if not _pf:
+        add("D24", "Terminal identity resolved for candidate timetables", OPEN,
+            "not measured here: run scripts/exp4_launch.py --stage preflight, "
+            "which materialises a real candidate and reports how many of its "
+            "trips end at a terminal that is never any trip's origin")
+    else:
+        _ti = _pf.get("terminal_identity", {})
+        _deg = bool(_ti.get("degenerate"))
+        add("D24", "Terminal identity resolved for candidate timetables",
+            OPEN if _deg else MET,
+            (f"DEGENERATE on the preflight candidate: "
+             f"{_ti.get('trips_whose_destination_is_never_an_origin')} of "
+             f"{_ti.get('n_trips')} trips "
+             f"({_ti.get('share_stranded', 0):.1%}) end at a terminal that is "
+             f"never any trip's origin, against 9 of 2,331 (0.4%) on the "
+             f"published feed. GTFS `parent_station` is empty in all 2,949 "
+             f"stop rows, so nothing states which stop_ids are one terminal. "
+             f"A distance threshold or a stop_name prefix would invent that, "
+             f"and both are barred for the same reason estimating deadhead "
+             f"from block slack is. Needs the operator terminal/garage table "
+             f"-- the same artifact that would close deadhead provenance. "
+             f"Until then the fleet gate can only return UNDECIDABLE on "
+             f"candidates, which is correct behaviour and not a usable gate."
+             if _deg else
+             f"{_ti.get('share_stranded', 0):.1%} of preflight candidate "
+             f"trips stranded; terminal-dependent comparisons are admissible"))
 
     add("D22", "Search-allowance contract merged into firewall/ and in force",
         MET if merged.exists() else OPEN,

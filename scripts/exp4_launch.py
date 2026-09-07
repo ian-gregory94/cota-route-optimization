@@ -59,10 +59,17 @@ OUT = ROOT / "outputs" / "exp4" / "run"
 MIN_LINES = 15
 MAX_LINES = 65
 
-#: The envelope, pinned from the unedited baseline exactly as every previous
-#: experiment pinned it. Not a free parameter.
-VEH_HOURS = 2507.0
-PEAK_VEHICLES = 200.0
+#: The envelope is READ, never retyped. `2507.0` and a uniform `200.0` peak
+#: stood here until 2026-09-07 and both were wrong: the first by ten hours
+#: against the canonical 2517.183333, the second a scalar standing in for a
+#: six-period vector. The rule from EXPERIMENT4_ENVELOPE_PROVENANCE.md is that
+#: a resource cap is read from `outputs/CANONICAL_ENVELOPE.json` or from the
+#: production `baseline` sentinel, and never from a constant in a script.
+CANONICAL_ENVELOPE = ROOT / "outputs" / "CANONICAL_ENVELOPE.json"
+BLOCKING_VALIDATION = ROOT / "outputs" / "exp4" / "blocking_validation.json"
+
+#: The candidate blocking instrument's assumptions, frozen for the whole run.
+MIN_LAYOVER_SEC = 300.0
 
 LAM = 2.0
 SEED = 20260825
@@ -72,12 +79,31 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-hours", type=float, default=6.0)
     ap.add_argument("--stage", default="all",
-                    choices=("all", "discover", "certify", "report"))
+                    choices=("all", "preflight", "discover", "certify",
+                             "fleet", "report"))
+    ap.add_argument("--preflight-lines", type=int, default=6,
+                    help="how many pool lines the preflight candidate uses")
     a = ap.parse_args()
 
-    from cota_opt.configs import period_of_seconds, service_periods
+    from cota_opt.configs import (load_constraints, period_of_seconds,
+                                  service_periods)
     from cota_opt.contract import ContractLimits
     from cota_opt.exp4_assemble import assemble
+    from cota_opt.exp4_blocking import (BLOCKING_CONTRACT,
+                                        BLOCKING_CONTRACT_DIGEST,
+                                        CandidateFleetBound, ConnectionRule,
+                                        MaterializedTrip,
+                                        OPERATIONAL_RECOURSE,
+                                        OPERATIONAL_RECOURSE_DIGEST,
+                                        SameTerminalOracle, TripTable,
+                                        ZeroDeadheadRelaxation,
+                                        block_candidate_schedule,
+                                        materialize_timetable,
+                                        production_feasible,
+                                        provenance_is_certification_grade,
+                                        terminal_identity,
+                                        TERMINAL_IDENTITY_DIGEST,
+                                        TERMINAL_IDENTITY_PROVENANCE)
     from cota_opt.exp4_certify import (CERTIFICATION_CONTRACT,
                                        CERTIFICATION_DIGEST, certify)
     from cota_opt.exp4_inference import (Exp4Candidate, ProposalRecord,
@@ -107,9 +133,36 @@ def main() -> int:
     periods = sorted(periods_cfg)
     first_dep = _first_dep_by_period()
 
-    cons = pinned(VEH_HOURS, {p: PEAK_VEHICLES for p in periods})
+    # ------------------------------------------------------- the envelope --
+    if not CANONICAL_ENVELOPE.exists():
+        print("FATAL: outputs/CANONICAL_ENVELOPE.json is missing. Run "
+              "scripts/exp4_freeze_envelope.py --write. This launcher does "
+              "not carry a fallback cap, because every fallback cap this "
+              "project has ever had was wrong.")
+        return 2
+    env = json.loads(CANONICAL_ENVELOPE.read_text())
+    VEH_HOURS = float(env["weekday_revenue_vehicle_hours"])
+    ENVELOPE_FLEET = {k: int(v) for k, v in
+                      env["peak_vehicles_by_period"].items()}
+    ENVELOPE_DIGEST = str(env["envelope_digest"])
+
+    # The frequency solver's own resource constraint stays on the production
+    # `baseline` sentinel for FLEET. That is deliberate and it is the point of
+    # D23 check 4: the solver's peak is CONCURRENCY, a different instrument
+    # from the block-derived envelope, and feeding it the block-derived vector
+    # would be the right numbers on the wrong variable. Hours ARE the same
+    # instrument on both sides, so hours are pinned to the canonical value.
+    _c = load_constraints()
+    cons = {**_c, "resource": {**_c["resource"],
+                               "weekday_revenue_vehicle_hours": VEH_HOURS}}
+    assert cons["resource"]["peak_fleet_by_period"] == "baseline"
+
+    # peak_vehicle_budget is deliberately None. contract.py would otherwise
+    # record `peak_fleet_check: NOT RUN` on every candidate -- a gate that
+    # reports rather than gates. Fleet feasibility is decided below by the
+    # blocking instrument, which can actually answer for it.
     limits = ContractLimits(veh_hour_budget=VEH_HOURS,
-                            peak_vehicle_budget=PEAK_VEHICLES,
+                            peak_vehicle_budget=None,
                             required_waiting_model="same_route")
 
     def assembles(sel):
@@ -132,15 +185,149 @@ def main() -> int:
                                          "n": len(pool), "lines": pool},
                                         indent=1))
     print(f"pool: {len(pool)} assembling lines of {len(_BY_RID)}, "
-          f"cardinality {MIN_LINES}-{MAX_LINES}, envelope {VEH_HOURS} vh / "
-          f"{PEAK_VEHICLES} peak")
+          f"cardinality {MIN_LINES}-{MAX_LINES}")
+    print(f"envelope {ENVELOPE_DIGEST}: {VEH_HOURS:.6f} vh, block-derived "
+          f"fleet {ENVELOPE_FLEET}")
+    print(f"fleet gate: candidate blocking ({BLOCKING_CONTRACT['name']} v"
+          f"{BLOCKING_CONTRACT['version']}, {BLOCKING_CONTRACT_DIGEST}); "
+          f"recourse {OPERATIONAL_RECOURSE_DIGEST}")
+
+    # The baseline measured with the SAME instrument. Read from the committed
+    # validation artifact rather than recomputed here, for the same reason the
+    # envelope is read rather than retyped: a number a launcher computes for
+    # itself is a number nothing else can check.
+    if not BLOCKING_VALIDATION.exists():
+        print("FATAL: outputs/exp4/blocking_validation.json is missing. Run "
+              "scripts/exp4_blocking_validate.py first -- fleet feasibility "
+              "compares a candidate's block count against the BASELINE's "
+              "under the same oracle, and that measurement is an artifact, "
+              "not something this script may invent.")
+        return 2
+    _bv = json.loads(BLOCKING_VALIDATION.read_text())
+    _br = _bv["bracket"]
+    baseline_bound = CandidateFleetBound(
+        lower=int(_br.get("lower_solved", _br["lower_analytic"]["system_peak"])),
+        upper=int(_br["upper_solved"]),
+        lower_oracle="zero_deadhead_relaxation",
+        upper_oracle="same_terminal_only",
+        deadhead_provenance="OPEN",
+        n_trips=int(_bv["test_b"]["n_trips"]))
+    print(f"baseline under the same instrument: "
+          f"[{baseline_bound.lower}, {baseline_bound.upper}] blocks over "
+          f"{baseline_bound.n_trips} trips; published peak "
+          f"{_bv['test_a']['system_peak']} @ {_bv['test_a']['peak_time']} "
+          f"is a DIFFERENT instrument and is not the comparison")
+
+    def fleet_verdict(state_key, lines, plan_str):
+        """Bracket + three-valued feasibility for one certified candidate."""
+        sel = Exp4Selection(POOL_VERSION, frozenset(lines), frozenset())
+        built = assemble(sel, _BY_RID, graph, H.baseline.network.stops,
+                         pool_version=POOL_VERSION,
+                         first_dep_sec_by_period=first_dep)
+        plan = {}
+        for key, hw in plan_str.items():
+            r, _, per = str(key).partition("|")
+            plan[(r, per)] = float(hw)
+        tbl = materialize_timetable(built.network, plan, periods_cfg, first_dep,
+                                    source=f"certified:{state_key}")
+        rule = ConnectionRule(min_layover_sec=MIN_LAYOVER_SEC)
+        hi = block_candidate_schedule(tbl, SameTerminalOracle(MIN_LAYOVER_SEC),
+                                      periods_cfg, rule)
+        lo = block_candidate_schedule(tbl,
+                                      ZeroDeadheadRelaxation(MIN_LAYOVER_SEC),
+                                      periods_cfg, rule)
+        bound = CandidateFleetBound(
+            lower=lo.minimum_blocks, upper=hi.minimum_blocks,
+            lower_oracle=lo.deadhead_provenance["deadhead_source"],
+            upper_oracle=hi.deadhead_provenance["deadhead_source"],
+            deadhead_provenance="OPEN", n_trips=len(tbl))
+        vh = float(sum(t.runtime_min for t in tbl.trips)) / 60.0
+        fb = production_feasible(
+            hi, ENVELOPE_FLEET, tbl, periods_cfg,
+            envelope_vehicle_hours=VEH_HOURS, candidate_vehicle_hours=vh,
+            baseline_bound=baseline_bound, candidate_bound=bound,
+            min_layover_sec=MIN_LAYOVER_SEC, envelope_digest=ENVELOPE_DIGEST)
+        return {
+            "state_key": state_key,
+            "verdict": fb.status,
+            "feasible": fb.feasible,
+            "reasons": list(fb.reasons),
+            "deadhead_oracle_upper": hi.deadhead_provenance,
+            "deadhead_oracle_lower": lo.deadhead_provenance,
+            "deadhead_provenance_status": (
+                "COMPLETE" if fb.provenance_certification_grade else "OPEN"),
+            "deadhead_provenance_note": fb.provenance_note,
+            "fleet_bracket": bound.payload(),
+            "terminal_identity": hi.terminal_identity,
+            "terminal_identity_provenance": TERMINAL_IDENTITY_PROVENANCE,
+            "terminal_identity_digest": TERMINAL_IDENTITY_DIGEST,
+            "minimum_blocks_under_declared_oracle": (
+                hi.minimum_blocks if fb.provenance_certification_grade
+                else None),
+            "minimum_blocks_NOT_CERTIFIED": hi.minimum_blocks,
+            "revenue_vehicle_hours": vh,
+            "vehicle_hours": fb.vehicle_hours,
+            "envelope_digest": ENVELOPE_DIGEST,
+            "operational_recourse": OPERATIONAL_RECOURSE,
+            "operational_recourse_digest": OPERATIONAL_RECOURSE_DIGEST,
+            "blocking_contract_digest": BLOCKING_CONTRACT_DIGEST,
+            "per_period_DIAGNOSTIC_ONLY": fb.per_period,
+            "undecidable_reason": (None if fb.status != "UNDECIDABLE"
+                                   else fb.provenance_note),
+        }
+
+    # ----------------------------------------------------------- preflight --
+    # Executes the whole fleet path -- assemble, materialise, both bracket
+    # oracles, production_feasible -- on a small real candidate, without
+    # starting a search. D23 checks the launcher's TEXT; this checks that the
+    # text runs. OPERATIONS' recurring lesson is that a mechanism which looks
+    # like it is working is not evidence that it ran.
+    if a.stage == "preflight":
+        lines = pool[:max(2, a.preflight_lines)]
+        from cota_opt.frequency import snap_to_ladder            # noqa: F401
+        sel = Exp4Selection(POOL_VERSION, frozenset(lines), frozenset())
+        built = assemble(sel, _BY_RID, graph, H.baseline.network.stops,
+                         pool_version=POOL_VERSION,
+                         first_dep_sec_by_period=first_dep)
+        routes = sorted({p.route_id for p in built.network.patterns.values()})
+        plan_str = {f"{r}|{per}": 30.0 for r in routes for per in periods}
+        print(f"\npreflight: {len(lines)} lines, {len(routes)} routes, "
+              f"{len(plan_str)} route-periods at a flat 30 min headway")
+        v = fleet_verdict("PREFLIGHT", lines, plan_str)
+        print(f"  trips materialised : {v['fleet_bracket']['n_trips']}")
+        _ti = v["terminal_identity"]
+        print(f"  fleet bracket      : [{v['fleet_bracket']['lower']}, "
+              f"{v['fleet_bracket']['upper']}] blocks")
+        print(f"  terminal identity  : {_ti['n_shared_terminals']} shared "
+              f"terminals; {_ti['trips_whose_destination_is_never_an_origin']}"
+              f"/{_ti['n_trips']} trips stranded "
+              f"({_ti['share_stranded']:.1%})"
+              f"{'  <-- DEGENERATE' if _ti['degenerate'] else ''}")
+        print(f"  revenue veh-hours  : {v['revenue_vehicle_hours']:.4f} "
+              f"against {VEH_HOURS:.6f}")
+        print(f"  deadhead provenance: {v['deadhead_provenance_status']} "
+              f"-- {v['deadhead_provenance_note']}")
+        print(f"  VERDICT            : {v['verdict']}")
+        for r in v["reasons"]:
+            print(f"    - {r}")
+        (OUT / "preflight.json").write_text(json.dumps(v, indent=1,
+                                                       default=str))
+        print(f"\n  wrote {(OUT / 'preflight.json').relative_to(ROOT)}")
+        print("  preflight only -- no search was started")
+        return 0
+
 
     # ---------------------------------------------------------- discovery --
     prop_path = OUT / "proposals.json"
     if prop_path.exists():
         rec = json.loads(prop_path.read_text())
         print(f"discovery: resumed, {len(rec['proposals'])} proposals on disk")
-    elif a.stage in ("all", "discover"):
+    elif a.stage not in ("all", "discover"):
+        print(f"stage {a.stage!r} needs proposals, and "
+              f"{prop_path.relative_to(ROOT)} does not exist. Run --stage "
+              f"discover first.")
+        return 2
+    else:
         sup = Exp4Selection(POOL_VERSION, frozenset(pool), frozenset())
         master = {}
         if assembles(sup):
@@ -269,6 +456,57 @@ def main() -> int:
                   f"rounds {cr.rounds} converged {cr.converged} "
                   f"({time.time() - t0:.0f}s)")
 
+    # ---------------------------------------------------- fleet feasibility --
+    #
+    # EXP4_BLOCKING §9 AS AMENDED. The question is EXISTENTIAL -- does a
+    # feasible blocking of this candidate's timetable exist inside the
+    # envelope -- and it is asked of the CERTIFIED plan, not of a plan solved
+    # again here. Reblocking is permitted (OPERATIONAL_RECOURSE); extra buses
+    # are not.
+    #
+    # The per-period arm that used to live here was removed by AMENDMENT 1:
+    # it was a property of whichever maximum matching turned up, not of the
+    # candidate. Nothing below reads `fleet_by_period` as a gate.
+    fleet_dir = OUT / "fleet"
+    fleet_dir.mkdir(exist_ok=True)
+
+    if a.stage in ("all", "fleet"):
+        done_c = sorted(cert_dir.glob("*.json"))
+        n_f = 0
+        for f in done_c:
+            d = json.loads(f.read_text())
+            if "error" in d:
+                continue
+            fp = fleet_dir / f.name
+            if fp.exists():
+                continue
+            if time.time() > deadline:
+                print("  shard bound reached during fleet evaluation")
+                break
+            try:
+                v = fleet_verdict(d["state_key"], d["lines"],
+                                  d.get("plan_EXACT") or {})
+            except Exception as e:
+                v = {"state_key": d["state_key"],
+                     "verdict": "ERROR",
+                     "error": f"{type(e).__name__}: {e}"[:300]}
+            fp.write_text(json.dumps(v, indent=1, default=str))
+            n_f += 1
+        if n_f:
+            print(f"fleet: {n_f} candidates evaluated")
+
+    fleets = {}
+    for f in sorted(fleet_dir.glob("*.json")):
+        d = json.loads(f.read_text())
+        fleets[d["state_key"]] = d
+    if fleets:
+        from collections import Counter
+        tally = Counter(v["verdict"] for v in fleets.values())
+        print(f"fleet feasibility: {dict(sorted(tally.items()))}")
+        if tally.get("FEASIBLE"):
+            print("  NOTE: a FEASIBLE verdict requires a deadhead oracle whose "
+                  "provenance satisfies the certification contract")
+
     # ------------------------------------------------------------- report --
     certs = []
     for f in sorted(cert_dir.glob("*.json")):
@@ -304,7 +542,21 @@ def main() -> int:
             "solve_exact certification -> exact-only conclusions",
         "pool_version": POOL_VERSION, "pool_size": len(pool),
         "cardinality": [MIN_LINES, MAX_LINES],
-        "envelope": {"veh_hours": VEH_HOURS, "peak": PEAK_VEHICLES},
+        "envelope": {"veh_hours": VEH_HOURS,
+                     "block_derived_fleet_by_period": ENVELOPE_FLEET,
+                     "envelope_digest": ENVELOPE_DIGEST,
+                     "source": "outputs/CANONICAL_ENVELOPE.json",
+                     "fleet_gate": ("candidate blocking, EXP4_BLOCKING v2 "
+                                    "as amended; NOT a scalar peak proxy"),
+                     "blocking_contract_digest": BLOCKING_CONTRACT_DIGEST,
+                     "operational_recourse_digest": OPERATIONAL_RECOURSE_DIGEST,
+                     "deadhead_provenance": "OPEN",
+                     "baseline_bracket": baseline_bound.payload()},
+        "fleet_feasibility": {k: {"verdict": v["verdict"],
+                                  "deadhead_provenance_status":
+                                      v.get("deadhead_provenance_status"),
+                                  "fleet_bracket": v.get("fleet_bracket")}
+                              for k, v in sorted(fleets.items())},
         "proposal_digest": PROPOSAL_DIGEST,
         "promotion_digest": PROMOTION_DIGEST,
         "certification_digest": CERTIFICATION_DIGEST,

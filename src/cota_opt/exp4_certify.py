@@ -223,7 +223,7 @@ def certify(network, tstats, *, state_key: str, state_digest: str,
         guarantee=CERTIFICATION_CONTRACT["guarantee"],
         n_keys=n_keys, k_rungs=k_rungs, rounds=rounds, converged=converged,
         block_enumerations=blocks, combinations=combos_total,
-        seconds=time.time() - t0,
+        seconds=time.time() - t0, plan=plan_str,
         code_version=code_version, contract_digest=contract_digest)
 
 

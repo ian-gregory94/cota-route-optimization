@@ -38,7 +38,7 @@ decide things.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Mapping
 
 from .firewall.core import digest
 
@@ -168,6 +168,12 @@ class CertifiedResult:
     seconds: float
     code_version: str = ""
     contract_digest: str = ""
+    #: The certified plan itself, `"route|period" -> headway_min`. Carried so
+    #: the fleet instrument can materialise this plan's timetable rather than
+    #: re-solving for a different one; `plan_digest` above is the identity and
+    #: this is the content behind it. Optional and defaulted so no existing
+    #: receipt changes shape.
+    plan: Mapping[str, float] = field(default_factory=dict)
 
     def payload(self) -> dict:
         return {"stage": "certification", "approximate": False,
@@ -181,6 +187,8 @@ class CertifiedResult:
                 "block_enumerations": self.block_enumerations,
                 "combinations": self.combinations,
                 "seconds": self.seconds,
+                "plan_EXACT": {k: float(v) for k, v in
+                               sorted(self.plan.items())},
                 "code_version": self.code_version,
                 "contract_digest": self.contract_digest,
                 "may_decide": ["ordering", "leader", "separation",

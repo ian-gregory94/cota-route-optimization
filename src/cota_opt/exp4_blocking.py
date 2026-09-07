@@ -456,6 +456,7 @@ class CandidateBlockResult:
     connection_rule: Mapping[str, Any] = field(default_factory=dict)
     is_upper_bound: bool = False
     is_lower_bound: bool = False
+    terminal_identity: Mapping[str, Any] = field(default_factory=dict)
     fleet_by_period_stable: bool | None = None
     fleet_by_period_alternate: Mapping[str, int] | None = None
     notes: str = ""
@@ -475,6 +476,7 @@ class CandidateBlockResult:
                 "connection_rule": dict(self.connection_rule),
                 "is_upper_bound": self.is_upper_bound,
                 "is_lower_bound": self.is_lower_bound,
+                "terminal_identity": dict(self.terminal_identity),
                 "fleet_by_period_is_matching_dependent": True,
                 "fleet_by_period_stable": self.fleet_by_period_stable,
                 "fleet_by_period_alternate":
@@ -683,13 +685,14 @@ def block_candidate_schedule(table: TripTable, oracle: DeadheadOracle,
 
     _upper = getattr(oracle, "name", "") == "same_terminal_only"
     _lower = bool(getattr(oracle, "is_bound_only", False))
+    _ti = terminal_identity(table)
     return CandidateBlockResult(
         minimum_blocks=minimum_blocks, blocks=tuple(blocks),
         fleet_by_period=by_period, system_peak=peak,
         system_peak_minute=peak_min, n_trips=n, n_feasible_edges=n_edges,
         deadhead_provenance=oracle.provenance,
         connection_rule=rule.payload,
-        is_upper_bound=_upper, is_lower_bound=_lower,
+        is_upper_bound=_upper, is_lower_bound=_lower, terminal_identity=_ti,
         fleet_by_period_stable=stable, fleet_by_period_alternate=by_period_alt,
         notes=("computed under an oracle that forbids every cross-terminal "
                "connection, so this is an UPPER BOUND on the fleet requirement"
@@ -839,6 +842,10 @@ class ProductionFeasibility:
     vehicle_hours: Mapping[str, Any]
     system: Mapping[str, Any]
     envelope_digest: str = ""
+    deadhead_provenance: Mapping[str, Any] = field(default_factory=dict)
+    provenance_certification_grade: bool = False
+    provenance_note: str = ""
+    contract_digest: str = ""
 
     def payload(self) -> dict:
         return {"status": self.status, "feasible": self.feasible,
@@ -847,7 +854,42 @@ class ProductionFeasibility:
                 "vehicle_hours": dict(self.vehicle_hours),
                 "system": dict(self.system),
                 "envelope_digest": self.envelope_digest,
-                "verdicts": ["FEASIBLE", "INFEASIBLE", "UNDECIDABLE"]}
+                "deadhead_provenance": dict(self.deadhead_provenance),
+                "provenance_certification_grade":
+                    self.provenance_certification_grade,
+                "provenance_note": self.provenance_note,
+                "contract_digest": self.contract_digest,
+                "verdicts": ["FEASIBLE", "INFEASIBLE", "UNDECIDABLE"],
+                "amendment": ("AMENDMENT 1 removed the per-period arm as a "
+                              "gate; per-period figures here are diagnostic")}
+
+
+def provenance_is_certification_grade(prov: Mapping[str, Any]) -> tuple[bool, str]:
+    """May a fleet result from this oracle APPROVE a candidate?
+
+    Only an oracle that can answer for cross-terminal movement from a declared
+    source. The two bracket oracles cannot: one forbids every such movement and
+    the other grants it for free. Each can REFUTE -- a plan that fails even the
+    generous relaxation fails for real -- and neither can approve.
+    """
+    src = str(prov.get("deadhead_source", ""))
+    if prov.get("is_bound_only"):
+        return False, (f"{src} is a relaxation that moves a vehicle across the "
+                       f"city in zero seconds; it bounds from below and "
+                       f"certifies nothing")
+    if src == "same_terminal_only":
+        return False, ("same_terminal_only forbids every cross-terminal "
+                       "connection, so its answer is an upper bound. A plan "
+                       "it rejects is rejected; a plan it accepts is only "
+                       "accepted under an assumption nobody has evidence for")
+    if src == "table":
+        if not str(prov.get("source_note", "")).strip():
+            return False, ("the deadhead table carries no source_note, so "
+                           "nothing states where its travel times came from")
+        return True, f"table deadhead oracle, {prov.get('n_pairs', 0)} pairs"
+    if not src or src == "abstract":
+        return False, "no deadhead oracle is declared"
+    return False, f"unrecognised deadhead source {src!r}"
 
 
 def production_feasible(candidate: CandidateBlockResult,
@@ -858,22 +900,50 @@ def production_feasible(candidate: CandidateBlockResult,
                         envelope_vehicle_hours: float | None = None,
                         candidate_vehicle_hours: float | None = None,
                         baseline_minimum_blocks: int | None = None,
+                        baseline_bound: CandidateFleetBound | None = None,
+                        candidate_bound: CandidateFleetBound | None = None,
                         min_layover_sec: float = 300.0,
                         envelope_digest: str = "") -> ProductionFeasibility:
-    """§9, implemented as asked and then honest about what it can conclude."""
+    """§9 as amended: existential, three-valued, and unable to bluff.
+
+    Every route to INFEASIBLE runs through a matching-independent quantity, so
+    a refutation cannot be an artifact of which maximum matching turned up.
+    The route to FEASIBLE runs through the deadhead oracle's provenance, which
+    is why it is currently closed.
+    """
     reasons: list[str] = []
     infeasible = False
 
     if len(envelope_fleet) < 2:
         raise BlockingError(
             "a one-entry fleet envelope is a scalar cap in a dict costume; "
-            "the per-period test needs per-period caps")
+            "the envelope is a six-period vector")
 
+    ok_prov, prov_why = provenance_is_certification_grade(
+        candidate.deadhead_provenance)
+
+    # ---- refutation 1: vehicle-hours. A property of the timetable, not of
+    #      the blocking, so this arm is well posed whatever the oracle says.
+    vh: dict[str, Any] = {"decidable": False}
+    if envelope_vehicle_hours is not None and candidate_vehicle_hours is not None:
+        within = candidate_vehicle_hours <= envelope_vehicle_hours + 1e-9
+        vh = {"decidable": True, "candidate": float(candidate_vehicle_hours),
+              "envelope": float(envelope_vehicle_hours), "within": within,
+              "matching_independent": True,
+              "note": ("revenue vehicle-hours is a property of the timetable, "
+                       "not of the blocking")}
+        if not within:
+            infeasible = True
+            reasons.append(
+                f"revenue vehicle-hours {candidate_vehicle_hours:.4f} exceeds "
+                f"the frozen envelope {envelope_vehicle_hours:.4f}")
+
+    # ---- refutation 2: the per-period lower bound. No blocking can beat it.
     lower, lower_peak, lower_min = period_lower_bounds(table, periods,
                                                        min_layover_sec)
     over = {p: (lower[p], int(envelope_fleet[p]))
-            for p in sorted(envelope_fleet) if lower.get(p, 0)
-            > int(envelope_fleet[p])}
+            for p in sorted(envelope_fleet)
+            if lower.get(p, 0) > int(envelope_fleet[p])}
     if over:
         infeasible = True
         reasons.append(
@@ -882,40 +952,39 @@ def production_feasible(candidate: CandidateBlockResult,
                                        for p, (a, b) in over.items())
             + " -- no choice of blocking can fix this")
 
-    literal = {p: (int(candidate.fleet_by_period.get(p, 0)),
-                   int(envelope_fleet[p])) for p in sorted(envelope_fleet)}
-    literal_ok = all(a <= b for a, b in literal.values())
-    stable = candidate.fleet_by_period_stable
-    if stable is False:
-        reasons.append(
-            "the per-period arm is UNDECIDABLE: fleet_by_period is a property "
-            "of the maximum matching found, not of the schedule, and an "
-            "equally maximum matching gives "
-            f"{dict(candidate.fleet_by_period_alternate or {})}")
-
-    vh: dict[str, Any] = {"decidable": False}
-    if envelope_vehicle_hours is not None and candidate_vehicle_hours is not None:
-        ok_vh = candidate_vehicle_hours <= envelope_vehicle_hours + 1e-9
-        vh = {"decidable": True, "candidate": float(candidate_vehicle_hours),
-              "envelope": float(envelope_vehicle_hours), "within": ok_vh,
-              "note": ("revenue vehicle-hours is a property of the timetable, "
-                       "not of the blocking, so this arm is well posed")}
-        if not ok_vh:
-            infeasible = True
-            reasons.append(
-                f"revenue vehicle-hours {candidate_vehicle_hours:.4f} exceeds "
-                f"the frozen envelope {envelope_vehicle_hours:.4f}")
-
+    # ---- refutation 3: block counts, compared only against block counts.
     system: dict[str, Any] = {
         "candidate_minimum_blocks": int(candidate.minimum_blocks),
         "is_upper_bound": bool(candidate.is_upper_bound),
         "is_lower_bound": bool(candidate.is_lower_bound),
         "baseline_minimum_blocks": baseline_minimum_blocks,
+        "candidate_bound": (candidate_bound.payload() if candidate_bound
+                            else None),
+        "baseline_bound": baseline_bound.payload() if baseline_bound else None,
         "comparison": ("instrument-consistent: both sides are path-cover "
                        "counts under the same oracle and connection rule. The "
                        "envelope's peak-vehicle figure is a concurrency of "
                        "published blocks and is NOT this quantity")}
-    if baseline_minimum_blocks is not None:
+    # Terminal identity gates every terminal-DEPENDENT comparison below. A
+    # timetable whose trips mostly end where nothing starts forces one block
+    # per trip by construction, so its upper bound is arithmetic about missing
+    # terminal identity and not evidence about fleet -- in either direction.
+    # The lower bounds above are untouched: they never look at a terminal.
+    ti = dict(candidate.terminal_identity or {})
+    degenerate = bool(ti.get("degenerate"))
+    system_note = ""
+    if degenerate:
+        system_note = (
+            f"terminal identity is unresolved for this timetable: "
+            f"{ti.get('trips_whose_destination_is_never_an_origin')} of "
+            f"{ti.get('n_trips')} trips "
+            f"({ti.get('share_stranded', 0):.1%}) end at a terminal that is "
+            f"never any trip's origin, so a same-terminal oracle forces them "
+            f"into their own blocks whatever the schedule is. Every "
+            f"terminal-dependent comparison is withheld")
+        reasons.append(system_note)
+
+    if baseline_minimum_blocks is not None and not degenerate:
         system["within_baseline"] = (candidate.minimum_blocks
                                      <= baseline_minimum_blocks)
         if not system["within_baseline"]:
@@ -924,29 +993,72 @@ def production_feasible(candidate: CandidateBlockResult,
                 f"the candidate needs {candidate.minimum_blocks} blocks where "
                 f"the baseline needs {baseline_minimum_blocks} under the same "
                 f"instrument")
+    if (candidate_bound is not None and baseline_bound is not None
+            and not degenerate):
+        # A candidate whose most generous case still exceeds the baseline's
+        # least generous case is refuted whatever the deadhead truth turns
+        # out to be -- both ends move together when the oracle improves.
+        if candidate_bound.lower > baseline_bound.upper:
+            infeasible = True
+            reasons.append(
+                f"the candidate needs at least {candidate_bound.lower} blocks "
+                f"even when every deadhead is free, against a baseline that "
+                f"needs at most {baseline_bound.upper} with no interlining at "
+                f"all; no deadhead model can reconcile that")
+        system["bracket_refutation_applies"] = (
+            candidate_bound.lower > baseline_bound.upper)
+    system["terminal_identity"] = ti
+    system["terminal_identity_degenerate"] = degenerate
+    if system_note:
+        system["terminal_comparisons_withheld"] = system_note
+
+    # ---- the removed arm, computed as a DIAGNOSTIC and marked as one -------
+    literal = {p: (int(candidate.fleet_by_period.get(p, 0)),
+                   int(envelope_fleet[p])) for p in sorted(envelope_fleet)}
+    stable = candidate.fleet_by_period_stable
+    if stable is False:
+        reasons.append(
+            "the per-period figure is a property of the maximum matching "
+            "found, not of the schedule: an equally maximum matching gives "
+            f"{dict(sorted((candidate.fleet_by_period_alternate or {}).items()))}"
+            ". It is reported as a diagnostic and gates nothing (AMENDMENT 1)")
+
+    # ---- verdict ----------------------------------------------------------
+    # Every reason feasibility cannot be PROVEN, not just the first one found.
+    # A caller who fixes one and re-runs should not discover the next in
+    # sequence; that is how a blocker list becomes a queue.
+    blockers: list[str] = []
+    if degenerate:
+        blockers.append(
+            "TERMINAL IDENTITY PROVENANCE is OPEN for this timetable, a "
+            "second missing input alongside deadhead, and it is not "
+            "substituted for here")
+    if not ok_prov:
+        blockers.append(f"feasibility cannot be PROVEN: {prov_why}")
+    if not vh["decidable"]:
+        blockers.append("vehicle-hours were not supplied, so a required "
+                        "constraint was never evaluated")
 
     if infeasible:
         status, feasible = "INFEASIBLE", False
-    elif stable is False or not vh["decidable"]:
+    elif blockers:
         status, feasible = "UNDECIDABLE", None
-        if not vh["decidable"]:
-            reasons.append("vehicle-hours were not supplied, so that arm was "
-                           "not evaluated")
-    elif literal_ok:
-        status, feasible = "FEASIBLE", True
-        reasons.append("every per-period figure is within the envelope, the "
-                       "per-period figure is matching-stable, and vehicle-"
-                       "hours are within the envelope")
+        reasons.extend(blockers)
+        reasons.append(
+            "not refuted by any matching-independent bound, which is not the "
+            "same as being feasible")
     else:
-        status, feasible = "INFEASIBLE", False
-        reasons.append("a per-period figure exceeds the envelope and the "
-                       "figure is matching-stable, so the excess is real")
+        status, feasible = "FEASIBLE", True
+        reasons.append(
+            f"proven under an oracle whose provenance satisfies the "
+            f"certification contract ({prov_why}): vehicle-hours within the "
+            f"envelope, and no matching-independent bound violated")
 
     return ProductionFeasibility(
         status=status, feasible=feasible, reasons=tuple(reasons),
-        per_period={"literal_test_as_specified": literal,
-                    "literal_test_passes": literal_ok,
-                    "literal_test_is_decision_grade": stable is True,
+        per_period={"REMOVED_AS_A_GATE": FLEET_ARM_AMENDMENT_1["text"],
+                    "diagnostic_only": True,
+                    "superseded_test": literal,
                     "matching_stable": stable,
                     "invariant_lower_bound": lower,
                     "invariant_lower_bound_peak": lower_peak,
@@ -955,4 +1067,359 @@ def production_feasible(candidate: CandidateBlockResult,
                                  sorted(envelope_fleet.items())},
                     "lower_bound_exceeds_envelope": {p: list(v) for p, v
                                                      in over.items()}},
-        vehicle_hours=vh, system=system, envelope_digest=envelope_digest)
+        vehicle_hours=vh, system=system, envelope_digest=envelope_digest,
+        deadhead_provenance=dict(candidate.deadhead_provenance),
+        provenance_certification_grade=ok_prov,
+        provenance_note=prov_why,
+        contract_digest=BLOCKING_CONTRACT_DIGEST)
+
+
+
+# ---------------------------------------------------------------------------
+# 10. four fleet numbers that are not the same number
+# ---------------------------------------------------------------------------
+#
+# 197, 180-212, 176.132352 and a future provenance-complete minimum_blocks are
+# produced by four different instruments and mean four different things. Held
+# as plain floats in one field they are one `if` away from being compared, and
+# the whole envelope-provenance episode began with exactly that: a cap read off
+# an evaluated plan because both numbers were floats named something like fleet.
+#
+# So they are typed. A `FleetQuantity` refuses `float()`, refuses ordering, and
+# refuses equality against a quantity of a different kind. Reading the number
+# requires naming the purpose, which puts the intended comparison in the diff.
+
+class FleetSemanticsViolation(TypeError):
+    """Two fleet numbers from different instruments were about to be compared."""
+
+
+_FLEET_WHY = (
+    "these fleet quantities come from different instruments and are not "
+    "interchangeable: PUBLISHED_BLOCK_PEAK is the concurrency of COTA's own "
+    "blocking (197 at 17:13); CANDIDATE_BLOCK_BOUND is a path-cover count "
+    "under an incomplete deadhead oracle (180-212); LEGACY_CONCURRENCY_PROXY "
+    "is the frequency model's output (176.132352) and is barred from Exp 4 "
+    "fleet certification entirely; CERTIFIED_MINIMUM_BLOCKS does not exist "
+    "yet and will not until deadhead provenance is complete. Comparing two of "
+    "them is how the 1.307 'interlining factor' came to look like an exchange "
+    "rate. Read one with its own named accessor instead.")
+
+FLEET_KINDS = ("PUBLISHED_BLOCK_PEAK", "CANDIDATE_BLOCK_BOUND",
+               "LEGACY_CONCURRENCY_PROXY", "CERTIFIED_MINIMUM_BLOCKS")
+
+
+class FleetQuantity:
+    """A fleet number that knows which instrument produced it, and says no."""
+
+    __slots__ = ("_v", "_kind", "_instrument", "_provenance")
+
+    def __init__(self, value: float, kind: str, instrument: str,
+                 provenance: str) -> None:
+        if kind not in FLEET_KINDS:
+            raise FleetSemanticsViolation(
+                f"unknown fleet kind {kind!r}; one of {FLEET_KINDS}")
+        self._v = float(value)
+        self._kind = str(kind)
+        self._instrument = str(instrument)
+        self._provenance = str(provenance)
+
+    @property
+    def kind(self) -> str:
+        return self._kind
+
+    @property
+    def instrument(self) -> str:
+        return self._instrument
+
+    @property
+    def provenance(self) -> str:
+        return self._provenance
+
+    def value_for(self, purpose: str) -> float:
+        """Read the number, having named what it is for.
+
+        `purpose` is recorded, not validated -- the point is that a reader of
+        the diff can see which comparison was intended, not that this method
+        can police it.
+        """
+        if not purpose:
+            raise FleetSemanticsViolation(
+                "name the purpose you are reading this fleet number for")
+        if self._kind == "LEGACY_CONCURRENCY_PROXY" and "certif" in \
+                purpose.lower():
+            raise FleetSemanticsViolation(
+                "the legacy concurrency proxy may not participate in "
+                "Experiment 4 fleet certification. " + _FLEET_WHY)
+        return self._v
+
+    def same_kind_as(self, other: "FleetQuantity") -> bool:
+        return isinstance(other, FleetQuantity) and other._kind == self._kind
+
+    def compare_same_kind(self, other: "FleetQuantity") -> float:
+        """self - other, permitted only within one instrument."""
+        if not self.same_kind_as(other):
+            raise FleetSemanticsViolation(_FLEET_WHY)
+        return self._v - other._v
+
+    def payload(self) -> dict:
+        return {"value": self._v, "kind": self._kind,
+                "instrument": self._instrument, "provenance": self._provenance}
+
+    def __repr__(self) -> str:
+        return f"FleetQuantity({self._v!r}, kind={self._kind!r})"
+
+    def _refuse(self, *_a: Any, **_k: Any):
+        raise FleetSemanticsViolation(_FLEET_WHY)
+
+    __float__ = _refuse
+    __int__ = _refuse
+    __index__ = _refuse
+    __lt__ = _refuse
+    __le__ = _refuse
+    __gt__ = _refuse
+    __ge__ = _refuse
+    __eq__ = _refuse
+    __ne__ = _refuse
+    __hash__ = None                      # type: ignore[assignment]
+    __add__ = __radd__ = _refuse
+    __sub__ = __rsub__ = _refuse
+    __mul__ = __rmul__ = _refuse
+    __truediv__ = __rtruediv__ = _refuse
+    __floordiv__ = __rfloordiv__ = _refuse
+    __mod__ = __rmod__ = _refuse
+    __pow__ = __rpow__ = _refuse
+    __neg__ = __pos__ = __abs__ = _refuse
+    __round__ = __trunc__ = __floor__ = __ceil__ = _refuse
+    __bool__ = _refuse
+    __format__ = _refuse
+
+
+def published_block_peak(value: float) -> FleetQuantity:
+    """The envelope's fleet figure. The VALUE IS NOT DEFAULTED ON PURPOSE:
+    a resource cap is read from outputs/CANONICAL_ENVELOPE.json or from the
+    production `baseline` sentinel, never retyped into a module."""
+    return FleetQuantity(
+        value, "PUBLISHED_BLOCK_PEAK", "blocks.reconstruct",
+        "concurrency of COTA's published block assignment, 197 @ 17:13 over "
+        "284 blocks; the frozen envelope's fleet figure")
+
+
+def legacy_concurrency_proxy(value: float) -> FleetQuantity:
+    """Wraps the proxy so it can be CARRIED without being usable. Not
+    defaulted: this module does not hold the proxy's value either."""
+    return FleetQuantity(
+        value, "LEGACY_CONCURRENCY_PROXY", "FitnessVector.peak_vehicles",
+        "an evaluated plan's peak concurrency. An OUTPUT, never a cap, and "
+        "barred from Experiment 4 fleet certification")
+
+
+@dataclass(frozen=True)
+class CandidateFleetBound:
+    """The bracket, carried as one object so neither end escapes alone.
+
+    Returning 180 or 212 as a bare number invites it being read as "the"
+    candidate fleet requirement. It is not; it is one end of an interval whose
+    width is the price of the missing deadhead source.
+    """
+
+    lower: int
+    upper: int
+    lower_oracle: str
+    upper_oracle: str
+    deadhead_provenance: str = "OPEN"
+    n_trips: int = 0
+
+    def __post_init__(self) -> None:
+        if self.lower > self.upper:
+            raise BlockingError(
+                f"fleet bracket [{self.lower}, {self.upper}] is inverted; the "
+                f"relaxation cannot need more buses than the strict oracle")
+
+    def contains(self, n: float) -> bool:
+        return self.lower <= n <= self.upper
+
+    def certified_value(self) -> int:
+        raise FleetSemanticsViolation(
+            "a bracket is not a certified fleet requirement. Its width is the "
+            "missing deadhead source; supply a TableDeadheadOracle with real "
+            "provenance and the two ends collapse to one number. " + _FLEET_WHY)
+
+    def payload(self) -> dict:
+        return {"lower": self.lower, "upper": self.upper,
+                "lower_oracle": self.lower_oracle,
+                "upper_oracle": self.upper_oracle,
+                "deadhead_provenance": self.deadhead_provenance,
+                "n_trips": self.n_trips,
+                "kind": "CANDIDATE_BLOCK_BOUND",
+                "NOT": ("not a certified fleet requirement; neither end may be "
+                        "reported as the candidate's fleet number")}
+
+
+# ---------------------------------------------------------------------------
+# 11. the §9 amendment, with the original preserved
+# ---------------------------------------------------------------------------
+#
+# The per-period blocking arm was preregistered and is being removed BEFORE any
+# Experiment 4 execution. That is legitimate; quietly rewriting the design so
+# it reads as though this was always the plan would not be. Both versions are
+# carried here, digested, and asserted by tests.
+
+FLEET_ARM_ORIGINAL = {
+    "section": "§9 production feasibility",
+    "status": "SUPERSEDED BY AMENDMENT 1",
+    "preregistered_text": (
+        "Production feasibility: candidate_fleet[p] <= envelope.fleet[p] for "
+        "all six periods AND vehicle-hours."),
+    "why_it_was_written": (
+        "the frozen envelope is a six-period vector, so a six-period test "
+        "looked like the faithful way to enforce it"),
+    "what_validation_showed": (
+        "candidate_fleet[p] is the concurrency of ONE maximum matching. "
+        "Reversing adjacency order on the stripped-block baseline yields a "
+        "different maximum matching with the SAME minimum block count of 212 "
+        "while per-period concurrency moves by as much as 15 vehicles -- "
+        "midday 199 -> 210, am_peak 195 -> 210. The quantity is a property of "
+        "one equally optimal blocking realisation, not of the candidate "
+        "timetable."),
+    "rejected_repair": (
+        "canonicalising the adjacency order, sorting edges, or otherwise "
+        "forcing one deterministic matching. That would make the statistic "
+        "reproducible without making it operationally meaningful, which is the "
+        "worse failure: a number that is stable and means nothing."),
+}
+
+FLEET_ARM_AMENDMENT_1 = {
+    "amendment": 1,
+    "date": "2026-09-07",
+    "before_any_experiment_4_execution": True,
+    "text": (
+        "The preregistered per-period blocking arm was removed before "
+        "Experiment 4 execution because validation demonstrated that it was "
+        "not invariant to the choice among equally optimal maximum matchings. "
+        "Under the experiment's OPERATIONAL_RECOURSE assumption, fleet "
+        "feasibility is instead evaluated using matching-independent "
+        "block-count bounds and, once deadhead provenance is complete, "
+        "minimum path-cover cardinality under the declared deadhead oracle."),
+    "question_now_asked": (
+        "EXISTENTIAL: does there exist a feasible blocking of the candidate "
+        "timetable within the allowed fleet envelope?"),
+    "question_no_longer_asked": (
+        "what period-by-period fleet profile happens to be produced by one "
+        "arbitrary maximum matching?"),
+    "invariant_quantity": "minimum_blocks = n_trips - maximum_matching",
+    "conditional_on": (
+        "the compatibility graph being built with a provenance-complete "
+        "deadhead oracle"),
+    "not_permitted": [
+        "min-cost flow or any further optimisation layer introduced to rescue "
+        "the rejected per-period statistic -- that answers a different "
+        "question",
+        "a canonical adjacency order adopted to make the rejected statistic "
+        "reproducible",
+        "reporting either end of the bracket as the candidate's fleet number",
+    ],
+    "deferred_to_a_separate_experiment": (
+        "whether there exists a MINIMUM-fleet blocking that also satisfies "
+        "additional period-specific concurrency constraints. That is a "
+        "constrained-blocking problem, not this one."),
+    "per_period_figures_are_now": "DIAGNOSTIC ONLY",
+}
+
+BLOCKING_CONTRACT = {
+    "name": "EXP4_BLOCKING",
+    "version": 2,
+    "supersedes": "version 1, whose §9 carried the per-period arm as a gate",
+    "sections": {
+        "materialisation": "deterministic, order-independent, content-addressed",
+        "deadhead": ("strict oracle; DeadheadUnknown makes a connection "
+                     "infeasible and never zero"),
+        "solver": "DAG minimum path cover by maximum bipartite matching",
+        "recourse": "OPERATIONAL_RECOURSE",
+        "feasibility": "three-valued: FEASIBLE / INFEASIBLE / UNDECIDABLE",
+    },
+    "original_fleet_arm": FLEET_ARM_ORIGINAL,
+    "amendments": [FLEET_ARM_AMENDMENT_1],
+}
+BLOCKING_CONTRACT_DIGEST = digest(BLOCKING_CONTRACT)
+
+
+# ---------------------------------------------------------------------------
+# 12. terminal identity: a SECOND missing input, found by running the thing
+# ---------------------------------------------------------------------------
+#
+# The oracle asks whether a bus finishing at terminal X can start at terminal
+# Y. Even the same-terminal case needs to know when X and Y are the same place,
+# and in this feed that is not always answerable:
+#
+#   * `parent_station` is present as a column and empty in all 2,949 rows, so
+#     GTFS supplies no station grouping at all;
+#   * a candidate line's outbound pattern ends at HIGHALS while its inbound
+#     starts at HIGHALN -- two sides of one street, two stop_ids;
+#   * "SPRING ST TERMINAL BAY 3" and "BAY 4" are one terminal with two ids.
+#
+# Grouping them by distance would be inventing a threshold; grouping them by
+# stop_name prefix would be inferring geography from a label. Both are the same
+# class of move as estimating deadhead from block slack, so neither is made.
+#
+# The consequence is measured instead of assumed. On the published feed the
+# problem barely arises -- COTA's own trips chain through matching stop_ids.
+# On synthesised pool lines it dominates, and an upper bound computed there is
+# close to "every trip is its own block", which is true and nearly useless.
+# `terminal_identity` says so, and callers can refuse to read a degenerate
+# bound as evidence.
+
+TERMINAL_IDENTITY_PROVENANCE = {
+    "status": "OPEN",
+    "what_is_missing": ("a statement of which stop_ids denote the same "
+                        "physical terminal"),
+    "why_gtfs_does_not_answer": ("parent_station is empty in all 2,949 stop "
+                                 "rows and location_type is unset"),
+    "forbidden_substitutes": [
+        "grouping stops within some distance of each other -- the threshold "
+        "would be invented and the answer would move with it",
+        "grouping stops by shared stop_name prefix or by a BAY suffix -- that "
+        "infers geography from a label",
+        "assuming a route's two directions share a terminal because they are "
+        "the same route",
+    ],
+    "consequence": ("where it is unresolved, a same-terminal oracle cannot "
+                    "chain a route's own two directions, and its upper bound "
+                    "approaches one block per trip"),
+    "acceptable_source": ("an operator-supplied terminal/garage table, the "
+                          "same artifact that would carry deadhead times"),
+}
+TERMINAL_IDENTITY_DIGEST = digest(TERMINAL_IDENTITY_PROVENANCE)
+
+
+def terminal_identity(table: TripTable, *,
+                      degenerate_at: float = 0.5) -> dict:
+    """How much of this timetable can a same-terminal oracle even see?
+
+    A trip whose destination terminal is never any trip's origin can never be
+    followed by anything under that oracle, whatever the schedule looks like.
+    When most trips are in that position the resulting "upper bound" is
+    arithmetic about missing terminal identity, not about fleet.
+    """
+    if len(table) == 0:
+        return {"n_trips": 0, "degenerate": False,
+                "provenance": TERMINAL_IDENTITY_PROVENANCE}
+    origins = {t.origin_terminal for t in table.trips}
+    dests = {t.destination_terminal for t in table.trips}
+    stranded = [t for t in table.trips if t.destination_terminal not in origins]
+    share = len(stranded) / len(table)
+    return {
+        "n_trips": len(table),
+        "n_origin_terminals": len(origins),
+        "n_destination_terminals": len(dests),
+        "n_shared_terminals": len(origins & dests),
+        "trips_whose_destination_is_never_an_origin": len(stranded),
+        "share_stranded": share,
+        "degenerate": share >= degenerate_at,
+        "degenerate_at": degenerate_at,
+        "meaning": (
+            "a stranded trip can never be followed by anything under a "
+            "same-terminal oracle, so each one forces its own block. Where "
+            "the share is high the upper bound measures unresolved terminal "
+            "identity rather than fleet"),
+        "provenance": TERMINAL_IDENTITY_PROVENANCE,
+    }

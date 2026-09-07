@@ -173,6 +173,29 @@
   },
   "is_upper_bound": true,
   "is_lower_bound": false,
+  "terminal_identity": {
+   "n_trips": 2331,
+   "n_origin_terminals": 67,
+   "n_destination_terminals": 67,
+   "n_shared_terminals": 61,
+   "trips_whose_destination_is_never_an_origin": 9,
+   "share_stranded": 0.003861003861003861,
+   "degenerate": false,
+   "degenerate_at": 0.5,
+   "meaning": "a stranded trip can never be followed by anything under a same-terminal oracle, so each one forces its own block. Where the share is high the upper bound measures unresolved terminal identity rather than fleet",
+   "provenance": {
+    "status": "OPEN",
+    "what_is_missing": "a statement of which stop_ids denote the same physical terminal",
+    "why_gtfs_does_not_answer": "parent_station is empty in all 2,949 stop rows and location_type is unset",
+    "forbidden_substitutes": [
+     "grouping stops within some distance of each other -- the threshold would be invented and the answer would move with it",
+     "grouping stops by shared stop_name prefix or by a BAY suffix -- that infers geography from a label",
+     "assuming a route's two directions share a terminal because they are the same route"
+    ],
+    "consequence": "where it is unresolved, a same-terminal oracle cannot chain a route's own two directions, and its upper bound approaches one block per trip",
+    "acceptable_source": "an operator-supplied terminal/garage table, the same artifact that would carry deadhead times"
+   }
+  },
   "fleet_by_period_is_matching_dependent": true,
   "fleet_by_period_stable": false,
   "fleet_by_period_alternate": {
@@ -233,10 +256,14 @@
   "status": "UNDECIDABLE",
   "feasible": null,
   "reasons": [
-   "the per-period arm is UNDECIDABLE: fleet_by_period is a property of the maximum matching found, not of the schedule, and an equally maximum matching gives {'early': 137, 'am_peak': 210, 'midday': 210, 'pm_peak': 209, 'evening': 196, 'owl': 180}"
+   "the per-period figure is a property of the maximum matching found, not of the schedule: an equally maximum matching gives {'am_peak': 210, 'early': 137, 'evening': 196, 'midday': 210, 'owl': 180, 'pm_peak': 209}. It is reported as a diagnostic and gates nothing (AMENDMENT 1)",
+   "feasibility cannot be PROVEN: same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for",
+   "not refuted by any matching-independent bound, which is not the same as being feasible"
   ],
   "per_period": {
-   "literal_test_as_specified": {
+   "REMOVED_AS_A_GATE": "The preregistered per-period blocking arm was removed before Experiment 4 execution because validation demonstrated that it was not invariant to the choice among equally optimal maximum matchings. Under the experiment's OPERATIONAL_RECOURSE assumption, fleet feasibility is instead evaluated using matching-independent block-count bounds and, once deadhead provenance is complete, minimum path-cover cardinality under the declared deadhead oracle.",
+   "diagnostic_only": true,
+   "superseded_test": {
     "am_peak": [
      195,
      187
@@ -262,8 +289,6 @@
      197
     ]
    },
-   "literal_test_passes": false,
-   "literal_test_is_decision_grade": false,
    "matching_stable": false,
    "invariant_lower_bound": {
     "early": 119,
@@ -290,21 +315,60 @@
    "candidate": 2517.1833333333334,
    "envelope": 2517.1833333333334,
    "within": true,
-   "note": "revenue vehicle-hours is a property of the timetable, not of the blocking, so this arm is well posed"
+   "matching_independent": true,
+   "note": "revenue vehicle-hours is a property of the timetable, not of the blocking"
   },
   "system": {
    "candidate_minimum_blocks": 212,
    "is_upper_bound": true,
    "is_lower_bound": false,
    "baseline_minimum_blocks": null,
-   "comparison": "instrument-consistent: both sides are path-cover counts under the same oracle and connection rule. The envelope's peak-vehicle figure is a concurrency of published blocks and is NOT this quantity"
+   "candidate_bound": null,
+   "baseline_bound": null,
+   "comparison": "instrument-consistent: both sides are path-cover counts under the same oracle and connection rule. The envelope's peak-vehicle figure is a concurrency of published blocks and is NOT this quantity",
+   "terminal_identity": {
+    "n_trips": 2331,
+    "n_origin_terminals": 67,
+    "n_destination_terminals": 67,
+    "n_shared_terminals": 61,
+    "trips_whose_destination_is_never_an_origin": 9,
+    "share_stranded": 0.003861003861003861,
+    "degenerate": false,
+    "degenerate_at": 0.5,
+    "meaning": "a stranded trip can never be followed by anything under a same-terminal oracle, so each one forces its own block. Where the share is high the upper bound measures unresolved terminal identity rather than fleet",
+    "provenance": {
+     "status": "OPEN",
+     "what_is_missing": "a statement of which stop_ids denote the same physical terminal",
+     "why_gtfs_does_not_answer": "parent_station is empty in all 2,949 stop rows and location_type is unset",
+     "forbidden_substitutes": [
+      "grouping stops within some distance of each other -- the threshold would be invented and the answer would move with it",
+      "grouping stops by shared stop_name prefix or by a BAY suffix -- that infers geography from a label",
+      "assuming a route's two directions share a terminal because they are the same route"
+     ],
+     "consequence": "where it is unresolved, a same-terminal oracle cannot chain a route's own two directions, and its upper bound approaches one block per trip",
+     "acceptable_source": "an operator-supplied terminal/garage table, the same artifact that would carry deadhead times"
+    }
+   },
+   "terminal_identity_degenerate": false
   },
   "envelope_digest": "b6c647d3766338a6",
+  "deadhead_provenance": {
+   "deadhead_source": "same_terminal_only",
+   "version": "1",
+   "time_dependent": false,
+   "min_layover_sec": 300.0,
+   "cross_terminal": "UNKNOWN -- every such connection infeasible",
+   "consequence": "fleet computed under this oracle is an UPPER BOUND; no interlining is permitted"
+  },
+  "provenance_certification_grade": false,
+  "provenance_note": "same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for",
+  "contract_digest": "4840070385b7bc3e",
   "verdicts": [
    "FEASIBLE",
    "INFEASIBLE",
    "UNDECIDABLE"
-  ]
+  ],
+  "amendment": "AMENDMENT 1 removed the per-period arm as a gate; per-period figures here are diagnostic"
  },
  "verdict": {
   "test_a_pass": true,

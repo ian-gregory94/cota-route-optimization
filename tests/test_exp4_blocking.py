@@ -19,11 +19,24 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from cota_opt.blocks import block_concurrency                    # noqa: E402
 from cota_opt.exp4_blocking import (OPERATIONAL_RECOURSE,        # noqa: E402
+                                    OPERATIONAL_RECOURSE_DIGEST,
                                     BlockingError, ConnectionRule,
                                     DeadheadOracle, DeadheadUnknown,
                                     MaterializedTrip, SameTerminalOracle,
                                     TableDeadheadOracle, TripTable,
                                     ZeroDeadheadRelaxation,
+                                    CandidateFleetBound,
+                                    FleetQuantity,
+                                    FleetSemanticsViolation,
+                                    BLOCKING_CONTRACT,
+                                    BLOCKING_CONTRACT_DIGEST,
+                                    FLEET_ARM_AMENDMENT_1,
+                                    FLEET_ARM_ORIGINAL,
+                                    legacy_concurrency_proxy,
+                                    published_block_peak,
+                                    provenance_is_certification_grade,
+                                    terminal_identity,
+                                    TERMINAL_IDENTITY_PROVENANCE,
                                     audit_published_transitions,
                                     block_candidate_schedule,
                                     materialize_timetable,
@@ -330,14 +343,20 @@ def test_candidate_fleet_is_reported_per_period_with_source():
 # ===========================================================================
 
 def test_the_module_contains_no_interlining_factor_and_no_speed():
-    src = ROOT.joinpath("src/cota_opt/exp4_blocking.py").read_text()
-    code = "\n".join(l for l in src.splitlines()
-                     if not l.strip().startswith("#"))
-    body = code.split('"""', 2)[-1]
-    for forbidden in ("1.307", "1.30", "routewise_peak(", "peak_vehicles ="):
-        assert forbidden not in body, (
-            f"{forbidden!r} appears in exp4_blocking; fleet is solved for, "
-            f"never converted from a proxy")
+    """Numeric literals only. Prose that NAMES a forbidden quantity in order
+    to reject it must not read as a use of it -- two tests in this repository
+    have already passed for exactly that wrong reason.
+    """
+    import ast
+    tree = ast.parse((ROOT / "src/cota_opt/exp4_blocking.py").read_text())
+    nums = {n.value for n in ast.walk(tree)
+            if isinstance(n, ast.Constant) and isinstance(n.value, (int, float))
+            and not isinstance(n.value, bool)}
+    for forbidden in (1.307, 1.30, 176.132352, 176.49, 150.73, 197, 12.20):
+        assert forbidden not in nums, (
+            f"the literal {forbidden} is executed in exp4_blocking; fleet is "
+            f"solved for, never converted from a proxy, and a cap is read "
+            f"from the frozen artifact rather than retyped into a module")
 
 
 def test_the_result_type_denies_being_a_reconstruction():
@@ -551,33 +570,86 @@ def test_a_lower_bound_over_the_cap_is_a_real_infeasibility():
     assert v.per_period["lower_bound_exceeds_envelope"]
 
 
-def test_missing_vehicle_hours_makes_the_verdict_undecidable_not_feasible():
+def test_a_bound_only_oracle_can_never_return_feasible():
+    """Not even with vehicle-hours supplied and every bound satisfied.
+
+    The strict oracle forbids all interlining, so a plan it accepts is only
+    accepted under an assumption nobody has evidence for. AMENDMENT 1 makes
+    provenance the gate rather than the per-period arithmetic.
+    """
     tbl, res = _tiny()
+    v = production_feasible(res, ENV, tbl, PERIODS,
+                            envelope_vehicle_hours=2517.183333,
+                            candidate_vehicle_hours=10.0)
+    assert v.status == "UNDECIDABLE" and v.feasible is None
+    assert v.provenance_certification_grade is False
+    assert "upper bound" in v.provenance_note
+
+
+def _certifiable_oracle():
+    return TableDeadheadOracle(
+        table={("A_END", "A_END"): 0.0}, min_layover_sec=300.0,
+        source_note="synthetic fixture; stands in for a real deadhead table")
+
+
+def test_feasible_requires_a_provenance_complete_oracle():
+    tbl = _table([_trip("t1", "A", "A_END", 7.0, 8.0),
+                  _trip("t2", "A_END", "A", 9.0, 10.0)])
+    res = block_candidate_schedule(tbl, _certifiable_oracle(), PERIODS)
+    v = production_feasible(res, ENV, tbl, PERIODS,
+                            envelope_vehicle_hours=2517.183333,
+                            candidate_vehicle_hours=10.0)
+    assert v.status == "FEASIBLE" and v.feasible is True
+    assert v.provenance_certification_grade is True
+
+
+def test_a_deadhead_table_with_no_stated_source_cannot_certify():
+    tbl = _table([_trip("t1", "A", "A_END", 7.0, 8.0)])
+    res = block_candidate_schedule(
+        tbl, TableDeadheadOracle(table={}, source_note=""), PERIODS)
+    v = production_feasible(res, ENV, tbl, PERIODS,
+                            envelope_vehicle_hours=1e9,
+                            candidate_vehicle_hours=1.0)
+    assert v.status == "UNDECIDABLE"
+    assert "source_note" in v.provenance_note, (
+        "a table whose numbers came from nowhere stated is not provenance")
+
+
+def test_missing_vehicle_hours_is_undecidable_even_with_good_provenance():
+    tbl = _table([_trip("t1", "A", "A_END", 7.0, 8.0)])
+    res = block_candidate_schedule(tbl, _certifiable_oracle(), PERIODS)
     v = production_feasible(res, ENV, tbl, PERIODS)
     assert v.status == "UNDECIDABLE" and v.feasible is None
     assert any("vehicle-hours were not supplied" in r for r in v.reasons)
 
 
-def test_an_unstable_per_period_figure_cannot_return_feasible():
+def test_the_per_period_arm_is_reported_as_removed_not_as_a_gate():
     tbl, res = _tiny()
-    unstable = type(res)(**{**res.__dict__, "fleet_by_period_stable": False,
-                            "fleet_by_period_alternate": {"am_peak": 999}})
-    v = production_feasible(unstable, ENV, tbl, PERIODS,
+    v = production_feasible(res, ENV, tbl, PERIODS,
                             envelope_vehicle_hours=1e9,
                             candidate_vehicle_hours=1.0)
-    assert v.status == "UNDECIDABLE", (
-        "a per-period test whose answer changes with list order must not be "
-        "allowed to certify a plan as feasible")
-    assert v.per_period["literal_test_is_decision_grade"] is False
+    assert v.per_period["diagnostic_only"] is True
+    assert "removed before Experiment 4 execution" in \
+        v.per_period["REMOVED_AS_A_GATE"]
+    assert "literal_test_is_decision_grade" not in v.per_period, (
+        "the removed arm must not survive as a field that reads like a gate")
 
 
-def test_a_stable_within_envelope_candidate_is_feasible():
+def test_a_bracket_that_cannot_be_reconciled_refutes_regardless_of_deadhead():
+    """Candidate needs more with free deadhead than baseline does with none."""
     tbl, res = _tiny()
-    stable = type(res)(**{**res.__dict__, "fleet_by_period_stable": True})
-    v = production_feasible(stable, ENV, tbl, PERIODS,
-                            envelope_vehicle_hours=2517.183333,
-                            candidate_vehicle_hours=10.0)
-    assert v.status == "FEASIBLE" and v.feasible is True
+    cand = CandidateFleetBound(lower=400, upper=500,
+                               lower_oracle="zero_deadhead_relaxation",
+                               upper_oracle="same_terminal_only")
+    base = CandidateFleetBound(lower=180, upper=212,
+                               lower_oracle="zero_deadhead_relaxation",
+                               upper_oracle="same_terminal_only")
+    v = production_feasible(res, ENV, tbl, PERIODS,
+                            envelope_vehicle_hours=1e9,
+                            candidate_vehicle_hours=1.0,
+                            candidate_bound=cand, baseline_bound=base)
+    assert v.status == "INFEASIBLE"
+    assert any("no deadhead model can reconcile" in r for r in v.reasons)
 
 
 def test_more_blocks_than_the_baseline_under_one_instrument_is_infeasible():
@@ -769,7 +841,246 @@ def test_production_feasibility_refuses_rather_than_guesses():
     if fb is None:
         pytest.skip("feasibility was not evaluated")
     assert fb["status"] == "UNDECIDABLE" and fb["feasible"] is None
-    assert fb["per_period"]["literal_test_is_decision_grade"] is False
+    assert fb["per_period"]["diagnostic_only"] is True
+    assert fb["provenance_certification_grade"] is False
     assert fb["vehicle_hours"]["within"] is True, (
         "the timetable's own revenue vehicle-hours must sit inside the "
         "envelope it was used to define")
+    assert fb["system"]["terminal_identity_degenerate"] is False, (
+        "the PUBLISHED feed chains through matching stop_ids -- only 9 of "
+        "2,331 trips are stranded -- so terminal-dependent comparisons are "
+        "admissible on the baseline even though they are not on candidates")
+
+
+# ===========================================================================
+# four fleet numbers that must not become one
+# ===========================================================================
+
+def test_a_fleet_quantity_refuses_to_be_a_float():
+    q = published_block_peak(197.0)
+    for op in (float, int, abs):
+        with pytest.raises(FleetSemanticsViolation):
+            op(q)
+    with pytest.raises(FleetSemanticsViolation):
+        q < published_block_peak(198.0)
+
+
+def test_two_fleet_kinds_cannot_be_compared():
+    a = published_block_peak(197.0)
+    b = legacy_concurrency_proxy(176.132352)
+    with pytest.raises(FleetSemanticsViolation):
+        a.compare_same_kind(b)
+    assert a.compare_same_kind(published_block_peak(180.0)) == 17.0
+
+
+def test_the_legacy_proxy_refuses_to_participate_in_certification():
+    b = legacy_concurrency_proxy(176.132352)
+    assert b.value_for("record it in the provenance appendix") == 176.132352
+    with pytest.raises(FleetSemanticsViolation):
+        b.value_for("fleet certification gate")
+
+
+def test_reading_a_fleet_number_requires_naming_the_purpose():
+    with pytest.raises(FleetSemanticsViolation):
+        published_block_peak(197.0).value_for("")
+
+
+def test_the_module_does_not_hold_the_cap_or_the_proxy_as_defaults():
+    """A cap is read from the frozen artifact, never retyped into a module."""
+    import inspect
+    for fn in (published_block_peak, legacy_concurrency_proxy):
+        sig = inspect.signature(fn)
+        assert sig.parameters["value"].default is inspect.Parameter.empty, (
+            f"{fn.__name__} defaults its value; that is a cap retyped into "
+            f"source, which is exactly what CANONICAL_ENVELOPE.json exists "
+            f"to prevent")
+
+
+def test_a_bracket_refuses_to_be_read_as_a_certified_requirement():
+    b = CandidateFleetBound(lower=180, upper=212,
+                            lower_oracle="zero_deadhead_relaxation",
+                            upper_oracle="same_terminal_only")
+    assert b.contains(197)
+    with pytest.raises(FleetSemanticsViolation):
+        b.certified_value()
+
+
+def test_an_inverted_bracket_is_a_solver_bug_not_a_result():
+    with pytest.raises(BlockingError):
+        CandidateFleetBound(lower=212, upper=180,
+                            lower_oracle="zero_deadhead_relaxation",
+                            upper_oracle="same_terminal_only")
+
+
+# ===========================================================================
+# the amendment, and the original it replaced
+# ===========================================================================
+
+def test_the_original_per_period_arm_is_preserved_verbatim():
+    assert "candidate_fleet[p] <= envelope.fleet[p]" in \
+        FLEET_ARM_ORIGINAL["preregistered_text"]
+    assert FLEET_ARM_ORIGINAL["status"] == "SUPERSEDED BY AMENDMENT 1", (
+        "the superseded design must remain readable. Rewriting it as though "
+        "the amendment was always the plan is the thing this project distrusts "
+        "most about analysis code edited with the answers in view")
+
+
+def test_the_amendment_says_it_preceded_execution():
+    assert FLEET_ARM_AMENDMENT_1["before_any_experiment_4_execution"] is True
+    t = FLEET_ARM_AMENDMENT_1["text"]
+    assert "not invariant to the choice among equally optimal maximum " \
+           "matchings" in t
+    assert "OPERATIONAL_RECOURSE" in t
+    assert "matching-independent block-count bounds" in t
+
+
+def test_the_amendment_forbids_rescuing_the_statistic_with_more_machinery():
+    nots = " ".join(FLEET_ARM_AMENDMENT_1["not_permitted"])
+    assert "min-cost flow" in nots
+    assert "canonical adjacency order" in nots, (
+        "determinism would make the rejected statistic reproducible without "
+        "making it mean anything, which is the worse failure")
+
+
+def test_the_question_is_existential():
+    assert FLEET_ARM_AMENDMENT_1["question_now_asked"].startswith("EXISTENTIAL")
+    assert FLEET_ARM_AMENDMENT_1["invariant_quantity"] == \
+        "minimum_blocks = n_trips - maximum_matching"
+
+
+def test_the_blocking_contract_is_digested_and_carries_both_versions():
+    assert BLOCKING_CONTRACT["version"] == 2
+    assert BLOCKING_CONTRACT["original_fleet_arm"] is FLEET_ARM_ORIGINAL
+    assert FLEET_ARM_AMENDMENT_1 in BLOCKING_CONTRACT["amendments"]
+    assert len(BLOCKING_CONTRACT_DIGEST) >= 8
+
+
+def test_provenance_gate_classifies_all_three_oracles():
+    ok, why = provenance_is_certification_grade(
+        SameTerminalOracle().provenance)
+    assert ok is False and "upper bound" in why
+    ok, why = provenance_is_certification_grade(
+        ZeroDeadheadRelaxation().provenance)
+    assert ok is False and "certifies nothing" in why
+    ok, why = provenance_is_certification_grade(
+        TableDeadheadOracle(table={}, source_note="a real source").provenance)
+    assert ok is True
+    ok, why = provenance_is_certification_grade({})
+    assert ok is False and "no deadhead oracle" in why
+
+
+def test_the_solver_still_refuses_to_use_min_cost_flow():
+    import ast
+    tree = ast.parse((ROOT / "src/cota_opt/exp4_blocking.py").read_text())
+    names = _code_names(ROOT / "src/cota_opt/exp4_blocking.py")
+    for forbidden in ("min_cost_flow", "network_simplex", "max_flow_min_cost",
+                      "linprog", "milp"):
+        assert forbidden not in names, (
+            f"{forbidden} appears; counting buses does not need costs, and a "
+            f"flow formulation invites a secondary objective nobody has "
+            f"preregistered")
+
+
+# ===========================================================================
+# terminal identity: the second missing input, found by running the thing
+# ===========================================================================
+
+def test_terminal_identity_measures_stranded_trips():
+    """A trip ending where nothing starts can never be followed."""
+    tbl = _table([_trip("t1", "A", "A_END", 7.0, 8.0),
+                  _trip("t2", "B", "B_END", 9.0, 10.0)])
+    d = terminal_identity(tbl)
+    assert d["trips_whose_destination_is_never_an_origin"] == 2
+    assert d["share_stranded"] == 1.0 and d["degenerate"] is True
+
+
+def test_a_round_trip_pair_is_not_stranded():
+    tbl = _table([_trip("t1", "A", "B", 7.0, 8.0),
+                  _trip("t2", "B", "A", 9.0, 10.0)])
+    d = terminal_identity(tbl)
+    assert d["trips_whose_destination_is_never_an_origin"] == 0
+    assert d["degenerate"] is False
+
+
+def test_the_missing_input_is_named_and_its_substitutes_forbidden():
+    p = TERMINAL_IDENTITY_PROVENANCE
+    assert p["status"] == "OPEN"
+    joined = " ".join(p["forbidden_substitutes"])
+    assert "distance" in joined and "stop_name" in joined, (
+        "a coordinate threshold and a name prefix are the two tempting "
+        "substitutes; both invent geography and both must be named as barred")
+    assert "parent_station is empty" in p["why_gtfs_does_not_answer"]
+
+
+def test_a_degenerate_table_cannot_refute_through_terminals():
+    """The excess would be an artifact of unresolved identity, not fleet."""
+    tbl = _table([_trip(f"t{i}", "A", f"END{i}", 7.0 + i, 8.0 + i)
+                  for i in range(4)])
+    res = block_candidate_schedule(tbl, SameTerminalOracle(), PERIODS)
+    assert res.terminal_identity["degenerate"] is True
+    v = production_feasible(res, ENV, tbl, PERIODS,
+                            envelope_vehicle_hours=1e9,
+                            candidate_vehicle_hours=1.0,
+                            baseline_minimum_blocks=1)
+    assert v.status == "UNDECIDABLE", (
+        "4 blocks against a baseline of 1 looks like a refutation and is not: "
+        "every trip ends at a terminal nothing departs from, so the count is "
+        "arithmetic about missing terminal identity")
+    assert "within_baseline" not in v.system
+    assert v.system["terminal_identity_degenerate"] is True
+
+
+def test_a_degenerate_table_can_still_be_refuted_by_a_terminal_free_bound():
+    """Lower bounds never look at a terminal, so they still bite."""
+    tbl = _table([_trip(f"t{i}", "A", f"END{i}", 7.0, 8.0) for i in range(5)])
+    res = block_candidate_schedule(tbl, SameTerminalOracle(), PERIODS)
+    assert res.terminal_identity["degenerate"] is True
+    v = production_feasible(res, {k: 2 for k in PERIODS}, tbl, PERIODS,
+                            envelope_vehicle_hours=1e9,
+                            candidate_vehicle_hours=1.0)
+    assert v.status == "INFEASIBLE", (
+        "five simultaneous trips against a cap of two is refuted by the "
+        "per-period lower bound, which never asks where a bus is standing")
+
+
+def test_all_blockers_are_reported_not_just_the_first():
+    tbl = _table([_trip("t1", "A", "A_END", 7.0, 8.0)])
+    res = block_candidate_schedule(tbl, SameTerminalOracle(), PERIODS)
+    v = production_feasible(res, ENV, tbl, PERIODS)
+    joined = " ".join(v.reasons)
+    assert "TERMINAL IDENTITY" in joined
+    assert "cannot be PROVEN" in joined
+    assert "vehicle-hours were not supplied" in joined, (
+        "a caller who fixes one blocker must not discover the next in "
+        "sequence; that turns a blocker list into a queue")
+
+
+# ===========================================================================
+# the contract document says what the code does
+# ===========================================================================
+
+CONTRACT_MD = ROOT / "EXPERIMENT4_BLOCKING_CONTRACT.md"
+
+
+def test_the_contract_document_exists_and_carries_both_versions_of_9():
+    assert CONTRACT_MD.exists(), (
+        "the amendment must be readable outside the source tree: an audit "
+        "trail that lives only in a Python dict is not preserved history")
+    md = CONTRACT_MD.read_text()
+    assert "ORIGINAL, PRESERVED" in md
+    assert "candidate_fleet[p] <= envelope.fleet[p]" in md
+    assert "AMENDMENT 1" in md
+    assert "before any Experiment 4 execution" in md
+
+
+def test_the_contract_document_digest_matches_the_code():
+    md = CONTRACT_MD.read_text()
+    assert BLOCKING_CONTRACT_DIGEST in md, (
+        f"the document must name the contract digest it describes; code says "
+        f"{BLOCKING_CONTRACT_DIGEST}")
+    assert OPERATIONAL_RECOURSE_DIGEST in md
+
+
+def test_the_contract_document_does_not_claim_experiment_4_has_run():
+    md = CONTRACT_MD.read_text()
+    assert "No Experiment 4 execution has occurred" in md

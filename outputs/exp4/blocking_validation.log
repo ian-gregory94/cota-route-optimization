@@ -38,7 +38,7 @@ TEST B — stripped-block candidate solve
 BRACKET — the deadhead nobody has, bounded from both sides
 
     analytic LOWER bound (zero deadhead, 300s layover): 180 @ 17:23
-    solved LOWER bound  : 180 (8s)
+    solved LOWER bound  : 180 (6s)
     Dilworth cross-check: solver 180 vs analytic 180 -- AGREE
 
     180 <= true minimum fleet <= 212
@@ -47,7 +47,9 @@ BRACKET — the deadhead nobody has, bounded from both sides
 
     revenue vehicle-hours: 2517.183333 against 2517.183333
     STATUS: UNDECIDABLE
-      - the per-period arm is UNDECIDABLE: fleet_by_period is a property of the maximum matching found, not of the schedule, and an equally maximum matching gives {'early': 137, 'am_peak': 210, 'midday': 210, 'pm_peak': 209, 'evening': 196, 'owl': 180}
+      - the per-period figure is a property of the maximum matching found, not of the schedule: an equally maximum matching gives {'am_peak': 210, 'early': 137, 'evening': 196, 'midday': 210, 'owl': 180, 'pm_peak': 209}. It is reported as a diagnostic and gates nothing (AMENDMENT 1)
+      - feasibility cannot be PROVEN: same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for
+      - not refuted by any matching-independent bound, which is not the same as being feasible
 
 ======================================================================
   EXP 4 BLOCKED — CANDIDATE BLOCKER IMPLEMENTED, DEADHEAD PROVENANCE OPEN
