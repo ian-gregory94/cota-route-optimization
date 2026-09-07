@@ -3,151 +3,233 @@
     {
       "id": "C1",
       "title": "Experiment 3 closed and frozen",
-      "status": "OPEN",
-      "detail": "tag=exp3-final-v1, tree=dirty"
+      "status": "MET",
+      "detail": "tag=exp3-final-v1, tree=clean",
+      "kind": "launch_gate"
     },
     {
       "id": "C2",
       "title": "pre_exp4_baseline_v1 exists",
       "status": "MET",
-      "detail": "outputs/exp4/pre_exp4_baseline_v1.json"
+      "detail": "outputs/exp4/pre_exp4_baseline_v1.json",
+      "kind": "launch_gate"
     },
     {
       "id": "C3",
       "title": "Synthetic routes exist independently of legacy route ids",
       "status": "MET",
-      "detail": "206 accepted from 5 generators"
+      "detail": "206 accepted from 5 generators",
+      "kind": "launch_gate"
     },
     {
       "id": "C4",
       "title": "Legacy network reconstructs and reproduces score and resources",
       "status": "MET",
-      "detail": "41 routes, stop coverage complete=True; SCORE/RESOURCE reproduction is the part to confirm"
+      "detail": "41 routes, stop coverage complete=True; SCORE/RESOURCE reproduction is the part to confirm",
+      "kind": "launch_gate"
     },
     {
       "id": "C5",
       "title": "Peak express service explicitly separated",
       "status": "MET",
-      "detail": "routeclass.py defines the peak_express class and exp3_score locks it via lock_classes"
+      "detail": "routeclass.py defines the peak_express class and exp3_score locks it via lock_classes",
+      "kind": "launch_gate"
     },
     {
       "id": "C6",
       "title": "Observed-link graph built and audited",
       "status": "MET",
-      "detail": "2763 stops, 2952 links, every_pattern_is_a_path=True"
+      "detail": "2763 stops, 2952 links, every_pattern_is_a_path=True",
+      "kind": "launch_gate"
     },
     {
       "id": "C7",
       "title": "Frozen route pool contains the current network",
       "status": "MET",
-      "detail": "legacy_in_pool=41/41"
+      "detail": "legacy_in_pool=41/41",
+      "kind": "launch_gate"
     },
     {
       "id": "C8",
       "title": "Synthetic route-period service can be OFF",
       "status": "MET",
-      "detail": "frequency.OFF (infinite headway): zero trips, zero vehicle-hours, zero peak vehicles, unboardable by the path model. build_ladders(allow_off=) defaults False so Gen1 cannot represent it. tests/test_off_service.py"
+      "detail": "frequency.OFF (infinite headway): zero trips, zero vehicle-hours, zero peak vehicles, unboardable by the path model. build_ladders(allow_off=) defaults False so Gen1 cannot represent it. tests/test_off_service.py",
+      "kind": "launch_gate"
     },
     {
       "id": "C9",
       "title": "Proposal recall: discovery cannot discard the exact winner",
       "status": "MET",
-      "detail": "REDEFINED around proposal recall (D18 emitted no band, so the old 'identify the leader inside the band' test does not exist). On 6 cells spanning sparse_wide_pool, sparse_to_mid, dense, many_off, other_pool, large_production_like: the complete candidate space was enumerated and EXACT-CERTIFIED as ground truth, then the production discovery+promotion pipeline was run independently. Certified winner retained in 6/6 cells (required: all); worst top-5 recall 100% (required >= 90%). Promotion rule ec6288fc8ec9b7d0, certification contract 2125984c82b60a83. outputs/exp4/c9_recall.json"
+      "detail": "REDEFINED around proposal recall (D18 emitted no band, so the old 'identify the leader inside the band' test does not exist). On 6 cells spanning sparse_wide_pool, sparse_to_mid, dense, many_off, other_pool, large_production_like: the complete candidate space was enumerated and EXACT-CERTIFIED as ground truth, then the production discovery+promotion pipeline was run independently. Certified winner retained in 6/6 cells (required: all); worst top-5 recall 100% (required >= 90%). Promotion rule ec6288fc8ec9b7d0, certification contract 2125984c82b60a83. outputs/exp4/c9_recall.json",
+      "kind": "launch_gate"
     },
     {
       "id": "C10",
       "title": "Outer network search recovers an exhaustively known optimum",
       "status": "MET",
-      "detail": "CLOSED on the production evaluator: 5 of 5 cases genuinely defeat add-only greedy and Gen2 recovers all 5 exact optima. Cases were discovered by scanning 45 spaces, not hand-tuned. outputs/exp4/c10_benchmark.json"
+      "detail": "CLOSED on the production evaluator: 5 of 5 cases genuinely defeat add-only greedy and Gen2 recovers all 5 exact optima. Cases were discovered by scanning 45 spaces, not hand-tuned. outputs/exp4/c10_benchmark.json",
+      "kind": "launch_gate"
     },
     {
       "id": "C11",
       "title": "Committed gate on common-lines exposure",
       "status": "MET",
-      "detail": "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the diagnostic; if exposure balloons the result is classified model-dependent"
+      "detail": "ACCEPTANCE.md Gate 4-10 -- every promoted network reruns the diagnostic; if exposure balloons the result is classified model-dependent",
+      "kind": "launch_gate"
     },
     {
       "id": "C12",
       "title": "Committed transfer-depth, path-cap and OD-cap adequacy gates",
       "status": "MET",
-      "detail": "ACCEPTANCE.md Gate 4-9 covers all three: deeper max_rounds on promoted networks, the 4->6 paths-per-OD sensitivity redone, and certification on a materially wider OD set than the top 20,000"
+      "detail": "ACCEPTANCE.md Gate 4-9 covers all three: deeper max_rounds on promoted networks, the 4->6 paths-per-OD sensitivity redone, and certification on a materially wider OD set than the top 20,000",
+      "kind": "launch_gate"
     },
     {
       "id": "C13",
       "title": "Demand-robustness claims written before the winner is known",
       "status": "MET",
-      "detail": "Gate 4-12 is COMMITTED in ACCEPTANCE.md, but the CLAIMS themselves are not written. They must exist before any Exp 4 winner is known, so this is cheap now and impossible later"
+      "detail": "Gate 4-12 is COMMITTED in ACCEPTANCE.md, but the CLAIMS themselves are not written. They must exist before any Exp 4 winner is known, so this is cheap now and impossible later",
+      "kind": "launch_gate"
     },
     {
       "id": "C14",
       "title": "Structural-distance measurement exists",
       "status": "MET",
-      "detail": "contract.py computes network_edit_distance_pct with a committed cap; ACCEPTANCE Gate 4-13 requires geometry-based identity because Exp 4 route ids are synthetic"
+      "detail": "contract.py computes network_edit_distance_pct with a committed cap; ACCEPTANCE Gate 4-13 requires geometry-based identity because Exp 4 route ids are synthetic",
+      "kind": "launch_gate"
     },
     {
       "id": "C15",
       "title": "Every ACCEPTANCE.md rejection condition in place before scoring",
       "status": "MANUAL",
-      "detail": "15 of 15 gates written; scripts/exp4_gates.py executes them: 11 MET, 4 ARMED (they fire on a promoted network and cannot be satisfied before the search), 0 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof -- and because D35 showed a constraint can be fully written, validated at construction, hashed into the state digest and still reach nothing that scores"
+      "detail": "15 of 15 gates written; scripts/exp4_gates.py executes them: 11 MET, 4 ARMED (they fire on a promoted network and cannot be satisfied before the search), 0 OPEN. Remains MANUAL because 'armed' is a judgement that the right machinery exists, not a proof -- and because D35 showed a constraint can be fully written, validated at construction, hashed into the state digest and still reach nothing that scores",
+      "kind": "launch_gate"
     },
     {
       "id": "D16",
       "title": "Experiment 4 ExperimentContract exists and is in force",
       "status": "MET",
-      "detail": "14/14 checks pass in scripts/exp4_d16_check.py, which executes the criterion's three clauses separately and fires the construction guard for EVERY declared dimension in turn. Contracts in force: ['EXP4_CERTIFICATION', 'EXP4_DISCOVERY'] (digests 22579b91a8ff1f83, 2eb6a7a867f1f179). Bridge verdict SUPERSEDED. outputs/exp4/d16_check.json"
+      "detail": "14/14 checks pass in scripts/exp4_d16_check.py, which executes the criterion's three clauses separately and fires the construction guard for EVERY declared dimension in turn. Contracts in force: ['EXP4_CERTIFICATION', 'EXP4_DISCOVERY'] (digests 22579b91a8ff1f83, 2eb6a7a867f1f179). Bridge verdict SUPERSEDED. outputs/exp4/d16_check.json",
+      "kind": "launch_gate"
     },
     {
       "id": "D17",
       "title": "Recovery behaviours classified in writing before the search",
       "status": "MET",
-      "detail": "EXPERIMENT4_DESIGN.md section 2 classifies seven; a committed machine-readable form is what the search will actually consult"
+      "detail": "EXPERIMENT4_DESIGN.md section 2 classifies seven; a committed machine-readable form is what the search will actually consult",
+      "kind": "launch_gate"
     },
     {
       "id": "D18",
       "title": "Gap benchmark run on Experiment 4 networks, Q3 answered",
       "status": "MET",
-      "detail": "RUN on 36 cells over 4 network structures, by exhaustive enumeration of a reduced neighbourhood (K=3, N=[6, 8, 10]) under the production objective. Q1/Q2: median gap +0.297432%, max +0.645892%. Q3 ANSWER RECORDED: the gap TRACKS network structure; section 3 forbids discovery-effort comparison (largest structure-paired differential 0.381749 pp against a median absolute gap of 0.297432 pp, ratio 1.283 vs the limit 0.5 declared before any number existed). Q4: NO BAND EMITTED -- section 3's forbidding branch. discovery_effort_comparison_permitted=False. This item is MET and Experiment 4 is BLOCKED BY ITS ANSWER, which is a different thing. outputs/exp4/gap_benchmark.json"
+      "detail": "RUN on 36 cells over 4 network structures, by exhaustive enumeration of a reduced neighbourhood (K=3, N=[6, 8, 10]) under the production objective. Q1/Q2: median gap +0.297432%, max +0.645892%. Q3 ANSWER RECORDED: the gap TRACKS network structure; section 3 forbids discovery-effort comparison (largest structure-paired differential 0.381749 pp against a median absolute gap of 0.297432 pp, ratio 1.283 vs the limit 0.5 declared before any number existed). Q4: NO BAND EMITTED -- section 3's forbidding branch. discovery_effort_comparison_permitted=False. This item is MET and Experiment 4 is BLOCKED BY ITS ANSWER, which is a different thing. outputs/exp4/gap_benchmark.json",
+      "kind": "launch_gate"
     },
     {
       "id": "D19",
       "title": "Effort stated in restarts with convergence asserted",
       "status": "MET",
-      "detail": "EXPERIMENT4_DESIGN.md section 4 states effort in restarts, records restarts_completed and converged, and refuses a certification comparison where either arm did not converge"
+      "detail": "EXPERIMENT4_DESIGN.md section 4 states effort in restarts, records restarts_completed and converged, and refuses a certification comparison where either arm did not converge",
+      "kind": "launch_gate"
     },
     {
       "id": "D20",
       "title": "Transition-level evidence on every pool line and the receipt",
       "status": "MET",
-      "detail": "206 lines classified, classes={'observed_edge_synthesis': 150, 'legacy_sequence': 41, 'observed_turn_synthesis': 15}; receipt-side attachment still to confirm"
+      "detail": "206 lines classified, classes={'observed_edge_synthesis': 150, 'legacy_sequence': 41, 'observed_turn_synthesis': 15}; receipt-side attachment still to confirm",
+      "kind": "launch_gate"
     },
     {
       "id": "D21a",
       "title": "Gen1 frozen",
       "status": "MET",
-      "detail": "GEN1_FREEZE.md + outputs/GEN1_FREEZE_MANIFEST.json; verify with scripts/gen1_freeze.py --verify"
+      "detail": "GEN1_FREEZE.md + outputs/GEN1_FREEZE_MANIFEST.json; verify with scripts/gen1_freeze.py --verify",
+      "kind": "launch_gate"
     },
     {
       "id": "D21b",
       "title": "Gen1->Gen2 bridge suite has run",
       "status": "MET",
-      "detail": "RUN. One real Gen1 question -- the optimal frequency plan for an assembled Exp 4 network under a pinned envelope -- answered twice, arms differing only in the solver. Verdict SUPERSEDED: the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network. Gen1 0.4s vs Gen2 2578.7s over 7,529,536 combinations. outputs/exp4/gen_bridge.json"
+      "detail": "RUN. One real Gen1 question -- the optimal frequency plan for an assembled Exp 4 network under a pinned envelope -- answered twice, arms differing only in the solver. Verdict SUPERSEDED: the exact solver found a strictly better plan; Gen1's optimization gap is 1.270619 on this network. Gen1 0.4s vs Gen2 2578.7s over 7,529,536 combinations. outputs/exp4/gen_bridge.json",
+      "kind": "launch_gate"
     },
     {
       "id": "D23",
       "title": "Production envelope equals canonical AND constrains block-derived fleet",
+      "status": "MET",
+      "detail": "canonical b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}. All ten assertions pass.",
+      "kind": "launch_gate"
+    },
+    {
+      "id": "D24",
+      "title": "Terminal identity \u2014 POST-RESULT operational validation",
       "status": "OPEN",
-      "detail": "A PRODUCTION RUN MAY NOT LAUNCH. hours cap 2507.0 != canonical 2517.183333; fleet is a SCALAR constant; the canonical envelope is a six-period vector and a scalar is a different constraint even when the number is right; the canonical six-period fleet vector {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197} does not appear; the run never invokes a block-derived fleet instrument, so whatever it constrains is not block-derived fleet. FitnessVector.peak_vehicles is peak CONCURRENCY: it reads 176.49 on the baseline against the block-derived 197 at the same period, and contract.py already refuses that comparison; the canonical envelope digest b6c647d3766338a6 is not referenced, so nothing ties the run to the frozen artifact. Canonical: outputs/CANONICAL_ENVELOPE.json (b6c647d3766338a6). NOTE: carrying the right six constants while constraining concurrency still fails this item -- right numbers, wrong variable."
+      "detail": "DEGENERATE on the preflight candidate: 240 of 288 trips (83.3%) end at a terminal that is never any trip's origin, against 9 of 2,331 (0.4%) on the published feed. GTFS `parent_station` is empty in all 2,949 stop rows, so nothing states which stop_ids are one terminal. A distance threshold or a stop_name prefix would invent that, and both are barred for the same reason estimating deadhead from block slack is. Needs the operator terminal/garage table -- the same artifact that would close deadhead provenance. Until then the fleet gate can only return UNDECIDABLE on candidates, which is correct behaviour and not a usable gate.",
+      "kind": "post_result"
     },
     {
       "id": "D22",
       "title": "Search-allowance contract merged into firewall/ and in force",
       "status": "MET",
-      "detail": "merged"
+      "detail": "merged",
+      "kind": "launch_gate"
     }
   ],
-  "met": 21,
-  "open": 2,
-  "manual": 1,
-  "total": 24,
-  "ready": false
+  "launch_gates": {
+    "met": 23,
+    "open": 0,
+    "manual": 1,
+    "total": 24
+  },
+  "post_result": [
+    {
+      "id": "D24",
+      "status": "OPEN"
+    }
+  ],
+  "total": 25,
+  "readiness_frozen": {
+    "artifact": "EXPERIMENT4_READINESS_FROZEN",
+    "version": 1,
+    "frozen_at": "2026-09-07",
+    "authorized_by": "Ian (principal)",
+    "authorized_to_execute": true,
+    "instruction_verbatim": "Freeze readiness. Reclassify D24 as post-result operational validation, not a launch gate. Do not add another readiness item. Run Exp 4. Fleet uncertainty must be reported but must not prevent execution or ranking. Only an error that makes candidate construction or objective comparison invalid may stop the run.",
+    "what_this_changes": [
+      "D24 (terminal identity) moves from LAUNCH GATE to POST-RESULT operational validation. It is not closed and its status is unchanged; it no longer holds the run.",
+      "C15, a MANUAL review judgement, is exercised by the principal here rather than left unchecked. Its status stays MANUAL: a judgement recorded is not a check performed."
+    ],
+    "what_this_does_not_change": [
+      "No readiness item was added, removed, or marked MET that was not MET.",
+      "D18's forbidding branch still stands: discovery_effort_comparison_permitted is false and no promotion band exists. Conclusions come from solve_exact only, which is what makes execution legitimate despite it.",
+      "The fleet instrument still refuses to certify. It reports and does not gate.",
+      "Deadhead provenance and terminal identity remain OPEN inputs."
+    ],
+    "accepted_costs": [
+      "The winner arrives with its FLEET REQUIREMENT UNDECIDABLE. No claim about operational deployability may be made from this run -- only about the objective under the vehicle-hours envelope.",
+      "Terminal identity is degenerate on synthesised candidates (83.3% of trips stranded on the preflight candidate), so the same-terminal upper bound is close to one block per trip and is not evidence about fleet.",
+      "C15 is a judgement, not a mechanical check. If a rejection condition turns out to be missing, this record is where that was accepted."
+    ],
+    "stop_conditions": {
+      "may_stop_the_run": [
+        "candidate construction is invalid (assembly, pool version, selection validation, materialisation)",
+        "objective comparison is invalid (evaluation-path digest drift, contract digest mismatch, envelope unreadable, firewall refusal)"
+      ],
+      "may_NOT_stop_the_run": [
+        "a fleet verdict of UNDECIDABLE, on any or all candidates",
+        "a degenerate terminal-identity diagnostic",
+        "an unavailable deadhead oracle",
+        "a failure inside the fleet stage itself"
+      ]
+    },
+    "readiness_at_freeze": {
+      "launch_gates_met": 23,
+      "launch_gates_open": 0,
+      "launch_gates_manual": 1,
+      "post_result_open": 1,
+      "note": "counts as of the commit that carries this artifact; C1 requires a clean tree"
+    }
+  },
+  "ready": true
 }

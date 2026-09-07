@@ -93,8 +93,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-hours", type=float, default=6.0)
     ap.add_argument("--stage", default="all",
-                    choices=("all", "preflight", "discover", "certify",
-                             "fleet", "report"))
+                    choices=("all", "preflight", "master", "discover",
+                             "certify", "fleet", "report"))
     ap.add_argument("--preflight-lines", type=int, default=6,
                     help="how many pool lines the preflight candidate uses")
     a = ap.parse_args()
@@ -353,6 +353,65 @@ def main() -> int:
         return 0
 
 
+    # ------------------------------------------------- master path set -----
+    #
+    # OPERATIONS 31, applied to the most expensive un-checkpointed step in the
+    # run. Enumerating path sets on the 204-line supernetwork takes longer than
+    # this container's idle-reclaim window, and it was being redone in memory
+    # on every start -- so a recycle during the build meant the build had never
+    # happened. It goes to disk the moment it exists, keyed by the pool it was
+    # built from so a stale cache cannot be silently reused.
+    master_pkl = OUT / "master_paths.pkl"
+    master_meta = OUT / "master_paths.json"
+    pool_digest = digest(sorted(pool))
+    master = {}
+    if master_pkl.exists() and master_meta.exists():
+        try:
+            _m = json.loads(master_meta.read_text())
+            if _m.get("pool_digest") == pool_digest:
+                import pickle
+                master = pickle.loads(master_pkl.read_bytes())
+                print(f"master path set: loaded from disk "
+                      f"({ {k: int(v.n_paths) for k, v in sorted(master.items())} })")
+            else:
+                print("master path set: on-disk cache was built from a "
+                      "different pool; rebuilding")
+        except Exception as e:
+            print(f"master path set: cache unreadable ({type(e).__name__}); "
+                  f"rebuilding")
+
+    if not master and a.stage in ("all", "master", "discover"):
+        sup0 = Exp4Selection(POOL_VERSION, frozenset(pool), frozenset())
+        print(f"master path set: building on {len(pool)} lines "
+              f"(expensive; checkpointed on completion) ...")
+        t_m = time.time()
+        mc0 = {}
+        if assembles(sup0):
+            try:
+                score_exp4_network(
+                    sup0, harness=H, stops_gdf=sg, pool=_BY_RID, graph=graph,
+                    pool_version=POOL_VERSION,
+                    first_dep_sec_by_period=first_dep, limits=limits,
+                    constraints=cons, lam=LAM, seed=SEED, iterations=1,
+                    restarts=1, width=0, waiting_model="same_route",
+                    starts="greedy", allow_off=True, pathset_cache=mc0)
+            except Exception as e:
+                print(f"  supernetwork master failed: {type(e).__name__}: {e}")
+        master = dict(mc0)
+        if master:
+            import pickle
+            master_pkl.write_bytes(pickle.dumps(master, protocol=4))
+            master_meta.write_text(json.dumps({
+                "pool_digest": pool_digest, "n_lines": len(pool),
+                "pool_version": POOL_VERSION,
+                "n_paths": {k: int(v.n_paths) for k, v in sorted(master.items())},
+                "seconds": time.time() - t_m}, indent=1))
+            print(f"  built and checkpointed in {time.time() - t_m:.0f}s: "
+                  f"{ {k: int(v.n_paths) for k, v in sorted(master.items())} }")
+    if a.stage == "master":
+        print("master stage only -- no search was started")
+        return 0
+
     # ---------------------------------------------------------- discovery --
     prop_path = OUT / "proposals.json"
     if prop_path.exists():
@@ -364,21 +423,6 @@ def main() -> int:
               f"discover first.")
         return 2
     else:
-        sup = Exp4Selection(POOL_VERSION, frozenset(pool), frozenset())
-        master = {}
-        if assembles(sup):
-            mc = {}
-            try:
-                score_exp4_network(
-                    sup, harness=H, stops_gdf=sg, pool=_BY_RID, graph=graph,
-                    pool_version=POOL_VERSION,
-                    first_dep_sec_by_period=first_dep, limits=limits,
-                    constraints=cons, lam=LAM, seed=SEED, iterations=1,
-                    restarts=1, width=0, waiting_model="same_route",
-                    starts="greedy", allow_off=True, pathset_cache=mc)
-            except Exception as e:
-                print(f"  supernetwork master failed: {type(e).__name__}: {e}")
-            master = dict(mc)
         print(f"  master path set: "
               f"{ {k: int(v.n_paths) for k, v in sorted(master.items())} }")
 
