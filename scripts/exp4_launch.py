@@ -493,9 +493,13 @@ def main() -> int:
                 n_cached["n"] += 1
                 if n_cached["n"] % 200 == 0:
                     print(f"    replayed {n_cached['n']} cached evaluations")
+                # `plan` is returned EXACTLY as the live scorer returns it:
+                # score_exp4_network already hands back dict[str, float] keyed
+                # "route|period". Converting it to tuple keys on the way out
+                # made the replay path disagree with the live path, which is
+                # the one thing a cache must never do.
                 return (hit["objective"], hit["metrics"], hit["feasible"],
-                        {tuple(k.split("|", 1)): v
-                         for k, v in hit["plan"].items()})
+                        dict(hit["plan"]))
             try:
                 cache = None
                 if master:
@@ -516,7 +520,7 @@ def main() -> int:
                     allow_off=True, pathset_cache=cache)
             except Exception as e:
                 out = (float("inf"), {"error": str(e)[:120]}, False, {})
-                _write_cache(cache_key, s, out)
+                _try_cache(cache_key, s, out)
                 return out
             n_scored["n"] += 1
             if n_scored["n"] % 20 == 0:
@@ -526,7 +530,7 @@ def main() -> int:
             out = (float(m.get("objective", float("inf"))),
                    {k: v for k, v in m.items()
                     if isinstance(v, (int, float))}, True, sc.plan)
-            _write_cache(cache_key, s, out)
+            _try_cache(cache_key, s, out)
             return out
 
         def _write_cache(cache_key, sel, out):
@@ -547,12 +551,38 @@ def main() -> int:
                    "objective": float(obj),
                    "metrics": {k: v for k, v in metrics.items()},
                    "feasible": bool(feasible),
-                   "plan": {f"{r}|{p}": float(v)
-                            for (r, p), v in (plan or {}).items()}}
+                   # str-keyed "route|period" already; unpacking it as a
+                   # tuple raised ValueError on every evaluation and
+                   # run_multi_start swallowed it as a per-start error.
+                   "plan": {str(k): float(v)
+                            for k, v in (plan or {}).items()}}
             eval_cache[cache_key] = rec
             cache_fh.write(json.dumps(rec) + "\n")
             cache_fh.flush()
             os.fsync(cache_fh.fileno())
+
+        cache_fail = {"n": 0, "shown": False}
+
+        def _try_cache(cache_key, sel, out):
+            """The cache is an optimisation; the science is not.
+
+            A failure here must never abort a start -- that is how a cache bug
+            became "twenty evaluations in and every seed quietly failing". It
+            is printed with its traceback the first time and counted after
+            that, so it is impossible to miss and impossible to be fatal.
+            """
+            try:
+                _write_cache(cache_key, sel, out)
+            except Exception as e:
+                cache_fail["n"] += 1
+                if not cache_fail["shown"]:
+                    cache_fail["shown"] = True
+                    import traceback
+                    print(f"  !! EVALUATION CACHE WRITE FAILED "
+                          f"({type(e).__name__}: {e}). The run CONTINUES and "
+                          f"the science is unaffected, but resume is no "
+                          f"longer protected:")
+                    traceback.print_exc()
 
         family = build_seed_family(pool, MIN_LINES, MAX_LINES)
         family += diversified_starts(pool, MIN_LINES, MAX_LINES, N_DIVERSIFIED)
@@ -565,7 +595,8 @@ def main() -> int:
                              budget=TOTAL_EVAL_BUDGET)
         cache_fh.close()
         print(f"  discovery: {n_scored['n']} scored this process, "
-              f"{n_cached['n']} replayed from cache")
+              f"{n_cached['n']} replayed from cache, "
+              f"{cache_fail['n']} cache writes failed")
         # `run_multi_start` catches a per-start exception, records it, and
         # moves to the next seed. That is right for a genuinely infeasible
         # start and wrong for a bug in the scorer, and the two look identical

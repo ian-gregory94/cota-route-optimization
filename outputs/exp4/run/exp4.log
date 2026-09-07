@@ -18,3 +18,13 @@ master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening':
   master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
   126 preregistered starts, budget 2000 unique evaluations
     scored 20 (61s)
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 0 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+    scored 20 (58s)
