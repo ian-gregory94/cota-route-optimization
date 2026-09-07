@@ -42,6 +42,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -433,9 +434,62 @@ def main() -> int:
             return sorted({(str(r), str(p))
                            for r, p in zip(ts["route_id"], ts["period"]) if p})
 
+        # ---- persistent evaluation cache -------------------------------
+        #
+        # Discovery is ~10.6 hours at the measured 19.05 s per evaluation, and
+        # `proposals.json` is written only when the whole family finishes. So
+        # a container reclaim at hour nine cost nine hours -- OPERATIONS 31
+        # again, and this time the un-checkpointed thing was the entire stage.
+        #
+        # The cache lives under the SCORER, which is the launcher's to own;
+        # nothing in src/cota_opt changes. Resume is exact rather than
+        # approximate: `run_multi_start` charges its budget per unique
+        # selection in family order, so replaying the same family with the
+        # same scorer results reproduces the same trajectory and spends the
+        # same budget. Only the wall clock differs.
+        #
+        # Keyed by the evaluation path's own content digest, so a cache built
+        # under different scoring code can never be silently reused.
+        from cota_opt.exp3_cell import code_version
+        CODE_V = code_version()
+        cache_path = OUT / "eval_cache.jsonl"
+        eval_cache: dict[str, dict] = {}
+        if cache_path.exists():
+            _bad = 0
+            for ln in cache_path.read_text().splitlines():
+                try:
+                    rec = json.loads(ln)
+                except Exception:
+                    _bad += 1
+                    continue
+                if rec.get("code_version") != CODE_V:
+                    _bad += 1
+                    continue
+                eval_cache[rec["key"]] = rec
+            print(f"  evaluation cache: {len(eval_cache)} usable entries"
+                  + (f", {_bad} skipped (different code version or truncated)"
+                     if _bad else ""))
+            if _bad and not eval_cache:
+                print("    every entry was written under different scoring "
+                      "code; the cache is ignored rather than mixed")
+        cache_fh = cache_path.open("a")
+
         n_scored = {"n": 0}
+        n_cached = {"n": 0}
+
+        def _cache_key(sel):
+            return digest([sorted(sel.lines), sorted(sel.pinned_off)])
 
         def scorer(s):
+            ck = _cache_key(s)
+            hit = eval_cache.get(ck)
+            if hit is not None:
+                n_cached["n"] += 1
+                if n_cached["n"] % 200 == 0:
+                    print(f"    replayed {n_cached['n']} cached evaluations")
+                return (hit["objective"], hit["metrics"], hit["feasible"],
+                        {tuple(k.split("|", 1)): v
+                         for k, v in hit["plan"].items()})
             try:
                 cache = None
                 if master:
@@ -455,15 +509,39 @@ def main() -> int:
                     waiting_model="same_route", starts="greedy",
                     allow_off=True, pathset_cache=cache)
             except Exception as e:
-                return float("inf"), {"error": str(e)[:120]}, False, {}
+                out = (float("inf"), {"error": str(e)[:120]}, False, {})
+                _write_cache(ck, s, out)
+                return out
             n_scored["n"] += 1
             if n_scored["n"] % 20 == 0:
                 print(f"    scored {n_scored['n']} "
                       f"({time.time() - t_start:.0f}s)")
             m = sc.metrics
-            return (float(m.get("objective", float("inf"))),
-                    {k: v for k, v in m.items()
-                     if isinstance(v, (int, float))}, True, sc.plan)
+            out = (float(m.get("objective", float("inf"))),
+                   {k: v for k, v in m.items()
+                    if isinstance(v, (int, float))}, True, sc.plan)
+            _write_cache(ck, s, out)
+            return out
+
+        def _write_cache(ck, sel, out):
+            """The result goes to disk the instant it exists -- OPERATIONS 31.
+
+            Line-delimited and flushed per record, so a kill mid-write costs
+            the one line being written and the loader skips it.
+            """
+            obj, metrics, feasible, plan = out
+            rec = {"key": ck, "code_version": CODE_V,
+                   "lines": sorted(sel.lines),
+                   "pinned_off": sorted(sel.pinned_off),
+                   "objective": float(obj),
+                   "metrics": {k: v for k, v in metrics.items()},
+                   "feasible": bool(feasible),
+                   "plan": {f"{r}|{p}": float(v)
+                            for (r, p), v in (plan or {}).items()}}
+            eval_cache[ck] = rec
+            cache_fh.write(json.dumps(rec) + "\n")
+            cache_fh.flush()
+            os.fsync(cache_fh.fileno())
 
         family = build_seed_family(pool, MIN_LINES, MAX_LINES)
         family += diversified_starts(pool, MIN_LINES, MAX_LINES, N_DIVERSIFIED)
@@ -474,6 +552,9 @@ def main() -> int:
                              hi=MAX_LINES, pins=(),
                              pool_version=POOL_VERSION, seed_family=family,
                              budget=TOTAL_EVAL_BUDGET)
+        cache_fh.close()
+        print(f"  discovery: {n_scored['n']} scored this process, "
+              f"{n_cached['n']} replayed from cache")
         rec = {"proposals": [{"state_key": k,
                               "state_digest": c.selection.state_digest,
                               "lines": sorted(c.selection.lines),
