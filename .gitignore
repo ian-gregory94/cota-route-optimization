@@ -9,3 +9,4 @@ outputs/experiments/*/artifacts/
 .venv/
 data/cache/
 outputs/supervisor.out
+outputs/exp4/run/master_paths.pkl
