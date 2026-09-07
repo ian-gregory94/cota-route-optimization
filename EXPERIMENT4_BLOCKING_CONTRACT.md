@@ -183,7 +183,7 @@ sentinel, never retyped.
 layovers measure the 300 s **assumption**, not a defect in COTA's schedule, and
 are not to be reinterpreted as evidence about COTA's layover policy.
 
-## 9. Terminal identity — a second open input
+## 9. Terminal identity — a second open input (readiness D24)
 
 Found by running the gate on a real candidate rather than by reasoning about it.
 
