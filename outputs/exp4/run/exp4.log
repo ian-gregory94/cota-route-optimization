@@ -28,3 +28,157 @@ master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening':
   evaluation cache: 0 usable entries
   126 preregistered starts, budget 2000 unique evaluations
     scored 20 (58s)
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 0 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+    scored 20 (387s)
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 37 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 53 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 70 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+    scored 20 (311s)
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+  master path set: {'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218}
+  evaluation cache: 99 usable entries
+  126 preregistered starts, budget 2000 unique evaluations
+    scored 20 (636s)
+    scored 40 (1276s)
+    scored 60 (1909s)
+    scored 80 (2550s)
+    scored 100 (3148s)
+    scored 120 (3733s)
+    scored 140 (4276s)
+    scored 160 (4834s)
+    scored 180 (5394s)
+    scored 200 (5949s)
+    scored 220 (6515s)
+    scored 240 (7070s)
+    scored 260 (7727s)
+    scored 280 (8380s)
+    scored 300 (9037s)
+    scored 320 (9691s)
+    scored 340 (10371s)
+    scored 360 (11063s)
+    scored 380 (11725s)
+    scored 400 (12368s)
+    scored 420 (12973s)
+    scored 440 (13566s)
+    scored 460 (14183s)
+    scored 480 (14799s)
+    scored 500 (15385s)
+    scored 520 (15973s)
+    scored 540 (16608s)
+    scored 560 (17232s)
+    scored 580 (17846s)
+    scored 600 (18502s)
+    scored 620 (19203s)
+    scored 640 (19873s)
+    scored 660 (20501s)
+    scored 680 (21154s)
+    scored 700 (21791s)
+    scored 720 (22426s)
+    scored 740 (23070s)
+    scored 760 (23715s)
+    scored 780 (24328s)
+    scored 800 (24939s)
+    scored 820 (25568s)
+    scored 840 (26175s)
+    scored 860 (26804s)
+    scored 880 (27466s)
+    scored 900 (28112s)
+    scored 920 (28713s)
+    scored 940 (29309s)
+    scored 960 (29931s)
+    scored 980 (30523s)
+    scored 1000 (31137s)
+    scored 1020 (31765s)
+    scored 1040 (32374s)
+    scored 1060 (32990s)
+    scored 1080 (33573s)
+    scored 1100 (34229s)
+    scored 1120 (34835s)
+    scored 1140 (35440s)
+    scored 1160 (36054s)
+    scored 1180 (36680s)
+    scored 1200 (37305s)
+    scored 1220 (37915s)
+    scored 1240 (38552s)
+    scored 1260 (39166s)
+    scored 1280 (39773s)
+    scored 1300 (40406s)
+    scored 1320 (41054s)
+    scored 1340 (41720s)
+    scored 1360 (42371s)
+    scored 1380 (43063s)
+    scored 1400 (43717s)
+    scored 1420 (44352s)
+    scored 1440 (45022s)
+    scored 1460 (45683s)
+    scored 1480 (46406s)
+    scored 1500 (47080s)
+    scored 1520 (47716s)
+    scored 1540 (48335s)
+    scored 1560 (48952s)
+    scored 1580 (49584s)
+    scored 1600 (50251s)
+    scored 1620 (50928s)
+    scored 1640 (51595s)
+    scored 1660 (52268s)
+    scored 1680 (52897s)
+    scored 1700 (53530s)
+    scored 1720 (54214s)
+    scored 1740 (54880s)
+    scored 1760 (55555s)
+    scored 1780 (56261s)
+    scored 1800 (56928s)
+    scored 1820 (57548s)
+    scored 1840 (58173s)
+    scored 1860 (58834s)
+    scored 1880 (59502s)
+    scored 1900 (60180s)
+  discovery: 1901 scored this process, 99 replayed from cache, 0 cache writes failed
+  start errors: none of 126 starts raised
+  discovery complete: 2000 proposals, 2000 unique evals, 0 duplicates, 60207s
+promotion: 200 of 2000 promoted  [CAP BOUND]
+certification: 0 done, 200 remaining
+  shard bound reached (6.0h); 200 candidates remain. Re-run to resume.
+
+======================================================================
+  proposals    : 2000
+  promoted     : 200
+  certified    : 0 / 200
+  status       : IN PROGRESS

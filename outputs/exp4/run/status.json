@@ -1,0 +1,96 @@
+{
+ "experiment": "exp4",
+ "architecture": "gen2 multi-start discovery -> permissive promotion -> solve_exact certification -> exact-only conclusions",
+ "pool_version": "exp4-pool-v1",
+ "pool_size": 204,
+ "cardinality": [
+  15,
+  65
+ ],
+ "envelope": {
+  "veh_hours": 2517.1833333333334,
+  "block_derived_fleet_by_period": {
+   "am_peak": 187,
+   "early": 135,
+   "evening": 178,
+   "midday": 173,
+   "owl": 149,
+   "pm_peak": 197
+  },
+  "envelope_digest": "b6c647d3766338a6",
+  "source": "outputs/CANONICAL_ENVELOPE.json",
+  "fleet_gate": "candidate blocking, EXP4_BLOCKING v2 as amended; NOT a scalar peak proxy",
+  "blocking_contract_digest": "4840070385b7bc3e",
+  "operational_recourse_digest": "44a81590ff1b1e81",
+  "deadhead_provenance": "OPEN",
+  "baseline_bracket": {
+   "lower": 180,
+   "upper": 212,
+   "lower_oracle": "zero_deadhead_relaxation",
+   "upper_oracle": "same_terminal_only",
+   "deadhead_provenance": "OPEN",
+   "n_trips": 2331,
+   "kind": "CANDIDATE_BLOCK_BOUND",
+   "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+  }
+ },
+ "fleet_feasibility": {},
+ "proposal_digest": "2b8e18c681689a55",
+ "promotion_digest": "ec6288fc8ec9b7d0",
+ "certification_digest": "2125984c82b60a83",
+ "tie_break_digest": "0297e180cf30369d",
+ "n_proposals": 2000,
+ "n_promoted": 200,
+ "n_certified": 0,
+ "complete": false,
+ "exact_leader": null,
+ "exact_leader_objective": null,
+ "exact_leader_lines": null,
+ "note": "every number reported here is EXACT-stage. Discovery scores decide nothing and are stored only as approximate provenance.",
+ "scope_of_claim": "best CERTIFIED OBJECTIVE under the canonical vehicle-hours envelope. FLEET REQUIREMENT IS NOT ESTABLISHED: deadhead provenance is OPEN and terminal identity is degenerate on synthesised candidates, so the fleet instrument returns UNDECIDABLE. No operational deployability claim follows.",
+ "fleet_policy": "REPORTED, NOT GATED. No fleet verdict filtered, ranked or rejected any candidate; ranking is on objective_EXACT alone. Authorised in outputs/exp4/READINESS_FROZEN.json.",
+ "readiness_frozen": {
+  "artifact": "EXPERIMENT4_READINESS_FROZEN",
+  "version": 1,
+  "frozen_at": "2026-09-07",
+  "authorized_by": "Ian (principal)",
+  "authorized_to_execute": true,
+  "instruction_verbatim": "Freeze readiness. Reclassify D24 as post-result operational validation, not a launch gate. Do not add another readiness item. Run Exp 4. Fleet uncertainty must be reported but must not prevent execution or ranking. Only an error that makes candidate construction or objective comparison invalid may stop the run.",
+  "what_this_changes": [
+   "D24 (terminal identity) moves from LAUNCH GATE to POST-RESULT operational validation. It is not closed and its status is unchanged; it no longer holds the run.",
+   "C15, a MANUAL review judgement, is exercised by the principal here rather than left unchecked. Its status stays MANUAL: a judgement recorded is not a check performed."
+  ],
+  "what_this_does_not_change": [
+   "No readiness item was added, removed, or marked MET that was not MET.",
+   "D18's forbidding branch still stands: discovery_effort_comparison_permitted is false and no promotion band exists. Conclusions come from solve_exact only, which is what makes execution legitimate despite it.",
+   "The fleet instrument still refuses to certify. It reports and does not gate.",
+   "Deadhead provenance and terminal identity remain OPEN inputs."
+  ],
+  "accepted_costs": [
+   "The winner arrives with its FLEET REQUIREMENT UNDECIDABLE. No claim about operational deployability may be made from this run -- only about the objective under the vehicle-hours envelope.",
+   "Terminal identity is degenerate on synthesised candidates (83.3% of trips stranded on the preflight candidate), so the same-terminal upper bound is close to one block per trip and is not evidence about fleet.",
+   "C15 is a judgement, not a mechanical check. If a rejection condition turns out to be missing, this record is where that was accepted."
+  ],
+  "stop_conditions": {
+   "may_stop_the_run": [
+    "candidate construction is invalid (assembly, pool version, selection validation, materialisation)",
+    "objective comparison is invalid (evaluation-path digest drift, contract digest mismatch, envelope unreadable, firewall refusal)"
+   ],
+   "may_NOT_stop_the_run": [
+    "a fleet verdict of UNDECIDABLE, on any or all candidates",
+    "a degenerate terminal-identity diagnostic",
+    "an unavailable deadhead oracle",
+    "a failure inside the fleet stage itself"
+   ]
+  },
+  "readiness_at_freeze": {
+   "launch_gates_met": 23,
+   "launch_gates_open": 0,
+   "launch_gates_manual": 1,
+   "post_result_open": 1,
+   "note": "counts as of the commit that carries this artifact; C1 requires a clean tree"
+  }
+ },
+ "d24_classification": "POST-RESULT operational validation, not a launch gate",
+ "seconds_this_shard": 60214.51135516167
+}
