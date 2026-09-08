@@ -1,0 +1,16 @@
+{
+ "what": "wall-clock of a single build_setup (path-set rebuild) on the 65-line candidate exp4|exp4-pool-v1|65lines#00a1a066ae8e",
+ "observations_seconds": [
+  582.6,
+  606.5
+ ],
+ "note": "two consecutive timings, so ~595s is steady state, not cold start",
+ "calls_per_candidate": 638,
+ "derivation": "65 lines x 6 periods = 390 route-periods; /8 per block = 49 blocks per round; 13 rounds x 49 + 1 gen1 start = 638",
+ "implied_seconds_per_candidate_REBUILD": 379610,
+ "implied_hours_per_candidate_REBUILD": 105.44722222222222,
+ "measured_seconds_per_candidate_MEMOIZED": 1302,
+ "n_promoted": 200,
+ "implied_hours_200_REBUILD": 21089.444444444445,
+ "implied_hours_200_MEMOIZED": 72.33333333333333
+}

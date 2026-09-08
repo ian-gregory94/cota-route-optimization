@@ -1,0 +1,26 @@
+{
+ "lines": [
+  "syn-01d29fe11c8fe229",
+  "syn-02e2a431b49ec015",
+  "syn-037e24511ab2fb9b",
+  "syn-04bd49ffa8580649",
+  "syn-05a689b6ec382e01",
+  "syn-0811e763f266fdf9"
+ ],
+ "arm_A_rebuild": {
+  "objective": 3621684.228486466,
+  "rounds": 3,
+  "converged": true,
+  "seconds": 383.53686594963074,
+  "build_setup_calls": 16
+ },
+ "arm_B_memoized": {
+  "objective": 3621684.228486466,
+  "rounds": 3,
+  "converged": true,
+  "seconds": 31.2695050239563,
+  "build_setup_calls": 16
+ },
+ "identical": true,
+ "verdict": "IDENTICAL -- memoization changes nothing"
+}
