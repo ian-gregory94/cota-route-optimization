@@ -271,14 +271,65 @@ def test_non_convergence_is_recorded_not_hidden():
 # 6. master-path reuse cannot reach a certified score
 # ---------------------------------------------------------------------------
 
-def test_certification_never_takes_a_pathset_cache():
-    """Reuse is a proposal-stage device and must not touch certification."""
+def test_certification_never_takes_a_pathset_cache_from_its_caller():
+    """Reuse is a proposal-stage device and must not touch certification.
+
+    This test used to also ban the string "pathset_cache" from `certify`'s
+    source outright. That ban was narrowed, deliberately and with the reason
+    recorded here, because it was forbidding two different things at once:
+
+      (a) an externally supplied path set reaching a certified number -- the
+          real hazard, since the cache discovery passes is the FILTERED MASTER,
+          which Gate 4-7 measured as a restriction of the choice set that biases
+          toward activating more lines; and
+      (b) certification enumerating its own path set once per candidate instead
+          of once per block solve.
+
+    (a) is the architecture and is still enforced, by this test and the two
+    below. (b) was collateral, and it made certification unrunnable: a 65-line
+    candidate is 638 calls to `solve_on_network`, each rebuilding an identical
+    path set at ~595s, so one candidate cost ~105 hours and the promoted 200
+    cost ~21,000 hours. Reuse WITHIN one candidate is sound because the network,
+    zones, OD table and baseline headways are invariant across those calls --
+    only `ladder_override` varies, and it reaches the frequency solver, not the
+    enumeration. Verified identical, not approximately so, in
+    tests/test_exp4_certify_pathset_scope.py and
+    outputs/exp4/memo/ab_memoization.json.
+
+    The parameter ban is what actually protects (a), and it stays absolute: a
+    cache certification cannot be HANDED is a cache that cannot carry discovery's
+    bias into a certified number.
+    """
     sig = inspect.signature(certify)
     assert "pathset_cache" not in sig.parameters
+    assert "pathsets" not in sig.parameters
+    for name, p in sig.parameters.items():
+        assert not isinstance(p.default, dict), (
+            f"{name} defaults to a mutable mapping, which Python evaluates once "
+            f"at definition and would share across every certification")
+
+
+def test_certification_never_reaches_the_master_path_set():
+    """The biased device, banned by name rather than by side effect."""
     src = inspect.getsource(certify)
-    assert "pathset_cache" not in src, (
-        "certification must rebuild paths; a cache parameter would let the "
-        "biased reuse shortcut reach a certified number")
+    mod = (ROOT / "src" / "cota_opt" / "exp4_certify.py").read_text()
+    for banned in ("exp4_masterpath", "filter_for_network"):
+        assert banned not in src
+        assert f"import {banned}" not in mod
+        assert f"from .{banned}" not in mod
+
+
+def test_any_certification_cache_is_self_built_and_candidate_scoped():
+    """If certification caches at all, it caches only its own enumeration.
+
+    The scope must be constructed inside `certify` from the candidate's own
+    digest, and checked before use. That is what makes "within one candidate"
+    a property of the code rather than a claim in a comment.
+    """
+    src = inspect.getsource(certify)
+    assert "_CandidatePathsets(state_digest)" in src
+    assert "assert_fresh_for(state_digest)" in src
+    assert "pathset_cache=pathsets" in src
 
 
 def test_certify_signature_carries_the_frozen_contract_fields():

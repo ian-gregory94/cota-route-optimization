@@ -102,6 +102,60 @@ class CertificationError(RuntimeError):
     """Certification could not establish its own guarantee."""
 
 
+class PathsetScopeViolation(CertificationError):
+    """A candidate's path-set cache was used outside that candidate."""
+
+
+class _CandidatePathsets(dict):
+    """Period-keyed exact path sets, valid for ONE candidate and no other.
+
+    `exp2.build_setup` keys a `pathset_cache` by PERIOD NAME ALONE. That key is
+    sufficient exactly while the network, zones, OD table and baseline headways
+    are invariant. Across one candidate's block solves they are: `certify`
+    passes the same `network` and `tstats` to every call, and only
+    `ladder_override` varies, which reaches the frequency solver and not the
+    path enumeration. Across candidates they are not.
+
+    Sharing one of these between candidates is precisely the reuse Gate 4-7
+    measured and rejected: keyed by period alone, every candidate after the
+    first was scored against the previous candidate's paths, worst 1.307
+    relative error on revenue vehicle-hours. The period key cannot carry that
+    distinction, so this type carries it instead -- the scope is stamped with
+    the candidate it was built for and refuses to serve any other.
+
+    The realistic way this invariant dies is not malice but a refactor: hoisting
+    the construction to module scope, or to a default argument (Python evaluates
+    those once, so `pathsets=_CandidatePathsets(...)` in a signature is shared by
+    every call forever). Both leave the scope non-empty when the SECOND candidate
+    arrives, which `assert_fresh_for` turns into a loud failure instead of a
+    quietly wrong objective.
+    """
+
+    __slots__ = ("state_digest",)
+
+    def __init__(self, state_digest: str) -> None:
+        super().__init__()
+        self.state_digest = state_digest
+
+    def assert_fresh_for(self, state_digest: str) -> None:
+        """Refuse a scope that has outlived, or was built for, another candidate."""
+        if self.state_digest != state_digest:
+            raise PathsetScopeViolation(
+                f"path-set scope is stamped for candidate "
+                f"{self.state_digest!r} but certification is running "
+                f"{state_digest!r}. A scope keyed by period alone is only "
+                f"valid within one candidate; reusing it across candidates is "
+                f"the Gate 4-7 reuse measured at 1.307 relative error on "
+                f"revenue vehicle-hours.")
+        if len(self):
+            raise PathsetScopeViolation(
+                f"path-set scope for {state_digest!r} already holds periods "
+                f"{sorted(self)} before certification has enumerated anything. "
+                f"It outlived a previous candidate -- most likely hoisted to "
+                f"module scope or to a default argument -- and would have "
+                f"scored this candidate against another candidate's paths.")
+
+
 def _restricted(full: dict, keys, free: set, k: int, anchor: dict) -> dict:
     """One rung for every frozen key, k rungs around the anchor for free ones."""
     out = {}
@@ -149,9 +203,45 @@ def certify(network, tstats, *, state_key: str, state_digest: str,
     """
     from .exp3_score import solve_on_network
 
+    # ONE exact path set per candidate, built once and reused across this
+    # candidate's block solves. A 65-line candidate is 390 route-periods, 49
+    # blocks per round, 13 rounds -- 638 calls to `solve_on_network`, and every
+    # one of them passes `build_setup` the same network, zones, OD table and
+    # baseline headways. Only `ladder_override` differs between them, and the
+    # ladder reaches the frequency solver, not the path enumeration. So 637 of
+    # those calls were spending ~595s each rebuilding an object identical to
+    # the one the first call already built: ~105 hours per candidate, ~21,000
+    # hours for the promoted 200. Certification could not finish, and the
+    # container reclaimed a candidate at 7h having written nothing.
+    #
+    # THIS IS NOT GATE 4-7. Gate 4-7 rejected a MASTER path set shared ACROSS
+    # candidates: keyed by period alone, so candidate n was scored against
+    # candidate n-1's paths, worst 1.307 relative error on revenue
+    # vehicle-hours. It also established that filtering a supernetwork master
+    # RESTRICTS the choice set and biases the search toward activating more
+    # lines -- which is precisely why discovery may use it and certification
+    # may not. Discovery proposes; certification decides.
+    #
+    # This dict is created here, holds only paths THIS candidate enumerated
+    # for itself, and dies when this call returns. Nothing crosses a candidate
+    # boundary and no master is imported. Certification still builds its own
+    # path set -- it stops building it 637 redundant times.
+    #
+    # Verified IDENTICAL, not "close enough": both arms on a 6-line selection
+    # where the rebuild arm is affordable returned objective
+    # 3621684.228486466, rounds 3, converged True -- delta exactly 0. Equal
+    # round count and convergence flag are what rule out `PathSetEvaluator`
+    # mutating the `PathSet` it wraps, which is the failure this could have
+    # had. See outputs/exp4/memo/ab_memoization.json.
+    #
+    # The scope is enforced, not just intended -- see `_CandidatePathsets`.
+    pathsets = _CandidatePathsets(state_digest)
+    pathsets.assert_fresh_for(state_digest)
+
     common = dict(harness=harness, stops_gdf=stops_gdf, lam=lam, seed=seed,
                   constraints=constraints, waiting_model=waiting_model,
                   starts="greedy", allow_off=allow_off,
+                  pathset_cache=pathsets,
                   pinned_off=frozenset(pinned_off))
     t0 = time.time()
 
@@ -207,6 +297,25 @@ def certify(network, tstats, *, state_key: str, state_digest: str,
             f"delivered plan ({cur.obj:,.6f} vs {delivered_obj:,.6f}). The "
             f"delivered plan's own rungs are kept in every block, so this is "
             f"impossible unless the two stages are solving different problems.")
+
+    # The scope must have been USED. An empty one means `pathset_cache` stopped
+    # reaching `build_setup` -- the rebuild-every-call behaviour would come back
+    # silently, correct but ~290x slower, and the run would die of the shard
+    # bound rather than of a wrong number. Asserted because that is a failure
+    # nothing else in this function would notice.
+    if not pathsets:
+        raise CertificationError(
+            f"{state_key}: the path-set scope is empty after {rounds} rounds, "
+            f"so no call reached it. `pathset_cache` is no longer threaded "
+            f"through `solve_on_network` to `build_setup`, and certification "
+            f"has silently returned to rebuilding the path set on every block "
+            f"solve -- ~105 hours per candidate rather than ~22 minutes.")
+    if pathsets.state_digest != state_digest:
+        raise PathsetScopeViolation(
+            f"{state_key}: the path-set scope came back stamped "
+            f"{pathsets.state_digest!r}, not {state_digest!r}. The object this "
+            f"candidate's paths were enumerated into is not the object that "
+            f"served them.")
 
     from .frequency import is_off
     plan_str = {f"{r}|{p}": float(v) for (r, p), v in cur.plan.items()}

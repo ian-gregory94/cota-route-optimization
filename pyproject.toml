@@ -43,3 +43,9 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+# `slow` marks tests that run real certification solves. They are part of the
+# suite and run by default -- the path-set identity proof is worth minutes.
+# Deselect with `-m "not slow"` when iterating.
+markers = [
+    "slow: runs a real solve; minutes rather than milliseconds",
+]
