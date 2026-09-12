@@ -10,3 +10,6 @@ outputs/experiments/*/artifacts/
 data/cache/
 outputs/supervisor.out
 outputs/exp4/run/master_paths.pkl
+
+# transient: the certification runner pidfile, meaningless across containers
+outputs/exp4/run/exp4.pid

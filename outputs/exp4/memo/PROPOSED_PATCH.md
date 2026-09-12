@@ -1,10 +1,21 @@
-# Proposed: memoize the exact path set WITHIN one certification
+# Memoize the exact path set WITHIN one certification
 
-NOT APPLIED. Staged pending Ian's decision, because applying it means
-stopping a run he reserved the right to stop (readiness freeze: "Only an
-error that makes candidate construction or objective comparison invalid may
-stop the run") and because OPERATIONS 24 freezes `src/cota_opt` while a
-batch is in flight.
+**ADOPTED** in commit `3fa753a5`, on Ian's instruction. This file is kept as
+the record of what was measured and decided, not as a live proposal. Two
+things were added beyond what is described below, and the code is what
+governs:
+
+- the scope is a typed `_CandidatePathsets` stamped with the candidate's
+  `state_digest`, which refuses to serve another candidate and refuses to
+  start non-empty, and `certify` raises if it comes back unused. See
+  "Scope and invalidation" in `src/cota_opt/exp4_certify.py`.
+- a pre-existing guard, `test_certification_never_takes_a_pathset_cache`,
+  banned the string `pathset_cache` from `certify`'s source outright. It was
+  narrowed to the parameter ban it actually needs, and joined by two stronger
+  tests. The reason is written into the test itself.
+
+Measured after adoption: candidate 1 certified in **672s (11.2 min)**, against
+the ~105 hours the rebuild configuration needed.
 
 ## The defect
 
@@ -60,10 +71,17 @@ convergence flag. The risk this tests is `PathSetEvaluator` mutating the
 trajectory, and neither moved.
 
 The 65-line candidate cannot serve as its own ground truth: the rebuild arm
-needs ~105 hours. `candidate1_memoized.json` records the memoized arm alone
-(objective 3,535,267.053668, rounds 13, converged True, 1302s); it inherits
-its licence from the A/B above, not from a same-candidate comparison, and
-that distinction should stay visible in anything that cites it.
+needs ~105 hours. `candidate1_memoized.json` recorded the memoized arm alone at
+objective 3,535,267.053668 -- **that figure is SUPERSEDED and was never
+candidate 1's certified objective**. The probe ran with seed 20250829, a
+transposed 20260825; certification is seed-dependent, so the number was
+answering a different question. Under the launcher's own seed candidate 1
+certified at **3,520,906.5169**, rounds 13, converged True, 672s.
+
+The memoization claim is untouched by this: both A/B arms shared the seed, so
+their equality still holds. Only the number was wrong, and it was wrong for a
+reason that had nothing to do with caching. The identity check now pins the
+launcher's seed so the same mistake fails a test instead of reaching a file.
 
 ## The change
 
@@ -104,6 +122,13 @@ A/B.
 
 ## Cost of adopting
 
-Zero certified results exist, so nothing is discarded by restarting
-certification. Candidate 1's in-flight 6h33m is lost either way -- it writes
-nothing until it completes, and it completes in about four more days.
+Zero certified results existed, so nothing was discarded by restarting
+certification. Candidate 1's in-flight 6h33m was lost either way -- it writes
+nothing until it completes, and a container reclaim ended it at ~6% before the
+decision was even made. That is the loop the rebuild configuration was stuck
+in: every reclaim threw away every partial candidate, so no result could ever
+become durable. At ~11 minutes a candidate, results now land well inside a
+keeper window.
+
+All 200 promoted candidates were preserved; `CAP_N` was not reduced and
+`promotion.json` is unchanged.

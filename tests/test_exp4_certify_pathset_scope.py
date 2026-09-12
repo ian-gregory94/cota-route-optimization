@@ -162,6 +162,24 @@ def small_candidate():
     return {"H": H, "sg": sg, "cons": cons, "pool": pool, "build": build}
 
 
+# The seed and lambda certification actually runs under. Certification is
+# seed-dependent -- the seed reaches path enumeration and the greedy start -- so
+# a test that certifies under a different one is not testing production. That is
+# not hypothetical: the first memoization probe was written with 20250829, a
+# transposed 20260825, and reported candidate 1 at 3,535,267.053668 against the
+# launcher's actual 3,520,906.5169. The identity conclusion survived, because
+# both arms shared the wrong seed, but the number did not.
+LAUNCH_SEED = 20260825
+LAUNCH_LAM = 2.0
+
+
+def test_this_file_certifies_under_the_launcher_s_own_seed_and_lambda():
+    """Pin the constants to the launcher so drift is caught, not inherited."""
+    src = (ROOT / "scripts" / "exp4_launch.py").read_text()
+    assert f"SEED = {LAUNCH_SEED}" in src
+    assert f"LAM = {LAUNCH_LAM}" in src
+
+
 def _run(sc, lines, *, memoized, max_rounds=exp4_certify.MAX_ROUNDS):
     """Certify one selection with the path set either reused or rebuilt.
 
@@ -187,7 +205,7 @@ def _run(sc, lines, *, memoized, max_rounds=exp4_certify.MAX_ROUNDS):
     try:
         return certify(built.network, built.tstats, state_key="|".join(lines),
                        state_digest=sel.state_digest, harness=sc["H"],
-                       stops_gdf=sc["sg"], lam=2.0, seed=20250829,
+                       stops_gdf=sc["sg"], lam=LAUNCH_LAM, seed=LAUNCH_SEED,
                        constraints=sc["cons"], max_rounds=max_rounds)
     finally:
         exp2.build_setup = real

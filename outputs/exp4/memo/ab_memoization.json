@@ -22,5 +22,6 @@
   "build_setup_calls": 16
  },
  "identical": true,
- "verdict": "IDENTICAL -- memoization changes nothing"
+ "verdict": "IDENTICAL -- memoization changes nothing",
+ "seed_note": "both arms ran with seed 20250829, a transposed 20260825. The identity conclusion is unaffected -- the arms are compared against each other and shared the seed -- but these objectives are not production-seed numbers. The production-seed identity check is tests/test_exp4_certify_pathset_scope.py, which pins the launcher's seed."
 }
