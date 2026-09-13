@@ -414,3 +414,41 @@ certification: 102 done, 98 remaining
   [26/98] exp4|exp4-pool-v1|65lines#98054c48fe48 obj 3,516,886.3549 rounds 13 converged True (686s)
   [27/98] exp4|exp4-pool-v1|65lines#98561192a965 obj 3,560,021.4441 rounds 14 converged True (729s)
   [28/98] exp4|exp4-pool-v1|65lines#995f117521b9 obj 3,523,751.5495 rounds 13 converged True (691s)
+  [29/98] exp4|exp4-pool-v1|65lines#99c5d391c164 obj 3,531,144.8139 rounds 10 converged True (616s)
+  [30/98] exp4|exp4-pool-v1|65lines#9a48db1b4458 obj 3,554,972.1665 rounds 7 converged True (540s)
+  [31/98] exp4|exp4-pool-v1|65lines#9abcf4130fd7 obj 3,537,286.0144 rounds 13 converged True (696s)
+  [32/98] exp4|exp4-pool-v1|65lines#9c453324e080 obj 3,548,258.0437 rounds 12 converged True (663s)
+  [33/98] exp4|exp4-pool-v1|65lines#a0f74ef83923 obj 3,531,302.5154 rounds 10 converged True (612s)
+  [34/98] exp4|exp4-pool-v1|65lines#a2f5fd540ba7 obj 3,556,255.6678 rounds 13 converged True (691s)
+  shard bound reached (6.0h); 64 candidates remain. Re-run to resume.
+  shard bound reached during fleet evaluation
+
+======================================================================
+  proposals    : 2000
+  promoted     : 200
+  certified    : 136 / 200
+  EXACT leader : exp4|exp4-pool-v1|65lines#08f377545e31
+                 65 lines, objective 3,511,557.9642
+  separation   : 3,452.5815 (9.832e-04 relative) from the runner-up
+  gate 4-6     : winner has 65 lines; bounds [15, 65] ACTIVE -- RESULT CENSORED
+  fleet        : NOT MEASURED (deadhead OPEN)
+  SCOPE OF THE CLAIM
+    This leader is the best CERTIFIED OBJECTIVE under the canonical vehicle-hours
+    envelope (2517.183333 vh, b6c647d3766338a6). Its FLEET REQUIREMENT IS NOT MEASURED:
+    deadhead provenance is OPEN and, on synthesised candidates, terminal identity
+    is degenerate. No operational deployability claim follows from this run.
+    Fleet was reported and never gated; ranking used objective_EXACT alone.
+  status       : IN PROGRESS
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+discovery: resumed, 2000 proposals on disk
+promotion: 200 of 2000 promoted  [CAP BOUND]
+certification: 136 done, 64 remaining
+  [1/64] exp4|exp4-pool-v1|65lines#a52e297e84b2 obj 3,537,296.2632 rounds 13 converged True (687s)
+  [2/64] exp4|exp4-pool-v1|65lines#a5fae152436b obj 3,519,338.2787 rounds 13 converged True (680s)
+  [3/64] exp4|exp4-pool-v1|65lines#a9687a8f6146 obj 3,540,784.2819 rounds 11 converged True (624s)
+  [4/64] exp4|exp4-pool-v1|65lines#ab7e78e194ba obj 3,535,150.3010 rounds 13 converged True (685s)
