@@ -510,3 +510,13 @@ discovery: resumed, 2000 proposals on disk
 promotion: 200 of 2000 promoted  [CAP BOUND]
 certification: 169 done, 31 remaining
   [1/31] exp4|exp4-pool-v1|65lines#d6f401185657 obj 3,525,178.3986 rounds 13 converged True (675s)
+  [2/31] exp4|exp4-pool-v1|65lines#d8ce37fb32b7 obj 3,537,827.6564 rounds 14 converged True (703s)
+  [3/31] exp4|exp4-pool-v1|65lines#d9b4952dfca7 obj 3,523,481.9058 rounds 13 converged True (674s)
+  [4/31] exp4|exp4-pool-v1|65lines#dd62c1c002ec obj 3,534,927.1496 rounds 10 converged True (596s)
+  [5/31] exp4|exp4-pool-v1|65lines#e07e623ac167 obj 3,555,508.0273 rounds 5 converged True (467s)
+  [6/31] exp4|exp4-pool-v1|65lines#e0995f81d96e obj 3,524,530.2851 rounds 13 converged True (673s)
+  [7/31] exp4|exp4-pool-v1|65lines#e10f2321e79b obj 3,518,981.4459 rounds 13 converged True (670s)
+  [8/31] exp4|exp4-pool-v1|65lines#e12502aa3359 obj 3,540,842.6045 rounds 11 converged True (634s)
+  [9/31] exp4|exp4-pool-v1|65lines#e17adda58300 obj 3,553,366.9554 rounds 13 converged True (700s)
+  [10/31] exp4|exp4-pool-v1|65lines#e19c5c597f1b obj 3,557,897.4552 rounds 13 converged True (688s)
+  [11/31] exp4|exp4-pool-v1|65lines#e1d16563d333 obj 3,524,777.1321 rounds 13 converged True (686s)
