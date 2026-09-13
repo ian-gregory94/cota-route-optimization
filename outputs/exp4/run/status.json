@@ -41,7 +41,7 @@
  "tie_break_digest": "0297e180cf30369d",
  "n_proposals": 2000,
  "n_promoted": 200,
- "n_certified": 33,
+ "n_certified": 68,
  "complete": false,
  "exact_leader": "exp4|exp4-pool-v1|65lines#08f377545e31",
  "exact_leader_objective": 3511557.96418463,
@@ -158,5 +158,5 @@
   }
  },
  "d24_classification": "POST-RESULT operational validation, not a launch gate",
- "seconds_this_shard": 21714.07012939453
+ "seconds_this_shard": 22049.37413096428
 }
