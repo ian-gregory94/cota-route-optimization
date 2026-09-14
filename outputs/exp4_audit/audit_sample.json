@@ -1,0 +1,1846 @@
+{
+ "audit": "exp4-audit-v1",
+ "purpose": "Test whether discovery retains population-level enrichment OUTSIDE the promoted band, given D36 showing it misranks badly INSIDE it.",
+ "motivated_by": "D36",
+ "frozen_at": "2026-09-14T11:35:00Z",
+ "sample_seed": 20260914,
+ "rng": "python random.Random seeded with the string f'{AUDIT_SEED}|{lo}|{hi}|{n}' per stratum; rng.sample over band INDICES, then sorted",
+ "discovery_ranking": "ascending objective_APPROXIMATE, ties broken by state_key ascending. Verified to reproduce the Exp 4 certified set exactly at ranks 1-200.",
+ "source_proposals": "outputs/exp4/run/proposals.json  (2000 proposals)",
+ "incumbent": {
+  "state_key": "exp4|exp4-pool-v1|65lines#ecb2ffc4bcce",
+  "objective_EXACT": 3511184.5657525407,
+  "note": "BENCHMARK TO BEAT. Not to be altered by this audit."
+ },
+ "strata": [
+  {
+   "range": "201-400",
+   "band_size": 200,
+   "sampled": 40
+  },
+  {
+   "range": "401-800",
+   "band_size": 400,
+   "sampled": 40
+  },
+  {
+   "range": "801-1200",
+   "band_size": 400,
+   "sampled": 40
+  },
+  {
+   "range": "1201-1600",
+   "band_size": 400,
+   "sampled": 40
+  },
+  {
+   "range": "1601-2000",
+   "band_size": 400,
+   "sampled": 40
+  }
+ ],
+ "n_selected": 200,
+ "substitution_policy": "NONE. No candidate may be swapped for another on any grounds, including apparent quality.",
+ "selected": [
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8f9a7be1eec7",
+   "state_digest": "8f9a7be1eec71d8d",
+   "discovery_rank": 201,
+   "objective_APPROXIMATE": 3624534.185325932,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#68a4d4f27935",
+   "state_digest": "68a4d4f27935f1a5",
+   "discovery_rank": 202,
+   "objective_APPROXIMATE": 3624534.5553570325,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#529b04313b6e",
+   "state_digest": "529b04313b6e9d1a",
+   "discovery_rank": 206,
+   "objective_APPROXIMATE": 3624543.279361183,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1439e20ee7d1",
+   "state_digest": "1439e20ee7d1603d",
+   "discovery_rank": 209,
+   "objective_APPROXIMATE": 3624550.8136971355,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6e3df853e96b",
+   "state_digest": "6e3df853e96b8f95",
+   "discovery_rank": 211,
+   "objective_APPROXIMATE": 3624553.999325933,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c06bf4bf5478",
+   "state_digest": "c06bf4bf54788f9b",
+   "discovery_rank": 215,
+   "objective_APPROXIMATE": 3624559.8963709893,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8d209e6e1782",
+   "state_digest": "8d209e6e1782b5b6",
+   "discovery_rank": 218,
+   "objective_APPROXIMATE": 3624568.004323979,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#aea1a03ef2f8",
+   "state_digest": "aea1a03ef2f8c6a8",
+   "discovery_rank": 221,
+   "objective_APPROXIMATE": 3624580.363489074,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#fa1c2c0f8cd2",
+   "state_digest": "fa1c2c0f8cd2d9c4",
+   "discovery_rank": 235,
+   "objective_APPROXIMATE": 3624617.1873609526,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#eca7a2a1fb46",
+   "state_digest": "eca7a2a1fb46c76c",
+   "discovery_rank": 237,
+   "objective_APPROXIMATE": 3624634.8869983507,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#32cc4cc668c4",
+   "state_digest": "32cc4cc668c4873a",
+   "discovery_rank": 243,
+   "objective_APPROXIMATE": 3624747.5683083455,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f405afbf5a04",
+   "state_digest": "f405afbf5a048b5c",
+   "discovery_rank": 253,
+   "objective_APPROXIMATE": 3624789.7141093044,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#7ff2b9ac058b",
+   "state_digest": "7ff2b9ac058ba42a",
+   "discovery_rank": 257,
+   "objective_APPROXIMATE": 3624797.5266332845,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a9f396ca5f23",
+   "state_digest": "a9f396ca5f239bc5",
+   "discovery_rank": 260,
+   "objective_APPROXIMATE": 3624810.167384127,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9d1027d0e347",
+   "state_digest": "9d1027d0e34748b2",
+   "discovery_rank": 261,
+   "objective_APPROXIMATE": 3624813.603029146,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#176813b44a6b",
+   "state_digest": "176813b44a6b81be",
+   "discovery_rank": 265,
+   "objective_APPROXIMATE": 3624823.3797257687,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8f3eb4dbc30f",
+   "state_digest": "8f3eb4dbc30f1e4a",
+   "discovery_rank": 277,
+   "objective_APPROXIMATE": 3624875.170894496,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ea423bcda1cd",
+   "state_digest": "ea423bcda1cd1d72",
+   "discovery_rank": 281,
+   "objective_APPROXIMATE": 3624882.0423124423,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#e68adf2773c5",
+   "state_digest": "e68adf2773c5103b",
+   "discovery_rank": 285,
+   "objective_APPROXIMATE": 3624903.484731503,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c4ad7e355dae",
+   "state_digest": "c4ad7e355dae809b",
+   "discovery_rank": 286,
+   "objective_APPROXIMATE": 3624903.757598925,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#82be8762a16c",
+   "state_digest": "82be8762a16cadd8",
+   "discovery_rank": 289,
+   "objective_APPROXIMATE": 3624911.4989470937,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#04a5b966b555",
+   "state_digest": "04a5b966b5559ae0",
+   "discovery_rank": 290,
+   "objective_APPROXIMATE": 3624911.6916498374,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#511bc2ab7d1e",
+   "state_digest": "511bc2ab7d1e59a1",
+   "discovery_rank": 300,
+   "objective_APPROXIMATE": 3625007.2665144587,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#2a108a10dd30",
+   "state_digest": "2a108a10dd301ef9",
+   "discovery_rank": 310,
+   "objective_APPROXIMATE": 3625126.641467827,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#121f3d152318",
+   "state_digest": "121f3d152318cccd",
+   "discovery_rank": 315,
+   "objective_APPROXIMATE": 3625200.1215003226,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#bda4c5b612ab",
+   "state_digest": "bda4c5b612ab8d4b",
+   "discovery_rank": 320,
+   "objective_APPROXIMATE": 3625222.433065944,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#0868f4cf97b7",
+   "state_digest": "0868f4cf97b753d4",
+   "discovery_rank": 321,
+   "objective_APPROXIMATE": 3625236.7465789113,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a211a4929049",
+   "state_digest": "a211a4929049fcef",
+   "discovery_rank": 328,
+   "objective_APPROXIMATE": 3625322.7797426195,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c1c2188a900a",
+   "state_digest": "c1c2188a900ac2f9",
+   "discovery_rank": 332,
+   "objective_APPROXIMATE": 3625343.206903078,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#54983b98662f",
+   "state_digest": "54983b98662f51cc",
+   "discovery_rank": 336,
+   "objective_APPROXIMATE": 3625351.2529077274,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#bd23fb3cf6ad",
+   "state_digest": "bd23fb3cf6ad922f",
+   "discovery_rank": 338,
+   "objective_APPROXIMATE": 3625360.811970909,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#0a2a1d33c859",
+   "state_digest": "0a2a1d33c8595412",
+   "discovery_rank": 340,
+   "objective_APPROXIMATE": 3625372.4241609224,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8ace222d5692",
+   "state_digest": "8ace222d5692e187",
+   "discovery_rank": 342,
+   "objective_APPROXIMATE": 3625373.5613655993,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a7cfc60a6e8f",
+   "state_digest": "a7cfc60a6e8fb807",
+   "discovery_rank": 349,
+   "objective_APPROXIMATE": 3625482.2624557186,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b0a07f5b6607",
+   "state_digest": "b0a07f5b66077279",
+   "discovery_rank": 353,
+   "objective_APPROXIMATE": 3625591.1543219364,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3ea4a4901b5a",
+   "state_digest": "3ea4a4901b5ab067",
+   "discovery_rank": 379,
+   "objective_APPROXIMATE": 3625977.8380421507,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#49ffa06fc8bd",
+   "state_digest": "49ffa06fc8bd8e1f",
+   "discovery_rank": 384,
+   "objective_APPROXIMATE": 3625991.684880342,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#92800e85d1e7",
+   "state_digest": "92800e85d1e73173",
+   "discovery_rank": 386,
+   "objective_APPROXIMATE": 3625996.4591390747,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#802039f09105",
+   "state_digest": "802039f09105be89",
+   "discovery_rank": 397,
+   "objective_APPROXIMATE": 3626009.406324095,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b2f2fe269441",
+   "state_digest": "b2f2fe2694412363",
+   "discovery_rank": 399,
+   "objective_APPROXIMATE": 3626014.5870380704,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "201-400"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9627c50abee1",
+   "state_digest": "9627c50abee17402",
+   "discovery_rank": 404,
+   "objective_APPROXIMATE": 3626032.2522485983,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6ec41d714152",
+   "state_digest": "6ec41d7141524a58",
+   "discovery_rank": 407,
+   "objective_APPROXIMATE": 3626049.7877557655,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#0f6a050ab661",
+   "state_digest": "0f6a050ab66109ed",
+   "discovery_rank": 411,
+   "objective_APPROXIMATE": 3626099.70950147,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|64lines#ccc2ea6836ca",
+   "state_digest": "ccc2ea6836ca2a68",
+   "discovery_rank": 425,
+   "objective_APPROXIMATE": 3626216.187800997,
+   "feasible": true,
+   "n_lines": 64,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|64lines#443ae135a0e1",
+   "state_digest": "443ae135a0e1ba4b",
+   "discovery_rank": 427,
+   "objective_APPROXIMATE": 3626222.5834740326,
+   "feasible": true,
+   "n_lines": 64,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6520ccae289d",
+   "state_digest": "6520ccae289d4127",
+   "discovery_rank": 433,
+   "objective_APPROXIMATE": 3626275.087484751,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#66c159051bb5",
+   "state_digest": "66c159051bb5f87b",
+   "discovery_rank": 437,
+   "objective_APPROXIMATE": 3626301.846694451,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#d93711a7a69a",
+   "state_digest": "d93711a7a69a8692",
+   "discovery_rank": 441,
+   "objective_APPROXIMATE": 3626318.9373858348,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c50605842203",
+   "state_digest": "c5060584220322f6",
+   "discovery_rank": 447,
+   "objective_APPROXIMATE": 3626335.714393647,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#fa568b682a89",
+   "state_digest": "fa568b682a89dc34",
+   "discovery_rank": 459,
+   "objective_APPROXIMATE": 3626359.6489599217,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#e87ebf465b7e",
+   "state_digest": "e87ebf465b7eacb0",
+   "discovery_rank": 460,
+   "objective_APPROXIMATE": 3626369.0939394026,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6d3bead56ddf",
+   "state_digest": "6d3bead56ddf4814",
+   "discovery_rank": 465,
+   "objective_APPROXIMATE": 3626416.6331844945,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#335e071a3a0d",
+   "state_digest": "335e071a3a0d64de",
+   "discovery_rank": 466,
+   "objective_APPROXIMATE": 3626420.851940849,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ca072b43dc61",
+   "state_digest": "ca072b43dc61fac3",
+   "discovery_rank": 470,
+   "objective_APPROXIMATE": 3626440.282686881,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|64lines#a987900e5676",
+   "state_digest": "a987900e567616ca",
+   "discovery_rank": 499,
+   "objective_APPROXIMATE": 3626525.087301364,
+   "feasible": true,
+   "n_lines": 64,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a2c7f4d3cc3e",
+   "state_digest": "a2c7f4d3cc3e9c23",
+   "discovery_rank": 501,
+   "objective_APPROXIMATE": 3626529.7892413395,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#36d5b080b306",
+   "state_digest": "36d5b080b30697b3",
+   "discovery_rank": 508,
+   "objective_APPROXIMATE": 3626550.9672369473,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9e4f5b2b6418",
+   "state_digest": "9e4f5b2b6418f309",
+   "discovery_rank": 513,
+   "objective_APPROXIMATE": 3626574.320465356,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#02b1a4bb030b",
+   "state_digest": "02b1a4bb030b6df8",
+   "discovery_rank": 514,
+   "objective_APPROXIMATE": 3626584.4693335597,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3c1dd42b15f8",
+   "state_digest": "3c1dd42b15f89b57",
+   "discovery_rank": 543,
+   "objective_APPROXIMATE": 3626627.010793663,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#7036051fbbdf",
+   "state_digest": "7036051fbbdf5ad7",
+   "discovery_rank": 564,
+   "objective_APPROXIMATE": 3626649.544499658,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c9e2c82751f6",
+   "state_digest": "c9e2c82751f69a24",
+   "discovery_rank": 577,
+   "objective_APPROXIMATE": 3626700.755577623,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a7512bcccd14",
+   "state_digest": "a7512bcccd1446d5",
+   "discovery_rank": 592,
+   "objective_APPROXIMATE": 3626839.3236033013,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4a61950fc23c",
+   "state_digest": "4a61950fc23c83cb",
+   "discovery_rank": 600,
+   "objective_APPROXIMATE": 3626857.3245713706,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8bf1ede439d3",
+   "state_digest": "8bf1ede439d3ce30",
+   "discovery_rank": 616,
+   "objective_APPROXIMATE": 3626899.635062021,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a1a14aa3f3e6",
+   "state_digest": "a1a14aa3f3e664a0",
+   "discovery_rank": 625,
+   "objective_APPROXIMATE": 3626946.3822755297,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8ae1ae6bac6a",
+   "state_digest": "8ae1ae6bac6ae446",
+   "discovery_rank": 629,
+   "objective_APPROXIMATE": 3626953.2921286584,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#d0a045d86574",
+   "state_digest": "d0a045d86574d9c1",
+   "discovery_rank": 634,
+   "objective_APPROXIMATE": 3626962.1561239567,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5d8e8d0fed9b",
+   "state_digest": "5d8e8d0fed9b3ffc",
+   "discovery_rank": 679,
+   "objective_APPROXIMATE": 3627406.0817285627,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5b012fc40c39",
+   "state_digest": "5b012fc40c391424",
+   "discovery_rank": 683,
+   "objective_APPROXIMATE": 3627421.990682267,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#092b0059d31c",
+   "state_digest": "092b0059d31c4f0a",
+   "discovery_rank": 689,
+   "objective_APPROXIMATE": 3627429.369369573,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#24848d2e3c01",
+   "state_digest": "24848d2e3c01e89b",
+   "discovery_rank": 698,
+   "objective_APPROXIMATE": 3627443.235005988,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c42aa20cbe66",
+   "state_digest": "c42aa20cbe66c44a",
+   "discovery_rank": 708,
+   "objective_APPROXIMATE": 3627453.638535534,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|64lines#9bbd9ad2306b",
+   "state_digest": "9bbd9ad2306bfeb1",
+   "discovery_rank": 718,
+   "objective_APPROXIMATE": 3627481.6127216774,
+   "feasible": true,
+   "n_lines": 64,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a77131d85c1c",
+   "state_digest": "a77131d85c1c932a",
+   "discovery_rank": 732,
+   "objective_APPROXIMATE": 3627644.428423641,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a36e6eef4d4e",
+   "state_digest": "a36e6eef4d4e3775",
+   "discovery_rank": 754,
+   "objective_APPROXIMATE": 3627809.817273969,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#bde33e488fc8",
+   "state_digest": "bde33e488fc8a835",
+   "discovery_rank": 755,
+   "objective_APPROXIMATE": 3627819.810681171,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3da959bdbfdb",
+   "state_digest": "3da959bdbfdb3037",
+   "discovery_rank": 764,
+   "objective_APPROXIMATE": 3627860.9568266114,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1b3358c3f0f5",
+   "state_digest": "1b3358c3f0f5a43c",
+   "discovery_rank": 777,
+   "objective_APPROXIMATE": 3628001.820815143,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4dec568562ea",
+   "state_digest": "4dec568562ea4fb9",
+   "discovery_rank": 780,
+   "objective_APPROXIMATE": 3628016.4846305596,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "401-800"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b2825d1f0dfe",
+   "state_digest": "b2825d1f0dfe2a59",
+   "discovery_rank": 819,
+   "objective_APPROXIMATE": 3628086.9205341884,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#73277da4157f",
+   "state_digest": "73277da4157f41bc",
+   "discovery_rank": 822,
+   "objective_APPROXIMATE": 3628089.5094683818,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#cd85083757b2",
+   "state_digest": "cd85083757b2bf23",
+   "discovery_rank": 823,
+   "objective_APPROXIMATE": 3628089.5094683818,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#95aeff6e0912",
+   "state_digest": "95aeff6e09124da7",
+   "discovery_rank": 825,
+   "objective_APPROXIMATE": 3628090.238655917,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#61152f2dd0bb",
+   "state_digest": "61152f2dd0bb523e",
+   "discovery_rank": 837,
+   "objective_APPROXIMATE": 3628113.14287061,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6008a713ee84",
+   "state_digest": "6008a713ee84e21b",
+   "discovery_rank": 838,
+   "objective_APPROXIMATE": 3628114.845100011,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b523e707112a",
+   "state_digest": "b523e707112a0f1d",
+   "discovery_rank": 862,
+   "objective_APPROXIMATE": 3628257.1224918645,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#934893997a3d",
+   "state_digest": "934893997a3dbf74",
+   "discovery_rank": 868,
+   "objective_APPROXIMATE": 3628283.4610738317,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#cafa1cf942b6",
+   "state_digest": "cafa1cf942b6f1bb",
+   "discovery_rank": 890,
+   "objective_APPROXIMATE": 3628368.108500335,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#e80fc36b56ad",
+   "state_digest": "e80fc36b56ad4773",
+   "discovery_rank": 901,
+   "objective_APPROXIMATE": 3628408.5027272417,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#2cb5a53b3343",
+   "state_digest": "2cb5a53b33434b5b",
+   "discovery_rank": 906,
+   "objective_APPROXIMATE": 3628414.699966728,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#79ecde2ae3ab",
+   "state_digest": "79ecde2ae3ab65a7",
+   "discovery_rank": 913,
+   "objective_APPROXIMATE": 3628446.7806197316,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#945ee59548b8",
+   "state_digest": "945ee59548b8fafc",
+   "discovery_rank": 918,
+   "objective_APPROXIMATE": 3628451.9285031985,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4fc4408a1302",
+   "state_digest": "4fc4408a1302406c",
+   "discovery_rank": 919,
+   "objective_APPROXIMATE": 3628453.9522607517,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1b0c28adbd5c",
+   "state_digest": "1b0c28adbd5ce8be",
+   "discovery_rank": 932,
+   "objective_APPROXIMATE": 3628472.251444592,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#439300e008d5",
+   "state_digest": "439300e008d54b86",
+   "discovery_rank": 949,
+   "objective_APPROXIMATE": 3628508.960376543,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f004a297c230",
+   "state_digest": "f004a297c230aca8",
+   "discovery_rank": 961,
+   "objective_APPROXIMATE": 3628521.4673606004,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f35be3b83be9",
+   "state_digest": "f35be3b83be9d97d",
+   "discovery_rank": 968,
+   "objective_APPROXIMATE": 3628549.119223091,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b9cbf48da7bf",
+   "state_digest": "b9cbf48da7bf5c3a",
+   "discovery_rank": 975,
+   "objective_APPROXIMATE": 3628588.452595014,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9c0a41edaaba",
+   "state_digest": "9c0a41edaaba3432",
+   "discovery_rank": 978,
+   "objective_APPROXIMATE": 3628590.783417231,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#40bfbe387a30",
+   "state_digest": "40bfbe387a30e74c",
+   "discovery_rank": 985,
+   "objective_APPROXIMATE": 3628613.3490847433,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3c5a6a0d835e",
+   "state_digest": "3c5a6a0d835e1cde",
+   "discovery_rank": 988,
+   "objective_APPROXIMATE": 3628634.623942245,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#916312de3931",
+   "state_digest": "916312de393117c0",
+   "discovery_rank": 996,
+   "objective_APPROXIMATE": 3628658.9681736934,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#220c397075b1",
+   "state_digest": "220c397075b13150",
+   "discovery_rank": 998,
+   "objective_APPROXIMATE": 3628659.9729302046,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1e2b8ec4c7af",
+   "state_digest": "1e2b8ec4c7afa7b9",
+   "discovery_rank": 1004,
+   "objective_APPROXIMATE": 3628713.3206485137,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#69e3b90d3e2d",
+   "state_digest": "69e3b90d3e2db2b1",
+   "discovery_rank": 1021,
+   "objective_APPROXIMATE": 3628761.9340609577,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4cb7b3de5be8",
+   "state_digest": "4cb7b3de5be81524",
+   "discovery_rank": 1028,
+   "objective_APPROXIMATE": 3628774.5936887083,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c8c8f8188047",
+   "state_digest": "c8c8f81880476505",
+   "discovery_rank": 1031,
+   "objective_APPROXIMATE": 3628775.822642046,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5b44b8dc4975",
+   "state_digest": "5b44b8dc4975393e",
+   "discovery_rank": 1033,
+   "objective_APPROXIMATE": 3628787.9457014236,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#77b240ab10fd",
+   "state_digest": "77b240ab10fd44df",
+   "discovery_rank": 1070,
+   "objective_APPROXIMATE": 3628896.126154975,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#d238dd02b6f8",
+   "state_digest": "d238dd02b6f8502c",
+   "discovery_rank": 1082,
+   "objective_APPROXIMATE": 3628950.411338145,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3559d00001a6",
+   "state_digest": "3559d00001a655cd",
+   "discovery_rank": 1109,
+   "objective_APPROXIMATE": 3628998.140877524,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6a8114cf4ea6",
+   "state_digest": "6a8114cf4ea68d06",
+   "discovery_rank": 1118,
+   "objective_APPROXIMATE": 3629011.1556168413,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#209a9e4c01e1",
+   "state_digest": "209a9e4c01e1ea3e",
+   "discovery_rank": 1137,
+   "objective_APPROXIMATE": 3629124.498351934,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a043eb8aa254",
+   "state_digest": "a043eb8aa254e018",
+   "discovery_rank": 1142,
+   "objective_APPROXIMATE": 3629140.7925965204,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1bc3a0dd2c03",
+   "state_digest": "1bc3a0dd2c037c97",
+   "discovery_rank": 1160,
+   "objective_APPROXIMATE": 3629220.715773974,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9418d0e2955a",
+   "state_digest": "9418d0e2955a309a",
+   "discovery_rank": 1162,
+   "objective_APPROXIMATE": 3629220.715773974,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1e23f6e3785a",
+   "state_digest": "1e23f6e3785a515f",
+   "discovery_rank": 1174,
+   "objective_APPROXIMATE": 3629246.7405004697,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#2c0ff66c8e49",
+   "state_digest": "2c0ff66c8e4955ee",
+   "discovery_rank": 1195,
+   "objective_APPROXIMATE": 3629271.451276065,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a6cd70ba652c",
+   "state_digest": "a6cd70ba652ce6a2",
+   "discovery_rank": 1197,
+   "objective_APPROXIMATE": 3629274.1943756915,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "801-1200"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8de890f31ad3",
+   "state_digest": "8de890f31ad3129f",
+   "discovery_rank": 1202,
+   "objective_APPROXIMATE": 3629282.3711116104,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#070fb276dd85",
+   "state_digest": "070fb276dd85f3fd",
+   "discovery_rank": 1234,
+   "objective_APPROXIMATE": 3629307.7507748078,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#bc59c88b708b",
+   "state_digest": "bc59c88b708bfd3a",
+   "discovery_rank": 1243,
+   "objective_APPROXIMATE": 3629315.979041381,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b06fa20c2850",
+   "state_digest": "b06fa20c2850c2d0",
+   "discovery_rank": 1246,
+   "objective_APPROXIMATE": 3629323.1592793833,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#08b5c6b5e228",
+   "state_digest": "08b5c6b5e2280065",
+   "discovery_rank": 1252,
+   "objective_APPROXIMATE": 3629333.93140775,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#08fdfa14dcc8",
+   "state_digest": "08fdfa14dcc8a7cb",
+   "discovery_rank": 1256,
+   "objective_APPROXIMATE": 3629340.8354240884,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b4deac3881e8",
+   "state_digest": "b4deac3881e8335e",
+   "discovery_rank": 1283,
+   "objective_APPROXIMATE": 3629457.155170718,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#290a1a39fb2a",
+   "state_digest": "290a1a39fb2ae85c",
+   "discovery_rank": 1285,
+   "objective_APPROXIMATE": 3629461.3142909305,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5ddf08b7946f",
+   "state_digest": "5ddf08b7946f3f5a",
+   "discovery_rank": 1288,
+   "objective_APPROXIMATE": 3629476.5498750275,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6f3ff4cf8394",
+   "state_digest": "6f3ff4cf8394fb12",
+   "discovery_rank": 1289,
+   "objective_APPROXIMATE": 3629476.5498750275,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#e79849c61bb8",
+   "state_digest": "e79849c61bb85d82",
+   "discovery_rank": 1310,
+   "objective_APPROXIMATE": 3629552.547789828,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#239c061c1e16",
+   "state_digest": "239c061c1e160b68",
+   "discovery_rank": 1313,
+   "objective_APPROXIMATE": 3629562.743220007,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9ada462d3f8b",
+   "state_digest": "9ada462d3f8b6892",
+   "discovery_rank": 1332,
+   "objective_APPROXIMATE": 3629679.362983681,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#d6279343a8ad",
+   "state_digest": "d6279343a8ad9535",
+   "discovery_rank": 1337,
+   "objective_APPROXIMATE": 3629704.2885231664,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#fa4d53ff7e25",
+   "state_digest": "fa4d53ff7e256cba",
+   "discovery_rank": 1344,
+   "objective_APPROXIMATE": 3629763.4936986286,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f0df88df2f04",
+   "state_digest": "f0df88df2f04d4f2",
+   "discovery_rank": 1350,
+   "objective_APPROXIMATE": 3629784.9792341418,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5fef3e6b0b51",
+   "state_digest": "5fef3e6b0b51f454",
+   "discovery_rank": 1357,
+   "objective_APPROXIMATE": 3629819.6853542845,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6e0b28c97699",
+   "state_digest": "6e0b28c97699bf55",
+   "discovery_rank": 1370,
+   "objective_APPROXIMATE": 3629993.9262953023,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f723c711d0e1",
+   "state_digest": "f723c711d0e129a8",
+   "discovery_rank": 1382,
+   "objective_APPROXIMATE": 3630051.1513466965,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#abff936b22df",
+   "state_digest": "abff936b22dfdecc",
+   "discovery_rank": 1422,
+   "objective_APPROXIMATE": 3630112.3106029867,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#787e6a26fe13",
+   "state_digest": "787e6a26fe136a97",
+   "discovery_rank": 1444,
+   "objective_APPROXIMATE": 3630317.298840245,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#badb4c10714c",
+   "state_digest": "badb4c10714c8e21",
+   "discovery_rank": 1459,
+   "objective_APPROXIMATE": 3630374.9128535152,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8df8d4ee4256",
+   "state_digest": "8df8d4ee42560041",
+   "discovery_rank": 1460,
+   "objective_APPROXIMATE": 3630382.9198398213,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#dcc819629f7a",
+   "state_digest": "dcc819629f7a48e8",
+   "discovery_rank": 1466,
+   "objective_APPROXIMATE": 3630458.4175691046,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#14146cf7c2cd",
+   "state_digest": "14146cf7c2cdba94",
+   "discovery_rank": 1467,
+   "objective_APPROXIMATE": 3630466.464712609,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#dc3a1046bebd",
+   "state_digest": "dc3a1046bebdcbe1",
+   "discovery_rank": 1468,
+   "objective_APPROXIMATE": 3630468.216125675,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#67fbeb5bb7f6",
+   "state_digest": "67fbeb5bb7f696d2",
+   "discovery_rank": 1472,
+   "objective_APPROXIMATE": 3630479.849088996,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#22fcb8941184",
+   "state_digest": "22fcb894118456f2",
+   "discovery_rank": 1498,
+   "objective_APPROXIMATE": 3630709.354072084,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#0af7de2c6c24",
+   "state_digest": "0af7de2c6c247cf2",
+   "discovery_rank": 1500,
+   "objective_APPROXIMATE": 3630726.036244407,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#b8b4e22d4225",
+   "state_digest": "b8b4e22d42259936",
+   "discovery_rank": 1519,
+   "objective_APPROXIMATE": 3630964.7282264745,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f22de160a1c4",
+   "state_digest": "f22de160a1c41a39",
+   "discovery_rank": 1523,
+   "objective_APPROXIMATE": 3630969.041668069,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1c44c9456e78",
+   "state_digest": "1c44c9456e78b515",
+   "discovery_rank": 1526,
+   "objective_APPROXIMATE": 3631241.786251487,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9284b174fd1f",
+   "state_digest": "9284b174fd1fdd53",
+   "discovery_rank": 1537,
+   "objective_APPROXIMATE": 3631997.9944624864,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#79e481a04404",
+   "state_digest": "79e481a04404abc5",
+   "discovery_rank": 1543,
+   "objective_APPROXIMATE": 3632061.0721902824,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#0095c1f5ffa4",
+   "state_digest": "0095c1f5ffa4e84c",
+   "discovery_rank": 1544,
+   "objective_APPROXIMATE": 3632080.782338281,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9484e48fd4c4",
+   "state_digest": "9484e48fd4c4fcba",
+   "discovery_rank": 1557,
+   "objective_APPROXIMATE": 3632287.271588342,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#071bede2f19a",
+   "state_digest": "071bede2f19a5fe8",
+   "discovery_rank": 1560,
+   "objective_APPROXIMATE": 3632292.7533430154,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#73e86bcc8b72",
+   "state_digest": "73e86bcc8b727243",
+   "discovery_rank": 1562,
+   "objective_APPROXIMATE": 3632292.919442485,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#140a54bd05ab",
+   "state_digest": "140a54bd05aba654",
+   "discovery_rank": 1581,
+   "objective_APPROXIMATE": 3632314.438923222,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#27f9e91ca951",
+   "state_digest": "27f9e91ca951f378",
+   "discovery_rank": 1597,
+   "objective_APPROXIMATE": 3632334.501397643,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1201-1600"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#24173e4e2598",
+   "state_digest": "24173e4e2598c51a",
+   "discovery_rank": 1629,
+   "objective_APPROXIMATE": 3632412.1070453636,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ba60cf9d3c6d",
+   "state_digest": "ba60cf9d3c6d6acb",
+   "discovery_rank": 1630,
+   "objective_APPROXIMATE": 3632416.3699209304,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#5e6281bf6ba9",
+   "state_digest": "5e6281bf6ba96882",
+   "discovery_rank": 1638,
+   "objective_APPROXIMATE": 3632461.720456696,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9ccf0e4d9b3f",
+   "state_digest": "9ccf0e4d9b3f6cca",
+   "discovery_rank": 1651,
+   "objective_APPROXIMATE": 3632516.474508496,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#da9e7c653c57",
+   "state_digest": "da9e7c653c57d80e",
+   "discovery_rank": 1660,
+   "objective_APPROXIMATE": 3632571.0121576292,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ae598eaa4753",
+   "state_digest": "ae598eaa47537d86",
+   "discovery_rank": 1662,
+   "objective_APPROXIMATE": 3632584.2464132276,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#3eef9b71ad14",
+   "state_digest": "3eef9b71ad146a32",
+   "discovery_rank": 1668,
+   "objective_APPROXIMATE": 3632608.893483547,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#eff26a7278ca",
+   "state_digest": "eff26a7278cae33a",
+   "discovery_rank": 1676,
+   "objective_APPROXIMATE": 3632649.9446393815,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#11f05511da87",
+   "state_digest": "11f05511da874321",
+   "discovery_rank": 1678,
+   "objective_APPROXIMATE": 3632651.394762722,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#83737a99f0e9",
+   "state_digest": "83737a99f0e97cee",
+   "discovery_rank": 1681,
+   "objective_APPROXIMATE": 3632655.8923063832,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c2a1e5854fdf",
+   "state_digest": "c2a1e5854fdf08de",
+   "discovery_rank": 1682,
+   "objective_APPROXIMATE": 3632655.8923063832,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ff0ec46e65f4",
+   "state_digest": "ff0ec46e65f4c4c6",
+   "discovery_rank": 1696,
+   "objective_APPROXIMATE": 3632712.4661068465,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ef8254c8f410",
+   "state_digest": "ef8254c8f410cca4",
+   "discovery_rank": 1701,
+   "objective_APPROXIMATE": 3632716.120697297,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#be467e3cbd90",
+   "state_digest": "be467e3cbd9097c5",
+   "discovery_rank": 1704,
+   "objective_APPROXIMATE": 3632720.6609591627,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8a327fcb3a9c",
+   "state_digest": "8a327fcb3a9c70c3",
+   "discovery_rank": 1705,
+   "objective_APPROXIMATE": 3632721.08535525,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#e17966191bd2",
+   "state_digest": "e17966191bd28a2a",
+   "discovery_rank": 1709,
+   "objective_APPROXIMATE": 3632724.1722194785,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#f8b0d1eb2503",
+   "state_digest": "f8b0d1eb25037b79",
+   "discovery_rank": 1712,
+   "objective_APPROXIMATE": 3632728.891276551,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c821c892ab32",
+   "state_digest": "c821c892ab323ee3",
+   "discovery_rank": 1724,
+   "objective_APPROXIMATE": 3632739.461999223,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#08722c6951b7",
+   "state_digest": "08722c6951b70d42",
+   "discovery_rank": 1733,
+   "objective_APPROXIMATE": 3632748.7942310334,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a1366c555a38",
+   "state_digest": "a1366c555a38d232",
+   "discovery_rank": 1736,
+   "objective_APPROXIMATE": 3632756.828865732,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#a820124d86b9",
+   "state_digest": "a820124d86b9859a",
+   "discovery_rank": 1754,
+   "objective_APPROXIMATE": 3632776.039667661,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c7c65b8292da",
+   "state_digest": "c7c65b8292da70ca",
+   "discovery_rank": 1756,
+   "objective_APPROXIMATE": 3632777.863611782,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#53c4286f3764",
+   "state_digest": "53c4286f37643579",
+   "discovery_rank": 1775,
+   "objective_APPROXIMATE": 3632961.30693639,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#dde466b2f832",
+   "state_digest": "dde466b2f832eb20",
+   "discovery_rank": 1840,
+   "objective_APPROXIMATE": 3633215.1131150895,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#1d39e0dd36b5",
+   "state_digest": "1d39e0dd36b5b14e",
+   "discovery_rank": 1854,
+   "objective_APPROXIMATE": 3633309.4302814277,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4a1ab8a9571c",
+   "state_digest": "4a1ab8a9571cc374",
+   "discovery_rank": 1860,
+   "objective_APPROXIMATE": 3633398.8081720714,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#ccc8e4b3b058",
+   "state_digest": "ccc8e4b3b0583d26",
+   "discovery_rank": 1869,
+   "objective_APPROXIMATE": 3633459.517004959,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#d212a4fba809",
+   "state_digest": "d212a4fba809ff90",
+   "discovery_rank": 1871,
+   "objective_APPROXIMATE": 3633472.3262229585,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#9f58c44eae9a",
+   "state_digest": "9f58c44eae9ad5af",
+   "discovery_rank": 1880,
+   "objective_APPROXIMATE": 3633501.973631023,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4e9f9fa7768a",
+   "state_digest": "4e9f9fa7768adc10",
+   "discovery_rank": 1897,
+   "objective_APPROXIMATE": 3633746.2707185033,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#c2dd9258222f",
+   "state_digest": "c2dd9258222fd29a",
+   "discovery_rank": 1906,
+   "objective_APPROXIMATE": 3634092.0588847385,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#6613daf4e978",
+   "state_digest": "6613daf4e978de6b",
+   "discovery_rank": 1921,
+   "objective_APPROXIMATE": 3634345.326875946,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#bde538b9b02c",
+   "state_digest": "bde538b9b02ce044",
+   "discovery_rank": 1926,
+   "objective_APPROXIMATE": 3634444.514270286,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|64lines#6cd7d8fd1c1d",
+   "state_digest": "6cd7d8fd1c1d10aa",
+   "discovery_rank": 1928,
+   "objective_APPROXIMATE": 3634545.2740113297,
+   "feasible": true,
+   "n_lines": 64,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#89c09045f8ab",
+   "state_digest": "89c09045f8ab5449",
+   "discovery_rank": 1950,
+   "objective_APPROXIMATE": 3635126.4127302626,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#04b9884f3c36",
+   "state_digest": "04b9884f3c364f43",
+   "discovery_rank": 1960,
+   "objective_APPROXIMATE": 3635253.4764229218,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#8bf8e2f5ed0a",
+   "state_digest": "8bf8e2f5ed0a23a4",
+   "discovery_rank": 1967,
+   "objective_APPROXIMATE": 3635285.349840667,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#4352c5bd0da7",
+   "state_digest": "4352c5bd0da72969",
+   "discovery_rank": 1971,
+   "objective_APPROXIMATE": 3635301.447144134,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#162ae4ada501",
+   "state_digest": "162ae4ada501302f",
+   "discovery_rank": 1987,
+   "objective_APPROXIMATE": 3635611.9772149106,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  },
+  {
+   "state_key": "exp4|exp4-pool-v1|65lines#59416755f53d",
+   "state_digest": "59416755f53d69dd",
+   "discovery_rank": 1996,
+   "objective_APPROXIMATE": 3636243.2873492963,
+   "feasible": true,
+   "n_lines": 65,
+   "stratum": "1601-2000"
+  }
+ ]
+}
