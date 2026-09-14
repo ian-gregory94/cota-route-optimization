@@ -1,0 +1,57 @@
+{
+  "question": "does certified rank correlate with discovery rank?",
+  "reserved_in": "36c46ddf",
+  "answered_at": "200/200 certified",
+  "n": 200,
+  "spearman_discovery_vs_certified": -0.3361,
+  "spearman_exact_vs_overstatement": -0.993,
+  "spearman_discovery_vs_rounds": -0.0202,
+  "spearman_rounds_vs_certified": -0.2653,
+  "leader": {
+    "state_key": "exp4|exp4-pool-v1|65lines#ecb2ffc4bcce",
+    "certified_rank": 1,
+    "discovery_rank_within_200": 196,
+    "discovery_rank_of_2000": 196,
+    "objective_EXACT": 3511184.5657525407,
+    "objective_APPROXIMATE": 3624522.1667785523,
+    "overstatement_pct": 3.2279
+  },
+  "promotion_cut": {
+    "discovery_score_rank_200": 3624528.619536508,
+    "discovery_score_rank_201_of_2000": 3624534.185325932,
+    "gap_absolute": 5.5658,
+    "leader_slots_above_cut": 4
+  },
+  "ranges": {
+    "exact_range_pct": 2.2788,
+    "discovery_range_pct_same_200": 0.15891,
+    "overstatement_min_pct": 0.9116,
+    "overstatement_max_pct": 3.2279,
+    "stdev_exact_pct_of_mean": 0.4361,
+    "stdev_overstatement_points": 0.4638
+  },
+  "certified_top20_discovery_ranks": [
+    33,
+    73,
+    90,
+    97,
+    106,
+    109,
+    110,
+    117,
+    122,
+    133,
+    135,
+    139,
+    142,
+    143,
+    155,
+    158,
+    195,
+    196,
+    198,
+    199
+  ],
+  "caveat": "anti-correlation is measured INSIDE the promoted band (discovery span 0.159%). It does not extrapolate to proposals 201-2000.",
+  "does_not_change": "rank_certified ordered the complete set on objective_EXACT under the frozen tie-break 0297e180cf30369d."
+}
