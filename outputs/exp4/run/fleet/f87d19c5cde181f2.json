@@ -1,0 +1,151 @@
+{
+ "state_key": "exp4|exp4-pool-v1|65lines#07d8dadd9362",
+ "verdict": "UNDECIDABLE",
+ "feasible": null,
+ "reasons": [
+  "the per-period figure is a property of the maximum matching found, not of the schedule: an equally maximum matching gives {'am_peak': 84, 'early': 71, 'evening': 90, 'midday': 85, 'owl': 55, 'pm_peak': 97}. It is reported as a diagnostic and gates nothing (AMENDMENT 1)",
+  "feasibility cannot be PROVEN: same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for",
+  "not refuted by any matching-independent bound, which is not the same as being feasible"
+ ],
+ "deadhead_oracle_upper": {
+  "deadhead_source": "same_terminal_only",
+  "version": "1",
+  "time_dependent": false,
+  "min_layover_sec": 300.0,
+  "cross_terminal": "UNKNOWN -- every such connection infeasible",
+  "consequence": "fleet computed under this oracle is an UPPER BOUND; no interlining is permitted"
+ },
+ "deadhead_oracle_lower": {
+  "deadhead_source": "zero_deadhead_relaxation",
+  "method": "Dilworth identity, exact",
+  "is_bound_only": true
+ },
+ "deadhead_provenance_status": "OPEN",
+ "deadhead_provenance_note": "same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for",
+ "fleet_bracket": {
+  "lower": 72,
+  "upper": 362,
+  "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+  "upper_oracle": "same_terminal_only",
+  "deadhead_provenance": "OPEN",
+  "n_trips": 478,
+  "kind": "CANDIDATE_BLOCK_BOUND",
+  "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+ },
+ "terminal_identity": {
+  "n_trips": 478,
+  "n_origin_terminals": 43,
+  "n_destination_terminals": 42,
+  "n_shared_terminals": 24,
+  "trips_whose_destination_is_never_an_origin": 176,
+  "share_stranded": 0.3682008368200837,
+  "degenerate": false,
+  "degenerate_at": 0.5,
+  "meaning": "a stranded trip can never be followed by anything under a same-terminal oracle, so each one forces its own block. Where the share is high the upper bound measures unresolved terminal identity rather than fleet",
+  "provenance": {
+   "status": "OPEN",
+   "what_is_missing": "a statement of which stop_ids denote the same physical terminal",
+   "why_gtfs_does_not_answer": "parent_station is empty in all 2,949 stop rows and location_type is unset",
+   "forbidden_substitutes": [
+    "grouping stops within some distance of each other -- the threshold would be invented and the answer would move with it",
+    "grouping stops by shared stop_name prefix or by a BAY suffix -- that infers geography from a label",
+    "assuming a route's two directions share a terminal because they are the same route"
+   ],
+   "consequence": "where it is unresolved, a same-terminal oracle cannot chain a route's own two directions, and its upper bound approaches one block per trip",
+   "acceptable_source": "an operator-supplied terminal/garage table, the same artifact that would carry deadhead times"
+  }
+ },
+ "terminal_identity_provenance": {
+  "status": "OPEN",
+  "what_is_missing": "a statement of which stop_ids denote the same physical terminal",
+  "why_gtfs_does_not_answer": "parent_station is empty in all 2,949 stop rows and location_type is unset",
+  "forbidden_substitutes": [
+   "grouping stops within some distance of each other -- the threshold would be invented and the answer would move with it",
+   "grouping stops by shared stop_name prefix or by a BAY suffix -- that infers geography from a label",
+   "assuming a route's two directions share a terminal because they are the same route"
+  ],
+  "consequence": "where it is unresolved, a same-terminal oracle cannot chain a route's own two directions, and its upper bound approaches one block per trip",
+  "acceptable_source": "an operator-supplied terminal/garage table, the same artifact that would carry deadhead times"
+ },
+ "terminal_identity_digest": "616ad1e37e4b5d38",
+ "minimum_blocks_under_declared_oracle": null,
+ "minimum_blocks_NOT_CERTIFIED": 362,
+ "revenue_vehicle_hours": 502.80027777777843,
+ "vehicle_hours": {
+  "decidable": true,
+  "candidate": 502.80027777777843,
+  "envelope": 2517.1833333333334,
+  "within": true,
+  "matching_independent": true,
+  "note": "revenue vehicle-hours is a property of the timetable, not of the blocking"
+ },
+ "envelope_digest": "b6c647d3766338a6",
+ "operational_recourse": {
+  "rule": "Reblocking is permitted as operational recourse. A candidate network or frequency plan may receive a NEW block assignment, but no additional fleet beyond the experiment's frozen per-period fleet envelope.",
+  "why": "geometry changes can make the historical block_id assignment literally impossible to preserve, so requiring it would reject candidates for a scheduling artifact rather than a resource one",
+  "the_blocker_may": [
+   "find a new feasible blocking of the candidate's trips"
+  ],
+  "the_blocker_may_not": [
+   "change the fleet caps",
+   "change the network",
+   "change the frequency plan",
+   "change the deadhead assumptions",
+   "change the layover assumptions"
+  ],
+  "version": 1
+ },
+ "operational_recourse_digest": "44a81590ff1b1e81",
+ "blocking_contract_digest": "4840070385b7bc3e",
+ "per_period_DIAGNOSTIC_ONLY": {
+  "REMOVED_AS_A_GATE": "The preregistered per-period blocking arm was removed before Experiment 4 execution because validation demonstrated that it was not invariant to the choice among equally optimal maximum matchings. Under the experiment's OPERATIONAL_RECOURSE assumption, fleet feasibility is instead evaluated using matching-independent block-count bounds and, once deadhead provenance is complete, minimum path-cover cardinality under the declared deadhead oracle.",
+  "diagnostic_only": true,
+  "superseded_test": {
+   "am_peak": [
+    81,
+    187
+   ],
+   "early": [
+    70,
+    135
+   ],
+   "evening": [
+    72,
+    178
+   ],
+   "midday": [
+    77,
+    173
+   ],
+   "owl": [
+    38,
+    149
+   ],
+   "pm_peak": [
+    79,
+    197
+   ]
+  },
+  "matching_stable": false,
+  "invariant_lower_bound": {
+   "early": 72,
+   "am_peak": 66,
+   "midday": 58,
+   "pm_peak": 64,
+   "evening": 57,
+   "owl": 36
+  },
+  "invariant_lower_bound_peak": 72,
+  "invariant_lower_bound_peak_minute": 348,
+  "envelope": {
+   "am_peak": 187,
+   "early": 135,
+   "evening": 178,
+   "midday": 173,
+   "owl": 149,
+   "pm_peak": 197
+  },
+  "lower_bound_exceeds_envelope": {}
+ },
+ "undecidable_reason": "same_terminal_only forbids every cross-terminal connection, so its answer is an upper bound. A plan it rejects is rejected; a plan it accepts is only accepted under an assumption nobody has evidence for"
+}

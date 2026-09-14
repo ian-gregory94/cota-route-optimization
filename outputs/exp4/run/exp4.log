@@ -530,3 +530,59 @@ certification: 169 done, 31 remaining
   [19/31] exp4|exp4-pool-v1|65lines#ebb81d232aa0 obj 3,519,130.1104 rounds 13 converged True (670s)
   [20/31] exp4|exp4-pool-v1|65lines#ec59b41db804 obj 3,524,949.4480 rounds 13 converged True (685s)
   [21/31] exp4|exp4-pool-v1|65lines#ecb2ffc4bcce obj 3,511,184.5658 rounds 12 converged True (657s)
+  [22/31] exp4|exp4-pool-v1|65lines#eed717e8318b obj 3,531,535.1179 rounds 10 converged True (602s)
+  [23/31] exp4|exp4-pool-v1|65lines#f0d89fda7557 obj 3,521,656.4806 rounds 13 converged True (677s)
+  [24/31] exp4|exp4-pool-v1|65lines#f0dccfe1b209 obj 3,529,624.5345 rounds 11 converged True (635s)
+  [25/31] exp4|exp4-pool-v1|65lines#f217c449dafc obj 3,536,560.5160 rounds 13 converged True (684s)
+  [26/31] exp4|exp4-pool-v1|65lines#f49131f84c76 obj 3,540,376.5459 rounds 13 converged True (678s)
+  [27/31] exp4|exp4-pool-v1|65lines#f4e4cc3e8f83 obj 3,538,562.5906 rounds 13 converged True (672s)
+  [28/31] exp4|exp4-pool-v1|65lines#f7d5485bd840 obj 3,535,069.7083 rounds 11 converged True (633s)
+  [29/31] exp4|exp4-pool-v1|65lines#feac42afd453 obj 3,518,818.4776 rounds 13 converged True (681s)
+  [30/31] exp4|exp4-pool-v1|65lines#ff4e4bb1910b obj 3,558,443.7545 rounds 13 converged True (691s)
+  [31/31] exp4|exp4-pool-v1|65lines#ff822f6ab822 obj 3,527,706.9736 rounds 14 converged True (726s)
+fleet: 200 candidates evaluated
+fleet feasibility: {'UNDECIDABLE': 200}
+
+======================================================================
+  proposals    : 2000
+  promoted     : 200
+  certified    : 200 / 200
+  EXACT leader : exp4|exp4-pool-v1|65lines#ecb2ffc4bcce
+                 65 lines, objective 3,511,184.5658
+  separation   : 373.3984 (1.063e-04 relative) from the runner-up
+  gate 4-6     : winner has 65 lines; bounds [15, 65] ACTIVE -- RESULT CENSORED
+  fleet        : UNDECIDABLE, bracket [71, 373] blocks (deadhead OPEN)
+  SCOPE OF THE CLAIM
+    This leader is the best CERTIFIED OBJECTIVE under the canonical vehicle-hours
+    envelope (2517.183333 vh, b6c647d3766338a6). Its FLEET REQUIREMENT IS UNDECIDABLE:
+    deadhead provenance is OPEN and, on synthesised candidates, terminal identity
+    is degenerate. No operational deployability claim follows from this run.
+    Fleet was reported and never gated; ranking used objective_EXACT alone.
+  status       : COMPLETE
+pool: 204 assembling lines of 206, cardinality 15-65
+envelope b6c647d3766338a6: 2517.183333 vh, block-derived fleet {'am_peak': 187, 'early': 135, 'evening': 178, 'midday': 173, 'owl': 149, 'pm_peak': 197}
+fleet gate: candidate blocking (EXP4_BLOCKING v2, 4840070385b7bc3e); recourse 44a81590ff1b1e81
+baseline under the same instrument: [180, 212] blocks over 2331 trips; published peak 197 @ 17:13 is a DIFFERENT instrument and is not the comparison
+FLEET IS REPORTED, NOT GATED: no fleet verdict filters, ranks or rejects a candidate. Ranking is on objective_EXACT alone.
+master path set: loaded from disk ({'am_peak': 18218, 'early': 18201, 'evening': 18218, 'midday': 18218, 'owl': 18218, 'pm_peak': 18218})
+discovery: resumed, 2000 proposals on disk
+promotion: 200 of 2000 promoted  [CAP BOUND]
+certification: 200 done, 0 remaining
+fleet feasibility: {'UNDECIDABLE': 200}
+
+======================================================================
+  proposals    : 2000
+  promoted     : 200
+  certified    : 200 / 200
+  EXACT leader : exp4|exp4-pool-v1|65lines#ecb2ffc4bcce
+                 65 lines, objective 3,511,184.5658
+  separation   : 373.3984 (1.063e-04 relative) from the runner-up
+  gate 4-6     : winner has 65 lines; bounds [15, 65] ACTIVE -- RESULT CENSORED
+  fleet        : UNDECIDABLE, bracket [71, 373] blocks (deadhead OPEN)
+  SCOPE OF THE CLAIM
+    This leader is the best CERTIFIED OBJECTIVE under the canonical vehicle-hours
+    envelope (2517.183333 vh, b6c647d3766338a6). Its FLEET REQUIREMENT IS UNDECIDABLE:
+    deadhead provenance is OPEN and, on synthesised candidates, terminal identity
+    is degenerate. No operational deployability claim follows from this run.
+    Fleet was reported and never gated; ranking used objective_EXACT alone.
+  status       : COMPLETE

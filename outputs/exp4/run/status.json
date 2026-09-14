@@ -34,17 +34,2818 @@
    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
   }
  },
- "fleet_feasibility": {},
+ "fleet_feasibility": {
+  "exp4|exp4-pool-v1|65lines#00a1a066ae8e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 361,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#01053e1ee016": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 376,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0252045320c1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 371,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0270ac82da93": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 395,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#02a71a286c3f": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 382,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#036179be5d4b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#03ddaa5089cf": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 329,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#03fce0e3f398": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 365,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#05da9d9254f2": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 76,
+    "upper": 367,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#06a0b7538dda": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 389,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 490,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0716b118f011": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 347,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 444,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#07d8dadd9362": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 362,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#081afff930ee": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 383,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#087a57214d17": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 393,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#08ce303d15b9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 376,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#08f377545e31": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 392,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#09c5cc4dd6bb": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 392,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0aa85064fdd4": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 361,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0ac1e858735c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 394,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0ad8275d4fe8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 376,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0b5cd76a4d95": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0bdd18b3f431": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0c061c5da55c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 397,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0daa376b8e9d": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 372,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0eb5719e8796": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 340,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#0f952255f5bd": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 344,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#10861b7f4f6b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 388,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#113872a5a967": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#11967e711b01": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#11c2ecb78519": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 76,
+    "upper": 384,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#12165a4c04c6": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 364,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#12ab99b5915e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 380,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#12f767e55302": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 391,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#134866497ed7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#13a0dd5dbfc2": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 355,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#13b8d9ecee0a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 391,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#16e8b03c4a01": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 353,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#17ba3dab9fb8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 325,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 444,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#1d0aabc5049c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 66,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#1e4ab698f22a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 391,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#1f2a136ff4a1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 389,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#202bcbd30b0b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 381,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#208b85f8a5e6": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 365,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 456,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#21fa771c4311": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 375,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#229cb1654b51": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 384,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#236aa4945a39": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#24e142fc0287": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 343,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#25f7cef7f2e9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 66,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#260d2e19636c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 395,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2647272a8b91": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 401,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#26e7a4efc7d8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 370,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#26ea778a42d5": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 340,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 434,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#27e98a3c03dd": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#29c0b77eb870": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 368,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2c175dbf6a53": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 402,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2d37c860663b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 394,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 492,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2e7ca680b95a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 440,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2e7cebf918f4": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 355,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2e91e1000126": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 370,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#2faa7024f923": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 384,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#32217e8b5098": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 365,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3302f2af66ee": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 378,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#34a619e99f21": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 345,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#34a94a029519": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 418,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 506,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#350c7cf4e725": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 446,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#35bdcdf10790": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 75,
+    "upper": 359,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#35e351133d6f": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 340,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 446,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#378d65f429e7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 367,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#38518f45ddd8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 380,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#39e73d78adc3": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 340,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 458,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3ad6fb7cee39": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3b8f442dc97b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 400,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 494,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3c1fab53ae34": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 366,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3d18a585b4f3": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 399,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#3d7c9f161672": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 361,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#403bb3e801a5": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 398,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#41a1f3d6358e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 396,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#43b8e5a335f9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#446bd2371357": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 339,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 456,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#4ab053a8f77f": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 383,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#4bd65460f003": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#4c98a9adcbd9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 415,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 496,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#4d8b29db06ed": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 411,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 502,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#513af2338267": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 432,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 522,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#51c9bc9f6cc1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 369,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#52d9a64ac9f9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 351,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 448,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#531bd9bff013": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 393,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#545eb38f4b57": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#55a334008898": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 66,
+    "upper": 404,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#5667143ddd84": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 352,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#5737f7af14a7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 371,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 456,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#5743bdb17ada": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#57d91472dc28": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 75,
+    "upper": 347,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 444,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#5abe80d13635": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 371,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#5f963d4bb30f": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 346,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#6235140c6df3": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 329,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 438,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#664850ae34f2": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 327,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 428,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#68fa9c2f67bd": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 408,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 498,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#6a40fb5a9de7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#6addf085b829": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 385,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#6c1e400f1379": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#6dbfed52cb7f": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7272b2b37260": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 387,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#72a13b9cf627": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 376,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#73b1c71b41fc": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 397,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#74ebd8d603b8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 351,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7a7459722327": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 394,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7aee66b501d2": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 329,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 444,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7b63053f84be": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 65,
+    "upper": 396,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7bf46b9b2e0a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 355,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7c4bb6f4daa0": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 366,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#7df991b36df1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#80a5c289e861": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 390,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#81d9a2f8c376": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#84edb6cc540a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 415,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 496,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#86a580516347": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 351,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8965c4f852d3": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 391,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#89afcb1d01e0": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 378,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8c0b07ffccb1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 75,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8c311773cbae": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 384,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8cfbb9f72c54": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 387,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8fb185fb9c9a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 66,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#8fd2f5289ecc": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 403,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#90da3ba5b732": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 364,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#931442c18c27": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 369,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#935195e7e6a8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 381,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#96485eb1a98e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 478,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 500,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#98054c48fe48": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 358,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#98561192a965": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 358,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#995f117521b9": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 372,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#99c5d391c164": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 75,
+    "upper": 351,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#9a48db1b4458": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#9abcf4130fd7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#9c453324e080": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 386,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#a0f74ef83923": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 358,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#a2f5fd540ba7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 359,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 448,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#a52e297e84b2": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 370,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#a5fae152436b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 75,
+    "upper": 377,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#a9687a8f6146": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ab7e78e194ba": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 372,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ac9267f1a2ef": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#aeef8ff78bd1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 392,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#afa2c72be006": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 367,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b14349a05c65": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 375,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b238cac2845e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 357,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b29253eb2d98": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 353,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b2b43dbb7034": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 388,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b32a8b775c2b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b334833266db": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 352,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 446,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#b3c43fb8ccb1": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 65,
+    "upper": 394,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#baed41dfdd6e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 394,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 498,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#bb6abbbb8add": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 358,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 448,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#be27a31e5ddf": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 383,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#be9b37534398": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c053fafadb97": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 369,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c374c87023ef": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 358,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c39c36214499": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 396,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c48ea2959f6c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 400,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 500,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c625281e02c8": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 375,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c6824140fb68": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 371,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#c85f68507f8c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 366,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ca20041516cf": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ceab9279540c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 375,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#cee061c4de90": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 361,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d10361d1b34d": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 383,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d108352c408e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 386,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 480,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d1f8d2497954": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 342,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d451584c40c6": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 352,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 450,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d57d1794e8c7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 396,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d6f401185657": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 372,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d8ce37fb32b7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 355,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 452,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#d9b4952dfca7": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 371,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 468,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#dd62c1c002ec": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 381,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 464,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e07e623ac167": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 368,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e0995f81d96e": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 347,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e10f2321e79b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 362,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e12502aa3359": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 69,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e17adda58300": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 406,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 486,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e19c5c597f1b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 374,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e1d16563d333": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 368,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e262be604e11": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 364,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 466,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e368e4c6663c": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 345,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 456,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e539104e3397": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 337,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e5d0b0b5e37b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 365,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 454,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e75ee82e034a": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 68,
+    "upper": 384,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 484,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#e978e8cc7393": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 462,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#eb44aa2e4763": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 392,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ebb81d232aa0": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 395,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 488,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ec59b41db804": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 370,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 482,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ecb2ffc4bcce": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 71,
+    "upper": 373,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 476,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#eed717e8318b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 350,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f0d89fda7557": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 76,
+    "upper": 379,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 474,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f0dccfe1b209": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 413,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 492,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f217c449dafc": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 74,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 460,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f49131f84c76": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 378,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 478,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f4e4cc3e8f83": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 70,
+    "upper": 392,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 494,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#f7d5485bd840": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 73,
+    "upper": 356,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 442,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#feac42afd453": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 353,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 458,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ff4e4bb1910b": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 67,
+    "upper": 382,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 470,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  },
+  "exp4|exp4-pool-v1|65lines#ff822f6ab822": {
+   "verdict": "UNDECIDABLE",
+   "deadhead_provenance_status": "OPEN",
+   "fleet_bracket": {
+    "lower": 72,
+    "upper": 360,
+    "lower_oracle": "zero_deadhead_relaxation (Dilworth identity)",
+    "upper_oracle": "same_terminal_only",
+    "deadhead_provenance": "OPEN",
+    "n_trips": 472,
+    "kind": "CANDIDATE_BLOCK_BOUND",
+    "NOT": "not a certified fleet requirement; neither end may be reported as the candidate's fleet number"
+   }
+  }
+ },
  "proposal_digest": "2b8e18c681689a55",
  "promotion_digest": "ec6288fc8ec9b7d0",
  "certification_digest": "2125984c82b60a83",
  "tie_break_digest": "0297e180cf30369d",
  "n_proposals": 2000,
  "n_promoted": 200,
- "n_certified": 169,
- "complete": false,
- "exact_leader": "exp4|exp4-pool-v1|65lines#08f377545e31",
- "exact_leader_objective": 3511557.96418463,
+ "n_certified": 200,
+ "complete": true,
+ "exact_leader": "exp4|exp4-pool-v1|65lines#ecb2ffc4bcce",
+ "exact_leader_objective": 3511184.5657525407,
  "exact_leader_lines": [
   "syn-04bd49ffa8580649",
   "syn-094178ee2413e586",
@@ -81,10 +2882,10 @@
   "syn-917daae60f61e621",
   "syn-9425660884704b5f",
   "syn-96fcbfdc5e84b719",
-  "syn-9b589a3c5d559ae9",
   "syn-9cf593e6ead67626",
   "syn-a034dfb8e0dadc56",
   "syn-a31805b4a037eca2",
+  "syn-a3d9f35db11e57da",
   "syn-a450dfa427a890a1",
   "syn-aa289ecd245b53c1",
   "syn-ad09868780a1c274",
@@ -158,5 +2959,5 @@
   }
  },
  "d24_classification": "POST-RESULT operational validation, not a launch gate",
- "seconds_this_shard": 21947.90951037407
+ "seconds_this_shard": 0.38199543952941895
 }
