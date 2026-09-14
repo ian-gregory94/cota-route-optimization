@@ -2167,3 +2167,149 @@ the numbers: the passthrough exists, the pin is applied *before* the solver
 switch, the baseline plan is pinned as well as the ladder, the result is
 asserted, a pin naming an absent route-period is refused, and
 `snap_to_ladder(20.0, [OFF])` still raises.
+
+## D36 — discovery's ordering is inverted, and the promotion cap came within four ranks of excluding the winner
+
+**2026-09-14, found by the reserved question at the close of Experiment 4.**
+
+The question was reserved in `36c46ddf` and deliberately not attempted until
+all 200 candidates were certified: does certified rank correlate with discovery
+rank? D18 predicted a weak correlation. It is not weak. It is **negative**.
+
+```
+spearman(discovery rank, certified rank), n=200      -0.3361
+```
+
+The certified winner, `...ecb2ffc4bcce`, was **discovery rank 196 of 200**.
+Promotion takes the top 200 of 2000 proposals by discovery score. The winner
+sat **four slots above the cut**, separated from the 201st proposal by 12.02 on
+a score of 3.62 million. Rank 200 and rank 201 differ by 5.57 — **0.000154%**.
+
+The CAP BOUND recall risk has been carried in `promotion.json` since promotion
+as a stated hazard. It was not hypothetical. It came within four ranks — drawn
+through a region where discovery scores differ in the sixth decimal place — of
+excluding the certified winner from the experiment entirely.
+
+**The mechanism, in one number.** Discovery always overstates the exact
+objective, by between 0.9116% and 3.2279%. That overstatement is anti-correlated
+with the true objective at
+
+```
+spearman(exact objective, overstatement)             -0.9930
+```
+
+— the better the candidate, the more discovery overstates it. The leader
+carries the **largest overstatement in the field**, 3.2279%, the maximum
+observed. A near-perfect negative correlation of that shape has one cause: the
+discovery score is very nearly *constant* across the field, so its residual
+simply tracks `−exact`.
+
+Across the same 200 candidates:
+
+| quantity | spread |
+|---|---|
+| exact objective | 2.2788% |
+| discovery score | 0.1589% |
+| **ratio** | **exact varies 14× more** |
+
+| quantity | value |
+|---|---|
+| stdev of exact objective, % of mean | 0.4361% |
+| stdev of discovery overstatement | 0.4638 pts |
+| **ratio** | **error exceeds signal, 1.06×** |
+
+Discovery's approximation error is *larger* than the true variation it is
+ranking. Any ordering it produces in this band is dominated by its own
+residual, and that residual points the wrong way.
+
+**Supporting counts.** Of the certified top 20, only **four** were inside
+discovery's own top 100. Their discovery ranks: 33, 73, 90, 97, 106, 109, 110,
+117, 122, 133, 135, 139, 142, 143, 155, 158, 195, 196, 198, 199. Of the
+certified top 50, thirteen were in discovery's top 100 — and thirteen were in
+its **bottom fifty**. Discovery's own top ten certified at ranks 196, 198, 135,
+133, 166, 167, 164, 102, 170, 157: every one in the bottom half.
+
+**It is not the shallow-basin effect in disguise.** `spearman(discovery rank,
+rounds) = −0.0202` — no relationship at all. The overstatement rises gently
+with rounds (1.72% at 3 rounds to 2.57% at 14), but discovery's *ordering*
+carries no rounds signal. D36 and D37 are independent.
+
+**What this is.** D18 in its sharpest form. The gap is not noise around the
+truth; it is a structured quantity that grows with candidate quality, so
+ranking by approximate objective ranks by structure-induced error. The
+architecture's rule — discovery proposes, exact optimisation decides,
+`ProposalScore` refuses ordering and float conversion — is not a stylistic
+preference. Measured, the proposing half would have inverted the answer.
+
+**The band caveat travels with this finding.** It is measured *inside* the
+promoted 200, whose discovery scores span 0.159%. Extrapolating a
+restricted-range correlation outward is precisely the error this project keeps
+refusing to make. What proposals 201–2000 contain is unknown; certifying them
+is ~326 hours at 652 s a candidate. What the finding does say is that the
+*argument* for the cap — that discovery ordering concentrates the good
+candidates at the top — is measurably false inside the band where it was
+applied.
+
+Artifact: `outputs/exp4/run/discovery_vs_certified.json`. Nothing here changes
+the result: `rank_certified` ordered the complete set on `objective_EXACT`
+alone under the frozen tie-break `0297e180cf30369d`.
+
+## D37 — fast convergence excludes a candidate from contention, and says nothing else
+
+**2026-09-14, from the complete Experiment 4 certified set.**
+
+Computed on all 200:
+
+```
+best rank among rounds <=  8 :  80 of 200   (13 such candidates)
+best rank among rounds <= 10 :  70 of 200   (28 such candidates)
+```
+
+The top **69** is entirely 11+ rounds. The boundary widened monotonically as
+the field filled in — 60th at n=180, 66th at n=191, 70th at n=200 — so more
+data strengthened the claim rather than eroding it. The preregistered falsifier
+(a candidate inside the top fifty converging in ten rounds or fewer) did not
+occur in 200.
+
+This is consistent with the `(N,K)`-block-local contract rather than a
+discovery about it. With `N_KEYS=8, K_RUNGS=3`, a plan with no improving 8-key
+block within 3 ladder rungs stops early because it sits in a shallow basin, and
+a shallow basin is a bad plan.
+
+**The claim is about certified rank, not about truth.** Those same fast
+candidates are the ones whose certified objective is *least* trustworthy as a
+bound on the global optimum — the block-local residual is unmeasured and
+structurally widest exactly where convergence is fastest. D37 says the
+certification procedure ranks them low, not that they are bad.
+
+**What it does not say.** Nothing about where in the remaining field a fast
+candidate lands: the 28 candidates at ≤10 rounds run from 70th to 199th.
+Nothing about which of the slow buckets wins — the leader converged in 12
+rounds, two short of the deepest in the field, from a bucket of 13.
+
+**Three things this claim used to say and no longer does.** They are recorded
+because the checkpoint commits are the project's running record:
+
+1. *"Every candidate converging in ≤8 rounds lands in the bottom half"* —
+   FALSE, and false since candidate 147. `...b2b43dbb7034` (8 rounds) entered
+   at rank 58 of 147 and finished 80th of 200. Restated as holding at the 150,
+   160 and 170 checkpoints; corrected at 180 (`4a0077bc`). Cause: numbers were
+   recomputed each checkpoint, *claims* were not.
+2. *The enrichment tables*, all of them before the 190 checkpoint. At 180 the
+   12-round bucket read 0.00×/0.33× — the most depleted non-empty row — and ten
+   candidates later it held first place outright. A 13-member bucket moves
+   eight percentage points on one result. Final table below; no row with fewer
+   than ~20 members will support a claim, which is six of the ten rows.
+3. *Spearman(rounds, certified)* as evidence. Nine checkpoints: −0.299, −0.319,
+   −0.312, −0.302, −0.262, −0.265, −0.264, −0.271, −0.2653 final. It wandered
+   without direction for the whole run. With 56% of the field (112 of 200) in
+   the 13-round bucket it mostly measures intra-bucket scatter. Recorded, not
+   argued.
+
+| rounds | field | top 20 | enrich | top 50 | enrich |
+|---|---|---|---|---|---|
+| 3–10 | 28 | 0 | 0.00× | 0 | 0.00× |
+| 11 | 29 | 2 | 0.69× | 4 | 0.55× |
+| 12 | 13 | 1 | 0.77× | 2 | 0.62× |
+| 13 | 112 | 14 | 1.25× | 38 | 1.36× |
+| 14 | 18 | 3 | 1.67× | 6 | 1.33× |
