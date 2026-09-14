@@ -1,10 +1,12 @@
 # COTA route optimization — state of play
 
-Last updated 2026-09-07. **Experiments 1, 2, 2B and 3 are closed.** Experiment 3
-is frozen at tag `exp3-final-v1`. **Experiment 4 has not launched and is not
-launchable**: readiness stands at **23 MET · 1 OPEN · 1 MANUAL of 25**, and the
-one open item is a missing input rather than missing code. **Experiment 5 is
-built and queued behind Experiment 4.**
+Last updated 2026-09-14. **Experiments 1, 2, 2B, 3 and 4 are closed.**
+Experiment 3 is frozen at tag `exp3-final-v1`. **Experiment 4 RAN AND
+COMPLETED** on 2026-09-14: 200 of 200 promoted candidates certified, zero
+errors, an exact leader established. It ran with **fleet REPORTED, NOT GATED** —
+the fleet question it was originally blocked on is *still open* and the run did
+not advance it. **Experiment 5 is built; its stated block condition (Experiment
+4) has now cleared, but nothing has been decided about running it.**
 
 ## The headline, in one line each
 
@@ -15,10 +17,15 @@ built and queued behind Experiment 4.**
   matched-start re-test (D31).
 * **Experiment 3 — eight edit kinds, 84 states: one certified route mutation,
   −0.187% unserved demand**, with a two-regime caveat that travels with it.
-* **Experiment 4 — NOT LAUNCHED.** Everything the readiness pass asked for is
-  now built. What blocks it is data COTA has and this project does not.
-* **Experiment 5 — resource frontier: implemented, tested, BLOCKED** behind
-  Experiment 4.
+* **Experiment 4 — COMPLETE. Best certified objective 3,511,184.5658**, from
+  `...ecb2ffc4bcce`, over 200 certified candidates. The margin to second is
+  **0.0106%**. Two new findings: **D36**, discovery rank *anti*-correlates with
+  certified rank and the promotion cap came within four ranks of excluding the
+  winner; **D37**, fast convergence excludes a candidate from contention.
+  **No fleet claim and no deployability claim** — see below.
+* **Experiment 5 — resource frontier: implemented, tested, NOT RUN.** Its
+  block condition (Experiment 4) has cleared. Whether to run it is an open
+  decision, not a queued action.
 
 ## D27 — the optimizer was chosen by the treatment
 
@@ -130,13 +137,131 @@ nothing more.**
 
 ---
 
-# Experiment 4 — everything is built; the missing pieces are data
+# Experiment 4 — RUN COMPLETE
 
-Readiness **23 MET · 1 OPEN · 1 MANUAL of 25**. Gates 15: 11 MET, 4 ARMED, 0
-OPEN. **No search has run.** The only run that ever started is preserved at
+```
+exact_leader        exp4|exp4-pool-v1|65lines#ecb2ffc4bcce
+objective_EXACT     3,511,184.5657525407
+rounds              12 (converged),  65 lines
+status.json         complete: true
+```
+
+| | objective | rel. to leader | rounds |
+|---|---|---|---|
+| 1st | 3,511,184.5658 | — | 12 |
+| 2nd `...08f377545e31` | 3,511,557.9642 | **+0.0106%** | 11 |
+| 3rd | 3,514,611.1824 | +0.0976% | 14 |
+| worst | 3,591,198.3836 | +2.2788% | 11 |
+
+200 of 200 promoted candidates certified. Zero errors, zero
+`PathsetScopeViolation`, zero empty-scope `CertificationError`, all 200
+converged — none reached `MAX_ROUNDS = 40`. 36.19 h wall, 130,308 s compute,
+mean 652 s per candidate, six shards, nothing lost to a rollover. Median gap
+0.7721%; nine candidates within 0.18% of the leader.
+
+`rank_certified` ordered the complete set on `objective_EXACT` alone under the
+frozen tie-break `0297e180cf30369d`. Closeout: `EXPERIMENT4_CLOSEOUT.md`.
+
+**The margin is the first thing to say about it.** First to second is 373.40
+absolute — a hundredth of a percent, against ~0.19% effects elsewhere in this
+project. And the leader *changed at candidate 190 of 200*: `...08f377545e31`
+led from candidate 16 through 189, and every checkpoint from the 20 mark to the
+180 mark reported it as best. Cutting the run anywhere before candidate 190
+would have reported a different winner.
+
+## D36 — discovery's ordering is inverted, and the cap nearly cost the run its answer
+
+```
+spearman(discovery rank, certified rank), n=200      -0.3361
+spearman(exact objective, overstatement)             -0.9930
+```
+
+**The certified winner was discovery rank 196 of 200.** Promotion takes the top
+200 of 2000 by discovery score; the winner sat **four slots above the cut**,
+separated from the 201st proposal by 0.000154% of score. The CAP BOUND recall
+risk carried in `promotion.json` since promotion was not hypothetical.
+
+The mechanism: discovery always overstates (0.9116%–3.2279%), and it overstates
+the *good* candidates most — the leader carries the largest overstatement in
+the field. That shape means the discovery score is nearly **constant**, so its
+residual tracks `−exact`. Across the same 200, the exact objective spans 2.2788%
+and the discovery score spans 0.1589% — **exact varies 14× more** — and
+discovery's error stdev (0.4638 pts) **exceeds** the signal stdev (0.4361%).
+
+This is D18 measured rather than predicted: the gap tracks network structure so
+precisely that it inverts the ordering. *Discovery proposes, exact optimization
+decides* is not a stylistic preference — the proposing half would have given the
+wrong answer.
+
+**The band caveat travels with it.** Measured inside the promoted 200, whose
+discovery scores span 0.159%. It does **not** extrapolate to proposals 201–2000;
+what those contain is unknown, and certifying them is ~326 h.
+
+## D37 — fast convergence excludes a candidate from contention, and says nothing else
+
+```
+best rank among rounds <=  8 :  80 of 200   (13 such candidates)
+best rank among rounds <= 10 :  70 of 200   (28 such candidates)
+```
+
+The top **69** is entirely 11+ rounds, and the boundary *widened* with n (60th
+at 180, 66th at 191, 70th at 200). Consistent with the `(N,K)`-block-local
+contract rather than a discovery about it: a plan with no improving 8-key block
+within 3 ladder rungs sits in a shallow basin. **The claim is about certified
+rank, not about truth** — those same fast candidates have the widest unmeasured
+block-local residual. D36 and D37 are independent
+(`spearman(discovery rank, rounds) = −0.0202`).
+
+## Three retractions from this run
+
+Recorded because the checkpoint commits are the running record and a reader
+working forward through them will otherwise carry the errors.
+
+1. *"Every candidate converging in ≤8 rounds lands in the bottom half"* — FALSE,
+   and false since candidate 147; that candidate finished **80th of 200**. It
+   was restated as holding at the 150, 160 and 170 checkpoints. Cause: numbers
+   were recomputed each checkpoint, **claims were not**.
+2. *Every enrichment table before the 190 checkpoint.* At 180 the 12-round
+   bucket read 0.00×/0.33× — the most depleted non-empty row — and ten
+   candidates later it held first place. No row with fewer than ~20 members
+   supports a claim, which is six of the ten rows.
+3. *Two ranks stated without being computed* (candidates 138 and 157).
+
+`spearman(rounds, certified)` finished at **−0.2653** after wandering across
+nine checkpoints without direction. With 56% of the field in one bucket it
+measures intra-bucket scatter. **Recorded, not argued.**
+
+## What Experiment 4 does NOT establish
+
+* **No fleet requirement.** The fleet instrument returns `UNDECIDABLE` for every
+  candidate *including the leader*. Deadhead provenance is OPEN; terminal
+  identity is degenerate on synthesised candidates. The 180–212 bracket is a
+  `CANDIDATE_BLOCK_BOUND` and **neither end may be reported as a fleet number**.
+* **No operational deployability claim.** Fleet was REPORTED, NOT GATED — no
+  fleet verdict filtered, ranked or rejected any candidate, per
+  `READINESS_FROZEN` (authorised by Ian, 2026-09-07). D24 remains open as
+  post-result operational validation. **Certification finishing did not advance
+  the fleet question at all.**
+* **No global optimality.** The `(N,K)`-block-local guarantee is local and the
+  residual is unmeasured for every candidate including the leader.
+* **Nothing about proposals 201–2000.** 1800 were never certified, and D36 makes
+  that question sharper rather than answering it.
+* **Nothing about whether a 0.0106% margin is durable.** Two candidates a
+  hundredth of a percent apart, under a local guarantee with an unmeasured
+  residual, are not meaningfully ordered by this experiment. They are ordered by
+  `rank_certified` under the frozen tie-break, which is a different statement.
+
+---
+
+# Experiment 4 — the instruments, as built
+
+Readiness stood at **23 MET · 1 OPEN · 1 MANUAL of 25** at launch; gates 15: 11
+MET, 4 ARMED, 0 OPEN. The earlier aborted run is preserved at
 `outputs/exp4/run/STATUS.md` as **DIAGNOSTIC — INVALID RESOURCE ENVELOPE**.
+Everything below documents the instruments the completed run used, and all of it
+still stands.
 
-## D18 — MET, and Experiment 4 is blocked by its answer
+## D18 — MET, and it is what forced the architecture (now measured as D36)
 
 The gap benchmark ran on 36 cells over 4 network structures by exhaustive
 enumeration of a reduced neighbourhood under the production objective. Median
@@ -148,8 +273,9 @@ differential 0.381749 pp against a median absolute gap of 0.297432 pp — ratio
 **forbidding branch** was taken: `discovery_effort_comparison_permitted = False`,
 **no promotion band emitted**.
 
-D18 is MET and Experiment 4 is blocked *by its answer*, which is a different
-thing. This is **D27 one level up**: D27 was the optimizer being *chosen* by the
+D18 is MET and Experiment 4 was blocked *by its answer*, which is a different
+thing. **D36 has now measured how far that goes: inside the promoted band the
+discovery ordering is not merely weak, it is inverted.** This is **D27 one level up**: D27 was the optimizer being *chosen* by the
 treatment; this is the optimizer's *answer quality* being correlated with it. The
 firewall catches the first and structurally cannot catch the second, because both
 arms genuinely run the same optimizer under the same contract.
@@ -377,10 +503,13 @@ claimed — Gen2 remains at 0.90× exhaustive enumeration on the spaces tested.
 
 ---
 
-# Experiment 5 — resource frontier: built, tested, BLOCKED
+# Experiment 5 — resource frontier: built, tested, NOT RUN
 
-`src/cota_opt/exp5_resource.py` and `exp5_frontier.py`, 32 tests. Blocked behind
-Experiment 4; nothing has been run.
+`src/cota_opt/exp5_resource.py` and `exp5_frontier.py`, 32 tests. Its stated
+block condition — Experiment 4 — cleared on 2026-09-14. Nothing has been run and
+nothing has been decided about running it. Note that Experiment 5 reasons about
+a *resource frontier*, and Experiment 4 established no fleet number; what that
+implies for Exp 5's premises has not been worked through.
 
 The envelope is the same frozen artifact, and the type system enforces it:
 `ResourceEnvelope` holds fleet **per period as integers** and **rejects a
@@ -439,8 +568,10 @@ lines under `--ignore-cr-at-eol`. Do not commit them.
 | Limitation | Size | Direction |
 |---|---|---|
 | Commute-only LODES demand | 24.7% of regional flow transit-accessible | unknown; largest unquantified error |
-| **Deadhead travel time** | **unavailable; bracket width 180–212 (18%)** | **blocks Exp 4 fleet certification** |
-| **Terminal identity** | **`parent_station` empty in 2,949/2,949 stops; 83.3% of candidate trips stranded** | **blocks Exp 4 fleet certification (D24)** |
+| **Deadhead travel time** | **unavailable; bracket width 180–212 (18%)** | **still open. Exp 4 ran with fleet REPORTED, NOT GATED; no fleet claim follows from it** |
+| **Terminal identity** | **`parent_station` empty in 2,949/2,949 stops; 83.3% of candidate trips stranded** | **still open (D24), reclassified as post-result validation. Exp 4 completed without it** |
+| **Discovery ordering (D36)** | **anti-correlated with certified rank, −0.3361; winner was discovery rank 196/200** | **the promotion cap selects on a quantity that runs against the objective, inside the band measured** |
+| **Uncertified proposals** | **1800 of 2000 never certified; ~326 h to close** | **unknown; D36 makes the question sharper, not self-answering** |
 | Frontier below λ = 2 | uncertified on both models | quoted from λ = 2 upward |
 | Per-route headways | 19–26% seed disagreement | aggregate unaffected; no route-level recommendation |
 | Cross-route hyperpath | 0.516% of generalized cost | overstates waiting on trunk routes; deferred |
