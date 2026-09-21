@@ -175,3 +175,25 @@ Keep retractions and caveats explicit throughout. Ian asked for that by name.
   so it means something is wrong with the design.
 - Any error payload or `NOT CONVERGED` → report prominently.
 - Shard fails to restart after a `roll` → report.
+
+---
+
+## Second outage: 15–21 September, six days
+
+The 30-hour lapse above was a chain failure — a beat fired, I answered a
+message from Ian instead of re-arming, and no beat existed afterwards.
+
+The second outage was **not** that. The chain held: beats fired on schedule
+through the whole period and their notifications queued. What did not happen is
+the session resuming. The container was reclaimed at ~21:57 UTC on 15 Sep and
+stayed gone; the run was found six days later at 15/200 with pid 379 dead and
+`uptime` at 0.
+
+**The beat firing is not evidence the run is alive. Only the count moving is.**
+The chain recovers a container that comes back. It cannot resurrect one that
+does not, and nothing written into the beat can change that — so do not invent
+a mechanism that claims to. Re-arm, roll, and if the clock has jumped, say so
+plainly and give the real elapsed cost.
+
+Progress at the moment of the outage and on recovery: 15 of 200 certified,
+0 errors, 0 non-converged, 1 candidate beating the incumbent (r237).

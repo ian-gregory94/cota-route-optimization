@@ -1,0 +1,33 @@
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 0 done, 200 remaining of 200
+  [1/200] r201   8f9a7be1eec7 obj 3,529,106.8563 rounds 13 converged True (892s)
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 1 done, 199 remaining of 200
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 1 done, 199 remaining of 200
+  [1/199] r202   68a4d4f27935 obj 3,552,238.6069 rounds 11 converged True (843s)
+  [2/199] r206   529b04313b6e obj 3,528,878.2668 rounds 11 converged True (829s)
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 3 done, 197 remaining of 200
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 3 done, 197 remaining of 200
+  [1/197] r209   1439e20ee7d1 obj 3,557,797.0908 rounds 13 converged True (739s)
+  [2/197] r211   6e3df853e96b obj 3,526,774.9320 rounds 13 converged True (745s)
+  [3/197] r215   c06bf4bf5478 obj 3,568,746.6576 rounds 5 converged True (516s)
+  [4/197] r218   8d209e6e1782 obj 3,560,200.6466 rounds 17 converged True (863s)
+  [5/197] r221   aea1a03ef2f8 obj 3,523,893.7710 rounds 13 converged True (746s)
+  [6/197] r235   fa1c2c0f8cd2 obj 3,562,229.4583 rounds 13 converged True (739s)
+  [7/197] r237   eca7a2a1fb46 obj 3,510,666.7802 rounds 12 converged True (727s) ** BEATS INCUMBENT **
+  [8/197] r243   32cc4cc668c4 obj 3,565,192.0810 rounds 9 converged True (619s)
+  [9/197] r253   f405afbf5a04 obj 3,570,439.6984 rounds 11 converged True (658s)
+  [10/197] r257   7ff2b9ac058b obj 3,571,345.1003 rounds 11 converged True (655s)
+  [11/197] r260   a9f396ca5f23 obj 3,540,903.5943 rounds 10 converged True (637s)
+  [12/197] r261   9d1027d0e347 obj 3,534,794.6159 rounds 9 converged True (595s)
+AUDIT exp4-audit-v1  seed 20260914  envelope b6c647d3766338a6  lam 2.0  seed(cert) 20260825
+incumbent to beat: 3,511,184.5658  (ecb2ffc4bcce)
+certification: 15 done, 185 remaining of 200
