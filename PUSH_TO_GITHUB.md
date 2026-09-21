@@ -86,3 +86,53 @@ Attach the repository when the session is created, not after, and install the
 Claude GitHub App at github.com/settings/installations with explicit access to
 it. OAuth alone leaves private repos invisible even when settings read
 "Connected".
+
+---
+
+## Amendment, 2026-09-21 — two traps found during the Exp 4 audit push
+
+**Use the right clone.** There are two on the machine and earlier versions of
+this document named the wrong one:
+
+* `C:\Users\ianjg\OneDrive\Documents\GitHub\cota-route-optimization` — **current,
+  use this one.**
+* `C:\Users\ianjg\source\repos\cota-route-optimization` — **stale**, 350 commits
+  behind `origin/exp3-clean` as of 2026-09-21.
+
+Both point at the same `origin`. Pushing from the stale one pushes nothing
+useful and quietly succeeds.
+
+**The bridge VM cannot delete files.** `rm`, `rmdir` and `unlink` return
+`Operation not permitted` on anything under a mounted folder. Git does not care
+that it lacks permission — it creates `.git/index.lock`, fails to remove it, and
+prints only a warning:
+
+    warning: unable to unlink '.git/index.lock': Operation not permitted
+
+The command appears to succeed. **Every subsequent GitHub Desktop operation then
+reports the repository as locked**, which is what "its locked" means when it
+comes back from the machine. `git fetch` also strands
+`.git/objects/pack/tmp_pack_*` and `tmp_idx_*` files the same way; 26 had
+accumulated before anyone noticed.
+
+The fix, since deletion is unavailable:
+
+    mkdir -p _to_delete/gitlocks
+    mv .git/index.lock .git/objects/maintenance.lock _to_delete/gitlocks/
+    for f in .git/objects/pack/tmp_*; do mv "$f" _to_delete/gitlocks/; done
+
+`mv` is a rename and **is** permitted. Then `git fsck --connectivity-only` to
+confirm nothing was harmed, and tell Ian the `_to_delete/` folder is his to
+remove. `device_request_delete_permission` exists and would prompt him for real
+deletion rights, but `mv` costs him nothing and answers the same need.
+
+**A fast-forward push does not need a checkout.** Fetch the bundle into a
+tracking ref, move the local branch, let Desktop push:
+
+    git fetch <bundle> 'refs/heads/exp3-clean:refs/remotes/cloud/exp3-clean'
+    git merge-base --is-ancestor exp3-clean refs/remotes/cloud/exp3-clean   # verify FF
+    git branch -f exp3-clean refs/remotes/cloud/exp3-clean
+    git branch --set-upstream-to=origin/exp3-clean exp3-clean
+
+This never touches the index or the working tree, so the 23 CRLF-noise files
+stay untouched and no `index.lock` is needed for the branch move itself.

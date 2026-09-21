@@ -1,12 +1,22 @@
 # COTA route optimization — state of play
 
-Last updated 2026-09-14. **Experiments 1, 2, 2B, 3 and 4 are closed.**
-Experiment 3 is frozen at tag `exp3-final-v1`. **Experiment 4 RAN AND
-COMPLETED** on 2026-09-14: 200 of 200 promoted candidates certified, zero
-errors, an exact leader established. It ran with **fleet REPORTED, NOT GATED** —
-the fleet question it was originally blocked on is *still open* and the run did
-not advance it. **Experiment 5 is built; its stated block condition (Experiment
-4) has now cleared, but nothing has been decided about running it.**
+Last updated 2026-09-21. **Experiments 1, 2, 2B, 3 and 4 are closed, and so
+is the Experiment 4 out-of-band audit.** Experiment 3 is frozen at tag
+`exp3-final-v1`. **Experiment 4 RAN AND COMPLETED** on 2026-09-14: 200 of 200
+promoted candidates certified, zero errors, an exact leader established. It ran
+with **fleet REPORTED, NOT GATED** — the fleet question it was originally
+blocked on is *still open* and the run did not advance it.
+
+**The Exp 4 audit was stopped by decision at 15 of 200 on 2026-09-21.** It
+established that the top-200 promotion cap was **invalid** — an excluded
+candidate certifies better than the Exp 4 leader — and it produced **D38**,
+which reframes D36: discovery scores are nearly flat in the region measured, so
+discovery is not an inverted ranker but close to a constant plus noise. Its own
+preregistered question, whether discovery enriches at the population level,
+is **unanswered and not answerable from what was run**.
+
+**Experiment 5 is built; its stated block condition (Experiment 4) has cleared,
+but nothing has been decided about running it, and D38 bears on its premises.**
 
 ## The headline, in one line each
 
@@ -19,10 +29,19 @@ not advance it. **Experiment 5 is built; its stated block condition (Experiment
   −0.187% unserved demand**, with a two-regime caveat that travels with it.
 * **Experiment 4 — COMPLETE. Best certified objective 3,511,184.5658**, from
   `...ecb2ffc4bcce`, over 200 certified candidates. The margin to second is
-  **0.0106%**. Two new findings: **D36**, discovery rank *anti*-correlates with
-  certified rank and the promotion cap came within four ranks of excluding the
-  winner; **D37**, fast convergence excludes a candidate from contention.
-  **No fleet claim and no deployability claim** — see below.
+  **0.0106%**. Two findings at the time: **D36**, discovery rank
+  *anti*-correlates with certified rank and the promotion cap came within four
+  ranks of excluding the winner; **D37**, fast convergence excludes a candidate
+  from contention. **No fleet claim and no deployability claim** — see below.
+* **Experiment 4 audit — STOPPED at 15 of 200, and the cap was invalid.**
+  Discovery rank 237, excluded by the cap, certifies at **3,510,666.7802** —
+  **0.014747% better than the incumbent**, inserting at exact rank 1 of 201.
+  An existence claim, immune to the audit's sampling defects. **D38**: across
+  the 15, `objective_APPROXIMATE` spans 0.0077% while `objective_EXACT` spans
+  1.7284%, so the perfect −1.0000 exact-vs-overstatement inversion is close to
+  arithmetically forced and D36's −0.9930 was largely the same artifact. The
+  audit's own question is **unanswered**: certifying in rank order left four of
+  five strata empty. `EXPERIMENT4_AUDIT_CLOSEOUT.md`.
 * **Experiment 5 — resource frontier: implemented, tested, NOT RUN.** Its
   block condition (Experiment 4) has cleared. Whether to run it is an open
   decision, not a queued action.
@@ -511,6 +530,15 @@ nothing has been decided about running it. Note that Experiment 5 reasons about
 a *resource frontier*, and Experiment 4 established no fleet number; what that
 implies for Exp 5's premises has not been worked through.
 
+**D38 bears on this directly and should be settled before Exp 5 runs.** If Exp 5
+uses a discovery-style approximate score to propose or order candidates, D38
+says that score carried almost no information about the exact objective in the
+only regions measured — 0.0077% of spread out of band against 1.7284% of exact
+spread, and 0.159% against 2.2788% in band. Whatever Exp 5 proposes with, the
+variance of that quantity across its candidate set should be measured **before**
+committing compute to ranking on it. That is the cheapest guard this project has
+found and it was bought with 326 hours it then declined to spend.
+
 The envelope is the same frozen artifact, and the type system enforces it:
 `ResourceEnvelope` holds fleet **per period as integers** and **rejects a
 one-entry mapping outright** — `{"all": 197}` is a scalar cap in a dict costume,
@@ -556,9 +584,20 @@ The Experiment 3 history was collapsed from 2,875 commits to 328 with a
 
 The sandbox holds no git credential and neither does the VM behind the folder
 bridge. **GitHub Desktop has its own token and can push.** The loop: sandbox
-bundles → `Downloads` → the clone at
-`C:\Users\ianjg\source\repos\cota-route-optimization` fetches → Desktop pushes.
+bundles → `device_commit_files` into the clone → `git fetch <bundle>` →
+fast-forward the local branch → **Ian clicks Push in GitHub Desktop**.
 `PUSH_TO_GITHUB.md` documents the traps.
+
+**Use the clone at `C:\Users\ianjg\OneDrive\Documents\GitHub\cota-route-optimization`.**
+The one at `C:\Users\ianjg\source\repos\cota-route-optimization` is stale —
+350 commits behind `origin/exp3-clean` as of 2026-09-21 — and earlier versions
+of this document pointed at it.
+
+**The bridge VM cannot delete files**, so `git fetch` there leaves
+`.git/index.lock` behind and every subsequent GitHub Desktop operation reports
+the repository as locked. The fix is to `mv` the lock (and any
+`.git/objects/pack/tmp_*`) into a `_to_delete/` folder rather than trying to
+remove it.
 
 The 23 files the clone reports as modified are **pure CRLF noise** — zero changed
 lines under `--ignore-cr-at-eol`. Do not commit them.
@@ -570,8 +609,10 @@ lines under `--ignore-cr-at-eol`. Do not commit them.
 | Commute-only LODES demand | 24.7% of regional flow transit-accessible | unknown; largest unquantified error |
 | **Deadhead travel time** | **unavailable; bracket width 180–212 (18%)** | **still open. Exp 4 ran with fleet REPORTED, NOT GATED; no fleet claim follows from it** |
 | **Terminal identity** | **`parent_station` empty in 2,949/2,949 stops; 83.3% of candidate trips stranded** | **still open (D24), reclassified as post-result validation. Exp 4 completed without it** |
-| **Discovery ordering (D36)** | **anti-correlated with certified rank, −0.3361; winner was discovery rank 196/200** | **the promotion cap selects on a quantity that runs against the objective, inside the band measured** |
-| **Uncertified proposals** | **1800 of 2000 never certified; ~326 h to close** | **unknown; D36 makes the question sharper, not self-answering** |
+| **Discovery ordering (D36, reframed by D38)** | **discovery span 0.159% in band and 0.0077% out of band, against exact spans of 2.28% and 1.73%** | **not an inverted ranker — close to a constant plus noise in the regions measured. The cap selected on a quantity ~1,100× smaller than its own error** |
+| **Promotion cap** | **INVALID — an excluded candidate (rank 237) beats the Exp 4 leader by 0.0147%** | **established. Does not tell you what to replace the cap with** |
+| **Uncertified proposals** | **1,785 of 2000 never certified; ~326–360 h to close** | **unknown, and D38 argues against paying it: the ranking an expansion would use carries almost no information where it was measured** |
+| **Population-level enrichment** | **unanswered; 4 of 5 audit strata empty, the 5th biased to its top third** | **open. Indistinguishable on current evidence from a near-uniform pool** |
 | Frontier below λ = 2 | uncertified on both models | quoted from λ = 2 upward |
 | Per-route headways | 19–26% seed disagreement | aggregate unaffected; no route-level recommendation |
 | Cross-route hyperpath | 0.516% of generalized cost | overstates waiting on trunk routes; deferred |
