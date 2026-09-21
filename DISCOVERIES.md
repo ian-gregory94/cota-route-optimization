@@ -2313,3 +2313,62 @@ because the checkpoint commits are the project's running record:
 | 12 | 13 | 1 | 0.77× | 2 | 0.62× |
 | 13 | 112 | 14 | 1.25× | 38 | 1.36× |
 | 14 | 18 | 3 | 1.67× | 6 | 1.33× |
+
+---
+
+## D38 — discovery scores are nearly flat, and D36's mechanism is largely arithmetic
+
+Measured on the 15 out-of-band candidates certified in the Exp 4 audit before
+it was stopped (discovery ranks 201–261 of 2000, all in stratum 201–400).
+
+```
+spearman(exact objective, overstatement)   = -1.0000     [D36, in band: -0.9930]
+discovery-score span across the 15         =  0.00771%
+exact-objective span across the same 15    =  1.72840%   -> 224x wider
+overstatement range                        =  1.4967% - 3.2463%
+```
+
+A perfect rank inversion. Range restriction — which selecting on discovery rank
+imposes — normally attenuates a correlation, so −1.0000 under it is stronger
+evidence than the number alone suggests.
+
+**The interpretation is the opposite of impressive.** `objective_APPROXIMATE`
+is very nearly constant across these candidates: it varies by 0.0077% while the
+exact objective varies by 1.7284%. When the approximate score is effectively a
+constant, overstatement `(approx − exact)/exact` is a strictly decreasing
+function of `exact`, and a Spearman of −1 is close to arithmetically forced. It
+is not independent evidence that discovery carries inverted information.
+
+**This reframes D36 and the reframing is worse for the architecture.** D36
+reported −0.9930 inside the promoted 200 and read it as the mechanism behind
+discovery's inverted ranking. In band the discovery span was 0.15891% against
+an exact span of 2.2788% — a ratio of 14×, less extreme than the 224× here but
+the same structure. A large part of −0.9930 was likewise implied by discovery
+scores being nearly flat.
+
+The corrected statement: **in the region measured, `objective_APPROXIMATE`
+carries almost no information about `objective_EXACT`.** Discovery is not an
+inverted ranker. It is close to a constant plus noise, and the "inversion" is
+what a constant looks like when its residual is correlated against the truth.
+
+**Scope, tightly.** Ranks 201–261 of 2000 — a 61-rank window, one stratum of
+five, 15 candidates. Flatness over that window is **not** flatness over the
+pool. Strata 401–2000 were never certified. D38 is a claim about the measured
+region and the arithmetic, not about the whole proposal pool.
+
+**What it does not say.** It does not say discovery fails to enrich at the
+population level — that question (the audit's preregistered one) is
+**unanswered**, because the audit certifies in rank order and stopping early
+left four of five strata empty and the fifth biased to its top third. It does
+not say the pool is uniform in exact objective. Those two remain
+indistinguishable on this evidence, exactly as the audit design warned.
+
+**Independent of D38, the 200-cap is invalid.** One of the 15, discovery rank
+237, certified at 3,510,666.7802 against the incumbent's 3,511,184.5658 —
+0.014747% better, inserting at exact rank 1 of 201. That is an existence claim
+and survives every sampling objection above. Its discovery score missed the
+rank-200 cut by 0.002932% while its own overstatement was 3.2463%: promotion
+was decided by a quantity ~1,100× smaller than the error in it.
+
+Full accounting in `EXPERIMENT4_AUDIT_CLOSEOUT.md`, including three retracted
+interim throughput claims.
