@@ -98,6 +98,17 @@ plan serves 3.3% more people; cost per person actually served **falls**. It is
 not a free lunch and the +0.88% is 21 standard deviations from zero — there is
 no version of this where the cost is "not measurable".
 
+> **Correction added 2026-09-21.** "Block-derived" is doing work in this
+> paragraph that it cannot do for a *plan*. `blocks.reconstruct` reads
+> `block_id` off real trips; a plan with changed headways has no `block_id`, so
+> the instrument that produced the 197.0 baseline cannot measure the plan
+> against it. The Experiment 1 comparison below is left as written because this
+> audit did not re-derive it, but it should be read as a same-instrument
+> baseline figure alongside a plan figure of unverified provenance, not as a
+> certified fleet equality. Nothing in this project knows the fleet requirement
+> of any modified network: `FLEET_AND_BLOCKING.md` and
+> `EXPERIMENT5_PREMISE_AUDIT.md`.
+
 **It needs no additional buses.** The block-derived fleet proxy puts the
 balanced plan at **197.0 peak vehicles against a 197.0 baseline**. The proxy is
 not tuned: reconstructing COTA's blocks from the feed gives 197 peak vehicles
@@ -300,7 +311,7 @@ solved.
 | **Per-route headways are not identified** | plans differing on ~25% of route-periods (mean 8 min) score within 0.01% | Aggregate result unaffected; no individual route headway may be quoted as a recommendation |
 | **Stop cost cannot be measured from this feed** | 11 natural experiments, 3 routes, pooled **−157 s per extra stop** (inverted sign) | Blocks any Experiment 3 consolidation claim resting on runtime savings; handled as a break-even threshold instead |
 | **Novel-link running time** | MAE 17.2 s, median APE 20.5%, aggregate bias **+0.41%** out of sample | Not biased in the exploitable direction; 63% of links over-predicted |
-| **Peak-fleet formula** | cycle-over-headway gives 150.7 against blocks' 197 — **24% optimistic** | The optimizer's fleet constraint is loose |
+| **Peak-fleet formula** | cycle-over-headway gives 150.7 against blocks' 197 — **24% optimistic** | The optimizer's fleet filter is loose, and it is a filter rather than a fleet constraint. `contract.py:451` refuses the same comparison outright — "would pass every plan while appearing to check something". Fatal for any experiment in which the cap is the treatment: `EXPERIMENT5_PREMISE_AUDIT.md` D5-C |
 | **Scheduled ≠ actual** | not quantified | No reliability penalty in the objective |
 
 ### D10, and what fixing it cost

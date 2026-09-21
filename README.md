@@ -137,8 +137,14 @@ entirely legitimate from the inside.
   *rejected* unless it reproduces the profile's own 18 printed efficiency
   ratios.
 - **Frequency optimization.** Marginal-exchange search over a headway ladder
-  under a fixed vehicle-hour and peak-fleet envelope, with a measured
-  convergence curve rather than an assumed search budget.
+  under a fixed vehicle-hour envelope, with a measured convergence curve rather
+  than an assumed search budget. The search also carries a per-period
+  peak-vehicle filter, but it is measured with the cycle-over-headway proxy
+  (150.73 on the baseline against the block-derived 197) and is **not** a fleet
+  constraint — `contract.py` declines the corresponding certification check
+  rather than run it against the wrong quantity. No fleet number for any
+  candidate network is known; see `FLEET_AND_BLOCKING.md` and
+  `EXPERIMENT5_PREMISE_AUDIT.md`.
 
 ## Layout
 

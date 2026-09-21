@@ -15,8 +15,9 @@ discovery is not an inverted ranker but close to a constant plus noise. Its own
 preregistered question, whether discovery enriches at the population level,
 is **unanswered and not answerable from what was run**.
 
-**Experiment 5 is built; its stated block condition (Experiment 4) has cleared,
-but nothing has been decided about running it, and D38 bears on its premises.**
+**Experiment 5 is built, its block condition has cleared, and a premise audit
+on 2026-09-21 returned `EXP5_REFRAME_REQUIRED`. It must not run as specified.**
+`EXPERIMENT5_PREMISE_AUDIT.md`.
 
 ## The headline, in one line each
 
@@ -42,9 +43,15 @@ but nothing has been decided about running it, and D38 bears on its premises.**
   arithmetically forced and D36's −0.9930 was largely the same artifact. The
   audit's own question is **unanswered**: certifying in rank order left four of
   five strata empty. `EXPERIMENT4_AUDIT_CLOSEOUT.md`.
-* **Experiment 5 — resource frontier: implemented, tested, NOT RUN.** Its
-  block condition (Experiment 4) has cleared. Whether to run it is an open
-  decision, not a queued action.
+* **Experiment 5 — resource frontier: implemented, tested, NOT RUN, and
+  `EXP5_REFRAME_REQUIRED`.** Three independent defects, any one sufficient:
+  the fleet axis cannot be measured (200 of 200 Exp 4 candidates have a fleet
+  bracket containing the *entire* Exp 5 cap grid); no cell binds (every
+  certified plan spends 36–37% of the hours cap, and 0 of 200 exceed even the
+  tightest 0.75× level); and the only path that could apply a fleet cap
+  measures it with the cycle-over-headway proxy that `contract.py` refuses by
+  name. Reframe on revenue vehicle-hours, re-choose levels below ~0.37×, and
+  settle why 80.8% of route-periods are OFF, before running anything.
 
 ## D27 — the optimizer was chosen by the treatment
 
@@ -530,14 +537,39 @@ nothing has been decided about running it. Note that Experiment 5 reasons about
 a *resource frontier*, and Experiment 4 established no fleet number; what that
 implies for Exp 5's premises has not been worked through.
 
-**D38 bears on this directly and should be settled before Exp 5 runs.** If Exp 5
-uses a discovery-style approximate score to propose or order candidates, D38
-says that score carried almost no information about the exact objective in the
-only regions measured — 0.0077% of spread out of band against 1.7284% of exact
-spread, and 0.159% against 2.2788% in band. Whatever Exp 5 proposes with, the
-variance of that quantity across its candidate set should be measured **before**
-committing compute to ranking on it. That is the cheapest guard this project has
-found and it was bought with 326 hours it then declined to spend.
+**A premise audit on 2026-09-21 returned `EXP5_REFRAME_REQUIRED`.** Full
+reasoning, with file/function citations and every figure recomputed from the
+committed artifacts, in `EXPERIMENT5_PREMISE_AUDIT.md`. In summary:
+
+* **The fleet axis cannot be measured for any candidate.** All 200 Exp 4
+  candidates returned `UNDECIDABLE`; their `CANDIDATE_BLOCK_BOUND` brackets run
+  253–411 vehicles wide, and **200 of 200 contain the entire Exp 5 fleet-cap
+  grid (101–295)**. Every cell is simultaneously possibly-feasible and
+  possibly-infeasible for every candidate. The uncertainty is not common-mode:
+  widths vary 1.62× and are candidate-specific even at fixed trip count.
+* **No cell binds.** Certified plans spend **36.16–37.33%** of the hours cap and
+  44.4–45.8% of the fleet proxy cap; **0 of 200 exceed even the 0.75× level**.
+  Sixteen certified cells would report that nothing changed. The hours axis
+  needs levels below **≈0.37×** to bind at all.
+* **The cap would be applied with the wrong instrument.** `frequency._feasible`
+  compares `FitnessVector.peak_by_period` (Σ cycle/headway, the 150.73 proxy)
+  against `ResourceBudget.peak_vehicles_by_period`, which is the comparison
+  `contract.py:451` declines to run because it "would pass every plan while
+  appearing to check something." Tolerable in a search filter; fatal where the
+  cap *is* the treatment.
+* **Open and unanswered:** why **80.8%** of the leader's route-periods are OFF
+  while 63% of the hour budget goes unspent. Either the λ=2 objective prefers
+  that little service, or the block-local neighbourhood cannot reach denser
+  plans (lifting a route from OFF may exceed the 3-rung move the guarantee
+  covers). A resource frontier built on the second case would measure the
+  optimizer, not the network. Cheap test specified in the audit.
+
+**D38 still applies if a proposal stage is ever added.** Exp 5 as specified
+ranks nothing — sixteen cells, enumerated — so no cheap score is used as a
+ranker today. The preregistered variance gate is in the audit's §7, along with
+the gate run against `FitnessVector.peak_vehicles`: it **passes** on variance
+(3.19% relative range against the exact objective's 2.29%) and is **still the
+wrong quantity**. The D38 gate is necessary, not sufficient.
 
 The envelope is the same frozen artifact, and the type system enforces it:
 `ResourceEnvelope` holds fleet **per period as integers** and **rejects a
