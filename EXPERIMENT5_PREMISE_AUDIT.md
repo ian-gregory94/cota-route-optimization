@@ -6,6 +6,14 @@ terminal inputs invalidate or materially distort the proposed resource
 frontier. Read against the live repo at `81a0cad3`; the stale
 `source\repos` clone was not used.
 
+> **AMENDED 2026-09-21, after the OFF→ON diagnostic.** §10 item 1 of this
+> document — drop fleet from the axis and make the fleet arm of `_feasible`
+> inert — is **RETRACTED**. The peak-vehicle arm is not a loose filter: it binds
+> at **all six periods at 99.71–99.97% of cap** on the certified leader, while
+> the hours cap sits at 36.66%. Zeroing it would have deleted the only binding
+> constraint in the problem. The status below stands and §1–§9 are unaffected;
+> the reframe now has a different target. See `EXPERIMENT5_OFFON_DIAGNOSTIC.md`.
+
 ## STATUS: `EXP5_REFRAME_REQUIRED`
 
 The resource frontier is meaningful only after the fleet axis is replaced by a
@@ -486,8 +494,13 @@ inert *and* mismeasured.
 
 Not a design, a precondition list.
 
-1. **Drop fleet from the axis.** Single-resource frontier on revenue
-   vehicle-hours. Keep `period_lower_bounds` as a refutation-only screen and
+1. **RETRACTED — do NOT drop the vehicle cap.** (Struck 2026-09-21 by
+   `EXPERIMENT5_OFFON_DIAGNOSTIC.md`: the peak-vehicle arm binds at all six
+   periods at 99.71–99.97%, and removing it removes the only binding constraint.
+   The original text follows, struck, because this project records superseded
+   recommendations rather than deleting them.)
+   ~~Drop fleet from the axis. Single-resource frontier on revenue
+   vehicle-hours.~~ Keep `period_lower_bounds` as a refutation-only screen and
    report every candidate's `CANDIDATE_BLOCK_BOUND` bracket alongside, labelled
    as the bracket it is. Concretely: pass `peak_vehicles_by_period={}` to
    `ResourceBudget` so the fleet arm of `_feasible` is provably inert, rather

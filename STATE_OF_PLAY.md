@@ -17,7 +17,10 @@ is **unanswered and not answerable from what was run**.
 
 **Experiment 5 is built, its block condition has cleared, and a premise audit
 on 2026-09-21 returned `EXP5_REFRAME_REQUIRED`. It must not run as specified.**
-`EXPERIMENT5_PREMISE_AUDIT.md`.
+`EXPERIMENT5_PREMISE_AUDIT.md`. A follow-up diagnostic the same day found why:
+**the hours axis Exp 5 is built on never binds, and a per-candidate
+peak-vehicle cap read off the candidate's own baseline plan binds at all six
+periods at 99.71–99.97%.** `EXPERIMENT5_OFFON_DIAGNOSTIC.md`.
 
 ## The headline, in one line each
 
@@ -50,8 +53,13 @@ on 2026-09-21 returned `EXP5_REFRAME_REQUIRED`. It must not run as specified.**
   certified plan spends 36–37% of the hours cap, and 0 of 200 exceed even the
   tightest 0.75× level); and the only path that could apply a fleet cap
   measures it with the cycle-over-headway proxy that `contract.py` refuses by
-  name. Reframe on revenue vehicle-hours, re-choose levels below ~0.37×, and
-  settle why 80.8% of route-periods are OFF, before running anything.
+  name. **The 2026-09-21 OFF→ON diagnostic settled the third point and
+  overturned the recommendation:** the 80.8% OFF share is neither λ=2 nor the
+  neighbourhood — all 315 OFF route-periods are one rung from service and
+  every one of 3,076 improving activations is blocked by the peak-vehicle cap,
+  which binds at 99.71–99.97% in all six periods while hours sit at 36.66%.
+  Reframing onto revenue vehicle-hours is **retracted**: it would delete the
+  only binding constraint.
 
 ## D27 — the optimizer was chosen by the treatment
 
@@ -536,6 +544,40 @@ block condition — Experiment 4 — cleared on 2026-09-14. Nothing has been run
 nothing has been decided about running it. Note that Experiment 5 reasons about
 a *resource frontier*, and Experiment 4 established no fleet number; what that
 implies for Exp 5's premises has not been worked through.
+
+### The 2026-09-21 OFF→ON diagnostic — the binding constraint is not the one Exp 5 varies
+
+`EXPERIMENT5_OFFON_DIAGNOSTIC.md`. Status `OBJECTIVE_PREFERS_SPARSE_SERVICE` by
+the letter of its criteria, with its stated interpretation refuted by the same
+measurement. The certified leader's objective was reproduced **bit-exactly**
+(relative error 0.000e+00) before any probe was read.
+
+* **Reachability is not the problem.** All **315 OFF route-periods (80.77%)**
+  sit **one rung** from service — `build_ladders` appends OFF last, so its
+  neighbour is the worst finite headway — and all 315 have two finite rungs
+  inside the k=3 window. Zero need more than 3 rungs; zero are unreachable.
+* **4,095 exact probes.** 3,076 improve the objective. **Zero are admissible.**
+  Every one is blocked by the peak-vehicle arm of `frequency._feasible`; **not
+  one** violates the hours cap.
+* **The peak-vehicle cap binds everywhere**: am_peak 99.840%, early 99.912%,
+  evening 99.705%, midday 99.967%, owl 99.879%, pm_peak 99.840%, tolerance
+  **0.0**. Hours sit at **36.658%** with 1,594 vehicle-hours of slack.
+* **That cap is read off the candidate's own baseline plan** (`exp2.py:324`,
+  `peak_fleet_by_period: baseline`) and measured with `cycle/headway` — the
+  project's own named original sin, and the proxy `contract.py:451` refuses.
+  **D5-C is therefore not a latent hazard but the operative constraint of
+  Experiment 4.**
+* **Scope narrowed, ranking intact.** The Exp 4 leader is the best certified
+  objective *under a per-candidate vehicle cap read off that candidate's own
+  baseline plan and measured with a rejected proxy*. The ranking stands — same
+  machinery for all 200, `objective_EXACT` throughout, no fleet verdict filtered
+  anything — but that sentence belongs wherever the leader is quoted.
+* **Exp 5 as designed is not a resource frontier.** Hours appear nowhere in
+  `FitnessVector.scalarized`; they are purely a constraint, and every level from
+  0.75× to 1.50× is above the 922.74 operating point. All sixteen cells would
+  return the same plan. The axis has to be the resource that binds.
+* **The premise audit's own central recommendation is retracted** — zeroing
+  `peak_vehicles_by_period` would have removed the only binding constraint.
 
 **A premise audit on 2026-09-21 returned `EXP5_REFRAME_REQUIRED`.** Full
 reasoning, with file/function citations and every figure recomputed from the
